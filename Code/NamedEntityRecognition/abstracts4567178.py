@@ -1,0 +1,3 @@
+abstract = """
+The invention relates to novel substituted 5,11-dihydro-6H-dibenz[b,e]azepin-6-one of the formula ##STR1## wherein A represents a (1-methyl-4-piperidinyl)-acetyl, (4-methyl-1-piperazinyl)-acetyl, or [(1-methyl-4-piperidinyl)-amino]-carbonyl group, and the acid addition salts thereof, which have valuable pharmacological properties, particularly an ulcer-inhibiting and secretion-inhibiting activity. The compounds of Formula I may be prepared using methods conventionally used for analogous compounds.
+"""

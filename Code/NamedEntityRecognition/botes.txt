@@ -1,0 +1,76 @@
+# Abbreviation Detection
+
+import spacy
+
+from scispacy.abbreviation import AbbreviationDetector
+
+nlp = spacy.load("en_ner_bionlp13cg_md")
+
+# Add the abbreviation pipe to the spacy pipeline.
+abbreviation_pipe = AbbreviationDetector(nlp)
+nlp.add_pipe(abbreviation_pipe)
+
+doc = nlp("Spinal and bulbar muscular atrophy (SBMA) is an inherited motor neuron disease caused by the expansion of a polyglutamine tract within the androgen receptor (AR). SBMA can be caused by this easily.")
+
+print("Abbreviation", "\t", "Definition")
+for abrv in doc._.abbreviations:
+	print(f"{abrv} \t ({abrv.start}, {abrv.end}) {abrv._.long_form}")
+
+----------------------------
+
+
+# Entities
+import spacy
+import scispacy
+
+nlp = spacy.load("en_ner_bionlp13cg_md")
+
+doc = nlp("ESR1 mutation and its possible relation to endocrine therapy resistance in ER-positive breast cancers have been studied with respect to genetic sequencing data from Western patients but rarely from Chinese patients. This study aimed to investigate the prevalence of ESR1 mutation in Chinese primary and metastatic ER-positive breast cancer.")
+
+print(list(doc.sents))
+
+print(list(doc.ents))
+
+from spacy import displacy
+displacy.render(next(doc.sents), style='dep', jupyter=True)
+
+-------------------------------------
+
+# Gene Entity Recognition on csv file
+import spacy
+from spacy import displacy
+
+import scispacy
+
+from pprint import pprint
+import en_ner_bionlp13cg_md
+
+import csv
+
+with open('.\data\input\Abstract_test_100K.csv', newline='', encoding='utf8') as csvfile:
+    lines = [next(csvfile) for x in range(3)]
+    print(lines[1])
+
+----------------------------------------------
+
+# Gene Entity Recognition on Patent (4548935) - With abbreviations
+import spacy
+from spacy import displacy
+import scispacy
+from pprint import pprint
+import en_ner_bionlp13cg_md
+import claims4548935
+import abstract4548935
+import description4548935
+
+def getGeneNames(document, title):
+    abbreviation_pipe = AbbreviationDetector(nlp)
+    nlp.add_pipe(abbreviation_pipe)
+    print(title)
+    doc = nlp(document)
+    abbreviated = list(set([f"{abrv} {abrv._.long_form}" for abrv in doc._.abbreviations]))
+    return abbreviated
+
+getGeneNames(abstract4548935.abstract, "Abstract: ")
+getGeneNames(description4548935.description, "Description: ")
+getGeneNames(claims4548935.claims, "Claims: ")

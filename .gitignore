@@ -1,8 +1,3 @@
-# datasets
-*.tsv
-*.csv
-*.txt
-
 # latex
 *.pdf
 *.tps
@@ -15,31 +10,21 @@
 *.aux
 *.blg
 
-# java / .net core / python files
-*.prefs
-*.project
-*.classpath
-*.factorypath
-*.iml
-*.model
-*.log
-*.arffs
-*.xml
-*.json
-*.dll
-*.exe
+# java / .net core / python
+venv/
+.vs/
+.vscode/
+obj/
+bin/
+.idea/
+.settings/
+logs/
+target/
+__pycache__/
+Data/
+data/
 
-# java / .net core / python directories
-/.idea/*
-/target/*
-/.vscode/*
-/.vs/*
-/output/*
-/input/*
-/correspondences/*
-/obj/*
-/bin/*
-/venv/*
-/__pycache__/*
-/.vscode/*
-/.idea/*
+.classpath
+.factorypath
+.project
+*.iml
