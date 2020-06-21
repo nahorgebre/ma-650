@@ -7,34 +7,30 @@ namespace ExtractPatentData
     {
         static void Main(string[] args)
         {
-            //downloadAndExtractPatentData();
+            //downloadPatentData();
             //PatNum.getPatentsByyear();
 
-            parseTxtFile();
-            parseXmlFile();
+            parsePatentData();
         }
 
-        public static void downloadAndExtractPatentData()
+        public static void downloadPatentData()
         {
             for (int year = 1987; year <= 2016; year++)
             {
-                List<string> downloadedFiles = DownloadAndExtractBulkFiles.downloadBulkFiles(year);
-                DownloadAndExtractBulkFiles.extractBulkFilesToDirectory(downloadedFiles);
-                DownloadAndExtractBulkFiles.deleteBulkFiles(year.ToString());
+                List<string> downloadedFiles = BulkDownloader.downloadBulkFiles(year);
+                BulkDownloader.extractBulkFilesToDirectory(downloadedFiles);
+                BulkDownloader.deleteBulkFiles(year.ToString());
             }            
         }
 
-        public static void parseTxtFile()
+        public static void parsePatentData()
         {
             for (int year = 1985; year <= 2001; year++)
             {
                 List<string> bulkFilePathList = ParsePatentGrantFullTextData.getBulkFilePathList(year.ToString());
                 ParsePatentGrantFullTextData.parseBulkFiles(bulkFilePathList, year);               
             }
-        }
 
-        public static void parseXmlFile()
-        {
             for (int year = 2002; year <= 2016; year++)
             {
                 
