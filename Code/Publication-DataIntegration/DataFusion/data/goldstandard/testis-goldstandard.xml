@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <gene>
+    <id>mart_export_testis_4409</id>
+    <geneId>ENSMUSG00000031641</geneId>
+    <geneName>Cbr4</geneName>
+    <geneDescription>carbonyl reductase 4 [Source:MGI Symbol;Acc:MGI:2384567]</geneDescription>
+    <disagreement>1.19480046</disagreement>
+    <call>Different</call>
+    <ncbiId />
+    <dsi>1</dsi>
+    <dpi>0.069</dpi>
+    <diseases>
+      <Disease>
+        <diseaseId>C0005411</diseaseId>
+        <diseaseName>Biliary Atresia</diseaseName>
+        <diseaseType>disease</diseaseType>
+        <diseaseClass>C06;C16</diseaseClass>
+        <diseaseSemanticType>Congenital Abnormality</diseaseSemanticType>
+        <score>0.10</score>
+        <ei />
+        <yearInitial>2010</yearInitial>
+        <yearFinal>2010</yearFinal>
+        <pmid>20460270</pmid>
+        <source>GWASDB</source>
+      </Disease>
+    </diseases>
+  </gene>
+</genes>

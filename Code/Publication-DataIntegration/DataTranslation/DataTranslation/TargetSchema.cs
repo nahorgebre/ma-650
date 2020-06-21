@@ -12,7 +12,7 @@ namespace DataTranslation
 
     public class Publication
     {
-        public string recordId = string.Empty;
+        public string id = string.Empty;
         public string pmid = string.Empty;
         [XmlArrayAttribute("genes")]
         public List<Gene> genes;

@@ -84,7 +84,7 @@ namespace DataTranslation
     {
         public static void pubLinks_dt()
         {
-            for (int year = 1980; year < 2019; year++)
+            for (int year = 1985; year <= 2016; year++)
             {
                 List<Publication> pulications_list = new List<Publication>();
 
@@ -94,13 +94,14 @@ namespace DataTranslation
                 {
                     reader.ReadLine();
                     int counter = 1;
+
                     while (!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
                         String[] values = line.Split(',');
 
                         Publication publication = new Publication();
-                        publication.recordId = "RePORTER_PUBLNK_C_" + year + "_" + counter;
+                        publication.id = "RePORTER_PUBLNK_C_" + year + "_" + counter;
                         publication.pmid = values[0];
 
                         List<Project> projects_list = new List<Project>();
@@ -138,6 +139,7 @@ namespace DataTranslation
 
                 reader.ReadLine();
                 int counter = 1;
+
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
@@ -157,7 +159,9 @@ namespace DataTranslation
                         else
                         {
                             Publication publication = new Publication();
-                            publication.recordId = "gene2pubtatorcentral_" + counter;
+
+                            //publication.id = "gene2pubtatorcentral_" + counter;
+                            publication.id = getRecordId(counter);
                             publication.pmid = values[0];
 
                             List<Gene> genes_list = new List<Gene>();
@@ -178,15 +182,166 @@ namespace DataTranslation
                         }
                     }
                 }
+
+
             }
             Console.WriteLine("Ending - Number of publications: " + pulications_list.Count);
+            createFiles(pulications_list);
             generalMethods.createXml(pulications_list, @"Publication-Mentions\gene2pubtatorcentral_dt");
+        }
+
+        public static string getRecordId(int counter, string )
+        {
+            // ---X---X---
+            string countAd = counter.ToString();
+            if (countAd.Length == 1)
+            {
+                countAd += "--------";
+            } 
+            else if (countAd.Length == 2)
+            {
+                countAd += "-------";
+            }
+            else if (countAd.Length == 3)
+            {
+                countAd += "------";
+            }
+            else if (countAd.Length == 4)
+            {
+                countAd += "-----";
+            }
+            else if (countAd.Length == 5)
+            {
+                countAd += "----";
+            }
+            else if (countAd.Length == 6)
+            {
+                countAd += "---";
+            }
+            else if (countAd.Length == 7)
+            {
+                countAd += "--";
+            }
+            else if (countAd.Length == 8)
+            {
+                countAd += "-";
+            }
+            string recordId = "gene2pubtatorcentral_" + countAd;
+            return recordId;
+        }
+
+        public static void createFiles(List<Publication> pulications_list)
+        {
+            int length = pulications_list.Count;
+            int partition = length / 25;
+
+            List<Publication> partition_list_1 = new List<Publication>();
+            partition_list_1 = generalMethods.createList(0, partition, pulications_list);
+            generalMethods.createXml(partition_list_1, @"Publication-Mentions\gene2pubtatorcentral_1_dt");
+
+            List<Publication> partition_list_2 = new List<Publication>();
+            partition_list_2 = generalMethods.createList(partition, partition * 2, pulications_list);
+            generalMethods.createXml(partition_list_2, @"Publication-Mentions\gene2pubtatorcentral_2_dt");
+
+            List<Publication> partition_list_3 = new List<Publication>();
+            partition_list_3 = generalMethods.createList(partition * 2, partition * 3, pulications_list);
+            generalMethods.createXml(partition_list_3, @"Publication-Mentions\gene2pubtatorcentral_3_dt");
+
+            List<Publication> partition_list_4 = new List<Publication>();
+            partition_list_4 = generalMethods.createList(partition * 3, partition * 4, pulications_list);
+            generalMethods.createXml(partition_list_4, @"Publication-Mentions\gene2pubtatorcentral_4_dt");
+
+            List<Publication> partition_list_5 = new List<Publication>();
+            partition_list_5 = generalMethods.createList(partition * 4, partition * 5, pulications_list);
+            generalMethods.createXml(partition_list_5, @"Publication-Mentions\gene2pubtatorcentral_5_dt");
+
+            List<Publication> partition_list_6 = new List<Publication>();
+            partition_list_6 = generalMethods.createList(partition * 5, partition * 6, pulications_list);
+            generalMethods.createXml(partition_list_6, @"Publication-Mentions\gene2pubtatorcentral_6_dt");
+
+            List<Publication> partition_list_7 = new List<Publication>();
+            partition_list_7 = generalMethods.createList(partition * 6, partition * 7, pulications_list);
+            generalMethods.createXml(partition_list_7, @"Publication-Mentions\gene2pubtatorcentral_7_dt");
+
+            List<Publication> partition_list_8 = new List<Publication>();
+            partition_list_8 = generalMethods.createList(partition * 7, partition * 8, pulications_list);
+            generalMethods.createXml(partition_list_8, @"Publication-Mentions\gene2pubtatorcentral_8_dt");
+
+            List<Publication> partition_list_9 = new List<Publication>();
+            partition_list_9 = generalMethods.createList(partition * 8, partition * 9, pulications_list);
+            generalMethods.createXml(partition_list_9, @"Publication-Mentions\gene2pubtatorcentral_9_dt");
+
+            List<Publication> partition_list_10 = new List<Publication>();
+            partition_list_10 = generalMethods.createList(partition * 9, partition * 10, pulications_list);
+            generalMethods.createXml(partition_list_10, @"Publication-Mentions\gene2pubtatorcentral_10_dt");
+
+            List<Publication> partition_list_11 = new List<Publication>();
+            partition_list_11 = generalMethods.createList(partition * 10, partition * 11, pulications_list);
+            generalMethods.createXml(partition_list_11, @"Publication-Mentions\gene2pubtatorcentral_11_dt");
+
+            List<Publication> partition_list_12 = new List<Publication>();
+            partition_list_12 = generalMethods.createList(partition * 11, partition * 12, pulications_list);
+            generalMethods.createXml(partition_list_12, @"Publication-Mentions\gene2pubtatorcentral_12_dt");
+
+            List<Publication> partition_list_13 = new List<Publication>();
+            partition_list_13 = generalMethods.createList(partition * 12, partition * 13, pulications_list);
+            generalMethods.createXml(partition_list_13, @"Publication-Mentions\gene2pubtatorcentral_13_dt");
+
+            List<Publication> partition_list_14 = new List<Publication>();
+            partition_list_14 = generalMethods.createList(partition * 13, partition * 14, pulications_list);
+            generalMethods.createXml(partition_list_14, @"Publication-Mentions\gene2pubtatorcentral_14_dt");
+
+            List<Publication> partition_list_15 = new List<Publication>();
+            partition_list_15 = generalMethods.createList(partition * 14, partition * 15, pulications_list);
+            generalMethods.createXml(partition_list_15, @"Publication-Mentions\gene2pubtatorcentral_15_dt");
+
+            List<Publication> partition_list_16 = new List<Publication>();
+            partition_list_16 = generalMethods.createList(partition * 15, partition * 16, pulications_list);
+            generalMethods.createXml(partition_list_16, @"Publication-Mentions\gene2pubtatorcentral_16_dt");
+
+            List<Publication> partition_list_17 = new List<Publication>();
+            partition_list_17 = generalMethods.createList(partition * 16, partition * 17, pulications_list);
+            generalMethods.createXml(partition_list_17, @"Publication-Mentions\gene2pubtatorcentral_17_dt");
+
+            List<Publication> partition_list_18 = new List<Publication>();
+            partition_list_18 = generalMethods.createList(partition * 17, partition * 18, pulications_list);
+            generalMethods.createXml(partition_list_18, @"Publication-Mentions\gene2pubtatorcentral_18_dt");
+
+            List<Publication> partition_list_19 = new List<Publication>();
+            partition_list_19 = generalMethods.createList(partition * 18, partition * 19, pulications_list);
+            generalMethods.createXml(partition_list_19, @"Publication-Mentions\gene2pubtatorcentral_19_dt");
+
+            List<Publication> partition_list_20 = new List<Publication>();
+            partition_list_20 = generalMethods.createList(partition * 19, partition * 20, pulications_list);
+            generalMethods.createXml(partition_list_20, @"Publication-Mentions\gene2pubtatorcentral_20_dt");
+
+            List<Publication> partition_list_21 = new List<Publication>();
+            partition_list_21 = generalMethods.createList(partition * 20, partition * 21, pulications_list);
+            generalMethods.createXml(partition_list_21, @"Publication-Mentions\gene2pubtatorcentral_21_dt");
+
+            List<Publication> partition_list_22 = new List<Publication>();
+            partition_list_22 = generalMethods.createList(partition * 21, partition * 22, pulications_list);
+            generalMethods.createXml(partition_list_22, @"Publication-Mentions\gene2pubtatorcentral_22_dt");
+
+            List<Publication> partition_list_23 = new List<Publication>();
+            partition_list_23 = generalMethods.createList(partition * 22, partition * 23, pulications_list);
+            generalMethods.createXml(partition_list_23, @"Publication-Mentions\gene2pubtatorcentral_23_dt");
+
+            List<Publication> partition_list_24 = new List<Publication>();
+            partition_list_24 = generalMethods.createList(partition * 23, partition * 24, pulications_list);
+            generalMethods.createXml(partition_list_24, @"Publication-Mentions\gene2pubtatorcentral_24_dt");
+
+            List<Publication> partition_list_25 = new List<Publication>();
+            partition_list_25 = generalMethods.createList(partition * 24, partition * 25, pulications_list);
+            generalMethods.createXml(partition_list_25, @"Publication-Mentions\gene2pubtatorcentral_25_dt");
+
         }
 
         public static Publication getPublication(int counter, String[] values, string value)
         {
             Publication publication = new Publication();
-            publication.recordId = "gene2pubtatorcentral_" + counter;
+            //publication.id = "gene2pubtatorcentral_" + counter;
+            publication.id = getRecordId(counter);
             publication.pmid = values[0];
 
             List<Gene> genes_list = new List<Gene>();
@@ -209,7 +364,7 @@ namespace DataTranslation
         public static HashSet<string> getPmids()
         {
             var pmidHashSet = new HashSet<string>();
-            for (int year = 1980; year < 2019; year++)
+            for (int year = 1985; year <= 2016; year++)
             {
                 string sourceFileName = "RePORTER_PUBLNK_C_" + year + ".csv";
                 year++;

@@ -5,7 +5,7 @@ public class Program
 {
     public static void Main()
     {
-        //dataTranslationPubLinks();
+        dataTranslationPubLinks();
         dataTranslationPubMentions();
     }
 

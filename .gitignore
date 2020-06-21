@@ -21,8 +21,11 @@ bin/
 logs/
 target/
 __pycache__/
-Data/
-data/
+input/
+Input/
+output/
+Output/
+correspondences/
 
 .classpath
 .factorypath
