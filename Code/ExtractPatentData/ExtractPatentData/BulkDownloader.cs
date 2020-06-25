@@ -1,63 +1,75 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Net;
+using System.Collections.Generic;
+using System.Text;
+using System.IO.Compression;
 
 namespace ExtractPatentData
 {
     class BulkDownloader
     {
-        public static List<string> downloadBulkFiles(int year)
+        public static void downloadBulkFiles()
         {
-            List<string> pathList = new List<string>();
-            using (var reader = new StreamReader(Environment.CurrentDirectory + @"\data\source\" + year + "urls.txt"))
+            try
             {
-                while (!reader.EndOfStream)
+                Patent.getPatentsByyear();
+                for (int year = 1985; year <= 2016; year++)
                 {
-                    var line = reader.ReadLine();
-                    using (WebClient webClient = new WebClient())
+                    string yearDirectoty = Environment.CurrentDirectory + @"\data\input\PatentGrantFullTextData\" + year;
+                    Directory.CreateDirectory(yearDirectoty);
+
+                    List<string> pathList = new List<string>();
+                    using (var reader = new StreamReader(Environment.CurrentDirectory + @"\data\source\" + year.ToString() + ".txt"))
                     {
-                        string directory = Environment.CurrentDirectory + @"\data\input\PatentGrantFullTextData\" + year;
-                        Directory.CreateDirectory(directory);
-                        int index = line.ToString()
-                                        .LastIndexOf("/");
-                        string fileName = line.ToString()
-                                              .Substring(index);
-                        webClient.DownloadFile(line.ToString(),
-                                               directory + fileName);
-                        pathList.Add(directory + fileName);
-                    }
+                        while (!reader.EndOfStream)
+                        {
+                            var line = reader.ReadLine();
+
+                            string filePath = yearDirectoty + @"\" + line.ToString().Substring(line.ToString().LastIndexOf("/")).Trim();
+                            if (!File.Exists(filePath))
+                            {
+                                using (WebClient webClient = new WebClient())
+                                {
+                                    webClient.DownloadFile(line.ToString().Trim(), filePath);
+                                    pathList.Add(filePath);
+                                } 
+                            }
+                            else
+                            {
+                                if (!isZipFileValid(filePath))
+                                {
+                                    File.Delete(filePath);
+                                    using (WebClient webClient = new WebClient())
+                                    {
+                                        webClient.DownloadFile(line.ToString(), filePath);
+                                        pathList.Add(filePath);
+                                    } 
+                                }
+                            }
+                        }
+                    }               
+                }  
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }          
+        }
+
+        public static bool isZipFileValid(string path)
+        {
+            try
+            {
+                using (var zipFile = ZipFile.OpenRead(path))
+                {
+                    var entries = zipFile.Entries;
+                    return true;
                 }
             }
-            return pathList;
-        }
-
-        public static void extractBulkFilesToDirectory(List<string> filePaths)
-        {
-            foreach (var filePath in filePaths)
+            catch (InvalidDataException)
             {
-                string zipPath = filePath;
-                string extractPath = filePath.Substring(0, filePath.LastIndexOf("."));
-                ZipFile.ExtractToDirectory(zipPath, extractPath);
-            }
-        }
-
-        public static void deleteBulkFiles(string year)
-        {
-            string[] downloadedFiles = Directory.GetFiles(Environment.CurrentDirectory + @"\data\input\PatentGrantFullTextData\" + year);
-            foreach (var item in downloadedFiles)
-            {
-                File.Delete(item);
-            }
-        }
-
-        public static void deleteBulkFolders(string year)
-        {
-            string[] directoryList = Directory.GetDirectories(Environment.CurrentDirectory + @"\data\input\PatentGrantFullTextData\" + year);
-            foreach (var item in directoryList)
-            {
-                Directory.Delete(item, true);
+                return false;
             }
         }
     }
