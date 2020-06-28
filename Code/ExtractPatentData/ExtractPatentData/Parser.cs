@@ -6,7 +6,8 @@ using System.Linq;
 
 namespace ExtractPatentData
 {
-    class Parser
+
+    class ParserPFTAPS
     {
         public static List<string> LogicalGroupsAPS = new List<string>()
         {
@@ -151,13 +152,31 @@ namespace ExtractPatentData
             }
             return patentList;
         }
+    }
 
-        public static void parseXML2()
+    class ParserPG
+    {
+        public static void parseXML()
         {
+            for (int year = 2002; year <= 2004; year++)
+            {
+                HashSet<string> fileNameList = FileArchiver.extractFiles(year.ToString());
 
+                List<List<string>> patentListByYear = new List<List<string>>();
+                foreach (string fileName in fileNameList)
+                {
+                    List<List<string>> patentListByWeek = getAPSContent(fileName);
+                    patentListByYear.AddRange(patentListByWeek);
+                }
+            }
         }
 
-        public static void parseXML4()
+        
+    }
+
+    class ParserIPG
+    {
+        public static void parseXML()
         {
 
         }

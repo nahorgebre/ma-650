@@ -1,10 +1,7 @@
-% do not change these two lines (this is a hard requirement
-% there is one exception: you might replace oneside by twoside in case you deliver 
-% the printed version in the accordant format
 \documentclass[11pt,titlepage,oneside,openany]{book}
 \usepackage{times}
 
-
+\usepackage{comment}
 \usepackage{graphicx}
 \usepackage{latexsym}
 \usepackage{amsmath}
@@ -12,21 +9,21 @@
 
 \usepackage{ntheorem}
 
-% \usepackage{paralist}
 \usepackage{tabularx}
 
-% this packaes are useful for nice algorithms
+\usepackage{multirow}
+
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
-% well, when your work is concerned with definitions, proposition and so on, we suggest this
-% feel free to add Corrolary, Theorem or whatever you need
+\usepackage{spverbatim}
+
+\usepackage[colorlinks=false,linkcolor=black,urlcolor=black,bookmarksopen=true]{hyperref}
+\usepackage{bookmark}
+
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
 
-
-% its always useful to have some shortcuts (some are specific for algorithms
-% if you do not like your formating you can change it here (instead of scanning through the whole text)
 \renewcommand{\algorithmiccomment}[1]{\ensuremath{\rhd} \textit{#1}}
 \def\MYCALL#1#2{{\small\textsc{#1}}(\textup{#2})}
 \def\MYSET#1{\scshape{#1}}
@@ -39,76 +36,65 @@
 \def\MYTO{\textbf{ to }}
 \def\MYNIL{\textsc{Nil}}
 \def\MYUNKNOWN{ unknown }
-% simple stuff (not all of this is used in this examples thesis
-\def\INT{{\mathcal I}} % interpretation
-\def\ONT{{\mathcal O}} % ontology
-\def\SEM{{\mathcal S}} % alignment semantic
-\def\ALI{{\mathcal A}} % alignment
-\def\USE{{\mathcal U}} % set of unsatisfiable entities
-\def\CON{{\mathcal C}} % conflict set
-\def\DIA{\Delta} % diagnosis
-% mups and mips
-\def\MUP{{\mathcal M}} % ontology
-\def\MIP{{\mathcal M}} % ontology
-% distributed and local entities
+
+\def\INT{{\mathcal I}}
+\def\ONT{{\mathcal O}}
+\def\SEM{{\mathcal S}}
+\def\ALI{{\mathcal A}}
+\def\USE{{\mathcal U}}
+\def\CON{{\mathcal C}}
+\def\DIA{\Delta}
+
+\def\MUP{{\mathcal M}}
+\def\MIP{{\mathcal M}}
+
 \newcommand{\cc}[2]{\mathit{#1}\hspace{-1pt} \# \hspace{-1pt} \mathit{#2}}
 \newcommand{\cx}[1]{\mathit{#1}}
-% complex stuff
-\def\MER#1#2#3#4{#1 \cup_{#3}^{#2} #4} % merged ontology
-\def\MUPALL#1#2#3#4#5{\textit{MUPS}_{#1}\left(#2, #3, #4, #5\right)} % the set of all mups for some concept
-\def\MIPALL#1#2{\textit{MIPS}_{#1}\left(#2\right)} % the set of all mips
 
-
-
-
+\def\MER#1#2#3#4{#1 \cup_{#3}^{#2} #4}
+\def\MUPALL#1#2#3#4#5{\textit{MUPS}_{#1}\left(#2, #3, #4, #5\right)}
+\def\MIPALL#1#2{\textit{MIPS}_{#1}\left(#2\right)}
 
 \begin{document}
 
-\pagenumbering{roman}
-% lets go for the title page, something like this should be okay
 \begin{titlepage}
 	\vspace*{2cm}
   \begin{center}
-   {\Large The Extremes of Good and Evil\\}
+   {\Large Is Science Effective at Creating Knowledge that Matters?\\
+	\small Evidence from the Life Sciences\\}
    \vspace{2cm} 
    {Master Thesis\\}
    \vspace{2cm}
    {presented by\\
-    Earl Hickey \\
-    Matriculation Number 9083894\\
+    Nahor George Gebretensae\\
+		Matriculation Number 1586529\\
    }
    \vspace{1cm} 
    {submitted to the\\
-    Data and Web Science Group\\
-    Prof.\ Dr.\ Right Name Here\\
+    Chair of Organization and Innovation\\
+    Prof.\ Dr.\ Marc Lerchenmüller\\
     University of Mannheim\\} \vspace{2cm}
-   {August 2014}
+   {2020}
   \end{center}
-\end{titlepage} 
+\end{titlepage}
 
-% no lets make some add some table of contents
+\pagenumbering{roman}
+
 \tableofcontents
-\newpage
-
-\listofalgorithms
 
 \listoffigures
 
 \listoftables
 
-% evntuelly you might add something like this
-% \listtheorems{definition}
-% \listtheorems{proposition}
-
 \newpage
 
-
-% okay, start new numbering ... here is where it really starts
 \pagenumbering{arabic}
 
 \chapter{Introduction}
+\label{cha:intro}
 
-\section{Motivation}
+\section{Problem Statement}
+
 The funding of scientific research is almost always justified in terms of possible beneficial outcomes for the society. Most research efforts, whether public or private-funded, are intended to achieve objectives which transcend science \cite{Sarewitz2007TheNH}.
 \\
 \\
@@ -125,11 +111,9 @@ For example much of the research efforts conducted by the U.S. National Institut
 \\
 \\
 \textbf{Yardstick for assessing efficacy of knowledge creation.} This recent data allows an assessment of whether drug development primarily targets genes that work similarly in humans versus animals and hence seem more promising. This essentially offers a yardstick against which to assess the efficacy of knowledge creation in the life sciences.
-\\
-\\
-This thesis integrates research on the economics of innovation with evolutionary biology to address the following question: \textbf{To what extent does science create knowledge that matters?}
-\\
-\\
+
+\section{Contribution}
+
 To answer this research question the thesis will focus on the following three contiguous research aims:
 \begin{itemize}
 	\item \textbf{First aim:} Does the rate of scientific knowledge creation differ for genes that function similar versus different in animals versus humans?
@@ -140,11 +124,12 @@ To answer this research question the thesis will focus on the following three co
 \\
 \\
 \\
-To address these AIMs, I will integrate data on over 20 million life science publications from the standard bibliography PubMed (\ref{dataset4}), on gene-disease associations contained in DisGeNet (\ref{dataset2}), on patents form PatStat (\ref{dataset3}), and on gene behavior provided by the \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} (\ref{dataset1}).
+To address these AIMs, I will integrate data on over 20 million life science publications from the standard bibliography PubMed (\ref{dataset4}), on gene-disease associations contained in DisGeNet (\ref{dataset2}), on patents form PatStat (dataset3), and on gene behavior provided by the \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} (\ref{dataset1}).
 
-\section{Outline}
+\section{Related Work}
 
-\chapter{Fundamentals}
+\chapter{Theoretical Framework}
+\label{cha:theory}
 
 \section{Named Entity Recognition}
 
@@ -158,40 +143,43 @@ Research efforts in biomedical text mining and gene entity recognition have focu
 
 \section{Data Fusion}
 
-\chapter{Related Work}
+\section{Datasets}
+
 
 \chapter{Solution Approach}
+\label{cha:solution}
+
+\section{BioMedical Named Entity Recognition}
+\subsection{Baseline Methods}
+
+\textbf{ScispaCy.}
+\textbf{BioBERT.}
+\textbf{BioFLAIR.}
+
+\subsection{Ensembles}
+
+\subsection{Summary}
 
 \chapter{Evaluation}
+\label{cha:evaluation}
 
-\chapter{Future Work}
+\section{BioMedical Named Entity Recognition}
+\subsection{Gold Standard Creation}
 
-\ckhapter{Conclusion}
+\chapter{Conclusion}
+\label{cha:conclusion}
 
 \bibliographystyle{plain}
 \bibliography{thesis-ref}
 
-
 \appendix
-
-\chapter{Program Code / Resources}
-\label{cha:appendix-a}
-
-The source code, a documentation, some usage examples, and additional test results are available at ...
-
-They as well as a PDF version of this thesis is also contained on the CD-ROM attached to this thesis.
-
-\chapter{Further Experimental Results}
-\label{cha:appendix-b}
-
-In the following further experimental results are ...
 
 \chapter{Datasets}
 \label{cha:Datasets}
 
-\section{Dataset-1}
-\label{dataset1}
-Dataset-1 is provided by \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} and contains data on gene behavior \cite{CardosoMoreira2019GeneEA}.
+\section{Kaessmann Group Datasets}
+\label{kaessmannds}
+Kaessmann Group Datasets are provided by \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} and contains data on gene behavior \cite{CardosoMoreira2019GeneEA}.
 
 \begin{table}[!ht]
 \centering
@@ -229,12 +217,12 @@ Dataset-1 is provided by \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Ka
   \hline
 \end{tabularx}
 \end{footnotesize}
-\caption{Dataset-1}
+\caption{Kaessmann Group Datasets}
 \end{table}
 
-\section{Dataset-2}
-\label{dataset2}
-Dataset-2 is provided by \href{https://www.disgenet.org/}{DisGeNet} and contains data on gene-disease associations. DisGeNet is a discovery platform containing one of the largest publicly available collections of genes and variants associated with human diseases \cite{Piero2019TheDK}.
+\section{DisGeNet Dataset}
+\label{disgenetds}
+DisGeNet Dataset is provided by \href{https://www.disgenet.org/}{DisGeNet} and contains data on gene-disease associations. DisGeNet is a discovery platform containing one of the largest publicly available collections of genes and variants associated with human diseases \cite{Piero2019TheDK}.
  
 \begin{table}[!ht]
 \setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
@@ -247,36 +235,23 @@ Dataset-2 is provided by \href{https://www.disgenet.org/}{DisGeNet} and contains
   \hline
 \end{tabularx}
 \end{footnotesize}
-\caption{Dataset-2}
+\caption{DisGeNet Dataset}
 \end{table}
 
-\section{Dataset-3}
-\label{dataset3}
+\section{USPTO Datasets}
+\label{usptods}
 The text corpus is going to be crawled from \href{http://patft.uspto.gov/netahtml/PTO/index.html}{PatFT} using over 300.000 \href{https://nahorgebre.s3.amazonaws.com/US_Patents_1985_2016_313392.csv}{patent identifiers}, uniquely locating patents filed by U.S. pharmaceutical and biotechnology firms. The crawler will extract \textit{Abstracts}, \textit{Descriptions} and \textit{Claims} for each patent.
 \\
-\\
-\begin{lstlisting}
-<patents>
-  <patent>
-    <patentId>4542129</patentId>
-    <abstractText>Topical formulations ...</abstractText>
-    <description>FIELD OF ...</description>
-    <claim>I claim: ...</claim>
-  </patent>
-  ...
-</patents>
-\end{lstlisting}
-\caption{Result file of the crawler}
 
-\section{Dataset-4}
-\label{dataset4}
-Dataset-4 is provided by \href{https://www.ncbi.nlm.nih.gov/pubmed/}{PubMed} and contains a text corpus consisting of over 20 million life science publications. The text corpus contains information about patent \textit{abstracts}, \textit{descriptions} and \textit{claims}. 
+\section{PubTator Dataset}
+\label{pubtator}
+PubTator Dataset is provided by \href{https://www.ncbi.nlm.nih.gov/pubmed/}{PubMed} and contains a text corpus consisting of over 20 million life science publications. The text corpus contains information about patent \textit{abstracts}, \textit{descriptions} and \textit{claims}. 
 \\
 \\
 PubMed is a free Web literature search service developed and maintained by the National Center for Biotechnology Information (NCBI) \cite{Lu2011PubMedAB}.
 
-\section{Target Schema}
-\label{target-schema}
+\chapter{Target Schema}
+\label{cha:targets}
 The target schema for the integrated dataset contains the \textit{gene} and \textit{disease} class.
 \\
 \\
@@ -288,19 +263,17 @@ The target schema for the integrated dataset contains the \textit{gene} and \tex
 	\end{center}
 \end{figure}	
 
-\newpage
 
+\newpage
 
 \pagestyle{empty}
 
-
-\section*{Ehrenw\"ortliche Erkl\"arung}
-Ich versichere, dass ich die beiliegende Masterarbeit ohne Hilfe Dritter und ohne Benutzung anderer als der angegebenen Quellen und Hilfsmittel angefertigt und die den benutzten Quellen w\"ortlich oder inhaltlich entnommenen Stellen als solche kenntlich gemacht habe. Diese Arbeit
-hat in gleicher oder \"ahnlicher Form noch keiner Pr\"ufungsbeh\"orde vorgelegen. Ich bin mir bewusst, dass eine falsche Erkl\"arung rechtliche Folgen haben wird.
+\section*{Honorary Declaration}
+I declare that I have prepared the enclosed seminar paper without the help of third parties and without the use of sources and aids other than those indicated and have identified as such the sources taken literally or from the content of the sources used. This work did not exist in the same or similar form to any examination authority. I am aware that a wrong statement will have legal consequences.
 \\
 \\
 
 \noindent
-Mannheim, den 31.08.2014 \hspace{4cm} Unterschrift
+Mannheim, 30.06.2019 \hspace{4cm} Signature
 
 \end{document}

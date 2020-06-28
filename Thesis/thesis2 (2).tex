@@ -1,0 +1,306 @@
+% do not change these two lines (this is a hard requirement
+% there is one exception: you might replace oneside by twoside in case you deliver 
+% the printed version in the accordant format
+\documentclass[11pt,titlepage,oneside,openany]{book}
+\usepackage{times}
+
+
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{ntheorem}
+
+% \usepackage{paralist}
+\usepackage{tabularx}
+
+% this packaes are useful for nice algorithms
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% well, when your work is concerned with definitions, proposition and so on, we suggest this
+% feel free to add Corrolary, Theorem or whatever you need
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
+
+% its always useful to have some shortcuts (some are specific for algorithms
+% if you do not like your formating you can change it here (instead of scanning through the whole text)
+\renewcommand{\algorithmiccomment}[1]{\ensuremath{\rhd} \textit{#1}}
+\def\MYCALL#1#2{{\small\textsc{#1}}(\textup{#2})}
+\def\MYSET#1{\scshape{#1}}
+\def\MYAND{\textbf{ and }}
+\def\MYOR{\textbf{ or }}
+\def\MYNOT{\textbf{ not }}
+\def\MYTHROW{\textbf{ throw }}
+\def\MYBREAK{\textbf{break }}
+\def\MYEXCEPT#1{\scshape{#1}}
+\def\MYTO{\textbf{ to }}
+\def\MYNIL{\textsc{Nil}}
+\def\MYUNKNOWN{ unknown }
+% simple stuff (not all of this is used in this examples thesis
+\def\INT{{\mathcal I}} % interpretation
+\def\ONT{{\mathcal O}} % ontology
+\def\SEM{{\mathcal S}} % alignment semantic
+\def\ALI{{\mathcal A}} % alignment
+\def\USE{{\mathcal U}} % set of unsatisfiable entities
+\def\CON{{\mathcal C}} % conflict set
+\def\DIA{\Delta} % diagnosis
+% mups and mips
+\def\MUP{{\mathcal M}} % ontology
+\def\MIP{{\mathcal M}} % ontology
+% distributed and local entities
+\newcommand{\cc}[2]{\mathit{#1}\hspace{-1pt} \# \hspace{-1pt} \mathit{#2}}
+\newcommand{\cx}[1]{\mathit{#1}}
+% complex stuff
+\def\MER#1#2#3#4{#1 \cup_{#3}^{#2} #4} % merged ontology
+\def\MUPALL#1#2#3#4#5{\textit{MUPS}_{#1}\left(#2, #3, #4, #5\right)} % the set of all mups for some concept
+\def\MIPALL#1#2{\textit{MIPS}_{#1}\left(#2\right)} % the set of all mips
+
+
+
+
+
+\begin{document}
+
+\pagenumbering{roman}
+% lets go for the title page, something like this should be okay
+\begin{titlepage}
+	\vspace*{2cm}
+  \begin{center}
+   {\Large The Extremes of Good and Evil\\}
+   \vspace{2cm} 
+   {Master Thesis\\}
+   \vspace{2cm}
+   {presented by\\
+    Earl Hickey \\
+    Matriculation Number 9083894\\
+   }
+   \vspace{1cm} 
+   {submitted to the\\
+    Data and Web Science Group\\
+    Prof.\ Dr.\ Right Name Here\\
+    University of Mannheim\\} \vspace{2cm}
+   {August 2014}
+  \end{center}
+\end{titlepage} 
+
+% no lets make some add some table of contents
+\tableofcontents
+\newpage
+
+\listofalgorithms
+
+\listoffigures
+
+\listoftables
+
+% evntuelly you might add something like this
+% \listtheorems{definition}
+% \listtheorems{proposition}
+
+\newpage
+
+
+% okay, start new numbering ... here is where it really starts
+\pagenumbering{arabic}
+
+\chapter{Introduction}
+
+\section{Motivation}
+The funding of scientific research is almost always justified in terms of possible beneficial outcomes for the society. Most research efforts, whether public or private-funded, are intended to achieve objectives which transcend science \cite{Sarewitz2007TheNH}.
+\\
+\\
+For example much of the research efforts conducted by the U.S. National Institutes of Health (NIH) is considered to be basic since it explores the fundamental phenomena of human biology. The public support of the NIH is tied to the expectation and legislative mandate that the research result should end up improving human health \cite{Sarewitz2007TheNH}. 
+\\
+\\
+\textbf{Problem statement.} In \textit{The applied value of public investments in biomedical research}\cite{Li2017TheAV} Li et al. discovered links between public research investments conducted by NIH and subsequent patenting. 10\% of NIH grants directly generated patents and 30\% of NIH grants were cited in patents. Because of the lack of a yardstick it is unclear whether 30\% are a lot or it could be more \cite{Li2017TheAV}. The question, if a certain research effort is effective, seems to lie at the heart of science policy, but is rarely asked and much less studied systematically \cite{Sarewitz2007TheNH}.
+\\
+\\
+\textbf{Genotype and diseases.} The genotype can yield information about disease susceptibility and the effectiveness of the medication \cite{Brunicardi2011OverviewOT}. According to Spear et al.`s \textit{Clinical application of pharmacogenetics} \cite{Spear2001ClinicalAO}, it is estimated that between 20\% and 75\% of patients fail to respond to many commonly used drugs \cite{Spear2001ClinicalAO}. The effectiveness of the medication depends on the genomic characteristics of the patient: The rate at which the medication gets metabolized or the causal factors of the disease \cite{Brunicardi2011OverviewOT}.
+\\
+\\
+\textbf{Evolutionary Biology.} In \textit{Gene expression across mammalian organ development} \cite{CardosoMoreira2019GeneEA}, Cardoso-Moreira et al. profiled the development of seven organs (cerebrum, cerebellum, heart, kidney, liver, ovary and testis) from organogenesis till adulthood across multiple mammals (rhesus macaque, mouse, rat, rabbit, opossum and chicken) including humans \cite{CardosoMoreira2019GeneEA}. Comparisons of gene expression patterns in organ development within and across mammals identified correspondences of developmental stages across species. Moreover recent evolutionary biology data reveal, however, that genes that influence diseases may express differently in animals versus humans \cite{CardosoMoreira2019GeneEA}.
+\\
+\\
+\textbf{Yardstick for assessing efficacy of knowledge creation.} This recent data allows an assessment of whether drug development primarily targets genes that work similarly in humans versus animals and hence seem more promising. This essentially offers a yardstick against which to assess the efficacy of knowledge creation in the life sciences.
+\\
+\\
+This thesis integrates research on the economics of innovation with evolutionary biology to address the following question: \textbf{To what extent does science create knowledge that matters?}
+\\
+\\
+To answer this research question the thesis will focus on the following three contiguous research aims:
+\begin{itemize}
+	\item \textbf{First aim:} Does the rate of scientific knowledge creation differ for genes that function similar versus different in animals versus humans?
+	\item \textbf{Second aim:} Does the rate of scientific knowledge creation differ for genes that are strongly versus weakly associated with human diseases?
+	\item \textbf{Third aim:} Does patenting activity differ across the obtained gene typology?
+\end{itemize}
+\\
+\\
+\\
+\\
+To address these AIMs, I will integrate data on over 20 million life science publications from the standard bibliography PubMed (\ref{dataset4}), on gene-disease associations contained in DisGeNet (\ref{dataset2}), on patents form PatStat (dataset3), and on gene behavior provided by the \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} (\ref{dataset1}).
+
+\section{Outline}
+
+\chapter{Fundamentals}
+
+\section{Named Entity Recognition}
+
+The identification of gene names is an importnat steps in patent retrieval
+
+Research efforts in biomedical text mining and gene entity recognition have focused on scientific abstracts \cite{RodriguezEsteban2016TextMP}.
+
+\section{Data Translation}
+
+\section{Identity Resolution}
+
+\section{Data Fusion}
+
+\chapter{Related Work}
+
+\chapter{Solution Approach}
+
+\chapter{Evaluation}
+
+\chapter{Future Work}
+
+\ckhapter{Conclusion}
+
+\bibliographystyle{plain}
+\bibliography{thesis-ref}
+
+
+\appendix
+
+\chapter{Program Code / Resources}
+\label{cha:appendix-a}
+
+The source code, a documentation, some usage examples, and additional test results are available at ...
+
+They as well as a PDF version of this thesis is also contained on the CD-ROM attached to this thesis.
+
+\chapter{Further Experimental Results}
+\label{cha:appendix-b}
+
+In the following further experimental results are ...
+
+\chapter{Datasets}
+\label{cha:Datasets}
+
+\section{Dataset-1}
+\label{dataset1}
+Dataset-1 is provided by \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} and contains data on gene behavior \cite{CardosoMoreira2019GeneEA}.
+
+\begin{table}[!ht]
+\centering
+\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
+\begin{footnotesize}
+\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|}
+\hline
+\textbf{File} & \textbf{Source} & \textbf{Format} & \textbf{Class} & \textbf{Entities} & \textbf{Attributes} & \\ \hline
+
+	Brain & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 8.334 & 4 \\
+	
+	mart\_export\_brain & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 8.333 & 3 \\
+	
+	Cerebellum & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 7.133 & 4 \\
+	
+	mart\_export\_cerebellum & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 7.133 & 3 \\
+	
+	Heart & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 5.254 & 3 \\
+	
+	Heart\_Ensembl\_NCBI\_Crosswalk & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.261 & 3 \\
+	
+	mart\_export\_heart & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.254 & 3 \\
+	
+	Kidney & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 6.610 & 3 \\
+	
+	mart\_export\_kidney & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 6.610 & 3 \\
+	
+	Liver & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 5.742 & 4 \\
+	
+	mart\_export\_liver & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.741 & 3 \\
+	
+	mart\_export\_testis & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 8.666 & 3 \\
+	
+	Testis & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 8.667 & 4 \\
+  \hline
+\end{tabularx}
+\end{footnotesize}
+\caption{Dataset-1}
+\end{table}
+
+\section{Dataset-2}
+\label{dataset2}
+Dataset-2 is provided by \href{https://www.disgenet.org/}{DisGeNet} and contains data on gene-disease associations. DisGeNet is a discovery platform containing one of the largest publicly available collections of genes and variants associated with human diseases \cite{Piero2019TheDK}.
+ 
+\begin{table}[!ht]
+\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
+\begin{footnotesize}
+\begin{tabularx}{\textwidth}{|C|C|C|C|C|C|C|}
+\hline
+\textbf{File} & \textbf{Source} & \textbf{Format} & \textbf{Class} & \textbf{Entities} & \textbf{Attributes}  \\\hline
+
+	\href{https://nahorgebre.s3.amazonaws.com/all_gene_disease_pmid_associations.tsv}{all\_gene\_disease\_pmid\_associations} & \href{https://www.disgenet.org/}{DisGeNet}  & tsv & Gene and Disease & 1.548.062 & 15 \\
+  \hline
+\end{tabularx}
+\end{footnotesize}
+\caption{Dataset-2}
+\end{table}
+
+\section{Dataset-3}
+\label{dataset3}
+The text corpus is going to be crawled from \href{http://patft.uspto.gov/netahtml/PTO/index.html}{PatFT} using over 300.000 \href{https://nahorgebre.s3.amazonaws.com/US_Patents_1985_2016_313392.csv}{patent identifiers}, uniquely locating patents filed by U.S. pharmaceutical and biotechnology firms. The crawler will extract \textit{Abstracts}, \textit{Descriptions} and \textit{Claims} for each patent.
+\\
+\\
+\begin{lstlisting}
+<patents>
+  <patent>
+    <patentId>4542129</patentId>
+    <abstractText>Topical formulations ...</abstractText>
+    <description>FIELD OF ...</description>
+    <claim>I claim: ...</claim>
+  </patent>
+  ...
+</patents>
+\end{lstlisting}
+\caption{Result file of the crawler}
+
+\section{Dataset-4}
+\label{dataset4}
+Dataset-4 is provided by \href{https://www.ncbi.nlm.nih.gov/pubmed/}{PubMed} and contains a text corpus consisting of over 20 million life science publications. The text corpus contains information about patent \textit{abstracts}, \textit{descriptions} and \textit{claims}. 
+\\
+\\
+PubMed is a free Web literature search service developed and maintained by the National Center for Biotechnology Information (NCBI) \cite{Lu2011PubMedAB}.
+
+\section{Target Schema}
+\label{target-schema}
+The target schema for the integrated dataset contains the \textit{gene} and \textit{disease} class.
+\\
+\\
+\begin{figure}
+	\begin{center}
+	\includegraphics[width=13cm]{./figures/target-schema.png}
+	\caption[Target Schema]{Target Schema}
+	\label{fig:target-schema}
+	\end{center}
+\end{figure}	
+
+\newpage
+
+
+\pagestyle{empty}
+
+
+\section*{Ehrenw\"ortliche Erkl\"arung}
+Ich versichere, dass ich die beiliegende Masterarbeit ohne Hilfe Dritter und ohne Benutzung anderer als der angegebenen Quellen und Hilfsmittel angefertigt und die den benutzten Quellen w\"ortlich oder inhaltlich entnommenen Stellen als solche kenntlich gemacht habe. Diese Arbeit
+hat in gleicher oder \"ahnlicher Form noch keiner Pr\"ufungsbeh\"orde vorgelegen. Ich bin mir bewusst, dass eine falsche Erkl\"arung rechtliche Folgen haben wird.
+\\
+\\
+
+\noindent
+Mannheim, den 31.08.2014 \hspace{4cm} Unterschrift
+
+\end{document}

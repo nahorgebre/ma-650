@@ -19,6 +19,7 @@ bin/
 .idea/
 .settings/
 logs/
+datax/
 target/
 __pycache__/
 input/

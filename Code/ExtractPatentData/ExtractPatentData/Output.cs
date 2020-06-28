@@ -24,11 +24,6 @@ namespace ExtractPatentData
             }
         }
 
-        public static void checkIfTitleOutputByYearExist()
-        {
-            
-        }
-
         public static void writePatentAbstractCsvByYear(List<Patent> patentList, string year)
         {
             string directory = Environment.CurrentDirectory + @"\data\output\abstract\";
@@ -80,9 +75,42 @@ namespace ExtractPatentData
             }
         }
 
+        public static bool checkIfOutputByYearExist(string fileName)
+        { 
+            bool returnValue = false;
+            foreach (string directory in Directory.GetDirectories(Environment.CurrentDirectory + @"\data\output\"))
+            {
+                foreach (var fileNameInDirectory in Directory.GetFiles(directory))
+                {
+                    if (fileNameInDirectory.Equals(fileName))
+                    {
+                        returnValue = true;
+                    }
+                }
+            }
+            return returnValue;
+        }
+
         public static void combineToSingleOutput()
         {
+            List<string> directoryList = new List<string>()
+            {
+                Environment.CurrentDirectory + @"\data\output\title\",
+                Environment.CurrentDirectory + @"\data\output\abstract\",
+                Environment.CurrentDirectory + @"\data\output\description\",
+                Environment.CurrentDirectory + @"\data\output\claims\"
+            };
 
+            foreach (string directory in directoryList)
+            {
+                if (Directory.Exists(directory))
+                {
+                    foreach (var fileNameInDirectory in Directory.GetFiles(directory))
+                    {
+
+                    }
+                }
+            }
         }
     }
 }
