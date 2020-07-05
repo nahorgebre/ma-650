@@ -5,22 +5,27 @@ using System.Collections.Generic;
 
 namespace ExtractPatentData
 {
-    class Output
+    class OutputByYear
     {
-        public static void run()
+        public static void run(string year)
         {
             string outputDirectory = Environment.CurrentDirectory + @"\data\output\";
+            string outputByWeekDirectory = string.Format(outputDirectory + @"outputByWeek{0}\", year);
             string outputByYearDirectory = outputDirectory + @"outputByYear\";
 
-            string[] fileNameList = Directory.GetFiles(outputByYearDirectory);
+            Directory.CreateDirectory(outputByYearDirectory);
 
-            titleOutput(fileNameList, outputDirectory);
-            abstarctOutput(fileNameList, outputDirectory);
+            string[] files = Directory.GetFiles(string.Format(outputDirectory + "outputByWeek{0}", year));
+
+            titleOutputByYear(files, outputByYearDirectory, year);
+            abstractOutputByYear(files, outputByYearDirectory, year);
+
+            deleteOutputByWeek(year);
         }
 
-        public static void titleOutput(string[] fileNameList, string outputDirectory)
+        public static void titleOutputByYear(string[] files, string outputByYearDirectory, string year)
         {
-            string fileNameTitle = outputDirectory + "title.tsv";
+            string fileNameTitle = string.Format(outputByYearDirectory + string.Format("title_y{0}.tsv", year));
             if (!File.Exists(fileNameTitle))
             {
                 var tsvFile = new StringBuilder();
@@ -34,7 +39,7 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 tsvFile.AppendLine(firstLine);
 
-                foreach (var fileName in fileNameList)
+                foreach (string fileName in files)
                 {
                     if (fileName.Contains("title"))
                     {
@@ -62,13 +67,14 @@ namespace ExtractPatentData
                 }
                 File.WriteAllText(fileNameTitle, tsvFile.ToString());
             }
-            Console.WriteLine("Output all patent titles for the year.");
+
+            Console.WriteLine(string.Format("Output patent titles for the year {0}.", year));
         }
 
-        public static void abstarctOutput(string[] fileNameList, string outputDirectory)
+        public static void abstractOutputByYear(string[] files, string outputByYearDirectory, string year)
         {
-            string fileNameTitle = outputDirectory + "abstract.tsv";
-            if (!File.Exists(fileNameTitle))
+            string fileNameAbstract = string.Format(outputByYearDirectory + string.Format("abstract_y{0}.tsv", year));
+            if (!File.Exists(fileNameAbstract))
             {
                 var tsvFile = new StringBuilder();
                 var delimiter = "\t";
@@ -81,7 +87,7 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 tsvFile.AppendLine(firstLine);
 
-                foreach (var fileName in fileNameList)
+                foreach (string fileName in files)
                 {
                     if (fileName.Contains("abstract"))
                     {
@@ -101,21 +107,22 @@ namespace ExtractPatentData
                                         values[2]
                                     };
                                     var inputLine = string.Join(delimiter, itemContent);
-                                    tsvFile.AppendLine(inputLine); 
+                                    tsvFile.AppendLine(inputLine);
                                 }                    
                             }
                         } 
                     }
                 }
-                File.WriteAllText(fileNameTitle, tsvFile.ToString());
+                File.WriteAllText(fileNameAbstract, tsvFile.ToString());
             }
-            Console.WriteLine("Output all patent abstracts for the year.");
+
+            Console.WriteLine(string.Format("Output patent abstracts for the year {0}.", year));
         }
 
-        public static void deleteOutputByYear(string outputByYearDirectory)
+        public static void deleteOutputByWeek(string year)
         {
-            Directory.Delete(outputByYearDirectory, true);
+            string directory = Environment.CurrentDirectory + @"\data\output\outputByWeek" + year + @"\";
+            Directory.Delete(directory, true);
         }
- 
     }
 }

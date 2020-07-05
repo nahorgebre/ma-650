@@ -12,6 +12,7 @@
 
 # java / .net core / python
 venv/
+bioflairvenv/
 .vs/
 .vscode/
 obj/

@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Collections.Generic;
 
 namespace ExtractPatentData
 {
@@ -22,6 +22,7 @@ namespace ExtractPatentData
                     fileNameList.Add(destinationFileName);
                 }
             }
+            Console.WriteLine(string.Format("All zip files for the year {0} are extracted.", year));
             return fileNameList;
         }
 

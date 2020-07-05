@@ -8,7 +8,7 @@
             ParserPFTAPS.parseAPS();
             ParserPG.parseXML();
             ParserIPG.parseXML();
-            //Output.combineToSingleOutput();
+            Output.run();
         }
     }
 }

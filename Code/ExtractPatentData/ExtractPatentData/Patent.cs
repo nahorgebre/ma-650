@@ -1,14 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 
 namespace ExtractPatentData
 {
     class Patent
     {
         public string patentNumber = string.Empty;
-        public string patentYear = string.Empty;
+        public string patentDate = string.Empty;
         public string patentTitle = string.Empty;
         public string patentClaims = string.Empty;
         public string patentAbstract = string.Empty;
@@ -18,46 +18,62 @@ namespace ExtractPatentData
         {
             for (int year = 1985; year <= 2016; year++)
             {
-                List<string> patentList = new List<string>();
+                List<TargetPatentNumber> targetPatentNumberList = new List<TargetPatentNumber>();
                 using (var reader = new StreamReader(Environment.CurrentDirectory + @"\data\PatNum\US_Patents_1985_2016_313392.csv"))
                 {
                     reader.ReadLine();
                     while (!reader.EndOfStream)
                     {
+                        TargetPatentNumber targetPatentNumber = new TargetPatentNumber();
                         var line = reader.ReadLine();
                         String[] values = line.Split(',');
                         if (values[1].Contains(year.ToString()))
                         {
-                            patentList.Add(values[0].Replace("\"", ""));
+                            targetPatentNumber.targetPatentNumber = values[0].Replace("\"", "");
+                            targetPatentNumber.targetPatentDate = values[1].Replace("\"", "");
+                            targetPatentNumber.targetPatentClaimsCount = values[2].Replace("\"", "");
+                            targetPatentNumberList.Add(targetPatentNumber);
                         }                
                     }
                 }
+
                 var csv = new StringBuilder();
-                foreach (var patent in patentList)
+                foreach (TargetPatentNumber targetPatentNumber in targetPatentNumberList)
                 {
-                    csv.AppendLine(patent); 
+                    csv.Append(
+                        targetPatentNumber.targetPatentNumber + "," +
+                        targetPatentNumber.targetPatentDate + "," +
+                        targetPatentNumber.targetPatentClaimsCount +
+                        Environment.NewLine
+                    );
                 }
                 Directory.CreateDirectory(Environment.CurrentDirectory + @"\data\input\PatNumByYear");
                 File.WriteAllText(Environment.CurrentDirectory + @"\data\input\PatNumByYear\patents" + year.ToString() + ".csv", csv.ToString());
             }
         }
     
-        public static List<string> getTargetPatentNumbers(string year)
+        public static List<TargetPatentNumber> getTargetPatentNumbers(string year)
         {
-            List<string> targetPatentNumbers = new List<string>();
+            List<TargetPatentNumber> targetPatentNumberList = new List<TargetPatentNumber>();
 
             using (var reader = new StreamReader(Environment.CurrentDirectory + @"\data\input\PatNumByYear\patents" + year.ToString() + ".csv"))
             {
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    if (!line.Equals(string.Empty))
+                    String[] values = line.Split(',');
+
+                    if (!values[0].Equals(string.Empty))
                     {
-                        targetPatentNumbers.Add(line.Trim());
+                        TargetPatentNumber targetPatentNumber = new TargetPatentNumber();
+                        targetPatentNumber.targetPatentNumber = values[0].Trim();
+                        targetPatentNumber.targetPatentDate = values[1].Trim();
+                        targetPatentNumber.targetPatentClaimsCount = values[2].Trim();
+                        targetPatentNumberList.Add(targetPatentNumber);
                     }
                 }
             }   
-            return targetPatentNumbers;
+            return targetPatentNumberList;
         }
     }
 }
