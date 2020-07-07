@@ -1,0 +1,20 @@
+=========================================================
+Evaluation result for 'gpro_official_dev_lookup_baseline'
+Evaluated documents:       1322
+Evaluated results:          659
+
+Hits	TP: 438 FP: 221 FN: 3496
+
+Macro-averaged results
+
+StdDev	precs.:	0.31820	recall:	0.32035	F-scr.:	0.30001
+
+Macro	precs.:	0.13324	recall:	0.13405
+Macro	F-scr.:	0.12675	Avrg P:	0.01869
+Macro	FAP-s.:	0.03258
+
+Micro-averaged results
+
+Micro	precs.:	0.66464	recall:	0.11134
+Micro	F-scr.:	0.19073	Avrg P:	0.07934
+Micro	FAP-s.:	0.11207

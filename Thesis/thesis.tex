@@ -1,23 +1,16 @@
 \documentclass[11pt,titlepage,oneside,openany]{book}
 \usepackage{times}
-
 \usepackage{comment}
 \usepackage{graphicx}
 \usepackage{latexsym}
 \usepackage{amsmath}
 \usepackage{amssymb}
-
 \usepackage{ntheorem}
-
 \usepackage{tabularx}
-
 \usepackage{multirow}
-
 \usepackage{algorithm}
 \usepackage{algorithmic}
-
 \usepackage{spverbatim}
-
 \usepackage[colorlinks=false,linkcolor=black,urlcolor=black,bookmarksopen=true]{hyperref}
 \usepackage{bookmark}
 
@@ -81,70 +74,16 @@
 \pagenumbering{roman}
 
 \tableofcontents
-
 \listoffigures
-
 \listoftables
+\include{glossary}
 
 \newpage
 
 \pagenumbering{arabic}
 
-\chapter{Introduction}
-\label{cha:intro}
-
-\section{Problem Statement}
-
-The funding of scientific research is almost always justified in terms of possible beneficial outcomes for the society. Most research efforts, whether public or private-funded, are intended to achieve objectives which transcend science \cite{Sarewitz2007TheNH}.
-\\
-\\
-For example much of the research efforts conducted by the U.S. National Institutes of Health (NIH) is considered to be basic since it explores the fundamental phenomena of human biology. The public support of the NIH is tied to the expectation and legislative mandate that the research result should end up improving human health \cite{Sarewitz2007TheNH}. 
-\\
-\\
-\textbf{Problem statement.} In \textit{The applied value of public investments in biomedical research}\cite{Li2017TheAV} Li et al. discovered links between public research investments conducted by NIH and subsequent patenting. 10\% of NIH grants directly generated patents and 30\% of NIH grants were cited in patents. Because of the lack of a yardstick it is unclear whether 30\% are a lot or it could be more \cite{Li2017TheAV}. The question, if a certain research effort is effective, seems to lie at the heart of science policy, but is rarely asked and much less studied systematically \cite{Sarewitz2007TheNH}.
-\\
-\\
-\textbf{Genotype and diseases.} The genotype can yield information about disease susceptibility and the effectiveness of the medication \cite{Brunicardi2011OverviewOT}. According to Spear et al.`s \textit{Clinical application of pharmacogenetics} \cite{Spear2001ClinicalAO}, it is estimated that between 20\% and 75\% of patients fail to respond to many commonly used drugs \cite{Spear2001ClinicalAO}. The effectiveness of the medication depends on the genomic characteristics of the patient: The rate at which the medication gets metabolized or the causal factors of the disease \cite{Brunicardi2011OverviewOT}.
-\\
-\\
-\textbf{Evolutionary Biology.} In \textit{Gene expression across mammalian organ development} \cite{CardosoMoreira2019GeneEA}, Cardoso-Moreira et al. profiled the development of seven organs (cerebrum, cerebellum, heart, kidney, liver, ovary and testis) from organogenesis till adulthood across multiple mammals (rhesus macaque, mouse, rat, rabbit, opossum and chicken) including humans \cite{CardosoMoreira2019GeneEA}. Comparisons of gene expression patterns in organ development within and across mammals identified correspondences of developmental stages across species. Moreover recent evolutionary biology data reveal, however, that genes that influence diseases may express differently in animals versus humans \cite{CardosoMoreira2019GeneEA}.
-\\
-\\
-\textbf{Yardstick for assessing efficacy of knowledge creation.} This recent data allows an assessment of whether drug development primarily targets genes that work similarly in humans versus animals and hence seem more promising. This essentially offers a yardstick against which to assess the efficacy of knowledge creation in the life sciences.
-
-\section{Contribution}
-
-To answer this research question the thesis will focus on the following three contiguous research aims:
-\begin{itemize}
-	\item \textbf{First aim:} Does the rate of scientific knowledge creation differ for genes that function similar versus different in animals versus humans?
-	\item \textbf{Second aim:} Does the rate of scientific knowledge creation differ for genes that are strongly versus weakly associated with human diseases?
-	\item \textbf{Third aim:} Does patenting activity differ across the obtained gene typology?
-\end{itemize}
-\\
-\\
-\\
-\\
-To address these AIMs, I will integrate data on over 20 million life science publications from the standard bibliography PubMed (\ref{dataset4}), on gene-disease associations contained in DisGeNet (\ref{dataset2}), on patents form PatStat (dataset3), and on gene behavior provided by the \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} (\ref{dataset1}).
-
-\section{Related Work}
-
-\chapter{Theoretical Framework}
-\label{cha:theory}
-
-\section{Named Entity Recognition}
-
-The identification of gene names is an importnat steps in patent retrieval
-
-Research efforts in biomedical text mining and gene entity recognition have focused on scientific abstracts \cite{RodriguezEsteban2016TextMP}.
-
-\section{Data Translation}
-
-\section{Identity Resolution}
-
-\section{Data Fusion}
-
-\section{Datasets}
-
+\include{chapter/introduction}
+\include{chapter/theoretical-framework}
 
 \chapter{Solution Approach}
 \label{cha:solution}
@@ -174,106 +113,6 @@ Research efforts in biomedical text mining and gene entity recognition have focu
 
 \appendix
 
-\chapter{Datasets}
-\label{cha:Datasets}
-
-\section{Kaessmann Group Datasets}
-\label{kaessmannds}
-Kaessmann Group Datasets are provided by \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} and contains data on gene behavior \cite{CardosoMoreira2019GeneEA}.
-
-\begin{table}[!ht]
-\centering
-\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
-\begin{footnotesize}
-\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|}
-\hline
-\textbf{File} & \textbf{Source} & \textbf{Format} & \textbf{Class} & \textbf{Entities} & \textbf{Attributes} & \\ \hline
-
-	\href{https://nahorgebre.s3.amazonaws.com/Brain.csv}{Brain} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 8.334 & 4 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_brain.txt}{mart\_export\_brain} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 8.333 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Cerebellum.csv}{Cerebellum} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 7.133 & 4 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_cerebellum.txt}{mart\_export\_cerebellum} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 7.133 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Heart.csv}{Heart} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 5.254 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Heart_Ensembl_NCBI_Crosswalk.txt}{Heart\_Ensembl\_NCBI\_Crosswalk} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.261 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_heart.txt}{mart\_export\_heart} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.254 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Kidney.csv}{Kidney} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 6.610 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_kidney.txt}{mart\_export\_kidney} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 6.610 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Liver.csv}{Liver} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 5.742 & 4 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_liver.txt}{mart\_export\_liver} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.741 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_testis.txt}{mart\_export\_testis} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 8.666 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Testis.csv}{Testis} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 8.667 & 4 \\
-  \hline
-\end{tabularx}
-\end{footnotesize}
-\caption{Kaessmann Group Datasets}
-\end{table}
-
-\section{DisGeNet Dataset}
-\label{disgenetds}
-DisGeNet Dataset is provided by \href{https://www.disgenet.org/}{DisGeNet} and contains data on gene-disease associations. DisGeNet is a discovery platform containing one of the largest publicly available collections of genes and variants associated with human diseases \cite{Piero2019TheDK}.
- 
-\begin{table}[!ht]
-\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
-\begin{footnotesize}
-\begin{tabularx}{\textwidth}{|C|C|C|C|C|C|C|}
-\hline
-\textbf{File} & \textbf{Source} & \textbf{Format} & \textbf{Class} & \textbf{Entities} & \textbf{Attributes}  \\\hline
-
-	\href{https://nahorgebre.s3.amazonaws.com/all_gene_disease_pmid_associations.tsv}{all\_gene\_disease\_pmid\_associations} & \href{https://www.disgenet.org/}{DisGeNet}  & tsv & Gene and Disease & 1.548.062 & 15 \\
-  \hline
-\end{tabularx}
-\end{footnotesize}
-\caption{DisGeNet Dataset}
-\end{table}
-
-\section{USPTO Datasets}
-\label{usptods}
-The text corpus is going to be crawled from \href{http://patft.uspto.gov/netahtml/PTO/index.html}{PatFT} using over 300.000 \href{https://nahorgebre.s3.amazonaws.com/US_Patents_1985_2016_313392.csv}{patent identifiers}, uniquely locating patents filed by U.S. pharmaceutical and biotechnology firms. The crawler will extract \textit{Abstracts}, \textit{Descriptions} and \textit{Claims} for each patent.
-\\
-
-\section{PubTator Dataset}
-\label{pubtator}
-PubTator Dataset is provided by \href{https://www.ncbi.nlm.nih.gov/pubmed/}{PubMed} and contains a text corpus consisting of over 20 million life science publications. The text corpus contains information about patent \textit{abstracts}, \textit{descriptions} and \textit{claims}. 
-\\
-\\
-PubMed is a free Web literature search service developed and maintained by the National Center for Biotechnology Information (NCBI) \cite{Lu2011PubMedAB}.
-
-\chapter{Target Schema}
-\label{cha:targets}
-The target schema for the integrated dataset contains the \textit{gene} and \textit{disease} class.
-\\
-\\
-\begin{figure}
-	\begin{center}
-	\includegraphics[width=13cm]{./figures/target-schema.png}
-	\caption[Target Schema]{Target Schema}
-	\label{fig:target-schema}
-	\end{center}
-\end{figure}	
-
-
 \newpage
-
-\pagestyle{empty}
-
-\section*{Honorary Declaration}
-I declare that I have prepared the enclosed seminar paper without the help of third parties and without the use of sources and aids other than those indicated and have identified as such the sources taken literally or from the content of the sources used. This work did not exist in the same or similar form to any examination authority. I am aware that a wrong statement will have legal consequences.
-\\
-\\
-
-\noindent
-Mannheim, 30.06.2019 \hspace{4cm} Signature
-
+\include{erklaerung}
 \end{document}

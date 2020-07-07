@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+
+\bibliographystyle{alpha}
+
+\begin{document}
+
+\title{LaTeX Exam} 
+\author{Name: Nahor Gebretensae, Immarticulation number: 1586529}
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+\listoftables
+\addcontentsline{lot}{table}{\ref{table:tab} Smartphone prices}
+
+\newpage
+
+\section{section}
+\subsection{subsection}
+
+
+This sentence here is the referencing the table below \ref{table:tab}. 
+\newline
+Unfortunately, I was not able to find a better fitting table. Therefore I used this one.
+
+\begin{center}
+	\begin{table}
+	\label{table:tab}
+	\end{table}
+	\begin{tabular}{|l|r|} 
+		\hline 
+		Product & Price\\ \hline 
+		iPhone 4 & 300 Euro\\ \hline 
+		iPhone 5 & 500 Euro\\ \hline 
+	\end{tabular}
+\end{center}
+Table \ref{table:tab}: The table shows the prices for various smart phones.
+
+\newpage
+
+Unfortunately, I did not find a better fitting formula (\ref{form}).
+\begin{equation}
+	y = x^2 + 5 \label{form}
+\end{equation}
+
+\newpage
+\section{section}
+\subsection{subsection}
+
+Text - 100 words:
+\newline
+\newline
+\newline
+Data protection plays an increasingly important role in debates about society and politics due to numerous events in the recent past, which are explained in more detail in the following text section.
+\newline
+\newline
+Due to the digitization of many areas of life, privacy scandals are now more common.
+Although there is a high degree of digitization in many areas of life, digitization has not yet penetrated companies. As a result, digitization is among the top 12 topics of the future, according to a study.\cite{gadatsch_it-sicherheit:_2017}
+\newline
+\newline
+Scientific research focuses in particular on cryptography and the technical implementation of procedures.\cite{gabriel_it-sicherheit_2006}
+\newline
+\newline
+Laws make a contribution to ensuring data protection. Because of violations of data protection laws, Facebook has to pay a fine of 500,000 pounds.\cite{online_datenskandal:_nodate}
+\newline
+\newline
+In order to protect the privacy of the private smartphone use one should think carefully about which app to install. Android apps can filter the screen without asking permission.\cite{online_forscher:_nodate}
+\newline
+\newline
+In another incident, the booking data of 124,000 hotel guests were stolen the booking data.\cite{security_datenleck_nodate}
+
+\newpage
+\bibliography{source}
+
+\end{document}
