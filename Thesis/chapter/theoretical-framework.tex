@@ -3,19 +3,17 @@
 
 \section{Outline}
 
-\section{Named Entity Recognition}
+\section{Biomedical Named Entity Recognition}
 
 The identification of gene names is an importnat steps in patent retrieval
 
 Research efforts in biomedical text mining and gene entity recognition have focused on scientific abstracts \cite{RodriguezEsteban2016TextMP}.
 
-\section{Gene Entity Resolution}
+\section{Biomedical Data Integration}
 
 Data Integration is a constantly growing and evolving part of science, engineering and biomedical computing, as labs often need to combine and consolidate each other`s data \cite{Bernstein2008InformationII}.
 
 First, the data must be understood and then prepared for the data integration process employing data cleansing and standardization \cite{Bernstein2008InformationII}.
-
-
 
 \subsection{Data Translation}
 
@@ -29,88 +27,60 @@ To cope with this kind of heterogeneity, one needs a mediated schema that covers
 
 \subsection{Identity Resolution}
 
-\textit{Levenshtein.}
+\textbf{String Matching.}
+Given two sets of strings \textit{X} and \textit{Y}, the aim is to determine all pairs of strings \textit{(x,y)} where \textit{x} $\in$ \textit{X} and \textit{y} $\in$ \textit{Y}, such that \textit{x} and \textit{y} refer to the same entity \cite{Doan2012PrinciplesOD}. \\
+\\
+\textbf{Accuracy Challenge.} Accurate string matching is challenging to realize since the strings referring to the same entity are often very different. The causes for differences between strings include typing error, different formatting conventions, custom abbreviation, shortening of strings, different names or shuffling parts of the strings. Similarity measures provide a solution to the accuracy challenge by taking a pair of strings \textit{(x,y)} as input and return a score in the range between \textit{[0,1]}: The higher the score, the more likely \textit{x} and \textit{y} are matches. Pairs of strings \textit{(x,y)} are matches if \textit{s(x,y) \geq t}, where \textit{t} is a certain prespecified threshold \cite{Doan2012PrinciplesOD}. \\
+\\
+Similarity measures fall into x groups: ..., hybrid measures \cite{Doan2012PrinciplesOD}. \\
+\\
+\textbf{Edit-based String Similarity Measures.} \\
+\\
+\textit{Levenshtein Similarity.}
+
+Levenshtein1966BinaryCC
 \begin{equation*}
-Levenshtein_{sim}(s_1, s_2) = 1 - \frac{Levenshtein_{dist}(s_1, s_2)}{\mbox{max}(\mbox{len}(s_1), \mbox{len}(s_2))}
+Levenshtein_{sim}(x,y) = 1 - \frac{Levenshtein_{dist}(x,y)}{\mbox{max}(\mbox{length}(x), \mbox{length}(y))}
 \end{equation*}
+
+\textit{Jaro.}
+
+\textit{Jaro-Winkler.}
+
+\textit{Hamming.}
+
+% -------------------------------------------------------------------------------------------------------
+\textbf{Token-based String Similarity Measures.}
 
 \textit{N-Gram-similarity.}
 \begin{equation*}
     \bar{\sigma}(s, t) = \frac{|ngram(s, n) \cap ngram(t, n)|}{\mbox{min}(|s|, |t|) - n + 1}
 \end{equation*}
 
+\textit{Jaccard.}
+
+\textit{Cosine.}
+
+% -------------------------------------------------------------------------------------------------------
+\textbf{Hybrid String Similarity Measures.}
+
+\textit{Monge-Elkan.}
+
+\textit{Soft TF-IDF.}
+
+% -------------------------------------------------------------------------------------------------------
+\textbf{Phonetic String Similarity Measures.}
+
+% -------------------------------------------------------------------------------------------------------
+\textbf{Embedding-based String Similarity Measures.}
+
+\textit{BERT.}
+
+\textit{fastText.}
+
+% -------------------------------------------------------------------------------------------------------
+\textbf{Datatype-specific String Similarity Measures.}
+
+\textit{Sets of entities.}
+
 \subsection{Data Fusion}
-
-\section{Datasets}
-
-\subsection{Kaessmann Group Datasets}
-\label{kaessmannds}
-Kaessmann Group Datasets are provided by \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} and contains data on gene behavior \cite{CardosoMoreira2019GeneEA}.
-
-\begin{table}[!ht]
-\centering
-\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
-\begin{footnotesize}
-\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|}
-\hline
-\textbf{File} & \textbf{Source} & \textbf{Format} & \textbf{Class} & \textbf{Entities} & \textbf{Attributes} & \\ \hline
-
-	\href{https://nahorgebre.s3.amazonaws.com/Brain.csv}{Brain} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 8.334 & 4 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_brain.txt}{mart\_export\_brain} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 8.333 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Cerebellum.csv}{Cerebellum} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 7.133 & 4 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_cerebellum.txt}{mart\_export\_cerebellum} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 7.133 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Heart.csv}{Heart} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 5.254 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Heart_Ensembl_NCBI_Crosswalk.txt}{Heart\_Ensembl\_NCBI\_Crosswalk} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.261 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_heart.txt}{mart\_export\_heart} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.254 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Kidney.csv}{Kidney} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 6.610 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_kidney.txt}{mart\_export\_kidney} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 6.610 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Liver.csv}{Liver} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 5.742 & 4 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_liver.txt}{mart\_export\_liver} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 5.741 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/mart_export_testis.txt}{mart\_export\_testis} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group} & txt & Gene & 8.666 & 3 \\
-	
-	\href{https://nahorgebre.s3.amazonaws.com/Testis.csv}{Testis} & \href{https://www.zmbh.uni-heidelberg.de/kaessmann/}{Kaessmann Group}  & csv & Gene & 8.667 & 4 \\
-	
-  \hline
-\end{tabularx}
-\end{footnotesize}
-\caption{Kaessmann Group Datasets}
-\end{table}
-
-\subsection{DisGeNet Dataset}
-\label{disgenetds}
-DisGeNet Dataset is provided by \href{https://www.disgenet.org/}{DisGeNet} and contains data on gene-disease associations. DisGeNet is a discovery platform containing one of the largest publicly available collections of genes and variants associated with human diseases \cite{Piero2019TheDK}.
- 
-\begin{table}[!ht]
-\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
-\begin{footnotesize}
-\begin{tabularx}{\textwidth}{|C|C|C|C|C|C|}
-\hline
-\textbf{File} & \textbf{Source} & \textbf{Format} & \textbf{Class} & \textbf{Entities} & \textbf{Attributes}  \\\hline
-
-	\href{https://nahorgebre.s3.amazonaws.com/all_gene_disease_pmid_associations.tsv}{all\_gene\_disease\_pmid\_associations} & \href{https://www.disgenet.org/}{DisGeNet}  & tsv & Gene and Disease & 1.548.062 & 15 \\
-  \hline
-\end{tabularx}
-\end{footnotesize}
-\caption{DisGeNet Dataset}
-\end{table}
-
-\subsection{USPTO Datasets}
-\label{usptods}
-The text corpus is going to be crawled from \href{http://patft.uspto.gov/netahtml/PTO/index.html}{PatFT} using over 300.000 \href{https://nahorgebre.s3.amazonaws.com/US_Patents_1985_2016_313392.csv}{patent identifiers}, uniquely locating patents filed by U.S. pharmaceutical and biotechnology firms. The crawler will extract \textit{Abstracts}, \textit{Descriptions} and \textit{Claims} for each patent.
-
-\subsection{PubTator Dataset}
-\label{pubtator}
-PubTator Dataset is provided by \href{https://www.ncbi.nlm.nih.gov/pubmed/}{PubMed} and contains a text corpus consisting of over 20 million life science publications. The text corpus contains information about patent \textit{abstracts}, \textit{descriptions} and \textit{claims}. 
-
-PubMed is a free Web literature search service developed and maintained by the National Center for Biotechnology Information (NCBI) \cite{Lu2011PubMedAB}.

@@ -13,6 +13,7 @@
 \usepackage{spverbatim}
 \usepackage[colorlinks=false,linkcolor=black,urlcolor=black,bookmarksopen=true]{hyperref}
 \usepackage{bookmark}
+\usepackage{tocloft}
 
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
@@ -76,6 +77,10 @@
 \tableofcontents
 \listoffigures
 \listoftables
+
+\newcommand{\listequationsname}{Formelverzeichnis}
+\newlistof{equations}{equ}{\listequationsname}
+
 \include{glossary}
 
 \newpage
@@ -84,26 +89,13 @@
 
 \include{chapter/introduction}
 \include{chapter/theoretical-framework}
+\include{chapter/biomed-ner}
 
-\chapter{Solution Approach}
-\label{cha:solution}
+\chapter{Biomedical Data Integration}
+\label{cha:dataintegration}
 
-\section{BioMedical Named Entity Recognition}
-\subsection{Baseline Methods}
-
-\textbf{ScispaCy.}
-\textbf{BioBERT.}
-\textbf{BioFLAIR.}
-
-\subsection{Ensembles}
-
-\subsection{Summary}
-
-\chapter{Evaluation}
-\label{cha:evaluation}
-
-\section{BioMedical Named Entity Recognition}
-\subsection{Gold Standard Creation}
+\chapter{Efficacy of Knowledge Creation}
+\label{cha:efficacy}
 
 \chapter{Conclusion}
 \label{cha:conclusion}
@@ -112,6 +104,8 @@
 \bibliography{thesis-ref}
 
 \appendix
+
+\include{chapter/datasets}
 
 \newpage
 \include{erklaerung}

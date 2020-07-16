@@ -77,5 +77,7 @@ namespace ExtractPatentData
             }
             Console.WriteLine(string.Format("Output patent abstracts for the week {0} (year: {1}).", week, year));
         }
+
+        
     }
 }
