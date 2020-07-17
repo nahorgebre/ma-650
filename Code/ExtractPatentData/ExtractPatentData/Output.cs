@@ -17,7 +17,6 @@ namespace ExtractPatentData
             titleOutput(fileNameList, outputDirectory);
             abstarctOutput(fileNameList, outputDirectory);
 
-            deleteOutputByYear(outputByYearDirectory);
         }
 
         public static void titleOutput(string[] fileNameList, string outputDirectory)
