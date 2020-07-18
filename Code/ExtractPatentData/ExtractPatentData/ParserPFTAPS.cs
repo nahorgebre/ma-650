@@ -17,7 +17,7 @@ namespace ExtractPatentData
 
         public static void parseAPS()
         {
-            for (int year = 1985; year <= 2001; year++)
+            for (int year = 1996; year <= 2001; year++)
             {
                 HashSet<string> fileNameList = FileArchiver.extractFiles(year.ToString());
 

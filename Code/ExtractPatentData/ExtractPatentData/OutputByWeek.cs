@@ -46,7 +46,7 @@ namespace ExtractPatentData
                 }
                 File.WriteAllText(fileNameTitle, tsvFile.ToString());
             }
-            Console.WriteLine(string.Format("Output patent titles for the week {0} (year: {1}).", week, year));
+            Console.WriteLine(string.Format("Output patent titles for the week {0} (year: {1}) - {2}", week, year, DateTime.UtcNow.ToString()));
         }
 
         public static void abstractOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string year, string week)
@@ -77,7 +77,7 @@ namespace ExtractPatentData
                 }
                 File.WriteAllText(fileNameAbstract, tsvFile.ToString());
             }
-            Console.WriteLine(string.Format("Output patent abstracts for the week {0} (year: {1}).", week, year));
+            Console.WriteLine(string.Format("Output patent abstracts for the week {0} (year: {1}) - {2}", week, year, DateTime.UtcNow.ToString()));
         }
 
         public static void descriptionOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string year, string week)
@@ -108,7 +108,7 @@ namespace ExtractPatentData
                 }
                 File.WriteAllText(fileNameDescription, tsvFile.ToString());
             }
-            Console.WriteLine(string.Format("Output patent decriptions for the week {0} (year: {1}).", week, year));
+            Console.WriteLine(string.Format("Output patent decriptions for the week {0} (year: {1}) - {2}", week, year, DateTime.UtcNow.ToString()));
         }
 
         public static void claimsOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string year, string week)
@@ -139,7 +139,7 @@ namespace ExtractPatentData
                 }
                 File.WriteAllText(fileNameClaims, tsvFile.ToString());
             }
-            Console.WriteLine(string.Format("Output patent claims for the week {0} (year: {1}).", week, year));
+            Console.WriteLine(string.Format("Output patent claims for the week {0} (year: {1}) - {2}", week, year, DateTime.UtcNow.ToString()));
         }
     }
 }

@@ -16,7 +16,8 @@ namespace ExtractPatentData
 
             titleOutput(fileNameList, outputDirectory);
             abstarctOutput(fileNameList, outputDirectory);
-
+            descriptionOutput(fileNameList, outputDirectory);
+            claimsOutput(fileNameList, outputDirectory);
         }
 
         public static void titleOutput(string[] fileNameList, string outputDirectory)
@@ -24,93 +25,191 @@ namespace ExtractPatentData
             string fileNameTitle = outputDirectory + "title.tsv";
             if (!File.Exists(fileNameTitle))
             {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
+                using (StreamWriter sw = new StreamWriter(fileNameTitle)) 
                 {
-                    "patentNumber",
-                    "patentDate",
-                    "patentTitle"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (var fileName in fileNameList)
-                {
-                    if (fileName.Contains("title"))
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
                     {
-                        using (var reader = new StreamReader(fileName))
+                        "patentNumber",
+                        "patentDate",
+                        "patentTitle"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    sw.WriteLine(firstLine);
+
+                    foreach (var fileName in fileNameList)
+                    {
+                        if (fileName.Contains("title"))
                         {
-                            reader.ReadLine();
-                            while (!reader.EndOfStream)
+                            using (var reader = new StreamReader(fileName))
                             {
-                                var line = reader.ReadLine();
-                                if (!line.Equals(string.Empty))
+                                reader.ReadLine();
+                                while (!reader.EndOfStream)
                                 {
-                                    String[] values = line.Split(delimiter);
-                                    List<string> itemContent = new List<string>()
+                                    var line = reader.ReadLine();
+                                    if (!line.Equals(string.Empty))
                                     {
-                                        values[0], 
-                                        values[1], 
-                                        values[2]
-                                    };
-                                    var inputLine = string.Join(delimiter, itemContent);
-                                    tsvFile.AppendLine(inputLine); 
-                                }                    
-                            }
-                        } 
+                                        String[] values = line.Split(delimiter);
+                                        List<string> itemContent = new List<string>()
+                                        {
+                                            values[0], 
+                                            values[1], 
+                                            values[2]
+                                        };
+                                        var inputLine = string.Join(delimiter, itemContent);
+                                        sw.WriteLine(inputLine);
+                                    }                    
+                                }
+                            } 
+                        }
                     }
                 }
-                File.WriteAllText(fileNameTitle, tsvFile.ToString());
             }
-            Console.WriteLine("Output all patent titles for the year.");
+            Console.WriteLine(string.Format("Output all patent titles - {0}", DateTime.UtcNow.ToString()));
         }
 
         public static void abstarctOutput(string[] fileNameList, string outputDirectory)
         {
-            string fileNameTitle = outputDirectory + "abstract.tsv";
-            if (!File.Exists(fileNameTitle))
+            string fileNameAbstract = outputDirectory + "abstract.tsv";
+            if (!File.Exists(fileNameAbstract))
             {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
+                using (StreamWriter sw = new StreamWriter(fileNameAbstract)) 
                 {
-                    "patentNumber",
-                    "patentDate",
-                    "patentAbstract"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (var fileName in fileNameList)
-                {
-                    if (fileName.Contains("abstract"))
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
                     {
-                        using (var reader = new StreamReader(fileName))
+                        "patentNumber",
+                        "patentDate",
+                        "patentAbstract"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    sw.WriteLine(firstLine);
+
+                    foreach (var fileName in fileNameList)
+                    {
+                        if (fileName.Contains("abstract"))
                         {
-                            reader.ReadLine();
-                            while (!reader.EndOfStream)
+                            using (var reader = new StreamReader(fileName))
                             {
-                                var line = reader.ReadLine();
-                                if (!line.Equals(string.Empty))
+                                reader.ReadLine();
+                                while (!reader.EndOfStream)
                                 {
-                                    String[] values = line.Split(delimiter);
-                                    List<string> itemContent = new List<string>()
+                                    var line = reader.ReadLine();
+                                    if (!line.Equals(string.Empty))
                                     {
-                                        values[0], 
-                                        values[1], 
-                                        values[2]
-                                    };
-                                    var inputLine = string.Join(delimiter, itemContent);
-                                    tsvFile.AppendLine(inputLine); 
-                                }                    
-                            }
-                        } 
+                                        String[] values = line.Split(delimiter);
+                                        List<string> itemContent = new List<string>()
+                                        {
+                                            values[0], 
+                                            values[1], 
+                                            values[2]
+                                        };
+                                        var inputLine = string.Join(delimiter, itemContent);
+                                        sw.WriteLine(inputLine);
+                                    }                    
+                                }
+                            } 
+                        }
                     }
                 }
-                File.WriteAllText(fileNameTitle, tsvFile.ToString());
             }
-            Console.WriteLine("Output all patent abstracts for the year.");
+            Console.WriteLine(string.Format("Output all patent abstracts - {0}", DateTime.UtcNow.ToString()));
+        }
+
+        public static void descriptionOutput(string[] fileNameList, string outputDirectory)
+        {
+            string fileNameDescription = outputDirectory + "description.tsv";
+            if (!File.Exists(fileNameDescription))
+            {
+                using (StreamWriter sw = new StreamWriter(fileNameDescription)) 
+                {
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
+                    {
+                        "patentNumber",
+                        "patentDate",
+                        "patentDescription"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    sw.WriteLine(firstLine);
+
+                    foreach (var fileName in fileNameList)
+                    {
+                        if (fileName.Contains("description"))
+                        {
+                            using (var reader = new StreamReader(fileName))
+                            {
+                                reader.ReadLine();
+                                while (!reader.EndOfStream)
+                                {
+                                    var line = reader.ReadLine();
+                                    if (!line.Equals(string.Empty))
+                                    {
+                                        String[] values = line.Split(delimiter);
+                                        List<string> itemContent = new List<string>()
+                                        {
+                                            values[0], 
+                                            values[1], 
+                                            values[2]
+                                        };
+                                        var inputLine = string.Join(delimiter, itemContent);
+                                        sw.WriteLine(inputLine);
+                                    }                    
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(string.Format("Output all patent descriptions - {0}", DateTime.UtcNow.ToString()));
+        }
+
+        public static void claimsOutput(string[] fileNameList, string outputDirectory)
+        {
+            string fileNameClaims = outputDirectory + "claims.tsv";
+            if (!File.Exists(fileNameClaims))
+            {
+                using (StreamWriter sw = new StreamWriter(fileNameClaims)) 
+                {
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
+                    {
+                        "patentNumber",
+                        "patentDate",
+                        "patentClaims"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    sw.WriteLine(firstLine);
+
+                    foreach (var fileName in fileNameList)
+                    {
+                        if (fileName.Contains("claims"))
+                        {
+                            using (var reader = new StreamReader(fileName))
+                            {
+                                reader.ReadLine();
+                                while (!reader.EndOfStream)
+                                {
+                                    var line = reader.ReadLine();
+                                    if (!line.Equals(string.Empty))
+                                    {
+                                        String[] values = line.Split(delimiter);
+                                        List<string> itemContent = new List<string>()
+                                        {
+                                            values[0], 
+                                            values[1], 
+                                            values[2]
+                                        };
+                                        var inputLine = string.Join(delimiter, itemContent);
+                                        sw.WriteLine(inputLine);
+                                    }                    
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(string.Format("Output all patent claims - {0}", DateTime.UtcNow.ToString()));
         }
 
         public static void deleteOutputByYear(string outputByYearDirectory)

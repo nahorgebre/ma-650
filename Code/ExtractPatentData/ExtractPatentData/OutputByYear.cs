@@ -68,7 +68,7 @@ namespace ExtractPatentData
                 File.WriteAllText(fileNameTitle, tsvFile.ToString());
             }
 
-            Console.WriteLine(string.Format("Output patent titles for the year {0}.", year));
+            Console.WriteLine(string.Format("Output patent titles for the year {0} - {1}", year, DateTime.UtcNow.ToString()));
         }
 
         public static void abstractOutputByYear(string[] files, string outputByYearDirectory, string year)
@@ -116,7 +116,7 @@ namespace ExtractPatentData
                 File.WriteAllText(fileNameAbstract, tsvFile.ToString());
             }
 
-            Console.WriteLine(string.Format("Output patent abstracts for the year {0}.", year));
+            Console.WriteLine(string.Format("Output patent abstracts for the year {0} - {1}", year, DateTime.UtcNow.ToString()));
         }
 
         public static void descriptionOutputByYear(string[] files, string outputByYearDirectory, string year)
@@ -164,7 +164,7 @@ namespace ExtractPatentData
                 File.WriteAllText(fileNameDescription, tsvFile.ToString());
             }
 
-            Console.WriteLine(string.Format("Output patent descriptions for the year {0}.", year));
+            Console.WriteLine(string.Format("Output patent descriptions for the year {0} - {1}", year, DateTime.UtcNow.ToString()));
         }
 
         public static void claimsOutputByYear(string[] files, string outputByYearDirectory, string year)
@@ -211,8 +211,8 @@ namespace ExtractPatentData
                 }
                 File.WriteAllText(fileNameClaims, tsvFile.ToString());
             }
-
-            Console.WriteLine(string.Format("Output patent claims for the year {0}.", year));
+            
+            Console.WriteLine(string.Format("Output patent claims for the year {0} - {1}", year, DateTime.UtcNow.ToString()));
         }
 
         public static void deleteOutputByWeek(string year)
