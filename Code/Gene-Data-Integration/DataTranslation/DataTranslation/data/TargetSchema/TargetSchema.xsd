@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="genes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="gene" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="recordId" type="xs:string"/>
+							<xs:element name="geneId" type="xs:string"/>
+							<xs:element name="geneName" type="xs:string"/>
+							<xs:element name="geneDescription" type="xs:string"/>
+							<xs:element name="disagreement" type="xs:string"/>
+							<xs:element name="call" type="xs:string"/>
+							<xs:element name="ncbiId" type="xs:string"/>
+							<xs:element name="associatedDiseases">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="associatedDisease" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="diseaseIdUMLS" type="xs:string"/>
+													<xs:element name="diseaseName" type="xs:string"/>
+													<xs:element name="diseaseSpecificityIndex" type="xs:string"/>
+													<xs:element name="diseasePleiotropyIndex" type="xs:string"/>
+													<xs:element name="diseaseTypeDisGeNET" type="xs:string"/>
+													<xs:element name="diseaseClassMeSH" type="xs:string"/>
+													<xs:element name="diseaseSemanticTypeUMLS " type="xs:string"/>
+													<xs:element name="associationScore" type="xs:string"/>
+													<xs:element name="evidenceIndex" type="xs:string"/>
+													<xs:element name="yearInitialReport" type="xs:string"/>
+													<xs:element name="yearFinalReport" type="xs:string"/>
+													<xs:element name="pmid" type="xs:string"/>
+													<xs:element name="source" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="publicationMentions">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="publicationMention" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="pmid" type="xs:string"/>
+													<xs:element name="ressource" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="patentMentions">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="patentMention" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="patentId" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

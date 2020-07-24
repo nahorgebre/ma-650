@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="publications">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="publication" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="recordId" type="xs:string"/>
+							<xs:element name="pmid" type="xs:string"/>
+							<xs:element name="genes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="gene" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ncbiId" type="xs:string"/>
+													<xs:element name="geneNames">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="geneName" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="geneName" type="xs:string"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

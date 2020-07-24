@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <gene>
+    <id>mart_export_liver_7</id>
+    <geneId>ENSMUSG00000000085</geneId>
+    <geneName>Scmh1</geneName>
+    <geneDescription>sex comb on midleg homolog 1 [Source:MGI Symbol;Acc:MGI:1352762]</geneDescription>
+    <disagreement />
+    <call />
+    <ncbiId />
+    <dsi />
+    <dpi />
+    <diseases>
+      <disease>
+        <diseaseId>C0021704</diseaseId>
+        <diseaseName>Intelligence</diseaseName>
+        <diseaseType>phenotype</diseaseType>
+        <diseaseClass>F01</diseaseClass>
+        <diseaseSemanticType>Mental Process</diseaseSemanticType>
+        <score>0.10</score>
+        <ei />
+        <yearInitial>2018</yearInitial>
+        <yearFinal>2018</yearFinal>
+        <pmid>29326435</pmid>
+        <source>GWASCAT</source>
+      </disease>
+      <disease>
+        <diseaseId>C0005890</diseaseId>
+        <diseaseName>Body Height</diseaseName>
+        <diseaseType>phenotype</diseaseType>
+        <diseaseClass />
+        <diseaseSemanticType>Organism Attribute</diseaseSemanticType>
+        <score>0.10</score>
+        <ei />
+        <yearInitial>2008</yearInitial>
+        <yearFinal>2014</yearFinal>
+        <pmid>23563607</pmid>
+        <source>GWASCAT</source>
+      </disease>
+      <disease>
+        <diseaseId>C0005890</diseaseId>
+        <diseaseName>Body Height</diseaseName>
+        <diseaseType>phenotype</diseaseType>
+        <diseaseClass />
+        <diseaseSemanticType>Organism Attribute</diseaseSemanticType>
+        <score>0.10</score>
+        <ei />
+        <yearInitial>2008</yearInitial>
+        <yearFinal>2014</yearFinal>
+        <pmid>25282103</pmid>
+        <source>GWASCAT</source>
+      </disease>
+      <disease>
+        <diseaseId>C0005890</diseaseId>
+        <diseaseName>Body Height</diseaseName>
+        <diseaseType>phenotype</diseaseType>
+        <diseaseClass />
+        <diseaseSemanticType>Organism Attribute</diseaseSemanticType>
+        <score>0.10</score>
+        <ei />
+        <yearInitial>2008</yearInitial>
+        <yearFinal>2014</yearFinal>
+        <pmid>18391952</pmid>
+        <source>GWASDB</source>
+      </disease>
+      <disease>
+        <diseaseId>C0005890</diseaseId>
+        <diseaseName>Body Height</diseaseName>
+        <diseaseType>phenotype</diseaseType>
+        <diseaseClass />
+        <diseaseSemanticType>Organism Attribute</diseaseSemanticType>
+        <score>0.10</score>
+        <ei />
+        <yearInitial>2008</yearInitial>
+        <yearFinal>2014</yearFinal>
+        <pmid>23563607</pmid>
+        <source>GWASDB</source>
+      </disease>
+      <disease>
+        <diseaseId>C0005890</diseaseId>
+        <diseaseName>Body Height</diseaseName>
+        <diseaseType>phenotype</diseaseType>
+        <diseaseClass />
+        <diseaseSemanticType>Organism Attribute</diseaseSemanticType>
+        <score>0.10</score>
+        <ei />
+        <yearInitial>2008</yearInitial>
+        <yearFinal>2014</yearFinal>
+        <pmid>18391952</pmid>
+        <source>GWASCAT</source>
+      </disease>
+    </diseases>
+  </gene>
+</genes>
