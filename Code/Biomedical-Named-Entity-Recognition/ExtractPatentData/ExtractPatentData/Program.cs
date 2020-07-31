@@ -4,11 +4,11 @@
     {
         static void Main(string[] args)
         {
-            //BulkDownloader.downloadBulkFiles();
-            //ParserPFTAPS.parseAPS();
+            BulkDownloader.downloadBulkFiles();
+            ParserPFTAPS.parseAPS();
             ParserPG.parseXML();
-            //ParserIPG.parseXML();
-            //Output.run();
+            ParserIPG.parseXML();
+            Output.run();
         }
     }
 }

@@ -121,7 +121,8 @@ namespace ExtractPatentData
                 List<string> firstLineContent = new List<string>()
                 {
                     "patentNumber",
-                    "patentDate",
+                    "patentDate",           
+                    "patentClaimsCount",
                     "patentClaims"
                 };
                 var firstLine = string.Join(delimiter, firstLineContent);
@@ -131,8 +132,9 @@ namespace ExtractPatentData
                     List<string> itemContent = new List<string>()
                     {
                         patent.patentNumber,
-                        patent.patentDate,
-                        string.Format("\"{0}\"", patent.patentClaims)
+                        patent.patentDate,     
+                        patent.patentClaimsCount,
+                        string.Format("\"{0}\"", patent.patentClaims),
                     };
                     var line = string.Join(delimiter, itemContent);
                     tsvFile.AppendLine(line);  
@@ -141,5 +143,41 @@ namespace ExtractPatentData
             }
             Console.WriteLine(string.Format("Output patent claims for ({0}) - {1}", fileNamePattern, DateTime.UtcNow.ToString()));
         }
+
+        public static bool checkIfOutputExist(string year, string fileNamePattern)
+        {
+            bool status = true;
+
+            string directory = string.Format(Environment.CurrentDirectory + @"\data\output\outputByWeek{0}\", year);
+            Directory.CreateDirectory(directory);
+            List<string> fileNameList = new List<string>
+            {
+                directory + string.Format("title{0}.tsv", fileNamePattern),
+                directory + string.Format("abstract{0}.tsv", fileNamePattern),
+                directory + string.Format("description{0}.tsv", fileNamePattern),
+                directory + string.Format("claims{0}.tsv", fileNamePattern)
+            };
+
+            foreach (var item in fileNameList)
+            {
+                if (!File.Exists(item))
+                {
+                    status = false;
+                    Console.WriteLine(Environment.NewLine + string.Format("File does not exist: {0}", item));
+                }
+            }
+
+            if (status == true)
+            {
+                Console.WriteLine(Environment.NewLine + string.Format("{0}: All files do exist!", fileNamePattern));
+            }
+            else if (status == false)
+            {
+                Console.WriteLine(Environment.NewLine + string.Format("{0}: All files do not exist!", fileNamePattern));
+            }
+
+            return status;
+        }
+
     }
 }

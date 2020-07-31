@@ -176,6 +176,7 @@ namespace ExtractPatentData
                     {
                         "patentNumber",
                         "patentDate",
+                        "patentClaimsCount",
                         "patentClaims"
                     };
                     var firstLine = string.Join(delimiter, firstLineContent);
@@ -198,7 +199,8 @@ namespace ExtractPatentData
                                         {
                                             values[0], 
                                             values[1], 
-                                            values[2]
+                                            values[2],
+                                            values[3]
                                         };
                                         var inputLine = string.Join(delimiter, itemContent);
                                         sw.WriteLine(inputLine);

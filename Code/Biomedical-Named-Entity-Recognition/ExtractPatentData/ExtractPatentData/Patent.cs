@@ -11,6 +11,7 @@ namespace ExtractPatentData
         public string patentDate = string.Empty;
         public string patentTitle = string.Empty;
         public string patentClaims = string.Empty;
+        public string patentClaimsCount = string.Empty;
         public string patentAbstract = string.Empty;
         public string patentDescription = string.Empty;
 
