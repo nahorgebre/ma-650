@@ -52,9 +52,9 @@ namespace ExtractPatentData
                                         String[] values = line.Split(delimiter);
                                         List<string> itemContent = new List<string>()
                                         {
-                                            values[0], 
-                                            values[1], 
-                                            values[2]
+                                            values[0].ToString(), 
+                                            values[1].ToString(), 
+                                            values[2].ToString()
                                         };
                                         var inputLine = string.Join(delimiter, itemContent);
                                         sw.WriteLine(inputLine);
@@ -65,7 +65,7 @@ namespace ExtractPatentData
                     }
                 }
             }
-            Console.WriteLine(string.Format("Output all patent titles - {0}", DateTime.UtcNow.ToString()));
+            Console.WriteLine(string.Format("title.tsv - {0}", DateTime.UtcNow.ToString()));
         }
 
         public static void abstarctOutput(string[] fileNameList, string outputDirectory)
@@ -100,9 +100,9 @@ namespace ExtractPatentData
                                         String[] values = line.Split(delimiter);
                                         List<string> itemContent = new List<string>()
                                         {
-                                            values[0], 
-                                            values[1], 
-                                            values[2]
+                                            values[0].ToString(), 
+                                            values[1].ToString(), 
+                                            values[2].ToString()
                                         };
                                         var inputLine = string.Join(delimiter, itemContent);
                                         sw.WriteLine(inputLine);
@@ -113,7 +113,7 @@ namespace ExtractPatentData
                     }
                 }
             }
-            Console.WriteLine(string.Format("Output all patent abstracts - {0}", DateTime.UtcNow.ToString()));
+            Console.WriteLine(string.Format("abstract.tsv - {0}", DateTime.UtcNow.ToString()));
         }
 
         public static void descriptionOutput(string[] fileNameList, string outputDirectory)
@@ -148,9 +148,9 @@ namespace ExtractPatentData
                                         String[] values = line.Split(delimiter);
                                         List<string> itemContent = new List<string>()
                                         {
-                                            values[0], 
-                                            values[1], 
-                                            values[2]
+                                            values[0].ToString(), 
+                                            values[1].ToString(), 
+                                            values[2].ToString()
                                         };
                                         var inputLine = string.Join(delimiter, itemContent);
                                         sw.WriteLine(inputLine);
@@ -161,7 +161,7 @@ namespace ExtractPatentData
                     }
                 }
             }
-            Console.WriteLine(string.Format("Output all patent descriptions - {0}", DateTime.UtcNow.ToString()));
+            Console.WriteLine(string.Format("description.tsv - {0}", DateTime.UtcNow.ToString()));
         }
 
         public static void claimsOutput(string[] fileNameList, string outputDirectory)
@@ -197,10 +197,10 @@ namespace ExtractPatentData
                                         String[] values = line.Split(delimiter);
                                         List<string> itemContent = new List<string>()
                                         {
-                                            values[0], 
-                                            values[1], 
-                                            values[2],
-                                            values[3]
+                                            values[0].ToString(), 
+                                            values[1].ToString(), 
+                                            values[2].ToString(),
+                                            values[3].ToString()
                                         };
                                         var inputLine = string.Join(delimiter, itemContent);
                                         sw.WriteLine(inputLine);
@@ -211,7 +211,7 @@ namespace ExtractPatentData
                     }
                 }
             }
-            Console.WriteLine(string.Format("Output all patent claims - {0}", DateTime.UtcNow.ToString()));
+            Console.WriteLine(string.Format("claims.tsv - {0}", DateTime.UtcNow.ToString()));
         }
 
         public static void deleteOutputByYear(string outputByYearDirectory)

@@ -14,27 +14,35 @@ namespace ExtractPatentData
             "PATN", "INVT", "ASSG", "PRIR", "PCTA", "ABST", "GOVT", "PARN", "BSUM", "DRWD", "DETD", "CLMS", "DCLM"
         };
 
-        public static void parseAPS()
+        public static void run()
         {
-            for (int year = 1985; year <= 2001; year++)
+            try
             {
-                foreach (var zipFile in Directory.GetFiles(Environment.CurrentDirectory + @"\data\input\PatentGrantFullTextData\" + year.ToString()))
+                for (int year = 1985; year <= 2001; year++)
                 {
-                    string fileNamePattern = Parser.getFileNamePattern(zipFile, "pftaps", year.ToString());
-
-                    if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
+                    foreach (var zipFile in Directory.GetFiles(string.Format(@"{0}\data\input\PatentGrantFullTextData\{1}", Environment.CurrentDirectory, year.ToString())))
                     {
-                        string fileName = FileArchiver.extractSingleFile(zipFile);
+                        string fileNamePattern = Parser.getFileNamePattern(zipFile, "pftaps", year.ToString());
+                        Console.WriteLine(string.Format("{0}File Name: ...{1}.tsv", Environment.NewLine, fileNamePattern));
 
-                        List<List<string>> patentListByWeek = getAPSContent(fileName);
-                        List<Patent> patentListByWeekParsed = extractAPS(patentListByWeek, year.ToString());
-                        OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern); 
+                        if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
+                        {
+                            string fileName = FileArchiver.extractSingleFile(zipFile);
 
-                        FileArchiver.deleteExtractedFile(fileName);
+                            List<List<string>> patentListByWeek = getAPSContent(fileName);
+                            List<Patent> patentListByWeekParsed = parseAPS(patentListByWeek, year.ToString());
+                            OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
+
+                            FileArchiver.deleteExtractedFile(fileName);
+                        }
                     }
-                }
 
-                OutputByYear.run(year.ToString());
+                    OutputByYear.run(year.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
 
@@ -85,18 +93,13 @@ namespace ExtractPatentData
             return patentListByWeek;
         }
 
-        public static List<Patent> extractAPS(List<List<string>> dataList, string year)
+        public static List<Patent> parseAPS(List<List<string>> dataList, string year)
         {
             List<Patent> patentList = new List<Patent>();
 
             foreach (List<string> patentListItem in dataList)
             {
-
-                string patentNumber = string.Empty;
-                string patentTitle = string.Empty;
-                string patentDescription = string.Empty;
-                string patentClaims = string.Empty;
-                string patentAbstract = string.Empty;
+                Patent patent = new Patent();
 
                 foreach (string item in patentListItem)
                 {
@@ -107,47 +110,47 @@ namespace ExtractPatentData
 
                         if (item.Contains("PATN|WKU"))
                         {
-                            patentNumber = item.Substring(9,item.Length - 9).Trim();
+                            patent.patentNumber = item.Substring(9,item.Length - 9).Trim();
                         }
                     
                         if (item.Contains("PATN|TTL"))
                         {
-                            patentTitle = item.Substring(9,item.Length - 9).Trim();
+                            patent.patentTitle = item.Substring(9,item.Length - 9).Trim();
                         }
 
                         if (item.Contains("BSUM") || item.Contains("DRWD") || item.Contains("DETD"))
                         {
-                            if (patentDescription.Equals(string.Empty))
+                            if (patent.patentDescription.Equals(string.Empty))
                             {
-                                patentDescription = item.Substring(9,item.Length - 9).Trim();
+                                patent.patentDescription = item.Substring(9,item.Length - 9).Trim();
                             }
                             else
                             {
-                                patentDescription += " " + item.Substring(9,item.Length - 9).Trim();
+                                patent.patentDescription += " " + item.Substring(9,item.Length - 9).Trim();
                             }     
                         }
 
                         if (item.Contains("DCLM") || item.Contains("CLMS"))
                         {
-                            if (patentClaims.Equals(string.Empty))
+                            if (patent.patentClaims.Equals(string.Empty))
                             {
-                                patentClaims = item.Substring(9,item.Length - 9).Trim();
+                                patent.patentClaims = item.Substring(9,item.Length - 9).Trim();
                             }
                             else
                             {
-                                 patentClaims += " " + item.Substring(9,item.Length - 9).Trim();
+                                patent.patentClaims += " " + item.Substring(9,item.Length - 9).Trim();
                             }     
                         }
 
                         if (item.Contains("ABST"))
                         {
-                            if (patentAbstract.Equals(string.Empty))
+                            if (patent.patentAbstract.Equals(string.Empty))
                             {
-                                patentAbstract = item.Substring(9,item.Length - 9).Trim();
+                                patent.patentAbstract = item.Substring(9,item.Length - 9).Trim();
                             }
                             else
                             {
-                                patentAbstract += " " + item.Substring(9,item.Length - 9).Trim();
+                                patent.patentAbstract += " " + item.Substring(9,item.Length - 9).Trim();
                             }                   
                         }
                     }
@@ -155,18 +158,15 @@ namespace ExtractPatentData
 
                 foreach (TargetPatentNumber targetPatentNumber in Patent.getTargetPatentNumbers(year))
                 {
-                    if (patentNumber.Contains(targetPatentNumber.targetPatentNumber))
-                    {
-                        Patent patent = new Patent();
-
+                    if (patent.patentNumber.Contains(targetPatentNumber.targetPatentNumber))
+                    {  
                         patent.patentDate = targetPatentNumber.targetPatentDate;
                         patent.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
 
-                        patent.patentNumber = patentNumber;
-                        patent.patentTitle = patentTitle;
-                        patent.patentDescription = patentDescription;
-                        patent.patentClaims = patentClaims;
-                        patent.patentAbstract = patentAbstract;
+                        patent.patentTitle = StringPreprocessing.run(patent.patentTitle);
+                        patent.patentDescription = StringPreprocessing.run(patent.patentDescription);
+                        patent.patentClaims = StringPreprocessing.run(patent.patentClaims);
+                        patent.patentAbstract = StringPreprocessing.run(patent.patentAbstract);
                         
                         patentList.Add(patent);
                     }

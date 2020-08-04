@@ -25,50 +25,56 @@ namespace ExtractPatentData
 
         public static void titleOutputByYear(string[] files, string outputByYearDirectory, string year)
         {
-            string fileNameTitle = string.Format(outputByYearDirectory + string.Format("title_y{0}.tsv", year));
-            if (!File.Exists(fileNameTitle))
+            try
             {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
+                string fileNameTitle = string.Format(outputByYearDirectory + string.Format("title_y{0}.tsv", year));
+                if (!File.Exists(fileNameTitle))
                 {
-                    "patentNumber",
-                    "patentDate",
-                    "patentTitle"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (string fileName in files)
-                {
-                    if (fileName.Contains("title"))
+                    var tsvFile = new StringBuilder();
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
                     {
-                        using (var reader = new StreamReader(fileName))
+                        "patentNumber",
+                        "patentDate",
+                        "patentTitle"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    tsvFile.AppendLine(firstLine);
+
+                    foreach (string fileName in files)
+                    {
+                        if (fileName.Contains("title"))
                         {
-                            reader.ReadLine();
-                            while (!reader.EndOfStream)
+                            using (var reader = new StreamReader(fileName))
                             {
-                                var line = reader.ReadLine();
-                                if (!line.Equals(string.Empty))
+                                reader.ReadLine();
+                                while (!reader.EndOfStream)
                                 {
-                                    String[] values = line.Split(delimiter);
-                                    List<string> itemContent = new List<string>()
+                                    var line = reader.ReadLine();
+                                    if (!line.Equals(string.Empty))
                                     {
-                                        values[0], 
-                                        values[1], 
-                                        values[2]
-                                    };
-                                    var inputLine = string.Join(delimiter, itemContent);
-                                    tsvFile.AppendLine(inputLine); 
-                                }                    
+                                        String[] values = line.Split(delimiter);
+                                        List<string> itemContent = new List<string>();
+                                        itemContent.Add(values[0].ToString());
+                                        itemContent.Add(values[1].ToString());
+                                        itemContent.Add(values[2].ToString());
+                                        var inputLine = string.Join(delimiter, itemContent);
+                                        tsvFile.AppendLine(inputLine);
+                                    }
+                                }
                             }
-                        } 
+                        }
                     }
+                    File.WriteAllText(fileNameTitle, tsvFile.ToString());
                 }
-                File.WriteAllText(fileNameTitle, tsvFile.ToString());
+
+                Console.WriteLine(string.Format("Output patent titles for the year {0} - {1}", year, DateTime.UtcNow.ToString()));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
 
-            Console.WriteLine(string.Format("Output patent titles for the year {0} - {1}", year, DateTime.UtcNow.ToString()));
         }
 
         public static void abstractOutputByYear(string[] files, string outputByYearDirectory, string year)
@@ -102,9 +108,9 @@ namespace ExtractPatentData
                                     String[] values = line.Split(delimiter);
                                     List<string> itemContent = new List<string>()
                                     {
-                                        values[0], 
-                                        values[1], 
-                                        values[2]
+                                        values[0].ToString(), 
+                                        values[1].ToString(), 
+                                        values[2].ToString()
                                     };
                                     var inputLine = string.Join(delimiter, itemContent);
                                     tsvFile.AppendLine(inputLine);
@@ -150,9 +156,9 @@ namespace ExtractPatentData
                                     String[] values = line.Split(delimiter);
                                     List<string> itemContent = new List<string>()
                                     {
-                                        values[0], 
-                                        values[1], 
-                                        values[2]
+                                        values[0].ToString(), 
+                                        values[1].ToString(), 
+                                        values[2].ToString()
                                     };
                                     var inputLine = string.Join(delimiter, itemContent);
                                     tsvFile.AppendLine(inputLine);
@@ -199,10 +205,10 @@ namespace ExtractPatentData
                                     String[] values = line.Split(delimiter);
                                     List<string> itemContent = new List<string>()
                                     {
-                                        values[0], 
-                                        values[1], 
-                                        values[2],
-                                        values[3]
+                                        values[0].ToString(), 
+                                        values[1].ToString(), 
+                                        values[2].ToString(),
+                                        values[3].ToString()
                                     };
                                     var inputLine = string.Join(delimiter, itemContent);
                                     tsvFile.AppendLine(inputLine);

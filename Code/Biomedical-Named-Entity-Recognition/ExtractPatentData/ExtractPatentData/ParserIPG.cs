@@ -2,36 +2,45 @@ using System;
 using System.IO;
 using System.Xml;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ExtractPatentData
 {
     class ParserIPG
     {
 
-        public static void parseXML()
+        public static void run()
         {
-            for (int year = 2005; year <= 2016; year++)
+            try
             {
-                foreach (var zipFile in Directory.GetFiles(Environment.CurrentDirectory + @"\data\input\PatentGrantFullTextData\" + year.ToString()))
+                for (int year = 2005; year <= 2016; year++)
                 {
-                    string fileNamePattern = Parser.getFileNamePattern(zipFile, "pg", year.ToString());
-                    
-                    if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
+                    foreach (var zipFile in Directory.GetFiles(string.Format(@"{0}\data\input\PatentGrantFullTextData\{1}", Environment.CurrentDirectory, year.ToString())))
                     {
-                        string fileName = FileArchiver.extractSingleFile(zipFile);
+                        string fileNamePattern = Parser.getFileNamePattern(zipFile, "pg", year.ToString());
+                        Console.WriteLine(string.Format("{0}File Name: ...{1}.tsv", Environment.NewLine, fileNamePattern));
 
-                        List<string> patentListByWeek = Parser.getXmlPerPatent(fileName);
-                        List<Patent> patentListByWeekParsed = extractXML(patentListByWeek, year.ToString());
-                        OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
-                        
-                        FileArchiver.deleteExtractedFile(fileName);
+                        if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
+                        {              
+                            string fileName = FileArchiver.extractSingleFile(zipFile);
+                            List<string> patentListByWeek = Parser.getXmlPerPatent(fileName);
+
+                            List<Patent> patentListByWeekParsed = parseXML(patentListByWeek, year.ToString());
+                            OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
+
+                            FileArchiver.deleteExtractedFile(fileName);
+                        }
                     }
+                    OutputByYear.run(year.ToString());
                 }
-                OutputByYear.run(year.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
 
-        public static List<Patent> extractXML(List<string> patentListByWeek, string year)
+        public static List<Patent> parseXML(List<string> patentListByWeek, string year)
         {
             List<Patent> patentList = new List<Patent>();
             List<TargetPatentNumber> targetPatentNumberList = Patent.getTargetPatentNumbers(year);
@@ -41,7 +50,7 @@ namespace ExtractPatentData
                 Patent patent = new Patent();
 
                 XmlDocument doc = new XmlDocument();
-                doc.LoadXml(patentItem);
+                doc.LoadXml(File.ReadAllText(patentItem, Encoding.UTF8).ToString());
 
                 patent.patentNumber = doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/publication-reference/document-id/doc-number").InnerText;
 
@@ -49,13 +58,15 @@ namespace ExtractPatentData
                 {
                     if (patent.patentNumber.Contains(targetPatentNumber.targetPatentNumber))
                     {
-                        patent.patentDate = Parser.checkIfStringIsEmpty(targetPatentNumber.targetPatentDate);
-                        patent.patentClaimsCount = Parser.checkIfStringIsEmpty(targetPatentNumber.targetPatentClaimsCount);
+                        Console.WriteLine(string.Format("Parsing {0}.", patent.patentNumber));
 
-                        patent.patentTitle = Parser.checkIfStringIsEmpty(doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/invention-title").InnerText);
-                        patent.patentAbstract = Parser.checkIfStringIsEmpty(Parser.getXmlInnerText(patentItem, "/us-patent-grant/abstract//*/text()"));
-                        patent.patentDescription = Parser.checkIfStringIsEmpty(Parser.getXmlInnerText(patentItem, "/us-patent-grant/description//*/text()"));
-                        patent.patentClaims = Parser.checkIfStringIsEmpty(string.Join(" ", new string[] 
+                        patent.patentDate = targetPatentNumber.targetPatentDate;
+                        patent.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
+
+                        patent.patentTitle = StringPreprocessing.run(doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/invention-title").InnerText);
+                        patent.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(patentItem, "/us-patent-grant/abstract//*/text()"));
+                        patent.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(patentItem, "/us-patent-grant/description//*/text()"));
+                        patent.patentClaims = StringPreprocessing.run(string.Join(" ", new string[] 
                         {
                             doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-claim-statement").InnerText,
                             Parser.getXmlInnerText(patentItem, "/us-patent-grant/claims//*/text()")

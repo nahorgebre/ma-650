@@ -20,7 +20,7 @@ namespace ExtractPatentData
             for (int year = 1985; year <= 2016; year++)
             {
                 List<TargetPatentNumber> targetPatentNumberList = new List<TargetPatentNumber>();
-                using (var reader = new StreamReader(Environment.CurrentDirectory + @"\data\PatNum\US_Patents_1985_2016_313392.csv"))
+                using (var reader = new StreamReader(string.Format(@"{0}\data\PatNum\US_Patents_1985_2016_313392.csv", Environment.CurrentDirectory)))
                 {
                     reader.ReadLine();
                     while (!reader.EndOfStream)
@@ -41,15 +41,15 @@ namespace ExtractPatentData
                 var csv = new StringBuilder();
                 foreach (TargetPatentNumber targetPatentNumber in targetPatentNumberList)
                 {
-                    csv.Append(
+                    csv.Append(                     
                         targetPatentNumber.targetPatentNumber + "," +
                         targetPatentNumber.targetPatentDate + "," +
                         targetPatentNumber.targetPatentClaimsCount +
                         Environment.NewLine
                     );
                 }
-                Directory.CreateDirectory(Environment.CurrentDirectory + @"\data\input\PatNumByYear");
-                File.WriteAllText(Environment.CurrentDirectory + @"\data\input\PatNumByYear\patents" + year.ToString() + ".csv", csv.ToString());
+                Directory.CreateDirectory(string.Format(@"{0}\data\input\PatNumByYear", Environment.CurrentDirectory));     
+                File.WriteAllText(string.Format(@"{0}\data\input\PatNumByYear\patents{1}.csv", Environment.CurrentDirectory, year.ToString()), csv.ToString());
             }
         }
     
@@ -57,7 +57,7 @@ namespace ExtractPatentData
         {
             List<TargetPatentNumber> targetPatentNumberList = new List<TargetPatentNumber>();
 
-            using (var reader = new StreamReader(Environment.CurrentDirectory + @"\data\input\PatNumByYear\patents" + year.ToString() + ".csv"))
+            using (var reader = new StreamReader(string.Format(@"{0}\data\input\PatNumByYear\patents{1}.csv", Environment.CurrentDirectory, year.ToString())))
             {
                 while (!reader.EndOfStream)
                 {

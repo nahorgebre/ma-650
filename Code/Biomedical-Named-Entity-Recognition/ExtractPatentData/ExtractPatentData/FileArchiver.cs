@@ -11,22 +11,22 @@ namespace ExtractPatentData
         {
             string returnValue = string.Empty;
             string destinationDirectoryName = sourceArchiveFileName.Substring(0, sourceArchiveFileName.LastIndexOf("."));
+            Console.WriteLine(string.Format("Archive File Name: {0}", sourceArchiveFileName));
+            Console.WriteLine(string.Format("Destination Directory for File Extraction: {0}", destinationDirectoryName));
 
-            if (!Directory.Exists(destinationDirectoryName))
+            if (Directory.Exists(destinationDirectoryName))
             {
-                ZipFile.ExtractToDirectory(sourceArchiveFileName, destinationDirectoryName);
-                Console.WriteLine(Environment.NewLine + string.Format("Extract to directory: {0}", destinationDirectoryName));
+                Directory.Delete(destinationDirectoryName, true);
+                Console.WriteLine(string.Format("Delete Directory: {0}", destinationDirectoryName));
             }
-            else
-            {
-                Console.WriteLine(Environment.NewLine + "Archive File is already extracted.");
-            }
+
+            ZipFile.ExtractToDirectory(sourceArchiveFileName, destinationDirectoryName);
             
             foreach (string destinationFileName in Directory.GetFiles(destinationDirectoryName))
             {
                 List<string> fileTypes = new List<string>
                 {
-                    ".txt", ".xml"
+                    ".txt", ".TXT", ".xml", ".XML"
                 };
 
                 foreach (var fileType in fileTypes)
@@ -34,17 +34,19 @@ namespace ExtractPatentData
                     if (destinationFileName.Contains(fileType))
                     {
                         returnValue = destinationFileName;
+                        Console.WriteLine(string.Format("Destination File Name: {0}", returnValue));
                     }
                 }         
             }
 
-            Console.WriteLine(string.Format("File name: {0}", returnValue));
             return returnValue;
         }
 
         public static void deleteExtractedFile(string fileName)
-        {     
-            Directory.Delete(fileName.Substring(0, fileName.LastIndexOf(@"\")), true);
+        {
+            string deleteFileName = fileName.Substring(0, fileName.LastIndexOf(@"\"));     
+            Directory.Delete(deleteFileName, true);
+            Console.WriteLine(string.Format("Delete Directory: {0}", deleteFileName));
         }
 
     }
