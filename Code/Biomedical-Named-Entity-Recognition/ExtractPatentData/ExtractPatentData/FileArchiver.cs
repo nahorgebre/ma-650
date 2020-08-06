@@ -11,13 +11,10 @@ namespace ExtractPatentData
         {
             string returnValue = string.Empty;
             string destinationDirectoryName = sourceArchiveFileName.Substring(0, sourceArchiveFileName.LastIndexOf("."));
-            Console.WriteLine(string.Format("Archive File Name: {0}", sourceArchiveFileName));
-            Console.WriteLine(string.Format("Destination Directory for File Extraction: {0}", destinationDirectoryName));
 
             if (Directory.Exists(destinationDirectoryName))
             {
                 Directory.Delete(destinationDirectoryName, true);
-                Console.WriteLine(string.Format("Delete Directory: {0}", destinationDirectoryName));
             }
 
             ZipFile.ExtractToDirectory(sourceArchiveFileName, destinationDirectoryName);
@@ -34,7 +31,6 @@ namespace ExtractPatentData
                     if (destinationFileName.Contains(fileType))
                     {
                         returnValue = destinationFileName;
-                        Console.WriteLine(string.Format("Destination File Name: {0}", returnValue));
                     }
                 }         
             }

@@ -8,7 +8,7 @@ namespace ExtractPatentData
 {
     class BulkDownloader
     {
-        public static void downloadBulkFiles()
+        public static void run()
         {
             Patent.getPatentsByyear();
             for (int year = 1985; year <= 2016; year++)

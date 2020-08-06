@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            BulkDownloader.downloadBulkFiles();
+            BulkDownloader.run();
             ParserPFTAPS.run();
             ParserPG.run();
             ParserIPG.run();

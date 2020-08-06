@@ -2,6 +2,7 @@ using System;
 using System.Xml;
 using System.IO;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ExtractPatentData
 {
@@ -50,7 +51,8 @@ namespace ExtractPatentData
                 Patent patent = new Patent();
 
                 XmlDocument doc = new XmlDocument();
-                doc.LoadXml(File.ReadAllText(patentItem, Encoding.UTF8).ToString());
+                string xml = File.ReadAllText(patentItem, Encoding.UTF8);
+                doc.LoadXml(xml);
 
                 patent.patentNumber = doc.DocumentElement.SelectSingleNode("/PATDOC/SDOBI/B100/B110/DNUM/PDAT").InnerText;
 
@@ -64,9 +66,10 @@ namespace ExtractPatentData
                         patent.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
 
                         patent.patentTitle = StringPreprocessing.run(doc.DocumentElement.SelectSingleNode("/PATDOC/SDOBI/B500/B540/STEXT/PDAT").InnerText);
-                        patent.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(patentItem, "/PATDOC/SDOAB//*/text()"));
-                        patent.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(patentItem, "/PATDOC/SDODE//*/text()"));
-                        patent.patentClaims = StringPreprocessing.run(Parser.getXmlInnerText(patentItem, "/PATDOC/SDOCL//*/text()"));
+
+                        patent.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/PATDOC/SDOAB//*/text()"));
+                        patent.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/PATDOC/SDODE//*/text()"));
+                        patent.patentClaims = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/PATDOC/SDOCL//*/text()"));
 
                         patentList.Add(patent);
                     }

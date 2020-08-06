@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Collections;
@@ -49,7 +50,16 @@ namespace ExtractPatentData
                 innerTextList.Add(text.Value.Trim());
             }
 
-            return string.Join(" ", innerTextList);
+            string innerText = string.Join(" ", innerTextList);
+
+            if (innerText.Equals(string.Empty))
+            {
+                return "NaN";
+            }
+            else
+            {
+                return innerText;
+            }
         }
 
         public static List<string> getXmlPerPatent(string sourceFileName)
@@ -57,7 +67,6 @@ namespace ExtractPatentData
             List<string> patentListByWeek = new List<string>();
            
             string text = File.ReadAllText(sourceFileName, Encoding.UTF8);
-            Console.WriteLine(string.Format("Source File Name: {0}", sourceFileName));
             string pattern = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
             text = text.Replace(pattern, "PATENT-TEXT-START" + Environment.NewLine + pattern);
 
@@ -65,7 +74,6 @@ namespace ExtractPatentData
 
             string fileDirectory = string.Format(@"{0}\xmlPerPatent\", sourceFileName.Substring(0, sourceFileName.LastIndexOf(@"\")));
             Directory.CreateDirectory(fileDirectory);
-            Console.WriteLine(string.Format("XML per Patent Directory: {0}", fileDirectory));
 
             int counter = 1;
             foreach (var item in tokens.Skip(1))
@@ -77,8 +85,6 @@ namespace ExtractPatentData
                 counter ++;
                 patentListByWeek.Add(fileName);
             }
-
-            Console.WriteLine("XML per Patent.");
 
             return patentListByWeek;
         }

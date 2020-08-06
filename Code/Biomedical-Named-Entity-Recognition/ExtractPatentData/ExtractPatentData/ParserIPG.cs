@@ -50,7 +50,8 @@ namespace ExtractPatentData
                 Patent patent = new Patent();
 
                 XmlDocument doc = new XmlDocument();
-                doc.LoadXml(File.ReadAllText(patentItem, Encoding.UTF8).ToString());
+                string xml = File.ReadAllText(patentItem, Encoding.UTF8);
+                doc.Load(xml);
 
                 patent.patentNumber = doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/publication-reference/document-id/doc-number").InnerText;
 
@@ -64,12 +65,12 @@ namespace ExtractPatentData
                         patent.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
 
                         patent.patentTitle = StringPreprocessing.run(doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/invention-title").InnerText);
-                        patent.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(patentItem, "/us-patent-grant/abstract//*/text()"));
-                        patent.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(patentItem, "/us-patent-grant/description//*/text()"));
+                        patent.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/us-patent-grant/abstract//*/text()"));
+                        patent.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/us-patent-grant/description//*/text()"));
                         patent.patentClaims = StringPreprocessing.run(string.Join(" ", new string[] 
                         {
                             doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-claim-statement").InnerText,
-                            Parser.getXmlInnerText(patentItem, "/us-patent-grant/claims//*/text()")
+                            Parser.getXmlInnerText(xml, "/us-patent-grant/claims//*/text()")
                         }));
 
                         patentList.Add(patent);

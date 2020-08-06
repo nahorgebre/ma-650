@@ -17,6 +17,8 @@ namespace ExtractPatentData
 
             string[] files = Directory.GetFiles(string.Format(outputDirectory + "outputByWeek{0}", year));
 
+            Console.WriteLine(string.Format("{0}Output by Year:", Environment.NewLine));
+
             titleOutputByYear(files, outputByYearDirectory, year);
             abstractOutputByYear(files, outputByYearDirectory, year);
             descriptionOutputByYear(files, outputByYearDirectory, year);
