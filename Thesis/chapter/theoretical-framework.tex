@@ -1,21 +1,23 @@
+\part{Methods}
+
 \chapter{Theoretical Framework}
 \label{cha:theory}
 
 \section{Outline}
 
-\section{Biomedical Named Entity Recognition}
+\chapter{Biomedical Named Entity Recognition}
 
 The identification of gene names is an importnat steps in patent retrieval
 
 Research efforts in biomedical text mining and gene entity recognition have focused on scientific abstracts \cite{RodriguezEsteban2016TextMP}.
 
-\section{Biomedical Data Integration}
+\chapter{Biomedical Data Integration}
 
 Data Integration is a constantly growing and evolving part of science, engineering and biomedical computing, as labs often need to combine and consolidate each other`s data \cite{Bernstein2008InformationII}.
 
 First, the data must be understood and then prepared for the data integration process employing data cleansing and standardization \cite{Bernstein2008InformationII}.
 
-\subsection{Data Translation}
+\section{Data Translation}
 
 Although some databases cover the same subject, they may are heterogeneous and uses different schemas \cite{Bernstein2008InformationII}.
 
@@ -25,7 +27,7 @@ To cope with this kind of heterogeneity, one needs a mediated schema that covers
 
 \textit{Data Cleansing.} When the same or similar information is contained in multiple places, some of the occurrences are likely inconsistent. An initial step of the data integration process is to inspect data sources for such kind of inconsistencies.
 
-\subsection{Identity Resolution}
+\section{Identity Resolution}
 
 \textbf{String Matching.}
 Given two sets of strings \textit{X} and \textit{Y}, the aim is to determine all pairs of strings \textit{(x,y)} where \textit{x} $\in$ \textit{X} and \textit{y} $\in$ \textit{Y}, such that \textit{x} and \textit{y} refer to the same entity \cite{Doan2012PrinciplesOD}. \\
@@ -83,4 +85,4 @@ Levenshtein_{sim}(x,y) = 1 - \frac{Levenshtein_{dist}(x,y)}{\mbox{max}(\mbox{len
 
 \textit{Sets of entities.}
 
-\subsection{Data Fusion}
+\section{Data Fusion}
