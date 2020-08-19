@@ -23,8 +23,8 @@ namespace ExtractPatentData
                         if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
                         {              
                             string fileName = FileArchiver.extractSingleFile(zipFile);
-                            List<string> patentListByWeek = Parser.getXmlPerPatent(fileName);
-
+                            
+                            string[] patentListByWeek = Parser.getXmlPerPatent(fileName);
                             List<Patent> patentListByWeekParsed = parseXML(patentListByWeek, year.ToString());
                             OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
 
@@ -40,45 +40,82 @@ namespace ExtractPatentData
             }
         }
 
-        public static List<Patent> parseXML(List<string> patentListByWeek, string year)
+        public static List<Patent> parseXML(string[] patentListByWeek, string year)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
             List<Patent> patentList = new List<Patent>();
             List<TargetPatentNumber> targetPatentNumberList = Patent.getTargetPatentNumbers(year);
 
-            foreach (string patentItem in patentListByWeek)
+            foreach (string patent in patentListByWeek)
             {
-                Patent patent = new Patent();
-
-                XmlDocument doc = new XmlDocument();
-                string xml = File.ReadAllText(patentItem, Encoding.UTF8);
-                doc.Load(xml);
-
-                patent.patentNumber = doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/publication-reference/document-id/doc-number").InnerText;
+                string patentText = patent.Trim();
+                string patNum = getPatNum(patentText);
 
                 foreach (TargetPatentNumber targetPatentNumber in targetPatentNumberList)
                 {
-                    if (patent.patentNumber.Contains(targetPatentNumber.targetPatentNumber))
+                    if (patNum.Contains(targetPatentNumber.targetPatentNumber))
                     {
-                        Console.WriteLine(string.Format("Parsing {0}.", patent.patentNumber));
-
-                        patent.patentDate = targetPatentNumber.targetPatentDate;
-                        patent.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
-
-                        patent.patentTitle = StringPreprocessing.run(doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/invention-title").InnerText);
-                        patent.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/us-patent-grant/abstract//*/text()"));
-                        patent.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/us-patent-grant/description//*/text()"));
-                        patent.patentClaims = StringPreprocessing.run(string.Join(" ", new string[] 
+                        try
                         {
-                            doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-claim-statement").InnerText,
-                            Parser.getXmlInnerText(xml, "/us-patent-grant/claims//*/text()")
-                        }));
+                        Patent patentItem = new Patent();
 
-                        patentList.Add(patent);
+                        patentItem.patentNumber = patNum;
+                        patentItem.patentDate = targetPatentNumber.targetPatentDate;
+                        patentItem.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
+
+                        string patentTextAdjusted = Parser.removeSpecialCharacters(patentText);
+
+                        XmlDocument doc = new XmlDocument();
+                        doc.LoadXml(patentTextAdjusted);
+                        patentItem.patentTitle = StringPreprocessing.run(doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/invention-title").InnerText);
+                        
+                        patentItem.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/us-patent-grant/abstract//*/text()"));
+                        patentItem.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/us-patent-grant/description//*/text()"));
+                        patentItem.patentClaims = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/us-patent-grant/claims//*/text()"));
+
+                        patentList.Add(patentItem);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Exception: {0}", ex);
+                            Console.WriteLine(patNum);
+                            File.WriteAllText(Environment.CurrentDirectory + @"\text.xml", patentText);
+
+                            string patentTextAdjusted = Parser.removeSpecialCharacters(patentText);
+                            XmlDocument doc = new XmlDocument();
+                            doc.LoadXml(patentTextAdjusted);
+                            doc.DocumentElement.HasAttribute()
+                            string test = doc.DocumentElement.SelectSingleNode("/us-patent-grant/us-bibliographic-data-grant/invention-title").InnerText;
+                            File.WriteAllText(Environment.CurrentDirectory + @"\test.txt", test);
+                        }
+
                     }
                 }
             }
 
+            watch.Stop();
+            Console.WriteLine("ParserIPG.parseXML() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
+
             return patentList;
+        }
+
+        public static string getPatNum(string xml)
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            string patternB = "<doc-number>";
+            string patternE = "</doc-number>";
+
+            int startInd = xml.IndexOf(patternB) + patternB.Length;
+            int length = xml.IndexOf(patternE) - startInd;
+
+            string patNum = xml.Substring(startInd, length);
+
+            watch.Stop();
+            //Console.WriteLine("ParserPG.getPatNum() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
+
+            return patNum;
         }
 
     }

@@ -24,7 +24,7 @@ namespace ExtractPatentData
                         {
                             string fileName = FileArchiver.extractSingleFile(zipFile);
 
-                            List<string> patentListByWeek = Parser.getXmlPerPatent(fileName);
+                            string[] patentListByWeek = Parser.getXmlPerPatent(fileName);
                             List<Patent> patentListByWeekParsed = parseXML(patentListByWeek, year.ToString());
                             OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
 
@@ -41,42 +41,76 @@ namespace ExtractPatentData
             }
         }
 
-        public static List<Patent> parseXML(List<string> patentListByWeek, string year)
+        public static List<Patent> parseXML(string[] patentListByWeek, string year)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
             List<Patent> patentList = new List<Patent>();
             List<TargetPatentNumber> targetPatentNumberList = Patent.getTargetPatentNumbers(year);
 
-            foreach (string patentItem in patentListByWeek)
+            foreach (string patent in patentListByWeek)
             {
-                Patent patent = new Patent();
-
-                XmlDocument doc = new XmlDocument();
-                string xml = File.ReadAllText(patentItem, Encoding.UTF8);
-                doc.LoadXml(xml);
-
-                patent.patentNumber = doc.DocumentElement.SelectSingleNode("/PATDOC/SDOBI/B100/B110/DNUM/PDAT").InnerText;
+                string patentText = patent.Trim();
+                string patNum = getPatNum(patentText);
 
                 foreach (TargetPatentNumber targetPatentNumber in targetPatentNumberList)
                 {
-                    if (patent.patentNumber.Contains(targetPatentNumber.targetPatentNumber))
+                    if (patNum.Contains(targetPatentNumber.targetPatentNumber))
                     {
-                        Console.WriteLine(string.Format("Parsing {0}.", patent.patentNumber));
+                        try
+                        {
+                            Patent patentItem = new Patent();
 
-                        patent.patentDate = targetPatentNumber.targetPatentDate;
-                        patent.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
+                            patentItem.patentNumber = patNum;
+                            patentItem.patentDate = targetPatentNumber.targetPatentDate;
+                            patentItem.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
 
-                        patent.patentTitle = StringPreprocessing.run(doc.DocumentElement.SelectSingleNode("/PATDOC/SDOBI/B500/B540/STEXT/PDAT").InnerText);
+                            string patentTextAdjusted = Parser.removeSpecialCharacters(patentText);
 
-                        patent.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/PATDOC/SDOAB//*/text()"));
-                        patent.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/PATDOC/SDODE//*/text()"));
-                        patent.patentClaims = StringPreprocessing.run(Parser.getXmlInnerText(xml, "/PATDOC/SDOCL//*/text()"));
+                            XmlDocument doc = new XmlDocument();
+                            doc.LoadXml(patentTextAdjusted);
+                            patentItem.patentTitle = StringPreprocessing.run(doc.DocumentElement.SelectSingleNode("/PATDOC/SDOBI/B500/B540/STEXT/PDAT").InnerText);
 
-                        patentList.Add(patent);
+                            patentItem.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/PATDOC/SDOAB//*/text()"));
+                            patentItem.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/PATDOC/SDODE//*/text()"));
+                            patentItem.patentClaims = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/PATDOC/SDOCL//*/text()"));
+
+                            patentList.Add(patentItem);
+                        }
+                        catch (System.Exception)
+                        {
+                            Console.WriteLine("Exception: {0}", patentText);
+                        }
+
                     }
                 }
             }
 
+            watch.Stop();
+            Console.WriteLine("ParserPG.parseXML() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
+
             return patentList;
+        }
+
+        public static string getPatNum(string xml)
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            string patternB = "<B110><DNUM><PDAT>";
+            string patternE = "</PDAT></DNUM></B110>";
+
+            int startInd = xml.IndexOf(patternB) + patternB.Length;
+            int length = xml.IndexOf(patternE) - startInd;
+
+            string patNum = xml.Substring(startInd, length);
+
+            watch.Stop();
+            if (watch.ElapsedMilliseconds > 1)
+            {
+                //Console.WriteLine("ParserPG.getPatNum() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
+            }
+            
+            return patNum;
         }
 
     }

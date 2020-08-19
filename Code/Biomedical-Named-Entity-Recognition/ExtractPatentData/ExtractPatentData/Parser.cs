@@ -43,6 +43,8 @@ namespace ExtractPatentData
 
         public static string getXmlInnerText(string xmlInput, string xPathQuery)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
             List<string> innerTextList = new List<string>();
 
             foreach (XText text in (IEnumerable)XDocument.Parse(xmlInput).XPathEvaluate(xPathQuery))
@@ -51,46 +53,39 @@ namespace ExtractPatentData
             }
 
             string innerText = string.Join(" ", innerTextList);
+ 
+            watch.Stop();
+            //SConsole.WriteLine("Parser.getXmlInnerText() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
 
-            if (innerText.Equals(string.Empty))
-            {
-                return "NaN";
-            }
-            else
-            {
-                return innerText;
-            }
+            return innerText;
         }
 
-        public static List<string> getXmlPerPatent(string sourceFileName)
+        public static string[] getXmlPerPatent(string sourceFileName)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
             List<string> patentListByWeek = new List<string>();
            
             string text = File.ReadAllText(sourceFileName, Encoding.UTF8);
             string pattern = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
             text = text.Replace(pattern, "PATENT-TEXT-START" + Environment.NewLine + pattern);
 
-            string[] tokens = text.Split(new[] { "PATENT-TEXT-START" }, StringSplitOptions.None);
+            string[] tokens = text.Split(new[] { "PATENT-TEXT-START" + Environment.NewLine }, StringSplitOptions.None);
 
-            string fileDirectory = string.Format(@"{0}\xmlPerPatent\", sourceFileName.Substring(0, sourceFileName.LastIndexOf(@"\")));
-            Directory.CreateDirectory(fileDirectory);
+            tokens = tokens.Skip(1).ToArray();  
 
-            int counter = 1;
-            foreach (var item in tokens.Skip(1))
-            {
-                string patentText = removeSpecialCharacters(item, getInvalidSpecialCharInXml(item)).Trim();
-                
-                string fileName = string.Format("{0}{1}.xml", fileDirectory, counter.ToString());
-                File.WriteAllText(fileName, patentText, Encoding.UTF8);
-                counter ++;
-                patentListByWeek.Add(fileName);
-            }
+            watch.Stop();
+            Console.WriteLine("Parser.getXmlPerPatent() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
 
-            return patentListByWeek;
+            return tokens;
         }
 
-        public static string removeSpecialCharacters(string patentText, HashSet<string> specialCharacterList)
+        public static string removeSpecialCharacters(string patentText)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            HashSet<string> specialCharacterList = getInvalidSpecialCharInXml(patentText);
+
             foreach (string specialCharacter in specialCharacterList)
             {
                 while (patentText.Contains(specialCharacter))
@@ -101,11 +96,16 @@ namespace ExtractPatentData
                 }
             }
 
+            watch.Stop();
+            //Console.WriteLine("Parser.removeSpecialCharacters() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
+
             return patentText;
         }
 
         public static HashSet<string> getInvalidSpecialCharInXml(string text)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
             HashSet<string> specialCharacterList = new HashSet<string>();
 
             text = text.Replace(Environment.NewLine, " ");
@@ -123,6 +123,9 @@ namespace ExtractPatentData
 
                 specialCharacterList.Add("&" + firstWord);
             }
+
+            watch.Stop();
+            //Console.WriteLine("Parser.getInvalidSpecialCharInXml() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
             
             return specialCharacterList;
         }

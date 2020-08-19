@@ -55,13 +55,24 @@ namespace ExtractPatentData
                                     var line = reader.ReadLine();
                                     if (!line.Equals(string.Empty))
                                     {
-                                        String[] values = line.Split(delimiter);
-                                        List<string> itemContent = new List<string>();
-                                        itemContent.Add(values[0].ToString());
-                                        itemContent.Add(values[1].ToString());
-                                        itemContent.Add(values[2].ToString());
-                                        var inputLine = string.Join(delimiter, itemContent);
-                                        tsvFile.AppendLine(inputLine);
+                                        try
+                                        {
+                                            String[] values = line.Split(delimiter);
+                                            List<string> itemContent = new List<string>()
+                                            {
+                                                values[0].ToString(),
+                                                values[1].ToString(),
+                                                values[2].ToString()
+                                            };
+                                            var inputLine = string.Join(delimiter, itemContent);
+                                            tsvFile.AppendLine(inputLine);
+                                        }
+                                        catch (System.Exception)
+                                        {
+                                            Console.WriteLine("Exception in Input File!");
+                                            Console.WriteLine("File Name: {0}", fileName);
+                                            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                        }
                                     }
                                 }
                             }
@@ -107,15 +118,25 @@ namespace ExtractPatentData
                                 var line = reader.ReadLine();
                                 if (!line.Equals(string.Empty))
                                 {
-                                    String[] values = line.Split(delimiter);
-                                    List<string> itemContent = new List<string>()
+                                    try
                                     {
-                                        values[0].ToString(), 
-                                        values[1].ToString(), 
-                                        values[2].ToString()
-                                    };
-                                    var inputLine = string.Join(delimiter, itemContent);
-                                    tsvFile.AppendLine(inputLine);
+                                        String[] values = line.Split(delimiter);
+                                        List<string> itemContent = new List<string>()
+                                        {
+                                            values[0].ToString(), 
+                                            values[1].ToString(), 
+                                            values[2].ToString()
+                                        };
+                                        var inputLine = string.Join(delimiter, itemContent);
+                                        tsvFile.AppendLine(inputLine);  
+                                    }
+                                    catch (System.Exception)
+                                    {
+                                        Console.WriteLine("Exception in Input File!");
+                                        Console.WriteLine("File Name: {0}", fileName);
+                                        Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                    }
+
                                 }                    
                             }
                         } 
@@ -155,15 +176,25 @@ namespace ExtractPatentData
                                 var line = reader.ReadLine();
                                 if (!line.Equals(string.Empty))
                                 {
-                                    String[] values = line.Split(delimiter);
-                                    List<string> itemContent = new List<string>()
+                                    try
                                     {
-                                        values[0].ToString(), 
-                                        values[1].ToString(), 
-                                        values[2].ToString()
-                                    };
-                                    var inputLine = string.Join(delimiter, itemContent);
-                                    tsvFile.AppendLine(inputLine);
+                                        String[] values = line.Split(delimiter);
+                                        List<string> itemContent = new List<string>()
+                                        {
+                                            values[0].ToString(), 
+                                            values[1].ToString(), 
+                                            values[2].ToString()
+                                        };
+                                        var inputLine = string.Join(delimiter, itemContent);
+                                        tsvFile.AppendLine(inputLine); 
+                                    }
+                                    catch (System.Exception)
+                                    {
+                                        Console.WriteLine("Exception in Input File!");
+                                        Console.WriteLine("File Name: {0}", fileName);
+                                        Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                    }
+
                                 }                    
                             }
                         } 
@@ -204,16 +235,26 @@ namespace ExtractPatentData
                                 var line = reader.ReadLine();
                                 if (!line.Equals(string.Empty))
                                 {
-                                    String[] values = line.Split(delimiter);
-                                    List<string> itemContent = new List<string>()
+                                    try
                                     {
-                                        values[0].ToString(), 
-                                        values[1].ToString(), 
-                                        values[2].ToString(),
-                                        values[3].ToString()
-                                    };
-                                    var inputLine = string.Join(delimiter, itemContent);
-                                    tsvFile.AppendLine(inputLine);
+                                        String[] values = line.Split(delimiter);
+                                        List<string> itemContent = new List<string>()
+                                        {
+                                            values[0].ToString(), 
+                                            values[1].ToString(), 
+                                            values[2].ToString(),
+                                            values[3].ToString()
+                                        };
+                                        var inputLine = string.Join(delimiter, itemContent);
+                                        tsvFile.AppendLine(inputLine);   
+                                    }
+                                    catch (System.Exception)
+                                    {
+                                        Console.WriteLine("Exception in Input File!");
+                                        Console.WriteLine("File Name: {0}", fileName);
+                                        Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                    }
+
                                 }                    
                             }
                         } 

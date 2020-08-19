@@ -12,16 +12,20 @@ namespace DataTranslation
 
     public class Gene
     {
-        public string recordId = string.Empty;
-        public string geneId = string.Empty;
-        public string geneName = string.Empty;
-        public string geneDescription = string.Empty;
-        public string disagreement = string.Empty;
-        public string call = string.Empty;
-        public string ncbiId = string.Empty;
+        public string recordId;
+        public string ensemblId;
 
-        [XmlArrayAttribute("associatedDiseases")]
-        public List<AssociatedDisease> associatedDiseases;
+        [XmlArrayItem("geneName")]
+        public List<geneName> geneNames;
+
+        public string geneDescription;
+        public string disagreement;
+        public string probEqualOrthoAdj;
+        public string call;
+        public string ncbiId;
+
+        [XmlArrayAttribute("diseaseAssociations")]
+        public List<DiseaseAssociation> diseaseAssociations;
 
         [XmlArrayAttribute("publicationMentions")]
         public List<PublicationMention> publicationMentions;
@@ -30,22 +34,27 @@ namespace DataTranslation
         public List<PatentMention> patentMentions;
     }
 
-    [XmlType("associatedDisease")]
-    public class AssociatedDisease
+    public class geneName 
     {
-        public string diseaseIdUMLS = string.Empty;
-        public string diseaseName = string.Empty;
-        public string diseaseSpecificityIndex = string.Empty;
-        public string diseasePleiotropyIndex = string.Empty;
-        public string diseaseTypeDisGeNET = string.Empty;
-        public string diseaseClassMeSH = string.Empty;
-        public string diseaseSemanticTypeUMLS = string.Empty;
-        public string associationScore = string.Empty;
-        public string evidenceIndex = string.Empty;
-        public string yearInitialReport = string.Empty;
-        public string yearFinalReport = string.Empty;
-        public string pmid = string.Empty;
-        public string source = string.Empty;
+        public string Name;
+    }
+
+    [XmlType("diseaseAssociation")]
+    public class DiseaseAssociation
+    {
+        public string diseaseIdUMLS;
+        public string diseaseName;
+        public string diseaseSpecificityIndex;
+        public string diseasePleiotropyIndex;
+        public string diseaseTypeDisGeNET;
+        public string diseaseClassMeSH;
+        public string diseaseSemanticTypeUMLS;
+        public string associationScore;
+        public string evidenceIndex;
+        public string yearInitialReport;
+        public string yearFinalReport;
+        public string pmId;
+        public string source;
     }
 
     [XmlType("publicationMention")]
@@ -59,5 +68,7 @@ namespace DataTranslation
     public class PatentMention
     {
         public string patentId = string.Empty;
+        public string patentDate = string.Empty;
+        public string patentClaimsCount	= string.Empty;
     }
 }
