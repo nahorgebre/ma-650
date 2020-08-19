@@ -6,8 +6,8 @@ namespace DataTranslation
 {
     public class Kidney
     {
-        public static string kidneyInputDirectory = @"data\input\Kidney";
-        public static string kidneyOutputDirectory = @"data\output\Kidney";
+        public static string kidneyInputDirectory = "data/input/Kidney";
+        public static string kidneyOutputDirectory = "data/output/Kidney";
 
         // Kidney.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
         public static void Kidney_dt()
@@ -15,7 +15,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, kidneyInputDirectory, "Kidney.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, kidneyInputDirectory, "Kidney.csv")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -45,7 +45,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, kidneyInputDirectory, "mart_export_kidney.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, kidneyInputDirectory, "mart_export_kidney.txt")))
             {
                 reader.ReadLine();
                 int counter = 1;

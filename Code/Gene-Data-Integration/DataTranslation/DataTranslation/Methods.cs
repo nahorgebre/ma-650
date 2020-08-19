@@ -22,7 +22,7 @@ namespace DataTranslation
         public static void createXml(List<Gene> gene_list, string fileName, string directory)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Genes));
-            TextWriter writer = new StreamWriter(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, directory, fileName));
+            TextWriter writer = new StreamWriter(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
 
             Genes genes = new Genes();
             genes.gene = gene_list;
@@ -38,7 +38,7 @@ namespace DataTranslation
                 XmlReaderSettings settings = new XmlReaderSettings();
                 string path = System.Environment.CurrentDirectory.Substring(0, System.Environment.CurrentDirectory.LastIndexOf("\\"));
                 path = path.Substring(0, path.LastIndexOf("\\"));
-                settings.Schemas.Add("http://www.w3.org/2001/XMLSchema", path + @"\targetSchema\heart.xsd");
+                settings.Schemas.Add("http://www.w3.org/2001/XMLSchema", path + "/targetSchema/heart.xsd");
                 settings.ValidationType = ValidationType.Schema;
 
                 XmlReader reader = XmlReader.Create(filepath, settings);
@@ -69,13 +69,6 @@ namespace DataTranslation
                     Console.WriteLine("XML file does fulfill the requirements of the Schema.");
                     break;
             }
-        }
-
-        public static string getProjectDirectory()
-        {
-            string path = Environment.CurrentDirectory.Substring(0, System.Environment.CurrentDirectory.LastIndexOf("\\"));
-            path = path.Substring(0, path.LastIndexOf("\\"));
-            return path;
         }
     }
 }

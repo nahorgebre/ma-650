@@ -6,8 +6,8 @@ namespace DataTranslation
 {
     public class Brain
     {
-        public static string brainInputDirectory = @"data\input\Brain";
-        public static string brainOutputDirectory = @"data\output\Brain";
+        public static string brainInputDirectory = "data/input/Brain";
+        public static string brainOutputDirectory = "data/output/Brain";
 
         // Brain.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
         public static void Brain_dt()
@@ -15,7 +15,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
             
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, brainInputDirectory, "Brain.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "Brain.csv")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -45,7 +45,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
             
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, brainInputDirectory, "mart_export_brain.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "mart_export_brain.txt")))
             {
                 reader.ReadLine();
                 int counter = 1;

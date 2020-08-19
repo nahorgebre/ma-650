@@ -6,8 +6,8 @@ namespace DataTranslation
 {
     public class Testis
     {
-        public static string testisInputDirectory = @"data\input\Testis";
-        public static string testisOutputDirectory = @"data\output\Testis";
+        public static string testisInputDirectory = "data/input/Testis";
+        public static string testisOutputDirectory = "data/output/Testis";
 
         // testis.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
         public static void Testis_dt()
@@ -15,7 +15,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, testisInputDirectory, "Testis.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, testisInputDirectory, "Testis.csv")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -45,7 +45,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, testisInputDirectory, "mart_export_testis.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, testisInputDirectory, "mart_export_testis.txt")))
             {
                 reader.ReadLine();
                 int counter = 1;

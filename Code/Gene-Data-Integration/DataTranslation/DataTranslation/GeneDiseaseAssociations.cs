@@ -6,14 +6,14 @@ namespace DataTranslation
 {
     public class GeneDiseaseAssociations
     {
-        public static string geneDiseaseAssociationsInputDirectory = @"data/input/Gene-Disease-Associations";
-        public static string geneDiseaseAssociationsOutputDirectory = @"data/output/Gene-Disease-Associations";
+        public static string geneDiseaseAssociationsInputDirectory = "data/input/Gene-Disease-Associations";
+        public static string geneDiseaseAssociationsOutputDirectory = "data/output/Gene-Disease-Associations";
 
         public static void all_gene_disease_pmid_associations_dt()
         {
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, geneDiseaseAssociationsInputDirectory, "all_gene_disease_pmid_associations.tsv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, geneDiseaseAssociationsInputDirectory, "all_gene_disease_pmid_associations.tsv")))
             {
                 reader.ReadLine();
                 int counter = 1;

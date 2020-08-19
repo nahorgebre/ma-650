@@ -6,8 +6,8 @@ namespace DataTranslation
 {
     public class Liver
     {
-        public static string liverInputDirectory = @"data\input\Liver";
-        public static string liverOutputDirectory = @"data\output\Liver";
+        public static string liverInputDirectory = "data/input/Liver";
+        public static string liverOutputDirectory = "data/output/Liver";
 
         // liver.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
         public static void Liver_dt()
@@ -15,7 +15,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, liverInputDirectory, "Liver.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, liverInputDirectory, "Liver.csv")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -45,7 +45,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format(@"{0}\{1}\{2}", Environment.CurrentDirectory, liverInputDirectory, "mart_export_liver.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, liverInputDirectory, "mart_export_liver.txt")))
             {
                 reader.ReadLine();
                 int counter = 1;
