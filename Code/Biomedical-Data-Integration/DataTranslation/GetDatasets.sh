@@ -12,7 +12,7 @@ wget -N https://data-translation.s3.us-east-2.amazonaws.com/input/Gene-Disease-A
 
 mkdir -p data/input/Gene2Pubtatorcentral
 wget -N https://data-translation.s3.us-east-2.amazonaws.com/input/Gene2Pubtatorcentral/gene2pubtatorcentral.tsv -O data/input/Gene2Pubtatorcentral/gene2pubtatorcentral.tsv
-wget -N https://data-translation.s3.us-east-2.amazonaws.com/input/Gene2Pubtatorcentral/README.txt
+wget -N https://data-translation.s3.us-east-2.amazonaws.com/input/Gene2Pubtatorcentral/README.txt -O data/input/Gene2Pubtatorcentral/README.txt
 
 mkdir -p data/input/Heart
 wget -N https://data-translation.s3.us-east-2.amazonaws.com/input/Heart/Heart.csv -O data/input/Heart/Heart.csv
