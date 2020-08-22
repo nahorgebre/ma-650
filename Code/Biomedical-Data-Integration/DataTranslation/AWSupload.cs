@@ -12,11 +12,11 @@ namespace DataTranslation
 
         public static void run()
         {
-            foreach (string directory in Directory.GetDirectories(string.Format("{0}/{1}", Environment.CurrentDirectory, "data/input")))
+            foreach (string directory in Directory.GetDirectories(string.Format("{0}/{1}", Environment.CurrentDirectory, "data/output")))
             {
                 foreach (string fileName in Directory.GetFiles(directory))
                 {
-                    string keyName = string.Format("input/{0}", fileName.Substring(fileName.LastIndexOf("/")));
+                    string keyName = string.Format("input/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
                     string bucketName = "identity-resolution";
                     UploadFileAsync(bucketName, fileName, keyName).Wait();
                 }
