@@ -33,7 +33,7 @@ Code
 
 `bash GetDatasets.sh` - Downloads input datasets from AWS S3.
 
-`dotnet run` - Runs `DataTranslation` Code.
+`dotnet run` - Runs `DataTranslation` code and uploads results to AWS S3.
 
 
 **Code/Biomedical-Data-Integration/IdentityResolution**
@@ -46,7 +46,7 @@ Code
 
 `bash GetDatasets.sh` - Downloads input datasets from AWS S3.
 
-`dotnet run` - Runs `ExtractPatentData` Code.
+`dotnet run` - Runs `ExtractPatentData` code and uploads results to AWS S3.
 
 
 **Code/Biomedical-Named-Entity-Recognition/DataPreparation**
