@@ -32,4 +32,5 @@ correspondences/
 .classpath
 .factorypath
 .project
+*.config
 *.iml
