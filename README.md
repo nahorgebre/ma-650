@@ -35,14 +35,18 @@ Code
 
 `dotnet run` - Runs `DataTranslation` Code.
 
+
 **Code/Biomedical-Data-Integration/IdentityResolution**
 
+
 **Code/Biomedical-Data-Integration/DataFusion**
+
 
 **Code/Biomedical-Named-Entity-Recognition/ExtractPatentData**
 
 `bash GetDatasets.sh` - Downloads input datasets from AWS S3.
 
-`dotnet run` - Runs `DataTranslation` Code.
+`dotnet run` - Runs `ExtractPatentData` Code.
+
 
 **Code/Biomedical-Named-Entity-Recognition/DataPreparation**
