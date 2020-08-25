@@ -30,25 +30,28 @@ Code
     └── DataPreparation
 ```
 
-<br/>
+
 **Code/Biomedical-Data-Integration/DataTranslation**
 
 `bash GetDatasets.sh` - Downloads input datasets from AWS S3.
 
 `dotnet run` - Runs `DataTranslation` code and uploads results to AWS S3.
-
 <br/>
+
+
 **Code/Biomedical-Data-Integration/IdentityResolution**
-
 <br/>
+
+
 **Code/Biomedical-Data-Integration/DataFusion**
-
 <br/>
+
 **Code/Biomedical-Named-Entity-Recognition/ExtractPatentData**
 
 `bash GetDatasets.sh` - Downloads input datasets from AWS S3.
 
 `dotnet run` - Runs `ExtractPatentData` code and uploads results to AWS S3.
-
 <br/>
+
 **Code/Biomedical-Named-Entity-Recognition/DataPreparation**
+<br/>
