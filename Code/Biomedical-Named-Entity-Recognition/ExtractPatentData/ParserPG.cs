@@ -9,6 +9,14 @@ namespace ExtractPatentData
     class ParserPG
     {
 
+        public static string xPathInventionTitle = "/PATDOC/SDOBI/B500/B540/STEXT/PDAT";
+        public static string xPathAbstract = "/PATDOC/SDOAB";
+        public static string xPathAbstractText ="/PATDOC/SDOAB//*/text()";
+        public static string xPathDescription = "/PATDOC/SDODE";
+        public static string xPathDescriptionText = "/PATDOC/SDODE//*/text()";
+        public static string xPathClaims = "/PATDOC/SDOCL";
+        public static string xPathClaimsText = "/PATDOC/SDOCL//*/text()";
+
         public static void run()
         {
             try
@@ -57,31 +65,40 @@ namespace ExtractPatentData
                 {
                     if (patNum.Contains(targetPatentNumber.targetPatentNumber))
                     {
-                        try
-                        {
-                            Patent patentItem = new Patent();
+                        Patent patentItem = new Patent();
 
-                            patentItem.patentNumber = patNum;
-                            patentItem.patentDate = targetPatentNumber.targetPatentDate;
-                            patentItem.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
+                        patentItem.patentNumber = patNum;
+                        patentItem.patentDate = targetPatentNumber.targetPatentDate;
+                        patentItem.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
 
-                            string patentTextAdjusted = Parser.removeSpecialCharacters(patentText);
+                        string patentTextAdjusted = Parser.removeSpecialCharacters(patentText);
 
-                            XmlDocument doc = new XmlDocument();
-                            doc.LoadXml(patentTextAdjusted);
-                            patentItem.patentTitle = StringPreprocessing.run(doc.DocumentElement.SelectSingleNode("/PATDOC/SDOBI/B500/B540/STEXT/PDAT").InnerText);
+                        XmlDocument doc = new XmlDocument();
+                        doc.LoadXml(patentTextAdjusted);
 
-                            patentItem.patentAbstract = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/PATDOC/SDOAB//*/text()"));
-                            patentItem.patentDescription = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/PATDOC/SDODE//*/text()"));
-                            patentItem.patentClaims = StringPreprocessing.run(Parser.getXmlInnerText(patentTextAdjusted, "/PATDOC/SDOCL//*/text()"));
+                        patentItem.patentTitle = Parser.getXmlInnerTextFromSingleNode(
+                            doc: doc, 
+                            xPath: xPathInventionTitle);
 
-                            patentList.Add(patentItem);
-                        }
-                        catch (System.Exception)
-                        {
-                            Console.WriteLine("Exception: {0}", patentText);
-                        }
+                        patentItem.patentAbstract = Parser.getXmlInnerTextFromMultipleNodes(
+                            doc: doc, 
+                            xPath: xPathAbstract, 
+                            xml: patentTextAdjusted, 
+                            xPathText: xPathAbstractText);
 
+                        patentItem.patentDescription = Parser.getXmlInnerTextFromMultipleNodes(
+                            doc: doc, 
+                            xPath: xPathDescription, 
+                            xml: patentTextAdjusted, 
+                            xPathText: xPathDescriptionText);
+
+                        patentItem.patentClaims = Parser.getXmlInnerTextFromMultipleNodes(
+                            doc: doc, 
+                            xPath: xPathClaims, 
+                            xml: patentTextAdjusted, 
+                            xPathText: xPathClaimsText);
+
+                        patentList.Add(patentItem);
                     }
                 }
             }
@@ -94,8 +111,6 @@ namespace ExtractPatentData
 
         public static string getPatNum(string xml)
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-
             string patternB = "<B110><DNUM><PDAT>";
             string patternE = "</PDAT></DNUM></B110>";
 
@@ -103,12 +118,6 @@ namespace ExtractPatentData
             int length = xml.IndexOf(patternE) - startInd;
 
             string patNum = xml.Substring(startInd, length);
-
-            watch.Stop();
-            if (watch.ElapsedMilliseconds > 1)
-            {
-                //Console.WriteLine("ParserPG.getPatNum() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
-            }
             
             return patNum;
         }

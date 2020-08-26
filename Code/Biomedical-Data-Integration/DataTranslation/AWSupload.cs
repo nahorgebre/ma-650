@@ -25,21 +25,27 @@ namespace DataTranslation
 
         public static async Task UploadFileAsync(string bucketName, string filePath, string keyName)
         {
-            try
+            if (!File.Exists(string.Format("{0}/credentials.config", Environment.CurrentDirectory)))
             {
-                s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
-                var fileTransferUtility = new TransferUtility(s3Client);
-
-                await fileTransferUtility.UploadAsync(filePath, bucketName, keyName);
-                Console.WriteLine("Upload complited!");
+                Console.WriteLine("{0} can not be uploaded since AWS credentials are missing!", keyName);
             }
-            catch (AmazonS3Exception e)
+            else
             {
-                Console.WriteLine("Error encountered on server, Message: '{0}' when writing an object", e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Unknown encountered on server, Message: '{0}' when writing an object", e.Message);
+                try
+                {
+                    s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
+                    var fileTransferUtility = new TransferUtility(s3Client);
+                    await fileTransferUtility.UploadAsync(filePath, bucketName, keyName);
+                    Console.WriteLine("Upload complited!");
+                }
+                catch (AmazonS3Exception e)
+                {
+                    Console.WriteLine("Error encountered on server, Message: '{0}' when writing an object", e.Message);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Unknown encountered on server, Message: '{0}' when writing an object", e.Message);
+                }
             }
         }
 

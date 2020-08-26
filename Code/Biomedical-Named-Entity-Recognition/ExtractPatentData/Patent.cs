@@ -15,12 +15,12 @@ namespace ExtractPatentData
         public string patentAbstract = string.Empty;
         public string patentDescription = string.Empty;
 
-        public static void getPatentsByyear()
+        public static void getPatentNumbersByYear()
         {
             for (int year = 1985; year <= 2016; year++)
             {
                 List<TargetPatentNumber> targetPatentNumberList = new List<TargetPatentNumber>();
-                using (var reader = new StreamReader(string.Format("{0}/data/PatNum/US_Patents_1985_2016_313392.csv", Environment.CurrentDirectory)))
+                using (var reader = new StreamReader(string.Format("{0}/data/input/PatNum/US_Patents_1985_2016_313392.csv", Environment.CurrentDirectory)))
                 {
                     reader.ReadLine();
                     while (!reader.EndOfStream)

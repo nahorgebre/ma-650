@@ -38,23 +38,29 @@ namespace ExtractPatentData
             return fileNamePattern;
         }
 
-        public static string getXmlInnerText(string xmlInput, string xPathQuery)
+        public static string getXmlInnerTextFromSingleNode(XmlDocument doc, string xPath)
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-
-            List<string> innerTextList = new List<string>();
-
-            foreach (XText text in (IEnumerable)XDocument.Parse(xmlInput).XPathEvaluate(xPathQuery))
+            string xmlInnerText = string.Empty;
+            if (doc.SelectSingleNode(xPath)!=null)
             {
-                innerTextList.Add(text.Value.Trim());
+                xmlInnerText = doc.DocumentElement.SelectSingleNode(xPath).InnerText;
             }
+            return StringPreprocessing.run(xmlInnerText);   
+        }
 
-            string innerText = string.Join(" ", innerTextList);
- 
-            watch.Stop();
-            //SConsole.WriteLine("Parser.getXmlInnerText() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
-
-            return innerText;
+        public static string getXmlInnerTextFromMultipleNodes(XmlDocument doc, string xPath, string xml, string xPathText)
+        {
+            string xmlInnerText = string.Empty;
+            if (doc.SelectSingleNode(xPath)!=null)
+            {
+                List<string> xmlInnerTextList = new List<string>();
+                foreach (XText text in (IEnumerable)XDocument.Parse(xml).XPathEvaluate(xPathText))
+                {
+                    xmlInnerTextList.Add(text.Value.Trim());
+                }
+                xmlInnerText = string.Join(" ", xmlInnerTextList);
+            }
+            return StringPreprocessing.run(xmlInnerText);
         }
 
         public static string[] getXmlPerPatent(string sourceFileName)
@@ -79,8 +85,6 @@ namespace ExtractPatentData
 
         public static string removeSpecialCharacters(string patentText)
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-
             HashSet<string> specialCharacterList = getInvalidSpecialCharInXml(patentText);
 
             foreach (string specialCharacter in specialCharacterList)
@@ -93,16 +97,11 @@ namespace ExtractPatentData
                 }
             }
 
-            watch.Stop();
-            //Console.WriteLine("Parser.removeSpecialCharacters() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
-
             return patentText;
         }
 
         public static HashSet<string> getInvalidSpecialCharInXml(string text)
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-
             HashSet<string> specialCharacterList = new HashSet<string>();
 
             text = text.Replace(Environment.NewLine, " ");
@@ -120,9 +119,6 @@ namespace ExtractPatentData
 
                 specialCharacterList.Add("&" + firstWord);
             }
-
-            watch.Stop();
-            //Console.WriteLine("Parser.getInvalidSpecialCharInXml() - Elapsed Time: {0} Milliseconds", watch.ElapsedMilliseconds);
             
             return specialCharacterList;
         }

@@ -39,8 +39,8 @@ namespace ExtractPatentData
         }
 
         public static void deleteExtractedFile(string fileName)
-        {
-            string deleteFileName = fileName.Substring(0, fileName.LastIndexOf("/"));     
+        {       
+            string deleteFileName = fileName.Substring(0, fileName.LastIndexOf("/"));    
             Directory.Delete(deleteFileName, true);
             Console.WriteLine("Delete Directory: {0}", deleteFileName);
         }

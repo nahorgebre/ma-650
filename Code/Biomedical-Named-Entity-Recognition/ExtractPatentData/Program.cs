@@ -7,33 +7,35 @@ namespace ExtractPatentData
     {
         static void Main(string[] args)
         {
-            //FileStream stream;
-            //StreamWriter writer;
-            //TextWriter consoleOut = Console.Out;
+            FileStream stream;
+            StreamWriter writer;
+            TextWriter consoleOut = Console.Out;
 
-            //try
-            //{
-                //stream = new FileStream("./ExtractPatentData.log", FileMode.OpenOrCreate, FileAccess.Write);
-                //writer = new StreamWriter(stream);
-            //}
-            //catch (Exception ex)
-            //{
-                //Console.WriteLine("Cannot open ExtractPatentData.log for writing");
-                //Console.WriteLine(ex.Message);
-                //return; 
-            //}
+            try
+            {
+                string logFileName = string.Format("./logs/{0}.log", StringPreprocessing.removeWhiteSpaces(DateTime.Now.ToString()));
+                stream = new FileStream(logFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                writer = new StreamWriter(stream);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Cannot open ExtractPatentData.log for writing");
+                Console.WriteLine(ex.Message);
+                return; 
+            }
 
-            //Console.SetOut(writer);
+            Console.SetOut(writer);
 
-            BulkDownloader.run();
+            Patent.getPatentNumbersByYear();
             ParserPFTAPS.run();
             ParserPG.run();
             ParserIPG.run();
             Output.run();
+            AWSupload.run();
 
-            //Console.SetOut(consoleOut);
-            //writer.Close();
-            //stream.Close();
+            Console.SetOut(consoleOut);
+            writer.Close();
+            stream.Close();        
         }
     }
 }
