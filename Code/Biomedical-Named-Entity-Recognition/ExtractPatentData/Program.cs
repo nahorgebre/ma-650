@@ -13,8 +13,7 @@ namespace ExtractPatentData
 
             try
             {
-                string logFileName = string.Format("./logs/{0}.log", StringPreprocessing.removeWhiteSpaces(DateTime.Now.ToString()));
-                stream = new FileStream(logFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                stream = new FileStream("./logs/ExtractPatentData.log", FileMode.OpenOrCreate, FileAccess.Write);
                 writer = new StreamWriter(stream);
             }
             catch (Exception ex)
