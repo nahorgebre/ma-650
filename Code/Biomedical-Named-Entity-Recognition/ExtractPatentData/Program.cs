@@ -13,6 +13,7 @@ namespace ExtractPatentData
 
             try
             {
+                Directory.CreateDirectory("./logs");
                 stream = new FileStream("./logs/ExtractPatentData.log", FileMode.OpenOrCreate, FileAccess.Write);
                 writer = new StreamWriter(stream);
             }
