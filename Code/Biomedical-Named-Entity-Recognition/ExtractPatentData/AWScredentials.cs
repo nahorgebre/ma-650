@@ -15,7 +15,7 @@ namespace ExtractPatentData
         public static string getAccessKey()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(Environment.CurrentDirectory + "/credentials.config");
+            doc.Load("./credentials.config");
             accessKey = doc.DocumentElement.SelectSingleNode("/credentials/accessKey").InnerText;
             return accessKey;
         }
@@ -23,7 +23,7 @@ namespace ExtractPatentData
         public static string getSecretKey()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(Environment.CurrentDirectory + "/credentials.config");
+            doc.Load("./credentials.config");
             secretKey = doc.DocumentElement.SelectSingleNode("/credentials/secretKey").InnerText;
             return secretKey;
         }
@@ -31,7 +31,7 @@ namespace ExtractPatentData
         public static string getConsoleKey()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(Environment.CurrentDirectory + "/credentials.config");
+            doc.Load("./credentials.config");
             consoleKey = doc.DocumentElement.SelectSingleNode("/credentials/consoleKey").InnerText;
             return consoleKey;
         }

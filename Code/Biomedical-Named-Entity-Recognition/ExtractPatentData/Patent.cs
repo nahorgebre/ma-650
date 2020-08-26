@@ -20,7 +20,7 @@ namespace ExtractPatentData
             for (int year = 1985; year <= 2016; year++)
             {
                 List<TargetPatentNumber> targetPatentNumberList = new List<TargetPatentNumber>();
-                using (var reader = new StreamReader(string.Format("{0}/data/input/PatNum/US_Patents_1985_2016_313392.csv", Environment.CurrentDirectory)))
+                using (var reader = new StreamReader("./data/input/PatNum/US_Patents_1985_2016_313392.csv"))
                 {
                     reader.ReadLine();
                     while (!reader.EndOfStream)
@@ -48,8 +48,8 @@ namespace ExtractPatentData
                         Environment.NewLine
                     );
                 }
-                Directory.CreateDirectory(string.Format("{0}/data/input/PatNumByYear", Environment.CurrentDirectory));     
-                File.WriteAllText(string.Format("{0}/data/input/PatNumByYear/patents{1}.csv", Environment.CurrentDirectory, year.ToString()), csv.ToString());
+                Directory.CreateDirectory("./data/input/PatNumByYear");     
+                File.WriteAllText(string.Format("./data/input/PatNumByYear/patents{0}.csv", year.ToString()), csv.ToString());
             }
         }
     
@@ -57,7 +57,7 @@ namespace ExtractPatentData
         {
             List<TargetPatentNumber> targetPatentNumberList = new List<TargetPatentNumber>();
 
-            using (var reader = new StreamReader(string.Format("{0}/data/input/PatNumByYear/patents{1}.csv", Environment.CurrentDirectory, year.ToString())))
+            using (var reader = new StreamReader(string.Format("./data/input/PatNumByYear/patents{0}.csv", year.ToString())))
             {
                 while (!reader.EndOfStream)
                 {

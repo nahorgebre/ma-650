@@ -9,7 +9,7 @@ namespace ExtractPatentData
     {
         public static void run(string year)
         {
-            string outputDirectory = Environment.CurrentDirectory + "/data/output/";
+            string outputDirectory = "./data/output/";
             string outputByWeekDirectory = string.Format(outputDirectory + "outputByWeek{0}/", year);
             string outputByYearDirectory = outputDirectory + "outputByYear/";
 
@@ -265,8 +265,8 @@ namespace ExtractPatentData
         }
 
         public static void deleteOutputByWeek(string year)
-        {
-            string directory = Environment.CurrentDirectory + "/data/output/outputByWeek" + year + "/";
+        {       
+            string directory = string.Format("./data/output/outputByWeek{0}/", year);
             Directory.Delete(directory, true);
         }
     }

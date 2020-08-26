@@ -9,7 +9,7 @@ namespace ExtractPatentData
     {
         public static void run(List<Patent> patentListByWeekParsed, string year, string fileNamePattern)
         {   
-            string directory = string.Format("{0}/data/output/outputByWeek{1}/", Environment.CurrentDirectory, year);
+            string directory = string.Format("./data/output/outputByWeek{0}/", year);
             Directory.CreateDirectory(directory);
 
             titleOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
@@ -148,7 +148,7 @@ namespace ExtractPatentData
         {
             bool status = true;
 
-            string directory = string.Format("{0}/data/output/outputByWeek{1}/", Environment.CurrentDirectory, year);
+            string directory = string.Format("./data/output/outputByWeek{0}/", year);
             Directory.CreateDirectory(directory);
             List<string> fileNameList = new List<string>
             {

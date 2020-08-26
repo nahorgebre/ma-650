@@ -19,33 +19,25 @@ namespace ExtractPatentData
 
         public static void run()
         {
-            try
+            for (int year = 2002; year <= 2004; year++)
             {
-                for (int year = 2002; year <= 2004; year++)
+                foreach (var zipFile in Directory.GetFiles(string.Format("./data/input/PatentGrantFullTextData/{0}", year.ToString())))
                 {
-                    foreach (var zipFile in Directory.GetFiles(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year.ToString())))
+                    string fileNamePattern = Parser.getFileNamePattern(zipFile, "pg", year.ToString());
+                    Console.WriteLine(string.Format("{0}File Name: ...{1}.tsv", Environment.NewLine, fileNamePattern));
+
+                    if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
                     {
-                        string fileNamePattern = Parser.getFileNamePattern(zipFile, "pg", year.ToString());
-                        Console.WriteLine(string.Format("{0}File Name: ...{1}.tsv", Environment.NewLine, fileNamePattern));
+                        string fileName = FileArchiver.extractSingleFile(zipFile);
 
-                        if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
-                        {
-                            string fileName = FileArchiver.extractSingleFile(zipFile);
+                        string[] patentListByWeek = Parser.getXmlPerPatent(fileName);
+                        List<Patent> patentListByWeekParsed = parseXML(patentListByWeek, year.ToString());
+                        OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
 
-                            string[] patentListByWeek = Parser.getXmlPerPatent(fileName);
-                            List<Patent> patentListByWeekParsed = parseXML(patentListByWeek, year.ToString());
-                            OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
-
-                            FileArchiver.deleteExtractedFile(fileName);
-                        }
+                        FileArchiver.deleteExtractedFile(fileName);
                     }
-
-                    OutputByYear.run(year.ToString());
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
+                OutputByYear.run(year.ToString());
             }
         }
 

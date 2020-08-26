@@ -12,22 +12,21 @@ namespace ExtractPatentData
 
         public static void run()
         {
-            foreach (string fileName in Directory.GetFiles(string.Format("{0}/data/output", Environment.CurrentDirectory)))
+            foreach (string fileName in Directory.GetFiles("./data/output"))
             {
                 string keyName = string.Format("output/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
                 string bucketName = "extract-patent-data";
                 UploadFileAsync(bucketName, fileName, keyName).Wait();
             }
 
-            foreach (string fileName in Directory.GetFiles(string.Format("{0}/data/logs", Environment.CurrentDirectory)))
-            {
-                string keyName = string.Format("logs/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
-                string bucketName = "extract-patent-data";
-                UploadFileAsync(bucketName, fileName, keyName).Wait();
-            }
+            UploadFileAsync(
+                bucketName: "extract-patent-data", 
+                fileName: "./data/logs/ExtractPatentData.log", 
+                keyName: "logs/ExtractPatentData.log"
+                ).Wait();
         }
 
-        public static async Task UploadFileAsync(string bucketName, string filePath, string keyName)
+        public static async Task UploadFileAsync(string bucketName, string fileName, string keyName)
         {
             if (!File.Exists(string.Format("{0}/credentials.config", Environment.CurrentDirectory)))
             {
@@ -39,7 +38,7 @@ namespace ExtractPatentData
                 {
                     s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
                     var fileTransferUtility = new TransferUtility(s3Client);
-                    await fileTransferUtility.UploadAsync(filePath, bucketName, keyName);
+                    await fileTransferUtility.UploadAsync(fileName, bucketName, keyName);
                     Console.WriteLine("Upload complited!");
                 }
                 catch (AmazonS3Exception e)
