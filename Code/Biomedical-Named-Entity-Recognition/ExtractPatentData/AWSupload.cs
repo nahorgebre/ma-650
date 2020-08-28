@@ -28,7 +28,7 @@ namespace ExtractPatentData
 
         public static async Task UploadFileAsync(string bucketName, string fileName, string keyName)
         {
-            if (!File.Exists(string.Format("{0}/credentials.config", Environment.CurrentDirectory)))
+            if (!File.Exists("./credentials.config"))
             {
                 Console.WriteLine("{0} can not be uploaded since AWS credentials are missing!", keyName);
             }
