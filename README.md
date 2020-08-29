@@ -1,6 +1,6 @@
 # Master Thesis
 
-This repository contains the source for my Master Thesis "Is Science Effective at Creating Knowledge that Matters?".
+This repository contains the source for my Master Thesis: "Is Science Effective at Creating Knowledge that Matters?".
 
 ## Repository Layout
 
