@@ -21,20 +21,32 @@ namespace Goldstandard
             {
                 Gene gene = new Gene();
 
-                gene.recordId = node.SelectSingleNode("recordId").InnerText;
-                
-                gene.ensemblId = node.SelectSingleNode("ensemblId").InnerText;
-
-                XmlNodeList geneNameNodeList =node.SelectNodes("/geneNames/geneName");
-                List<string> geneNameList = new List<string>();
-                foreach (XmlNode geneNameNode in geneNameNodeList)
+                if (node.SelectSingleNode("recordId")!=null)
                 {
-                    geneNameList.Add(geneNameNode.SelectSingleNode("Name").InnerText);
+                    gene.recordId = node.SelectSingleNode("recordId").InnerText;
                 }
-                gene.geneNameList = geneNameList;
 
-                gene.ncbiId = node.SelectSingleNode("ncbiId").InnerText;
+                if (node.SelectSingleNode("ensemblId")!=null)
+                {
+                    gene.ensemblId = node.SelectSingleNode("ensemblId").InnerText;
+                }
+                
+                if (node.SelectSingleNode("geneNames")!=null)
+                {
+                    XmlNodeList geneNameNodeList =node.SelectNodes("/geneNames/geneName");
+                    List<string> geneNameList = new List<string>();
+                    foreach (XmlNode geneNameNode in geneNameNodeList)
+                    {
+                        geneNameList.Add(geneNameNode.SelectSingleNode("Name").InnerText);
+                    }
+                    gene.geneNameList = geneNameList;
+                }
 
+                if (node.SelectSingleNode("ncbiId")!=null)
+                {
+                    gene.ncbiId = node.SelectSingleNode("ncbiId").InnerText;
+                }
+                
                 gene_list.Add(gene);
             }
 
