@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Testis.Testis_2_mart_export_testis;
+package genes.IdentityResolution.solutions.Cerebellum.Cerebellum_2_mart_export_cerebellum;
 
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator;
@@ -20,31 +20,31 @@ import org.slf4j.Logger;
 
 import java.io.File;
 
-public class LR {
+public class LR_Jaccard_StandardRecordBlocker {
     private static final Logger logger = WinterLogManager.activateLogger("default");
 
     public static void main( String[] args ) throws Exception
     {
         System.out.println("*\n*\tLoading datasets\n*");
 
-        HashedDataSet<Gene, Attribute> Testis = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Testis/Testis_dt.xml"), "/genes/gene", Testis);
+        HashedDataSet<Gene, Attribute> Cerebellum = new HashedDataSet<>();
+        new GeneXMLReader().loadFromXML(new File("data/input/Cerebellum/Cerebellum_dt.xml"), "/genes/gene", Cerebellum);
 
-        HashedDataSet<Gene, Attribute> mart_export_testis = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Testis/mart_export_testis_dt.xml"), "/genes/gene", mart_export_testis);
+        HashedDataSet<Gene, Attribute> mart_export_cerebellum = new HashedDataSet<>();
+        new GeneXMLReader().loadFromXML(new File("data/input/Cerebellum/mart_export_cerebellum_dt.xml"), "/genes/gene", mart_export_cerebellum);
 
         // load the gold standard (test set)
         System.out.println("*\n*\tLoading gold standard\n*");
         MatchingGoldStandard gsTest = new MatchingGoldStandard();
-        gsTest.loadFromCSVFile(new File("data/goldstandard/Testis/Testis_2_mart_export_testis.csv"));
+        gsTest.loadFromCSVFile(new File("data/goldstandard/Cerebellum/Cerebellum_2_mart_export_cerebellum.csv"));
 
         // create debug folder
-        new File("data/output/Testis/Testis_2_mart_export_testis").mkdirs();
+        new File("data/output/Cerebellum/Cerebellum_2_mart_export_cerebellum").mkdirs();
 
         // create a matching rule
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
                 0.9);
-        matchingRule.activateDebugReport("data/output/Testis/Testis_2_mart_export_testis/debugResultsMatchingRule.csv", 1000, gsTest);
+        matchingRule.activateDebugReport("data/output/Cerebellum/Cerebellum_2_mart_export_cerebellum/debugResultsMatchingRule.csv", 1000, gsTest);
 
         // add comparators
         matchingRule.addComparator(new GeneIdComparatorJaccard(), 1.0);
@@ -52,7 +52,7 @@ public class LR {
         // create a blocker (blocking strategy
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneIdLCGenerator());
         blocker.setMeasureBlockSizes(true);
-        blocker.collectBlockSizeData("data/output/Testis/Testis_2_mart_export_testis/debugResultsBlocking.csv", 100);
+        blocker.collectBlockSizeData("data/output/Cerebellum/Cerebellum_2_mart_export_cerebellum/debugResultsBlocking.csv", 100);
 
         // Initialize Matching Engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
@@ -60,10 +60,10 @@ public class LR {
         // Execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Testis, mart_export_testis, null, matchingRule, blocker);
+                Cerebellum, mart_export_cerebellum, null, matchingRule, blocker);
 
         // write the correspondences to the output file
-        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/Testis/Testis_2_mart_export_testis/Testis_2_mart_export_testis_correspondences.csv"), correspondences);
+        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/Cerebellum/Cerebellum_2_mart_export_cerebellum/Cerebellum_2_mart_export_cerebellum_correspondences.csv"), correspondences);
 
         // evaluate your result
         System.out.println("*\n*\tEvaluating result\n*");
@@ -72,7 +72,7 @@ public class LR {
                 gsTest);
 
             // print the evaluation result
-        System.out.println("Testis <-> mart_export_testis");
+        System.out.println("Cerebellum <-> mart_export_cerebellum");
         System.out.println(String.format(
                 "Precision: %.4f",perfTest.getPrecision()));
         System.out.println(String.format(
