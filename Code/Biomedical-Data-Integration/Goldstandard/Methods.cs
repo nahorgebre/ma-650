@@ -53,8 +53,6 @@ namespace Goldstandard
             return gene_list;
         }
 
-
-
         public static (List<Goldstandard>, List<Goldstandard>) compareUsingGeneName(List<Gene> file1, List<Gene> file2, int length)
         {
             List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
