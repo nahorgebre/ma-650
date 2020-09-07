@@ -19,12 +19,15 @@ import genes.IdentityResolution.Comparators.GeneNameComperatorCosine;
 import genes.IdentityResolution.Comparators.GeneNameComperatorJaccard;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
+import genes.IdentityResolution.solutions.Evaluation;
 import org.slf4j.Logger;
 
 import java.io.File;
 
-public class LR_Jaccard_StandardRecordBlocker {
+public class LR_Jaccard_StandardRecordBlocker 
+{
     private static final Logger logger = WinterLogManager.activateLogger("default");
+    public static String className = "LR_Jaccard_StandardRecordBlocker";
 
     public static void main( String[] args ) throws Exception
     {
@@ -42,7 +45,9 @@ public class LR_Jaccard_StandardRecordBlocker {
         gsTest.loadFromCSVFile(new File("data/goldstandard/Heart/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk.csv"));
 
         // create debug folder
-        new File("data/output/Heart/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk").mkdirs();
+        String comparisonDescription = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
+        String outputDirectory = "data/output/Heart/" + comparisonDescription;
+        new File(outputDirectory).mkdirs();
 
         // create a matching rule
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
@@ -68,21 +73,16 @@ public class LR_Jaccard_StandardRecordBlocker {
                 blocker);
 
         // write the correspondences to the output file
-        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/Heart/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk/LR_mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk_correspondences.csv"), correspondences);
+        String correspondencesDirectory = outputDirectory + "/correspondences";
+        new File(correspondencesDirectory).mkdirs();
+        new CSVCorrespondenceFormatter().writeCSV(new File(correspondencesDirectory + "/" + className + ".csv"), correspondences);
 
         // evaluate your result
         System.out.println("*\n*\tEvaluating result\n*");
         MatchingEvaluator<Gene, Attribute> evaluator = new MatchingEvaluator<Gene, Attribute>();
         Performance perfTest = evaluator.evaluateMatching(correspondences,
                 gsTest);
+        Evaluation.runEvaluation(perfTest, outputDirectory, className, comparisonDescription);
 
-        // print the evaluation result
-        System.out.println("mart_export_heart <-> Heart_Ensembl_NCBI_Crosswalk");
-        System.out.println(String.format(
-                "Precision: %.4f",perfTest.getPrecision()));
-        System.out.println(String.format(
-                "Recall: %.4f",	perfTest.getRecall()));
-        System.out.println(String.format(
-                "F1: %.4f",perfTest.getF1()));
     }
 }
