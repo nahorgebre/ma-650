@@ -29,6 +29,12 @@ public class LR_Jaccard_StandardRecordBlocker
 
     public static void main( String[] args ) throws Exception
     {
+        // create debug folder
+        String comparisonDescription = "Kidney_2_mart_export_kidney";
+        String outputDirectory = "data/output/Kidney/" + comparisonDescription + "/" + className;
+        new File(outputDirectory).mkdirs();
+        String goldstandardDirectory = "data/goldstandard/Kidney/" + comparisonDescription;
+        
         System.out.println("*\n*\tLoading datasets\n*");
 
         HashedDataSet<Gene, Attribute> Kidney = new HashedDataSet<>();
@@ -40,12 +46,7 @@ public class LR_Jaccard_StandardRecordBlocker
         // load the gold standard (test set)
         System.out.println("*\n*\tLoading gold standard\n*");
         MatchingGoldStandard gsTest = new MatchingGoldStandard();
-        gsTest.loadFromCSVFile(new File("data/goldstandard/Kidney/Kidney_2_mart_export_kidney.csv"));
-
-        // create debug folder
-        String comparisonDescription = "Kidney_2_mart_export_kidney";
-        String outputDirectory = "data/output/Kidney/" + comparisonDescription + "/" + className;
-        new File(outputDirectory).mkdirs();
+        gsTest.loadFromCSVFile(new File(goldstandardDirectory + "/test.csv"));
 
         // create a matching rule
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(

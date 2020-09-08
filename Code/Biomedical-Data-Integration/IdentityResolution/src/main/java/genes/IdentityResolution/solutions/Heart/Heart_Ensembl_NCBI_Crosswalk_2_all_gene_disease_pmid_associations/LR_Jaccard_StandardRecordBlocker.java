@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Heart.gene_disease_pmid_associations_2_Heart_Ensembl_NCBI_Crosswalk;
+package genes.IdentityResolution.solutions.Heart.Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations;
 
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator;
@@ -26,6 +26,12 @@ public class LR_Jaccard_StandardRecordBlocker
 
     public static void main( String[] args ) throws Exception
     {
+        // create debug folder
+        String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations";
+        String outputDirectory = "data/output/Heart/" + comparisonDescription + "/" + className;
+        new File(outputDirectory).mkdirs();
+        String goldstandardDirectory = "data/goldstandard/Heart/" + comparisonDescription;
+
         System.out.println("*\n*\tLoading datasets\n*");
 
         HashedDataSet<Gene, Attribute> gene_disease_pmid_associations = new HashedDataSet<>();
@@ -37,12 +43,7 @@ public class LR_Jaccard_StandardRecordBlocker
         // load the gold standard (test set)
         System.out.println("*\n*\tLoading gold standard\n*");
         MatchingGoldStandard gsTest = new MatchingGoldStandard();
-        gsTest.loadFromCSVFile(new File("data/goldstandard/Heart/gene_disease_pmid_associations_2_Ensemble_NCBI_Crosswalk.csv"));
-
-        // create debug folder
-        String comparisonDescription = "gene_disease_pmid_associations_2_Ensemble_NCBI_Crosswalk";
-        String outputDirectory = "data/output/Heart/" + comparisonDescription + "/" + className;
-        new File(outputDirectory).mkdirs();
+        gsTest.loadFromCSVFile(new File(goldstandardDirectory + "/test.csv"));
 
         // create a matching rule
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
