@@ -9,23 +9,25 @@ public class DiseaseXMLFormatter extends XMLFormatter<Disease> {
 
     @Override
     public Element createRootElement(Document doc) {
-        return doc.createElement("diseases");
+        return doc.createElement("diseaseAssociations");
     }
 
     @Override
     public Element createElementFromRecord(Disease record, Document doc) {
-        Element disease = doc.createElement("disease");
+        Element disease = doc.createElement("diseaseAssociation");
 
-        disease.appendChild(createTextElement("diseaseId", record.getDiseaseId(), doc));
+        disease.appendChild(createTextElement("diseaseIdUMLS", record.getDiseaseIdUMLS(), doc));
         disease.appendChild(createTextElement("diseaseName", record.getDiseaseName(), doc));
-        disease.appendChild(createTextElement("diseaseType", record.getDiseaseType(), doc));
-        disease.appendChild(createTextElement("diseaseClass", record.getDiseaseClass(), doc));
-        disease.appendChild(createTextElement("diseaseSemanticType", record.getDiseaseSemanticType(), doc));
-        disease.appendChild(createTextElement("score", record.getScore(), doc));
-        disease.appendChild(createTextElement("ei", record.getEi(), doc));
-        disease.appendChild(createTextElement("yearInitial", record.getYearInitial(), doc));
-        disease.appendChild(createTextElement("yearFinal", record.getYearFinal(), doc));
-        disease.appendChild(createTextElement("pmid", record.getPmid(), doc));
+        disease.appendChild(createTextElement("diseaseSpecificityIndex", record.getDiseaseSpecificityIndex(), doc));
+        disease.appendChild(createTextElement("diseasePleiotropyIndex", record.getDiseasePleiotropyIndex(), doc));
+        disease.appendChild(createTextElement("diseaseTypeDisGeNET", record.getDiseaseTypeDisGeNET(), doc));
+        disease.appendChild(createTextElement("diseaseClassMeSH", record.getDiseaseClassMeSH(), doc));
+        disease.appendChild(createTextElement("diseaseSemanticTypeUMLS", record.getDiseaseSemanticTypeUMLS(), doc));
+        disease.appendChild(createTextElement("associationScore", record.getAssociationScore(), doc));
+        disease.appendChild(createTextElement("evidenceIndex", record.getEvidenceIndex(), doc));
+        disease.appendChild(createTextElement("yearInitialReport", record.getYearInitialReport(), doc));
+        disease.appendChild(createTextElement("yearFinalReport", record.getYearFinalReport(), doc));
+        disease.appendChild(createTextElement("pmId", record.getPmId(), doc));
         disease.appendChild(createTextElement("source", record.getSource(), doc));
 
         return disease;

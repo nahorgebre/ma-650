@@ -17,6 +17,7 @@ import genes.IdentityResolution.Comparators.GeneIdComparatorJaccard;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
+import genes.IdentityResolution.solutions.Correspondences;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -43,13 +44,13 @@ public class LR_Jaccard_StandardRecordBlocker
 
         // create debug folder
         String comparisonDescription = "Testis_2_mart_export_testis";
-        String outputDirectory = "data/output/Testis/" + comparisonDescription;
+        String outputDirectory = "data/output/Testis/" + comparisonDescription  + "/" + className;
         new File(outputDirectory).mkdirs();
 
         // create a matching rule
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
                 0.9);
-        matchingRule.activateDebugReport("data/output/Testis/Testis_2_mart_export_testis/debugResultsMatchingRule.csv", 1000, gsTest);
+        matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 
         // add comparators
         matchingRule.addComparator(new GeneIdComparatorJaccard(), 1.0);
@@ -57,7 +58,7 @@ public class LR_Jaccard_StandardRecordBlocker
         // create a blocker (blocking strategy
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneIdLCGenerator());
         blocker.setMeasureBlockSizes(true);
-        blocker.collectBlockSizeData("data/output/Testis/Testis_2_mart_export_testis/debugResultsBlocking.csv", 100);
+        blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
         // Initialize Matching Engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
@@ -68,15 +69,10 @@ public class LR_Jaccard_StandardRecordBlocker
                 Testis, mart_export_testis, null, matchingRule, blocker);
 
         // write the correspondences to the output file
-        String correspondencesDirectory = outputDirectory + "/correspondences";
-        new File(correspondencesDirectory).mkdirs();
-        new CSVCorrespondenceFormatter().writeCSV(new File(correspondencesDirectory + "/" + className + ".csv"), correspondences);
-
+        Correspondences.output(outputDirectory, className, correspondences);
+        
         // evaluate your result
-        System.out.println("*\n*\tEvaluating result\n*");
-        MatchingEvaluator<Gene, Attribute> evaluator = new MatchingEvaluator<Gene, Attribute>();
-        Performance perfTest = evaluator.evaluateMatching(correspondences,
-                gsTest);
-        Evaluation.runEvaluation(perfTest, outputDirectory, className, comparisonDescription);
+        Evaluation.run(correspondences, gsTest, outputDirectory, className, comparisonDescription);
+        
     }
 }
