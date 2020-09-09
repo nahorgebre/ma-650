@@ -10,7 +10,7 @@ public class GeneCSVFormatter extends CSVDataSetFormatter<Gene, Attribute> {
 
     @Override
     public String[] getHeader(List<Attribute> orderedHeader) {
-        return new String[] { "recordId", "ensemblId", "geneName", "geneDescription", "disagreement", "probEqualOrthoAdj", "call", "ncbiId" };
+        return new String[] { "recordId", "ensemblId", "geneDescription", "disagreement", "probEqualOrthoAdj", "call", "ncbiId" };
     }
 
     @Override
@@ -18,7 +18,6 @@ public class GeneCSVFormatter extends CSVDataSetFormatter<Gene, Attribute> {
         return new String[] {
                 record.getIdentifier(),
                 record.getEnsemblId(),
-                record.getGeneName(),
                 record.getGeneDescription(),
                 record.getDisagreement(),
                 record.getProbEqualOrthoAdj(),

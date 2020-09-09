@@ -1,17 +1,16 @@
-package genes.IdentityResolution.Comparators;
+package genes.IdentityResolution.Comparators.NcbiIdComperator;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinEditDistance;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 import genes.IdentityResolution.model.Gene;
 
-public class GeneNameComperatorCosine implements Comparator<Gene, Attribute> {
+public class NcbiIdComperatorJaccard implements Comparator<Gene, Attribute> {
     private static final long serialVersionUID = 1L;
-    LevenshteinEditDistance sim = new LevenshteinEditDistance();
+    TokenizingJaccardSimilarity sim = new TokenizingJaccardSimilarity();
 
     private ComparatorLogger comparisonLog;
 
@@ -21,8 +20,8 @@ public class GeneNameComperatorCosine implements Comparator<Gene, Attribute> {
             Gene record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        String s1 = record1.getGeneName().toLowerCase();
-        String s2 = record2.getGeneName().toLowerCase();
+        String s1 = record1.getNcbiId().toLowerCase();
+        String s2 = record2.getNcbiId().toLowerCase();
 
         // calculate similarity
         double similarity = sim.calculate(s1, s2);

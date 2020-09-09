@@ -7,6 +7,7 @@ import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 
 public class GeneXMLFormatter extends XMLFormatter<Gene> {
 
+    GeneNameXMLFormatter geneNameFormatter = new GeneNameXMLFormatter();
     DiseaseXMLFormatter diseaseFormatter = new DiseaseXMLFormatter();
     PatentXMLFormatter patentFormatter = new PatentXMLFormatter();
     PublicationXMLFormatter publicationFormatter = new PublicationXMLFormatter();
@@ -22,7 +23,9 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
 
         gene.appendChild(createTextElement("recordId", record.getIdentifier(), doc));
         gene.appendChild(createTextElement("ensemblId", record.getEnsemblId(), doc));
-        gene.appendChild(createTextElement("geneName", record.getGeneName(), doc));
+
+        gene.appendChild(createGeneNamesElement(record, doc));
+
         gene.appendChild(createTextElement("geneDescription", record.getGeneDescription(), doc));
         gene.appendChild(createTextElement("disagreement", record.getDisagreement(), doc));
         gene.appendChild(createTextElement("probEqualOrthoAdj", record.getProbEqualOrthoAdj(), doc));
@@ -64,5 +67,13 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
             patentRoot.appendChild(patentFormatter.createElementFromRecord(a, doc));
         }
         return patentRoot;
+    }
+
+    protected Element createGeneNamesElement(Gene record, Document doc) {
+        Element geneNameRoot = geneNameFormatter.createRootElement(doc);
+        for (GeneName a : record.getGeneNames()) {
+            geneNameRoot.appendChild(geneNameFormatter.createElementFromRecord(a, doc));
+        }
+        return geneNameRoot;
     }
 }

@@ -14,11 +14,12 @@ import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneNameFCGenerator;
-import genes.IdentityResolution.Comparators.GeneNameComperatorJaccard;
-import genes.IdentityResolution.Comparators.NcbiIdComperatorJaccard;
+import genes.IdentityResolution.Comparators.GeneNameComperator.*;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.*;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
+import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Datasets;
 
@@ -46,9 +47,7 @@ public class LR_Jaccard_StandardRecordBlocker
         HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
         // load the gold standard (test set)
-        System.out.println("*\n*\tLoading gold standard\n*");
-        MatchingGoldStandard gsTest = new MatchingGoldStandard();
-        gsTest.loadFromCSVFile(new File(goldstandardDirectory + "/test.csv"));
+        MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
 
         // create a matching rule
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(

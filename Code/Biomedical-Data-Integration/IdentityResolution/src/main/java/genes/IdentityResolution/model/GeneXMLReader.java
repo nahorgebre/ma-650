@@ -22,7 +22,10 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> {
         Gene gene = new Gene(recordId, provenanceInfo);
 
         gene.setEnsemblId(getValueFromChildElement(node, "ensemblId"));
-        gene.setGeneName(getValueFromChildElement(node, "geneName"));
+
+        List<GeneName> geneNames = getObjectListFromChildElement(node, "geneNames", "geneName", new GeneNameXMLReader(), provenanceInfo);
+        gene.setGeneNames(geneNames);
+
         gene.setGeneDescription(getValueFromChildElement(node, "geneDescription"));
         gene.setDisagreement(getValueFromChildElement(node, "disagreement"));
         gene.setProbEqualOrthoAdj(getValueFromChildElement(node, "probEqualOrthoAdj"));

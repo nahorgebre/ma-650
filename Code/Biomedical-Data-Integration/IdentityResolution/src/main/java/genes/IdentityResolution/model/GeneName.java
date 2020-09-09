@@ -34,7 +34,7 @@ public class GeneName extends AbstractRecord<Attribute> implements Serializable 
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Disease other = (Disease) obj;
+        GeneName other = (GeneName) obj;
         if (name == null) {
             if (other.name != null)
                 return false;

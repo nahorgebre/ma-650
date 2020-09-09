@@ -12,7 +12,7 @@ public class Gene implements Matchable {
 
     private String ensemblId;
 
-    private String geneName;
+    private List<GeneName> geneNames;
 
     private String geneDescription;
     private String disagreement;
@@ -29,7 +29,10 @@ public class Gene implements Matchable {
     public Gene(String identifier, String provenance) {
         recordId = identifier;
         this.provenance = provenance;
+        geneNames = new LinkedList<>();
         diseases = new LinkedList<>();
+        publications = new LinkedList<>();
+        patents = new LinkedList<>();
     }
 
     @Override
@@ -44,43 +47,31 @@ public class Gene implements Matchable {
 
     // Getter
     public String getEnsemblId() { return ensemblId; }
-    public String getGeneName() { return geneName; }
+    public List<GeneName> getGeneNames() { return geneNames; }
     public String getGeneDescription() { return geneDescription; }
     public String getDisagreement() { return disagreement; }
     public String getProbEqualOrthoAdj() {return probEqualOrthoAdj; }
     public String getCall() { return call; }
     public String getNcbiId() { return ncbiId; }
-    public List<Disease> getDiseases() {
-        return diseases;
-    }
-    public List<Publication> getPublications() {
-        return publications;
-    }
-    public List<Patent> getPatents() {
-        return patents;
-    }
+    public List<Disease> getDiseases() { return diseases; }
+    public List<Publication> getPublications() { return publications; }
+    public List<Patent> getPatents() { return patents; }
 
     // Setter
     public void setEnsemblId(String geneId) { this.ensemblId = geneId; }
-    public void setGeneName(String geneName) { this.geneName = geneName; }
+    public void setGeneNames(List<GeneName> geneNames) { this.geneNames = geneNames; }
     public void setGeneDescription(String geneDescription) { this.geneDescription = geneDescription; }
     public void setDisagreement(String disagreement) { this.disagreement = disagreement; }
     public void setProbEqualOrthoAdj(String probEqualOrthoAdj) { this.probEqualOrthoAdj = probEqualOrthoAdj; }
     public void setCall(String call) { this.call = call; }
     public void setNcbiId(String ncbiId) { this.ncbiId = ncbiId; }
-    public void setDiseases(List<Disease> diseases) {
-        this.diseases = diseases;
-    }
-    public void setPublications(List<Publication> publications) {
-        this.publications = publications;
-    }
-    public void setPatents(List<Patent> patents) {
-        this.patents = patents;
-    }
+    public void setDiseases(List<Disease> diseases) { this.diseases = diseases; }
+    public void setPublications(List<Publication> publications) { this.publications = publications; }
+    public void setPatents(List<Patent> patents) { this.patents = patents; }
 
     @Override
     public String toString() {
-        return String.format("[Gene %s: %s / %s / %s / %s / %s / %s / %s / %s]", getIdentifier(), getEnsemblId(), getGeneName(), getGeneDescription(), getDisagreement(), getProbEqualOrthoAdj(), getCall(), getNcbiId(), getDiseases());
+        return String.format("[Gene %s: %s / %s / %s / %s / %s / %s / %s]", getIdentifier(), getEnsemblId(), getGeneDescription(), getDisagreement(), getProbEqualOrthoAdj(), getCall(), getNcbiId(), getDiseases());
     }
 
     @Override

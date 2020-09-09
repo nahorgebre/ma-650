@@ -1,4 +1,4 @@
-package genes.IdentityResolution.Comparators;
+package genes.IdentityResolution.Comparators.EnsemblIdComperator;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
@@ -8,7 +8,8 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 import genes.IdentityResolution.model.Gene;
 
-public class GeneNameComperatorJaccard implements Comparator<Gene, Attribute> {
+public class GeneIdComparatorJaccard implements Comparator<Gene, Attribute> {
+
     private static final long serialVersionUID = 1L;
     TokenizingJaccardSimilarity sim = new TokenizingJaccardSimilarity();
 
@@ -20,8 +21,8 @@ public class GeneNameComperatorJaccard implements Comparator<Gene, Attribute> {
             Gene record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        String s1 = record1.getGeneName().toLowerCase();
-        String s2 = record2.getGeneName().toLowerCase();
+        String s1 = record1.getEnsemblId();
+        String s2 = record2.getEnsemblId();
 
         // calculate similarity
         double similarity = sim.calculate(s1, s2);
@@ -45,9 +46,6 @@ public class GeneNameComperatorJaccard implements Comparator<Gene, Attribute> {
             this.comparisonLog.setPostprocessedSimilarity(Double.toString(similarity));
         }
         //return postSimilarity;
-        System.out.println("----------------------------");
-        System.out.println(s1 + ", " +  s2 + ", " + similarity);
-        System.out.println("----------------------------");
         return similarity;
     }
 
