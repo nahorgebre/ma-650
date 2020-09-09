@@ -18,6 +18,8 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.Correspondences;
+import genes.IdentityResolution.solutions.Datasets;
+
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -36,13 +38,10 @@ public class LR_Jaccard_StandardRecordBlocker
         new File(outputDirectory).mkdirs();
         String goldstandardDirectory = "data/goldstandard/Cerebellum/" + comparisonDescription;
 
+        // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-
-        HashedDataSet<Gene, Attribute> Cerebellum = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Cerebellum/Cerebellum_dt.xml"), "/genes/gene", Cerebellum);
-
-        HashedDataSet<Gene, Attribute> mart_export_cerebellum = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Cerebellum/mart_export_cerebellum_dt.xml"), "/genes/gene", mart_export_cerebellum);
+        HashedDataSet<Gene, Attribute> Cerebellum = Datasets.Cerebellum();
+        HashedDataSet<Gene, Attribute> mart_export_cerebellum = Datasets.mart_export_cerebellum();
 
         // load the gold standard (test set)
         System.out.println("*\n*\tLoading gold standard\n*");
@@ -57,15 +56,15 @@ public class LR_Jaccard_StandardRecordBlocker
         // add comparators
         matchingRule.addComparator(new GeneIdComparatorJaccard(), 1.0);
 
-        // create a blocker (blocking strategy
+        // create a blocker (blocking strategy)
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneIdLCGenerator());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-        // Initialize Matching Engine
+        // initialize matching engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
-        // Execute the matching
+        // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
                 Cerebellum, mart_export_cerebellum, null, matchingRule, blocker);

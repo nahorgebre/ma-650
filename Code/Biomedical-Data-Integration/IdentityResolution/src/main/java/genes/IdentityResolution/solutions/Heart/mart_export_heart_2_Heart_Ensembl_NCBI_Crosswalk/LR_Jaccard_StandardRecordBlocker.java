@@ -12,6 +12,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
+import edu.stanford.nlp.classify.Dataset;
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneNameFCGenerator;
 import genes.IdentityResolution.Comparators.GeneIdComparatorJaccard;
 import genes.IdentityResolution.Comparators.GeneIdComparatorLevenshteinEditDistance;
@@ -21,6 +22,8 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.Correspondences;
+import genes.IdentityResolution.solutions.Datasets;
+
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -38,13 +41,10 @@ public class LR_Jaccard_StandardRecordBlocker
         new File(outputDirectory).mkdirs();
         String goldstandardDirectory = "data/goldstandard/Heart/" + comparisonDescription;
 
+        // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-
-        HashedDataSet<Gene, Attribute> mart_export_heart = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Heart/mart_export_heart_dt.xml"), "/genes/gene", mart_export_heart);
-
-        HashedDataSet<Gene, Attribute> Ensembl_NCBI_Crosswalk = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Heart/Heart_Ensembl_NCBI_Crosswalk_dt.xml"), "/genes/gene", Ensembl_NCBI_Crosswalk);
+        HashedDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
+        HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
         // load the gold standard (test set)
         System.out.println("*\n*\tLoading gold standard\n*");
@@ -60,18 +60,18 @@ public class LR_Jaccard_StandardRecordBlocker
         matchingRule.addComparator(new GeneIdComparatorLevenshteinEditDistance(), 0.5);
         matchingRule.addComparator(new GeneNameComperatorCosine(), 0.5);
 
-        // create a blocker (blocking strategy
+        // create a blocker (blocking strategy)
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneNameFCGenerator());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-        // Initialize Matching Engine
+        // initialize matching engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
-        // Execute the matching
+        // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                mart_export_heart, Ensembl_NCBI_Crosswalk, null, matchingRule,
+                mart_export_heart, Heart_Ensembl_NCBI_Crosswalk, null, matchingRule,
                 blocker);
 
         // write the correspondences to the output file

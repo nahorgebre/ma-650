@@ -18,6 +18,8 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.Correspondences;
+import genes.IdentityResolution.solutions.Datasets;
+
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -35,13 +37,10 @@ public class LR_Jaccard_StandardRecordBlocker
         new File(outputDirectory).mkdirs();
         String goldstandardDirectory = "data/goldstandard/Liver/" + comparisonDescription;
 
-        System.out.println("*\n*\tLoading datasets\n*");
-
-        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_.xml"), "/genes/gene", all_gene_disease_pmid_associations);
-
-        HashedDataSet<Gene, Attribute> mart_export_liver = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Liver/mart_export_liver_dt.xml"), "/genes/gene", mart_export_liver);
+        // loading datasets
+        System.out.println("*\n*\tLoading datasets\n*"); 
+        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
+        HashedDataSet<Gene, Attribute> mart_export_liver = Datasets.mart_export_liver();
 
         // load the gold standard (test set)
         System.out.println("*\n*\tLoading gold standard\n*");
@@ -61,10 +60,10 @@ public class LR_Jaccard_StandardRecordBlocker
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-        // Initialize Matching Engine
+        // initialize matching engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
-        // Execute the matching
+        // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
                 all_gene_disease_pmid_associations, mart_export_liver, null, matchingRule,

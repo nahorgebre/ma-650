@@ -8,6 +8,8 @@ import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 public class GeneXMLFormatter extends XMLFormatter<Gene> {
 
     DiseaseXMLFormatter diseaseFormatter = new DiseaseXMLFormatter();
+    PatentXMLFormatter patentFormatter = new PatentXMLFormatter();
+    PublicationXMLFormatter publicationFormatter = new PublicationXMLFormatter();
 
     @Override
     public Element createRootElement(Document doc) {
@@ -16,21 +18,22 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
 
     @Override
     public Element createElementFromRecord(Gene record, Document doc) {
-        Element movie = doc.createElement("gene");
+        Element gene = doc.createElement("gene");
 
-        movie.appendChild(createTextElement("id", record.getIdentifier(), doc));
-        movie.appendChild(createTextElement("geneId", record.getGeneId(), doc));
-        movie.appendChild(createTextElement("geneName", record.getGeneName(), doc));
-        movie.appendChild(createTextElement("geneDescription", record.getGeneDescription(), doc));
-        movie.appendChild(createTextElement("disagreement", record.getDisagreement(), doc));
-        movie.appendChild(createTextElement("call", record.getCall(), doc));
-        movie.appendChild(createTextElement("ncbiId", record.getNcbiId(), doc));
-        movie.appendChild(createTextElement("dsi", record.getDsi(), doc));
-        movie.appendChild(createTextElement("dpi", record.getDpi(), doc));
+        gene.appendChild(createTextElement("recordId", record.getIdentifier(), doc));
+        gene.appendChild(createTextElement("ensemblId", record.getEnsemblId(), doc));
+        gene.appendChild(createTextElement("geneName", record.getGeneName(), doc));
+        gene.appendChild(createTextElement("geneDescription", record.getGeneDescription(), doc));
+        gene.appendChild(createTextElement("disagreement", record.getDisagreement(), doc));
+        gene.appendChild(createTextElement("probEqualOrthoAdj", record.getProbEqualOrthoAdj(), doc));
+        gene.appendChild(createTextElement("call", record.getCall(), doc));
+        gene.appendChild(createTextElement("ncbiId", record.getNcbiId(), doc));
 
-        movie.appendChild(createDiseasesElement(record, doc));
+        gene.appendChild(createDiseasesElement(record, doc));
+        gene.appendChild(createPublicationsElement(record, doc));
+        gene.appendChild(createPatentsElement(record, doc));
 
-        return movie;
+        return gene;
     }
 
     protected Element createTextElementWithProvenance(String name, String value, String provenance, Document doc) {
@@ -45,5 +48,21 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
             diseaseRoot.appendChild(diseaseFormatter.createElementFromRecord(a, doc));
         }
         return diseaseRoot;
+    }
+
+    protected Element createPublicationsElement(Gene record, Document doc) {
+        Element publicationRoot = publicationFormatter.createRootElement(doc);
+        for (Publication a : record.getPublications()) {
+            publicationRoot.appendChild(publicationFormatter.createElementFromRecord(a, doc));
+        }
+        return publicationRoot;
+    }
+
+    protected Element createPatentsElement(Gene record, Document doc) {
+        Element patentRoot = patentFormatter.createRootElement(doc);
+        for (Patent a : record.getPatents()) {
+            patentRoot.appendChild(patentFormatter.createElementFromRecord(a, doc));
+        }
+        return patentRoot;
     }
 }

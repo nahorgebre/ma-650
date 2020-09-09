@@ -15,7 +15,7 @@ namespace DataTranslation
         public string recordId;
         public string ensemblId;
 
-        [XmlArrayItem("geneName")]
+        [XmlArrayItem("geneNames")]
         public List<geneName> geneNames;
 
         public string geneDescription;
@@ -34,9 +34,10 @@ namespace DataTranslation
         public List<PatentMention> patentMentions;
     }
 
+    [XmlType("geneName")]
     public class geneName 
     {
-        public string Name;
+        public string name;
     }
 
     [XmlType("diseaseAssociation")]

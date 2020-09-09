@@ -20,6 +20,8 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.Correspondences;
+import genes.IdentityResolution.solutions.Datasets;
+
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -38,13 +40,10 @@ public class LR_Jaccard_StandardRecordBlocker
         new File(outputDirectory).mkdirs();
         String goldstandardDirectory = "data/goldstandard/Brain/" + comparisonDescription;
 
+        // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-
-        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt.xml"), "/genes/gene", all_gene_disease_pmid_associations);
-
-        HashedDataSet<Gene, Attribute> mart_export_brain = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Brain/mart_export_brain_dt.xml"), "/genes/gene", mart_export_brain);
+        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
+        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
         // load the gold standard (test set)
         System.out.println("*\n*\tLoading gold standard\n*");
@@ -66,10 +65,10 @@ public class LR_Jaccard_StandardRecordBlocker
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-        // Initialize Matching Engine
+        // initialize matching engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
-        // Execute the matching
+        // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
                 mart_export_brain, all_gene_disease_pmid_associations, null, matchingRule,

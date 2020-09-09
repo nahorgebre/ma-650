@@ -17,21 +17,26 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> {
 
     @Override
     public Gene createModelFromElement(Node node, String provenanceInfo) {
-        String id = getValueFromChildElement(node, "id");
+        String recordId = getValueFromChildElement(node, "recordId");
 
-        Gene gene = new Gene(id, provenanceInfo);
+        Gene gene = new Gene(recordId, provenanceInfo);
 
-        gene.setGeneId(getValueFromChildElement(node, "geneId"));
+        gene.setEnsemblId(getValueFromChildElement(node, "ensemblId"));
         gene.setGeneName(getValueFromChildElement(node, "geneName"));
         gene.setGeneDescription(getValueFromChildElement(node, "geneDescription"));
         gene.setDisagreement(getValueFromChildElement(node, "disagreement"));
+        gene.setProbEqualOrthoAdj(getValueFromChildElement(node, "probEqualOrthoAdj"));
         gene.setCall(getValueFromChildElement(node, "call"));
         gene.setNcbiId(getValueFromChildElement(node, "ncbiId"));
-        gene.setDsi(getValueFromChildElement(node, "dsi"));
-        gene.setDpi(getValueFromChildElement(node, "dpi"));
 
-        List<Disease> diseases = getObjectListFromChildElement(node, "diseases", "disease", new DiseaseXMLReader(), provenanceInfo);
+        List<Disease> diseases = getObjectListFromChildElement(node, "diseaseAssociations", "diseaseAssociation", new DiseaseXMLReader(), provenanceInfo);
         gene.setDiseases(diseases);
+
+        List<Publication> publications = getObjectListFromChildElement(node, "publicationMentions", "publicationMention", new PublicationXMLReader(), provenanceInfo);
+        gene.setPublications(publications);
+
+        List<Patent> patents = getObjectListFromChildElement(node, "patentMentions", "patentMention", new PatentXMLReader(), provenanceInfo);
+        gene.setPatents(patents);
 
         return gene;
     }

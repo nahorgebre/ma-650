@@ -18,6 +18,8 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.Correspondences;
+import genes.IdentityResolution.solutions.Datasets;
+
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -35,13 +37,10 @@ public class LR_Jaccard_StandardRecordBlocker
         new File(outputDirectory).mkdirs();
         String goldstandardDirectory = "data/goldstandard/Testis/" + comparisonDescription;
 
+        // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-
-        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_.xml"), "/genes/gene", all_gene_disease_pmid_associations);
-
-        HashedDataSet<Gene, Attribute> mart_export_testis = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Testis/mart_export_testis_dt.xml"), "/genes/gene", mart_export_testis);
+        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
+        HashedDataSet<Gene, Attribute> mart_export_testis = Datasets.mart_export_testis();
 
         // load the gold standard (test set)
         System.out.println("*\n*\tLoading gold standard\n*");
@@ -56,15 +55,15 @@ public class LR_Jaccard_StandardRecordBlocker
         // add comparators
         matchingRule.addComparator(new GeneNameComperatorJaccard(), 1.0);
 
-        // create a blocker (blocking strategy
+        // create a blocker (blocking strategy)
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneNameFCGenerator());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-        // Initialize Matching Engine
+        // initialize matching engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
-        // Execute the matching
+        // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
                 all_gene_disease_pmid_associations, mart_export_testis, null, matchingRule,

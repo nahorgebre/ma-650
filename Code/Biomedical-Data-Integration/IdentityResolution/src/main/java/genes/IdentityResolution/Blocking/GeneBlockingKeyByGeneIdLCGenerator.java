@@ -17,9 +17,9 @@ public class GeneBlockingKeyByGeneIdLCGenerator extends
     @Override
     public void generateBlockingKeys(Gene record, Processable<Correspondence<Attribute, Matchable>> correspondences,
                                      DataIterator<Pair<String, Gene>> resultCollector) {
-        int beginIndex = record.getGeneId().length() - 2;
-        int endIndex = record.getGeneId().length() - 1;
-        String key = record.getGeneId().substring(beginIndex, endIndex);
+        int beginIndex = record.getEnsemblId().length() - 2;
+        int endIndex = record.getEnsemblId().length() - 1;
+        String key = record.getEnsemblId().substring(beginIndex, endIndex);
         resultCollector.next(new Pair<>(key, record));
     }
 }

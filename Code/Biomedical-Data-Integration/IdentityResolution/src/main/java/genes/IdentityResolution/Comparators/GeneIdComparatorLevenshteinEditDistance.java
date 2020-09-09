@@ -22,8 +22,8 @@ public class GeneIdComparatorLevenshteinEditDistance implements Comparator<Gene,
             Gene record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        String s1 = record1.getGeneId();
-        String s2 = record2.getGeneId();
+        String s1 = record1.getEnsemblId();
+        String s2 = record2.getEnsemblId();
 
         // calculate similarity
         double similarity = sim.calculate(s1, s2);
