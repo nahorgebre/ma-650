@@ -5,7 +5,7 @@ import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
+import de.uni_mannheim.informatik.dws.winter.similarity.string.JaccardOnNGramsSimilarity;
 
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneName;
@@ -13,9 +13,10 @@ import genes.IdentityResolution.model.GeneName;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorJaccard implements Comparator<Gene, Attribute> {
+public class GeneNameComperatorLowerCaseJaccardOnNGramsSimilarity implements Comparator<Gene, Attribute> {
+
     private static final long serialVersionUID = 1L;
-    TokenizingJaccardSimilarity sim = new TokenizingJaccardSimilarity();
+    JaccardOnNGramsSimilarity sim = new JaccardOnNGramsSimilarity(3);
 
     private ComparatorLogger comparisonLog;
 
@@ -73,4 +74,5 @@ public class GeneNameComperatorJaccard implements Comparator<Gene, Attribute> {
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
+
 }

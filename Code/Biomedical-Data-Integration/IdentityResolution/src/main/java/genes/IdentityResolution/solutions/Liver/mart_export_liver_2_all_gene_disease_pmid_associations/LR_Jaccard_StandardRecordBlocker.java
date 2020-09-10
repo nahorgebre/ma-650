@@ -52,7 +52,7 @@ public class LR_Jaccard_StandardRecordBlocker
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GeneNameComperatorJaccard(), 1.0);
+        matchingRule.addComparator(new TokenizingJaccardSimilarity(), 1.0);
 
         // create a blocker (blocking strategy
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneNameFCGenerator());

@@ -5,14 +5,13 @@ import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinEditDistance;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 import genes.IdentityResolution.model.Gene;
 
-public class GeneIdComparatorLevenshteinEditDistance implements Comparator<Gene, Attribute> {
+public class EnsemblIdComparatorJaccard implements Comparator<Gene, Attribute> {
 
     private static final long serialVersionUID = 1L;
-    LevenshteinEditDistance sim = new LevenshteinEditDistance();
+    TokenizingJaccardSimilarity sim = new TokenizingJaccardSimilarity();
 
     private ComparatorLogger comparisonLog;
 

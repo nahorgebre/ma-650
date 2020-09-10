@@ -1,5 +1,5 @@
 package genes.IdentityResolution.Comparators.GeneNameComperator;
 
-public class GeneNameComperatorLevenshtein {
+public class GeneNameComperatorSorensenDiceSimilarity {
     
 }

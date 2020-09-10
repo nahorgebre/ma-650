@@ -54,8 +54,8 @@ public class LR_Jaccard_StandardRecordBlocker
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GeneIdComparatorLevenshteinEditDistance(), 0.5);
-        matchingRule.addComparator(new GeneNameComperatorCosine(), 0.5);
+        matchingRule.addComparator(new EnsemblIdComparatorLevenshteinEditDistance(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorCosineSimilarity(), 0.5);
 
         // create a blocker (blocking strategy)
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneNameFCGenerator());
