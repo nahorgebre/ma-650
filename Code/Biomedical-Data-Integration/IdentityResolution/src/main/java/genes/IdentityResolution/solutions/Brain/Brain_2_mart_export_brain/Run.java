@@ -6,6 +6,8 @@ public class Run {
     {
         LR_Cosine_StandardRecordBlocker.main(args);
         LR_Jaccard_StandardRecordBlocker.main(args);
+        LR_Levenshtein_StandardRecordBlocker.main(args);
+        LR_Cosine_StandardRecordBlocker.main(args);
     }
     
 }
