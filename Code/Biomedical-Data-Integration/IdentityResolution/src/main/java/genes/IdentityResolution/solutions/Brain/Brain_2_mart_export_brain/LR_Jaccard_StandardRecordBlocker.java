@@ -1,9 +1,9 @@
-package genes.IdentityResolution.solutions.Brain.mart_export_brain_2_all_gene_disease_pmid_associations;
+package genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain;
 
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator;
-import de.uni_mannheim.informatik.dws.winter.matching.blockers.NoBlocker;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlocker;
+import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.LinearCombinationMatchingRule;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
@@ -14,7 +14,8 @@ import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorLowerCaseJaccardOnNGrams;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
@@ -27,34 +28,22 @@ import org.slf4j.Logger;
 import java.io.File;
 import java.io.PrintWriter;
 
-// GeneNameComperator
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorLowerCaseJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
-
-// EnsemblIdComperator
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorLowerCaseJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorTokenizingJaccard;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorLowerCaseTokenizingJaccard;
-
 public class LR_Jaccard_StandardRecordBlocker 
 {
     private static final Logger logger = WinterLogManager.activateLogger("default");
-    public static String className = "LR_Jaccard_StandardRecordBlocker";
+    public static String className = "LR_LowerCaseJaccardOnNGrams_StandardRecordBlocker";
 
     public static void main( String[] args ) throws Exception
-    {
+    {            
         // create output folder
-        String comparisonDescription = "mart_export_brain_2_all_gene_disease_pmid_associations";
+        String comparisonDescription = "Brain_2_mart_export_brain";
         String outputDirectory = "data/output/Brain/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
         String goldstandardDirectory = "data/goldstandard/Brain/" + comparisonDescription;
 
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
+        HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
         HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
         // load the gold standard (test set)
@@ -65,19 +54,11 @@ public class LR_Jaccard_StandardRecordBlocker
                 0.9);
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 
-        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.125);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.125);
-
-        matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard(), 0.125);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard(), 0.125);
+        // add comparators
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams(), 1.0);
 
         // create a blocker (blocking strategy)
-        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
-        //NoBlocker<Gene, Attribute> blocker = new NoBlocker<>();
+        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
@@ -87,14 +68,13 @@ public class LR_Jaccard_StandardRecordBlocker
         // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                mart_export_brain, all_gene_disease_pmid_associations, null, matchingRule,
-                blocker);
+                Brain, mart_export_brain, null, matchingRule, blocker);
 
         // write the correspondences to the output file
         Correspondences.output(outputDirectory, className, correspondences);
 
         // evaluate your result
         Evaluation.run(correspondences, gsTest, outputDirectory, className, comparisonDescription);
-
+        
     }
 }

@@ -28,18 +28,14 @@ import java.io.File;
 import java.io.PrintWriter;
 
 // GeneNameComperator
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorLowerCaseJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorCosine;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorLowerCaseCosine;
 
 // EnsemblIdComperator
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorLowerCaseJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorTokenizingJaccard;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorLowerCaseTokenizingJaccard;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorCosine;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorLowerCaseCosine;
 
-public class LR_Jaccard_StandardRecordBlocker 
+public class LR_Cosine_StandardRecordBlocker 
 {
     private static final Logger logger = WinterLogManager.activateLogger("default");
     public static String className = "LR_Jaccard_StandardRecordBlocker";
@@ -65,15 +61,10 @@ public class LR_Jaccard_StandardRecordBlocker
                 0.9);
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 
-        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.125);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.125);
-
-        matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard(), 0.125);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard(), 0.125);
+        matchingRule.addComparator(new GeneNameComperatorCosine(), 0.25);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine(), 0.25);
+        matchingRule.addComparator(new EnsemblIdComperatorCosine(), 0.25);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseCosine(), 0.25);
 
         // create a blocker (blocking strategy)
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
