@@ -13,10 +13,10 @@ import de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneIdLCGenerator;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.*;
+
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorCosine;
 import genes.IdentityResolution.model.Gene;
-import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
@@ -49,10 +49,10 @@ public class LR_Cosine_StandardRecordBlocker {
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComparatorJaccard(), 1.0);
+        matchingRule.addComparator(new EnsemblIdComperatorCosine(), 1.0);
 
         // create a blocker (blocking strategy)
-        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneIdLCGenerator());
+        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 

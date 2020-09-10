@@ -1,4 +1,4 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice;
+package genes.IdentityResolution.Comparators.NcbiIdComperator.SimilaritySorensenDice;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
@@ -15,7 +15,7 @@ import genes.IdentityResolution.model.GeneName;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorLowerCaseSorensenDice implements Comparator<Gene, Attribute> {
+public class NcbiIdComperatorLowerCaseSorensenDice implements Comparator<Gene, Attribute> {
 
     private static final long serialVersionUID = 1L;
     SorensenDice sim = new SorensenDice();

@@ -3,6 +3,7 @@ package genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlocker;
+import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.LinearCombinationMatchingRule;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
@@ -12,8 +13,9 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneIdLCGenerator;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.*;
+
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorLowerCaseJaccardOnNGrams;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
 import genes.IdentityResolution.solutions.Evaluation;
@@ -26,10 +28,10 @@ import org.slf4j.Logger;
 import java.io.File;
 import java.io.PrintWriter;
 
-public class LR_Jaccard_StandardRecordBlocker 
+public class LR_LowerCaseJaccardOnNGrams_StandardRecordBlocker 
 {
     private static final Logger logger = WinterLogManager.activateLogger("default");
-    public static String className = "LR_Jaccard_StandardRecordBlocker";
+    public static String className = this.getClass().getSimpleName();
 
     public static void main( String[] args ) throws Exception
     {            
@@ -53,10 +55,10 @@ public class LR_Jaccard_StandardRecordBlocker
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComparatorJaccard(), 1.0);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams(), 1.0);
 
         // create a blocker (blocking strategy)
-        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneIdLCGenerator());
+        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 

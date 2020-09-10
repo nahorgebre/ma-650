@@ -1,4 +1,4 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice;
+package genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityCosine;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
@@ -6,7 +6,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
-import info.debatty.java.stringsimilarity.SorensenDice;
+import info.debatty.java.stringsimilarity.Cosine;
 
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene;
@@ -15,10 +15,10 @@ import genes.IdentityResolution.model.GeneName;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorLowerCaseSorensenDice implements Comparator<Gene, Attribute> {
+public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
 
     private static final long serialVersionUID = 1L;
-    SorensenDice sim = new SorensenDice();
+    Cosine sim = new Cosine();
 
     private ComparatorLogger comparisonLog;
 
@@ -35,8 +35,8 @@ public class GeneNameComperatorLowerCaseSorensenDice implements Comparator<Gene,
         for (GeneName record1geneName : record1GeneNames) {
             for (GeneName record2geneName : record2GeneNames) {
                 Comparison comparison = new Comparison();
-                comparison.s1 = record1geneName.getName().toLowerCase();
-                comparison.s2 = record2geneName.getName().toLowerCase();
+                comparison.s1 = record1geneName.getName();
+                comparison.s2 = record2geneName.getName();
                 comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
                 comparisonList.add(comparison);
             }

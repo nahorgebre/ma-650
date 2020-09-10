@@ -1,4 +1,4 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice;
+package genes.IdentityResolution.Comparators.NcbiIdComperator.SimilaritySorensenDice;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
@@ -15,7 +15,7 @@ import genes.IdentityResolution.model.GeneName;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorLowerCaseSorensenDice implements Comparator<Gene, Attribute> {
+public class NcbiIdComperatorSorensenDice implements Comparator<Gene, Attribute> {
 
     private static final long serialVersionUID = 1L;
     SorensenDice sim = new SorensenDice();
@@ -35,8 +35,8 @@ public class GeneNameComperatorLowerCaseSorensenDice implements Comparator<Gene,
         for (GeneName record1geneName : record1GeneNames) {
             for (GeneName record2geneName : record2GeneNames) {
                 Comparison comparison = new Comparison();
-                comparison.s1 = record1geneName.getName().toLowerCase();
-                comparison.s2 = record2geneName.getName().toLowerCase();
+                comparison.s1 = record1geneName.getName();
+                comparison.s2 = record2geneName.getName();
                 comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
                 comparisonList.add(comparison);
             }
@@ -69,5 +69,5 @@ public class GeneNameComperatorLowerCaseSorensenDice implements Comparator<Gene,
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
-
+ 
 }

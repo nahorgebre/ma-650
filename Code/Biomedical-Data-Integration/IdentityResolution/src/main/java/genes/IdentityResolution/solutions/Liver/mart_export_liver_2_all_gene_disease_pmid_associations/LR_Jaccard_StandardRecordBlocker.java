@@ -12,7 +12,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneNameFCGenerator;
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 import genes.IdentityResolution.Comparators.GeneNameComperator.*;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
@@ -55,7 +55,7 @@ public class LR_Jaccard_StandardRecordBlocker
         matchingRule.addComparator(new TokenizingJaccardSimilarity(), 1.0);
 
         // create a blocker (blocking strategy
-        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneNameFCGenerator());
+        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 

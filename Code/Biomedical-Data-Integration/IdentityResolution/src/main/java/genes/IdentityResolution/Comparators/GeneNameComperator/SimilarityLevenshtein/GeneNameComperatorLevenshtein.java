@@ -6,6 +6,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
+
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneName;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 
 public class GeneNameComperatorLevenshtein implements Comparator<Gene, Attribute> {
 
-    
     private static final long serialVersionUID = 1L;
     LevenshteinSimilarity sim = new LevenshteinSimilarity();
 
@@ -34,8 +34,8 @@ public class GeneNameComperatorLevenshtein implements Comparator<Gene, Attribute
         for (GeneName record1geneName : record1GeneNames) {
             for (GeneName record2geneName : record2GeneNames) {
                 Comparison comparison = new Comparison();
-                comparison.s1 = record1geneName.getName().toLowerCase();
-                comparison.s2 = record2geneName.getName().toLowerCase(); 
+                comparison.s1 = record1geneName.getName();
+                comparison.s2 = record2geneName.getName(); 
                 comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
                 comparisonList.add(comparison);
             }

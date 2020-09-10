@@ -1,4 +1,4 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice;
+package genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
@@ -6,7 +6,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
-import info.debatty.java.stringsimilarity.SorensenDice;
+import info.debatty.java.stringsimilarity.Cosine;
 
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene;
@@ -15,10 +15,10 @@ import genes.IdentityResolution.model.GeneName;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorLowerCaseSorensenDice implements Comparator<Gene, Attribute> {
+public class GeneNameComperatorLowerCaseCosine implements Comparator<Gene, Attribute> {
 
     private static final long serialVersionUID = 1L;
-    SorensenDice sim = new SorensenDice();
+    Cosine sim = new Cosine();
 
     private ComparatorLogger comparisonLog;
 

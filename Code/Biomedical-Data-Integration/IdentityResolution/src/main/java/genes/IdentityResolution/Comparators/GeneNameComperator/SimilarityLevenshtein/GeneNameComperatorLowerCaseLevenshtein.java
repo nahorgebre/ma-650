@@ -1,11 +1,12 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams;
+package genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-import de.uni_mannheim.informatik.dws.winter.similarity.string.JaccardOnNGramsSimilarity;
+import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
+
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneName;
@@ -13,10 +14,10 @@ import genes.IdentityResolution.model.GeneName;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorLowerCaseJaccardOnNGramsSimilarity implements Comparator<Gene, Attribute> {
-
+public class GeneNameComperatorLowerCaseLevenshtein implements Comparator<Gene, Attribute> {
+    
     private static final long serialVersionUID = 1L;
-    JaccardOnNGramsSimilarity sim = new JaccardOnNGramsSimilarity(3);
+    LevenshteinSimilarity sim = new LevenshteinSimilarity();
 
     private ComparatorLogger comparisonLog;
 

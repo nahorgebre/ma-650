@@ -13,7 +13,7 @@ import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 import edu.stanford.nlp.classify.Dataset;
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneNameFCGenerator;
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.*;
 import genes.IdentityResolution.Comparators.GeneNameComperator.*;
 import genes.IdentityResolution.model.Gene;
@@ -55,10 +55,10 @@ public class LR_Jaccard_StandardRecordBlocker
 
         // add comparators
         matchingRule.addComparator(new EnsemblIdComparatorLevenshteinEditDistance(), 0.5);
-        matchingRule.addComparator(new GeneNameComperatorCosineSimilarity(), 0.5);
+        matchingRule.addComparator(new NcbiIdComperatorLowerCaseCosine(), 0.5);
 
         // create a blocker (blocking strategy)
-        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneNameFCGenerator());
+        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
