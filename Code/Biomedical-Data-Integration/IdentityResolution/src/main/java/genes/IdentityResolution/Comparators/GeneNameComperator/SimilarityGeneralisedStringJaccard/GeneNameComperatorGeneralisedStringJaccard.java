@@ -1,22 +1,22 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator;
+package genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityGeneralisedStringJaccard;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-import de.uni_mannheim.informatik.dws.winter.similarity.string.JaccardOnNGramsSimilarity;
-
+import de.uni_mannheim.informatik.dws.winter.similarity.string.GeneralisedStringJaccard;
+import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneName;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorLowerCaseJaccardOnNGramsSimilarity implements Comparator<Gene, Attribute> {
-
+public class GeneNameComperatorGeneralisedStringJaccard implements Comparator<Gene, Attribute> {
+    
     private static final long serialVersionUID = 1L;
-    JaccardOnNGramsSimilarity sim = new JaccardOnNGramsSimilarity(3);
+    // GeneralisedStringJaccard sim = new GeneralisedStringJaccard();
 
     private ComparatorLogger comparisonLog;
 
@@ -35,7 +35,7 @@ public class GeneNameComperatorLowerCaseJaccardOnNGramsSimilarity implements Com
                 Comparison comparison = new Comparison();
                 comparison.s1 = record1geneName.getName().toLowerCase();
                 comparison.s2 = record2geneName.getName().toLowerCase(); 
-                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
+                //comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
                 comparisonList.add(comparison);
             }
         }
@@ -74,5 +74,5 @@ public class GeneNameComperatorLowerCaseJaccardOnNGramsSimilarity implements Com
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
-
+    
 }

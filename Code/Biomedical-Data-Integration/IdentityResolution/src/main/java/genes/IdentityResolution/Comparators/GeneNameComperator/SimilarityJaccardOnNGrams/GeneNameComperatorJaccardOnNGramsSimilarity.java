@@ -1,23 +1,22 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator;
+package genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-
-import info.debatty.java.stringsimilarity.JaroWinkler;
-
+import de.uni_mannheim.informatik.dws.winter.similarity.string.JaccardOnNGramsSimilarity;
+import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneName;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorJaroWinklerEditDistance implements Comparator<Gene, Attribute> {
+public class GeneNameComperatorJaccardOnNGramsSimilarity implements Comparator<Gene, Attribute> {
 
     private static final long serialVersionUID = 1L;
-    JaroWinkler sim = new JaroWinkler();
+    JaccardOnNGramsSimilarity sim = new JaccardOnNGramsSimilarity(3);
 
     private ComparatorLogger comparisonLog;
 
@@ -34,36 +33,29 @@ public class GeneNameComperatorJaroWinklerEditDistance implements Comparator<Gen
         for (GeneName record1geneName : record1GeneNames) {
             for (GeneName record2geneName : record2GeneNames) {
                 Comparison comparison = new Comparison();
-                comparison.s1 = record1geneName.getName().toLowerCase();
-                comparison.s2 = record2geneName.getName().toLowerCase(); 
-                comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
+                comparison.s1 = record1geneName.getName();
+                comparison.s2 = record2geneName.getName(); 
+                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
                 comparisonList.add(comparison);
             }
         }
 
-        Comparison result = new Comparison();
-        for (Comparison comparison : comparisonList) {
-            if (result.similarity < comparison.similarity) {
-                result.s1 = comparison.s1;
-                result.s2 = comparison.s2;
-                result.similarity = comparison.similarity;
-            }
-        }
+        Comparison bestResult = Comparison.getBestResult(comparisonList);
 
         double postSimilarity = 0;
-        if (result.similarity <= 0.3) {
+        if (bestResult.similarity <= 0.3) {
             postSimilarity = 0;
         }
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
-            this.comparisonLog.setRecord1Value(result.s1);
-            this.comparisonLog.setRecord2Value(result.s2);
-            this.comparisonLog.setSimilarity(Double.toString(result.similarity));
+            this.comparisonLog.setRecord1Value(bestResult.s1);
+            this.comparisonLog.setRecord2Value(bestResult.s2);
+            this.comparisonLog.setSimilarity(Double.toString(bestResult.similarity));
             this.comparisonLog.setPostprocessedSimilarity(Double.toString(postSimilarity));
         }
 
-        return result.similarity;
+        return bestResult.similarity;
     }
 
     @Override
@@ -75,5 +67,5 @@ public class GeneNameComperatorJaroWinklerEditDistance implements Comparator<Gen
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
-    
+
 }

@@ -1,12 +1,11 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator.CosineSimilarity;
+package genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-
-import info.debatty.java.stringsimilarity.Cosine;
+import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneName;
@@ -14,10 +13,11 @@ import genes.IdentityResolution.model.GeneName;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorCosineSimilarity implements Comparator<Gene, Attribute> {
+public class GeneNameComperatorLevenshtein implements Comparator<Gene, Attribute> {
 
+    
     private static final long serialVersionUID = 1L;
-    Cosine sim = new Cosine();
+    LevenshteinSimilarity sim = new LevenshteinSimilarity();
 
     private ComparatorLogger comparisonLog;
 
@@ -26,7 +26,7 @@ public class GeneNameComperatorCosineSimilarity implements Comparator<Gene, Attr
             Gene record1,
             Gene record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
-        
+
         List<GeneName> record1GeneNames = record1.getGeneNames();
         List<GeneName> record2GeneNames = record2.getGeneNames();
 
@@ -35,35 +35,28 @@ public class GeneNameComperatorCosineSimilarity implements Comparator<Gene, Attr
             for (GeneName record2geneName : record2GeneNames) {
                 Comparison comparison = new Comparison();
                 comparison.s1 = record1geneName.getName().toLowerCase();
-                comparison.s2 = record2geneName.getName().toLowerCase();
-                comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
+                comparison.s2 = record2geneName.getName().toLowerCase(); 
+                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
                 comparisonList.add(comparison);
             }
         }
 
-        Comparison result = new Comparison();
-        for (Comparison comparison : comparisonList) {
-            if (result.similarity < comparison.similarity) {
-                result.s1 = comparison.s1;
-                result.s2 = comparison.s2;
-                result.similarity = comparison.similarity;
-            }
-        }
+        Comparison bestResult = Comparison.getBestResult(comparisonList);
 
         double postSimilarity = 0;
-        if (result.similarity <= 0.3) {
+        if (bestResult.similarity <= 0.3) {
             postSimilarity = 0;
         }
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
-            this.comparisonLog.setRecord1Value(result.s1);
-            this.comparisonLog.setRecord2Value(result.s2);
-            this.comparisonLog.setSimilarity(Double.toString(result.similarity));
+            this.comparisonLog.setRecord1Value(bestResult.s1);
+            this.comparisonLog.setRecord2Value(bestResult.s2);
+            this.comparisonLog.setSimilarity(Double.toString(bestResult.similarity));
             this.comparisonLog.setPostprocessedSimilarity(Double.toString(postSimilarity));
         }
 
-        return result.similarity;
+        return bestResult.similarity;
     }
 
     @Override

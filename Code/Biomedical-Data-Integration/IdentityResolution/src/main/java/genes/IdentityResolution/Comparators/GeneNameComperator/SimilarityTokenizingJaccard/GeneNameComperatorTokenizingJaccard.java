@@ -1,4 +1,4 @@
-package genes.IdentityResolution.Comparators.GeneNameComperator.TokenizingJaccardSimilarity;
+package genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
@@ -13,7 +13,7 @@ import genes.IdentityResolution.model.GeneName;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GeneNameComperatorLowerCaseTokenizingJaccardSimilarity implements Comparator<Gene, Attribute> {
+public class GeneNameComperatorTokenizingJaccard implements Comparator<Gene, Attribute> {
 
     private static final long serialVersionUID = 1L;
     TokenizingJaccardSimilarity sim = new TokenizingJaccardSimilarity();
@@ -33,36 +33,29 @@ public class GeneNameComperatorLowerCaseTokenizingJaccardSimilarity implements C
         for (GeneName record1geneName : record1GeneNames) {
             for (GeneName record2geneName : record2GeneNames) {
                 Comparison comparison = new Comparison();
-                comparison.s1 = record1geneName.getName().toLowerCase();
-                comparison.s2 = record2geneName.getName().toLowerCase(); 
+                comparison.s1 = record1geneName.getName();
+                comparison.s2 = record2geneName.getName(); 
                 comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
                 comparisonList.add(comparison);
             }
         }
 
-        Comparison result = new Comparison();
-        for (Comparison comparison : comparisonList) {
-            if (result.similarity < comparison.similarity) {
-                result.s1 = comparison.s1;
-                result.s2 = comparison.s2;
-                result.similarity = comparison.similarity;
-            }
-        }
+        Comparison bestResult = Comparison.getBestResult(comparisonList);
 
         double postSimilarity = 0;
-        if (result.similarity <= 0.3) {
+        if (bestResult.similarity <= 0.3) {
             postSimilarity = 0;
         }
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
-            this.comparisonLog.setRecord1Value(result.s1);
-            this.comparisonLog.setRecord2Value(result.s2);
-            this.comparisonLog.setSimilarity(Double.toString(result.similarity));
+            this.comparisonLog.setRecord1Value(bestResult.s1);
+            this.comparisonLog.setRecord2Value(bestResult.s2);
+            this.comparisonLog.setSimilarity(Double.toString(bestResult.similarity));
             this.comparisonLog.setPostprocessedSimilarity(Double.toString(postSimilarity));
         }
 
-        return result.similarity;
+        return bestResult.similarity;
     }
 
     @Override
@@ -74,5 +67,5 @@ public class GeneNameComperatorLowerCaseTokenizingJaccardSimilarity implements C
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
-    
+
 }
