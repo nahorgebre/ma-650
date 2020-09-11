@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Kidney.Kidney_2_mart_export_kidney;
+package genes.IdentityResolution.solutions.Heart.Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations;
 
 import java.io.File;
 
@@ -32,15 +32,15 @@ public class LR_Cosine_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
         // create debug folder
-        String comparisonDescription = "Kidney_2_mart_export_kidney";
-        String outputDirectory = "data/output/Kidney/" + comparisonDescription + "/" + className;
+        String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations";
+        String outputDirectory = "data/output/Heart/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
-        String goldstandardDirectory = "data/goldstandard/Kidney/" + comparisonDescription;
-        
+        String goldstandardDirectory = "data/goldstandard/Heart/" + comparisonDescription;
+     
         // loading datasetse
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Kidney = Datasets.Kidney();
-        HashedDataSet<Gene, Attribute> mart_export_kidney = Datasets.mart_export_kidney();
+        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
+        HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
@@ -65,7 +65,7 @@ public class LR_Cosine_StandardRecordBlocker {
         // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-            Kidney, mart_export_kidney, null, matchingRule, blocker);
+            all_gene_disease_pmid_associations, Heart_Ensembl_NCBI_Crosswalk, null, matchingRule, blocker);
 
         // write the correspondences to the output file
         Correspondences.output(outputDirectory, className, correspondences);

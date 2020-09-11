@@ -59,7 +59,7 @@ namespace DataTranslation
 
                     List<geneName> geneNameList = new List<geneName>();
                     geneName GeneName = new geneName();
-                    GeneName.Name = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
+                    GeneName.name = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
                     geneNameList.Add(GeneName);
                     gene.geneNames = geneNameList;
 
@@ -95,7 +95,7 @@ namespace DataTranslation
 
                     List<geneName> geneNameList = new List<geneName>();
                     geneName GeneName = new geneName();
-                    GeneName.Name = values[2];
+                    GeneName.name = values[2];
                     geneNameList.Add(GeneName);
                     gene.geneNames = geneNameList;
 

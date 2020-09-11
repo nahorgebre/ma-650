@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain;
+package genes.IdentityResolution.solutions.Kidney.Kidney_2_mart_export_kidney;
 
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator;
@@ -42,16 +42,16 @@ public class LR_Levenshtein_StandardRecordBlocker
 
     public static void main( String[] args ) throws Exception
     {
-        // create output folder
-        String comparisonDescription = "Brain_2_mart_export_brain";
-        String outputDirectory = "data/output/Brain/" + comparisonDescription + "/" + className;
+        // create debug folder
+        String comparisonDescription = "Kidney_2_mart_export_kidney";
+        String outputDirectory = "data/output/Kidney/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
-        String goldstandardDirectory = "data/goldstandard/Brain/" + comparisonDescription;
-
+        String goldstandardDirectory = "data/goldstandard/Kidney/" + comparisonDescription;
+        
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        HashedDataSet<Gene, Attribute> Kidney = Datasets.Kidney();
+        HashedDataSet<Gene, Attribute> mart_export_kidney = Datasets.mart_export_kidney();
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
@@ -78,7 +78,7 @@ public class LR_Levenshtein_StandardRecordBlocker
         // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                mart_export_brain, Brain, null, matchingRule,
+            Kidney, mart_export_kidney, null, matchingRule,
                 blocker);
 
         // write the correspondences to the output file

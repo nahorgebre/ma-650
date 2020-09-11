@@ -61,7 +61,7 @@ namespace DataTranslation
                     
                     List<geneName> geneNameList = new List<geneName>();
                     geneName GeneName = new geneName();
-                    GeneName.Name = line.Substring(line.LastIndexOf(",") + 1);
+                    GeneName.name = line.Substring(line.LastIndexOf(",") + 1);
                     geneNameList.Add(GeneName);
                     gene.geneNames = geneNameList;
                     

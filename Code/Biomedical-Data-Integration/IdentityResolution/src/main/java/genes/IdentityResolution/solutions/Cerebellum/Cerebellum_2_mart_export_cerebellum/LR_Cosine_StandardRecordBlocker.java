@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain;
+package genes.IdentityResolution.solutions.Cerebellum.Cerebellum_2_mart_export_cerebellum;
 
 import java.io.File;
 
@@ -31,16 +31,16 @@ public class LR_Cosine_StandardRecordBlocker {
 
     public static void main( String[] args ) throws Exception
     {
-        // create output folder
-        String comparisonDescription = "Brain_2_mart_export_brain";
-        String outputDirectory = "data/output/Brain/" + comparisonDescription + "/" + className;
+        // create debug folder
+        String comparisonDescription = "Cerebellum_2_mart_export_cerebellum";
+        String outputDirectory = "data/output/Cerebellum/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
-        String goldstandardDirectory = "data/goldstandard/Brain/" + comparisonDescription;
+        String goldstandardDirectory = "data/goldstandard/Cerebellum/" + comparisonDescription;
 
         // loading datasetse
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        HashedDataSet<Gene, Attribute> Cerebellum = Datasets.Cerebellum();
+        HashedDataSet<Gene, Attribute> mart_export_cerebellum = Datasets.mart_export_cerebellum();
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
@@ -65,7 +65,7 @@ public class LR_Cosine_StandardRecordBlocker {
         // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Brain, mart_export_brain, null, matchingRule, blocker);
+            mart_export_cerebellum, Cerebellum, null, matchingRule, blocker);
 
         // write the correspondences to the output file
         Correspondences.output(outputDirectory, className, correspondences);

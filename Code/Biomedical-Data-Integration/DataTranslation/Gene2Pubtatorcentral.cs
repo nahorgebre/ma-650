@@ -34,7 +34,7 @@ namespace DataTranslation
                         foreach (string name in geneNames)
                         {
                             geneName GeneName = new geneName();
-                            GeneName.Name = name.Trim();
+                            GeneName.name = name.Trim();
                             geneNameList.Add(GeneName);
                         }
                         gene.geneNames = geneNameList;

@@ -51,7 +51,7 @@ namespace DataTranslation
                     {
                         List<geneName> geneNameList = new List<geneName>();
                         geneName GeneName = new geneName();
-                        GeneName.Name = name;
+                        GeneName.name = name;
                         geneNameList.Add(GeneName);
                         gene.geneNames = geneNameList;
                     }
