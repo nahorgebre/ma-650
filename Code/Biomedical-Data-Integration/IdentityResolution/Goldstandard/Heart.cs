@@ -8,10 +8,10 @@ namespace Goldstandard
     {
         public static void heartGoldStandard()
         {
-            all_gene_disease_pmid_associations_2_Heart_Ensemble_NCBI_Crosswalk();
+            //all_gene_disease_pmid_associations_2_Heart_Ensemble_NCBI_Crosswalk();
             Heart_2_Heart_Ensembl_NCBI_Crosswalk();
             mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk();
-            gene2pubtatorcentral_2_Ensemble_NCBI_Crosswalk();
+            //gene2pubtatorcentral_2_Ensemble_NCBI_Crosswalk();
         }
 
         public static void gene2pubtatorcentral_2_Ensemble_NCBI_Crosswalk()

@@ -7,8 +7,8 @@ namespace Goldstandard
         public static void brainGoldStandard()
         {  
             Brain_2_mart_export_brain();
-            mart_export_brain_2_all_gene_disease_pmid_associations();
-            mart_export_brain_2_gene2pubtatorcentral();
+            //mart_export_brain_2_all_gene_disease_pmid_associations();
+            //mart_export_brain_2_gene2pubtatorcentral();
         }
 
         public static void mart_export_brain_2_gene2pubtatorcentral()
