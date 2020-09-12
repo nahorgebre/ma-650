@@ -8,16 +8,18 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 public class Disease extends AbstractRecord<Attribute> implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private String diseaseId;
+    private String diseaseIdUMLS;
     private String diseaseName;
-    private String diseaseType;
-    private String diseaseClass;
-    private String diseaseSemanticType;
-    private String score;
-    private String ei;
-    private String yearInitial;
-    private String yearFinal;
-    private String pmid;
+    private String diseaseSpecificityIndex;
+    private String diseasePleiotropyIndex;
+    private String diseaseTypeDisGeNET;
+    private String diseaseClassMeSH;
+    private String diseaseSemanticTypeUMLS;
+    private String associationScore;
+    private String evidenceIndex;
+    private String yearInitialReport;
+    private String yearFinalReport;
+    private String pmId;
     private String source;
 
     public Disease(String identifier, String provenance) {
@@ -25,34 +27,38 @@ public class Disease extends AbstractRecord<Attribute> implements Serializable {
     }
 
     // Getter
-    public String getDiseaseId() { return diseaseId; }
+    public String getDiseaseIdUMLS() { return diseaseIdUMLS; }
     public String getDiseaseName() { return diseaseName; }
-    public String getDiseaseType() { return diseaseType; }
-    public String getDiseaseClass() { return diseaseClass; }
-    public String getDiseaseSemanticType() { return diseaseSemanticType; }
-    public String getScore() { return score; }
-    public String getEi() { return ei; }
-    public String getYearInitial() { return  yearInitial; }
-    public String getYearFinal() { return yearFinal; }
-    public String getPmid() { return pmid; }
+    public String getDiseaseSpecificityIndex() { return diseaseSpecificityIndex; }
+    public String getDiseasePleiotropyIndex() { return diseasePleiotropyIndex; }
+    public String getDiseaseTypeDisGeNET() { return diseaseTypeDisGeNET; }
+    public String getDiseaseClassMeSH() { return diseaseClassMeSH; }
+    public String getDiseaseSemanticTypeUMLS() { return diseaseSemanticTypeUMLS; }
+    public String getAssociationScore() { return associationScore; }
+    public String getEvidenceIndex() { return evidenceIndex; }
+    public String getYearInitialReport() { return  yearInitialReport; }
+    public String getYearFinalReport() { return yearFinalReport; }
+    public String getPmId() { return pmId; }
     public String getSource() { return source; }
 
     // Setter
-    public void setDiseaseId(String diseaseId) { this.diseaseId = diseaseId; }
+    public void setDiseaseIdUMLS(String diseaseIdUMLS) { this.diseaseIdUMLS = diseaseIdUMLS; }
     public void setDiseaseName(String diseaseName) { this.diseaseName = diseaseName; }
-    public void setDiseaseType(String diseaseType) { this.diseaseType = diseaseType; }
-    public void setDiseaseClass(String diseaseClass) { this.diseaseClass = diseaseClass; }
-    public void setDiseaseSemanticType(String diseaseSemanticType) { this.diseaseSemanticType = diseaseSemanticType; }
-    public void setScore(String score) { this.score = score; }
-    public void setEi(String ei) { this.ei = ei; }
-    public void setYearInitial(String yearInitial) { this.yearInitial = yearInitial; }
-    public void setYearFinal(String yearFinal) { this.yearFinal = yearFinal; }
-    public void setPmid(String pmid) { this.pmid = pmid; }
+    public void setDiseaseSpecificityIndex(String diseaseSpecificityIndex) { this.diseaseSpecificityIndex = diseaseSpecificityIndex; }
+    public void setDiseasePleiotropyIndex(String diseasePleiotropyIndex) { this.diseasePleiotropyIndex = diseasePleiotropyIndex; }
+    public void setDiseaseTypeDisGeNET(String diseaseTypeDisGeNET) { this.diseaseTypeDisGeNET = diseaseTypeDisGeNET; }
+    public void setDiseaseClassMeSH(String diseaseClassMeSH) { this.diseaseClassMeSH = diseaseClassMeSH; }
+    public void setDiseaseSemanticTypeUMLS(String diseaseSemanticTypeUMLS) { this.diseaseSemanticTypeUMLS = diseaseSemanticTypeUMLS; }
+    public void setAssociationScore(String associationScore) { this.associationScore = associationScore; }
+    public void setEvidenceIndex(String evidenceIndex) { this.evidenceIndex = evidenceIndex; }
+    public void setYearInitialReport(String yearInitialReport) { this.yearInitialReport = yearInitialReport; }
+    public void setYearFinalReport(String yearFinalReport) { this.yearFinalReport = yearFinalReport; }
+    public void setPmId(String pmId) { this.pmId = pmId; }
     public void setSource(String source) { this.source = source; }
 
     @Override
     public int hashCode() {
-        int result = 31 + ((diseaseId == null) ? 0 : diseaseId.hashCode());
+        int result = 31 + ((diseaseIdUMLS == null) ? 0 : diseaseIdUMLS.hashCode());
         return result;
     }
 
@@ -65,10 +71,10 @@ public class Disease extends AbstractRecord<Attribute> implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         Disease other = (Disease) obj;
-        if (diseaseId == null) {
-            if (other.diseaseId != null)
+        if (diseaseIdUMLS == null) {
+            if (other.diseaseIdUMLS != null)
                 return false;
-        } else if (!diseaseId.equals(other.diseaseId))
+        } else if (!diseaseIdUMLS.equals(other.diseaseIdUMLS))
             return false;
         return true;
     }
@@ -88,25 +94,25 @@ public class Disease extends AbstractRecord<Attribute> implements Serializable {
     @Override
     public boolean hasValue(Attribute attribute) {
         if(attribute==DISEASEID)
-            return diseaseId!=null;
+            return diseaseIdUMLS!=null;
         else if(attribute==DISEASENAME)
             return diseaseName!=null;
         else if(attribute==DISEASETYPE)
-            return diseaseType!=null;
+            return diseaseTypeDisGeNET!=null;
         else if(attribute==DISEASECLASS)
-            return diseaseClass!=null;
+            return diseaseClassMeSH!=null;
         else if(attribute==DISEASESEMANTICTYPE)
-            return diseaseSemanticType!=null;
+            return diseaseSemanticTypeUMLS!=null;
         else if(attribute==SCORE)
-            return score!=null;
+            return associationScore!=null;
         else if(attribute==EI)
-            return ei!=null;
+            return evidenceIndex!=null;
         else if(attribute==YEARINITIAL)
-            return yearInitial!=null;
+            return yearInitialReport!=null;
         else if(attribute==YEARFINAL)
-            return yearFinal!=null;
+            return yearFinalReport!=null;
         else if(attribute==PMID)
-            return pmid!=null;
+            return pmId!=null;
         else if(attribute==SOURCE)
             return source!=null;
         return false;

@@ -9,8 +9,8 @@ namespace Goldstandard
         public static void kidneyGoldStandard()
         {
             Kidney_2_mart_export_kidney();
-            mart_export_kidney_2_all_gene_disease_pmid_associations();
-            mart_export_kidney_2_gene2pubtatorcentral();
+            //mart_export_kidney_2_all_gene_disease_pmid_associations();
+            //mart_export_kidney_2_gene2pubtatorcentral();
         }
 
         public static void mart_export_kidney_2_gene2pubtatorcentral()

@@ -9,8 +9,8 @@ namespace Goldstandard
         public static void liverGoldStandard()
         {
             Liver_2_mart_export_liver();
-            mart_export_liver_2_all_gene_disease_pmid_associations();
-            mart_export_liver_2_gene2pubtatorcentral();
+           // mart_export_liver_2_all_gene_disease_pmid_associations();
+            //mart_export_liver_2_gene2pubtatorcentral();
         }
 
         public static void mart_export_liver_2_gene2pubtatorcentral()

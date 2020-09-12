@@ -8,12 +8,12 @@ public class DiseaseXMLFormatter extends XMLFormatter<Disease> {
 
     @Override
     public Element createRootElement(Document doc) {
-        return doc.createElement("diseases");
+        return doc.createElement("diseaseAssociations");
     }
 
     @Override
     public Element createElementFromRecord(Disease record, Document doc) {
-        Element disease = doc.createElement("disease");
+        Element disease = doc.createElement("diseaseAssociation");
 
         disease.appendChild(createTextElement("diseaseId", record.getDiseaseId(), doc));
 
