@@ -1,0 +1,49 @@
+Regression Classifiers:
+- K-NN for Regression
+- Linear Regression
+- Ridge Regression
+- Lasso Regression
+- Isotonic Regression
+- Support Vector Regression
+- Local Regression
+- Regression Trees
+- Model Trees
+- ANN for Regression
+
+Weka Regression Classifiers:
+- GeneralRegression
+- GaussianProcesses
+- DecisionStump - Regression based on mean-squared error - boosting algorithm
+- LMTNode - Logistic model tree structure
+- LMT - Logistic model trees
+- LinearRegression - Linear Regression - Able to deal with weighted instances
+- Logistic - multinomial logistic regression model
+- LWL - Locally weighted learning - Regression using linear regression
+
+- M5Base - M5 Model trees and rules
+- M5P - Base routines for generating M5 Model trees and rules
+- M5Rules - Generates a decision list for regression problems using separate-and-conquer
+
+- SGD - Stochastic gradient descent for learning regression
+// - SGDText - Stochastic gradient descent for learning a linear binary class SVM or binary class logistic regression on text data
+
+//- SimpleLinearRegression - Learning a simple linear regression model - Only deal with numeric attributes
+
+//- SimpleLogistic - Building linear logistic regression models - Regression functions as base learners is used for fitting the logistic models
+
+//- SMOreg - Support vector machine for regression
+
+- TreeModel
+
+- REPTree - Decision/regression tree using information gain/variance and prunes it using reduced-error pruning (with backfitting)
+- Regression
+- RandomTree - Constructing a tree that considers K randomly chosen attributes at each node
+- PreConstructedLinearModel
+
+Weka Ensemble Regression Classifiers:
+- AdditiveRegression
+- Bagging
+- LogisticBase
+- LogitBoost
+- Stacking
+

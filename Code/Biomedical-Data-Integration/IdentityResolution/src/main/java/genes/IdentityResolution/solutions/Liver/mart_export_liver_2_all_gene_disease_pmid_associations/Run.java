@@ -7,5 +7,6 @@ public class Run {
         LR_Jaccard_StandardRecordBlocker.main(args);
         LR_Levenshtein_StandardRecordBlocker.main(args);
         LR_SorensenDice_StandardRecordBlocker.main(args);
+        ML_SimpleLogistic_StandardRecordBlocker.main(args);
     }
 }
