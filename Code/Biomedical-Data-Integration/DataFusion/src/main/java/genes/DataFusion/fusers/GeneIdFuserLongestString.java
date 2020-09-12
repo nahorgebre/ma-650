@@ -23,20 +23,20 @@ public class GeneIdFuserLongestString extends AttributeValueFuser<String, Gene, 
         FusedValue<String, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 
         // set the value for the fused record
-        fusedRecord.setGeneId(fused.getValue());
+        fusedRecord.setEnsemblId(fused.getValue());
 
         // add provenance info
-        fusedRecord.setAttributeProvenance(Gene.GENEID, fused.getOriginalIds());
+        fusedRecord.setAttributeProvenance(Gene.ENSEMBLID, fused.getOriginalIds());
     }
 
     @Override
     public boolean hasValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
-        return record.hasValue(Gene.GENEID);
+        return record.hasValue(Gene.ENSEMBLID);
     }
 
     @Override
     public String getValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
-        return record.getGeneId();
+        return record.getEnsemblId();
     }
 
 }

@@ -9,9 +9,9 @@ public class DiseaseXMLReader extends XMLMatchableReader<Disease, Attribute> {
 
     @Override
     public Disease createModelFromElement(Node node, String provenanceInfo) {
-        String id = getValueFromChildElement(node, "id");
+        String recordId = getValueFromChildElement(node, "recordId");
 
-        Disease disease = new Disease(id, provenanceInfo);
+        Disease disease = new Disease(recordId, provenanceInfo);
 
         disease.setDiseaseIdUMLS(getValueFromChildElement(node, "diseaseIdUMLS"));
 

@@ -18,13 +18,13 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
     public Element createElementFromRecord(Gene record, Document doc) {
         Element gene = doc.createElement("gene");
 
-        gene.appendChild(createTextElement("id",
+        gene.appendChild(createTextElement("recordId",
                 record.getIdentifier(),
                 doc));
 
-        gene.appendChild(createTextElementWithProvenance("geneId",
-                record.getGeneId(),
-                record.getMergedAttributeProvenance(Gene.GENEID), doc));
+        gene.appendChild(createTextElementWithProvenance("ensemblId",
+                record.getEnsemblId(),
+                record.getMergedAttributeProvenance(Gene.ENSEMBLID), doc));
 
         gene.appendChild(createTextElementWithProvenance("geneName",
                 record.getGeneName(),
@@ -38,6 +38,10 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
                 record.getDisagreement(),
                 record.getMergedAttributeProvenance(Gene.DISAGREEMENT), doc));
 
+        gene.appendChild(createTextElementWithProvenance("probEqualOrthoAdj",
+                record.getProbEqualOrthoAdj(),
+                record.getMergedAttributeProvenance(Gene.PROBEQUALORTHOADJ), doc));
+
         gene.appendChild(createTextElementWithProvenance("call",
                 record.getCall(),
                 record.getMergedAttributeProvenance(Gene.CALL), doc));
@@ -45,14 +49,6 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
         gene.appendChild(createTextElementWithProvenance("ncbiId",
                 record.getNcbiId(),
                 record.getMergedAttributeProvenance(Gene.NCBIID), doc));
-
-        gene.appendChild(createTextElementWithProvenance("dsi",
-                record.getDsi(),
-                record.getMergedAttributeProvenance(Gene.DSI), doc));
-
-        gene.appendChild(createTextElementWithProvenance("dpi",
-                record.getDpi(),
-                record.getMergedAttributeProvenance(Gene.DPI), doc));
 
         gene.appendChild(createDiseasesElement(record, doc));
 
@@ -68,9 +64,9 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
     protected Element createDiseasesElement(Gene record, Document doc) {
         Element diseaseRoot = diseaseFormatter.createRootElement(doc);
         diseaseRoot.setAttribute("provenance",
-                record.getMergedAttributeProvenance(Gene.DISEASES));
+                record.getMergedAttributeProvenance(Gene.DISEASEASSOCIATIONS));
 
-        for (Disease a : record.getDiseases()) {
+        for (Disease a : record.getDiseaseAssociations()) {
             diseaseRoot.appendChild(diseaseFormatter.createElementFromRecord(a, doc));
         }
 

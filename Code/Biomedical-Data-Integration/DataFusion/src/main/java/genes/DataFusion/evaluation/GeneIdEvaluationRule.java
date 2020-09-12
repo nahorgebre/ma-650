@@ -14,7 +14,7 @@ public class GeneIdEvaluationRule extends EvaluationRule<Gene, Attribute> {
 
     @Override
     public boolean isEqual(Gene record1, Gene record2, Attribute schemaElement) {
-        return sim.calculate(record1.getGeneId(), record2.getGeneId()) == 1.0;
+        return sim.calculate(record1.getEnsemblId(), record2.getEnsemblId()) == 1.0;
     }
 
     @Override

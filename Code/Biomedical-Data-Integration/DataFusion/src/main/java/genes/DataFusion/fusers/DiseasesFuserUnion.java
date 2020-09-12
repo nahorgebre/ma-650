@@ -21,19 +21,19 @@ public class DiseasesFuserUnion extends AttributeValueFuser<List<Disease>, Gene,
 
     @Override
     public boolean hasValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
-        return record.hasValue(Gene.DISEASES);
+        return record.hasValue(Gene.DISEASEASSOCIATIONS);
     }
 
     @Override
     public List<Disease> getValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
-        return record.getDiseases();
+        return record.getDiseaseAssociations();
     }
 
     @Override
     public void fuse(RecordGroup<Gene, Attribute> group, Gene fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
         FusedValue<List<Disease>, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-        fusedRecord.setDiseases(fused.getValue());
-        fusedRecord.setAttributeProvenance(Gene.DISEASES, fused.getOriginalIds());
+        fusedRecord.setDiseaseAssociations(fused.getValue());
+        fusedRecord.setAttributeProvenance(Gene.DISEASEASSOCIATIONS, fused.getOriginalIds());
     }
 
 }

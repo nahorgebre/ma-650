@@ -23,7 +23,7 @@ public class DisagreementFuserLongestString extends AttributeValueFuser<String, 
         FusedValue<String, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 
         // set the value for the fused record
-        fusedRecord.setGeneId(fused.getValue());
+        fusedRecord.setEnsemblId(fused.getValue());
 
         // add provenance info
         fusedRecord.setAttributeProvenance(Gene.DISAGREEMENT, fused.getOriginalIds());

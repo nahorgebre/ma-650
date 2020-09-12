@@ -16,14 +16,14 @@ public class DisaesesEvaluationRule extends EvaluationRule<Gene, Attribute> {
     public boolean isEqual(Gene record1, Gene record2, Attribute schemaElement) {
         Set<String> diseases1 = new HashSet<>();
 
-        for (Disease a : record1.getDiseases()) {
+        for (Disease a : record1.getDiseaseAssociations()) {
             // note: evaluating using the disease's name only suffices for simple lists
             // in your project, you should have disease ids which you use here (and in the identity resolution)
             diseases1.add(a.getDiseaseId());
         }
 
         Set<String> diseases2 = new HashSet<>();
-        for (Disease a : record2.getDiseases()) {
+        for (Disease a : record2.getDiseaseAssociations()) {
             diseases2.add(a.getDiseaseId());
         }
 

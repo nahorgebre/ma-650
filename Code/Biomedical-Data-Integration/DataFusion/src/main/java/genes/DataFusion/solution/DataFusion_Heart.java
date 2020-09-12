@@ -5,7 +5,6 @@ import java.io.File;
 import genes.DataFusion.evaluation.*;
 import genes.DataFusion.fusers.*;
 import genes.DataFusion.model.Gene;
-import genes.DataFusion.model.GeneCSVFormatter;
 import genes.DataFusion.model.GeneXMLFormatter;
 import genes.DataFusion.model.GeneXMLReader;
 import org.apache.logging.log4j.Logger;
@@ -137,7 +136,7 @@ public class DataFusion_Heart {
         strategy.activateDebugReport("data/output/debugResultsDatafusion-heart.csv", 1000, gs);
 
         // add attribute fusers
-        strategy.addAttributeFuser(Gene.GENEID, new GeneIdFuserLongestString(), new GeneIdEvaluationRule());
+        strategy.addAttributeFuser(Gene.ENSEMBLID, new GeneIdFuserLongestString(), new GeneIdEvaluationRule());
         strategy.addAttributeFuser(Gene.GENENAME, new GeneNameFuserLongestString(), new GeneNameEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTION, new GeneDescriptionFuserLongestString(), new GeneDescriptionEvaluationRule());
         strategy.addAttributeFuser(Gene.DISAGREEMENT, new DisagreementFuserLongestString(), new DisagreementEvaluationRule());
@@ -145,7 +144,7 @@ public class DataFusion_Heart {
         strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
         strategy.addAttributeFuser(Gene.DSI, new DsiFuserLongestString(), new DsiEvaluationRule());
         strategy.addAttributeFuser(Gene.DPI, new DpiFuserLongestString(), new DpiEvaluationRule());
-        strategy.addAttributeFuser(Gene.DISEASES, new DiseasesFuserFavourSource(), new DisaesesEvaluationRule());
+        strategy.addAttributeFuser(Gene.DISEASEASSOCIATIONS, new DiseasesFuserFavourSource(), new DisaesesEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Gene, Attribute> engine = new DataFusionEngine<Gene, Attribute>(strategy);

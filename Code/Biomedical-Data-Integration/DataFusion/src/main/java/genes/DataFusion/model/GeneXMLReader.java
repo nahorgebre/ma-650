@@ -19,34 +19,32 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
     protected void initialiseDataset(DataSet<Gene, Attribute> dataset) {
         super.initialiseDataset(dataset);
 
-        dataset.addAttribute(Gene.GENEID);
+        dataset.addAttribute(Gene.ENSEMBLID);
         dataset.addAttribute(Gene.GENENAME);
         dataset.addAttribute(Gene.GENEDESCRIPTION);
         dataset.addAttribute(Gene.DISAGREEMENT);
         dataset.addAttribute(Gene.CALL);
         dataset.addAttribute(Gene.NCBIID);
-        dataset.addAttribute(Gene.DSI);
-        dataset.addAttribute(Gene.DPI);
-        dataset.addAttribute(Gene.DISEASES);
+        dataset.addAttribute(Gene.DISEASEASSOCIATIONS);
     }
 
     @Override
     public Gene createModelFromElement(Node node, String provenanceInfo) {
-        String id = getValueFromChildElement(node, "id");
+        String recordId = getValueFromChildElement(node, "recordId");
 
-        Gene gene = new Gene(id, provenanceInfo);
+        Gene gene = new Gene(recordId, provenanceInfo);
 
-        gene.setGeneId(getValueFromChildElement(node, "geneId"));
+        gene.setEnsemblId(getValueFromChildElement(node, "ensemblId"));
+
         gene.setGeneName(getValueFromChildElement(node, "geneName"));
+
         gene.setGeneDescription(getValueFromChildElement(node, "geneDescription"));
         gene.setDisagreement(getValueFromChildElement(node, "disagreement"));
         gene.setCall(getValueFromChildElement(node, "call"));
         gene.setNcbiId(getValueFromChildElement(node, "ncbiId"));
-        gene.setDsi(getValueFromChildElement(node, "dsi"));
-        gene.setDpi(getValueFromChildElement(node, "dpi"));
 
-        List<Disease> diseases = getObjectListFromChildElement(node, "diseases", "disease", new DiseaseXMLReader(), provenanceInfo);
-        gene.setDiseases(diseases);
+        List<Disease> diseaseAssociations = getObjectListFromChildElement(node, "diseaseAssociations", "diseaseAssociation", new DiseaseXMLReader(), provenanceInfo);
+        gene.setDiseaseAssociations(diseaseAssociations);
 
         return gene;
     }

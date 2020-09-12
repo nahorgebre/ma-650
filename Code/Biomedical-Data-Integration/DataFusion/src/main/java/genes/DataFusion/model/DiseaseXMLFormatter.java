@@ -16,7 +16,6 @@ public class DiseaseXMLFormatter extends XMLFormatter<Disease> {
         Element disease = doc.createElement("diseaseAssociation");
 
         disease.appendChild(createTextElement("diseaseIdUMLS", record.getDiseaseIdUMLS(), doc));
-
         disease.appendChild(createTextElement("diseaseName", record.getDiseaseName(), doc));
         disease.appendChild(createTextElement("diseaseSpecificityIndex", record.getDiseaseSpecificityIndex(), doc));
         disease.appendChild(createTextElement("diseasePleiotropyIndex", record.getDiseasePleiotropyIndex(), doc));
