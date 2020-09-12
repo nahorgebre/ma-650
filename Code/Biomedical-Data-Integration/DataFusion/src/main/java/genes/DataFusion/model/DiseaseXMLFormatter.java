@@ -15,8 +15,21 @@ public class DiseaseXMLFormatter extends XMLFormatter<Disease> {
     public Element createElementFromRecord(Disease record, Document doc) {
         Element disease = doc.createElement("diseaseAssociation");
 
-        disease.appendChild(createTextElement("diseaseId", record.getDiseaseId(), doc));
+        disease.appendChild(createTextElement("diseaseIdUMLS", record.getDiseaseIdUMLS(), doc));
 
+        disease.appendChild(createTextElement("diseaseName", record.getDiseaseName(), doc));
+        disease.appendChild(createTextElement("diseaseSpecificityIndex", record.getDiseaseSpecificityIndex(), doc));
+        disease.appendChild(createTextElement("diseasePleiotropyIndex", record.getDiseasePleiotropyIndex(), doc));
+        disease.appendChild(createTextElement("diseaseTypeDisGeNET", record.getDiseaseTypeDisGeNET(), doc));
+        disease.appendChild(createTextElement("diseaseClassMeSH", record.getDiseaseClassMeSH(), doc));
+        disease.appendChild(createTextElement("diseaseSemanticTypeUMLS", record.getDiseaseSemanticTypeUMLS(), doc));
+        disease.appendChild(createTextElement("associationScore", record.getAssociationScore(), doc));
+        disease.appendChild(createTextElement("evidenceIndex", record.getEvidenceIndex(), doc));
+        disease.appendChild(createTextElement("yearInitialReport", record.getYearInitialReport(), doc));
+        disease.appendChild(createTextElement("yearFinalReport", record.getYearFinalReport(), doc));
+        disease.appendChild(createTextElement("pmId", record.getPmId(), doc));
+        disease.appendChild(createTextElement("source", record.getSource(), doc));
+        
         if(record.getDiseaseName()!=null) {
             disease.appendChild(createTextElement("diseaseName", record.getDiseaseName(), doc));
         }
