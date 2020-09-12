@@ -79,37 +79,43 @@ public class Disease extends AbstractRecord<Attribute> implements Serializable {
         return true;
     }
 
-    public static final Attribute DISEASEID = new Attribute("diseaseId");
+    public static final Attribute DISEASEIDUMLS = new Attribute("diseaseIdUMLS");
     public static final Attribute DISEASENAME = new Attribute("diseaseName");
-    public static final Attribute DISEASETYPE = new Attribute("diseaseType");
-    public static final Attribute DISEASECLASS = new Attribute("diseaseClass");
-    public static final Attribute DISEASESEMANTICTYPE = new Attribute("diseaseSemanticType");
-    public static final Attribute SCORE = new Attribute("score");
-    public static final Attribute EI = new Attribute("ei");
-    public static final Attribute YEARINITIAL = new Attribute("yearInitial");
-    public static final Attribute YEARFINAL = new Attribute("yearFinal");
-    public static final Attribute PMID = new Attribute("pmid");
+    public static final Attribute DISEASESPECIFITYINDEX = new Attribute("diseaseSpecificityIndex");
+    public static final Attribute DISEASEPLEIOTROPYINDEX = new Attribute("diseasePleiotropyIndex");
+    public static final Attribute DISEASETYPEDISGENET = new Attribute("diseaseTypeDisGeNET");
+    public static final Attribute DISEASECLASSMESH = new Attribute("diseaseClassMeSH");
+    public static final Attribute DISEASESEMANTICTYPEUMLS = new Attribute("diseaseSemanticTypeUMLS");
+    public static final Attribute ASSOCIATIONSCORE = new Attribute("associationScore");
+    public static final Attribute EVIDENCEINDEX = new Attribute("evidenceIndex");
+    public static final Attribute YEARINITIALREPORT = new Attribute("yearInitialReport");
+    public static final Attribute YEARFINALREPORT = new Attribute("yearFinalReport");
+    public static final Attribute PMID = new Attribute("pmId");
     public static final Attribute SOURCE = new Attribute("source");
 
     @Override
     public boolean hasValue(Attribute attribute) {
-        if(attribute==DISEASEID)
+        if(attribute==DISEASEIDUMLS)
             return diseaseIdUMLS!=null;
         else if(attribute==DISEASENAME)
             return diseaseName!=null;
-        else if(attribute==DISEASETYPE)
+        else if(attribute==DISEASESPECIFITYINDEX)
+            return diseaseSpecificityIndex!=null;
+        else if(attribute==DISEASEPLEIOTROPYINDEX)
+            return diseasePleiotropyIndex!=null;
+        else if(attribute==DISEASETYPEDISGENET)
             return diseaseTypeDisGeNET!=null;
-        else if(attribute==DISEASECLASS)
+        else if(attribute==DISEASECLASSMESH)
             return diseaseClassMeSH!=null;
-        else if(attribute==DISEASESEMANTICTYPE)
+        else if(attribute==DISEASESEMANTICTYPEUMLS)
             return diseaseSemanticTypeUMLS!=null;
-        else if(attribute==SCORE)
+        else if(attribute==ASSOCIATIONSCORE)
             return associationScore!=null;
-        else if(attribute==EI)
+        else if(attribute==EVIDENCEINDEX)
             return evidenceIndex!=null;
-        else if(attribute==YEARINITIAL)
+        else if(attribute==YEARINITIALREPORT)
             return yearInitialReport!=null;
-        else if(attribute==YEARFINAL)
+        else if(attribute==YEARFINALREPORT)
             return yearFinalReport!=null;
         else if(attribute==PMID)
             return pmId!=null;

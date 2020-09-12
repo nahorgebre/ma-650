@@ -34,36 +34,44 @@ public class DiseaseXMLFormatter extends XMLFormatter<Disease> {
             disease.appendChild(createTextElement("diseaseName", record.getDiseaseName(), doc));
         }
 
-        if(record.getDiseaseType()!=null) {
-            disease.appendChild(createTextElement("diseaseType", record.getDiseaseType(), doc));
+        if(record.getDiseaseSpecificityIndex()!=null) {
+            disease.appendChild(createTextElement("diseaseSpecificityIndex", record.getDiseaseSpecificityIndex(), doc));
         }
 
-        if(record.getDiseaseClass()!=null) {
-            disease.appendChild(createTextElement("diseaseClass", record.getDiseaseClass(), doc));
+        if(record.getDiseasePleiotropyIndex()!=null) {
+            disease.appendChild(createTextElement("diseasePleiotropyIndex", record.getDiseasePleiotropyIndex(), doc));
         }
 
-        if(record.getDiseaseSemanticType()!=null) {
-            disease.appendChild(createTextElement("diseaseSemanticType", record.getDiseaseSemanticType(), doc));
+        if(record.getDiseaseTypeDisGeNET()!=null) {
+            disease.appendChild(createTextElement("diseaseTypeDisGeNET", record.getDiseaseTypeDisGeNET(), doc));
         }
 
-        if(record.getScore()!=null) {
-            disease.appendChild(createTextElement("score", record.getScore(), doc));
+        if(record.getDiseaseClassMeSH()!=null) {
+            disease.appendChild(createTextElement("diseaseClassMeSH", record.getDiseaseClassMeSH(), doc));
         }
 
-        if(record.getEi()!=null) {
-            disease.appendChild(createTextElement("ei", record.getEi(), doc));
+        if(record.getDiseaseSemanticTypeUMLS()!=null) {
+            disease.appendChild(createTextElement("diseaseSemanticTypeUMLS", record.getDiseaseSemanticTypeUMLS(), doc));
         }
 
-        if(record.getYearInitial()!=null) {
-            disease.appendChild(createTextElement("yearInitial", record.getYearInitial(), doc));
+        if(record.getAssociationScore()!=null) {
+            disease.appendChild(createTextElement("associationScore", record.getAssociationScore(), doc));
         }
 
-        if(record.getYearFinal()!=null) {
-            disease.appendChild(createTextElement("yearFinal", record.getYearFinal(), doc));
+        if(record.getEvidenceIndex()!=null) {
+            disease.appendChild(createTextElement("evidenceIndex", record.getEvidenceIndex(), doc));
         }
 
-        if(record.getPmid()!=null) {
-            disease.appendChild(createTextElement("pmid", record.getPmid(), doc));
+        if(record.getYearInitialReport()!=null) {
+            disease.appendChild(createTextElement("yearInitialReport", record.getYearInitialReport(), doc));
+        }
+
+        if(record.getYearFinalReport()!=null) {
+            disease.appendChild(createTextElement("yearFinalReport", record.getYearFinalReport(), doc));
+        }
+
+        if(record.getPmId()!=null) {
+            disease.appendChild(createTextElement("pmId", record.getPmId(), doc));
         }
 
         if(record.getSource()!=null) {

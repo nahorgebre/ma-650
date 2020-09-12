@@ -13,16 +13,19 @@ public class DiseaseXMLReader extends XMLMatchableReader<Disease, Attribute> {
 
         Disease disease = new Disease(id, provenanceInfo);
 
-        disease.setDiseaseId(getValueFromChildElement(node, "diseaseId"));
+        disease.setDiseaseIdUMLS(getValueFromChildElement(node, "diseaseIdUMLS"));
+
         disease.setDiseaseName(getValueFromChildElement(node, "diseaseName"));
-        disease.setDiseaseType(getValueFromChildElement(node, "diseaseType"));
-        disease.setDiseaseClass(getValueFromChildElement(node, "diseaseClass"));
-        disease.setDiseaseSemanticType(getValueFromChildElement(node, "diseaseSemanticType"));
-        disease.setScore(getValueFromChildElement(node, "score"));
-        disease.setEi(getValueFromChildElement(node, "ei"));
-        disease.setYearInitial(getValueFromChildElement(node, "yearInitial"));
-        disease.setYearFinal(getValueFromChildElement(node, "yearFinal"));
-        disease.setPmid(getValueFromChildElement(node, "pmid"));
+        disease.setDiseaseSpecificityIndex(getValueFromChildElement(node, "diseaseSpecificityIndex"));
+        disease.setDiseasePleiotropyIndex(getValueFromChildElement(node, "diseasePleiotropyIndex"));
+        disease.setDiseaseTypeDisGeNET(getValueFromChildElement(node, "diseaseTypeDisGeNET"));
+        disease.setDiseaseClassMeSH(getValueFromChildElement(node, "diseaseClassMeSH"));
+        disease.setDiseaseSemanticTypeUMLS(getValueFromChildElement(node, "diseaseSemanticTypeUMLS"));
+        disease.setAssociationScore(getValueFromChildElement(node, "associationScore"));
+        disease.setEvidenceIndex(getValueFromChildElement(node, "evidenceIndex"));
+        disease.setYearInitialReport(getValueFromChildElement(node, "yearInitialReport"));
+        disease.setYearFinalReport(getValueFromChildElement(node, "yearFinalReport"));
+        disease.setPmId(getValueFromChildElement(node, "pmId"));
         disease.setSource(getValueFromChildElement(node, "source"));
 
         return disease;
