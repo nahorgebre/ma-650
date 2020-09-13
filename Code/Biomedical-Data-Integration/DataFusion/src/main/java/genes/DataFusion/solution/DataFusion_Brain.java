@@ -24,52 +24,28 @@ public class DataFusion_Brain {
     private static final Logger logger = WinterLogManager.activateLogger("trace");
 
     public static void main( String[] args ) throws Exception {
+        fusedKaessmannBrain();
+    }
 
-        // Load the Data into FusibleDataSet
+    public static void fusedKaessmannBrain() {
+
+        // load the data into FusibleDataSet
         System.out.println("*\n*\tLoading datasets\n*");
-
-        FusibleDataSet<Gene, Attribute> ds1 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Brain/Brain_dt.xml"), "/genes/gene", ds1);
-        ds1.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> ds2 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Brain/mart_export_brain_dt.xml"), "/genes/gene", ds2);
-        ds2.printDataSetDensityReport();
-
-        // gene disease associations - 2, 3, 6, 7, 8, 11, 13, 15, 19, 20, 21, 22, 23, 24, 25
-        FusibleDataSet<Gene, Attribute> gda2 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_2.xml"), "/genes/gene", gda2);
-        gda2.printDataSetDensityReport();
+        FusibleDataSet<Gene, Attribute> Brain = Datasets.Brain();
+        FusibleDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
         // load correspondences
         System.out.println("*\n*\tLoading correspondences\n*");
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/Brain_2_mart_export_brain/Brain_2_mart_export_brain_correspondences.csv"),ds1, ds2);
-
-        //2, 3, 6, 7, 8, 11, 13, 15, 19, 20, 21, 22, 23, 24, 25
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_2.csv"),ds2, gda2);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_3.csv"),ds2, gda3);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_6.csv"),ds2, gda6);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_7.csv"),ds2, gda7);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_8.csv"),ds2, gda8);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_11.csv"),ds2, gda11);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_13.csv"),ds2, gda13);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_15.csv"),ds2, gda15);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_19.csv"),ds2, gda19);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_20.csv"),ds2, gda20);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_21.csv"),ds2, gda21);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_22.csv"),ds2, gda22);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_23.csv"),ds2, gda23);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_24.csv"),ds2, gda24);
-        correspondences.loadCorrespondences(new File("data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/mart_export_brain_2_all_gene_disease_pmid_associations_correspondences_25.csv"),ds2, gda25);
+        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
 
         // write group size distribution
         correspondences.printGroupSizeDistribution();
 
         // load the gold standard
-        DataSet<Gene, Attribute> gs = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/goldstandard/brain-goldstandard.xml"), "/genes/gene", gs);
-
+        //DataSet<Gene, Attribute> gs = new FusibleHashedDataSet<>();
+        //new GeneXMLReader().loadFromXML(new File("data/goldstandard/brain-goldstandard.xml"), "/genes/gene", gs);
+             
         // define the fusion strategy
         DataFusionStrategy<Gene, Attribute> strategy = new DataFusionStrategy<>(new GeneXMLReader());
 
@@ -99,15 +75,31 @@ public class DataFusion_Brain {
         fusedDataSet.printDataSetDensityReport();
 
         // write the result
-        //new GeneCSVFormatter().writeCSV(new File("data/output/fused-heart.xml"),);
-        new GeneXMLFormatter().writeXML(new File("data/output/fused-brain.xml"), fusedDataSet);
+        new GeneXMLFormatter().writeXML(new File("data/output/fused-kaessmann-brain.xml"), fusedDataSet);
 
         // evaluate
-        System.out.println("*\n*\tEvaluating results\n*");
-        DataFusionEvaluator<Gene, Attribute> evaluator = new DataFusionEvaluator<>(
-                strategy, new RecordGroupFactory<Gene, Attribute>());
-        double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
+        //System.out.println("*\n*\tEvaluating results\n*");
+        //DataFusionEvaluator<Gene, Attribute> evaluator = new DataFusionEvaluator<>(
+        //        strategy, new RecordGroupFactory<Gene, Attribute>());
+        //double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
 
-        logger.info(String.format("Accuracy: %.2f", accuracy));
+        //logger.info(String.format("Accuracy: %.2f", accuracy));
+    }
+
+    public static void fusedKaessmannPubTatorBrain() {
+        // load the data into FusibleDataSet
+        System.out.println("*\n*\tLoading datasets\n*");
+        FusibleDataSet<Gene, Attribute> Brain = Datasets.Brain();
+        FusibleDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        FusibleDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
+    }
+
+    public static void fusedBrain() {
+        // load the data into FusibleDataSet
+        System.out.println("*\n*\tLoading datasets\n*");
+        FusibleDataSet<Gene, Attribute> Brain = Datasets.Brain();
+        FusibleDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
+        FusibleDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
     }
 }
