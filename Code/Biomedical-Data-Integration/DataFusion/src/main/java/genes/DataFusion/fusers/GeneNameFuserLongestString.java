@@ -26,12 +26,12 @@ public class GeneNameFuserLongestString extends AttributeValueFuser<String, Gene
         fusedRecord.setGeneName(fused.getValue());
 
         // add provenance info
-        fusedRecord.setAttributeProvenance(Gene.GENENAME, fused.getOriginalIds());
+        fusedRecord.setAttributeProvenance(Gene.GENENAMES, fused.getOriginalIds());
     }
 
     @Override
     public boolean hasValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
-        return record.hasValue(Gene.GENENAME);
+        return record.hasValue(Gene.GENENAMES);
     }
 
     @Override

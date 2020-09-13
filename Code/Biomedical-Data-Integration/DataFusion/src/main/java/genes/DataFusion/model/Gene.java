@@ -17,6 +17,10 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
 
     public Gene(String identifier, String provenance) {
         super(identifier, provenance);
+
+        geneNames = new LinkedList<>();
+        publicationMentions = new LinkedList<>();
+        patentMentions = new LinkedList<>();
         diseaseAssociations = new LinkedList<>();
     }
 
@@ -28,31 +32,34 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     private String call;
     private String ncbiId;
 
+    private List<GeneName> geneNames;
+    private List<Publication> publicationMentions;
+    private List<Patent> patentMentions;
     private List<Disease> diseaseAssociations;
 
     // Getter
     public String getEnsemblId() { return ensemblId; }
-    public String getGeneName() { return geneName; }
     public String getGeneDescription() { return geneDescription; }
     public String getDisagreement() { return disagreement; }
     public String getProbEqualOrthoAdj() { return probEqualOrthoAdj; }
     public String getCall() { return call; }
     public String getNcbiId() { return ncbiId; }
-    public List<Disease> getDiseaseAssociations() {
-        return diseaseAssociations;
-    }
+    public List<GeneName> getGeneNames() { return geneNames; }
+    public List<Publication> getPublicationMentions() { return publicationMentions; }
+    public List<Patent> getPatentMentions() { return publicationMentions; }
+    public List<Disease> getDiseaseAssociations() { return diseaseAssociations; }
 
     // Setter
     public void setEnsemblId(String ensemblId) { this.ensemblId = ensemblId; }
-    public void setGeneName(String geneName) { this.geneName = geneName; }
     public void setGeneDescription(String geneDescription) { this.geneDescription = geneDescription; }
     public void setDisagreement(String disagreement) { this.disagreement = disagreement; }
     public void setProbEqualOrthoAdj(String probEqualOrthoAdj) { this.probEqualOrthoAdj = probEqualOrthoAdj; }
     public void setCall(String call) { this.call = call; }
     public void setNcbiId(String ncbiId) { this.ncbiId = ncbiId; }
-    public void setDiseaseAssociations(List<Disease> diseaseAssociations) {
-        this.diseaseAssociations = diseaseAssociations;
-    }
+    public void setGeneNames(List<GeneName> geneNames) { this.geneNames = geneNames; }
+    public void setPublicationMentions(List<Publication> publicationMentions) { this.publicationMentions = publicationMentions; }
+    public void setPatentMentions(List<Patent> patentMentions) { this.patentMentions = patentMentions; }
+    public void setDiseaseAssociations(List<Disease> diseaseAssociations) { this.diseaseAssociations = diseaseAssociations; }
 
     private Map<Attribute, Collection<String>> provenance = new HashMap<>();
     private Collection<String> recordProvenance;
@@ -85,20 +92,21 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public static final Attribute ENSEMBLID = new Attribute("ensemblId");
-    public static final Attribute GENENAME = new Attribute("geneName");
     public static final Attribute GENEDESCRIPTION = new Attribute("geneDescription");
     public static final Attribute DISAGREEMENT = new Attribute("disagreement");
     public static final Attribute PROBEQUALORTHOADJ = new Attribute("probEqualOrthoAdj");
     public static final Attribute CALL = new Attribute("call");
     public static final Attribute NCBIID = new Attribute("ncbiId");
+
+    public static final Attribute GENENAMES = new Attribute("geneNames");
+    public static final Attribute PUBLICATIONMENTIONS = new Attribute("publicationMentions");
+    public static final Attribute PATENTMENTIONS = new Attribute("patentMentions");
     public static final Attribute DISEASEASSOCIATIONS = new Attribute("diseaseAssociations");
 
     @Override
     public boolean hasValue(Attribute attribute) {
         if(attribute== ENSEMBLID)
             return getEnsemblId() != null && !getEnsemblId().isEmpty();
-        else if(attribute==GENENAME)
-            return getGeneName() != null && !getGeneName().isEmpty();
         else if(attribute==GENEDESCRIPTION)
             return getGeneDescription() != null && !getGeneDescription().isEmpty();
         else if(attribute==DISAGREEMENT)
@@ -109,6 +117,12 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
             return getCall() != null && !getCall().isEmpty();
         else if(attribute==NCBIID)
             return getNcbiId() != null && !getNcbiId().isEmpty();
+        else if(attribute== GENENAMES)
+            return getGeneNames() != null && !getGeneNames().isEmpty();
+        else if(attribute== PUBLICATIONMENTIONS)
+            return getPublicationMentions() != null && !getPublicationMentions().isEmpty();
+        else if(attribute== PATENTMENTIONS)
+            return getPatentMentions() != null && !getPatentMentions().isEmpty();
         else if(attribute== DISEASEASSOCIATIONS)
             return getDiseaseAssociations() != null && getDiseaseAssociations().size() > 0;
         else

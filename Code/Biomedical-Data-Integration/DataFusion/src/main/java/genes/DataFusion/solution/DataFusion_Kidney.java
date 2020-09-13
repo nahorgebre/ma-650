@@ -140,7 +140,7 @@ public class DataFusion_Kidney {
 
         // add attribute fusers
         strategy.addAttributeFuser(Gene.ENSEMBLID, new GeneIdFuserLongestString(), new GeneIdEvaluationRule());
-        strategy.addAttributeFuser(Gene.GENENAME, new GeneNameFuserLongestString(), new GeneNameEvaluationRule());
+        strategy.addAttributeFuser(Gene.GENENAMES, new GeneNameFuserLongestString(), new GeneNameEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTION, new GeneDescriptionFuserLongestString(), new GeneDescriptionEvaluationRule());
         strategy.addAttributeFuser(Gene.DISAGREEMENT, new DisagreementFuserLongestString(), new DisagreementEvaluationRule());
         strategy.addAttributeFuser(Gene.CALL, new CallFuserLongestString(), new CallEvaluationRule());

@@ -41,62 +41,6 @@ public class DataFusion_Brain {
         new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_2.xml"), "/genes/gene", gda2);
         gda2.printDataSetDensityReport();
 
-        FusibleDataSet<Gene, Attribute> gda3 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_3.xml"), "/genes/gene", gda3);
-        gda3.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda6 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_6.xml"), "/genes/gene", gda6);
-        gda6.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda7 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_7.xml"), "/genes/gene", gda7);
-        gda7.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda8 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_8.xml"), "/genes/gene", gda8);
-        gda8.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda11 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_11.xml"), "/genes/gene", gda11);
-        gda11.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda13 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_13.xml"), "/genes/gene", gda13);
-        gda13.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda15 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_15.xml"), "/genes/gene", gda15);
-        gda15.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda19 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_19.xml"), "/genes/gene", gda19);
-        gda19.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda20 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_20.xml"), "/genes/gene", gda20);
-        gda20.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda21 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_21.xml"), "/genes/gene", gda21);
-        gda21.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda22 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_22.xml"), "/genes/gene", gda22);
-        gda22.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda23 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_23.xml"), "/genes/gene", gda23);
-        gda23.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda24 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_24.xml"), "/genes/gene", gda24);
-        gda24.printDataSetDensityReport();
-
-        FusibleDataSet<Gene, Attribute> gda25 = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations_dt_25.xml"), "/genes/gene", gda25);
-        gda25.printDataSetDensityReport();
-
         // load correspondences
         System.out.println("*\n*\tLoading correspondences\n*");
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
@@ -134,7 +78,7 @@ public class DataFusion_Brain {
 
         // add attribute fusers
         strategy.addAttributeFuser(Gene.ENSEMBLID, new GeneIdFuserLongestString(), new GeneIdEvaluationRule());
-        strategy.addAttributeFuser(Gene.GENENAME, new GeneNameFuserLongestString(), new GeneNameEvaluationRule());
+        strategy.addAttributeFuser(Gene.GENENAMES, new GeneNameFuserLongestString(), new GeneNameEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTION, new GeneDescriptionFuserLongestString(), new GeneDescriptionEvaluationRule());
         strategy.addAttributeFuser(Gene.DISAGREEMENT, new DisagreementFuserLongestString(), new DisagreementEvaluationRule());
         strategy.addAttributeFuser(Gene.CALL, new CallFuserLongestString(), new CallEvaluationRule());

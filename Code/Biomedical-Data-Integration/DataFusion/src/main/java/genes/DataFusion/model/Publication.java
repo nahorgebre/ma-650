@@ -48,4 +48,20 @@ public class Publication extends AbstractRecord<Attribute> implements Serializab
 
     public static final Attribute PMID = new Attribute("pmId");
     public static final Attribute RESSOURCE = new Attribute("ressource");
+
+    @Override
+    public boolean hasValue(Attribute attribute) {
+        if(attribute==PMID)
+            return pmId!=null;
+        else if(attribute==RESSOURCE)
+            return ressource!=null;
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[Publication: %s / %s /]",
+            getPmId(), getRessource());
+    }
+
 }

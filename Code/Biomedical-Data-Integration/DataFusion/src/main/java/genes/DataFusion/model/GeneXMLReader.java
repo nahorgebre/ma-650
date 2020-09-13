@@ -20,7 +20,7 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
         super.initialiseDataset(dataset);
 
         dataset.addAttribute(Gene.ENSEMBLID);
-        dataset.addAttribute(Gene.GENENAME);
+        dataset.addAttribute(Gene.GENENAMES);
         dataset.addAttribute(Gene.GENEDESCRIPTION);
         dataset.addAttribute(Gene.DISAGREEMENT);
         dataset.addAttribute(Gene.CALL);
