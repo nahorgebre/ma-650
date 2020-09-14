@@ -73,6 +73,7 @@ public class DataFusion_Heart {
         fusedDataSet.printDataSetDensityReport();
         
         // write the result
+        new File("data/output/").mkdirs();
         new GeneXMLFormatter().writeXML(new File("data/output/fused-kaessmann-heart.xml"), fusedDataSet);
         
         // evaluate

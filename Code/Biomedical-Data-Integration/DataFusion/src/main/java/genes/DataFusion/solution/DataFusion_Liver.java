@@ -72,6 +72,7 @@ public class DataFusion_Liver {
         fusedDataSet.printDataSetDensityReport();
         
         // write the result
+        new File("data/output/").mkdirs();
         new GeneXMLFormatter().writeXML(new File("data/output/fused-kaessmann-liver.xml"), fusedDataSet);
         
         // evaluate
