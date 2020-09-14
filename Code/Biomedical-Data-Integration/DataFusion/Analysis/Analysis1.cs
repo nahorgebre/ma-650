@@ -54,7 +54,7 @@ namespace Analysis
                     analysis1.UniqueGene = brainGene.ensemblId;
                     analysis1.Brain = getExpression(brainGene.call);
 
-                    foreach (Gene kidneyGene in Genes.getGenes(kidneyFileName))
+                    foreach (Gene kidneyGene in Genes.getGenes(kidneyInput))
                     {
                         if (kidneyGene.ensemblId.Equals(analysis1.UniqueGene))
                         {
@@ -62,7 +62,7 @@ namespace Analysis
                         }
                     }
 
-                    foreach (Gene liverGene in Genes.getGenes(liverFileName))
+                    foreach (Gene liverGene in Genes.getGenes(liverInput))
                     {
                         if (liverGene.ensemblId.Equals(analysis1.UniqueGene))
                         {
@@ -70,7 +70,7 @@ namespace Analysis
                         }
                     }
 
-                    foreach (Gene testisGene in Genes.getGenes(testisFileName))
+                    foreach (Gene testisGene in Genes.getGenes(testisInput))
                     {
                         if (testisGene.ensemblId.Equals(analysis1.UniqueGene))
                         {
