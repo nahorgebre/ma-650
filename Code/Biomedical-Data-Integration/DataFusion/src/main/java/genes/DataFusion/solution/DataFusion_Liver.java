@@ -38,7 +38,7 @@ public class DataFusion_Liver {
         // load correspondences
         System.out.println("*\n*\tLoading correspondences\n*");
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
-        correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
+        correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), mart_export_liver, Liver);
         
         // write group size distribution
         correspondences.printGroupSizeDistribution();
