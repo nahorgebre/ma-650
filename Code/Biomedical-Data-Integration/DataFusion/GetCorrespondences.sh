@@ -26,5 +26,5 @@ mkdir -p data/correspondences/Liver/mart_export_liver_2_all_gene_disease_pmid_as
 
 # Testis
 mkdir -p data/correspondences/Testis/mart_export_testis_2_all_gene_disease_pmid_associations
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-fusion/correspondences/Testis/Testis_2_mart_export_testis/correspondences.csv -O data/correspondences/Testis/Testis_2_mart_export_testis/correspondences.csv
 mkdir -p data/correspondences/Testis/Testis_2_mart_export_testis
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-fusion/correspondences/Testis/Testis_2_mart_export_testis/correspondences.csv -O data/correspondences/Testis/Testis_2_mart_export_testis/correspondences.csv

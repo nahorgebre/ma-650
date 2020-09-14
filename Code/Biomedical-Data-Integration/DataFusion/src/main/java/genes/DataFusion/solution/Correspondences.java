@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions;
+package genes.DataFusion.solution;
 
 public class Correspondences {
 
