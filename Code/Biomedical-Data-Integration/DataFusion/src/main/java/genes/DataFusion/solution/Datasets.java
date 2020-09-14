@@ -3,6 +3,8 @@ package genes.DataFusion.solution;
 import java.io.File;
 
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
+import de.uni_mannheim.informatik.dws.winter.model.FusibleDataSet;
+import de.uni_mannheim.informatik.dws.winter.model.FusibleHashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 import genes.DataFusion.model.Gene;
