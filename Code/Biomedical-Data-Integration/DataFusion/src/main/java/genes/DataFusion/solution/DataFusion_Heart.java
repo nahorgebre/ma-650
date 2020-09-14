@@ -28,7 +28,7 @@ public class DataFusion_Heart {
         fusedKaessmannHeart();
     }
 
-    public static void fusedKaessmannHeart() {
+    public static void fusedKaessmannHeart() throws Exception {
         
         // load the data into FusibleDataSet
         System.out.println("*\n*\tLoading datasets\n*");
@@ -44,8 +44,8 @@ public class DataFusion_Heart {
         correspondences.printGroupSizeDistribution();
         
         // load the gold standard
-        //DataSet<Gene, Attribute> gs = new FusibleHashedDataSet<>();
-        //new GeneXMLReader().loadFromXML(new File("data/goldstandard/brain-goldstandard.xml"), "/genes/gene", gs);
+        DataSet<Gene, Attribute> gs = new FusibleHashedDataSet<>();
+        new GeneXMLReader().loadFromXML(new File("data/goldstandard/brain-goldstandard.xml"), "/genes/gene", gs);
                      
         // define the fusion strategy
         DataFusionStrategy<Gene, Attribute> strategy = new DataFusionStrategy<>(new GeneXMLReader());
@@ -55,13 +55,10 @@ public class DataFusion_Heart {
         
         // add attribute fusers
         strategy.addAttributeFuser(Gene.ENSEMBLID, new GeneIdFuserLongestString(), new GeneIdEvaluationRule());
-        strategy.addAttributeFuser(Gene.GENENAMES, new GeneNameFuserLongestString(), new GeneNameEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTION, new GeneDescriptionFuserLongestString(), new GeneDescriptionEvaluationRule());
         strategy.addAttributeFuser(Gene.DISAGREEMENT, new DisagreementFuserLongestString(), new DisagreementEvaluationRule());
         strategy.addAttributeFuser(Gene.CALL, new CallFuserLongestString(), new CallEvaluationRule());
         strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
-        strategy.addAttributeFuser(Gene.DSI, new DsiFuserLongestString(), new DsiEvaluationRule());
-        strategy.addAttributeFuser(Gene.DPI, new DpiFuserLongestString(), new DpiEvaluationRule());
         strategy.addAttributeFuser(Gene.DISEASEASSOCIATIONS, new DiseasesFuserUnion(), new DisaesesEvaluationRule());
         
         // create the fusion engine
@@ -79,12 +76,12 @@ public class DataFusion_Heart {
         new GeneXMLFormatter().writeXML(new File("data/output/fused-kaessmann-heart.xml"), fusedDataSet);
         
         // evaluate
-        //System.out.println("*\n*\tEvaluating results\n*");
-        //DataFusionEvaluator<Gene, Attribute> evaluator = new DataFusionEvaluator<>(
-        //        strategy, new RecordGroupFactory<Gene, Attribute>());
-        //double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
+        System.out.println("*\n*\tEvaluating results\n*");
+        DataFusionEvaluator<Gene, Attribute> evaluator = new DataFusionEvaluator<>(
+                strategy, new RecordGroupFactory<Gene, Attribute>());
+        double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
         
-        //logger.info(String.format("Accuracy: %.2f", accuracy));
+        logger.info(String.format("Accuracy: %.2f", accuracy));
 
     }
 }

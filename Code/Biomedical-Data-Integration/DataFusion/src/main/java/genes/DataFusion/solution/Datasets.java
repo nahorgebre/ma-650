@@ -9,6 +9,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 import genes.DataFusion.model.Gene;
 import genes.DataFusion.model.GeneNameXMLReader;
+import genes.DataFusion.model.GeneXMLReader;
 
 public class Datasets {
 
