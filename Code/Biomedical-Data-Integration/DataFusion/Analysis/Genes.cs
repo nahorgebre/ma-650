@@ -3,18 +3,6 @@ using System.Xml;
 
 namespace Analysis
 {
-    public class Analysis1
-    {
-        public string UniqueGene;
-        public string Brain;
-        //public string Cerebellum;
-        //public string Heart;
-        public string Liver;
-        public string Kidney;
-        public string Testis;
-        public string OverallExpression;
-    }
-
     public class Genes
     {
         public static List<Gene> getGenes(string path)
