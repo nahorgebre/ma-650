@@ -4,6 +4,7 @@ import java.util.List;
 
 import genes.DataFusion.model.Disease;
 import genes.DataFusion.model.Gene;
+
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;

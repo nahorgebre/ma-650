@@ -10,7 +10,8 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
-public class GeneIdFuserLongestString extends AttributeValueFuser<String, Gene, Attribute> {
+public class GeneIdFuserLongestString extends 
+        AttributeValueFuser<String, Gene, Attribute> {
 
     public GeneIdFuserLongestString() {
         super(new LongestString<Gene, Attribute>());
@@ -23,7 +24,8 @@ public class GeneIdFuserLongestString extends AttributeValueFuser<String, Gene, 
         FusedValue<String, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 
         // set the value for the fused record
-        fusedRecord.setEnsemblId(fused.getValue());
+        //fusedRecord.setEnsemblId(fused.getValue());
+        fusedRecord.setEnsemblId(Gene.ENSEMBLID.toString());
 
         // add provenance info
         fusedRecord.setAttributeProvenance(Gene.ENSEMBLID, fused.getOriginalIds());
