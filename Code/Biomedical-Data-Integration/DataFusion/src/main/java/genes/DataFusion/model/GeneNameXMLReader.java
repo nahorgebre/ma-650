@@ -8,14 +8,14 @@ import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 public class GeneNameXMLReader extends XMLMatchableReader<GeneName, Attribute> {
 
     @Override
-    public Disease createModelFromElement(Node node, String provenanceInfo) {
+    public GeneName createModelFromElement(Node node, String provenanceInfo) {
         String recordId = getValueFromChildElement(node, "recordId");
 
-        GeneName geneName = new Disease(recordId, provenanceInfo);
+        GeneName geneName = new GeneName(recordId, provenanceInfo);
 
         geneName.setName(getValueFromChildElement(node, "name"));
 
-        return disease;
+        return geneName;
     }
 
 }

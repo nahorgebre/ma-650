@@ -25,7 +25,6 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     }
 
     private String ensemblId;
-    private String geneName;
     private String geneDescription;
     private String disagreement;
     private String probEqualOrthoAdj;
@@ -46,7 +45,7 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     public String getNcbiId() { return ncbiId; }
     public List<GeneName> getGeneNames() { return geneNames; }
     public List<Publication> getPublicationMentions() { return publicationMentions; }
-    public List<Patent> getPatentMentions() { return publicationMentions; }
+    public List<Patent> getPatentMentions() { return patentMentions; }
     public List<Disease> getDiseaseAssociations() { return diseaseAssociations; }
 
     // Setter

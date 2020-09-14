@@ -20,11 +20,15 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
         super.initialiseDataset(dataset);
 
         dataset.addAttribute(Gene.ENSEMBLID);
-        dataset.addAttribute(Gene.GENENAMES);
         dataset.addAttribute(Gene.GENEDESCRIPTION);
         dataset.addAttribute(Gene.DISAGREEMENT);
+        dataset.addAttribute(Gene.PROBEQUALORTHOADJ);
         dataset.addAttribute(Gene.CALL);
         dataset.addAttribute(Gene.NCBIID);
+
+        dataset.addAttribute(Gene.GENENAMES);
+        dataset.addAttribute(Gene.PUBLICATIONMENTIONS);
+        dataset.addAttribute(Gene.PATENTMENTIONS);
         dataset.addAttribute(Gene.DISEASEASSOCIATIONS);
     }
 
@@ -35,13 +39,20 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
         Gene gene = new Gene(recordId, provenanceInfo);
 
         gene.setEnsemblId(getValueFromChildElement(node, "ensemblId"));
-
-        gene.setGeneName(getValueFromChildElement(node, "geneName"));
-
         gene.setGeneDescription(getValueFromChildElement(node, "geneDescription"));
         gene.setDisagreement(getValueFromChildElement(node, "disagreement"));
+        gene.setProbEqualOrthoAdj(getValueFromChildElement(node, "probEqualOrthoAdj"));
         gene.setCall(getValueFromChildElement(node, "call"));
         gene.setNcbiId(getValueFromChildElement(node, "ncbiId"));
+
+        List<GeneName> geneNames = getObjectListFromChildElement(node, "geneNames", "geneName", new GeneNameXMLReader(), provenanceInfo);
+        gene.setGeneNames(geneNames);
+
+        List<Publication> publicationMentions = getObjectListFromChildElement(node, "publicationMentions", "publicationMention", new PublicationXMLReader(), provenanceInfo);
+        gene.setPublicationMentions(publicationMentions);
+
+        List<Patent> patentMentions = getObjectListFromChildElement(node, "patentMentions", "patentMention", new PatentXMLReader(), provenanceInfo);
+        gene.setPatentMentions(patentMentions);
 
         List<Disease> diseaseAssociations = getObjectListFromChildElement(node, "diseaseAssociations", "diseaseAssociation", new DiseaseXMLReader(), provenanceInfo);
         gene.setDiseaseAssociations(diseaseAssociations);

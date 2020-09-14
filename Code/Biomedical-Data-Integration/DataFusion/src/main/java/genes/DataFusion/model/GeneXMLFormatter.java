@@ -110,4 +110,5 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
 
         return diseaseRoot;
     }
+
 }

@@ -19,12 +19,12 @@ public class DisaesesEvaluationRule extends EvaluationRule<Gene, Attribute> {
         for (Disease a : record1.getDiseaseAssociations()) {
             // note: evaluating using the disease's name only suffices for simple lists
             // in your project, you should have disease ids which you use here (and in the identity resolution)
-            diseases1.add(a.getDiseaseId());
+            diseases1.add(a.getDiseaseIdUMLS());
         }
 
         Set<String> diseases2 = new HashSet<>();
         for (Disease a : record2.getDiseaseAssociations()) {
-            diseases2.add(a.getDiseaseId());
+            diseases2.add(a.getDiseaseIdUMLS());
         }
 
         return diseases1.containsAll(diseases2) && diseases2.containsAll(diseases1);
