@@ -11,96 +11,89 @@ namespace Analysis
     {
         public string UniqueGene;
         public string Brain;
-        public string Cerebellum;
-        public string Heart;
+        //public string Cerebellum;
+        //public string Heart;
         public string Liver;
         public string Kidney;
         public string Testis;
         public string OverallExpression;
 
-        
         public static void run() {
+            
+            string brainInput = Environment.CurrentDirectory + "/data/fused-kaessmann-brain.xml";
+            string cerebellumInput = Environment.CurrentDirectory + "/data/fused-kaessmann-cerebellum.xml";
+            string heartInput = Environment.CurrentDirectory + "/data/fused-kaessmann-heart.xml";          
+            string liverInput = Environment.CurrentDirectory + "/data/fused-kaessmann-liver.xml";
+            string kidneyInput = Environment.CurrentDirectory + "/data/fused-kaessmann-kidney.xml";
+            string testisInput = Environment.CurrentDirectory + "/data/fused-kaessmann-testis.xml";
 
-            string brainFileName = Environment.CurrentDirectory + "/data/fused-kaessmann-brain.xml";
-            string kidneyFileName = Environment.CurrentDirectory + "/data/fused-kaessmann-kidney.xml";     
-            string liverFileName = Environment.CurrentDirectory + "/data/fused-kaessmann-liver.xml";
-            string testisFileName = Environment.CurrentDirectory + "/data/fused-kaessmann-testis.xml";
-
-            List<Analysis1> Analysis1List = new List<Analysis1>();
-
-            foreach (Gene brainGene in Genes.getGenes(brainFileName))
-            {
-                Analysis1 analysis1 = new Analysis1();
-
-                analysis1.UniqueGene = brainGene.ensemblId;
-                analysis1.Brain = getExpression(brainGene.call);
-
-                foreach (Gene kidneyGene in Genes.getGenes(kidneyFileName))
-                {
-                    if (kidneyGene.ensemblId.Equals(analysis1.UniqueGene))
-                    {
-                        analysis1.Kidney = getExpression(kidneyGene.call);
-                    }
-                }
-
-                foreach (Gene liverGene in Genes.getGenes(liverFileName))
-                {
-                    if (liverGene.ensemblId.Equals(analysis1.UniqueGene))
-                    {
-                        analysis1.Liver = getExpression(liverGene.call);
-                    }
-                }
-
-                foreach (Gene testisGene in Genes.getGenes(testisFileName))
-                {
-                    if (testisGene.ensemblId.Equals(analysis1.UniqueGene))
-                    {
-                        analysis1.Testis = getExpression(testisGene.call);
-                    }
-                }
-
-                analysis1.OverallExpression = getOverallExpression(analysis1);
-
-                Analysis1List.Add(analysis1);
-            }
-
-            writeToTable(Analysis1List);
-        }
-
-        public static void writeToTable(List<Analysis1> Analysis1List)
-        {
-            String outputDirectory = Environment.CurrentDirectory + "/data/output/analysis1";
+            String outputDirectory = Environment.CurrentDirectory + "/data/output";
             Directory.CreateDirectory(outputDirectory);
 
-            var tsvFile = new StringBuilder();
-            var delimiter = "\t";
-            List<string> firstLineContent = new List<string>()
+            string fileName = outputDirectory + "/analysis1.tsv";
+            using (StreamWriter sw = new StreamWriter(fileName)) 
             {
-                        "UniqueGene",
-                        "Brain",
-                        "Kidney",
-                        "Liver",
-                        "Testis"
-            };
-            var firstLine = string.Join(delimiter, firstLineContent);
-            tsvFile.AppendLine(firstLine);
-
-            foreach (Analysis1 analysis1 in Analysis1List)
-            {
-                List<string> itemContent = new List<string>()
+                var delimiter = "\t";
+                List<string> firstLineContent = new List<string>()
                 {
-                    analysis1.UniqueGene,
-                    analysis1.Brain,
-                    analysis1.Kidney,
-                    analysis1.Liver,
-                    analysis1.Testis
+                    "UniqueGene",
+                    "Brain",
+                    //"Cerebellum",
+                    //"Heart",
+                    "Liver",
+                    "Kidney",
+                    "Testis"
                 };
-                var inputLine = string.Join(delimiter, itemContent);
-                tsvFile.AppendLine(inputLine);             
-            }
+                var firstLine = string.Join(delimiter, firstLineContent);
+                sw.WriteLine(firstLine);
 
-            String fileName = outputDirectory + "/analysis1.tsv";
-            File.WriteAllText(fileName, tsvFile.ToString());
+                foreach (Gene brainGene in Genes.getGenes(brainInput))
+                {
+                    Analysis1 analysis1 = new Analysis1();
+
+                    analysis1.UniqueGene = brainGene.ensemblId;
+                    analysis1.Brain = getExpression(brainGene.call);
+
+                    foreach (Gene kidneyGene in Genes.getGenes(kidneyFileName))
+                    {
+                        if (kidneyGene.ensemblId.Equals(analysis1.UniqueGene))
+                        {
+                            analysis1.Kidney = getExpression(kidneyGene.call);
+                        }
+                    }
+
+                    foreach (Gene liverGene in Genes.getGenes(liverFileName))
+                    {
+                        if (liverGene.ensemblId.Equals(analysis1.UniqueGene))
+                        {
+                            analysis1.Liver = getExpression(liverGene.call);
+                        }
+                    }
+
+                    foreach (Gene testisGene in Genes.getGenes(testisFileName))
+                    {
+                        if (testisGene.ensemblId.Equals(analysis1.UniqueGene))
+                        {
+                            analysis1.Testis = getExpression(testisGene.call);
+                        }
+                    }
+
+                    analysis1.OverallExpression = getOverallExpression(analysis1);
+
+                    List<string> itemContent = new List<string>()
+                    {
+                        analysis1.UniqueGene,
+                        analysis1.Brain,
+                        analysis1.Liver,
+                        analysis1.Kidney,
+                        analysis1.Testis
+                    };
+                    
+                    var inputLine = string.Join(delimiter, itemContent);
+                    sw.WriteLine(inputLine);
+                    
+                }
+            }
         }
 
         public static string getExpression(string input)
