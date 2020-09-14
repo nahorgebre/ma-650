@@ -7,9 +7,9 @@ mvn exec:java -Dexec.mainClass="genes.DataFusion.solution.DataFusion_Kidney"
 mvn exec:java -Dexec.mainClass="genes.DataFusion.solution.DataFusion_Liver"
 mvn exec:java -Dexec.mainClass="genes.DataFusion.solution.DataFusion_Testis"
 
-cd ConvertXmlToCsv
-dotnet run
-cd ..
+#cd ConvertXmlToCsv
+#dotnet run
+#cd ..
 
-cd UploadToAWS
-dotnet run
+#cd UploadToAWS
+#dotnet run
