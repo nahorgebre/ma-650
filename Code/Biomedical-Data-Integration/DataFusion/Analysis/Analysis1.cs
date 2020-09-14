@@ -119,7 +119,7 @@ namespace Analysis
 
         public static string getOverallExpression(Analysis1 analysis1)
         {
-            string returnValue = "N/A";
+            string returnValue = string.Empty;
 
             bool contains1 = false;
             bool contains0 = false;
@@ -133,7 +133,7 @@ namespace Analysis
 
             foreach (string organ in organList)
             {
-                if (organ.Equals("0"))
+                if (organ == "0")
                 {
                     contains0 = true;
                 }
