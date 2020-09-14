@@ -78,7 +78,7 @@ public class DataFusion_Kaessmann {
 
         // write the result
         new File("data/output/").mkdirs();
-        new GeneXMLFormatter().writeXML(new File("data/output/fused-kaessmann-brain.xml"), fusedDataSet);
+        new GeneXMLFormatter().writeXML(new File("data/output/fused-kaessmann.xml"), fusedDataSet);
 
         // evaluate
         System.out.println("*\n*\tEvaluating results\n*");

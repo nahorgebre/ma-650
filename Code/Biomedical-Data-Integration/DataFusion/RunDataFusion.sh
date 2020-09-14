@@ -1,5 +1,7 @@
 mvn compile
 
+mvn exec:java -Dexec.mainClass="genes.DataFusion.solution.DataFusion_Kaessmann"
+
 mvn exec:java -Dexec.mainClass="genes.DataFusion.solution.DataFusion_Brain"
 mvn exec:java -Dexec.mainClass="genes.DataFusion.solution.DataFusion_Cerebellum"
 mvn exec:java -Dexec.mainClass="genes.DataFusion.solution.DataFusion_Heart"
