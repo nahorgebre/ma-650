@@ -10,12 +10,12 @@ namespace Analysis
     public class Analysis1
     {
         public string UniqueGene;
-        public string Brain;
-        //public string Cerebellum;
-        //public string Heart;
-        public string Liver;
-        public string Kidney;
-        public string Testis;
+        public string Brain = "N/A";
+        //public string Cerebellum = "N/A";
+        //public string Heart = "N/A";
+        public string Liver = "N/A";
+        public string Kidney = "N/A";
+        public string Testis = "N/A";
         public string OverallExpression;
 
         public static void run() {
@@ -86,11 +86,14 @@ namespace Analysis
                         analysis1.Brain,
                         analysis1.Liver,
                         analysis1.Kidney,
-                        analysis1.Testis
+                        analysis1.Testis,
+                        analysis1.OverallExpression
                     };
                     
                     var inputLine = string.Join(delimiter, itemContent);
                     sw.WriteLine(inputLine);
+
+                    Console.WriteLine(inputLine);
                     
                 }
             }
