@@ -9,7 +9,7 @@ namespace Analysis
         public string Brain;
         //public string Cerebellum;
         //public string Heart;
-        //public string Liver;
+        public string Liver;
         public string Kidney;
         public string Testis;
         public string OverallExpression;
