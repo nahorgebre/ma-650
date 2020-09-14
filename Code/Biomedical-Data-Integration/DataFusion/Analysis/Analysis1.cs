@@ -137,11 +137,11 @@ namespace Analysis
                 {
                     contains0 = true;
                 }
-                else if (organ.Equals("1"))
+                else if (organ == "1")
                 {
                     contains1 = true;
                 }
-                else if (organ.Equals("N/A"))
+                else if (organ == "N/A")
                 {
                     containsNA = true;
                 }
