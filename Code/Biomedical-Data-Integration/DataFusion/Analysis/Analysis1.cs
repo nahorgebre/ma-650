@@ -116,61 +116,41 @@ namespace Analysis
         public static string getOverallExpression(Analysis1 analysis1)
         {
             string returnValue = string.Empty;
-
+            
             bool contains1 = false;
             bool contains0 = false;
-            bool containsNA = false;
 
             List<string> organList = new List<string>();
-            organList.Add(analysis1.Brain);
-            organList.Add(analysis1.Kidney);
-            organList.Add(analysis1.Liver);
-            organList.Add(analysis1.Testis);
+            organList.Add(analysis1.Brain.ToString());          
+            organList.Add(analysis1.Liver.ToString());
+            organList.Add(analysis1.Kidney.ToString());
+            organList.Add(analysis1.Testis.ToString());
 
             foreach (string organ in organList)
             {
-                if (organ == "0")
+                if (organ.Equals("0"))
                 {
                     contains0 = true;
                 }
-                else if (organ == "1")
+                else if (organ.Equals("1"))
                 {
                     contains1 = true;
                 }
-                else if (organ == "N/A")
-                {
-                    containsNA = true;
-                }
             }
 
-            if (contains1 == true && contains0 == false && containsNA == false)
+            if (contains0 == true && contains1 == true)
+            {
+                returnValue = "N/A";
+            }
+
+            if (contains0 == true && contains1 == false)
+            {
+                returnValue = "0";
+            }
+
+            if (contains0 == false && contains1 == true)
             {
                 returnValue = "1";
-            }
-
-            if (contains1 == false && contains0 == true && containsNA == false)
-            {
-                returnValue = "0";
-            }
-
-            if (contains1 == false && contains0 == false && containsNA == true)
-            {
-                returnValue = "N/A";
-            }
-
-            if (contains1 == true && contains0 == true && containsNA == true)
-            {
-                returnValue = "N/A";
-            }
-
-            if (contains1 == true && contains0 == true && containsNA == false)
-            {
-                returnValue = "N/A";
-            }
-
-            if (contains1 == true && contains0 == true && containsNA == true)
-            {
-                returnValue = "0";
             }
 
             return returnValue;
