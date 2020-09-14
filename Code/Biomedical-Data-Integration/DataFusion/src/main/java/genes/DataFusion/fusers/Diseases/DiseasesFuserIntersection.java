@@ -1,4 +1,4 @@
-package genes.DataFusion.fusers;
+package genes.DataFusion.fusers.Diseases;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package genes.DataFusion.fusers;
 
 import genes.DataFusion.model.Gene;
+
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.string.LongestString;
@@ -10,9 +11,10 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
-public class DisagreementFuserLongestString extends AttributeValueFuser<String, Gene, Attribute> {
+public class EnsemblIdFuserLongestString extends 
+        AttributeValueFuser<String, Gene, Attribute> {
 
-    public DisagreementFuserLongestString() {
+    public EnsemblIdFuserLongestString() {
         super(new LongestString<Gene, Attribute>());
     }
 
@@ -23,19 +25,20 @@ public class DisagreementFuserLongestString extends AttributeValueFuser<String, 
         FusedValue<String, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 
         // set the value for the fused record
-        fusedRecord.setDisagreement(fused.getValue());
+        fusedRecord.setEnsemblId(fused.getValue());
 
         // add provenance info
-        fusedRecord.setAttributeProvenance(Gene.DISAGREEMENT, fused.getOriginalIds());
+        fusedRecord.setAttributeProvenance(Gene.ENSEMBLID, fused.getOriginalIds());
     }
 
     @Override
     public boolean hasValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
-        return record.hasValue(Gene.DISAGREEMENT);
+        return record.hasValue(Gene.ENSEMBLID);
     }
 
     @Override
     public String getValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
-        return record.getDisagreement();
+        return record.getEnsemblId();
     }
+
 }

@@ -4,6 +4,7 @@ import java.io.File;
 
 import genes.DataFusion.evaluation.*;
 import genes.DataFusion.fusers.*;
+import genes.DataFusion.fusers.Diseases.DiseasesFuserUnion;
 import genes.DataFusion.model.Gene;
 import genes.DataFusion.model.GeneXMLFormatter;
 import genes.DataFusion.model.GeneXMLReader;
@@ -54,7 +55,7 @@ public class DataFusion_Heart {
         strategy.activateDebugReport("data/output/debugResultsDatafusion-Brain.csv", 1000, gs);
         
         // add attribute fusers
-        strategy.addAttributeFuser(Gene.ENSEMBLID, new GeneIdFuserLongestString(), new GeneIdEvaluationRule());
+        strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new GeneIdEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTION, new GeneDescriptionFuserLongestString(), new GeneDescriptionEvaluationRule());
         strategy.addAttributeFuser(Gene.DISAGREEMENT, new DisagreementFuserLongestString(), new DisagreementEvaluationRule());
         strategy.addAttributeFuser(Gene.CALL, new CallFuserLongestString(), new CallEvaluationRule());
