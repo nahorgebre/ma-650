@@ -10,6 +10,7 @@ namespace Goldstandard
         public static void heartGoldStandard()
         {
             Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations();
+            Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral();
             //Heart_2_Heart_Ensembl_NCBI_Crosswalk();
             //mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk();
             //gene2pubtatorcentral_2_Ensemble_NCBI_Crosswalk();
@@ -55,10 +56,12 @@ namespace Goldstandard
 
                 foreach (Gene ds1 in Methods.readXmlFile(Datasets.Heart_Ensembl_NCBI_Crosswalk_Path))
                 {
-
                     foreach (Gene ds2 in Methods.readXmlFile(Datasets.all_gene_disease_pmid_associations_Path))
                     {
-                        if (ds1.geneNameList[0].Equals(ds2.geneNameList[0]))
+                        string nameDs1 = ds1.geneNameList[0].ToString().ToLower();
+                        string nameDs2 = ds2.geneNameList[0].ToString().ToLower();
+
+                        if (nameDs1.Equals(nameDs2))
                         {
                             if (trueCount < 200)
                             {
@@ -76,5 +79,41 @@ namespace Goldstandard
                 }
             }
         }
+
+        public static void Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral()
+        {
+            string outputDirectory = Environment.CurrentDirectory + "/data/output/";
+            Directory.CreateDirectory(outputDirectory);
+
+            string outputFileName = outputDirectory + "/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral.csv";
+            using (StreamWriter sw = new StreamWriter(outputFileName)) 
+            {
+                int trueCount = 0;
+                int falseCount = 0;
+
+                foreach (Gene ds1 in Methods.readXmlFile(Datasets.Heart_Ensembl_NCBI_Crosswalk_Path))
+                {
+
+                    foreach (Gene ds2 in Methods.readXmlFile(Datasets.gene2pubtatorcentral_Path))
+                    {
+                        if (ds1.ncbiId.Equals(ds2.ncbiId))
+                        {
+                            if (trueCount < 200)
+                            {
+                                sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",TRUE");
+                            } 
+                        }
+                        else 
+                        {
+                            if (falseCount < 200)
+                            {
+                                sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",FALSE");
+                            }
+                        }        
+                    }
+                }
+            }
+        }
+
     }
 }
