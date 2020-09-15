@@ -103,6 +103,7 @@ namespace Goldstandard
                             if (trueCount < 200)
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",TRUE");
+                                trueCount ++;
                             } 
                         }
                         else 
@@ -110,6 +111,7 @@ namespace Goldstandard
                             if (falseCount < 200)
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",FALSE");
+                                falseCount ++;
                             }
                         }        
                     }
