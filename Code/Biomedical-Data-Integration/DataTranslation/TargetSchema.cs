@@ -16,7 +16,7 @@ namespace DataTranslation
         public string ensemblId;
 
         [XmlArrayItem("geneNames")]
-        public List<geneName> geneNames;
+        public List<GeneName> geneNames;
 
         public string geneDescription;
         public string disagreement;
@@ -35,7 +35,7 @@ namespace DataTranslation
     }
 
     [XmlType("geneName")]
-    public class geneName 
+    public class GeneName 
     {
         public string name;
     }

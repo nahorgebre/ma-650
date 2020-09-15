@@ -30,10 +30,10 @@ namespace DataTranslation
                         gene.ncbiId = values[2].Trim();
 
                         string[] geneNames = values[3].Split('|');
-                        List<geneName> geneNameList = new List<geneName>();
+                        List<GeneName> geneNameList = new List<GeneName>();
                         foreach (string name in geneNames)
                         {
-                            geneName GeneName = new geneName();
+                            GeneName GeneName = new GeneName();
                             GeneName.name = name.Trim();
                             geneNameList.Add(GeneName);
                         }

@@ -8,7 +8,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.SimilarityMeasure;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
-public class GeneIdEvaluationRule extends EvaluationRule<Gene, Attribute> {
+public class EnsemblIdEvaluationRule extends EvaluationRule<Gene, Attribute> {
 
     SimilarityMeasure<String> sim = new TokenizingJaccardSimilarity();
 

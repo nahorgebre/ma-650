@@ -57,8 +57,8 @@ namespace DataTranslation
                     gene.recordId = string.Format("mart_export_heart_{0}_rid", counter);
                     gene.ensemblId = values[0];
 
-                    List<geneName> geneNameList = new List<geneName>();
-                    geneName GeneName = new geneName();
+                    List<GeneName> geneNameList = new List<GeneName>();
+                    GeneName GeneName = new GeneName();
                     GeneName.name = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
                     geneNameList.Add(GeneName);
                     gene.geneNames = geneNameList;
@@ -93,8 +93,8 @@ namespace DataTranslation
                     gene.ncbiId = values[0];
                     gene.ensemblId = values[1];
 
-                    List<geneName> geneNameList = new List<geneName>();
-                    geneName GeneName = new geneName();
+                    List<GeneName> geneNameList = new List<GeneName>();
+                    GeneName GeneName = new GeneName();
                     GeneName.name = values[2];
                     geneNameList.Add(GeneName);
                     gene.geneNames = geneNameList;

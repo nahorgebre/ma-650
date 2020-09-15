@@ -54,7 +54,7 @@ public class DataFusion_Brain {
         strategy.activateDebugReport("data/output/debugResultsDatafusion-Brain.csv", 1000, gs);
 
         // add attribute fusers
-        strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new GeneIdEvaluationRule());
+        strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new EnsemblIdEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTION, new GeneDescriptionFuserLongestString(), new GeneDescriptionEvaluationRule());
         strategy.addAttributeFuser(Gene.DISAGREEMENT, new DisagreementFuserLongestString(), new DisagreementEvaluationRule());
         strategy.addAttributeFuser(Gene.CALL, new CallFuserLongestString(), new CallEvaluationRule());
@@ -100,5 +100,55 @@ public class DataFusion_Brain {
         FusibleDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
         FusibleDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
+
+        // load correspondences
+        System.out.println("*\n*\tLoading correspondences\n*");
+        CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
+        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_all_gene_disease_pmid_associations), mart_export_brain, all_gene_disease_pmid_associations);
+
+        // write group size distribution
+        correspondences.printGroupSizeDistribution();
+
+        // load the gold standard
+        DataSet<Gene, Attribute> gs = new FusibleHashedDataSet<>();
+        new GeneXMLReader().loadFromXML(new File("data/goldstandard/brain-goldstandard.xml"), "/genes/gene", gs);
+             
+        // define the fusion strategy
+        DataFusionStrategy<Gene, Attribute> strategy = new DataFusionStrategy<>(new GeneXMLReader());
+
+        // write debug results to file
+        strategy.activateDebugReport("data/output/debugResultsDatafusion-Brain.csv", 1000, gs);
+
+        // add attribute fusers
+        strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new EnsemblIdEvaluationRule());
+        strategy.addAttributeFuser(Gene.GENEDESCRIPTION, new GeneDescriptionFuserLongestString(), new GeneDescriptionEvaluationRule());
+        strategy.addAttributeFuser(Gene.DISAGREEMENT, new DisagreementFuserLongestString(), new DisagreementEvaluationRule());
+        strategy.addAttributeFuser(Gene.CALL, new CallFuserLongestString(), new CallEvaluationRule());
+        strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
+        strategy.addAttributeFuser(Gene.DISEASEASSOCIATIONS, new DiseasesFuserUnion(), new DisaesesEvaluationRule());
+
+        // create the fusion engine
+        DataFusionEngine<Gene, Attribute> engine = new DataFusionEngine<Gene, Attribute>(strategy);
+
+        // print consistency report
+        engine.printClusterConsistencyReport(correspondences, null);
+
+        // run the fusion
+        System.out.println("*\n*\tRunning data fusion\n*");
+        FusibleDataSet<Gene, Attribute> fusedDataSet = engine.run(correspondences, null);
+        fusedDataSet.printDataSetDensityReport();
+
+        // write the result
+        new File("data/output/").mkdirs();
+        new GeneXMLFormatter().writeXML(new File("data/output/fused-kaessmann-brain.xml"), fusedDataSet);
+
+        // evaluate
+        System.out.println("*\n*\tEvaluating results\n*");
+        DataFusionEvaluator<Gene, Attribute> evaluator = new DataFusionEvaluator<>(
+                strategy, new RecordGroupFactory<Gene, Attribute>());
+        double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
+
+        logger.info(String.format("Accuracy: %.2f", accuracy));   
     }
 }

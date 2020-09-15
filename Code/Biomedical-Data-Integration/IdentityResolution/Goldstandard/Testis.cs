@@ -8,8 +8,8 @@ namespace Goldstandard
     {
         public static void testisGoldStandard()
         {
-            Testis_2_mart_export_testis();
-            //mart_export_testis_2_all_gene_disease_pmid_associations();
+            //Testis_2_mart_export_testis();
+            mart_export_testis_2_all_gene_disease_pmid_associations();
             //mart_export_testis_2_gene2pubtatorcentral();
         }
 

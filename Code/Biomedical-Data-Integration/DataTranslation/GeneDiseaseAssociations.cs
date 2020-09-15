@@ -49,8 +49,8 @@ namespace DataTranslation
                     string name = values[1].Trim();
                     if (!name.Equals(string.Empty))
                     {
-                        List<geneName> geneNameList = new List<geneName>();
-                        geneName GeneName = new geneName();
+                        List<GeneName> geneNameList = new List<GeneName>();
+                        GeneName GeneName = new GeneName();
                         GeneName.name = name;
                         geneNameList.Add(GeneName);
                         gene.geneNames = geneNameList;

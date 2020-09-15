@@ -59,8 +59,8 @@ namespace DataTranslation
                     gene.ensemblId = values[0];
                     gene.geneDescription = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
                     
-                    List<geneName> geneNameList = new List<geneName>();
-                    geneName GeneName = new geneName();
+                    List<GeneName> geneNameList = new List<GeneName>();
+                    GeneName GeneName = new GeneName();
                     GeneName.name = line.Substring(line.LastIndexOf(",") + 1);
                     geneNameList.Add(GeneName);
                     gene.geneNames = geneNameList;
