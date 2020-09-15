@@ -37,7 +37,7 @@ namespace Goldstandard
                     List<string> geneNameList = new List<string>();
                     foreach (XmlNode geneNameNode in geneNameNodeList)
                     {
-                        geneNameList.Add(geneNameNode.SelectSingleNode("Name").InnerText);
+                        geneNameList.Add(geneNameNode.SelectSingleNode("name").InnerText);
                     }
                     gene.geneNameList = geneNameList;
                 }

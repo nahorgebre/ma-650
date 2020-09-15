@@ -38,7 +38,7 @@ import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevens
 public class LR_Levenshtein_StandardRecordBlocker 
 {
     private static final Logger logger = WinterLogManager.activateLogger("default");
-    public static String className = "LR_Jaccard_StandardRecordBlocker";
+    public static String className = "LR_Levenshtein_StandardRecordBlocker";
 
     public static void main( String[] args ) throws Exception
     {

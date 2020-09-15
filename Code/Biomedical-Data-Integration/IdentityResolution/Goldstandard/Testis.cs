@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks.Sources;
 
 namespace Goldstandard
@@ -33,11 +34,38 @@ namespace Goldstandard
 
         public static void mart_export_testis_2_all_gene_disease_pmid_associations()
         {
-            List<Gene> mart_export_testis_dt = Methods.readXmlFile(Datasets.mart_export_testis_Path);
-            List<Gene> all_gene_disease_pmid_associations_dt = Methods.readXmlFile(Datasets.all_gene_disease_pmid_associations_Path);
+            string outputDirectory = Environment.CurrentDirectory + "/data/output/";
+            Directory.CreateDirectory(outputDirectory);
 
-            (List<Goldstandard> mart_export_testis_2_all_gene_disease_pmid_associations_TRUE, List<Goldstandard> mart_export_testis_2_all_gene_disease_pmid_associations_FALSE) = Methods.compareUsingGeneName(mart_export_testis_dt, all_gene_disease_pmid_associations_dt, 200);
-            Methods.createGoldStandard(mart_export_testis_2_all_gene_disease_pmid_associations_TRUE, mart_export_testis_2_all_gene_disease_pmid_associations_FALSE, "mart_export_testis_2_all_gene_disease_pmid_associations");
+            string outputFileName = outputDirectory + "/mart_export_testis_2_all_gene_disease_pmid_associations.csv";
+            using (StreamWriter sw = new StreamWriter(outputFileName)) 
+            {
+                int trueCount = 0;
+                int falseCount = 0;
+
+                foreach (Gene ds1 in Methods.readXmlFile(Datasets.mart_export_testis_Path))
+                {
+
+                    foreach (Gene ds2 in Methods.readXmlFile(Datasets.all_gene_disease_pmid_associations_Path))
+                    {
+                        if (ds1.geneNameList[0].Equals(ds2.geneNameList[0]))
+                        {
+                            if (trueCount < 200)
+                            {
+                                sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",TRUE");
+                            } 
+                        }
+                        else 
+                        {
+                            if (falseCount < 200)
+                            {
+                                sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",FALSE");
+                            }
+                        }        
+                    }
+                }
+            }
         }
+
     }
 }
