@@ -10,6 +10,7 @@ namespace Analysis
         static void Main(string[] args)
         {
             Analysis1.run();
+            CreateCsv.run();
         }
 
     }
