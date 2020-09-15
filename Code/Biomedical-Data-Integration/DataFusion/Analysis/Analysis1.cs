@@ -130,27 +130,36 @@ namespace Analysis
             {
                 if (organ.Equals("0"))
                 {
-                    contains0 = true;
+                    contains0 == true;
                 }
                 else if (organ.Equals("1"))
                 {
-                    contains1 = true;
+                    contains1 == true;
                 }
             }
 
-            if (contains0 == true && contains1 == true)
+            if (contains0 == true)
             {
-                returnValue = "N/A";
+                if (contains1 == true)
+                {
+                    returnValue = "N/A";
+                }            
             }
 
-            if (contains0 == true && contains1 == false)
+            if (contains0 == true)
             {
-                returnValue = "0";
+                if (contains1 == false)
+                {
+                    returnValue = "0";
+                }         
             }
 
-            if (contains0 == false && contains1 == true)
+            if (contains0 == false)
             {
-                returnValue = "1";
+                if (contains1 == true)
+                {
+                   returnValue = "1"; 
+                }            
             }
 
             return returnValue;
