@@ -130,11 +130,11 @@ namespace Analysis
             {
                 if (organ.Equals("0"))
                 {
-                    contains0 == true;
+                    contains0 = true;
                 }
                 else if (organ.Equals("1"))
                 {
-                    contains1 == true;
+                    contains1 = true;
                 }
             }
 
