@@ -58,10 +58,10 @@ namespace Goldstandard
                 {
                     foreach (Gene ds2 in Methods.readXmlFile(Datasets.all_gene_disease_pmid_associations_Path))
                     {
-                        string nameDs1 = ds1.geneNameList[0].ToString().ToLower();
-                        string nameDs2 = ds2.geneNameList[0].ToString().ToLower();
+                        //string nameDs1 = ds1.geneNameList[0].ToString().ToLower();
+                        //string nameDs2 = ds2.geneNameList[0].ToString().ToLower();
 
-                        if (nameDs1.Equals(nameDs2))
+                        if (ds1.ncbiId.Equals(ds2.ncbiId))
                         {
                             if (trueCount < 200)
                             {
