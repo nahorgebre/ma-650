@@ -9,7 +9,8 @@ mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Cerebellum.Ce
 # mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Cerebellum.mart_export_cerebellum_2_all_gene_disease_pmid_associations.Run"
 
 # Heart
-# mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Heart.gene_disease_pmid_associations_2_Heart_Ensembl_NCBI_Crosswalk.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Heart.Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Heart.Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral.Run"
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Heart.Heart_2_Heart_Ensembl_NCBI_Crosswalk.Run"
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Heart.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk.Run"
 

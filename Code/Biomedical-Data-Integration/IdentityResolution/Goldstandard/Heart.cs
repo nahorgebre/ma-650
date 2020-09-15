@@ -76,7 +76,16 @@ namespace Goldstandard
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",FALSE");
                                 falseCount ++;
                             }
-                        }        
+                        }
+
+                        if (trueCount > 198)
+                        {
+                            if (falseCount > 198)
+                            {
+                                Console.WriteLine("Done!");
+                            }
+                        } 
+
                     }
                 }
             }
@@ -112,6 +121,14 @@ namespace Goldstandard
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",FALSE");
                                 falseCount ++;
+                            }
+                        }
+
+                        if (trueCount > 198)
+                        {
+                            if (falseCount > 198)
+                            {
+                                Console.WriteLine("Done!");
                             }
                         }        
                     }
