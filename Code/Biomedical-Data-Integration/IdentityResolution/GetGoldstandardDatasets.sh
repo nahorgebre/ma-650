@@ -20,6 +20,12 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart/Heart_2_Heart_Ensembl_NCBI_Crosswalk/test.csv -O data/goldstandard/Heart/Heart_2_Heart_Ensembl_NCBI_Crosswalk/test.csv
 
 mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral/test.csv
 
 mkdir -p data/goldstandard/Heart/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk/train.csv -O data/goldstandard/Heart/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk/train.csv
