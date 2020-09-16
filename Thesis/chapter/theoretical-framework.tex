@@ -17,17 +17,49 @@ Data Integration is a constantly growing and evolving part of science, engineeri
 
 First, the data must be understood and then prepared for the data integration process employing data cleansing and standardization \cite{Bernstein2008InformationII}.
 
+Integrated information systems provide a unified view of heterogeneous data sources by querying the underlying data sources and combining the results. This paper utilizes an integration scenario with a three-step data integration process, as shown in Figure \ref{fig:data-integration-process} \cite{Bleiholder2009DataF}.
+
+\begin{figure}
+	\begin{center}
+	\includegraphics[width=13cm]{./figures/dataIntegrationProcess.PNG}
+	\caption[A data integration process]{A data integration process \cite{Bleiholder2009DataF}}
+	\label{fig:data-integration-process}
+	\end{center}
+\end{figure}
+
 \section{Data Translation}
 
-Although some databases cover the same subject, they may are heterogeneous and uses different schemas \cite{Bernstein2008InformationII}.
+Although some databases cover the same subject, they may are heterogeneous and uses different schemas \cite{Bernstein2008InformationII}. 
+To cope with this kind of heterogeneity, one needs a mediated schema that covers the desired subject matter \cite{Bernstein2008InformationII}. 
+First, one needs to identify corresponding attributes that describe the information items in the sources \cite{Bleiholder2009DataF}. 
+The result of this step is known as \textit{schema mapping} \cite{Bleiholder2009DataF}. 
+The data gets then mapped from the source schema into the new mediated schema \cite{Bernstein2008InformationII}.
+Data Translation aims to bridge the schematic heterogeneities by transforming data from multiple data sources to conform to the global schema \cite{Bleiholder2009DataF}.
 
-To cope with this kind of heterogeneity, one needs a mediated schema that covers the desired subject matter. The data gets mapped from the source schema into the new mediated schema \cite{Bernstein2008InformationII}.
+Two approaches are common to bridge schematic heterogeinities: schema integration and schema mapping \cite{Bleiholder2009DataF}.
+
+Schema integration requires to generate a new schema that is complete and correct with respect to the source schemata \cite{Bleiholder2009DataF}.
+
+Schema mapping assumes a given target schema. A set of correspondences between elements of a source schema and elements of the target schema are generated to specify the data transformation \cite{Bleiholder2009DataF}.
+
+The objectives of both schema integration and schema mapping are to transform the data of the sources into a global schema \cite{Bleiholder2009DataF}.
+
+
 
 \textit{Usage of XML.} Often data sources are incomplete with respect to the target schema, with each source missing some information that the others provide. XML is a semi-structured data format where each data element is tagged. Therefore, only those element, whose values are known to need to be included. This ability to handle variations in the content is driving the increased usage of XML in the data integration context \cite{Bernstein2008InformationII}.
 
 \textit{Data Cleansing.} When the same or similar information is contained in multiple places, some of the occurrences are likely inconsistent. An initial step of the data integration process is to inspect data sources for such kind of inconsistencies.
 
 \section{Identity Resolution}
+
+The second step of the data integration process is identity resolution, also known as record linkage, duplicate detection or object identification \cite{Bleiholder2009DataF}.
+This process is also referred to in the literature as data merging, data consolidation or duplicate detection \cite{Bleiholder2009DataF}.
+The objective is overcoming semantic heterogeneity by integrating information into one single and consistent representation \cite{Bleiholder2009DataF}.
+The objective is to identify multiple representations of the same real-world object \cite{Bleiholder2009DataF}.
+To identify duplicate representations of the same real-world object, one needs to compare each pair of objects using a similarity measure and threshold \cite{Bleiholder2009DataF}.
+If a pair of objects has a higher similarity measure than the given threshold, it is a duplicate \cite{Bleiholder2009DataF}.
+
+The process of identity resolution embarks two main difficulties: effectiveness and efficiency \cite{Bleiholder2009DataF}.
 
 \textbf{String Matching.}
 Given two sets of strings \textit{X} and \textit{Y}, the aim is to determine all pairs of strings \textit{(x,y)} where \textit{x} $\in$ \textit{X} and \textit{y} $\in$ \textit{Y}, such that \textit{x} and \textit{y} refer to the same entity \cite{Doan2012PrinciplesOD}. \\
@@ -86,3 +118,5 @@ Similarity measures fall into x groups: ..., hybrid measures \cite{Doan2012Princ
 \textit{Sets of entities.}
 
 \section{Data Fusion}
+
+Data Fusion overcomes contradictory attribute values from different sources \cite{Bleiholder2009DataF}.

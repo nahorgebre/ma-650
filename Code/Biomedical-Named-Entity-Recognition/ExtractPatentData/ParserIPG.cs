@@ -19,7 +19,8 @@ namespace ExtractPatentData
 
         public static void run()
         {
-            for (int year = 2006; year <= 2016; year++)
+            // 2006
+            for (int year = 2010; year <= 2016; year++)
             {
                 foreach (var zipFile in Directory.GetFiles(string.Format("./data/input/PatentGrantFullTextData/{0}", year.ToString())))
                 {
