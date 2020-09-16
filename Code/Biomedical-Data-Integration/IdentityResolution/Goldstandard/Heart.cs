@@ -63,7 +63,7 @@ namespace Goldstandard
 
                         if (ds1.ncbiId.Equals(ds2.ncbiId))
                         {
-                            if (trueCount < 200)
+                            if (trueCount < 100)
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",TRUE");
                                 trueCount ++;
@@ -71,16 +71,16 @@ namespace Goldstandard
                         }
                         else 
                         {
-                            if (falseCount < 200)
+                            if (falseCount < 100)
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",FALSE");
                                 falseCount ++;
                             }
                         }
 
-                        if (trueCount > 198)
+                        if (trueCount > 98)
                         {
-                            if (falseCount > 198)
+                            if (falseCount > 98)
                             {
                                 Console.WriteLine("Done!");
                             }
@@ -109,7 +109,7 @@ namespace Goldstandard
                     {
                         if (ds1.ncbiId.Equals(ds2.ncbiId))
                         {
-                            if (trueCount < 200)
+                            if (trueCount < 100)
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",TRUE");
                                 trueCount ++;
@@ -117,16 +117,16 @@ namespace Goldstandard
                         }
                         else 
                         {
-                            if (falseCount < 200)
+                            if (falseCount < 100)
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",FALSE");
                                 falseCount ++;
                             }
                         }
 
-                        if (trueCount > 198)
+                        if (trueCount > 98)
                         {
-                            if (falseCount > 198)
+                            if (falseCount > 98)
                             {
                                 Console.WriteLine("Done!");
                             }
