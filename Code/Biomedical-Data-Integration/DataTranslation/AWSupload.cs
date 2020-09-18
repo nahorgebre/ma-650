@@ -16,8 +16,8 @@ namespace DataTranslation
             {
                 foreach (string fileName in Directory.GetFiles(directory))
                 {
-                    string keyName = string.Format("input/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
-                    string bucketName = "identity-resolution";
+                    string keyName = string.Format("identity-resolution/input/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
+                    string bucketName = "nahorgebre-ma-650-master-thesis";
                     UploadFileAsync(bucketName, fileName, keyName).Wait();
                 }
             }
