@@ -27,9 +27,15 @@ namespace DataTranslation
                     Gene gene = new Gene();        
                     gene.recordId = string.Format("Brain_{0}_rid", counter);
                     gene.ensemblId = values[0];
-                    gene.disagreement = values[1];
-                    gene.probEqualOrthoAdj = values[2];
-                    gene.call = values[3];
+
+                    List<Organ> organList = new List<Organ>();
+                    Organ organ = new Organ();
+                    organ.organName = OrganNames.brain;
+                    organ.disagreement = values[1];
+                    organ.probEqualOrthoAdj = values[2];
+                    organ.call = values[3];
+                    organList.Add(organ);
+                    gene.organs = organList;
 
                     gene_list.Add(gene);
 
@@ -57,8 +63,12 @@ namespace DataTranslation
                     Gene gene = new Gene();
                     gene.recordId = string.Format("mart_export_brain_{0}_rid", counter);
                     gene.ensemblId = values[0];
-                    gene.geneDescription = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
                     
+                    List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
+                    GeneDescription geneDescription = new GeneDescription();
+                    geneDescription.description = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
+                    gene.geneDescriptions = geneDescriptionList;
+
                     List<GeneName> geneNameList = new List<GeneName>();
                     GeneName GeneName = new GeneName();
                     GeneName.name = line.Substring(line.LastIndexOf(",") + 1);

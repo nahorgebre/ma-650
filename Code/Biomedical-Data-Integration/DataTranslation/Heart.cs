@@ -27,8 +27,14 @@ namespace DataTranslation
                     Gene gene = new Gene();
                     gene.recordId = string.Format("Heart_{0}_rid", counter);
                     gene.ensemblId = values[0];
-                    gene.disagreement = values[1];
-                    gene.call = values[2];
+
+                    List<Organ> organList = new List<Organ>();
+                    Organ organ = new Organ();
+                    organ.organName = OrganNames.heart;
+                    organ.disagreement = values[1];
+                    organ.call = values[2];
+                    organList.Add(organ);
+                    gene.organs = organList;
 
                     gene_list.Add(gene);
 
@@ -57,13 +63,16 @@ namespace DataTranslation
                     gene.recordId = string.Format("mart_export_heart_{0}_rid", counter);
                     gene.ensemblId = values[0];
 
+                    List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
+                    GeneDescription geneDescription = new GeneDescription();
+                    geneDescription.description = line.Substring(line.LastIndexOf(",") + 1);
+                    gene.geneDescriptions = geneDescriptionList;
+
                     List<GeneName> geneNameList = new List<GeneName>();
                     GeneName GeneName = new GeneName();
                     GeneName.name = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
                     geneNameList.Add(GeneName);
                     gene.geneNames = geneNameList;
-
-                    gene.geneDescription = line.Substring(line.LastIndexOf(",") + 1);
 
                     gene_list.Add(gene);
 

@@ -1,7 +1,61 @@
 \part{Solution Approach and Evaluation}
 
+\chapter{Datasets}
+\label{cha:datasets}
+
+\section{DisGeNet Dataset}
+\label{disgenetds}
+DisGeNet Dataset is provided by \href{https://www.disgenet.org/}{DisGeNet} and contains data on gene-disease associations \cite{Piero2019TheDK}. 
+DisGeNet is a discovery platform containing one of the largest publicly available collections of genes and variants associated with human diseases \cite{Piero2019TheDK}.
+
 \chapter{Biomedical Named Entity Recognition}
 \label{cha:biomedner}
+\section{Processing USPTO Patent Data}
+This section describes an automated data process which consumes weekly releases of patent grants distributed by USPTO.
+
+Patent data plays an invaluable role in research into innovation policy and technology management \cite{fierro2014processing}.
+Though patent data is freely available, it has been challenging to use \cite{fierro2014processing}.
+
+USPTO distributions take the form of zip archives containing concatenated XML and ASP documents \cite{fierro2014processing}.
+Each document contains the full text of each patent grant published every week \cite{fierro2014processing}.
+
+Previous to 2001 patent documents were made available in APS format, a raw-text key-value store based file format \cite{fierro2014processing}.
+Starting in 2001 documents were made available in XML format \cite{fierro2014processing}.
+
+USPTO patent data spans seven different formats and occupies about 67 GB for the period between 1985 and 2016.
+
+\begin{table}[h]
+\begin{center}
+\begin{footnotesize}
+\begin{tabular*}{\textwidth}{|l|l|}
+\hline
+Time Span & Data Formats \\ \hline
+JAN 2015 - DEC 2016 & Patent Grant Full Text Data/XML Version 4.5 ICE \\
+JAN 2014 - DEC 2014 & Patent Grant Full Text Data/XML Version 4.4 ICE \\
+JAN 2007 - DEC 2013 & Patent Grant Full Text Data/XML Version 4.2 ICE \\
+JAN 2006 - DEC 2006 & Patent Grant Full Text Data/XML Version 4.1 ICE \\
+JAN 2005 - DEC 2005 & Patent Grant Full Text Data/XML Version 4.0 ICE \\
+JAN 2002 - DEC 2004 & Patent Grant Full Text Data/XML Version 2.5 \\
+JAN 1985 - DEC 2001 & Patent Grant Full Text Data/APS \\ \hline
+\end{tabular*}
+\end{footnotesize}
+\caption[Table of USPTO grant data formats]{Table of USPTO grant data formats \cite{fierro2014processing}}
+\label{tab:uspto-grant-data-formats}
+\end{center}
+\end{table}
+
+The parser takes the weekly USPTO patent distribution as an input and outputs the relevant data into multiple TSV files.
+
+The parser is capable of dealing with patent grants of formats APS as well as XML 2.5, 4.0, 4.1, 4.2, 4.4 and 4.5.
+
+\textit{Data Idiosyncracies of XML.} There are multiple cases of inconsistent usage of HTML idioms and escaping in USPTO patent XML files. Therefore care must be taken to remove sequences such as &#x26; so that the extracted data is readable by the parser.
+
+
+Patent data available through USPTO is formatted as XML \cite{fierro2013extracting}.
+The utility of patent data is limited by a collection of idiosyncrasies \cite{fierro2013extracting}.
+An effective parser must be made aware of such inconsistencies to provide pristine and operable output \cite{fierro2013extracting}.
+Furthermore one wants to extract data in a consistent matter, agreeing upon standards for text encodings or string formatting \cite{fierro2013extracting}.
+
 \section{Solution Approach}
 \section{Evaluation}
 \section{Related Work}

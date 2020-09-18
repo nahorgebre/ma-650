@@ -27,9 +27,9 @@ namespace DataTranslation
                     Gene gene = new Gene();
                     gene.recordId = string.Format("Kidney_{0}_rid", counter);
                     gene.ensemblId = values[0];
-                    gene.disagreement = values[1];
-                    gene.probEqualOrthoAdj = values[2];
-                    gene.call = values[3];
+                    //gene.disagreement = values[1];
+                    //gene.probEqualOrthoAdj = values[2];
+                    //gene.call = values[3];
 
                     gene_list.Add(gene);
 
@@ -57,7 +57,7 @@ namespace DataTranslation
                     Gene gene = new Gene();
                     gene.recordId = string.Format("mart_export_kidney_{0}_rid", counter);
                     gene.ensemblId = values[0];
-                    gene.geneDescription = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
+                    //gene.geneDescription = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
                     
                     List<GeneName> geneNameList = new List<GeneName>();
                     GeneName GeneName = new GeneName();

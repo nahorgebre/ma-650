@@ -1,5 +1,4 @@
-﻿using DataTranslation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -20,10 +19,6 @@ namespace DataTranslation
             Gene gene = new Gene();
     	    gene.recordId = string.Empty;
             gene.ensemblId = string.Empty;
-            gene.geneDescription = string.Empty;
-            gene.disagreement = string.Empty;
-            gene.probEqualOrthoAdj = string.Empty;
-            gene.call = string.Empty;
             gene.ncbiId = string.Empty;
 
             List<GeneName> geneNameList = new List<GeneName>();
@@ -31,6 +26,21 @@ namespace DataTranslation
             GeneName.name = string.Empty;
             geneNameList.Add(GeneName);
             gene.geneNames = geneNameList;
+
+            List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
+            GeneDescription geneDescription = new GeneDescription();
+            geneDescription.description = string.Empty;
+            geneDescriptionList.Add(geneDescription);
+            gene.geneDescriptions = geneDescriptionList;
+
+            List<Organ> organList = new List<Organ>();
+            Organ organ = new Organ();
+            organ.organName = string.Empty;
+            organ.call = string.Empty;
+            organ.disagreement = string.Empty;
+            organ.probEqualOrthoAdj = string.Empty;
+            organList.Add(organ);
+            gene.organs = organList;
 
             List<DiseaseAssociation> diseaseAssociationList = new List<DiseaseAssociation>();
             DiseaseAssociation diseaseAssociation = new DiseaseAssociation();

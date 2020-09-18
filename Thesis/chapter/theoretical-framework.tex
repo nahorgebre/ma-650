@@ -17,6 +17,10 @@ Data Integration is a constantly growing and evolving part of science, engineeri
 
 First, the data must be understood and then prepared for the data integration process employing data cleansing and standardization \cite{Bernstein2008InformationII}.
 
+The two broad goals of the data integration process are to increase the completeness and conciseness of data \cite{Bleiholder2009DataF}.
+Completeness is increased by adding more data sources \cite{Bleiholder2009DataF}.
+Conciseness is achieved by removing redundant data \cite{Bleiholder2009DataF}.
+
 Integrated information systems provide a unified view of heterogeneous data sources by querying the underlying data sources and combining the results. This paper utilizes an integration scenario with a three-step data integration process, as shown in Figure \ref{fig:data-integration-process} \cite{Bleiholder2009DataF}.
 
 \begin{figure}
@@ -59,7 +63,17 @@ The objective is to identify multiple representations of the same real-world obj
 To identify duplicate representations of the same real-world object, one needs to compare each pair of objects using a similarity measure and threshold \cite{Bleiholder2009DataF}.
 If a pair of objects has a higher similarity measure than the given threshold, it is a duplicate \cite{Bleiholder2009DataF}.
 
-The process of identity resolution embarks two main difficulties: effectiveness and efficiency \cite{Bleiholder2009DataF}.
+\textit{Effectiveness and Efficiency.} The process of identity resolution embarks two main difficulties: effectiveness and efficiency \cite{Bleiholder2009DataF}.
+The quality of the similarity measure and the choice of the threshold are the determining factors for effectiveness \cite{Bleiholder2009DataF}.
+Similarity measures are domain-independent \cite{Bleiholder2009DataF}.
+A low threshold will result in a high recall since all duplicates are found, but low precision since many nonduplicate pairs are declared duplicates \cite{Bleiholder2009DataF}.
+On the contrary, a high threshold will result in high precision but low recall \cite{Bleiholder2009DataF}.
+Since calculating and storing all pairs of objects for large datasets can become an obstacle, Efficiency is an issue \cite{Bleiholder2009DataF}.
+An intelligent partitioning overcomes this obstacle \cite{Bleiholder2009DataF}.
+More than two representations which share the same object-ID are referred to in the literature as \textit{duplicate clusters} \cite{Bleiholder2009DataF}.
+
+Naumann2010AnIT
+With increasing volume of data, data quality problems abound \cite{Naumann2010AnIT}.
 
 \textbf{String Matching.}
 Given two sets of strings \textit{X} and \textit{Y}, the aim is to determine all pairs of strings \textit{(x,y)} where \textit{x} $\in$ \textit{X} and \textit{y} $\in$ \textit{Y}, such that \textit{x} and \textit{y} refer to the same entity \cite{Doan2012PrinciplesOD}. \\
@@ -89,7 +103,7 @@ Similarity measures fall into x groups: ..., hybrid measures \cite{Doan2012Princ
 % \textit{N-Gram-similarity.}
 % \begin{equation*}
 %    \bar{\sigma}(s, t) = \frac{|ngram(s, n) \cap ngram(t, n)|}{\mbox{min}(|s|, |t|) - n + 1}
-& \end{equation*}
+% \end{equation*}
 
 \textit{Jaccard.}
 

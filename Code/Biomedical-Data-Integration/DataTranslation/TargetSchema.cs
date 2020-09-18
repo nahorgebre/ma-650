@@ -14,15 +14,16 @@ namespace DataTranslation
     {
         public string recordId;
         public string ensemblId;
+        public string ncbiId;
 
         [XmlArrayItem("geneNames")]
         public List<GeneName> geneNames;
 
-        public string geneDescription;
-        public string disagreement;
-        public string probEqualOrthoAdj;
-        public string call;
-        public string ncbiId;
+        [XmlArrayItem("geneDescriptions")]
+        public List<GeneDescription> geneDescriptions;
+
+        [XmlArrayItem("organs")]
+        public List<Organ> organs;
 
         [XmlArrayAttribute("diseaseAssociations")]
         public List<DiseaseAssociation> diseaseAssociations;
@@ -34,10 +35,25 @@ namespace DataTranslation
         public List<PatentMention> patentMentions;
     }
 
+    [XmlType("organ")]
+    public class Organ
+    {
+        public string organName;
+        public string disagreement;
+        public string probEqualOrthoAdj;
+        public string call;  
+    }
+
     [XmlType("geneName")]
     public class GeneName 
     {
         public string name;
+    }
+
+    [XmlType("geneDescription")]
+    public class GeneDescription
+    {
+        public string description;
     }
 
     [XmlType("diseaseAssociation")]
