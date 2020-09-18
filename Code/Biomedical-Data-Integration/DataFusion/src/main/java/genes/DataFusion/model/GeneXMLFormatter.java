@@ -8,6 +8,9 @@ import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 public class GeneXMLFormatter extends XMLFormatter<Gene> {
   
     GeneNameXMLFormatter geneNameFormatter = new GeneNameXMLFormatter();
+    GeneDescriptionXMLFormatter geneDescriptionFormatter = new GeneDescriptionXMLFormatter();
+
+    OrganXMLFormatter organFormatter = new OrganXMLFormatter();
     PublicationXMLFormatter publicationFormatter = new PublicationXMLFormatter();
     PatentXMLFormatter patentFormater = new PatentXMLFormatter();
     DiseaseXMLFormatter diseaseFormatter = new DiseaseXMLFormatter();
@@ -24,32 +27,16 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
         gene.appendChild(createTextElement("recordId",
                 record.getIdentifier(),
                 doc));
-
         gene.appendChild(createTextElementWithProvenance("ensemblId",
                 record.getEnsemblId(),
                 record.getMergedAttributeProvenance(Gene.ENSEMBLID), doc));
-
-        gene.appendChild(createTextElementWithProvenance("geneDescription",
-                record.getGeneDescription(),
-                record.getMergedAttributeProvenance(Gene.GENEDESCRIPTION), doc));
-
-        gene.appendChild(createTextElementWithProvenance("disagreement",
-                record.getDisagreement(),
-                record.getMergedAttributeProvenance(Gene.DISAGREEMENT), doc));
-
-        gene.appendChild(createTextElementWithProvenance("probEqualOrthoAdj",
-                record.getProbEqualOrthoAdj(),
-                record.getMergedAttributeProvenance(Gene.PROBEQUALORTHOADJ), doc));
-
-        gene.appendChild(createTextElementWithProvenance("call",
-                record.getCall(),
-                record.getMergedAttributeProvenance(Gene.CALL), doc));
-
         gene.appendChild(createTextElementWithProvenance("ncbiId",
                 record.getNcbiId(),
                 record.getMergedAttributeProvenance(Gene.NCBIID), doc));
-
+        gene.appendChild(createGeneDescriptionElement(record, doc));
         gene.appendChild(createGeneNameElement(record, doc));
+
+        gene.appendChild(createOrganElement(record, doc));
         gene.appendChild(createPublicationMentionElement(record, doc));
         gene.appendChild(createPatentMentionElement(record, doc));
         gene.appendChild(createDiseasesElement(record, doc));
@@ -73,6 +60,30 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
         }
 
         return geneNamesRoot;
+    }
+
+    protected Element createGeneDescriptionElement(Gene record, Document doc) {
+        Element geneDescriptionsRoot = geneDescriptionFormatter.createRootElement(doc);
+        geneDescriptionsRoot.setAttribute("provenance",
+                record.getMergedAttributeProvenance(Gene.GENEDESCRIPTIONS));
+
+        for (GeneDescription a : record.getGeneDescriptions()) {
+                geneDescriptionsRoot.appendChild(geneDescriptionFormatter.createElementFromRecord(a, doc));
+        }
+
+        return geneDescriptionsRoot;
+    }
+
+    protected Element createOrganElement(Gene record, Document doc) {
+        Element organsRoot = organFormatter.createRootElement(doc);
+        organsRoot.setAttribute("provenance",
+                record.getMergedAttributeProvenance(Gene.ORGANS));
+
+        for (Organ a : record.getOrgans()) {
+                organsRoot.appendChild(organFormatter.createElementFromRecord(a, doc));
+        }
+
+        return organsRoot;
     }
 
     protected Element createPublicationMentionElement(Gene record, Document doc) {

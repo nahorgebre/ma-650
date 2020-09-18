@@ -19,43 +19,42 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
         super(identifier, provenance);
 
         geneNames = new LinkedList<>();
+        geneDescriptions = new LinkedList<>();
+
+        organs = new LinkedList<>();
         publicationMentions = new LinkedList<>();
         patentMentions = new LinkedList<>();
         diseaseAssociations = new LinkedList<>();
     }
 
     private String ensemblId;
-    private String geneDescription;
-    private String disagreement;
-    private String probEqualOrthoAdj;
-    private String call;
     private String ncbiId;
-
     private List<GeneName> geneNames;
+    private List<geneDescription> geneDescriptions;
+
+    private List<Organ> organs;
     private List<Publication> publicationMentions;
     private List<Patent> patentMentions;
     private List<Disease> diseaseAssociations;
 
     // Getter
     public String getEnsemblId() { return ensemblId; }
-    public String getGeneDescription() { return geneDescription; }
-    public String getDisagreement() { return disagreement; }
-    public String getProbEqualOrthoAdj() { return probEqualOrthoAdj; }
-    public String getCall() { return call; }
     public String getNcbiId() { return ncbiId; }
     public List<GeneName> getGeneNames() { return geneNames; }
+    public List<geneDescription> getGeneDescriptions() { return geneDescriptions; }
+
+    public List<Organ> getOrgans() { return organs; }
     public List<Publication> getPublicationMentions() { return publicationMentions; }
     public List<Patent> getPatentMentions() { return patentMentions; }
     public List<Disease> getDiseaseAssociations() { return diseaseAssociations; }
 
     // Setter
     public void setEnsemblId(String ensemblId) { this.ensemblId = ensemblId; }
-    public void setGeneDescription(String geneDescription) { this.geneDescription = geneDescription; }
-    public void setDisagreement(String disagreement) { this.disagreement = disagreement; }
-    public void setProbEqualOrthoAdj(String probEqualOrthoAdj) { this.probEqualOrthoAdj = probEqualOrthoAdj; }
-    public void setCall(String call) { this.call = call; }
     public void setNcbiId(String ncbiId) { this.ncbiId = ncbiId; }
     public void setGeneNames(List<GeneName> geneNames) { this.geneNames = geneNames; }
+    public void setGeneDescriptions(List<geneDescription> geneDescriptions) { this.geneDescriptions = geneDescriptions; }
+    
+    public void setOrgans(List<Organ> organs) { this.organs = organs; }
     public void setPublicationMentions(List<Publication> publicationMentions) { this.publicationMentions = publicationMentions; }
     public void setPatentMentions(List<Patent> patentMentions) { this.patentMentions = patentMentions; }
     public void setDiseaseAssociations(List<Disease> diseaseAssociations) { this.diseaseAssociations = diseaseAssociations; }
@@ -91,13 +90,11 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public static final Attribute ENSEMBLID = new Attribute("ensemblId");
-    public static final Attribute GENEDESCRIPTION = new Attribute("geneDescription");
-    public static final Attribute DISAGREEMENT = new Attribute("disagreement");
-    public static final Attribute PROBEQUALORTHOADJ = new Attribute("probEqualOrthoAdj");
-    public static final Attribute CALL = new Attribute("call");
     public static final Attribute NCBIID = new Attribute("ncbiId");
-
     public static final Attribute GENENAMES = new Attribute("geneNames");
+    public static final Attribute GENEDESCRIPTIONS = new Attribute("geneDescriptions");
+
+    public static final Attribute ORGANS = new Attribute("organs");
     public static final Attribute PUBLICATIONMENTIONS = new Attribute("publicationMentions");
     public static final Attribute PATENTMENTIONS = new Attribute("patentMentions");
     public static final Attribute DISEASEASSOCIATIONS = new Attribute("diseaseAssociations");
@@ -106,22 +103,18 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     public boolean hasValue(Attribute attribute) {
         if(attribute== ENSEMBLID)
             return getEnsemblId() != null && !getEnsemblId().isEmpty();
-        else if(attribute==GENEDESCRIPTION)
-            return getGeneDescription() != null && !getGeneDescription().isEmpty();
-        else if(attribute==DISAGREEMENT)
-            return getDisagreement() != null && !getDisagreement().isEmpty();
-        else if(attribute==PROBEQUALORTHOADJ)
-            return getProbEqualOrthoAdj() != null && !getProbEqualOrthoAdj().isEmpty();
-        else if(attribute==CALL)
-            return getCall() != null && !getCall().isEmpty();
         else if(attribute==NCBIID)
             return getNcbiId() != null && !getNcbiId().isEmpty();
         else if(attribute== GENENAMES)
-            return getGeneNames() != null && !getGeneNames().isEmpty();
+            return getGeneNames() != null && !getGeneNames().size() > 0;
+        else if(attribute==GENEDESCRIPTIONS)
+            return getGeneDescriptions() != null && !getGeneDescriptions().size() > 0;
+        else if(attribute==ORGANS)
+            return getOrgans() != null && !getOrgans().size() > 0;
         else if(attribute== PUBLICATIONMENTIONS)
-            return getPublicationMentions() != null && !getPublicationMentions().isEmpty();
+            return getPublicationMentions() != null && !getPublicationMentions().size() > 0;
         else if(attribute== PATENTMENTIONS)
-            return getPatentMentions() != null && !getPatentMentions().isEmpty();
+            return getPatentMentions() != null && !getPatentMentions().size() > 0;
         else if(attribute== DISEASEASSOCIATIONS)
             return getDiseaseAssociations() != null && getDiseaseAssociations().size() > 0;
         else
@@ -130,9 +123,8 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("[Gene %s: %s / %s / %s / %s / %s / %s /]",
-                getIdentifier(), getEnsemblId(), getGeneDescription(),
-                getDisagreement(), getProbEqualOrthoAdj(), getCall(), getNcbiId());
+        return String.format("[Gene %s: %s / %s /]",
+                getIdentifier(), getEnsemblId(), getNcbiId());
     }
 
     @Override
