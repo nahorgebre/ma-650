@@ -26,3 +26,7 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 mkdir -p data/input/Testis
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Testis_dt.xml -O data/input/Testis/Testis_dt.xml
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/mart_export_testis_dt.xml -O data/input/Testis/mart_export_testis_dt.xml
+
+mkdir -p data/input/files
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene2Pubtatorcentral/gene2pubtatorcentral.tsv -O data/input/files/gene2pubtatorcentral.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene-Disease-Associations/all_gene_disease_pmid_associations.tsv -O data/input/files/all_gene_disease_pmid_associations.tsv

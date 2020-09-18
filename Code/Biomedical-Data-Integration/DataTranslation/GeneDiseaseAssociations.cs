@@ -39,7 +39,7 @@ namespace DataTranslation
                     // 14 - source
 
                     Gene gene = new Gene();
-                    gene.recordId = "gene_disease_pmid_associations_" + counter;
+                    gene.recordId = string.Format("gene_disease_pmid_associations_{0}_rid", counter);
 
                     string ncbiId = values[0].Trim();
                     if (!ncbiId.Equals(string.Empty))

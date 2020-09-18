@@ -9,9 +9,8 @@ namespace Goldstandard
     {
         public static void cerebellumGoldStandard()
         {
-            //Cerebellum_2_mart_export_cerebellum();
-            mart_export_cerebellum_2_all_gene_disease_pmid_associations();
-            //mart_export_cerebellum_2_gene2pubtatorcentral();
+            Cerebellum_2_mart_export_cerebellum();
+            mart_export_cerebellum_2_gene2pubtatorcentral();
         }
 
         public static void mart_export_cerebellum_2_gene2pubtatorcentral()

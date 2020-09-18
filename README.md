@@ -13,7 +13,7 @@ This repository contains the source for my Master Thesis: "Is Science Effective 
 - Python 3.x
 - Maven 3.x
 - Java 1.8 or later
-- .NET Core 3.x
+- .NET Core 3.x or later
 
 ## Code Documentation
 

@@ -9,11 +9,9 @@ namespace Goldstandard
     {
         public static void heartGoldStandard()
         {
-            Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations();
-            Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral();
-            //Heart_2_Heart_Ensembl_NCBI_Crosswalk();
-            //mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk();
-            //gene2pubtatorcentral_2_Ensemble_NCBI_Crosswalk();
+            Heart_2_Heart_Ensembl_NCBI_Crosswalk();
+            mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk();
+            gene2pubtatorcentral_2_Ensemble_NCBI_Crosswalk();
         }
 
         public static void gene2pubtatorcentral_2_Ensemble_NCBI_Crosswalk()

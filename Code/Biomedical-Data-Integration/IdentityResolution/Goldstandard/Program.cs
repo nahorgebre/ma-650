@@ -8,12 +8,21 @@ namespace Goldstandard
     {
         static void Main(string[] args)
         {
-            //Brain.brainGoldStandard();
-            //Cerebellum.cerebellumGoldStandard();
+            //smallFiles();
+            largeFiles();
+        }
+
+        public static void smallFiles() {
+            Brain.brainGoldStandard();
+            Cerebellum.cerebellumGoldStandard();
             Heart.heartGoldStandard();
-            //Kidney.kidneyGoldStandard();
-            //Liver.liverGoldStandard();
-            //Testis.testisGoldStandard();
+            Kidney.kidneyGoldStandard();
+            Liver.liverGoldStandard();
+            Testis.testisGoldStandard();
+        }
+
+        public static void largeFiles() {
+            LargeFiles.Gene2Pubtatorcentral();
         }
     }
 }
