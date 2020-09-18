@@ -1,4 +1,4 @@
-package genes.DataFusion.model;
+package genes.DataFusion.model.GeneDescription;
 
 import org.w3c.dom.Node;
 
@@ -13,7 +13,7 @@ public class GeneDescriptionXMLReader extends XMLMatchableReader<GeneDescription
 
         GeneDescription geneDescription = new GeneDescription(recordId, provenanceInfo);
 
-        geneDescription.setDescription(getValueFromChildElement(node, "description"));
+        geneDescription.setGeneDescription(getValueFromChildElement(node, "description"));
 
         return geneDescription;
     }

@@ -1,4 +1,4 @@
-package genes.DataFusion.model;
+package genes.DataFusion.model.GeneName;
 
 import java.io.Serializable;
 

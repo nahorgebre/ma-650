@@ -1,4 +1,4 @@
-package genes.DataFusion.model;
+package genes.DataFusion.model.Organ;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 import org.w3c.dom.Document;
@@ -21,19 +21,19 @@ public class OrganXMLFormatter extends XMLFormatter<Organ> {
         organ.appendChild(createTextElement("call", record.getCall(), doc));
         
         if(record.getOrganName()!=null) {
-            publication.appendChild(createTextElement("organName", record.getPmId(), doc));
+            organ.appendChild(createTextElement("organName", record.getOrganName(), doc));
         }
 
         if(record.getDisagreement()!=null) {
-            organ.appendChild(createTextElement("disagreement", record.getRessource(), doc));
+            organ.appendChild(createTextElement("disagreement", record.getDisagreement(), doc));
         }
 
         if(record.getProbEqualOrthoAdj()!=null) {
-            organ.appendChild(createTextElement("probEqualOrthoAdj", record.getRessource(), doc));
+            organ.appendChild(createTextElement("probEqualOrthoAdj", record.getProbEqualOrthoAdj(), doc));
         }
 
         if(record.getCall()!=null) {
-            organ.appendChild(createTextElement("call", record.getRessource(), doc));
+            organ.appendChild(createTextElement("call", record.getCall(), doc));
         }
 
         return organ;

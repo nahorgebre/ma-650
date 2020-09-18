@@ -1,11 +1,11 @@
-package genes.DataFusion.model;
+package genes.DataFusion.model.GeneDescription;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class GeneDescriptionXMLFormatter extends XMLFormatter<GebeDescription> {
+public class GeneDescriptionXMLFormatter extends XMLFormatter<GeneDescription> {
 
     @Override
     public Element createRootElement(Document doc) {

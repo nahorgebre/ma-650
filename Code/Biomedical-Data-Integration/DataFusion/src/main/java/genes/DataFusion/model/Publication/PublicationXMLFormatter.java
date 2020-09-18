@@ -1,4 +1,4 @@
-package genes.DataFusion.model;
+package genes.DataFusion.model.Publication;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 import org.w3c.dom.Document;

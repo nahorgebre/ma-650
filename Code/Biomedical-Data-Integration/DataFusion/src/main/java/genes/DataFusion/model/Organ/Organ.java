@@ -1,4 +1,4 @@
-package genes.DataFusion.model;
+package genes.DataFusion.model.Organ;
 
 import java.io.Serializable;
 
