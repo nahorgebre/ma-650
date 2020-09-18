@@ -8,7 +8,7 @@ namespace DataTranslation
     {
         public static void Main()
         {
-            createTargetSchema();
+            //createTargetSchema();
             runDataTranslation();
         }
 
