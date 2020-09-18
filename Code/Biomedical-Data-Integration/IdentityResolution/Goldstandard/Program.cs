@@ -8,7 +8,7 @@ namespace Goldstandard
     {
         static void Main(string[] args)
         {
-            //smallFiles();
+            smallFiles();
             largeFiles();
         }
 
@@ -23,6 +23,7 @@ namespace Goldstandard
 
         public static void largeFiles() {
             LargeFiles.Gene2Pubtatorcentral();
+            LargeFiles.all_gene_disease_pmid_associations();
         }
     }
 }
