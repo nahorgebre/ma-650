@@ -8,6 +8,9 @@ import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 public class GeneXMLFormatter extends XMLFormatter<Gene> {
 
     GeneNameXMLFormatter geneNameFormatter = new GeneNameXMLFormatter();
+    GeneDescriptionXMLFormatter geneDescriptionFormatter = new GeneDescriptionXMLFormatter();
+
+    OrganXMLFormatter organFormatter = new OrganXMLFormatter();
     DiseaseXMLFormatter diseaseFormatter = new DiseaseXMLFormatter();
     PatentXMLFormatter patentFormatter = new PatentXMLFormatter();
     PublicationXMLFormatter publicationFormatter = new PublicationXMLFormatter();
@@ -23,15 +26,11 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
 
         gene.appendChild(createTextElement("recordId", record.getIdentifier(), doc));
         gene.appendChild(createTextElement("ensemblId", record.getEnsemblId(), doc));
-
-        gene.appendChild(createGeneNamesElement(record, doc));
-
-        gene.appendChild(createTextElement("geneDescription", record.getGeneDescription(), doc));
-        gene.appendChild(createTextElement("disagreement", record.getDisagreement(), doc));
-        gene.appendChild(createTextElement("probEqualOrthoAdj", record.getProbEqualOrthoAdj(), doc));
-        gene.appendChild(createTextElement("call", record.getCall(), doc));
         gene.appendChild(createTextElement("ncbiId", record.getNcbiId(), doc));
-
+        gene.appendChild(createGeneNamesElement(record, doc));
+        gene.appendChild(createGeneDescriptionsElement(record, doc));
+        
+        gene.appendChild(createOrganElement(record, doc));
         gene.appendChild(createDiseasesElement(record, doc));
         gene.appendChild(createPublicationsElement(record, doc));
         gene.appendChild(createPatentsElement(record, doc));
@@ -76,4 +75,21 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
         }
         return geneNameRoot;
     }
+
+    protected Element createGeneDescriptionsElement(Gene record, Document doc) {
+        Element geneDescriptionRoot = geneDescriptionFormatter.createRootElement(doc);
+        for (GeneDescription a : record.getGeneDescriptions()) {
+            geneDescriptionRoot.appendChild(geneDescriptionFormatter.createElementFromRecord(a, doc));
+        }
+        return geneDescriptionRoot;
+    }
+
+    protected Element createOrganElement(Gene record, Document doc) {
+        Element organRoot = organFormatter.createRootElement(doc);
+        for (Organ a : record.getOrgans()) {
+            organRoot.appendChild(organFormatter.createElementFromRecord(a, doc));
+        }
+        return organRoot;
+    }
+
 }

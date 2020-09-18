@@ -14,7 +14,7 @@ public class PatentXMLFormatter extends XMLFormatter<Patent> {
 
     @Override
     public Element createElementFromRecord(Patent record, Document doc) {
-        Element patent = doc.createElement("patentMention");
+        Element patent = doc.createElement("patentMentions");
 
         patent.appendChild(createTextElement("patentId", record.getPatentId(), doc));
         patent.appendChild(createTextElement("patentDate", record.getPatentDate(), doc));

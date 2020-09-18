@@ -13,9 +13,9 @@ public class GeneDescriptionXMLReader extends XMLMatchableReader<GeneDescription
 
         GeneDescription geneDescription = new GeneDescription(id, provenanceInfo);
 
-        geneDescription.setDescription(getValueFromChildElement(node, "dsecription"));
+        geneDescription.setDescription(getValueFromChildElement(node, "description"));
 
-        return geneName;
+        return geneDescription;
     }
 
 }

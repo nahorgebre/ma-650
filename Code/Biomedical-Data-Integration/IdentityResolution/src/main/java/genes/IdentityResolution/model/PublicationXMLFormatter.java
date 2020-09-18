@@ -14,7 +14,7 @@ public class PublicationXMLFormatter extends XMLFormatter<Publication> {
 
     @Override
     public Element createElementFromRecord(Publication record, Document doc) {
-        Element publication = doc.createElement("publicationMention");
+        Element publication = doc.createElement("publicationMentions");
 
         publication.appendChild(createTextElement("pmid", record.getPmId(), doc));
         publication.appendChild(createTextElement("ressource", record.getRessource(), doc));

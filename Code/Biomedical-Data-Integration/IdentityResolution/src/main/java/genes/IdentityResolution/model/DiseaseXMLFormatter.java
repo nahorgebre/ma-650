@@ -14,7 +14,7 @@ public class DiseaseXMLFormatter extends XMLFormatter<Disease> {
 
     @Override
     public Element createElementFromRecord(Disease record, Document doc) {
-        Element disease = doc.createElement("diseaseAssociation");
+        Element disease = doc.createElement("diseaseAssociations");
 
         disease.appendChild(createTextElement("diseaseIdUMLS", record.getDiseaseIdUMLS(), doc));
         disease.appendChild(createTextElement("diseaseName", record.getDiseaseName(), doc));

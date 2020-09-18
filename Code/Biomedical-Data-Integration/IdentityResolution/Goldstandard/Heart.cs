@@ -109,7 +109,7 @@ namespace Goldstandard
                     {
                         if (ds1.ncbiId.Equals(ds2.ncbiId))
                         {
-                            if (trueCount < 100)
+                            if (trueCount < 50)
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",TRUE");
                                 trueCount ++;
@@ -117,19 +117,16 @@ namespace Goldstandard
                         }
                         else 
                         {
-                            if (falseCount < 100)
+                            if (falseCount < 50)
                             {
                                 sw.WriteLine(ds1.recordId + "," + ds2.recordId + ",FALSE");
                                 falseCount ++;
                             }
                         }
 
-                        if (trueCount > 98)
+                        if (trueCount > 48)
                         {
-                            if (falseCount > 98)
-                            {
-                                Console.WriteLine("Done!");
-                            }
+                            Console.WriteLine("Done!");
                         }        
                     }
                 }
