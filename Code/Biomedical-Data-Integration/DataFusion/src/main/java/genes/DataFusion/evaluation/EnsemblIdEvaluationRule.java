@@ -1,6 +1,7 @@
 package genes.DataFusion.evaluation;
 
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Gene.Gene;
+
 import de.uni_mannheim.informatik.dws.winter.datafusion.EvaluationRule;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;

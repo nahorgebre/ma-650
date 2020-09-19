@@ -1,13 +1,10 @@
 package genes.DataFusion.fusers.GeneDescriptions;
 
-import java.beans.GenericBeanInfo;
-import java.util.List;
-
-import genes.DataFusion.model.GeneDescription;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.GeneDescription.GeneDescription;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.list.Union;
+import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.list.IntersectionKSources;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -15,10 +12,13 @@ import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
-public class GeneDescriptionsFuserUnion extends AttributeValueFuser<List<GeneDescription>, Gene, Attribute> {
+import java.util.List;
 
-    public GeneDescriptionsFuserUnion() {
-        super(new Union<GeneDescription, Gene, Attribute>());
+public class GeneDescriptionsFuserIntersectionKSources extends
+        AttributeValueFuser<List<GeneDescription>, Gene, Attribute> {
+
+    public GeneDescriptionsFuserIntersectionKSources(int k) {
+        super(new IntersectionKSources<GeneDescription, Gene, Attribute>(k));
     }
 
     @Override

@@ -1,9 +1,22 @@
-package genes.DataFusion.model;
+package genes.DataFusion.model.Gene;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
+
+import genes.DataFusion.model.Disease.Disease;
+import genes.DataFusion.model.Disease.DiseaseXMLFormatter;
+import genes.DataFusion.model.GeneDescription.GeneDescription;
+import genes.DataFusion.model.GeneDescription.GeneDescriptionXMLFormatter;
+import genes.DataFusion.model.GeneName.GeneName;
+import genes.DataFusion.model.GeneName.GeneNameXMLFormatter;
+import genes.DataFusion.model.Organ.Organ;
+import genes.DataFusion.model.Organ.OrganXMLFormatter;
+import genes.DataFusion.model.Patent.Patent;
+import genes.DataFusion.model.Patent.PatentXMLFormatter;
+import genes.DataFusion.model.Publication.Publication;
+import genes.DataFusion.model.Publication.PublicationXMLFormatter;
 
 public class GeneXMLFormatter extends XMLFormatter<Gene> {
   

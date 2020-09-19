@@ -10,6 +10,8 @@ import de.uni_mannheim.informatik.dws.winter.model.FusibleFactory;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
+import genes.DataFusion.model.Gene.Gene;
+
 public class FusibleGeneFactory implements FusibleFactory<Gene, Attribute> {
 
     @Override

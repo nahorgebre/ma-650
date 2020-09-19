@@ -1,7 +1,7 @@
 package genes.DataFusion.fusers.Organs;
 
-import genes.DataFusion.model.GeneName;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Organ.Organ;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.MostRecent;
@@ -27,7 +27,7 @@ public class OrgansFuserMostRecent extends
     }
 
     @Override
-    public List<Organ> getValue(Organ record, Correspondence<Attribute, Matchable> correspondence) {
+    public List<Organ> getValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
         return record.getOrgans();
     }
 

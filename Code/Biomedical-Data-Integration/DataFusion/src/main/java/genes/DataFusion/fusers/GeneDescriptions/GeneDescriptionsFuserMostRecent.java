@@ -1,7 +1,7 @@
 package genes.DataFusion.fusers.GeneDescriptions;
 
-import genes.DataFusion.model.GeneDescription;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.GeneDescription.GeneDescription;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.MostRecent;

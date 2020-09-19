@@ -2,9 +2,9 @@ package genes.DataFusion.fusers.GeneDescriptions;
 
 import java.util.List;
 
-import genes.DataFusion.model.Disease;
-import genes.DataFusion.model.Gene;
-import genes.DataFusion.model.GeneDescription;
+import genes.DataFusion.model.Gene.Gene;
+import genes.DataFusion.model.GeneDescription.GeneDescription;
+
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;

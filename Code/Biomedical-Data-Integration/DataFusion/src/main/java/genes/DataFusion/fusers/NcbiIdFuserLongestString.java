@@ -1,6 +1,7 @@
 package genes.DataFusion.fusers;
 
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Gene.Gene;
+
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.string.LongestString;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;

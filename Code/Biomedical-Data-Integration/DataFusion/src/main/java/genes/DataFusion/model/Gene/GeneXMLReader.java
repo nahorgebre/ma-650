@@ -1,4 +1,4 @@
-package genes.DataFusion.model;
+package genes.DataFusion.model.Gene;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -13,6 +13,19 @@ import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 
+import genes.DataFusion.model.Disease.Disease;
+import genes.DataFusion.model.Disease.DiseaseXMLReader;
+import genes.DataFusion.model.GeneDescription.GeneDescription;
+import genes.DataFusion.model.GeneDescription.GeneDescriptionXMLReader;
+import genes.DataFusion.model.GeneName.GeneName;
+import genes.DataFusion.model.GeneName.GeneNameXMLReader;
+import genes.DataFusion.model.Organ.Organ;
+import genes.DataFusion.model.Organ.OrganXMLReader;
+import genes.DataFusion.model.Patent.Patent;
+import genes.DataFusion.model.Patent.PatentXMLReader;
+import genes.DataFusion.model.Publication.Publication;
+import genes.DataFusion.model.Publication.PublicationXMLReader;
+
 public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implements FusibleFactory<Gene, Attribute> {
 
     @Override
@@ -22,7 +35,7 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
         dataset.addAttribute(Gene.ENSEMBLID);
         dataset.addAttribute(Gene.NCBIID);
         dataset.addAttribute(Gene.GENENAMES);
-        dataset.addAttribute(Gene.GENEDESCRIPTION);
+        dataset.addAttribute(Gene.GENEDESCRIPTIONS);
 
         dataset.addAttribute(Gene.ORGANS);
         dataset.addAttribute(Gene.PUBLICATIONMENTIONS);
@@ -40,8 +53,8 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
         gene.setNcbiId(getValueFromChildElement(node, "ncbiId"));
         List<GeneName> geneNames = getObjectListFromChildElement(node, "geneNames", "geneName", new GeneNameXMLReader(), provenanceInfo);
         gene.setGeneNames(geneNames);
-        List<geneDescription> geneDescriptions = getObjectListFromChildElement(node, "geneDescriptions", "geneDescriptions", new geneDescriptionXMLReader(), provenanceInfo);
-        gene.setGeneDescription(geneDescriptions);
+        List<GeneDescription> geneDescriptions = getObjectListFromChildElement(node, "geneDescriptions", "geneDescriptions", new GeneDescriptionXMLReader(), provenanceInfo);
+        gene.setGeneDescriptions(geneDescriptions);
         
         List<Organ> organs = getObjectListFromChildElement(node, "organs", "organs", new OrganXMLReader(), provenanceInfo);
         gene.setOrgans(organs);

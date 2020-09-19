@@ -1,10 +1,12 @@
 package genes.DataFusion.fusers.Organs;
 
-import genes.DataFusion.model.Organ;
-import genes.DataFusion.model.Gene;
+import java.util.List;
+
+import genes.DataFusion.model.Gene.Gene;
+import genes.DataFusion.model.Organ.Organ;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.MostRecent;
+import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.list.Union;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -12,13 +14,10 @@ import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
-import java.util.List;
+public class OrgansFuserUnion extends AttributeValueFuser<List<Organ>, Gene, Attribute> {
 
-public class OrgansFuserMostRecent extends
-        AttributeValueFuser<List<Organ>, Gene, Attribute> {
-
-    public OrgansFuserMostRecent() {
-        super(new MostRecent<List<Organ>, Gene, Attribute>());
+    public OrgansFuserUnion() {
+        super(new Union<Organ, Gene, Attribute>());
     }
 
     @Override

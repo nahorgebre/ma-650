@@ -2,8 +2,8 @@ package genes.DataFusion.fusers.Organs;
 
 import java.util.List;
 
-import genes.DataFusion.model.Organ;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Organ.Organ;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.FavourSources;
@@ -14,9 +14,9 @@ import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
-public class OrganFuserFavourSource extends AttributeValueFuser<List<Organ>, Gene, Attribute> {
+public class OrgansFuserFavourSource extends AttributeValueFuser<List<Organ>, Gene, Attribute> {
 
-    public OrganFuserFavourSource() {
+    public OrgansFuserFavourSource() {
         super(new FavourSources<List<Organ>, Gene, Attribute>());
     }
 
@@ -26,13 +26,13 @@ public class OrganFuserFavourSource extends AttributeValueFuser<List<Organ>, Gen
     }
 
     @Override
-    public List<GeneName> getValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
+    public List<Organ> getValue(Gene record, Correspondence<Attribute, Matchable> correspondence) {
         return record.getOrgans();
     }
 
     @Override
     public void fuse(RecordGroup<Gene, Attribute> group, Gene fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
-        FusedValue<List<Organs>, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
+        FusedValue<List<Organ>, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
         fusedRecord.setOrgans(fused.getValue());
         fusedRecord.setAttributeProvenance(Gene.ORGANS, fused.getOriginalIds());
     }

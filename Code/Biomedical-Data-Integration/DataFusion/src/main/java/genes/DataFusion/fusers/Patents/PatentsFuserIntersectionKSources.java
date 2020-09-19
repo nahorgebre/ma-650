@@ -1,7 +1,7 @@
 package genes.DataFusion.fusers.Patents;
 
-import genes.DataFusion.model.Patent;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Patent.Patent;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.list.IntersectionKSources;

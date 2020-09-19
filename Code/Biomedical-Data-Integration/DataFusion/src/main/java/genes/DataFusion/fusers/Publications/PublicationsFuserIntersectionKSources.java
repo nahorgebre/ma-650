@@ -1,7 +1,7 @@
 package genes.DataFusion.fusers.Publications;
 
-import genes.DataFusion.model.Publication;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Publication.Publication;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.list.IntersectionKSources;

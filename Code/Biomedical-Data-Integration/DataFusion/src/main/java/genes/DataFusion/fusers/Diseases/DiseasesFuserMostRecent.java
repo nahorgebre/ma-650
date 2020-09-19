@@ -1,7 +1,7 @@
 package genes.DataFusion.fusers.Diseases;
 
-import genes.DataFusion.model.Disease;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Disease.Disease;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.MostRecent;

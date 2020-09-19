@@ -3,8 +3,8 @@ package genes.DataFusion.evaluation;
 import java.util.HashSet;
 import java.util.Set;
 
-import genes.DataFusion.model.Organ;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Organ.Organ;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.EvaluationRule;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;

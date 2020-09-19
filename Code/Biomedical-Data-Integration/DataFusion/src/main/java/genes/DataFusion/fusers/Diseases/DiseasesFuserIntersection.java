@@ -2,8 +2,8 @@ package genes.DataFusion.fusers.Diseases;
 
 import java.util.List;
 
-import genes.DataFusion.model.Disease;
-import genes.DataFusion.model.Gene;
+import genes.DataFusion.model.Disease.Disease;
+import genes.DataFusion.model.Gene.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.list.Intersection;
