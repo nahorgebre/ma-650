@@ -77,15 +77,16 @@ namespace DataTranslation
     [XmlType("publicationMention")]
     public class PublicationMention
     {
-        public string pmid = string.Empty;
-        public string ressource = string.Empty;
+        public string pmid;
+        public string ressource;
+        public string year;
     }
 
     [XmlType("patentMention")]
     public class PatentMention
     {
-        public string patentId = string.Empty;
-        public string patentDate = string.Empty;
-        public string patentClaimsCount	= string.Empty;
+        public string patentId;
+        public string patentDate;
+        public string patentClaimsCount;
     }
 }

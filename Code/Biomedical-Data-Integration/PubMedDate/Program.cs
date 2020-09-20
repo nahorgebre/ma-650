@@ -8,7 +8,7 @@ namespace PubMedDate
     {
         static void Main(string[] args)
         {
-
+            Directory.CreateDirectory(Environment.CurrentDirectory + "data/output");
             using (StreamWriter file = new StreamWriter(Environment.CurrentDirectory + "data/output/PubMedDate.csv"))
             {
                 foreach (string sourceArchiveFileName in Directory.GetFiles(Environment.CurrentDirectory + "/data/input"))

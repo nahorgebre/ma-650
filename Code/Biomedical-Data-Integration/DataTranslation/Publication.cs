@@ -14,10 +14,32 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, gene2PubtatorcentralInputDirectory, "gene2pubtatorcentral.tsv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, gene2PubtatorcentralInputDirectory, "pubMedDate.csv")))
             {
+                reader.ReadLine();
+                int counter = 1;
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    String[] values = line.Split(",");
+
+                    Gene gene = new Gene();
+                    gene.recordId = string.Format("pubMedDate_{0}_rid", counter);
+
+                    List<PublicationMention> publicationMentions_list = new List<PublicationMention>();
+                    PublicationMention publicationMention = new PublicationMention();
+                    publicationMention.pmid = values[0].Trim();
+                    publicationMention.year = values[1].Trim();
+                    publicationMentions_list.Add(publicationMention);
+                    gene.publicationMentions = publicationMentions_list;
+
+                    gene_list.Add(gene);
+
+                    counter++;
+                }
             }
 
+            Methods.createXml(gene_list: gene_list, fileName: "pubMedDate_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
         }
 
         public static void gene2pubtatorcentral_dt()
