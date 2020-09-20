@@ -21,46 +21,52 @@ namespace PubMedDate
             }
 
             Console.WriteLine("Starting parsing!");
-
             Directory.CreateDirectory(Environment.CurrentDirectory + "/data/output");
-            string OutputFileName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, "PubMedDate.csv");
-       
-            using (StreamWriter file = new StreamWriter(OutputFileName))
-            {
-                file.WriteLine("pmId,year");
-
-                foreach (FileInfo fileToParse in directorySelected.GetFiles("*.xml"))
-                {
-                    using (XmlTextReader reader = new XmlTextReader(fileToParse.FullName))
-                    {
-                        while (reader.ReadToFollowing("PubmedArticle"))
-                        {
-                            string pmId = string.Empty;
-                            string year = string.Empty;
-
-                            reader.ReadToFollowing("PMID");
-                            pmId = reader.ReadElementContentAsString();
-
-                            reader.ReadToFollowing("PubDate");
-
-                            reader.ReadToFollowing("Year");
-                            year = reader.ReadElementContentAsString();
-
-                            int yearInt = Int32.Parse(year);
-                                                
-                            if (yearInt >= 1985 && yearInt <= 2016)
-                            {
-                                file.WriteLine(pmId + "," + year);
-                            } 
-
-                        }
-                    }        
-                }
-            }
-
+            parseXML(directorySelected);
             Console.WriteLine("All files are parsed!");
 
             AWSupload.run();
+        }
+
+        public static void parseXML(DirectoryInfo directorySelected) 
+        {
+
+            foreach (FileInfo fileToParse in directorySelected.GetFiles("*.xml"))
+            {              
+                string OutputFileName = string.Format("{0}/data/output/{1}.csv", Environment.CurrentDirectory, fileToParse.Name.Substring(0, fileToParse.Name.LastIndexOf(".")));   
+                using (StreamWriter file = new StreamWriter(OutputFileName))
+                {
+                    file.WriteLine("pmId,year");
+
+                    try
+                    {
+                        using (XmlTextReader reader = new XmlTextReader(fileToParse.FullName))
+                        {
+                            while (reader.ReadToFollowing("PubmedArticle"))
+                            {
+                                string pmId = string.Empty;
+                                string year = string.Empty;
+
+                                reader.ReadToFollowing("PMID");
+                                pmId = reader.ReadElementContentAsString();
+
+                                reader.ReadToFollowing("PubDate");
+
+                                reader.ReadToFollowing("Year");
+                                year = reader.ReadElementContentAsString();
+
+                                file.WriteLine(pmId + "," + year);
+                            }
+                        } 
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                        Console.WriteLine("File name: " + fileToParse.FullName);
+                    }
+
+                }
+            }
         }
     }
 }

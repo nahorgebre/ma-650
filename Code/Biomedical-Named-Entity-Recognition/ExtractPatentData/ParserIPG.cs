@@ -35,6 +35,7 @@ namespace ExtractPatentData
 
                         // get parsed patents
                         List<Patent> patentListByWeekParsed = parseXML(patentListByWeek, year.ToString());
+
                         OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
 
                         FileArchiver.deleteExtractedFile(fileName);
@@ -54,6 +55,10 @@ namespace ExtractPatentData
             foreach (string patent in patentListByWeek)
             {
                 string patentText = patent.Trim();
+
+
+
+                // ----
                 string patNum = getPatNum(patentText);
 
                 foreach (TargetPatentNumber targetPatentNumber in targetPatentNumberList)
@@ -96,6 +101,8 @@ namespace ExtractPatentData
                         patentList.Add(patentItem);
                     }
                 }
+                // ----
+                
             }
 
             watch.Stop();
