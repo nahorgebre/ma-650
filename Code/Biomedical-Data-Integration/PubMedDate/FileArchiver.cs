@@ -6,31 +6,23 @@ namespace PubMedDate
 {
     class FileArchiver
     {
-        public static string extractSingleFile(string sourceArchiveFileName)
+
+        public static void Decompress(FileInfo fileToDecompress)
         {
-            string returnValue = string.Empty;
-            string destinationDirectoryName = sourceArchiveFileName.Substring(0, sourceArchiveFileName.LastIndexOf("."));
-
-            if (Directory.Exists(destinationDirectoryName))
+            using (FileStream originalFileStream = fileToDecompress.OpenRead())
             {
-                Directory.Delete(destinationDirectoryName, true);
+                string currentFileName = fileToDecompress.FullName;
+                string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
+
+                using (FileStream decompressedFileStream = File.Create(newFileName))
+                {
+                    using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress))
+                    {
+                        decompressionStream.CopyTo(decompressedFileStream);
+                        Console.WriteLine($"Decompressed: {fileToDecompress.Name}");
+                    }
+                }
             }
-
-            ZipFile.ExtractToDirectory(sourceArchiveFileName, destinationDirectoryName);
-            
-            foreach (string destinationFileName in Directory.GetFiles(destinationDirectoryName))
-            {
-                returnValue = destinationFileName;   
-            }
-
-            return returnValue;
-        }
-
-        public static void deleteExtractedFile(string fileName)
-        {       
-            string deleteFileName = fileName.Substring(0, fileName.LastIndexOf("/"));    
-            Directory.Delete(deleteFileName, true);
-            Console.WriteLine("Delete Directory: {0}", deleteFileName);
         }
 
     }

@@ -8,14 +8,32 @@ namespace PubMedDate
     {
         static void Main(string[] args)
         {
+            DirectoryInfo directorySelected = new DirectoryInfo(Environment.CurrentDirectory + "/data/input");
+
+            foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.gz"))
+            {
+                string folderName = fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".") - 1);
+                if (!Directory.Exists(Environment.CurrentDirectory + "/data/input/" + folderName))
+                {
+                    FileArchiver.Decompress(fileToDecompress);
+                }               
+            }
+
             Directory.CreateDirectory(Environment.CurrentDirectory + "data/output");
             using (StreamWriter file = new StreamWriter(Environment.CurrentDirectory + "data/output/PubMedDate.csv"))
             {
-                foreach (string sourceArchiveFileName in Directory.GetFiles(Environment.CurrentDirectory + "/data/input"))
-                {
-                    file.WriteLine("pmId,year");
+                file.WriteLine("pmId,year");
 
-                    string xmlFileName = FileArchiver.extractSingleFile(sourceArchiveFileName);
+                foreach (var directory in Directory.GetDirectories(Environment.CurrentDirectory + "/data/input"))
+                {
+                    string xmlFileName = string.Empty;
+                    foreach (string directoryFile in Directory.GetFiles(directory))
+                    {
+                        if (directoryFile.Contains("pubmed"))
+                        {
+                            xmlFileName = directoryFile;
+                        }
+                    }
 
                     XmlDocument doc = new XmlDocument();
                     doc.Load(xmlFileName);
@@ -35,8 +53,6 @@ namespace PubMedDate
                             file.WriteLine(pmId + "," + year);
                         }           
                     }
-
-                    FileArchiver.deleteExtractedFile(xmlFileName);
                 }
             }
 
