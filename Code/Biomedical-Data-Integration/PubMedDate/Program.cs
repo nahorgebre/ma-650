@@ -12,31 +12,26 @@ namespace PubMedDate
 
             foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.gz"))
             {
-                string folderName = fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".") - 1);
-                if (!Directory.Exists(Environment.CurrentDirectory + "/data/input/" + folderName))
+                string fileName = fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".") - 1);
+                Console.WriteLine("File Name: " + fileName);
+
+                if (!File.Exists(Environment.CurrentDirectory + "/data/input/" + fileName))
                 {
                     FileArchiver.Decompress(fileToDecompress);
-                }               
+                }          
             }
 
-            Directory.CreateDirectory(Environment.CurrentDirectory + "data/output");
-            using (StreamWriter file = new StreamWriter(Environment.CurrentDirectory + "data/output/PubMedDate.csv"))
+            foreach (FileInfo fileToParse in directorySelected.GetFiles("*.xml"))
             {
-                file.WriteLine("pmId,year");
+                string fileName = fileToParse.Name.Substring(0, fileToParse.Name.LastIndexOf(".") - 1);
 
-                foreach (var directory in Directory.GetDirectories(Environment.CurrentDirectory + "/data/input"))
+                Directory.CreateDirectory(Environment.CurrentDirectory + "data/output");
+                using (StreamWriter file = new StreamWriter(Environment.CurrentDirectory + "data/output/" + fileName + ".csv"))
                 {
-                    string xmlFileName = string.Empty;
-                    foreach (string directoryFile in Directory.GetFiles(directory))
-                    {
-                        if (directoryFile.Contains("pubmed"))
-                        {
-                            xmlFileName = directoryFile;
-                        }
-                    }
+                    file.WriteLine("pmId,year");
 
                     XmlDocument doc = new XmlDocument();
-                    doc.Load(xmlFileName);
+                    doc.Load(Environment.CurrentDirectory + "(data/input/" + fileName);
 
                     XmlNodeList nodes = doc.DocumentElement.SelectNodes("/PubmedArticleSet/PubmedArticle");
 
