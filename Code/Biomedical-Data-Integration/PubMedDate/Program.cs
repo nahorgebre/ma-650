@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace PubMedDate
 {
@@ -30,31 +28,15 @@ namespace PubMedDate
                         string pmId = node.SelectSingleNode(xPathPmId).InnerText;
 
                         string xPathYear = "/MedlineCitation/Article/Journal/JournalIssue/PubDate/Year";
-                        string year = node.SelectSingleNode(xPathYear).InnerText;
+                        int year = Int32.Parse(node.SelectSingleNode(xPathYear).InnerText);
 
-                        file.WriteLine(pmId + "," + year);
+                        if (year >= 1985 && year <= 2016)
+                        {
+                            file.WriteLine(pmId + "," + year);
+                        }           
                     }
-                }
-            }
-            //createBashFile();
-        }
 
-        public static void createBashFile() {
-            
-            using (StreamWriter file = new StreamWriter(Environment.CurrentDirectory + "/test.txt"))
-            {
-                string[] readText = File.ReadAllLines(Environment.CurrentDirectory + "/input.txt");
-                foreach (string s in readText)
-                {
-                    int index = s.IndexOf("\"") + 1;
-                    int length = s.LastIndexOf("\"") - index;
-                    string downloadFile = s.Substring(index, length);
-
-                    if (!downloadFile.Contains("md5"))
-                    {
-                        string wget = "wget ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/" + downloadFile + " -O data/input/" + downloadFile;
-                        file.WriteLine(wget);
-                    }
+                    FileArchiver.deleteExtractedFile(xmlFileName);
                 }
             }
         }
