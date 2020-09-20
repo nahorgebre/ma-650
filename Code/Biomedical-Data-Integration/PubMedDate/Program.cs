@@ -12,8 +12,7 @@ namespace PubMedDate
 
             foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.gz"))
             {
-                string fileName = fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".") - 1);
-                Console.WriteLine("File Name: " + fileName);
+                string fileName = fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."));
 
                 if (!File.Exists(Environment.CurrentDirectory + "/data/input/" + fileName))
                 {
@@ -31,7 +30,7 @@ namespace PubMedDate
                     file.WriteLine("pmId,year");
 
                     XmlDocument doc = new XmlDocument();
-                    doc.Load(Environment.CurrentDirectory + "(data/input/" + fileName);
+                    doc.Load(Environment.CurrentDirectory + "data/input/" + fileName);
 
                     XmlNodeList nodes = doc.DocumentElement.SelectNodes("/PubmedArticleSet/PubmedArticle");
 
