@@ -58,7 +58,7 @@ namespace ExtractPatentData
 
 
 
-                // ----
+                /*
                 string patNum = getPatNum(patentText);
 
                 foreach (TargetPatentNumber targetPatentNumber in targetPatentNumberList)
@@ -101,7 +101,7 @@ namespace ExtractPatentData
                         patentList.Add(patentItem);
                     }
                 }
-                // ----
+                */
                 
             }
 

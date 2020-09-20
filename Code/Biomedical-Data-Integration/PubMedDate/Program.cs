@@ -32,7 +32,10 @@ namespace PubMedDate
 
         public static void generateOutputFile()
         {
+            
             string OutputFileName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, "PubMedDate.csv");
+            File.Delete(OutputFileName);
+            
             using (StreamWriter file = new StreamWriter(OutputFileName))
             {
                 file.WriteLine("pmId,year");

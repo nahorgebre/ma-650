@@ -51,6 +51,8 @@ namespace ExtractPatentData
             foreach (string patent in patentListByWeek)
             {
                 string patentText = patent.Trim();
+
+                /*
                 string patNum = getPatNum(patentText);
 
                 foreach (TargetPatentNumber targetPatentNumber in targetPatentNumberList)
@@ -93,6 +95,8 @@ namespace ExtractPatentData
                         patentList.Add(patentItem);
                     }
                 }
+                */
+
             }
 
             watch.Stop();
