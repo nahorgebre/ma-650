@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 
@@ -24,8 +25,51 @@ namespace PubMedDate
             Directory.CreateDirectory(Environment.CurrentDirectory + "/data/output");
             parseXML(directorySelected);
             Console.WriteLine("All files are parsed!");
+            generateOutputFile();
 
             AWSupload.run();
+        }
+
+        public static void generateOutputFile()
+        {
+            string OutputFileName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, "PubMedDate.csv");
+            using (StreamWriter file = new StreamWriter(OutputFileName))
+            {
+                file.WriteLine("pmId,year");
+
+                foreach (string fileName in Directory.GetFiles(Environment.CurrentDirectory + "/data/output"))
+                {             
+                    using (var reader = new StreamReader(fileName))
+                    {
+                        reader.ReadLine();
+                        while (!reader.EndOfStream)
+                        {
+                            var line = reader.ReadLine();
+                            if (!line.Equals(string.Empty))
+                            {
+                                string delimiter = ",";
+                                try
+                                {
+                                    String[] values = line.Split(delimiter);
+                                    List<string> itemContent = new List<string>()
+                                    {
+                                        values[0].ToString(),
+                                        values[1].ToString()
+                                    };
+                                    var inputLine = string.Join(delimiter, itemContent);
+                                    file.WriteLine(inputLine);
+                                }
+                                catch (System.Exception)
+                                {
+                                    Console.WriteLine("Exception in Input File!");
+                                    Console.WriteLine("File Name: {0}", fileName);
+                                    Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public static void parseXML(DirectoryInfo directorySelected) 
@@ -33,39 +77,42 @@ namespace PubMedDate
 
             foreach (FileInfo fileToParse in directorySelected.GetFiles("*.xml"))
             {              
-                string OutputFileName = string.Format("{0}/data/output/{1}.csv", Environment.CurrentDirectory, fileToParse.Name.Substring(0, fileToParse.Name.LastIndexOf(".")));   
-                using (StreamWriter file = new StreamWriter(OutputFileName))
+                string OutputFileName = string.Format("{0}/data/output/{1}.csv", Environment.CurrentDirectory, fileToParse.Name.Substring(0, fileToParse.Name.LastIndexOf(".")));
+                if (!File.Exists(OutputFileName))
                 {
-                    file.WriteLine("pmId,year");
-
-                    try
+                    using (StreamWriter file = new StreamWriter(OutputFileName))
                     {
-                        using (XmlTextReader reader = new XmlTextReader(fileToParse.FullName))
+                        file.WriteLine("pmId,year");
+
+                        try
                         {
-                            while (reader.ReadToFollowing("PubmedArticle"))
+                            using (XmlTextReader reader = new XmlTextReader(fileToParse.FullName))
                             {
-                                string pmId = string.Empty;
-                                string year = string.Empty;
+                                while (reader.ReadToFollowing("PubmedArticle"))
+                                {
+                                    string pmId = string.Empty;
+                                    string year = string.Empty;
 
-                                reader.ReadToFollowing("PMID");
-                                pmId = reader.ReadElementContentAsString();
+                                    reader.ReadToFollowing("PMID");
+                                    pmId = reader.ReadElementContentAsString();
 
-                                reader.ReadToFollowing("PubDate");
+                                    reader.ReadToFollowing("PubDate");
 
-                                reader.ReadToFollowing("Year");
-                                year = reader.ReadElementContentAsString();
+                                    reader.ReadToFollowing("Year");
+                                    year = reader.ReadElementContentAsString();
 
-                                file.WriteLine(pmId + "," + year);
-                            }
-                        } 
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                        Console.WriteLine("File name: " + fileToParse.FullName);
-                    }
-
+                                    file.WriteLine(pmId + "," + year);
+                                }
+                            } 
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                            Console.WriteLine("File name: " + fileToParse.FullName);
+                        }
+                    }           
                 }
+
             }
         }
     }
