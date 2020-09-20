@@ -20,33 +20,39 @@ namespace PubMedDate
                 }          
             }
 
-            foreach (FileInfo fileToParse in directorySelected.GetFiles("*.xml"))
+            Directory.CreateDirectory(Environment.CurrentDirectory + "/data/output");
+            string OutputFileName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, "PubMedDate.csv");
+       
+            using (StreamWriter file = new StreamWriter(OutputFileName))
             {
-                string fileName = fileToParse.Name.Substring(0, fileToParse.Name.LastIndexOf(".") - 1);
+                file.WriteLine("pmId,year");
 
-                Directory.CreateDirectory(Environment.CurrentDirectory + "data/output");
-                using (StreamWriter file = new StreamWriter(Environment.CurrentDirectory + "data/output/" + fileName + ".csv"))
+                foreach (FileInfo fileToParse in directorySelected.GetFiles("*.xml"))
                 {
-                    file.WriteLine("pmId,year");
-
-                    XmlDocument doc = new XmlDocument();
-                    doc.Load(Environment.CurrentDirectory + "data/input/" + fileName);
-
-                    XmlNodeList nodes = doc.DocumentElement.SelectNodes("/PubmedArticleSet/PubmedArticle");
-
-                    foreach (XmlNode node in nodes)
+                    using (XmlTextReader reader = new XmlTextReader(fileToParse.FullName))
                     {
-                        string xPathPmId = "/MedlineCitation/PMID";
-                        string pmId = node.SelectSingleNode(xPathPmId).InnerText;
-
-                        string xPathYear = "/MedlineCitation/Article/Journal/JournalIssue/PubDate/Year";
-                        int year = Int32.Parse(node.SelectSingleNode(xPathYear).InnerText);
-
-                        if (year >= 1985 && year <= 2016)
+                        while (reader.ReadToFollowing("PubmedArticle"))
                         {
-                            file.WriteLine(pmId + "," + year);
-                        }           
-                    }
+                            string pmId = string.Empty;
+                            string year = string.Empty;
+
+                            reader.ReadToFollowing("PMID");
+                            pmId = reader.ReadElementContentAsString();
+
+                            reader.ReadToFollowing("PubDate");
+
+                            reader.ReadToFollowing("Year");
+                            year = reader.ReadElementContentAsString();
+
+                            int yearInt = Int32.Parse(year);
+                                                
+                            if (yearInt >= 1985 && yearInt <= 2016)
+                            {
+                                file.WriteLine(pmId + "," + year);
+                            } 
+
+                        }
+                    }        
                 }
             }
 
