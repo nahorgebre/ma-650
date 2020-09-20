@@ -1,4 +1,4 @@
-mkdir data/input
+mkdir -p data/input
 wget ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/README.txt -O data/input/README.txt
 wget ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/pubmed20n0001.xml.gz -O data/input/pubmed20n0001.xml.gz
 wget ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/pubmed20n0002.xml.gz -O data/input/pubmed20n0002.xml.gz
