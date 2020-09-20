@@ -4,10 +4,21 @@ using System.Collections.Generic;
 
 namespace DataTranslation
 {
-    public class Gene2Pubtatorcentral
+    public class Publication
     {
         public static string gene2PubtatorcentralInputDirectory = "data/input/Gene2Pubtatorcentral";
         public static string gene2PubtatorcentralOutputDirectory = "data/output/Gene2Pubtatorcentral";
+
+        public static void pubMedDate_dt()
+        {
+            Genes genes = new Genes();
+            List<Gene> gene_list = new List<Gene>();
+
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, gene2PubtatorcentralInputDirectory, "gene2pubtatorcentral.tsv")))
+            {
+            }
+
+        }
 
         public static void gene2pubtatorcentral_dt()
         {

@@ -39,6 +39,8 @@ namespace PubMedDate
                     FileArchiver.deleteExtractedFile(xmlFileName);
                 }
             }
+
+            AWSupload.run();
         }
     }
 }

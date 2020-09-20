@@ -144,8 +144,8 @@ namespace DataTranslation
 
         public static void dataTranslationPublicationMentions()
         {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Gene2Pubtatorcentral.gene2PubtatorcentralOutputDirectory)); 
-            Gene2Pubtatorcentral.gene2pubtatorcentral_dt();
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Publication.gene2PubtatorcentralOutputDirectory)); 
+            Publication.gene2pubtatorcentral_dt();
         }
     }
 }
