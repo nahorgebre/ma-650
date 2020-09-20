@@ -109,7 +109,7 @@ public class DataFusion {
         // add attribute fusers
         strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new EnsemblIdEvaluationRule());
         strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
-        strategy.addAttributeFuser(Gene.GENENAMES, new GeneNamesFuserUnion(), GeneNamesEvaluationRule());
+        strategy.addAttributeFuser(Gene.GENENAMES, new GeneNamesFuserUnion(), new GeneNamesEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTIONS, new GeneDescriptionsFuserUnion(), new GeneDescriptionsEvaluationRule());
 
         strategy.addAttributeFuser(Gene.DISEASEASSOCIATIONS, new DiseasesFuserUnion(), new DisaesesEvaluationRule());
