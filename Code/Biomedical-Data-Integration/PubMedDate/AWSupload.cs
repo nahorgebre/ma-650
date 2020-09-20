@@ -12,7 +12,7 @@ namespace PubMedDate
 
         public static void run()
         {
-            string fileName = Environment.CurrentDirectory + "data/output/PubMedDate.csv";
+            string fileName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, "PubMedDate.csv");
             string keyName = "data-translation/input/Gene2Pubtatorcentral/PubMedDate.csv";
             string bucketName = "nahorgebre-ma-650-master-thesis";
             UploadFileAsync(bucketName, fileName, keyName).Wait();
