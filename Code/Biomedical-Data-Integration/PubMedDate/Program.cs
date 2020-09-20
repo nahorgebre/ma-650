@@ -20,6 +20,8 @@ namespace PubMedDate
                 }          
             }
 
+            Console.WriteLine("Starting parsing!");
+
             Directory.CreateDirectory(Environment.CurrentDirectory + "/data/output");
             string OutputFileName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, "PubMedDate.csv");
        
@@ -55,6 +57,8 @@ namespace PubMedDate
                     }        
                 }
             }
+
+            Console.WriteLine("All files are parsed!");
 
             AWSupload.run();
         }

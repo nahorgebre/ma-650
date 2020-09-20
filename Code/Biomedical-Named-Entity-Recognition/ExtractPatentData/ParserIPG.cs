@@ -19,8 +19,7 @@ namespace ExtractPatentData
 
         public static void run()
         {
-            // 2006
-            for (int year = 2011; year <= 2016; year++)
+            for (int year = 2006; year <= 2016; year++)
             {
                 foreach (var zipFile in Directory.GetFiles(string.Format("./data/input/PatentGrantFullTextData/{0}", year.ToString())))
                 {
@@ -30,8 +29,11 @@ namespace ExtractPatentData
                     if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
                     {              
                         string fileName = FileArchiver.extractSingleFile(zipFile);
-                            
+
+                        // get XML for each patent  
                         string[] patentListByWeek = Parser.getXmlPerPatent(fileName);
+
+                        // get parsed patents
                         List<Patent> patentListByWeekParsed = parseXML(patentListByWeek, year.ToString());
                         OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
 

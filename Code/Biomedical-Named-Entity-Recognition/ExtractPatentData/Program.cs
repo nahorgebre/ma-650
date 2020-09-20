@@ -27,8 +27,8 @@ namespace ExtractPatentData
             Console.SetOut(writer);
 
             Patent.getPatentNumbersByYear();
-            //ParserPFTAPS.run();
-            //ParserPG.run();
+            ParserPFTAPS.run();
+            ParserPG.run();
             ParserIPG.run();
             Output.run();
             AWSupload.run();
