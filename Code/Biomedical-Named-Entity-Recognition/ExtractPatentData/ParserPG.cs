@@ -52,6 +52,10 @@ namespace ExtractPatentData
             {
                 string patentText = patent.Trim();
 
+                Patent patentItem = new Patent();
+
+                
+
                 /*
                 string patNum = getPatNum(patentText);
 

@@ -21,10 +21,8 @@ namespace PubMedDate
                 }          
             }
 
-            Console.WriteLine("Starting parsing!");
             Directory.CreateDirectory(Environment.CurrentDirectory + "/data/output");
             parseXML(directorySelected);
-            Console.WriteLine("All files are parsed!");
             generateOutputFile();
 
             AWSupload.run();
