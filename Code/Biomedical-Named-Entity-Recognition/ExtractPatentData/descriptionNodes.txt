@@ -1,0 +1,5 @@
+brief-description-of-drawings - ...
+BRFSUM - Brief Summary
+DETDESC - Detailed Description
+RELAPP- Related Applications
+GOVINT - Goverment Interest

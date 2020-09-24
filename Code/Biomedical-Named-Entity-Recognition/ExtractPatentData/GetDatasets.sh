@@ -1,5 +1,5 @@
 mkdir -p data/input/PatNum
-wget -N https://extract-patent-data.s3.us-east-2.amazonaws.com/input/PatNum/US_Patents_1985_2016_313392.csv -O data/input/PatNum/US_Patents_1985_2016_313392.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/parser/input/PatNum/US_Patents_1985_2016_313392.csv -O data/input/PatNum/US_Patents_1985_2016_313392.csv
 
 mkdir -p data/input/PatentGrantFullTextData/1985
 wget -N https://bulkdata.uspto.gov/data/patent/grant/redbook/fulltext/1985/pftaps19850101_wk01.zip -O data/input/PatentGrantFullTextData/1985/pftaps19850101_wk01.zip

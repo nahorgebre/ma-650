@@ -14,7 +14,9 @@ namespace ExtractPatentData
             try
             {
                 Directory.CreateDirectory("./logs");
-                stream = new FileStream("./logs/ExtractPatentData.log", FileMode.OpenOrCreate, FileAccess.Write);
+                string fileName = "./logs/ExtractPatentData.log";
+                File.Delete(fileName);
+                stream = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write);
                 writer = new StreamWriter(stream);
             }
             catch (Exception ex)
@@ -27,11 +29,11 @@ namespace ExtractPatentData
             Console.SetOut(writer);
 
             Patent.getPatentNumbersByYear();
-            ParserPFTAPS.run();
-            ParserPG.run();
-            ParserIPG.run();
-            Output.run();
-            AWSupload.run();
+            //ParserPFTAPS.run();
+            //ParserPG.run();
+            ParserIPG2.run();
+            //Output.run();
+            //AWSupload.run();
 
             Console.SetOut(consoleOut);
             writer.Close();

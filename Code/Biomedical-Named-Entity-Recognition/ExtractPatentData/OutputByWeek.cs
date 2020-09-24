@@ -33,11 +33,12 @@ namespace ExtractPatentData
                 };
                 var firstLine = string.Join(delimiter, firstLineContent);
                 tsvFile.AppendLine(firstLine);
-                foreach (Patent patent in patentListByWeekParsed)
+
+                foreach (var patent in patentListByWeekParsed)
                 {
                     List<string> itemContent = new List<string>()
                     {
-                        patent.patentNumber,
+                        patent.patentNumber + "-",
                         patent.patentDate,
                         string.Format("\"{0}\"", patent.patentTitle)
                     };
@@ -50,7 +51,12 @@ namespace ExtractPatentData
         }
 
         public static void abstractOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
-        {        
+        {
+            foreach (var item in patentListByWeekParsed)
+            {
+                Console.WriteLine("show Patent Abstract: " + item.patentAbstract);
+            }
+       
             string fileNameAbstract = directory + string.Format("abstract{0}.tsv", fileNamePattern);
             if (!File.Exists(fileNameAbstract))
             {
@@ -64,7 +70,7 @@ namespace ExtractPatentData
                 };
                 var firstLine = string.Join(delimiter, firstLineContent);
                 tsvFile.AppendLine(firstLine);
-                foreach (Patent patent in patentListByWeekParsed)
+                foreach (var patent in patentListByWeekParsed)
                 {
                     List<string> itemContent = new List<string>()
                     {
@@ -83,6 +89,7 @@ namespace ExtractPatentData
         public static void descriptionOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameDescription = directory + string.Format("description{0}.tsv", fileNamePattern);
+            Console.WriteLine("X: " + fileNameDescription);
             if (!File.Exists(fileNameDescription))
             {
                 var tsvFile = new StringBuilder();
@@ -95,7 +102,7 @@ namespace ExtractPatentData
                 };
                 var firstLine = string.Join(delimiter, firstLineContent);
                 tsvFile.AppendLine(firstLine);
-                foreach (Patent patent in patentListByWeekParsed)
+                foreach (var patent in patentListByWeekParsed)
                 {
                     List<string> itemContent = new List<string>()
                     {

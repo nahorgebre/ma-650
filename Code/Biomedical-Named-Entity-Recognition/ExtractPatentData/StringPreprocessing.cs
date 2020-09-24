@@ -30,7 +30,7 @@ namespace ExtractPatentData
         {
             if (!text.Substring(text.Length - 1).Equals("."))
             {
-                text = string.Format("{0}.", text);
+                text = string.Format("{0}. ", text);
             }
             return text;
         }
