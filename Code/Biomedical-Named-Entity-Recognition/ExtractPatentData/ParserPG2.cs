@@ -222,6 +222,8 @@ namespace ExtractPatentData
 
             string fileNameTitle = directory + string.Format("title{0}.tsv", fileNamePattern);
 
+            File.Delete(fileNameTitle);
+
             if (!File.Exists(fileNameTitle))
             {
                 var tsvFile = new StringBuilder();
@@ -256,6 +258,8 @@ namespace ExtractPatentData
             Directory.CreateDirectory(directory);
 
             string fileNameAbstract = directory + string.Format("abstract{0}.tsv", fileNamePattern);
+
+            File.Delete(fileNameAbstract);
 
             if (!File.Exists(fileNameAbstract))
             {

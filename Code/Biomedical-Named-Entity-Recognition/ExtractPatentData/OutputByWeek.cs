@@ -89,7 +89,9 @@ namespace ExtractPatentData
         public static void descriptionOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameDescription = directory + string.Format("description{0}.tsv", fileNamePattern);
-            Console.WriteLine("X: " + fileNameDescription);
+
+            File.Delete(fileNameDescription);
+
             if (!File.Exists(fileNameDescription))
             {
                 var tsvFile = new StringBuilder();
@@ -114,13 +116,17 @@ namespace ExtractPatentData
                     tsvFile.AppendLine(line);  
                 }
                 File.WriteAllText(fileNameDescription, tsvFile.ToString());
+                Console.WriteLine("description{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
             }
-            Console.WriteLine("description{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
+            
         }
 
         public static void claimsOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameClaims = directory + string.Format("claims{0}.tsv", fileNamePattern);
+
+            File.Delete(fileNameClaims);
+
             if (!File.Exists(fileNameClaims))
             {
                 var tsvFile = new StringBuilder();
@@ -147,8 +153,8 @@ namespace ExtractPatentData
                     tsvFile.AppendLine(line);  
                 }
                 File.WriteAllText(fileNameClaims, tsvFile.ToString());
-            }
-            Console.WriteLine("claims{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
+                Console.WriteLine("claims{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
+            }          
         }
 
         public static bool checkIfOutputExist(string year, string fileNamePattern)
