@@ -350,9 +350,9 @@ namespace ExtractPatentData
 
         public static string getFileNamePattern(string fileName)
         {
-            string year = fileName.Substring(3, 2);
-            string month = fileName.Substring(5, 2);
-            string day = fileName.Substring(7, 2);
+            string year = fileName.Substring(2, 2);
+            string month = fileName.Substring(4, 2);
+            string day = fileName.Substring(6, 2);
             return string.Format("_y{0}_m{1}_d{2}", year, month, day);
         }
 
