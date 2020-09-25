@@ -201,8 +201,10 @@ namespace ExtractPatentData
                 // Create output files
                 createTitleOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
                 createAbstractOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
-                createDescriptionOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
-                createClaimsOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
+                //createDescriptionOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
+                //createClaimsOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
+
+                OutputByWeek.run(patentListByWeekParsed, year, getFileNamePattern(item.Name));
             }
         }
 

@@ -12,8 +12,8 @@ namespace ExtractPatentData
             string directory = string.Format("./data/output/outputByWeek{0}/", year);
             Directory.CreateDirectory(directory);
 
-            titleOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
-            abstractOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
+            //titleOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
+            //abstractOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
             descriptionOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
             claimsOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
         }
