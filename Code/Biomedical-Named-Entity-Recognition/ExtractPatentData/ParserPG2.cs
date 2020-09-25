@@ -37,6 +37,9 @@ namespace ExtractPatentData
                 string sgmFileName = string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name);
                 File.Delete(sgmFileName);
 
+                string SGMFileName = string.Format("{0}/{1}.SGM", fileToDecompress.DirectoryName, fileToDecompress.Name);
+                File.Delete(SGMFileName);
+
                 if (!File.Exists(string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")))))
                 {
                     ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
