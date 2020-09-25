@@ -125,6 +125,7 @@ namespace ExtractPatentData
 
                                         // Add to patent instance
                                         patentItem.patentTitle = patentTitle;
+                                        Console.WriteLine("Title: " + patentItem.patentTitle);
 
                                         // Parsing Abstract SDOAB
                                         string patentAbstarct = string.Empty;
@@ -211,6 +212,8 @@ namespace ExtractPatentData
 
         public static void createTitleOutput(List<Patent> patentListByWeekParsed, string year, string fileNamePattern)
         {
+            Console.WriteLine("Patent List by Week: " + patentListByWeekParsed.Count);
+            
             string directory = string.Format("./data/output/outputByWeek{0}/", year);
             Directory.CreateDirectory(directory);
 
