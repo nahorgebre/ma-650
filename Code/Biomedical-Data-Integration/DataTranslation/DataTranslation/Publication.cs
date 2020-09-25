@@ -21,7 +21,7 @@ namespace DataTranslation
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, gene2PubtatorcentralInputDirectory, "pubMedDate.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, gene2PubtatorcentralInputDirectory, "PubMedDate.csv")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -46,7 +46,7 @@ namespace DataTranslation
                 }
             }
 
-            Methods.createXml(gene_list: gene_list, fileName: "pubMedDate_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createXml(gene_list: gene_list, fileName: "PubMedDate_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
         }
 
         public static void gene2pubtatorcentral_dt()
