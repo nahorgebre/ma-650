@@ -34,9 +34,14 @@ namespace ExtractPatentData
         {
             foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.zip"))
             {
-                if (!File.Exists(string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")))))
+                string fileName1 = string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
+                string fileName2 = string.Format("{0}/{1}.XML", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
+                if (!File.Exists(fileName1))
                 {
-                    ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
+                    if (!File.Exists(fileName2))
+                    {
+                        ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
+                    }                   
                 }              
             }
         }
