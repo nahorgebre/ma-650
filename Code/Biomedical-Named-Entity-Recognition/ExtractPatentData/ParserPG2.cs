@@ -24,7 +24,7 @@ namespace ExtractPatentData
                 MergeXmlFiles(directorySelected);
 
                 // 3 - Parse XML files
-                //ParseXML(directorySelected, year.ToString());
+                ParseXML(directorySelected, year.ToString());
 
                 year++;
             }
@@ -34,14 +34,6 @@ namespace ExtractPatentData
         {
             foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.zip"))
             {
-                string sgmFileName = string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name);
-                Console.WriteLine("$$ " + sgmFileName);
-                File.Delete(sgmFileName);
-
-                string SGMFileName = string.Format("{0}/{1}.SGM", fileToDecompress.DirectoryName, fileToDecompress.Name);
-                Console.WriteLine("$$ ", SGMFileName);
-                File.Delete(SGMFileName);
-
                 if (!File.Exists(string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")))))
                 {
                     ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
