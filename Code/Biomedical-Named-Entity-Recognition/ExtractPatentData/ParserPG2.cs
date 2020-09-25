@@ -18,10 +18,10 @@ namespace ExtractPatentData
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
 
                 // 1 - Decompress all files
-                //DecompressAllFiles(directorySelected);
+                DecompressAllFiles(directorySelected);
 
                 // 2 - Merge XML files
-                //MergeXmlFiles(directorySelected);
+                MergeXmlFiles(directorySelected);
 
                 // 3 - Parse XML files
                 ParseXML(directorySelected, year.ToString());
