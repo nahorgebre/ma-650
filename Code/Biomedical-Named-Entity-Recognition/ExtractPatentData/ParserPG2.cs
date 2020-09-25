@@ -9,12 +9,11 @@ using System.Xml;
 
 namespace ExtractPatentData
 {
-    class ParserIPG2
+    class ParserPG2
     {
-
         public static void run()
         {
-            for (int year = 2005; year <= 2016; year++)
+            for (int year = 2002; year <= 2004; year++)
             {                              
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
 
@@ -25,7 +24,7 @@ namespace ExtractPatentData
                 MergeXmlFiles(directorySelected);
 
                 // 3 - Parse XML files
-                ParseXML(directorySelected, year.ToString());
+                //ParseXML(directorySelected, year.ToString());
 
                 year++;
             }
@@ -94,11 +93,12 @@ namespace ExtractPatentData
                             {
 
                                 // Parsing Patent Number
+                                // <B110><DNUM><PDAT>
                                 string patentNumber = string.Empty;
-                                reader.ReadToFollowing("publication-reference");
-                                XmlReader publicationReferenceInner = reader.ReadSubtree();
-                                publicationReferenceInner.ReadToFollowing("doc-number");
-                                patentNumber = publicationReferenceInner.ReadElementContentAsString();
+                                reader.ReadToFollowing("B110");
+                                XmlReader b110Inner = reader.ReadSubtree();
+                                b110Inner.ReadToFollowing("PDAT");
+                                patentNumber = b110Inner.ReadElementContentAsString();
 
                                 foreach (TargetPatentNumber targetPatentNumber in Patent.getTargetPatentNumbers(year))
                                 {
@@ -113,15 +113,17 @@ namespace ExtractPatentData
 
                                         // Parsing Title
                                         string patentTitle = string.Empty;
-                                        reader.ReadToFollowing("invention-title");
-                                        patentTitle = reader.ReadElementContentAsString();
+                                        reader.ReadToFollowing("B540");
+                                        XmlReader b540Inner = reader.ReadSubtree();
+                                        b540Inner.ReadToFollowing("PDAT");
+                                        patentTitle = b540Inner.ReadElementContentAsString();
 
                                         // Add to patent instance
                                         patentItem.patentTitle = patentTitle;
 
-                                        // Parsing Abstract
+                                        // Parsing Abstract SDOAB
                                         string patentAbstarct = string.Empty;
-                                        reader.ReadToFollowing("abstract");
+                                        reader.ReadToFollowing("SDOAB");
                                         XmlReader abstractInner = reader.ReadSubtree();
                                         while (abstractInner.Read())
                                         {
@@ -140,94 +142,27 @@ namespace ExtractPatentData
 
                                         // Parsing Descriptions
                                         string patentDescription = string.Empty;
-
-                                        string patentDescriptionBRFSUM = string.Empty;
-                                        bool BRFSUM = false;
-                                        int BRFSUMcounter = 0;
-
-                                        string patentDescriptionDETDESC = string.Empty;
-                                        bool DETDESC = false;
-                                        int DETDESCcounter = 0;
-                                
-                                        reader.ReadToFollowing("description");
+                                        reader.ReadToFollowing("SDODE"); 
                                         XmlReader descriptionInner = reader.ReadSubtree();
                                         while (descriptionInner.Read())
                                         {
-
-                                            // Brief Summary
-                                            if (descriptionInner.Name.Equals("BRFSUM") &&
-                                            descriptionInner.Depth.Equals(1) &&
-                                            descriptionInner.Value.Equals("description=\"Brief Summary\" end=\"lead\""))
+                                            if (descriptionInner.HasValue)
                                             {
-                                                BRFSUM = true;                
-                                            }
-
-                                            if (descriptionInner.Name.Equals("BRFSUM") &&
-                                            descriptionInner.Depth.Equals(1) &&
-                                            descriptionInner.Value.Equals("description=\"Brief Summary\" end=\"tail\""))
-                                            {
-                                                BRFSUM = false;                
-                                            }
-
-                                            if (BRFSUM.Equals(true))
-                                            {
-                                                if (descriptionInner.HasValue)  
+                                                if (!descriptionInner.Value.Trim().Equals(string.Empty))
                                                 {
-                                                    if (!descriptionInner.Value.Trim().Equals(string.Empty))
-                                                    {
-                                                        if (BRFSUMcounter >= 1)
-                                                        {
-                                                            patentDescriptionBRFSUM = string.Concat(patentDescriptionBRFSUM, addWhiteSpace(descriptionInner.Value));   
-                                                        }
-                                                        BRFSUMcounter++;                              
-                                                    }
+                                                    patentDescription = string.Concat(patentDescription, descriptionInner.Value);                                   
                                                 }
                                             }
-
-                                            // Detailed Description
-                                            if (descriptionInner.Name.Equals("DETDESC") &&
-                                            descriptionInner.Depth.Equals(1) &&
-                                            descriptionInner.Value.Equals("description=\"Detailed Description\" end=\"lead\""))
-                                            {
-                                                DETDESC = true;                
-                                            }
-
-                                            if (descriptionInner.Name.Equals("DETDESC") &&
-                                            descriptionInner.Depth.Equals(1) &&
-                                            descriptionInner.Value.Equals("description=\"Detailed Description\" end=\"tail\""))
-                                            {
-                                                DETDESC = false;                
-                                            }
-
-                                            if (DETDESC.Equals(true))
-                                            {
-                                                if (descriptionInner.HasValue)
-                                                {
-                                                    if (!descriptionInner.Value.Trim().Equals(string.Empty))
-                                                    {
-                                                        if (DETDESCcounter >= 1)
-                                                        {
-                                                            patentDescriptionDETDESC = string.Concat(patentDescriptionDETDESC, addWhiteSpace(descriptionInner.Value));                            
-                                                        }
-                                                        DETDESCcounter++;                                               
-                                                    }
-                                                }
-                                            }
-
                                         }
                                         descriptionInner.Close();
-
-                                        patentDescriptionBRFSUM = RemoveLineBreaks(patentDescriptionBRFSUM);
-                                        patentDescriptionDETDESC = RemoveLineBreaks(patentDescriptionDETDESC);
-
-                                        patentDescription = String.Concat(patentDescriptionBRFSUM, patentDescriptionDETDESC);
+                                        patentDescription = RemoveLineBreaks(patentDescription);
 
                                         // Add to patent instance
                                         patentItem.patentDescription = patentDescription;
 
                                         // Parsing Claims
                                         string patentClaims = string.Empty;
-                                        reader.ReadToFollowing("claims"); 
+                                        reader.ReadToFollowing("SDOCL"); 
                                         XmlReader claimsInner = reader.ReadSubtree();
                                         while (claimsInner.Read())
                                         {
@@ -434,6 +369,6 @@ namespace ExtractPatentData
         {
             return Regex.Replace(s, @"\t|\n|\r", string.Empty);
         }
-    
+
     }
 }
