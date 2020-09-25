@@ -187,7 +187,9 @@ namespace ExtractPatentData
                                         patentItem.patentClaims = patentClaims;
 
                                         // Add patent item to list
-                                        patentListByWeekParsed.Add(patentItem);                  
+                                        patentListByWeekParsed.Add(patentItem);
+
+                                        Console.WriteLine("Patent List by Week inside try catch: " + patentListByWeekParsed.Count);                  
                                     }
                                 }
                             }
@@ -198,6 +200,8 @@ namespace ExtractPatentData
                         Console.WriteLine(ex);
                     }
                 }
+
+                Console.WriteLine("Patent List by Week before Initialization: " + patentListByWeekParsed.Count);
 
                 // Create output files
                 Console.WriteLine("Create output files!");
@@ -212,8 +216,8 @@ namespace ExtractPatentData
 
         public static void createTitleOutput(List<Patent> patentListByWeekParsed, string year, string fileNamePattern)
         {
-            Console.WriteLine("Patent List by Week: " + patentListByWeekParsed.Count);
-            
+            Console.WriteLine("Patent List by Week in Output Method: " + patentListByWeekParsed.Count);
+
             string directory = string.Format("./data/output/outputByWeek{0}/", year);
             Directory.CreateDirectory(directory);
 
