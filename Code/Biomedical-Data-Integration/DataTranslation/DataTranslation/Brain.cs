@@ -1,21 +1,28 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Collections.Generic;
 
 namespace DataTranslation
 {
-    public class Testis
+    public class Brain
     {
-        public static string testisInputDirectory = "data/input/Testis";
-        public static string testisOutputDirectory = "data/output/Testis";
+        public static void runDataTranslation() 
+        {
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Brain.brainOutputDirectory)); 
+            Brain.Brain_dt();
+            Brain.mart_export_brain_dt();
+        }
 
-        // testis.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
-        public static void Testis_dt()
+        public static string brainInputDirectory = "data/input/Brain";
+        public static string brainOutputDirectory = "data/output/Brain";
+
+        // Brain.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
+        public static void Brain_dt()
         {
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
-
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, testisInputDirectory, "Testis.csv")))
+            
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "Brain.csv")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -24,13 +31,13 @@ namespace DataTranslation
                     var line = reader.ReadLine();
                     String[] values = line.Split(',');
 
-                    Gene gene = new Gene();
-                    gene.recordId = string.Format("Testis_{0}_rid", counter);
+                    Gene gene = new Gene();        
+                    gene.recordId = string.Format("Brain_{0}_rid", counter);
                     gene.ensemblId = values[0];
 
                     List<Organ> organList = new List<Organ>();
                     Organ organ = new Organ();
-                    organ.organName = OrganNames.testis;
+                    organ.organName = OrganNames.brain;
                     organ.disagreement = values[1];
                     organ.probEqualOrthoAdj = values[2];
                     organ.call = values[3];
@@ -42,16 +49,16 @@ namespace DataTranslation
                     counter++;
                 }
             }
-            Methods.createXml(gene_list: gene_list, fileName: "Testis_dt.xml", directory: testisOutputDirectory);
+            Methods.createXml(gene_list: gene_list, fileName: "Brain_dt.xml", directory: brainOutputDirectory);
         }
 
-        // mart.txt; 0-geneId; 1-geneDescription; 2-geneName
-        public static void mart_export_testis_dt()
+        // mart_export_brain.txt; 0-geneId; 1-geneDescription; 2-geneName
+        public static void mart_export_brain_dt()
         {
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
-
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, testisInputDirectory, "mart_export_testis.txt")))
+            
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "mart_export_brain.txt")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -61,9 +68,9 @@ namespace DataTranslation
                     String[] values = line.Split(',');
 
                     Gene gene = new Gene();
-                    gene.recordId = string.Format("mart_export_testis_{0}_rid", counter);
+                    gene.recordId = string.Format("mart_export_brain_{0}_rid", counter);
                     gene.ensemblId = values[0];
-
+                    
                     List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
                     GeneDescription geneDescription = new GeneDescription();
                     geneDescription.description = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
@@ -80,7 +87,7 @@ namespace DataTranslation
                     counter++;
                 }
             }
-            Methods.createXml(gene_list: gene_list, fileName: "mart_export_testis_dt.xml", directory: testisOutputDirectory);
+            Methods.createXml(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: brainOutputDirectory);
         }
     }
 }

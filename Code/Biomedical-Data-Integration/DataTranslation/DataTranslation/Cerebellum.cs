@@ -4,18 +4,25 @@ using System.Collections.Generic;
 
 namespace DataTranslation
 {
-    public class Liver
+    public class Cerebellum
     {
-        public static string liverInputDirectory = "data/input/Liver";
-        public static string liverOutputDirectory = "data/output/Liver";
+        public static void runDataTranslation() 
+        {
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Cerebellum.cerebellumOutputDirectory)); 
+            Cerebellum.Cerebellum_dt();
+            Cerebellum.mart_export_cerebellum_dt();
+        }
 
-        // liver.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
-        public static void Liver_dt()
+        public static string cerebellumInputDirectory = "data/input/Cerebellum";
+        public static string cerebellumOutputDirectory = "data/output/Cerebellum";
+        
+        // Cerebellum.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
+        public static void Cerebellum_dt()
         {
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
-
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, liverInputDirectory, "Liver.csv")))
+            
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, cerebellumInputDirectory, "Cerebellum.csv")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -25,12 +32,12 @@ namespace DataTranslation
                     String[] values = line.Split(',');
 
                     Gene gene = new Gene();
-                    gene.recordId = string.Format("Liver_{0}_rid", counter);
+                    gene.recordId = string.Format("Cerebellum_{0}_rid", counter);
                     gene.ensemblId = values[0];
 
                     List<Organ> organList = new List<Organ>();
                     Organ organ = new Organ();
-                    organ.organName = OrganNames.liver;
+                    organ.organName = OrganNames.cerebellum;
                     organ.disagreement = values[1];
                     organ.probEqualOrthoAdj = values[2];
                     organ.call = values[3];
@@ -42,16 +49,16 @@ namespace DataTranslation
                     counter++;
                 }
             }
-            Methods.createXml(gene_list: gene_list, fileName: "Liver_dt.xml", directory: liverOutputDirectory);
+            Methods.createXml(gene_list: gene_list, fileName: "Cerebellum_dt.xml", directory: cerebellumOutputDirectory);
         }
 
-        // mart.txt; 0-geneId; 1-geneDescription; 2-geneName
-        public static void mart_export_liver_dt()
+        // mart_export_cerebellum.txt; 0-geneId; 1-geneDescription; 2-geneName
+        public static void mart_export_cerebellum_dt()
         {
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, liverInputDirectory, "mart_export_liver.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, cerebellumInputDirectory, "mart_export_cerebellum.txt")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -61,7 +68,7 @@ namespace DataTranslation
                     String[] values = line.Split(',');
 
                     Gene gene = new Gene();
-                    gene.recordId = string.Format("mart_export_liver_{0}_rid", counter);
+                    gene.recordId = string.Format("mart_export_cerebellum_{0}_rid", counter);
                     gene.ensemblId = values[0];
                     
                     List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
@@ -74,13 +81,13 @@ namespace DataTranslation
                     GeneName.name = line.Substring(line.LastIndexOf(",") + 1);
                     geneNameList.Add(GeneName);
                     gene.geneNames = geneNameList;
-                    
+
                     gene_list.Add(gene);
 
                     counter++;
                 }
             }
-            Methods.createXml(gene_list: gene_list, fileName: "mart_export_liver_dt.xml", directory: liverOutputDirectory);
+            Methods.createXml(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.xml", directory: cerebellumOutputDirectory);
         }
     }
 }

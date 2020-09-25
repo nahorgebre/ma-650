@@ -6,6 +6,13 @@ namespace DataTranslation
 {
     public class Publication
     {
+        public static void runDataTranslation()
+        {
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Publication.gene2PubtatorcentralOutputDirectory)); 
+            Publication.gene2pubtatorcentral_dt();
+            Publication.pubMedDate_dt();
+        }
+
         public static string gene2PubtatorcentralInputDirectory = "data/input/Gene2Pubtatorcentral";
         public static string gene2PubtatorcentralOutputDirectory = "data/output/Gene2Pubtatorcentral";
 

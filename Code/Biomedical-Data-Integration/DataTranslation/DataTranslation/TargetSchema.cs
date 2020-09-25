@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace DataTranslation
-{
-    public class Program
+{  
+    [XmlRoot("genes")]
+    public class Genes
     {
-        public static void Main()
-        {
-            //createTargetSchema();
-            runDataTranslation();
-        }
+        [XmlElement("gene")]
+        public List<Gene> gene;
 
         public static void createTargetSchema()
         {
@@ -80,73 +77,85 @@ namespace DataTranslation
             Methods.createXml(gene_list: geneList, fileName: "TargetSchema.xml", directory: "data/output");
         }
 
-        public static void runDataTranslation()
-        {
-            dataTranslationHeart();
-            dataTranslationBrain();
-            dataTranslationCerebellum();
-            dataTranslationKidney();
-            dataTranslationLiver();
-            dataTranslationTestis();
-            dataTranslationGeneDiseaseAssociations();
-            dataTranslationPublicationMentions();
-            AWSupload.run();
-        }
+    }
 
-        public static void dataTranslationHeart() 
-        {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Heart.heartOutputDirectory));  
-            Heart.Heart_dt();     
-            Heart.mart_export_heart_dt();
-            Heart.Heart_Ensembl_NCBI_Crosswalk_dt();
-        }
+    public class Gene
+    {
+        public string recordId;
+        public string ensemblId;
+        public string ncbiId;
 
-        public static void dataTranslationBrain() 
-        {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Brain.brainOutputDirectory)); 
-            Brain.Brain_dt();
-            Brain.mart_export_brain_dt();
-        }
+        [XmlArrayItem("geneNames")]
+        public List<GeneName> geneNames;
 
-        public static void dataTranslationCerebellum() 
-        {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Cerebellum.cerebellumOutputDirectory)); 
-            Cerebellum.Cerebellum_dt();
-            Cerebellum.mart_export_cerebellum_dt();
-        }
+        [XmlArrayItem("geneDescriptions")]
+        public List<GeneDescription> geneDescriptions;
 
-        public static void dataTranslationKidney() 
-        {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Kidney.kidneyOutputDirectory)); 
-            Kidney.Kidney_dt();
-            Kidney.mart_export_kidney_dt();
-        }
+        [XmlArrayItem("organs")]
+        public List<Organ> organs;
 
-        public static void dataTranslationLiver() 
-        {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Liver.liverOutputDirectory)); 
-            Liver.Liver_dt();
-            Liver.mart_export_liver_dt();
-        }
+        [XmlArrayAttribute("diseaseAssociations")]
+        public List<DiseaseAssociation> diseaseAssociations;
 
-        public static void dataTranslationTestis() 
-        {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Testis.testisOutputDirectory)); 
-            Testis.Testis_dt();
-            Testis.mart_export_testis_dt();
-        }
+        [XmlArrayAttribute("publicationMentions")]
+        public List<PublicationMention> publicationMentions;
 
-        public static void dataTranslationGeneDiseaseAssociations()
-        {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, GeneDiseaseAssociations.geneDiseaseAssociationsOutputDirectory)); 
-            GeneDiseaseAssociations.all_gene_disease_pmid_associations_dt();
-        }
+        [XmlArrayAttribute("patentMentions")]
+        public List<PatentMention> patentMentions;
+    }
 
-        public static void dataTranslationPublicationMentions()
-        {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Publication.gene2PubtatorcentralOutputDirectory)); 
-            Publication.gene2pubtatorcentral_dt();
-            Publication.pubMedDate_dt();
-        }
+    [XmlType("organ")]
+    public class Organ
+    {
+        public string organName;
+        public string disagreement;
+        public string probEqualOrthoAdj;
+        public string call;  
+    }
+
+    [XmlType("geneName")]
+    public class GeneName 
+    {
+        public string name;
+    }
+
+    [XmlType("geneDescription")]
+    public class GeneDescription
+    {
+        public string description;
+    }
+
+    [XmlType("diseaseAssociation")]
+    public class DiseaseAssociation
+    {
+        public string diseaseIdUMLS;
+        public string diseaseName;
+        public string diseaseSpecificityIndex;
+        public string diseasePleiotropyIndex;
+        public string diseaseTypeDisGeNET;
+        public string diseaseClassMeSH;
+        public string diseaseSemanticTypeUMLS;
+        public string associationScore;
+        public string evidenceIndex;
+        public string yearInitialReport;
+        public string yearFinalReport;
+        public string pmId;
+        public string source;
+    }
+
+    [XmlType("publicationMention")]
+    public class PublicationMention
+    {
+        public string pmid;
+        public string ressource;
+        public string year;
+    }
+
+    [XmlType("patentMention")]
+    public class PatentMention
+    {
+        public string patentId;
+        public string patentDate;
+        public string patentClaimsCount;
     }
 }

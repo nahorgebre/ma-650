@@ -6,6 +6,12 @@ namespace DataTranslation
 {
     public class GeneDiseaseAssociations
     {
+        public static void runDataTranslation()
+        {
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, GeneDiseaseAssociations.geneDiseaseAssociationsOutputDirectory)); 
+            GeneDiseaseAssociations.all_gene_disease_pmid_associations_dt();
+        }
+
         public static string geneDiseaseAssociationsInputDirectory = "data/input/Gene-Disease-Associations";
         public static string geneDiseaseAssociationsOutputDirectory = "data/output/Gene-Disease-Associations";
 
