@@ -44,7 +44,10 @@ namespace ExtractPatentData
 
         public static void MergeXmlFiles(DirectoryInfo directorySelected)
         {
-            foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
+            List<FileInfo> xmlFileNameList = directorySelected.GetFiles("*.xml").ToList();
+            xmlFileNameList.AddRange(directorySelected.GetFiles("*.XML").ToList());
+
+            foreach (FileInfo item in xmlFileNameList)
             {
                 if (!item.Name.Contains("edit"))
                 {
@@ -79,8 +82,10 @@ namespace ExtractPatentData
 
         public static void ParseXML(DirectoryInfo directorySelected, string year) 
         {
+            List<FileInfo> xmlFileNameList = directorySelected.GetFiles("*.xml").ToList();
+            xmlFileNameList.AddRange(directorySelected.GetFiles("*.XML").ToList());
 
-            foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
+            foreach (FileInfo item in xmlFileNameList)
             {
                 List<Patent> patentListByWeekParsed = new List<Patent>();
 
