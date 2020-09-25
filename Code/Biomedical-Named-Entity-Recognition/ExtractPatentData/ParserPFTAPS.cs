@@ -29,6 +29,8 @@ namespace ExtractPatentData
 
                         List<List<string>> patentListByWeek = getAPSContent(fileName);
                         List<Patent> patentListByWeekParsed = parseAPS(patentListByWeek, year.ToString());
+
+                        Console.WriteLine("Create output files!");
                         OutputByWeek.run(patentListByWeekParsed, year.ToString(), fileNamePattern);
 
                         FileArchiver.deleteExtractedFile(fileName);

@@ -7,6 +7,7 @@ namespace ExtractPatentData
     {
         static void Main(string[] args)
         {
+            /*
             FileStream stream;
             StreamWriter writer;
             TextWriter consoleOut = Console.Out;
@@ -27,6 +28,7 @@ namespace ExtractPatentData
             }
 
             Console.SetOut(writer);
+            */
 
             Patent.getPatentNumbersByYear();
             //ParserPFTAPS.run();
@@ -35,9 +37,11 @@ namespace ExtractPatentData
             //Output.run();
             //AWSupload.run();
 
+            /*
             Console.SetOut(consoleOut);
             writer.Close();
-            stream.Close();        
+            stream.Close();
+            */   
         }
     }
 }
