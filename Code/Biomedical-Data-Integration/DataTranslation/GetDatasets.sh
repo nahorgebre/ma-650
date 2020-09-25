@@ -13,6 +13,7 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-
 mkdir -p data/input/Gene2Pubtatorcentral
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene2Pubtatorcentral/gene2pubtatorcentral.tsv -O data/input/Gene2Pubtatorcentral/gene2pubtatorcentral.tsv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene2Pubtatorcentral/README.txt -O data/input/Gene2Pubtatorcentral/README.txt
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene2Pubtatorcentral/PubMedDate.csv -O data/input/Gene2Pubtatorcentral/PubMedDate.csv
 
 mkdir -p data/input/Heart
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Heart/Heart.csv -O data/input/Heart/Heart.csv
