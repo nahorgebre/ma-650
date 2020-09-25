@@ -146,6 +146,7 @@ namespace DataTranslation
         {
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Publication.gene2PubtatorcentralOutputDirectory)); 
             Publication.gene2pubtatorcentral_dt();
+            Publication.pubMedDate_dt();
         }
     }
 }
