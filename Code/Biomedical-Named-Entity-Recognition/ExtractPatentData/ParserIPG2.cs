@@ -14,7 +14,7 @@ namespace ExtractPatentData
 
         public static void run()
         {
-            for (int year = 2005; year <= 2016; year++)
+            for (int year = 2006; year <= 2006; year++)
             {                              
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
 
@@ -44,10 +44,7 @@ namespace ExtractPatentData
 
         public static void MergeXmlFiles(DirectoryInfo directorySelected)
         {
-            List<FileInfo> xmlFileNameList = directorySelected.GetFiles("*.xml").ToList();
-            xmlFileNameList.AddRange(directorySelected.GetFiles("*.XML").ToList());
-
-            foreach (FileInfo item in xmlFileNameList)
+            foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
             {
                 if (!item.Name.Contains("edit"))
                 {
@@ -82,15 +79,15 @@ namespace ExtractPatentData
 
         public static void ParseXML(DirectoryInfo directorySelected, string year) 
         {
-            List<FileInfo> xmlFileNameList = directorySelected.GetFiles("*.xml").ToList();
-            xmlFileNameList.AddRange(directorySelected.GetFiles("*.XML").ToList());
-
-            foreach (FileInfo item in xmlFileNameList)
+            foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
             {
                 List<Patent> patentListByWeekParsed = new List<Patent>();
 
                 if (item.Name.Contains("edit"))
                 {
+                    Console.WriteLine("----");
+                    Console.WriteLine(item.Name);
+                    Console.WriteLine("----");
                     try
                     {
                         using (XmlReader reader = XmlReader.Create(item.FullName))
@@ -122,7 +119,7 @@ namespace ExtractPatentData
                                         patentTitle = reader.ReadElementContentAsString();
 
                                         // Add to patent instance
-                                        patentItem.patentTitle = patentTitle;
+                                        patentItem.patentTitle = StringPreprocessing.run(patentTitle);
 
                                         // Parsing Abstract
                                         string patentAbstarct = string.Empty;
@@ -141,7 +138,7 @@ namespace ExtractPatentData
                                         abstractInner.Close();
 
                                         // Add to patent instance
-                                        patentItem.patentAbstract = patentAbstarct;
+                                        patentItem.patentAbstract = StringPreprocessing.run(patentAbstarct);
 
                                         // Parsing Descriptions
                                         string patentDescription = string.Empty;
@@ -222,13 +219,10 @@ namespace ExtractPatentData
                                         }
                                         descriptionInner.Close();
 
-                                        patentDescriptionBRFSUM = RemoveLineBreaks(patentDescriptionBRFSUM);
-                                        patentDescriptionDETDESC = RemoveLineBreaks(patentDescriptionDETDESC);
-
                                         patentDescription = String.Concat(patentDescriptionBRFSUM, patentDescriptionDETDESC);
 
                                         // Add to patent instance
-                                        patentItem.patentDescription = patentDescription;
+                                        patentItem.patentDescription = StringPreprocessing.run(patentDescription);
 
                                         // Parsing Claims
                                         string patentClaims = string.Empty;
@@ -245,15 +239,12 @@ namespace ExtractPatentData
                                             }
                                         }
                                         claimsInner.Close();
-                                        patentClaims = RemoveLineBreaks(patentClaims);
 
                                         // Add to patent instance
-                                        patentItem.patentClaims = patentClaims;
+                                        patentItem.patentClaims = StringPreprocessing.run(patentClaims);
 
                                         // Add patent item to list
-                                        patentListByWeekParsed.Add(patentItem);
-
-                                        Console.WriteLine("Inside try catch: " + patentListByWeekParsed.Count);                    
+                                        patentListByWeekParsed.Add(patentItem);             
                                     }
                                 }
                             }
@@ -265,163 +256,10 @@ namespace ExtractPatentData
                     }
                 }
 
-                Console.WriteLine("Before Initialization: " + patentListByWeekParsed.Count);
-
                 // Create output files
-                createTitleOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
-                createAbstractOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
-                //createDescriptionOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
-                //createClaimsOutput(patentListByWeekParsed, year, getFileNamePattern(item.Name));
-
-                OutputByWeek.run(patentListByWeekParsed, year, getFileNamePattern(item.Name));
-            }
-        }
-
-        public static void createTitleOutput(List<Patent> patentListByWeekParsed, string year, string fileNamePattern)
-        {
-            Console.WriteLine("In Output Method: " + patentListByWeekParsed.Count);
-
-            string directory = string.Format("./data/output/outputByWeek{0}/", year);
-            Directory.CreateDirectory(directory);
-
-            string fileNameTitle = directory + string.Format("title{0}.tsv", fileNamePattern);
-
-            File.Delete(fileNameTitle);
-
-            if (!File.Exists(fileNameTitle))
-            {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
-                {
-                    "patentNumber",
-                    "patentDate",
-                    "patentTitle"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (var patent in patentListByWeekParsed)
-                {
-                    List<string> itemContent = new List<string>()
-                    {
-                        patent.patentNumber,
-                        patent.patentDate,
-                        string.Format("\"{0}\"", patent.patentTitle)
-                    };
-                    var line = string.Join(delimiter, itemContent);
-                    tsvFile.AppendLine(line);  
-                }
-                File.WriteAllText(fileNameTitle, tsvFile.ToString());
-            }
-        }
-
-        public static void createAbstractOutput(List<Patent> patentListByWeekParsed, string year, string fileNamePattern)
-        {
-            string directory = string.Format("./data/output/outputByWeek{0}/", year);
-            Directory.CreateDirectory(directory);
-
-            string fileNameAbstract = directory + string.Format("abstract{0}.tsv", fileNamePattern);
-
-            File.Delete(fileNameAbstract);
-
-            if (!File.Exists(fileNameAbstract))
-            {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
-                {
-                    "patentNumber",
-                    "patentDate",
-                    "patentAbstract"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (var patent in patentListByWeekParsed)
-                {
-                    List<string> itemContent = new List<string>()
-                    {
-                        patent.patentNumber,
-                        patent.patentDate,
-                        string.Format("\"{0}\"", patent.patentAbstract)
-                    };
-                    var line = string.Join(delimiter, itemContent);
-                    tsvFile.AppendLine(line);  
-                }
-                File.WriteAllText(fileNameAbstract, tsvFile.ToString());
-            }
-        }
-
-        public static void createDescriptionOutput(List<Patent> patentListByWeekParsed, string year, string fileNamePattern)
-        {
-            string directory = string.Format("./data/output/outputByWeek{0}/", year);
-            Directory.CreateDirectory(directory);
-
-            string fileNameDescription = directory + string.Format("description{0}.tsv", fileNamePattern);
-
-            if (!File.Exists(fileNameDescription))
-            {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
-                {
-                    "patentNumber",
-                    "patentDate",
-                    "patentDescription"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (var patent in patentListByWeekParsed)
-                {
-                    List<string> itemContent = new List<string>()
-                    {
-                        patent.patentNumber,
-                        patent.patentDate,
-                        string.Format("\"{0}\"", patent.patentDescription)
-                    };
-                    var line = string.Join(delimiter, itemContent);
-                    tsvFile.AppendLine(line);  
-                }
-                File.WriteAllText(fileNameDescription, tsvFile.ToString());
-            }
-        }
-
-        public static void createClaimsOutput(List<Patent> patentListByWeekParsed, string year, string fileNamePattern)
-        {
-            string directory = string.Format("./data/output/outputByWeek{0}/", year);
-            Directory.CreateDirectory(directory);
-
-            string fileName = directory + string.Format("claims{0}.tsv", fileNamePattern);
-
-            if (!File.Exists(fileName))
-            {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
-                {
-                    "patentNumber",
-                    "patentDate",           
-                    "patentClaimsCount",
-                    "patentClaims"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (var patent in patentListByWeekParsed)
-                {
-                    List<string> itemContent = new List<string>()
-                    {
-                        patent.patentNumber,
-                        patent.patentDate,
-                        patent.patentClaimsCount,
-                        string.Format("\"{0}\"", patent.patentClaims)
-                    };
-                    var line = string.Join(delimiter, itemContent);
-                    tsvFile.AppendLine(line);  
-                }
-                File.WriteAllText(fileName, tsvFile.ToString());
+                OutputByWeek.run(patentListByWeekParsed: patentListByWeekParsed, 
+                    year: year, 
+                    fileNamePattern: getFileNamePattern(item.Name));
             }
         }
 
@@ -447,10 +285,5 @@ namespace ExtractPatentData
             return s.Substring(s.IndexOf(">") + 1);
         }
 
-        public static string RemoveLineBreaks(string s)
-        {
-            return Regex.Replace(s, @"\t|\n|\r", string.Empty);
-        }
-    
     }
 }

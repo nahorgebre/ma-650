@@ -1,27 +1,21 @@
-using System;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ExtractPatentData
 {
     class StringPreprocessing
     {
-        public static string replaceWhiteSpaces(string text)
-        {
-            return text.Replace(" ", "-");
-        }
-
         public static string run(string text)
         {
+            text = text.Trim();
             if (text.Equals(string.Empty))
             {
                 text = "NaN";
             }
             else
             {        
-                text = removeNewLineChar(text);
+                text = RemoveLineBreaks(text);
                 text = removeWhiteSpaces(text);
-                text = addPunctuation(text);
+                //text = addPunctuation(text);
             }
             return text;
         }
@@ -42,9 +36,16 @@ namespace ExtractPatentData
             return regex.Replace(text, " ");
         }
 
+        /*
         public static string removeNewLineChar(string text)
         {
             return text.Replace("\n", " ").Replace("\r", " ");
+        }
+        */
+
+        public static string RemoveLineBreaks(string s)
+        {
+            return Regex.Replace(s, @"\t|\n|\r", string.Empty);
         }
 
     }

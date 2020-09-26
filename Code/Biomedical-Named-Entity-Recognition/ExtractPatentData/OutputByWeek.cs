@@ -9,11 +9,11 @@ namespace ExtractPatentData
     {
         public static void run(List<Patent> patentListByWeekParsed, string year, string fileNamePattern)
         {   
-            string directory = string.Format("{0}/data/output/outputByWeek{1}/", Environment.NewLine, year);
+            string directory = string.Format("{0}/data/output/outputByWeek{1}/", Environment.CurrentDirectory, year);
             Directory.CreateDirectory(directory);
 
-            //titleOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
-            //abstractOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
+            titleOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
+            abstractOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
             descriptionOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
             claimsOutputByWeek(patentListByWeekParsed, directory, fileNamePattern);
         }
@@ -21,6 +21,8 @@ namespace ExtractPatentData
         public static void titleOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameTitle = directory + string.Format("title{0}.tsv", fileNamePattern);
+            File.Delete(fileNameTitle);
+
             if (!File.Exists(fileNameTitle))
             {
                 var tsvFile = new StringBuilder();
@@ -38,7 +40,7 @@ namespace ExtractPatentData
                 {
                     List<string> itemContent = new List<string>()
                     {
-                        patent.patentNumber + "-",
+                        patent.patentNumber,
                         patent.patentDate,
                         string.Format("\"{0}\"", patent.patentTitle)
                     };
@@ -46,18 +48,15 @@ namespace ExtractPatentData
                     tsvFile.AppendLine(line);  
                 }
                 File.WriteAllText(fileNameTitle, tsvFile.ToString());
-            }
-            Console.WriteLine("title{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
+                Console.WriteLine("title{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
+            }          
         }
 
         public static void abstractOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
-        {
-            foreach (var item in patentListByWeekParsed)
-            {
-                Console.WriteLine("show Patent Abstract: " + item.patentAbstract);
-            }
-       
+        { 
             string fileNameAbstract = directory + string.Format("abstract{0}.tsv", fileNamePattern);
+            File.Delete(fileNameAbstract);
+
             if (!File.Exists(fileNameAbstract))
             {
                 var tsvFile = new StringBuilder();
@@ -82,14 +81,13 @@ namespace ExtractPatentData
                     tsvFile.AppendLine(line);  
                 }
                 File.WriteAllText(fileNameAbstract, tsvFile.ToString());
-            }
-            Console.WriteLine("abstract{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
+                Console.WriteLine("abstract{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
+            }           
         }
 
         public static void descriptionOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameDescription = directory + string.Format("description{0}.tsv", fileNamePattern);
-
             File.Delete(fileNameDescription);
 
             if (!File.Exists(fileNameDescription))
@@ -117,14 +115,12 @@ namespace ExtractPatentData
                 }
                 File.WriteAllText(fileNameDescription, tsvFile.ToString());
                 Console.WriteLine("description{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
-            }
-            
+            }          
         }
 
         public static void claimsOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameClaims = directory + string.Format("claims{0}.tsv", fileNamePattern);
-
             File.Delete(fileNameClaims);
 
             if (!File.Exists(fileNameClaims))
