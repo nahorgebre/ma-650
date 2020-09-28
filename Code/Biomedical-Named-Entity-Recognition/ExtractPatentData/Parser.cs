@@ -14,20 +14,21 @@ namespace ExtractPatentData
         {
             foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.zip"))
             {
-                if (!File.Exists(string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")))))
+                if (!File.Exists(string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")))) |
+                    !File.Exists(string.Format("{0}/{1}.XML", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")))) )
                 {
-                    string sgmFile = string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
-                    if (File.Exists(sgmFile))
-                    {
-                        File.Delete(sgmFile);
-                    }
+                    List<string> sgmFileNameList = new List<string>();
+                    sgmFileNameList.Add(string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
+                    sgmFileNameList.Add(string.Format("{0}/{1}.SGM", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
 
-                    string sgmFile2 = string.Format("{0}/{1}.SGM", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
-                    if (File.Exists(sgmFile2))
+                    foreach (var sgmFileName in sgmFileNameList)
                     {
-                        File.Delete(sgmFile2);
+                        if (File.Exists(sgmFileName))
+                        {
+                            File.Delete(sgmFileName);
+                        }
                     }
-
+ 
                     ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
                 }              
             }
