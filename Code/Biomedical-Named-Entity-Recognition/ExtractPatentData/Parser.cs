@@ -1,12 +1,31 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.IO.Compression;
 using System.Collections.Generic;
 
 namespace ExtractPatentData
 {
     class Parser
     {
+        
+        public static void DecompressAllXmlFiles(DirectoryInfo directorySelected) 
+        {
+            foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.zip"))
+            {
+                if (!File.Exists(string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")))))
+                {
+                    string sgmFile = string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
+                    if (File.Exists(sgmFile))
+                    {
+                        File.Delete(sgmFile);
+                    }
+
+                    ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
+                }              
+            }
+        }
 
         public static string removeSpecialCharacters(string patentText)
         {

@@ -18,7 +18,7 @@ namespace ExtractPatentData
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
 
                 // 1 - Decompress all files
-                DecompressAllFiles(directorySelected);
+                Parser.DecompressAllXmlFiles(directorySelected);
 
                 // 2 - Merge XML files
                 MergeXmlFiles(directorySelected, year);
@@ -27,17 +27,6 @@ namespace ExtractPatentData
                 ParseXML(directorySelected, year.ToString());
 
                 year++;
-            }
-        }
-
-        public static void DecompressAllFiles(DirectoryInfo directorySelected) 
-        {
-            foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.zip"))
-            {
-                if (!File.Exists(string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")))))
-                {
-                    ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
-                }              
             }
         }
 
