@@ -27,6 +27,7 @@ namespace ExtractPatentData
                 {
                     exist = true;
                 }
+                
                 if (exist)
                 {
                     List<string> sgmFileNameList = new List<string>();
