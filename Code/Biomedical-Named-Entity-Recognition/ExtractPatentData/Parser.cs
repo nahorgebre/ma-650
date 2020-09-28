@@ -9,7 +9,7 @@ namespace ExtractPatentData
 {
     class Parser
     {
-        
+
         public static void DecompressAllXmlFiles(DirectoryInfo directorySelected) 
         {
             foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.zip"))
@@ -20,6 +20,12 @@ namespace ExtractPatentData
                     if (File.Exists(sgmFile))
                     {
                         File.Delete(sgmFile);
+                    }
+
+                    string sgmFile2 = string.Format("{0}/{1}.SGM", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
+                    if (File.Exists(sgmFile2))
+                    {
+                        File.Delete(sgmFile2);
                     }
 
                     ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
