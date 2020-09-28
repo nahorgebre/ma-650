@@ -20,7 +20,7 @@ namespace ExtractPatentData
             {
                 foreach (var zipFile in Directory.GetFiles(string.Format("./data/input/PatentGrantFullTextData/{0}", year.ToString())))
                 {
-                    string fileNamePattern = Parser.getFileNamePattern(zipFile, "pftaps", year.ToString());
+                    string fileNamePattern = getFileNamePattern(zipFile, year.ToString());
                     Console.WriteLine(string.Format("{0}File Name: ...{1}.tsv", Environment.NewLine, fileNamePattern));
 
                     if (OutputByWeek.checkIfOutputExist(year.ToString(), fileNamePattern) == false)
@@ -38,6 +38,15 @@ namespace ExtractPatentData
                 }
                 OutputByYear.run(year.ToString());
             }
+        }
+
+        public static string getFileNamePattern(string zipFileName, string year)
+        {
+            string fileNamePattern = string.Empty;
+            string month = (zipFileName.Substring(zipFileName.LastIndexOf("/"))).Substring((zipFileName.Substring(zipFileName.LastIndexOf("/"))).IndexOf("pftaps") + 10, 2);
+            string day = (zipFileName.Substring(zipFileName.LastIndexOf("/"))).Substring((zipFileName.Substring(zipFileName.LastIndexOf("/"))).IndexOf("pftaps") + 12, 2);
+            fileNamePattern = string.Format("_y{0}_m{1}_d{2}", year, month, day);
+            return fileNamePattern;
         }
 
         public static List<List<string>> getAPSContent(string filePath)

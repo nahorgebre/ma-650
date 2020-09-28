@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Xml;
+using System.Text;
+using System.IO.Compression;
+using System.Collections.Generic;
 
 namespace ExtractPatentData
 {
@@ -14,6 +12,7 @@ namespace ExtractPatentData
 
         public static void run()
         {
+
             for (int year = 2005; year <= 2016; year++)
             {                              
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
@@ -22,7 +21,7 @@ namespace ExtractPatentData
                 DecompressAllFiles(directorySelected);
 
                 // 2 - Merge XML files
-                MergeXmlFiles(directorySelected);
+                MergeXmlFiles(directorySelected, year);
 
                 // 3 - Parse XML files
                 ParseXML(directorySelected, year.ToString());
@@ -42,35 +41,41 @@ namespace ExtractPatentData
             }
         }
 
-        public static void MergeXmlFiles(DirectoryInfo directorySelected)
+        public static void MergeXmlFiles(DirectoryInfo directorySelected, int year)
         {
             foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
             {
                 if (!item.Name.Contains("edit"))
                 {
                     string fileName = string.Format("{0}/{1}edit.xml", directorySelected.FullName, item.Name.Substring(0, item.Name.LastIndexOf(".")));
+                    File.Delete(fileName);
 
                     if (!File.Exists(fileName))
                     {
                         string text = File.ReadAllText(item.FullName, Encoding.UTF8);
-                        string pattern = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+                        string xmlVersionEncoding = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
-                        text = text.Replace(pattern, "PATENT-TEXT-START" );
+                        text = text.Replace(xmlVersionEncoding, "PATENT-TEXT-START" );
                         string[] tokens = text.Split(new[] { "PATENT-TEXT-START" }, StringSplitOptions.None);
-                        tokens = tokens.Skip(1).ToArray();
- 
+                        //tokens = tokens.Skip(1).ToArray();
+
                         using (StreamWriter file = new StreamWriter(fileName))
-                        {                    
-                            string start = string.Format("{0}{1}<root>", pattern, Environment.NewLine);
-                            file.Write(start);
+                        {
+                            file.WriteLine(xmlVersionEncoding);
+
+                            string documentTypeDeclaration = Parser.getMergedDocumentTypeDeclaration(tokens, year);
+                            file.Write(documentTypeDeclaration + Environment.NewLine);
+
+                            string rootBegin = "<root>";
+                            file.WriteLine(rootBegin);
 
                             foreach (var token in tokens)
                             {
-                                file.Write(RemoveFirstLine(token));
+                                file.Write(Parser.removeDocumentTypeDeclaration(token));
                             }
 
-                            string end = "</root>";
-                            file.Write(end);
+                            string rootEnd = "</root>";
+                            file.WriteLine(rootEnd);
                         }   
                     }           
                 }
@@ -85,12 +90,13 @@ namespace ExtractPatentData
 
                 if (item.Name.Contains("edit"))
                 {
-                    Console.WriteLine("----");
-                    Console.WriteLine(item.Name);
-                    Console.WriteLine("----");
+                    string patentNumberException = string.Empty;
                     try
                     {
-                        using (XmlReader reader = XmlReader.Create(item.FullName))
+                        XmlReaderSettings settings = new XmlReaderSettings();
+                        settings.DtdProcessing = DtdProcessing.Parse;
+
+                        using (XmlReader reader = XmlReader.Create(item.FullName, settings))
                         {
                             while (reader.ReadToFollowing("us-patent-grant"))
                             {
@@ -112,6 +118,9 @@ namespace ExtractPatentData
                                         patentItem.patentNumber = patentNumber;
                                         patentItem.patentDate = targetPatentNumber.targetPatentDate;
                                         patentItem.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
+
+                                        // Used for exception log
+                                        patentNumberException = patentItem.patentNumber;
 
                                         // Parsing Title
                                         string patentTitle = string.Empty;
@@ -253,6 +262,7 @@ namespace ExtractPatentData
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
+                        Console.WriteLine("Patent number: " + patentNumberException);
                     }
                 }
 
@@ -278,11 +288,6 @@ namespace ExtractPatentData
                 text = string.Format("{0} ", text);
             }
             return text;
-        }
-
-        public static string RemoveFirstLine(string s) 
-        {
-            return s.Substring(s.IndexOf(">") + 1);
         }
 
     }
