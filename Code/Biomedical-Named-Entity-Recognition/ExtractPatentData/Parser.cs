@@ -27,8 +27,8 @@ namespace ExtractPatentData
                 {
                     exist = true;
                 }
-                
-                if (exist)
+
+                if (exist == true)
                 {
                     List<string> sgmFileNameList = new List<string>();
                     sgmFileNameList.Add(string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
