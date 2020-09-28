@@ -14,29 +14,26 @@ namespace ExtractPatentData
         {
             foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.zip"))
             {
-                List<string> xmlFileNameList = new List<string>();
-                xmlFileNameList.Add(string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
-                xmlFileNameList.Add(string.Format("{0}/{1}.XML", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
+                string xmlFileName1 = string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
+                string xmlFileName2 = string.Format("{0}/{1}.XML", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
 
-                foreach (var xmlFileName in xmlFileNameList)
+                if (!File.Exists(xmlFileName1) | !File.Exists(xmlFileName2))
                 {
-                    if (!File.Exists(xmlFileName))
-                    {
-                        List<string> sgmFileNameList = new List<string>();
-                        sgmFileNameList.Add(string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
-                        sgmFileNameList.Add(string.Format("{0}/{1}.SGM", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
+                    List<string> sgmFileNameList = new List<string>();
+                    sgmFileNameList.Add(string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
+                    sgmFileNameList.Add(string.Format("{0}/{1}.SGM", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
 
-                        foreach (var sgmFileName in sgmFileNameList)
+                    foreach (var sgmFileName in sgmFileNameList)
+                    {
+                        if (File.Exists(sgmFileName))
                         {
-                            if (File.Exists(sgmFileName))
-                            {
-                                File.Delete(sgmFileName);
-                            }
+                            File.Delete(sgmFileName);
                         }
+                    }
  
-                        ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName);
-                    }     
-                } 
+                    ZipFile.ExtractToDirectory(fileToDecompress.FullName, directorySelected.FullName); 
+                }
+
             }
         }
 
