@@ -14,10 +14,20 @@ namespace ExtractPatentData
         {
             foreach (FileInfo fileToDecompress in directorySelected.GetFiles("*.zip"))
             {
+                bool exist = false;
                 string xmlFileName1 = string.Format("{0}/{1}.xml", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
                 string xmlFileName2 = string.Format("{0}/{1}.XML", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf(".")));
 
-                if (!File.Exists(xmlFileName1) || !File.Exists(xmlFileName2))
+                if (File.Exists(xmlFileName1))
+                {
+                    exist = true;
+                }
+
+                if (File.Exists(xmlFileName2))
+                {
+                    exist = true;
+                }
+                if (exist)
                 {
                     List<string> sgmFileNameList = new List<string>();
                     sgmFileNameList.Add(string.Format("{0}/{1}.sgm", fileToDecompress.DirectoryName, fileToDecompress.Name.Substring(0, fileToDecompress.Name.LastIndexOf("."))));
