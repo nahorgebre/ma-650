@@ -36,7 +36,6 @@ namespace ExtractPatentData
                 if (!item.Name.Contains("edit"))
                 {
                     string fileName = string.Format("{0}/{1}edit.xml", directorySelected.FullName, item.Name.Substring(0, item.Name.LastIndexOf(".")));
-                    File.Delete(fileName);
 
                     if (!File.Exists(fileName))
                     {
