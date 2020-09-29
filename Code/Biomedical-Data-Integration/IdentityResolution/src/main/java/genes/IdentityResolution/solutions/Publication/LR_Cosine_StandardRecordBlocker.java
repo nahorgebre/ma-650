@@ -43,14 +43,14 @@ public class LR_Cosine_StandardRecordBlocker
     public static void main( String[] args ) throws Exception
     {
         // create debug folder
-        String comparisonDescription = "mart_export_liver_2_all_gene_disease_pmid_associations";
-        String outputDirectory = "data/output/Liver/" + comparisonDescription + "/" + className;
+        String comparisonDescription = "gene2pubtatorcentral_2_PubMedDate";
+        String outputDirectory = "data/output/Publication/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
-        String goldstandardDirectory = "data/goldstandard/Liver/" + comparisonDescription;
+        String goldstandardDirectory = "data/goldstandard/Publication/" + comparisonDescription;
 
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
+        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
         HashedDataSet<Gene, Attribute> PubMedDate = Datasets.PubMedDate();
 
         // load the gold standard (test set)
@@ -78,7 +78,7 @@ public class LR_Cosine_StandardRecordBlocker
         // execute the matching
         System.out.println("*\n*\tRunning identity resolution\n*");
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-            PubMedDate, all_gene_disease_pmid_associations, null, matchingRule,
+            PubMedDate, gene2pubtatorcentral, null, matchingRule,
                 blocker);
 
         // write the correspondences to the output file

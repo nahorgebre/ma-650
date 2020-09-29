@@ -24,7 +24,7 @@ namespace ExtractPatentData
                 MergeXmlFiles(directorySelected, year);
 
                 // 3 - Parse XML files
-                ParseXML(directorySelected, year.ToString());
+                // ParseXML(directorySelected, year.ToString());
 
             }
         }
@@ -35,6 +35,8 @@ namespace ExtractPatentData
             {
                 if (!item.Name.Contains("edit"))
                 {
+                    Console.WriteLine("Merge XML files: " + item.Name);
+
                     string fileName = string.Format("{0}/{1}edit.xml", directorySelected.FullName, item.Name.Substring(0, item.Name.LastIndexOf(".")));
 
                     if (!File.Exists(fileName))

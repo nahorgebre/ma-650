@@ -14,6 +14,7 @@ public class PublicationXMLReader extends XMLMatchableReader<Publication, Attrib
         Publication publication = new Publication(id, provenanceInfo);
 
         publication.setPmId(getValueFromChildElement(node, "pmid"));
+        publication.setYear(getValueFromChildElement(node, "year"));
         publication.setRessource(getValueFromChildElement(node, "ressource"));
 
         return publication;

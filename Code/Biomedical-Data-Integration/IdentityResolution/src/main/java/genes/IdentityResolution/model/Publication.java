@@ -9,6 +9,7 @@ public class Publication extends AbstractRecord<Attribute> implements Serializab
 
     private static final long serialVersionUID = 1L;
     private String pmid;
+    private String year;
     private String ressource;
 
     public Publication(String identifier, String provenance) {
@@ -17,10 +18,12 @@ public class Publication extends AbstractRecord<Attribute> implements Serializab
 
     // Getter
     public String getPmId() { return pmid; }
+    public String getYear() { return year; }
     public String getRessource() { return ressource; }
 
     // Setter
     public void setPmId(String pmid) { this.pmid = pmid; }
+    public void setYear(String year) { this.year = year; }
     public void setRessource(String ressource) { this.ressource = ressource; }
 
     @Override
@@ -47,12 +50,15 @@ public class Publication extends AbstractRecord<Attribute> implements Serializab
     }
 
     public static final Attribute PMID = new Attribute("pmid");
+    public static final Attribute YEAR = new Attribute("year");
     public static final Attribute RESSOURCE = new Attribute("ressource");
 
     @Override
     public boolean hasValue(Attribute attribute) {
         if(attribute==PMID)
             return PMID!=null;
+        else if(attribute==YEAR)
+            return YEAR!=null;
         else if(attribute==RESSOURCE)
             return RESSOURCE!=null;
         return false;
