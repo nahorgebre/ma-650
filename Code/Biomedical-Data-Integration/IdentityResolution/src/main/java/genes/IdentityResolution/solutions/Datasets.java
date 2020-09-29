@@ -19,6 +19,11 @@ public class Datasets {
         new GeneXMLReader().loadFromXML(new File("data/input/gene2pubtatorcentral_dt.xml"), "/genes/gene", gene2pubtatorcentral);
         return gene2pubtatorcentral;
     }
+    public static HashedDataSet<Gene, Attribute> PubMedDate() throws Exception {
+        HashedDataSet<Gene, Attribute> PubMedDate = new HashedDataSet<>();
+        new GeneXMLReader().loadFromXML(new File("data/input/PubMedDate_dt.xml"), "/genes/gene", PubMedDate);
+        return PubMedDate;
+    }
 
     // Brain
     public static HashedDataSet<Gene, Attribute> Brain() throws Exception {

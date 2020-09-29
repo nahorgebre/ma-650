@@ -26,7 +26,6 @@ namespace ExtractPatentData
                 // 3 - Parse XML files
                 ParseXML(directorySelected, year.ToString());
 
-                year++;
             }
         }
 
