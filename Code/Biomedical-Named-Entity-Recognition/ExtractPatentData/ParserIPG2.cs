@@ -25,7 +25,7 @@ namespace ExtractPatentData
                 MergeXmlFiles(directorySelected, year);
 
                 // 3 - Parse XML files
-                // ParseXML(directorySelected, year.ToString());
+                ParseXML(directorySelected, year.ToString());
 
             }
         }

@@ -30,20 +30,18 @@ namespace ExtractPatentData
             Console.SetOut(writer);
             */
 
-            //Patent.getPatentNumbersByYear();
-            //ParserPFTAPS.run();
+            Patent.getPatentNumbersByYear();
+            ParserPFTAPS.run();
             ParserPG2.run();
-            //ParserIPG2.run();
-            //Output.run();
-            //AWSupload.run();
+            ParserIPG2.run();
+            Output.run();
+            AWSupload.run();
 
             /*
             Console.SetOut(consoleOut);
             writer.Close();
             stream.Close();
             */
-
-            //Comparison.run();
 
         }
     }
