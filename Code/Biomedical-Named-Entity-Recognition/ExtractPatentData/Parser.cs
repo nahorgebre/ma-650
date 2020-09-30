@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO.Compression;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace ExtractPatentData
 {
@@ -48,6 +49,12 @@ namespace ExtractPatentData
                 }
 
             }
+        }
+
+        public static string removeSpecialCharactersUsingRegex(string patentText)
+        {
+            string regularExpression = @"&([a-zA-Z0-9]{1,30});";
+            return Regex.Replace(patentText, regularExpression, string.Empty);
         }
 
         public static string removeSpecialCharacters(string patentText)

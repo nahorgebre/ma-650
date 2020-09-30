@@ -3,6 +3,7 @@ using System.IO;
 using System.Xml;
 using System.Text;
 using System.Linq;
+using System.Web;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -13,8 +14,9 @@ namespace ExtractPatentData
     {
         public static void run()
         {
-            for (int year = 2002; year <= 2004; year++)
-            {                              
+            for (int year = 2002; year < 2004; year++)
+            {
+
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
 
                 // 1 - Decompress all files
@@ -24,7 +26,7 @@ namespace ExtractPatentData
                 MergeXmlFiles(directorySelected, year);
 
                 // 3 - Parse XML files
-                // ParseXML(directorySelected, year.ToString());
+                ParseXML(directorySelected, year.ToString());
 
             }
         }
@@ -38,19 +40,19 @@ namespace ExtractPatentData
             foreach (FileInfo item in xmlFileList)
             {
                 if (!item.Name.Contains("edit"))
-                {
-                    Console.WriteLine("Merge XML files: " + item.Name);
-                    
+                {                  
                     string fileName = string.Format("{0}/{1}edit.xml", directorySelected.FullName, item.Name.Substring(0, item.Name.LastIndexOf(".")));
 
                     if (!File.Exists(fileName))
                     {
+                        Console.WriteLine("Merge XML files: " + item.Name);
+
                         string text = File.ReadAllText(item.FullName, Encoding.UTF8);
                         string xmlVersionEncoding = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
                         text = text.Replace(xmlVersionEncoding, "PATENT-TEXT-START" );
                         string[] tokens = text.Split(new[] { "PATENT-TEXT-START" }, StringSplitOptions.None);
-                        //tokens = tokens.Skip(1).ToArray();
+                        tokens = tokens.Skip(1).ToArray();
 
                         using (StreamWriter file = new StreamWriter(fileName))
                         {
@@ -65,13 +67,15 @@ namespace ExtractPatentData
                             foreach (var token in tokens)
                             {
                                 string removeDTT = Parser.removeDocumentTypeDeclaration(token);
-                                string removeSpecialChar = Parser.removeSpecialCharacters(removeDTT);
+                                string removeSpecialChar = Parser.removeSpecialCharactersUsingRegex(removeDTT);
                                 file.Write(removeSpecialChar);
                             }
 
                             string rootEnd = "</root>";
                             file.WriteLine(rootEnd);
-                        }   
+                        }
+
+                        Console.WriteLine("XML files are merged: " + item.Name);   
                     }           
                 }
             }
@@ -85,6 +89,7 @@ namespace ExtractPatentData
 
                 if (item.Name.Contains("edit"))
                 {
+                    string patentNumberException = string.Empty;
                     try
                     {
                         XmlReaderSettings settings = new XmlReaderSettings();
@@ -114,6 +119,9 @@ namespace ExtractPatentData
                                         patentItem.patentDate = targetPatentNumber.targetPatentDate;
                                         patentItem.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
 
+                                        // Used for exception log
+                                        patentNumberException = patentItem.patentNumber;
+
                                         // Parsing Title
                                         string patentTitle = string.Empty;
                                         reader.ReadToFollowing("B540");
@@ -123,7 +131,6 @@ namespace ExtractPatentData
 
                                         // Add to patent instance
                                         patentItem.patentTitle = patentTitle;
-                                        Console.WriteLine("Title: " + patentItem.patentTitle);
 
                                         // Parsing Abstract SDOAB
                                         string patentAbstarct = string.Empty;
@@ -185,9 +192,7 @@ namespace ExtractPatentData
                                         patentItem.patentClaims = patentClaims;
 
                                         // Add patent item to list
-                                        patentListByWeekParsed.Add(patentItem);
-
-                                        Console.WriteLine("Inside try catch: " + patentListByWeekParsed.Count);                  
+                                        patentListByWeekParsed.Add(patentItem);             
                                     }
                                 }
                             }
@@ -196,10 +201,9 @@ namespace ExtractPatentData
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
+                        Console.WriteLine("Patent number: " + patentNumberException);
                     }
                 }
-
-                Console.WriteLine("Before Initialization: " + patentListByWeekParsed.Count);
 
                 OutputByWeek.run(patentListByWeekParsed, year, getFileNamePattern(item.Name));
             }

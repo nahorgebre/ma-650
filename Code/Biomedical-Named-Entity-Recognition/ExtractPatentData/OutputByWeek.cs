@@ -48,8 +48,8 @@ namespace ExtractPatentData
                     tsvFile.AppendLine(line);  
                 }
                 File.WriteAllText(fileNameTitle, tsvFile.ToString());
-                Console.WriteLine("title{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
-            }          
+            }
+            Console.WriteLine("title{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());          
         }
 
         public static void abstractOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
@@ -81,8 +81,8 @@ namespace ExtractPatentData
                     tsvFile.AppendLine(line);  
                 }
                 File.WriteAllText(fileNameAbstract, tsvFile.ToString());
-                Console.WriteLine("abstract{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
-            }           
+            }
+            Console.WriteLine("abstract{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());        
         }
 
         public static void descriptionOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
@@ -113,9 +113,9 @@ namespace ExtractPatentData
                     var line = string.Join(delimiter, itemContent);
                     tsvFile.AppendLine(line);  
                 }
-                File.WriteAllText(fileNameDescription, tsvFile.ToString());
-                Console.WriteLine("description{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
-            }          
+                File.WriteAllText(fileNameDescription, tsvFile.ToString());              
+            }
+            Console.WriteLine("description{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());       
         }
 
         public static void claimsOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
@@ -148,9 +148,9 @@ namespace ExtractPatentData
                     var line = string.Join(delimiter, itemContent);
                     tsvFile.AppendLine(line);  
                 }
-                File.WriteAllText(fileNameClaims, tsvFile.ToString());
-                Console.WriteLine("claims{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());
-            }          
+                File.WriteAllText(fileNameClaims, tsvFile.ToString());              
+            }
+            Console.WriteLine("claims{0}.tsv - {1}", fileNamePattern, DateTime.UtcNow.ToString());     
         }
 
         public static bool checkIfOutputExist(string year, string fileNamePattern)

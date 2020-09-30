@@ -14,7 +14,7 @@ namespace ExtractPatentData
         public static void run()
         {
 
-            for (int year = 2005; year <= 2016; year++)
+            for (int year = 2005; year < 2016; year++)
             {                              
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
 
@@ -44,14 +44,14 @@ namespace ExtractPatentData
 
                     if (!File.Exists(fileName))
                     {
+                        Console.WriteLine("Merge XML files: " + item.Name);
+                        
                         string text = File.ReadAllText(item.FullName, Encoding.UTF8);
                         string xmlVersionEncoding = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
                         text = text.Replace(xmlVersionEncoding, "PATENT-TEXT-START" );
                         string[] tokens = text.Split(new[] { "PATENT-TEXT-START" }, StringSplitOptions.None);
                         //tokens = tokens.Skip(1).ToArray();
-
-                        Console.WriteLine("Merge XML files: " + item.Name);
 
                         using (StreamWriter file = new StreamWriter(fileName))
                         {

@@ -33,7 +33,7 @@ namespace ExtractPatentData
             //Patent.getPatentNumbersByYear();
             //ParserPFTAPS.run();
             ParserPG2.run();
-            ParserIPG2.run();
+            //ParserIPG2.run();
             //Output.run();
             //AWSupload.run();
 
@@ -42,6 +42,8 @@ namespace ExtractPatentData
             writer.Close();
             stream.Close();
             */
+
+            //Comparison.run();
 
         }
     }
