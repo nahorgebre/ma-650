@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Xml;
 using System.Text;
-using System.IO.Compression;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -31,6 +31,10 @@ namespace ExtractPatentData
 
         public static void MergeXmlFiles(DirectoryInfo directorySelected, int year)
         {
+            List<FileInfo> xmlFileList1 = directorySelected.GetFiles("*.xml").ToList();
+            List<FileInfo> xmlFileList2 = directorySelected.GetFiles("*.XML").ToList();
+            List<FileInfo> xmlFileList = (xmlFileList1.Concat(xmlFileList2).Distinct()).ToList();
+
             foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
             {
                 if (!item.Name.Contains("edit"))

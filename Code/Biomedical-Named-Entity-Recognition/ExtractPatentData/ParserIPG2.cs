@@ -2,8 +2,9 @@ using System;
 using System.IO;
 using System.Xml;
 using System.Text;
-using System.IO.Compression;
+using System.Linq;
 using System.Collections.Generic;
+
 
 namespace ExtractPatentData
 {
@@ -31,12 +32,14 @@ namespace ExtractPatentData
 
         public static void MergeXmlFiles(DirectoryInfo directorySelected, int year)
         {
-            foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
+            List<FileInfo> xmlFileList1 = directorySelected.GetFiles("*.xml").ToList();
+            List<FileInfo> xmlFileList2 = directorySelected.GetFiles("*.XML").ToList();
+            List<FileInfo> xmlFileList = (xmlFileList1.Concat(xmlFileList2).Distinct()).ToList();
+
+            foreach (FileInfo item in xmlFileList)
             {
                 if (!item.Name.Contains("edit"))
                 {
-                    Console.WriteLine("Merge XML files: " + item.Name);
-
                     string fileName = string.Format("{0}/{1}edit.xml", directorySelected.FullName, item.Name.Substring(0, item.Name.LastIndexOf(".")));
 
                     if (!File.Exists(fileName))
@@ -47,6 +50,8 @@ namespace ExtractPatentData
                         text = text.Replace(xmlVersionEncoding, "PATENT-TEXT-START" );
                         string[] tokens = text.Split(new[] { "PATENT-TEXT-START" }, StringSplitOptions.None);
                         //tokens = tokens.Skip(1).ToArray();
+
+                        Console.WriteLine("Merge XML files: " + item.Name);
 
                         using (StreamWriter file = new StreamWriter(fileName))
                         {
@@ -65,7 +70,9 @@ namespace ExtractPatentData
 
                             string rootEnd = "</root>";
                             file.WriteLine(rootEnd);
-                        }   
+                        }
+
+                        Console.WriteLine("XML files are merged: " + item.Name);
                     }           
                 }
             }
