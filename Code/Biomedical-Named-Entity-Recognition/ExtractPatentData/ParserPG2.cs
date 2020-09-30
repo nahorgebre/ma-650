@@ -35,7 +35,7 @@ namespace ExtractPatentData
             List<FileInfo> xmlFileList2 = directorySelected.GetFiles("*.XML").ToList();
             List<FileInfo> xmlFileList = (xmlFileList1.Concat(xmlFileList2).Distinct()).ToList();
 
-            foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
+            foreach (FileInfo item in xmlFileList)
             {
                 if (!item.Name.Contains("edit"))
                 {
