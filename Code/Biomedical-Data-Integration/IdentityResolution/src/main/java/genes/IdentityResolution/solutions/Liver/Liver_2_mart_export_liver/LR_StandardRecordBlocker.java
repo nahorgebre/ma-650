@@ -37,12 +37,12 @@ public class LR_StandardRecordBlocker {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Testis = Datasets.Testis();
-        HashedDataSet<Gene, Attribute> mart_export_testis = Datasets.mart_export_testis();
+        HashedDataSet<Gene, Attribute> Liver = Datasets.Liver();
+        HashedDataSet<Gene, Attribute> mart_export_liver = Datasets.mart_export_liver();
 
         // goldstandard directory
-        String comparisonDescription = "Testis_2_mart_export_testis";
-        String solution = "Testis";
+        String comparisonDescription = "Liver_2_mart_export_liver";
+        String solution = "Liver";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
         // load the gold standard (test set)
@@ -67,7 +67,7 @@ public class LR_StandardRecordBlocker {
             // execute the matching
             System.out.println("*\n*\tRunning identity resolution\n*");
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Testis, mart_export_testis, null, matchingRule, blocker);
+                Liver, mart_export_liver, null, matchingRule, blocker);
 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);

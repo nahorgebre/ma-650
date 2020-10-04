@@ -108,10 +108,10 @@ public class ML_StandardRecordBlocker {
                 all_gene_disease_pmid_associations, mart_export_liver, null, matchingRule, blocker);
         
             // write the correspondences to the output file
-            Correspondences.output(outputDirectory, modelType, correspondences);
+            Correspondences.output(outputDirectory, correspondences);
 
             // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, modelType, comparisonDescription);
+            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription);
 
         }
     }

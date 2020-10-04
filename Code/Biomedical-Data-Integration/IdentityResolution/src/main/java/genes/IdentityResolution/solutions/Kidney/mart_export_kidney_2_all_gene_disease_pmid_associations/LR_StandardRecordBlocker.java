@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain;
+package genes.IdentityResolution.solutions.Kidney.mart_export_kidney_2_all_gene_disease_pmid_associations;
 
 // java
 import java.util.List;
@@ -18,7 +18,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
 // blockig
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 
 // model
 import genes.IdentityResolution.model.Gene;
@@ -27,7 +27,7 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
-import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_EnsemblId;
+import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_GeneName;
 import genes.IdentityResolution.solutions.GoldStandard;
 
 public class LR_StandardRecordBlocker {
@@ -37,27 +37,27 @@ public class LR_StandardRecordBlocker {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
+        HashedDataSet<Gene, Attribute> mart_export_kidney = Datasets.mart_export_kidney();
 
         // goldstandard directory
-        String comparisonDescription = "Brain_2_mart_export_brain";
-        String solution = "Brain";
+        String comparisonDescription = "mart_export_kidney_2_all_gene_disease_pmid_associations";
+        String solution = "Kidney";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
 
         String blockerName = "_StandardRecordBlocker";
-        List<GeneLinearCombinationMatchingRule_EnsemblId> matchingRuleList = GeneLinearCombinationMatchingRule_EnsemblId.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
+        List<GeneLinearCombinationMatchingRule_GeneName> matchingRuleList = GeneLinearCombinationMatchingRule_GeneName.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
 
-        for (GeneLinearCombinationMatchingRule_EnsemblId geneLinearCombinationMatchingRule_EnsemblId : matchingRuleList) {
+        for (GeneLinearCombinationMatchingRule_GeneName geneLinearCombinationMatchingRule_GeneName : matchingRuleList) {
 
-            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_EnsemblId.matchingRule;
-            String outputDirectory = GeneLinearCombinationMatchingRule_EnsemblId.outputDirectory;
+            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_GeneName.matchingRule;
+            String outputDirectory = GeneLinearCombinationMatchingRule_GeneName.outputDirectory;
 
             // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
+            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
             blocker.setMeasureBlockSizes(true);
             blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
@@ -67,7 +67,7 @@ public class LR_StandardRecordBlocker {
             // execute the matching
             System.out.println("*\n*\tRunning identity resolution\n*");
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Brain, mart_export_brain, null, matchingRule, blocker);
+                all_gene_disease_pmid_associations, mart_export_kidney, null, matchingRule, blocker);
 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
