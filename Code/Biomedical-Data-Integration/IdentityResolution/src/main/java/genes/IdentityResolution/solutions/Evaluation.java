@@ -13,7 +13,7 @@ import genes.IdentityResolution.model.Gene;
 
 public class Evaluation {
         
-    public static void run(Processable<Correspondence<Gene, Attribute>> correspondences, MatchingGoldStandard goldStandard, String outputDirectory, String className, String comparisonDescription) throws Exception {
+    public static void run(Processable<Correspondence<Gene, Attribute>> correspondences, MatchingGoldStandard goldStandard, String outputDirectory, String comparisonDescription) throws Exception {
         
         System.out.println("*\n*\tEvaluating result\n*");
         MatchingEvaluator<Gene, Attribute> evaluator = new MatchingEvaluator<Gene, Attribute>();
@@ -21,7 +21,7 @@ public class Evaluation {
                 goldStandard);
         
         printEvaluationResult(perfTest, comparisonDescription);
-        writeEvaluationResult(perfTest, outputDirectory, className, comparisonDescription);
+        writeEvaluationResult(perfTest, outputDirectory, comparisonDescription);
     }
 
     public static void printEvaluationResult(Performance perfTest, String comparisonDescription) {
@@ -34,7 +34,7 @@ public class Evaluation {
                 "F1: %.4f",perfTest.getF1()));
     }
 
-    public static void writeEvaluationResult(Performance perfTest, String outputDirectory, String className, String comparisonDescription) throws Exception {
+    public static void writeEvaluationResult(Performance perfTest, String outputDirectory, String comparisonDescription) throws Exception {
         File file = new File(outputDirectory + "/evaluation.txt");
         PrintWriter writer = new PrintWriter(file);
         writer.println(comparisonDescription);

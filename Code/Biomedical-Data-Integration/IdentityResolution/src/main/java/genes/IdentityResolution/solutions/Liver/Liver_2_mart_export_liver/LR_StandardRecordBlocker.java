@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Testis.Testis_2_mart_export_testis;
+package genes.IdentityResolution.solutions.Liver.Liver_2_mart_export_liver;
 
 // java
 import java.util.List;

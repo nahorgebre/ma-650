@@ -68,7 +68,8 @@ public class ML_StandardRecordBlocker {
         List<GeneWekaMatchingRule> matchingRuleList = GeneWekaMatchingRule.createGeneMatchingRuleList();
         for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
 
-            String modelType = geneMatchingRule.modelType;
+            String blockerName = "_StandardRecordBlocker";
+            String modelType = geneMatchingRule.modelType + blockerName;
 
             // output directory
             String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + modelType;

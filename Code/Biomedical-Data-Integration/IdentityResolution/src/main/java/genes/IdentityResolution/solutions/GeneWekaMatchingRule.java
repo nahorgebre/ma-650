@@ -65,31 +65,31 @@ public class GeneWekaMatchingRule {
 
         // AdaBoost
         GeneWekaMatchingRule adaBoost = new GeneWekaMatchingRule();
-        adaBoost.modelType = "ML_AdaBoost_StandardRecordBlocker";
+        adaBoost.modelType = "ML_AdaBoost";
         adaBoost.matchingRule = GeneWekaMatchingRule.AdaBoostM1_Gene();
         matchingRuleList.add(adaBoost);
                 
         // DecisionTree
         GeneWekaMatchingRule decisionTree = new GeneWekaMatchingRule();
-        decisionTree.modelType = "ML_DecisionTree_StandardRecordBlocker";
+        decisionTree.modelType = "ML_DecisionTree";
         decisionTree.matchingRule = GeneWekaMatchingRule.DecisionTreeJ48_Gene();
         matchingRuleList.add(decisionTree);
                 
         // KNN
         GeneWekaMatchingRule knn = new GeneWekaMatchingRule();
-        knn.modelType = "ML_KNN_StandardRecordBlocker";
+        knn.modelType = "ML_KNN";
         knn.matchingRule = GeneWekaMatchingRule.KnnIbk_Gene();
         matchingRuleList.add(knn);
                 
         // LinearRegression
         GeneWekaMatchingRule linearRegression = new GeneWekaMatchingRule();
-        linearRegression.modelType = "ML_LinearRegression_StandardRecordBlocker";
+        linearRegression.modelType = "ML_LinearRegression";
         linearRegression.matchingRule = GeneWekaMatchingRule.LinearRegression_Gene();
         matchingRuleList.add(linearRegression);
                 
         // SimpleLogistic
         GeneWekaMatchingRule simpleLogistic = new GeneWekaMatchingRule();
-        simpleLogistic.modelType = "ML_SimpleLogistic_StandardRecordBlocker";
+        simpleLogistic.modelType = "ML_SimpleLogistic";
         simpleLogistic.matchingRule = GeneWekaMatchingRule.SimpleLogistic_Gene();
         matchingRuleList.add(simpleLogistic);
 

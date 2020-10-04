@@ -10,7 +10,7 @@ import genes.IdentityResolution.model.Gene;
 
 public class Correspondences {
 
-    public static void output(String outputDirectory, String className, Processable<Correspondence<Gene, Attribute>> correspondences) throws Exception {
+    public static void output(String outputDirectory, Processable<Correspondence<Gene, Attribute>> correspondences) throws Exception {
         new CSVCorrespondenceFormatter().writeCSV(new File(outputDirectory + "/correspondences.csv"), correspondences);
     }
 }

@@ -33,6 +33,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.wcohen.ss.expt.Blocker;
+
 // GeneNameComperator
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorJaccardOnNGrams;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorLowerCaseJaccardOnNGrams;
@@ -69,7 +71,8 @@ public class ML_StandardRecordBlocker {
         List<GeneWekaMatchingRule> matchingRuleList = GeneWekaMatchingRule.createGeneMatchingRuleList();
         for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
 
-            String modelType = geneMatchingRule.modelType;
+            String blockerName = "_StandardRecordBlocker";
+            String modelType = geneMatchingRule.modelType + blockerName;
 
             // output directory
             String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + modelType;

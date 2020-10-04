@@ -64,7 +64,8 @@ public class ML_StandardRecordBlocker {
         List<GeneWekaMatchingRule> matchingRuleList = GeneWekaMatchingRule.createGeneMatchingRuleList();
         for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
 
-            String modelType = geneMatchingRule.modelType;
+            String blockerName = "_StandardRecordBlocker";
+            String modelType = geneMatchingRule.modelType + blockerName;
 
             // output directory
             String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + modelType;
@@ -103,10 +104,10 @@ public class ML_StandardRecordBlocker {
                 Brain, mart_export_brain, null, matchingRule, blocker);
                 
             // write the correspondences to the output file
-            Correspondences.output(outputDirectory, modelType, correspondences);
+            Correspondences.output(outputDirectory, correspondences);
         
             // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, modelType, comparisonDescription);
+            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription);
             
         }
 
