@@ -1,4 +1,4 @@
-package genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice;
+package genes.IdentityResolution.Comparators.PmIdComperator.SimilaritySorensenDice;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
@@ -8,9 +8,9 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 import info.debatty.java.stringsimilarity.SorensenDice;
 
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Publication;
 
-public class EnsemblIdComperatorSorensenDice implements Comparator<Gene, Attribute> {
+public class PmIdComperatorSorensenDice implements Comparator<Publication, Attribute> {
     
     private static final long serialVersionUID = 1L;
     SorensenDice sim = new SorensenDice();
@@ -19,12 +19,12 @@ public class EnsemblIdComperatorSorensenDice implements Comparator<Gene, Attribu
 
     @Override
     public double compare(
-            Gene record1,
-            Gene record2,
+            Publication record1,
+            Publication record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        String s1 = record1.getEnsemblId();
-        String s2 = record2.getEnsemblId();
+        String s1 = record1.getPmId();
+        String s2 = record2.getPmId();
 
         // calculate similarity
         double similarity = sim.similarity(s1, s2);

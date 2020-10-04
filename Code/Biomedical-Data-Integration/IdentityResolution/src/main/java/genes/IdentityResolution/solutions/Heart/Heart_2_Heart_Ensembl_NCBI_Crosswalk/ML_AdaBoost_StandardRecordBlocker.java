@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Testis.Testis_2_mart_export_testis;
+package genes.IdentityResolution.solutions.Heart.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk;
 
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlocker;
@@ -34,32 +34,45 @@ import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevens
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorLowerCaseSorensenDice;
 
-public class ML_SimpleLogistic_StandardRecordBlocker 
+// GeneNameComperator
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorJaccardOnNGrams;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorLowerCaseJaccardOnNGrams;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorCosine;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorLowerCaseCosine;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLevenshtein;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLowerCaseLevenshtein;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorLowerCaseSorensenDice;
+
+public class ML_AdaBoost_StandardRecordBlocker 
 {
     private static final Logger logger = WinterLogManager.activateLogger("default");
-    public static String className = "ML_SimpleLogistic_StandardRecordBlocker";
+    public static String className = "ML_AdaBoost_StandardRecordBlocker";
 
     public static void main( String[] args ) throws Exception
     {            
         // create debug folder
-        String comparisonDescription = "Testis_2_mart_export_testis";
-        String outputDirectory = "data/output/Testis/" + comparisonDescription  + "/" + className;
+        String comparisonDescription = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
+        String outputDirectory = "data/output/Heart/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
-        String goldstandardDirectory = "data/goldstandard/Testis/" + comparisonDescription;
-
+        String goldstandardDirectory = "data/goldstandard/Heart/" + comparisonDescription;
+        
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Testis = Datasets.Testis();
-        HashedDataSet<Gene, Attribute> mart_export_testis = Datasets.mart_export_testis();
+        HashedDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
+        HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
         MatchingGoldStandard gsTrain = GoldStandard.getTrainDataset(goldstandardDirectory);
 
         // create a matching rule
-        String options[] = new String[] { "-S" };
-        String modelType = "SimpleLogistic"; // use a logistic regression
+        String options[] = new String[] { "" };
+        String modelType = "AdaBoostM1"; // AdaBoost
         WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+        matchingRule.setBackwardSelection(true);
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
         // add comparators
@@ -74,9 +87,20 @@ public class ML_SimpleLogistic_StandardRecordBlocker
         matchingRule.addComparator(new EnsemblIdComperatorSorensenDice());
         matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice());
 
+        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
+        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
+        matchingRule.addComparator(new GeneNameComperatorCosine());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
+        matchingRule.addComparator(new GeneNameComperatorLevenshtein());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
+        matchingRule.addComparator(new GeneNameComperatorSorensenDice());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
+
         // learn the matching rule
         RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-        learner.learnMatchingRule(Testis, mart_export_testis, null, matchingRule, gsTrain);
+        learner.learnMatchingRule(mart_export_heart, Heart_Ensembl_NCBI_Crosswalk, null, matchingRule, gsTrain);
 
         // create a blocker (blocking strategy)
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
@@ -88,7 +112,7 @@ public class ML_SimpleLogistic_StandardRecordBlocker
    
         // execute the matching
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-            Testis, mart_export_testis, null, matchingRule, blocker);
+            mart_export_heart, Heart_Ensembl_NCBI_Crosswalk, null, matchingRule, blocker);
         
         // write the correspondences to the output file
         Correspondences.output(outputDirectory, className, correspondences);

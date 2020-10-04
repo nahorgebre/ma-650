@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Brain.mart_export_brain_2_all_gene_disease_pmid_associations;
+package genes.IdentityResolution.solutions.Heart.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk;
 
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlocker;
@@ -46,32 +46,33 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevensh
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorLowerCaseSorensenDice;
 
-public class ML_SimpleLogistic_StandardRecordBlocker 
+public class ML_DecisionTree_StandardRecordBlocker 
 {
     private static final Logger logger = WinterLogManager.activateLogger("default");
-    public static String className = "ML_SimpleLogistic_StandardRecordBlocker";
+    public static String className = "ML_DecisionTree_StandardRecordBlocker";
 
     public static void main( String[] args ) throws Exception
     {            
-        // create output folder
-        String comparisonDescription = "mart_export_brain_2_all_gene_disease_pmid_associations";
-        String outputDirectory = "data/output/Brain/" + comparisonDescription + "/" + className;
+        // create debug folder
+        String comparisonDescription = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
+        String outputDirectory = "data/output/Heart/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
-        String goldstandardDirectory = "data/goldstandard/Brain/" + comparisonDescription;
-
+        String goldstandardDirectory = "data/goldstandard/Heart/" + comparisonDescription;
+        
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        HashedDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
+        HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
         MatchingGoldStandard gsTrain = GoldStandard.getTrainDataset(goldstandardDirectory);
 
         // create a matching rule
-        String options[] = new String[] { "-S" };
-        String modelType = "SimpleLogistic"; // use a logistic regression
+        String options[] = new String[] { "" };
+        String modelType = "J48"; // Decision Tree
         WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+        matchingRule.setBackwardSelection(true);
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
         // add comparators
@@ -99,7 +100,7 @@ public class ML_SimpleLogistic_StandardRecordBlocker
 
         // learn the matching rule
         RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-        learner.learnMatchingRule(all_gene_disease_pmid_associations, mart_export_brain, null, matchingRule, gsTrain);
+        learner.learnMatchingRule(mart_export_heart, Heart_Ensembl_NCBI_Crosswalk, null, matchingRule, gsTrain);
 
         // create a blocker (blocking strategy)
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
@@ -111,7 +112,7 @@ public class ML_SimpleLogistic_StandardRecordBlocker
    
         // execute the matching
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-            all_gene_disease_pmid_associations, mart_export_brain, null, matchingRule, blocker);
+            mart_export_heart, Heart_Ensembl_NCBI_Crosswalk, null, matchingRule, blocker);
         
         // write the correspondences to the output file
         Correspondences.output(outputDirectory, className, correspondences);

@@ -8,12 +8,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 import info.debatty.java.stringsimilarity.Cosine;
 
-import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene;
-import genes.IdentityResolution.model.GeneName;
-
-import java.util.List;
-import java.util.ArrayList;
 
 public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
 
@@ -27,37 +22,24 @@ public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
             Gene record1,
             Gene record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
-        
-        List<GeneName> record1GeneNames = record1.getGeneNames();
-        List<GeneName> record2GeneNames = record2.getGeneNames();
 
-        List<Comparison> comparisonList = new ArrayList<Comparison>();
-        for (GeneName record1geneName : record1GeneNames) {
-            for (GeneName record2geneName : record2GeneNames) {
-                Comparison comparison = new Comparison();
-                comparison.s1 = record1geneName.getName();
-                comparison.s2 = record2geneName.getName();
-                comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
-                comparisonList.add(comparison);
-            }
-        }
+        String s1 = record1.getNcbiId();
+        String s2 = record2.getNcbiId();
 
-        Comparison bestResult = Comparison.getBestResult(comparisonList);
-
-        double postSimilarity = 0;
-        if (bestResult.similarity <= 0.3) {
-            postSimilarity = 0;
-        }
+        // calculate similarity
+        double similarity = sim.similarity(s1, s2);
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
-            this.comparisonLog.setRecord1Value(bestResult.s1);
-            this.comparisonLog.setRecord2Value(bestResult.s2);
-            this.comparisonLog.setSimilarity(Double.toString(bestResult.similarity));
-            this.comparisonLog.setPostprocessedSimilarity(Double.toString(postSimilarity));
+
+            this.comparisonLog.setRecord1Value(s1);
+            this.comparisonLog.setRecord2Value(s2);
+
+            this.comparisonLog.setSimilarity(Double.toString(similarity));
+            this.comparisonLog.setPostprocessedSimilarity(Double.toString(similarity));
         }
 
-        return bestResult.similarity;
+        return similarity;
     }
 
     @Override
@@ -69,5 +51,5 @@ public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
-
+    
 }

@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Cerebellum.mart_export_cerebellum_2_all_gene_disease_pmid_associations;
+package genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain;
 
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlocker;
@@ -34,44 +34,31 @@ import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevens
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorLowerCaseSorensenDice;
 
-// GeneNameComperator
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorLowerCaseJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorCosine;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorLowerCaseCosine;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLevenshtein;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLowerCaseLevenshtein;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorLowerCaseSorensenDice;
-
-
-public class ML_SimpleLogistic_StandardRecordBlocker 
+public class ML_LinearRegression_StandardRecordBlocker 
 {
     private static final Logger logger = WinterLogManager.activateLogger("default");
-    public static String className = "ML_SimpleLogistic_StandardRecordBlocker";
+    public static String className = "ML_LinearRegression_StandardRecordBlocker";
 
     public static void main( String[] args ) throws Exception
     {            
-        // create debug folder
-        String comparisonDescription = "mart_export_cerebellum_2_all_gene_disease_pmid_associations";
-        String outputDirectory = "data/output/Cerebellum/" + comparisonDescription + "/" + className;
+        // create output folder
+        String comparisonDescription = "Brain_2_mart_export_brain";
+        String outputDirectory = "data/output/Brain/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
-        String goldstandardDirectory = "data/goldstandard/Cerebellum/" + comparisonDescription;
+        String goldstandardDirectory = "data/goldstandard/Brain/" + comparisonDescription;
 
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
-        HashedDataSet<Gene, Attribute> mart_export_cerebellum = Datasets.mart_export_cerebellum();
+        HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
+        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
         MatchingGoldStandard gsTrain = GoldStandard.getTrainDataset(goldstandardDirectory);
 
         // create a matching rule
-        String options[] = new String[] { "-S" };
-        String modelType = "SimpleLogistic"; // use a logistic regression
+        String options[] = new String[] { "-S 2" };
+        String modelType = "LinearRegression"; // use a logistic regression
         WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
         matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
@@ -87,20 +74,9 @@ public class ML_SimpleLogistic_StandardRecordBlocker
         matchingRule.addComparator(new EnsemblIdComperatorSorensenDice());
         matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice());
 
-        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
-        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
-        matchingRule.addComparator(new GeneNameComperatorCosine());
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
-        matchingRule.addComparator(new GeneNameComperatorLevenshtein());
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
-        matchingRule.addComparator(new GeneNameComperatorSorensenDice());
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
-
         // learn the matching rule
         RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-        learner.learnMatchingRule(all_gene_disease_pmid_associations, mart_export_cerebellum, null, matchingRule, gsTrain);
+        learner.learnMatchingRule(Brain, mart_export_brain, null, matchingRule, gsTrain);
 
         // create a blocker (blocking strategy)
         StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
@@ -112,7 +88,7 @@ public class ML_SimpleLogistic_StandardRecordBlocker
    
         // execute the matching
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-            all_gene_disease_pmid_associations, mart_export_cerebellum, null, matchingRule, blocker);
+            Brain, mart_export_brain, null, matchingRule, blocker);
         
         // write the correspondences to the output file
         Correspondences.output(outputDirectory, className, correspondences);

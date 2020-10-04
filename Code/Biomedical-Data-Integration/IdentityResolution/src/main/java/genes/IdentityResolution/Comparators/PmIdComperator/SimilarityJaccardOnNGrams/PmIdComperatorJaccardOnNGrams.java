@@ -7,9 +7,9 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.JaccardOnNGramsSimilarity;
 
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Publication;
 
-public class EnsemblIdComperatorJaccardOnNGrams implements Comparator<Gene, Attribute> {
+public class PmIdComperatorJaccardOnNGrams implements Comparator<Publication, Attribute> {
     
     private static final long serialVersionUID = 1L;
     JaccardOnNGramsSimilarity sim = new JaccardOnNGramsSimilarity(3);
@@ -18,12 +18,12 @@ public class EnsemblIdComperatorJaccardOnNGrams implements Comparator<Gene, Attr
 
     @Override
     public double compare(
-            Gene record1,
-            Gene record2,
+            Publication record1,
+            Publication record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        String s1 = record1.getEnsemblId();
-        String s2 = record2.getEnsemblId();
+        String s1 = record1.getPmId();
+        String s2 = record2.getPmId();
 
         // calculate similarity
         double similarity = sim.calculate(s1, s2);

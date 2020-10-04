@@ -17,7 +17,7 @@ public class PublicationXMLFormatter extends XMLFormatter<Publication> {
         Element publication = doc.createElement("publicationMentions");
 
         publication.appendChild(createTextElement("pmid", record.getPmId(), doc));
-        publication.appendChild(createTextElement("year", record.getYear(), doc));
+        publication.appendChild(createTextElement("year", record.getYear(), doc));          
         publication.appendChild(createTextElement("ressource", record.getRessource(), doc));
 
         return publication;

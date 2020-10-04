@@ -6,12 +6,8 @@ import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
-import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
-import genes.IdentityResolution.model.Gene;
-import genes.IdentityResolution.model.GeneName;
 
-import java.util.List;
-import java.util.ArrayList;
+import genes.IdentityResolution.model.Gene;
 
 public class NcbiIdComperatorTokenizingJaccard implements Comparator<Gene, Attribute> {
 
@@ -26,36 +22,23 @@ public class NcbiIdComperatorTokenizingJaccard implements Comparator<Gene, Attri
             Gene record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        List<GeneName> record1GeneNames = record1.getGeneNames();
-        List<GeneName> record2GeneNames = record2.getGeneNames();
+        String s1 = record1.getNcbiId();
+        String s2 = record2.getNcbiId();
 
-        List<Comparison> comparisonList = new ArrayList<Comparison>();
-        for (GeneName record1geneName : record1GeneNames) {
-            for (GeneName record2geneName : record2GeneNames) {
-                Comparison comparison = new Comparison();
-                comparison.s1 = record1geneName.getName();
-                comparison.s2 = record2geneName.getName(); 
-                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
-                comparisonList.add(comparison);
-            }
-        }
-
-        Comparison bestResult = Comparison.getBestResult(comparisonList);
-
-        double postSimilarity = 0;
-        if (bestResult.similarity <= 0.3) {
-            postSimilarity = 0;
-        }
+        // calculate similarity
+        double similarity = sim.calculate(s1, s2);
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
-            this.comparisonLog.setRecord1Value(bestResult.s1);
-            this.comparisonLog.setRecord2Value(bestResult.s2);
-            this.comparisonLog.setSimilarity(Double.toString(bestResult.similarity));
-            this.comparisonLog.setPostprocessedSimilarity(Double.toString(postSimilarity));
+
+            this.comparisonLog.setRecord1Value(s1);
+            this.comparisonLog.setRecord2Value(s2);
+
+            this.comparisonLog.setSimilarity(Double.toString(similarity));
+            this.comparisonLog.setPostprocessedSimilarity(Double.toString(similarity));
         }
 
-        return bestResult.similarity;
+        return similarity;
     }
 
     @Override
@@ -67,5 +50,5 @@ public class NcbiIdComperatorTokenizingJaccard implements Comparator<Gene, Attri
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
-
+    
 }

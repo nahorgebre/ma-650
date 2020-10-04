@@ -9,18 +9,17 @@ import de.uni_mannheim.informatik.dws.winter.processing.DataIterator;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
 import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Publication;
 
-public class GeneBlockingKeyByEnsemblId extends
-        RecordBlockingKeyGenerator<Gene, Attribute> {
-
+public class PublicationBlockingKeyByPmId extends
+        RecordBlockingKeyGenerator<Publication, Attribute> {
+    
     private static final long serialVersionUID = 1L;
 
     @Override
-    public void generateBlockingKeys(Gene record, Processable<Correspondence<Attribute, Matchable>> correspondences,
-                                    DataIterator<Pair<String, Gene>> resultCollector) {
-        int beginIndex = record.getEnsemblId().length() - 2;
-        int endIndex = record.getEnsemblId().length() - 1;
-        String key = record.getEnsemblId().substring(beginIndex, endIndex);
+    public void generateBlockingKeys(Publication record, Processable<Correspondence<Attribute, Matchable>> correspondences,
+                                    DataIterator<Pair<String, Publication>> resultCollector) {
+        String key = record.getPmId().substring(0, 1);
         resultCollector.next(new Pair<>(key, record));
     }
 }

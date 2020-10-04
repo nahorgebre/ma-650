@@ -7,9 +7,9 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
 
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Publication;
 
-public class EnsemblIdComperatorLevenshtein implements Comparator<Gene, Attribute> {
+public class PmIdComperatorLevenshtein implements Comparator<Publication, Attribute> {
    
     private static final long serialVersionUID = 1L;
     LevenshteinSimilarity sim = new LevenshteinSimilarity();
@@ -18,12 +18,12 @@ public class EnsemblIdComperatorLevenshtein implements Comparator<Gene, Attribut
 
     @Override
     public double compare(
-            Gene record1,
-            Gene record2,
+            Publication record1,
+            Publication record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        String s1 = record1.getEnsemblId();
-        String s2 = record2.getEnsemblId();
+        String s1 = record1.getPmId();
+        String s2 = record2.getPmId();
 
         // calculate similarity
         double similarity = sim.calculate(s1, s2);

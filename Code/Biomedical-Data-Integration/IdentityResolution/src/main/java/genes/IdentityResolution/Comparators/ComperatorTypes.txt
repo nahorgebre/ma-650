@@ -1,5 +1,0 @@
-SimilarityCosine
-SimilarityJaccardOnNGrams
-SimilarityLevenshtein
-SimilaritySorensenDice
-SimilarityTokenizingJaccard
