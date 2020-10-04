@@ -10,7 +10,7 @@ import de.uni_mannheim.informatik.dws.winter.matching.rules.LinearCombinationMat
 import de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
-// comparators
+// GeneNameComperator
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorCosine;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorLowerCaseCosine;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorJaccardOnNGrams;
@@ -21,6 +21,13 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorense
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
+
+// NcbiIdComperator
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityCosine.NcbiIdComperatorCosine;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityJaccardOnNGrams.NcbiIdComperatorJaccardOnNGrams;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityLevenshtein.NcbiIdComperatorLevenshtein;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilaritySorensenDice.NcbiIdComperatorSorensenDice;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityTokenizingJaccard.NcbiIdComperatorTokenizingJaccard;
 
 // model
 import genes.IdentityResolution.model.Gene;
@@ -81,8 +88,9 @@ public class GeneLinearCombinationMatchingRule_GeneName_NCBI {
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = createMatchingRule(outputDirectory, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GeneNameComperatorCosine(), 0.5);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorCosine(), 0.4);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine(), 0.2);
+        matchingRule.addComparator(new NcbiIdComperatorCosine(), 0.4);
 
         return matchingRule;
     }
@@ -91,10 +99,12 @@ public class GeneLinearCombinationMatchingRule_GeneName_NCBI {
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = createMatchingRule(outputDirectory,gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.25);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.25);
-        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.25);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.25);
+        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.16);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.16);
+        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.2);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.16);
+        matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams(), 0.16);
+        matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard(), 0.16);
 
         return matchingRule;
     }
@@ -103,8 +113,9 @@ public class GeneLinearCombinationMatchingRule_GeneName_NCBI {
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = createMatchingRule(outputDirectory, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GeneNameComperatorLevenshtein(), 0.5);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorLevenshtein(), 0.4);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein(), 0.2);
+        matchingRule.addComparator(new NcbiIdComperatorLevenshtein(), 0.4);
 
         return matchingRule;
     }
@@ -113,8 +124,9 @@ public class GeneLinearCombinationMatchingRule_GeneName_NCBI {
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = createMatchingRule(outputDirectory, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GeneNameComperatorSorensenDice(), 0.5);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorSorensenDice(), 0.4);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice(), 0.2);
+        matchingRule.addComparator(new NcbiIdComperatorSorensenDice(), 0.4);
 
         return matchingRule;
     }

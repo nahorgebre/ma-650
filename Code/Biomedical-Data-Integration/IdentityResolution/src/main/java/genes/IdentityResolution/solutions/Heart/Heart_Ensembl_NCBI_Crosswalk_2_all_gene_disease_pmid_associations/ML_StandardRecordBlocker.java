@@ -57,7 +57,7 @@ public class ML_StandardRecordBlocker {
         HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
         // goldstandard directory
-        String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral";
+        String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations";
         String solution = "Heart";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
         
