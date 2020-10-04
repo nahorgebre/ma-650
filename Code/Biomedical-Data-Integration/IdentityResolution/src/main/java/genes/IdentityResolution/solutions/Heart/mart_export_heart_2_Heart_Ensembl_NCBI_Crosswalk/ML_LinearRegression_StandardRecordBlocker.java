@@ -91,10 +91,10 @@ public class ML_LinearRegression_StandardRecordBlocker
             Brain, mart_export_brain, null, matchingRule, blocker);
         
         // write the correspondences to the output file
-        Correspondences.output(outputDirectory, className, correspondences);
+        Correspondences.output(outputDirectory, correspondences);
 
         // evaluate your result
-        Evaluation.run(correspondences, gsTest, outputDirectory, className, comparisonDescription);
+        Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription);
         
     }
 }

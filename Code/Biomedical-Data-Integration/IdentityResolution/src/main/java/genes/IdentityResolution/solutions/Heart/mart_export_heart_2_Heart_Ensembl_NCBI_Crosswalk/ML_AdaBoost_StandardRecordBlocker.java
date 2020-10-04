@@ -115,10 +115,10 @@ public class ML_AdaBoost_StandardRecordBlocker
             mart_export_heart, Heart_Ensembl_NCBI_Crosswalk, null, matchingRule, blocker);
         
         // write the correspondences to the output file
-        Correspondences.output(outputDirectory, className, correspondences);
+        Correspondences.output(outputDirectory, correspondences);
 
         // evaluate your result
-        Evaluation.run(correspondences, gsTest, outputDirectory, className, comparisonDescription);
+        Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription);
         
     }
 }

@@ -114,10 +114,10 @@ public class ML_SimpleLogistic_StandardRecordBlocker
             Heart_Ensembl_NCBI_Crosswalk, mart_export_heart, null, matchingRule, blocker);
         
         // write the correspondences to the output file
-        Correspondences.output(outputDirectory, className, correspondences);
+        Correspondences.output(outputDirectory, correspondences);
 
         // evaluate your result
-        Evaluation.run(correspondences, gsTest, outputDirectory, className, comparisonDescription);
+        Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription);
         
     }
 }
