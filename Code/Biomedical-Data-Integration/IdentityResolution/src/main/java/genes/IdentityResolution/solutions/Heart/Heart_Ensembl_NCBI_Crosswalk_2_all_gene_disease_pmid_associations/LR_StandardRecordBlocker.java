@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain;
+package genes.IdentityResolution.solutions.Heart.Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral;
 
 // java
 import java.util.List;
@@ -18,7 +18,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
 // blockig
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 
 // model
 import genes.IdentityResolution.model.Gene;
@@ -27,7 +27,7 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
-import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_EnsemblId;
+import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_GeneName_NCBI;
 import genes.IdentityResolution.solutions.GoldStandard;
 
 public class LR_StandardRecordBlocker {
@@ -37,27 +37,27 @@ public class LR_StandardRecordBlocker {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
+        HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
         // goldstandard directory
-        String comparisonDescription = "Brain_2_mart_export_brain";
-        String solution = "Brain";
+        String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral";
+        String solution = "Heart";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
 
         String blockerName = "_StandardRecordBlocker";
-        List<GeneLinearCombinationMatchingRule_EnsemblId> matchingRuleList = GeneLinearCombinationMatchingRule_EnsemblId.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
+        List<GeneLinearCombinationMatchingRule_GeneName_NCBI> matchingRuleList = GeneLinearCombinationMatchingRule_GeneName_NCBI.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
 
-        for (GeneLinearCombinationMatchingRule_EnsemblId geneLinearCombinationMatchingRule_EnsemblId : matchingRuleList) {
+        for (GeneLinearCombinationMatchingRule_GeneName_NCBI geneLinearCombinationMatchingRule_NCBI_GeneName : matchingRuleList) {
 
-            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_EnsemblId.matchingRule;
-            String outputDirectory = geneLinearCombinationMatchingRule_EnsemblId.outputDirectory;
+            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_NCBI_GeneName.matchingRule;
+            String outputDirectory = geneLinearCombinationMatchingRule_NCBI_GeneName.outputDirectory;
 
             // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
+            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
             blocker.setMeasureBlockSizes(true);
             blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
@@ -67,7 +67,7 @@ public class LR_StandardRecordBlocker {
             // execute the matching
             System.out.println("*\n*\tRunning identity resolution\n*");
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Brain, mart_export_brain, null, matchingRule, blocker);
+                Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, blocker);
 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);

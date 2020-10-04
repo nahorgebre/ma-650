@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Heart.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk;
+package genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_liver;
 
 // java
 import java.io.File;
@@ -60,11 +60,11 @@ public class ML_StandardRecordBlocker {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
         HashedDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
-        HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
+        HashedDataSet<Gene, Attribute> mart_export_liver = Datasets.mart_export_liver();
 
         // goldstandard directory
-        String comparisonDescription = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
-        String solution = "Heart";
+        String comparisonDescription = "mart_export_heart_2_mart_export_liver";
+        String solution = "Organs";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
         
         // load the gold standard (test set)
@@ -111,7 +111,7 @@ public class ML_StandardRecordBlocker {
 
             // learn the matching rule
             RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-            learner.learnMatchingRule(Heart_Ensembl_NCBI_Crosswalk, mart_export_heart, null, matchingRule, gsTrain);
+            learner.learnMatchingRule(mart_export_liver, mart_export_heart, null, matchingRule, gsTrain);
 
             // create a blocker (blocking strategy)
             StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
@@ -123,7 +123,7 @@ public class ML_StandardRecordBlocker {
    
             // execute the matching
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Heart_Ensembl_NCBI_Crosswalk, mart_export_heart, null, matchingRule, blocker);
+                mart_export_liver, mart_export_heart, null, matchingRule, blocker);
                 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);

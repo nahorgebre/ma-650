@@ -51,10 +51,10 @@ public class LR_StandardRecordBlocker {
         String blockerName = "_StandardRecordBlocker";
         List<GeneLinearCombinationMatchingRule_PmId> matchingRuleList = GeneLinearCombinationMatchingRule_PmId.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
 
-        for (GeneLinearCombinationMatchingRule_PmId geneLinearCombinationMatchingRule_EnsemblId : matchingRuleList) {
+        for (GeneLinearCombinationMatchingRule_PmId geneLinearCombinationMatchingRule_PmId : matchingRuleList) {
 
-            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_EnsemblId.matchingRule;
-            String outputDirectory = GeneLinearCombinationMatchingRule_PmId.outputDirectory;
+            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_PmId.matchingRule;
+            String outputDirectory = geneLinearCombinationMatchingRule_PmId.outputDirectory;
 
             // create a blocker (blocking strategy)
             StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new PublicationBlockingKeyByPmId());

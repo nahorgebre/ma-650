@@ -26,5 +26,15 @@ mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Liver.mart_ex
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Testis.mart_export_testis_2_all_gene_disease_pmid_associations.Run"
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Testis.Testis_2_mart_export_testis.Run"
 
+# Publication
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Publication.Run"
+
+# Organs
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_brain.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_cerebellum.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_kidney.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_liver.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_testis.Run"
+
 cd UploadToAWS
 dotnet run

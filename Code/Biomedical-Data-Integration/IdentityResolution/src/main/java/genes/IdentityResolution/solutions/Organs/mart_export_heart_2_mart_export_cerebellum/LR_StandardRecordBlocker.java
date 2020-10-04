@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain;
+package genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_cerebellum;
 
 // java
 import java.util.List;
@@ -27,7 +27,7 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
-import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_EnsemblId;
+import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_EnsemblId_GeneName;
 import genes.IdentityResolution.solutions.GoldStandard;
 
 public class LR_StandardRecordBlocker {
@@ -37,24 +37,24 @@ public class LR_StandardRecordBlocker {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        HashedDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
+        HashedDataSet<Gene, Attribute> mart_export_cerebellum = Datasets.mart_export_cerebellum();
 
         // goldstandard directory
-        String comparisonDescription = "Brain_2_mart_export_brain";
-        String solution = "Brain";
+        String comparisonDescription = "mart_export_heart_2_mart_export_cerebellum";
+        String solution = "Organs";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
 
         String blockerName = "_StandardRecordBlocker";
-        List<GeneLinearCombinationMatchingRule_EnsemblId> matchingRuleList = GeneLinearCombinationMatchingRule_EnsemblId.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
+        List<GeneLinearCombinationMatchingRule_EnsemblId_GeneName> matchingRuleList = GeneLinearCombinationMatchingRule_EnsemblId_GeneName.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
 
-        for (GeneLinearCombinationMatchingRule_EnsemblId geneLinearCombinationMatchingRule_EnsemblId : matchingRuleList) {
+        for (GeneLinearCombinationMatchingRule_EnsemblId_GeneName geneLinearCombinationMatchingRule_EnsemblId_GeneName : matchingRuleList) {
 
-            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_EnsemblId.matchingRule;
-            String outputDirectory = geneLinearCombinationMatchingRule_EnsemblId.outputDirectory;
+            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_EnsemblId_GeneName.matchingRule;
+            String outputDirectory = geneLinearCombinationMatchingRule_EnsemblId_GeneName.outputDirectory;
 
             // create a blocker (blocking strategy)
             StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
@@ -67,7 +67,7 @@ public class LR_StandardRecordBlocker {
             // execute the matching
             System.out.println("*\n*\tRunning identity resolution\n*");
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Brain, mart_export_brain, null, matchingRule, blocker);
+                mart_export_cerebellum, mart_export_heart, null, matchingRule, blocker);
 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);

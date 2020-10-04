@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Heart.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk;
+package genes.IdentityResolution.solutions.Heart.Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral;
 
 // java
 import java.io.File;
@@ -26,19 +26,14 @@ import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
 
 // Blocker
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 
-// EnsemblIdComperator
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorLowerCaseJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorTokenizingJaccard;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorLowerCaseTokenizingJaccard;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorCosine;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorLowerCaseCosine;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevenshtein.EnsemblIdComperatorLevenshtein;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevenshtein.EnsemblIdComperatorLowerCaseLevenshtein;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorSorensenDice;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorLowerCaseSorensenDice;
+// NcbiIdComperator
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityCosine.NcbiIdComperatorCosine;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityJaccardOnNGrams.NcbiIdComperatorJaccardOnNGrams;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityLevenshtein.NcbiIdComperatorLevenshtein;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilaritySorensenDice.NcbiIdComperatorSorensenDice;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityTokenizingJaccard.NcbiIdComperatorTokenizingJaccard;
 
 // GeneNameComperator
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorCosine;
@@ -52,18 +47,17 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorense
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
 
-
 public class ML_StandardRecordBlocker {
 
     public static void main( String[] args ) throws Exception
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
+        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
         HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
         // goldstandard directory
-        String comparisonDescription = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
+        String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral";
         String solution = "Heart";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
         
@@ -87,16 +81,11 @@ public class ML_StandardRecordBlocker {
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
             // add comparators
-            matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams());
-            matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams());
-            matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard());
-            matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard());
-            matchingRule.addComparator(new EnsemblIdComperatorCosine());
-            matchingRule.addComparator(new EnsemblIdComperatorLowerCaseCosine());
-            matchingRule.addComparator(new EnsemblIdComperatorLevenshtein());
-            matchingRule.addComparator(new EnsemblIdComperatorLowerCaseLevenshtein());
-            matchingRule.addComparator(new EnsemblIdComperatorSorensenDice());
-            matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice());
+            matchingRule.addComparator(new NcbiIdComperatorCosine());
+            matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams());
+            matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
+            matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
+            matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
 
             matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
@@ -111,10 +100,10 @@ public class ML_StandardRecordBlocker {
 
             // learn the matching rule
             RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-            learner.learnMatchingRule(Heart_Ensembl_NCBI_Crosswalk, mart_export_heart, null, matchingRule, gsTrain);
+            learner.learnMatchingRule(Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, gsTrain);
 
             // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
+            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
             blocker.setMeasureBlockSizes(true);
             blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
@@ -123,7 +112,7 @@ public class ML_StandardRecordBlocker {
    
             // execute the matching
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Heart_Ensembl_NCBI_Crosswalk, mart_export_heart, null, matchingRule, blocker);
+                Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, blocker);
                 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);

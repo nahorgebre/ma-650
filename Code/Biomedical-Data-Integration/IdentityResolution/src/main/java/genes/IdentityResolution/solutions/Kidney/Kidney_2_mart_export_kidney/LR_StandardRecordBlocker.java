@@ -54,7 +54,7 @@ public class LR_StandardRecordBlocker {
         for (GeneLinearCombinationMatchingRule_EnsemblId geneLinearCombinationMatchingRule_EnsemblId : matchingRuleList) {
 
             LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_EnsemblId.matchingRule;
-            String outputDirectory = GeneLinearCombinationMatchingRule_EnsemblId.outputDirectory;
+            String outputDirectory = geneLinearCombinationMatchingRule_EnsemblId.outputDirectory;
 
             // create a blocker (blocking strategy)
             StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
