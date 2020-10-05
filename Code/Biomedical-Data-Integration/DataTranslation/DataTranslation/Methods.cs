@@ -62,15 +62,21 @@ namespace DataTranslation
                         }
 
                         string geneName = "NaN";
-                        if (item.geneNames[0].name != null)
+                        if (item.geneNames != null)
                         {
-                            geneName = item.geneNames[0].name.Trim();
+                            if (item.geneNames[0].name != null)
+                            {
+                                geneName = item.geneNames[0].name.Trim();
+                            }
                         }
 
                         string pmid = "NaN";
-                        if (item.publicationMentions[0].pmid != null)
+                        if (item.publicationMentions != null)
                         {
-                            pmid = item.publicationMentions[0].pmid.Trim();
+                            if (item.publicationMentions[0].pmid != null)
+                            {
+                                pmid = item.publicationMentions[0].pmid.Trim();
+                            }                        
                         }
 
                         List<string> lineContent = new List<string>()
