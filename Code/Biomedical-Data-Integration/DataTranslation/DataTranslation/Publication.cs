@@ -47,6 +47,7 @@ namespace DataTranslation
             }
 
             Methods.createXml(gene_list: gene_list, fileName: "PubMedDate_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "PubMedDate_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
         }
 
         public static void gene2pubtatorcentral_dt()
@@ -93,6 +94,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
         }
     }
 }

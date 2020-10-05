@@ -4,20 +4,12 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using System.Text;
 
 namespace DataTranslation
 {
     public class Methods
     {
-        public static List<Gene> createList(int begin, int end, List<Gene> source)
-        {
-            List<Gene> genes_list = new List<Gene>();
-            for (int i = begin; i < end; i++)
-            {
-                genes_list.Add(source[i]);
-            }
-            return genes_list;
-        }
 
         public static void createXml(List<Gene> gene_list, string fileName, string directory)
         {
@@ -28,6 +20,72 @@ namespace DataTranslation
             genes.gene = gene_list;
             serializer.Serialize(writer, genes);
             writer.Close();
+        }
+
+        public static void createTsv(List<Gene> gene_list, string fileName, string directory)
+        {
+            string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
+            if (!File.Exists(gsFileName))
+            {
+                using (StreamWriter sw = new StreamWriter(gsFileName)) 
+                {
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
+                    {
+                        "recordId",
+                        "ensemblId",
+                        "ncbiId",
+                        "geneName",
+                        "pmId"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    sw.WriteLine(firstLine);
+
+                    foreach (Gene item in gene_list)
+                    {
+                        string recordId = "NaN";
+                        if (item.recordId != null)
+                        {
+                            recordId = item.recordId.Trim();
+                        }
+
+                        string ensemblId = "NaN";
+                        if (item.ensemblId != null)
+                        {
+                            ensemblId = item.ensemblId.Trim();
+                        }
+
+                        string ncbiId = "NaN";
+                        if (item.ncbiId != null)
+                        {
+                            ncbiId = item.ncbiId.Trim();
+                        }
+
+                        string geneName = "NaN";
+                        if (item.geneNames[0].name != null)
+                        {
+                            geneName = item.geneNames[0].name.Trim();
+                        }
+
+                        string pmid = "NaN";
+                        if (item.publicationMentions[0].pmid != null)
+                        {
+                            pmid = item.publicationMentions[0].pmid.Trim();
+                        }
+
+                        List<string> lineContent = new List<string>()
+                        {
+                            recordId,
+                            ensemblId,
+                            ncbiId,
+                            geneName,
+                            pmid
+                        };
+                        var line = string.Join(delimiter, lineContent);
+                        sw.WriteLine(line);
+                    }
+                }
+            }
         }
 
         public void validateXmlFile(string filepath)

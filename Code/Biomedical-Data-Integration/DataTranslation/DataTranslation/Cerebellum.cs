@@ -50,6 +50,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "Cerebellum_dt.xml", directory: cerebellumOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Cerebellum_dt.tsv", directory: cerebellumOutputDirectory);
         }
 
         // mart_export_cerebellum.txt; 0-geneId; 1-geneDescription; 2-geneName
@@ -88,6 +89,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.xml", directory: cerebellumOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.tsv", directory: cerebellumOutputDirectory);
         }
     }
 }

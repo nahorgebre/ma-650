@@ -50,6 +50,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "Kidney_dt.xml", directory: kidneyOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Kidney_dt.tsv", directory: kidneyOutputDirectory);
         }
 
         // mart.txt; 0-geneId; 1-geneDescription; 2-geneName
@@ -88,6 +89,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "mart_export_kidney_dt.xml", directory: kidneyOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_kidney_dt.tsv", directory: kidneyOutputDirectory);
         }
     }
 }

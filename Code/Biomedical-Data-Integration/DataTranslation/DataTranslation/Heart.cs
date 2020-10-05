@@ -50,6 +50,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "Heart_dt.xml", directory: heartOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Heart_dt.tsv", directory: heartOutputDirectory);
         }
 
         // mart.txt; 0-geneId; 1-geneDescription; 2-geneName
@@ -88,6 +89,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "mart_export_heart_dt.xml", directory: heartOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_heart_dt.tsv", directory: heartOutputDirectory);
         }
 
         // ncbi; 0-ncbi; 1-geneId; 2-geneName
@@ -122,6 +124,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.xml", directory: heartOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.tsv", directory: heartOutputDirectory);
         }
     }
 }

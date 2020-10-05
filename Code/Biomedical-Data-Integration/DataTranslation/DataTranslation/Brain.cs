@@ -50,6 +50,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "Brain_dt.xml", directory: brainOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Brain_dt.tsv", directory: brainOutputDirectory);
         }
 
         // mart_export_brain.txt; 0-geneId; 1-geneDescription; 2-geneName
@@ -88,6 +89,7 @@ namespace DataTranslation
                 }
             }
             Methods.createXml(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: brainOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_brain_dt.tsv", directory: brainOutputDirectory);
         }
     }
 }
