@@ -4,6 +4,7 @@ namespace GoldstandardCreation
 {
     class Kidney
     {
+        /*
         public static void run() {
             Kidney_2_mart_export_kidney();
             mart_export_kidney_2_all_gene_disease_pmid_associations();
@@ -24,5 +25,6 @@ namespace GoldstandardCreation
             List<Goldstandard> goldstandardList = Methods.compareGeneNameLargeFiles(Datasets.mart_export_kidney_path, Datasets.gene2pubtatorcentral_path);
             Methods.createOuput("mart_export_kidney_2_gene2pubtatorcentral", "true.csv", goldstandardList);
         }
+        */
     }
 }

@@ -4,6 +4,7 @@ namespace GoldstandardCreation
 {
     class Testis
     {
+        /*
         public static void run() {
             mart_export_testis_2_all_gene_disease_pmid_associations();
             mart_export_testis_2_gene2pubtatorcentral();
@@ -24,5 +25,6 @@ namespace GoldstandardCreation
             List<Goldstandard> goldstandardList = Methods.compareEnsemblId(Datasets.Testis_path, Datasets.mart_export_testis_path);
             Methods.createOuput("Testis_2_mart_export_testis", "true.csv", goldstandardList);
         }
+        */
     }
 }

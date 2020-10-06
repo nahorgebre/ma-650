@@ -4,6 +4,7 @@ namespace GoldstandardCreation
 {
     class Organs
     {
+        /*
         public static void run() {
             Heart_2_Brain();
             Heart_2_Cerebellum();
@@ -36,5 +37,6 @@ namespace GoldstandardCreation
             List<Goldstandard> goldstandardList = Methods.compareEnsemblId(Datasets.Heart_path, Datasets.Testis_path);
             Methods.createOuput("Heart_2_Testis", "true.csv", goldstandardList);
         }
+        */
     }
 }

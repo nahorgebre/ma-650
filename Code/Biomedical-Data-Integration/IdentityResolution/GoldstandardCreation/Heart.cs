@@ -4,6 +4,7 @@ namespace GoldstandardCreation
 {
     class Heart
     {
+        /*
         public static void run() {
             Heart_2_Heart_Ensembl_NCBI_Crosswalk();
             Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations();
@@ -30,6 +31,7 @@ namespace GoldstandardCreation
             List<Goldstandard> goldstandardList = Methods.compareEnsemblId(Datasets.mart_export_brain_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path);
             Methods.createOuput("mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk", "true.csv", goldstandardList);
         }
+        */
 
     }
 }

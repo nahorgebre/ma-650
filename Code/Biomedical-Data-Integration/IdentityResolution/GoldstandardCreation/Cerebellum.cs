@@ -4,6 +4,7 @@ namespace GoldstandardCreation
 {
     class Cerebellum
     {
+        /*
         public static void run() {
             Cerebellum_2_mart_export_cerebellum();
             mart_export_cerebellum_2_all_gene_disease_pmid_associations();
@@ -23,5 +24,6 @@ namespace GoldstandardCreation
             List<Goldstandard> goldstandardList = Methods.compareGeneNameLargeFiles(Datasets.mart_export_cerebellum_path, Datasets.gene2pubtatorcentral_path);
             Methods.createOuput("mart_export_cerebellum_2_gene2pubtatorcentral", "true.csv", goldstandardList);
         }
+        */
     }
 }
