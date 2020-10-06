@@ -6,14 +6,17 @@ namespace GoldstandardCreation
     {
         static void Main(string[] args)
         {
+            /*
             Brain.run();
             Cerebellum.run();
             Heart.run();
             Kidney.run();
             Liver.run();
-            Organs.run();
-            Publication.run();
+            Organs.run();     
             Testis.run();
+            */
+
+            Publication.run();
         }
     }
 }

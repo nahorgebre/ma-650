@@ -9,8 +9,9 @@ namespace GoldstandardCreation
         }
         
         public static void gene2pubtatorcentral_2_PubMedDate() {
-            List<Goldstandard> goldstandardList = Methods.comparePmId(Datasets.gene2pubtatorcentral_path, Datasets.PubMedDate_path);
-            Methods.createOuput("gene2pubtatorcentral_2_PubMedDate", goldstandardList);
+            (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.comparePmId(Datasets.gene2pubtatorcentral_path, Datasets.PubMedDate_path);
+            Methods.createOuput("gene2pubtatorcentral_2_PubMedDate", "true.csv", trueList);
+            Methods.createOuput("gene2pubtatorcentral_2_PubMedDate", "false.csv", falseList);
         }
     }
 }
