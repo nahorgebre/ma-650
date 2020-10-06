@@ -202,8 +202,11 @@ namespace GoldstandardCreation
         }
 
         public static void createOuput(string folderName, string fileName, List<Goldstandard> goldstandardList) {
+
             string directoryName = Environment.CurrentDirectory + "/data/output/" + folderName;
             Directory.CreateDirectory(directoryName);
+
+            File.Delete(directoryName + "/" + fileName);
             using (StreamWriter sw = new StreamWriter(directoryName + "/" + fileName))
             {
                 foreach (Goldstandard item in goldstandardList)
