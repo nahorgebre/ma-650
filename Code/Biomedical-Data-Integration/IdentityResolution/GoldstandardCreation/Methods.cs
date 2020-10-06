@@ -34,8 +34,8 @@ namespace GoldstandardCreation
 
                         using (StreamReader sr2 = new StreamReader(fileName2))
                         {
-                            // Reducing number of comparisons -- while (!sr2.EndOfStream)
-                            for (int j = 0; j < 100000; j++)                        
+                            // Reducing number of comparisons -- while (!sr2.EndOfStream) -- for (int j = 0; j < 100000; j++)              
+                            while (!sr2.EndOfStream)                       
                             {
                                 var lineSr2 = sr2.ReadLine();
 
