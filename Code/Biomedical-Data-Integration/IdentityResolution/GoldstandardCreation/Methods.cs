@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace GoldstandardCreation
 {
@@ -65,6 +66,9 @@ namespace GoldstandardCreation
         }
 
         public static List<Goldstandard> compareEnsemblId(string fileName1, string fileName2) {
+
+            int sr1LineCount = File.ReadLines(fileName1).Count();
+
 
             List<Goldstandard> goldstandardList = new List<Goldstandard>();
 
@@ -180,8 +184,8 @@ namespace GoldstandardCreation
         }
 
         public static void createOuput(string folderName, List<Goldstandard> goldstandardList) {
-            Directory.CreateDirectory(Environment.CurrentDirectory + "/" + folderName);
-            using (StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "/" + folderName + "/true.csv"))
+            Directory.CreateDirectory(Environment.CurrentDirectory + "/output/" + folderName);
+            using (StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "/output/" + folderName + "/true.csv"))
             {
                 foreach (Goldstandard item in goldstandardList)
                 {

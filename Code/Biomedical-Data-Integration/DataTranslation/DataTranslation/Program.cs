@@ -6,6 +6,7 @@
         {
             //createTargetSchema();
             Heart.runDataTranslation();
+            /*
             Brain.runDataTranslation();
             Cerebellum.runDataTranslation();
             Kidney.runDataTranslation();
@@ -14,6 +15,7 @@
             GeneDiseaseAssociations.runDataTranslation();
             Publication.runDataTranslation();
             AWSupload.run();
+            */
         }
     }
 }

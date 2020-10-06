@@ -10,8 +10,8 @@ namespace DataTranslation
         {
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Heart.heartOutputDirectory));  
             Heart.Heart_dt();     
-            Heart.mart_export_heart_dt();
-            Heart.Heart_Ensembl_NCBI_Crosswalk_dt();
+            //Heart.mart_export_heart_dt();
+            //Heart.Heart_Ensembl_NCBI_Crosswalk_dt();
         }
 
         public static string heartInputDirectory = "data/input/Heart";
