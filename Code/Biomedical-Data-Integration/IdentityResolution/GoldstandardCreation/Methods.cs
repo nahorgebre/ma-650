@@ -184,8 +184,9 @@ namespace GoldstandardCreation
         }
 
         public static void createOuput(string folderName, List<Goldstandard> goldstandardList) {
-            Directory.CreateDirectory(Environment.CurrentDirectory + "/output/" + folderName);
-            using (StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "/output/" + folderName + "/true.csv"))
+            string directoryName = Environment.CurrentDirectory + "/data/output/" + folderName;
+            Directory.CreateDirectory(directoryName);
+            using (StreamWriter sw = new StreamWriter(directoryName + "/true.csv"))
             {
                 foreach (Goldstandard item in goldstandardList)
                 {
