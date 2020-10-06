@@ -1,0 +1,25 @@
+using System.Collections.Generic;
+
+namespace GoldstandardCreation
+{
+    class Testis
+    {
+        public static void run() {
+            mart_export_testis_2_all_gene_disease_pmid_associations();
+            mart_export_testis_2_gene2pubtatorcentral();
+            Testis_2_mart_export_testis();
+        }
+        
+        public static void mart_export_testis_2_all_gene_disease_pmid_associations() {
+            List<Goldstandard> goldstandardList = Methods.compareGeneNameLargeFiles(Datasets.mart_export_testis_path, Datasets.all_gene_disease_pmid_associations_path);
+        }
+
+        public static void mart_export_testis_2_gene2pubtatorcentral() {
+            List<Goldstandard> goldstandardList = Methods.compareGeneNameLargeFiles(Datasets.mart_export_testis_path, Datasets.gene2pubtatorcentral_path);
+        }
+
+        public static void Testis_2_mart_export_testis() {
+            
+        }
+    }
+}
