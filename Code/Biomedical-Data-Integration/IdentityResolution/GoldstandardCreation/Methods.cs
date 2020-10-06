@@ -10,7 +10,8 @@ namespace GoldstandardCreation
 
         public static List<Goldstandard> compareGeneNameLargeFiles(String fileName1, String fileName2) {
 
-            List<Goldstandard> goldstandardList = new List<Goldstandard>();
+            List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
+            List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
 
             try
             {
@@ -18,13 +19,15 @@ namespace GoldstandardCreation
 
                 using (StreamReader sr1 = new StreamReader(fileName1))
                 {
-                    //while (!sr1.EndOfStream)
-                    for (int i = 0; i < 1000; i++)
+                    while (!sr1.EndOfStream)
                     {
                         var lineSr1 = sr1.ReadLine();
-
                         if (!lineSr1.Equals(string.Empty))
                         {
+                            if (goldstandardListTrue.Count < 200)
+                            {
+                                
+                            }
                             String[] valuesSr1 = lineSr1.Split(delimiter);
                             string geneNameSr1 = valuesSr1[3].Trim();
                             string recordIdSr1 = valuesSr1[0];
@@ -48,7 +51,7 @@ namespace GoldstandardCreation
                                             goldstandardItem.recordId2 = recordIdSr2;
                                             goldstandardItem.value = "TRUE";
 
-                                            goldstandardList.Add(goldstandardItem);
+                                            goldstandardListTrue.Add(goldstandardItem);
                                         }
                                     }
                                 }
@@ -62,71 +65,11 @@ namespace GoldstandardCreation
                 Console.WriteLine("Exception: " + ex);
             }
 
-            return goldstandardList;
+            return goldstandardListTrue;
         }
 
-        public static List<Goldstandard> compareEnsemblId(string fileName1, string fileName2) {
+        public static (List<Goldstandard>, List<Goldstandard>) compareEnsemblId(string fileName1, string fileName2) {
 
-            int sr1LineCount = File.ReadLines(fileName1).Count();
-
-
-            List<Goldstandard> goldstandardList = new List<Goldstandard>();
-
-            try
-            {
-                var delimiter = "\t";
-
-                using (StreamReader sr1 = new StreamReader(fileName1))
-                {
-                    //while (!sr1.EndOfStream)
-                    for (int i = 0; i < 1000; i++)
-                    {
-                        var lineSr1 = sr1.ReadLine();
-
-                        if (!lineSr1.Equals(string.Empty))
-                        {
-                            String[] valuesSr1 = lineSr1.Split(delimiter);
-                            string ensemblIdSr1 = valuesSr1[1].Trim();
-                            string recordIdSr1 = valuesSr1[0];
-
-                            using (StreamReader sr2 = new StreamReader(fileName2))
-                            {
-                                while (!sr2.EndOfStream)
-                                {
-                                    var lineSr2 = sr2.ReadLine();
-
-                                    if (!lineSr2.Equals(string.Empty))
-                                    {
-                                        String[] valuesSr2 = lineSr2.Split(delimiter);
-                                        string ensemblIdSr2 = valuesSr2[1].Trim();
-                                        string recordIdSr2 = valuesSr2[0];
-
-                                        if (ensemblIdSr1.Equals(ensemblIdSr2))
-                                        {
-                                            Goldstandard goldstandardItem = new Goldstandard();
-                                            goldstandardItem.recordId1 = recordIdSr1;
-                                            goldstandardItem.recordId2 = recordIdSr2;
-                                            goldstandardItem.value = "TRUE";
-
-                                            goldstandardList.Add(goldstandardItem);
-                                        }
-                                    }
-                                }
-                            }                 
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: " + ex);
-            }
-
-            return goldstandardList;
-        }
-
-        public static (List<Goldstandard>, List<Goldstandard>) comparePmId(string fileName1, string fileName2)
-        {
             List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
             List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
 
@@ -140,31 +83,28 @@ namespace GoldstandardCreation
                     while (!sr1.EndOfStream)
                     {
                         var lineSr1 = sr1.ReadLine();
-
                         if (!lineSr1.Equals(string.Empty))
                         {
 
                             if (goldstandardListTrue.Count() < 200)
                             {
                                 String[] valuesSr1 = lineSr1.Split(delimiter);
-                                string pmIdSr1 = valuesSr1[4].Trim();
+                                string ensemblIdSr1 = valuesSr1[1].Trim();
                                 string recordIdSr1 = valuesSr1[0];
 
                                 using (StreamReader sr2 = new StreamReader(fileName2))
                                 {
-                                    // Reducing number of comparisons
-                                    //while (!sr2.EndOfStream)
-                                    for (int j = 0; j < 100000; j++)                        
+                                    while (!sr2.EndOfStream)
                                     {
                                         var lineSr2 = sr2.ReadLine();
 
                                         if (!lineSr2.Equals(string.Empty))
                                         {
                                             String[] valuesSr2 = lineSr2.Split(delimiter);
-                                            string pmIdSr2 = valuesSr2[4].Trim();
+                                            string ensemblIdSr2 = valuesSr2[1].Trim();
                                             string recordIdSr2 = valuesSr2[0];
 
-                                            if (pmIdSr1.Equals(pmIdSr2))
+                                            if (ensemblIdSr1.Equals(ensemblIdSr2))
                                             {
                                                 Goldstandard goldstandardItem = new Goldstandard();
                                                 goldstandardItem.recordId1 = recordIdSr1;
@@ -189,6 +129,89 @@ namespace GoldstandardCreation
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex);
+            }
+
+            return (goldstandardListTrue, goldstandardListFalse);
+        }
+
+        public static (List<Goldstandard>, List<Goldstandard>) comparePmId(string fileName1, string fileName2)
+        {
+            List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
+            List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
+
+            try
+            {
+                var delimiter = "\t";
+
+                using (StreamReader sr1 = new StreamReader(fileName1))
+                {
+                    sr1.ReadLine();
+
+                    // make comparisons as long as matches are not found
+                    if (goldstandardListTrue.Count() < 200)
+                    {
+
+
+                        
+                    }
+
+                        while (!sr1.EndOfStream)
+                        {
+                            var lineSr1 = sr1.ReadLine();
+                            if (!lineSr1.Equals(string.Empty))
+                            {
+                                String[] valuesSr1 = lineSr1.Split(delimiter);
+                                string pmIdSr1 = valuesSr1[4].Trim();
+                                string recordIdSr1 = valuesSr1[0];
+
+                                using (StreamReader sr2 = new StreamReader(fileName2))
+                                {
+                                    // Reducing number of comparisons -- while (!sr2.EndOfStream)
+                                    for (int j = 0; j < 100000; j++)                        
+                                    {
+                                        var lineSr2 = sr2.ReadLine();
+
+                                        if (!lineSr2.Equals(string.Empty))
+                                        {
+                                            String[] valuesSr2 = lineSr2.Split(delimiter);
+                                            string pmIdSr2 = valuesSr2[4].Trim();
+                                            string recordIdSr2 = valuesSr2[0];
+
+                                            if (pmIdSr1.Equals(pmIdSr2))
+                                            {
+                                                Goldstandard goldstandardItem = new Goldstandard();
+                                                goldstandardItem.recordId1 = recordIdSr1;
+                                                goldstandardItem.recordId2 = recordIdSr2;
+                                                goldstandardItem.value = "TRUE";
+
+                                                goldstandardListTrue.Add(goldstandardItem);
+
+                                                Console.WriteLine("True Count: " + goldstandardListTrue.Count());
+                                            }
+                                            else
+                                            {
+                                                if (goldstandardListFalse.Count() < 200)
+                                                {
+                                                    Goldstandard goldstandardItem = new Goldstandard();
+                                                    goldstandardItem.recordId1 = recordIdSr1;
+                                                    goldstandardItem.recordId2 = recordIdSr2;
+                                                    goldstandardItem.value = "FALSE";
+
+                                                    goldstandardListFalse.Add(goldstandardItem);                     
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            
+                    
                         }
                     }
                 }         
