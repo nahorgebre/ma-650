@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace GoldstandardCreation
 {
     class Publication
@@ -7,7 +9,8 @@ namespace GoldstandardCreation
         }
         
         public static void gene2pubtatorcentral_2_PubMedDate() {
-
+            List<Goldstandard> goldstandardList = Methods.comparePmId(Datasets.gene2pubtatorcentral_path, Datasets.PubMedDate_path);
+            Methods.createOuput("gene2pubtatorcentral_2_PubMedDate", goldstandardList);
         }
     }
 }
