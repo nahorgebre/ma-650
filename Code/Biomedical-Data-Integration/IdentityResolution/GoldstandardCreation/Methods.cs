@@ -158,10 +158,6 @@ namespace GoldstandardCreation
                     if (goldstandardListTrue.Count() < 200)
                     {
 
-
-                        
-                    }
-
                         while (!sr1.EndOfStream)
                         {
                             var lineSr1 = sr1.ReadLine();
@@ -210,8 +206,8 @@ namespace GoldstandardCreation
                                         }
                                     }
                                 }
-                            
-                    
+                        
+                            }
                         }
                     }
                 }         
