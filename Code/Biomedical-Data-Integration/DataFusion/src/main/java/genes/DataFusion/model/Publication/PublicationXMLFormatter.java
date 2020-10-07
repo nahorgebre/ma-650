@@ -16,13 +16,18 @@ public class PublicationXMLFormatter extends XMLFormatter<Publication> {
         Element publication = doc.createElement("publicationMention");
 
         publication.appendChild(createTextElement("pmId", record.getPmId(), doc));
+        publication.appendChild(createTextElement("year", record.getYear(), doc));
         publication.appendChild(createTextElement("ressource", record.getRessource(), doc));
         
-        if(record.getPmId()!=null) {
+        if (record.getPmId()!=null) {
             publication.appendChild(createTextElement("pmId", record.getPmId(), doc));
         }
 
-        if(record.getRessource()!=null) {
+        if (record.getYear()!=null) {
+            publication.appendChild(createTextElement("year", record.getYear(), doc));
+        }
+
+        if (record.getRessource()!=null) {
             publication.appendChild(createTextElement("ressource", record.getRessource(), doc));
         }
 

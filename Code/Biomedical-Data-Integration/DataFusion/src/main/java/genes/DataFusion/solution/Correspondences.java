@@ -37,10 +37,10 @@ public class Correspondences {
     public static String gene2pubtatorcentral_2_PubMedDate = "data/correspondences/Publication/gene2pubtatorcentral_2_PubMedDate/correspondences.csv";
     
     // Organs
-    public static String mart_export_heart_2_mart_export_brain = "data/correspondences/Organs/mart_export_heart_2_mart_export_brain/correspondences.csv";
-    public static String mart_export_heart_2_mart_export_cerebellum = "data/correspondences/Organs/mart_export_heart_2_mart_export_cerebellum/correspondences.csv";
-    public static String mart_export_heart_2_mart_export_kidney = "data/correspondences/Organs/mart_export_heart_2_mart_export_kidney/correspondences.csv";
-    public static String mart_export_heart_2_mart_export_liver = "data/correspondences/Organs/mart_export_heart_2_mart_export_liver/correspondences.csv";
-    public static String mart_export_heart_2_mart_export_testis = "data/correspondences/Organs/mart_export_heart_2_mart_export_testis/correspondences.csv";
+    public static String Heart_2_Brain = "data/correspondences/Organs/Heart_2_Brain/correspondences.csv";
+    public static String Heart_2_Cerebellum = "data/correspondences/Organs/Heart_2_Cerebellum/correspondences.csv";
+    public static String Heart_2_Kidney = "data/correspondences/Organs/Heart_2_Kidney/correspondences.csv";
+    public static String Heart_2_Liver = "data/correspondences/Organs/Heart_2_Liver/correspondences.csv";
+    public static String Heart_2_Testis = "data/correspondences/Organs/Heart_2_Testis/correspondences.csv";
 
 }

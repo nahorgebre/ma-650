@@ -49,7 +49,7 @@ public class Publication extends AbstractRecord<Attribute> implements Serializab
         return true;
     }
 
-    public static final Attribute PMID = new Attribute("pmid");
+    public static final Attribute PMID = new Attribute("pmId");
     public static final Attribute YEAR = new Attribute("year");
     public static final Attribute RESSOURCE = new Attribute("ressource");
 

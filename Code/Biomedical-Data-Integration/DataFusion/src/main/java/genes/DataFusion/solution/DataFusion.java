@@ -65,6 +65,7 @@ public class DataFusion {
         System.out.println("*\n*\tLoading heart datasets\n*");
         FusibleDataSet<Gene, Attribute> Heart = Datasets.Heart();
         FusibleDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
+        FusibleDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
 
         System.out.println("*\n*\tLoading kidney datasets\n*");
         FusibleDataSet<Gene, Attribute> Kidney = Datasets.Kidney();
@@ -81,19 +82,48 @@ public class DataFusion {
         // load correspondences
         System.out.println("*\n*\tLoading correspondences\n*");
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
+
         // Brain
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_all_gene_disease_pmid_associations), mart_export_brain, all_gene_disease_pmid_associations);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_gene2pubtatorcentral), mart_export_brain, gene2pubtatorcentral);
+
         // Cerebellum
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_mart_export_cerebellum), Cerebellum, mart_export_cerebellum);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_all_gene_disease_pmid_associations), mart_export_cerebellum, all_gene_disease_pmid_associations);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_gene2pubtatorcentral), mart_export_cerebellum, gene2pubtatorcentral);
+        
         // Heart
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Heart_Ensembl_NCBI_Crosswalk), Heart, Heart_Ensembl_NCBI_Crosswalk);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations), Heart_Ensembl_NCBI_Crosswalk, all_gene_disease_pmid_associations);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral), Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk), mart_export_heart);
+        
         // Kidney
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_mart_export_kidney), Kidney, mart_export_kidney);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_kidney_2_all_gene_disease_pmid_associations), mart_export_kidney, all_gene_disease_pmid_associations);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_kidney_2_gene2pubtatorcentral), mart_export_kidney, gene2pubtatorcentral);
+        
         // Liver
-        correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), mart_export_liver, Liver);
+        correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_liver_2_all_gene_disease_pmid_associations), mart_export_liver, all_gene_disease_pmid_associations);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_gene2pubtatorcentral), mart_export_liver, gene2pubtatorcentral);
+        
         // Testis
         correspondences.loadCorrespondences(new File(Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_testis_2_all_gene_disease_pmid_associations), mart_export_testis, all_gene_disease_pmid_associations);
+        correspondences.loadCorrespondences(new File(Correspondences.mart_export_testis_2_gene2pubtatorcentral), mart_export_testis, gene2pubtatorcentral);
         
+        // Publications
+        correspondences.loadCorrespondences(new File(Correspondences.gene2pubtatorcentral_2_PubMedDate), gene2pubtatorcentral, PubMedDate);
+
+        // Organs
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Brain), Heart, Brain);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Cerebellum), Heart, Cerebellum);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Kidney), Heart, Kidney);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Liver), Heart, Liver);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Testis), Heart, Testis);
+
         // write group size distribution
         correspondences.printGroupSizeDistribution();
 
