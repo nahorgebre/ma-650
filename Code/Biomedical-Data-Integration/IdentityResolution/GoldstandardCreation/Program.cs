@@ -6,7 +6,6 @@ namespace GoldstandardCreation
     {
         static void Main(string[] args)
         {
-            /*
             Brain.run();
             Cerebellum.run();
             Heart.run();
@@ -14,9 +13,8 @@ namespace GoldstandardCreation
             Liver.run();
             Organs.run();     
             Testis.run();
-            */
 
-            Publication.run();
+            //Publication.run();
         }
     }
 }

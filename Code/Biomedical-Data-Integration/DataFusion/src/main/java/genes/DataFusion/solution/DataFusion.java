@@ -52,6 +52,7 @@ public class DataFusion {
 
         System.out.println("*\n*\tLoading gene2pubtatorcentral dataset\n*");
         FusibleDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
+        FusibleDataSet<Gene, Attribute> PubMedDate = Datasets.PubMedDate();
 
         System.out.println("*\n*\tLoading brain datasets\n*");
         FusibleDataSet<Gene, Attribute> Brain = Datasets.Brain();
