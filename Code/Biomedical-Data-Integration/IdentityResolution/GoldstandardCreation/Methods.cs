@@ -85,27 +85,26 @@ namespace GoldstandardCreation
             string directoryName = Environment.CurrentDirectory + "/data/output/" + folderName;
             Directory.CreateDirectory(directoryName);
 
-            File.Delete(directoryName + "/" + fileName);
-            using (StreamWriter sw = new StreamWriter(directoryName + "/" + fileName))
+            if (!File.Exists(directoryName + "/" + fileName))
             {
-                foreach (Goldstandard item in goldstandardList)
+                using (StreamWriter sw = new StreamWriter(directoryName + "/" + fileName))
                 {
-                    var delimiter = "\t";
-                    List<string> lineContent = new List<string>()
+                    foreach (Goldstandard item in goldstandardList)
                     {
-                        item.recordId1,
-                        item.recordId2,
-                        item.value
-                    };
-                    var line = string.Join(delimiter, lineContent);
-                    sw.WriteLine(line);
-                }
+                        var delimiter = "\t";
+                        List<string> lineContent = new List<string>()
+                        {
+                            item.recordId1,
+                            item.recordId2,
+                            item.value
+                        };
+                        var line = string.Join(delimiter, lineContent);
+                        sw.WriteLine(line);
+                    }
 
+                }
             }
         }
 
-        public static void createTestTrainOutput() {
-            
-        }
     }
 }

@@ -21,7 +21,6 @@ namespace ExtractPatentData
         public static void titleOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameTitle = directory + string.Format("title{0}.tsv", fileNamePattern);
-            File.Delete(fileNameTitle);
 
             if (!File.Exists(fileNameTitle))
             {
@@ -55,7 +54,6 @@ namespace ExtractPatentData
         public static void abstractOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         { 
             string fileNameAbstract = directory + string.Format("abstract{0}.tsv", fileNamePattern);
-            File.Delete(fileNameAbstract);
 
             if (!File.Exists(fileNameAbstract))
             {
@@ -88,7 +86,6 @@ namespace ExtractPatentData
         public static void descriptionOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameDescription = directory + string.Format("description{0}.tsv", fileNamePattern);
-            File.Delete(fileNameDescription);
 
             if (!File.Exists(fileNameDescription))
             {
@@ -121,7 +118,6 @@ namespace ExtractPatentData
         public static void claimsOutputByWeek(List<Patent> patentListByWeekParsed, string directory, string fileNamePattern)
         {
             string fileNameClaims = directory + string.Format("claims{0}.tsv", fileNamePattern);
-            File.Delete(fileNameClaims);
 
             if (!File.Exists(fileNameClaims))
             {
