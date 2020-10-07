@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GoldstandardCreation
+﻿namespace GoldstandardCreation
 {
     class Program
     {
@@ -16,6 +14,8 @@ namespace GoldstandardCreation
             Publication.run();
 
             Output.run();
+
+            AWSupload.run();
         }
     }
 }

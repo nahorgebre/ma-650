@@ -29,7 +29,7 @@ namespace GoldstandardCreation
             // ensembl id
             (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.mart_export_testis_path, 1);
             Methods.createOuput("Testis_2_mart_export_testis", "true.csv", trueList);
-            Methods.createOuput("Testis_2_mart_export_testis", "False.csv", falseList);
+            Methods.createOuput("Testis_2_mart_export_testis", "false.csv", falseList);
         }
 
     }
