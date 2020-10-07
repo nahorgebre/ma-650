@@ -80,7 +80,7 @@ namespace GoldstandardCreation
             string comparison = "Heart_2_Testis";
             string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {

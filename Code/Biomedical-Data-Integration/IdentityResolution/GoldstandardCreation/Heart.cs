@@ -19,7 +19,7 @@ namespace GoldstandardCreation
             string comparison = "Heart_2_Heart_Ensembl_NCBI_Crosswalk";
             string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
@@ -34,7 +34,7 @@ namespace GoldstandardCreation
             string comparison = "Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations";
             string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
@@ -49,7 +49,7 @@ namespace GoldstandardCreation
             string comparison = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral";
             string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
@@ -64,7 +64,7 @@ namespace GoldstandardCreation
             string comparison = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
             string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
