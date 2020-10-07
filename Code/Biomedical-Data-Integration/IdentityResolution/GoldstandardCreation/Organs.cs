@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GoldstandardCreation
 {
@@ -15,37 +17,77 @@ namespace GoldstandardCreation
 
         public static void Heart_2_Brain() {
             // ensembl id
-            (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Brain_path, 1);
-            Methods.createOuput("Heart_2_Brain", "true.csv", trueList);
-            Methods.createOuput("Heart_2_Brain", "false.csv", falseList);
+            string comparison = "Heart_2_Brain";
+            string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+            string trueFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/true.csv", directoryName);
+            Directory.CreateDirectory(directoryName);
+            if (!File.Exists(trueFile) | !File.Exists(falseFile))
+            {
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Brain_path, 1);
+                Methods.createOuput(trueFile, trueList);
+                Methods.createOuput(falseFile, falseList);
+            }
         }
 
         public static void Heart_2_Cerebellum() {
             // ensembl id
-            (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Cerebellum_path, 1);
-            Methods.createOuput("Heart_2_Cerebellum", "true.csv", trueList);
-            Methods.createOuput("Heart_2_Cerebellum", "false.csv", falseList);
+            string comparison = "Heart_2_Cerebellum";
+            string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+            string trueFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/true.csv", directoryName);
+            Directory.CreateDirectory(directoryName);
+            if (!File.Exists(trueFile) | !File.Exists(falseFile))
+            {
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Cerebellum_path, 1);
+                Methods.createOuput(trueFile, trueList);
+                Methods.createOuput(falseFile, falseList);
+            }
         }
 
         public static void Heart_2_Kidney() {
             // ensembl id
-            (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Kidney_path, 1);
-            Methods.createOuput("Heart_2_Kidney", "true.csv", trueList);
-            Methods.createOuput("Heart_2_Kidney", "false.csv", falseList);
+            string comparison = "Heart_2_Kidney";
+            string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+            string trueFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/true.csv", directoryName);
+            Directory.CreateDirectory(directoryName);
+            if (!File.Exists(trueFile) | !File.Exists(falseFile))
+            {
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Kidney_path, 1);
+                Methods.createOuput(trueFile, trueList);
+                Methods.createOuput(falseFile, falseList);
+            }
         }
     
         public static void Heart_2_Liver() {
             // ensembl id
-            (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Liver_path, 1);
-            Methods.createOuput("Heart_2_Liver", "true.csv", trueList);
-            Methods.createOuput("Heart_2_Liver", "false.csv", falseList);
+            string comparison = "Heart_2_Liver";
+            string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+            string trueFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/true.csv", directoryName);
+            Directory.CreateDirectory(directoryName);
+            if (!File.Exists(trueFile) | !File.Exists(falseFile))
+            {
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Liver_path, 1);
+                Methods.createOuput(trueFile, trueList);
+                Methods.createOuput(falseFile, falseList);
+            }
         }
 
         public static void Heart_2_Testis() {
             // ensembl id
-            (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Testis_path, 1);
-            Methods.createOuput("Heart_2_Testis", "true.csv", trueList);
-            Methods.createOuput("Heart_2_Testis", "false.csv", falseList);
+            string comparison = "Heart_2_Testis";
+            string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+            string trueFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/true.csv", directoryName);
+            Directory.CreateDirectory(directoryName);
+            if (!File.Exists(trueFile) | !File.Exists(falseFile))
+            {
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Testis_path, 1);
+                Methods.createOuput(trueFile, trueList);
+                Methods.createOuput(falseFile, falseList);
+            }
         }
 
     }

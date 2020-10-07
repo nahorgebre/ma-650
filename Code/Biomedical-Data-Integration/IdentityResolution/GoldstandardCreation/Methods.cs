@@ -80,28 +80,21 @@ namespace GoldstandardCreation
             return (goldstandardListTrue, goldstandardListFalse);
         }
 
-        public static void createOuput(string folderName, string fileName, List<Goldstandard> goldstandardList) {
+        public static void createOuput(string fileName, List<Goldstandard> goldstandardList) {
 
-            string directoryName = Environment.CurrentDirectory + "/data/output/" + folderName;
-            Directory.CreateDirectory(directoryName);
-
-            if (!File.Exists(directoryName + "/" + fileName))
+            using (StreamWriter sw = new StreamWriter(fileName))
             {
-                using (StreamWriter sw = new StreamWriter(directoryName + "/" + fileName))
+                foreach (Goldstandard item in goldstandardList)
                 {
-                    foreach (Goldstandard item in goldstandardList)
+                    var delimiter = "\t";
+                    List<string> lineContent = new List<string>()
                     {
-                        var delimiter = "\t";
-                        List<string> lineContent = new List<string>()
-                        {
-                            item.recordId1,
-                            item.recordId2,
-                            item.value
-                        };
-                        var line = string.Join(delimiter, lineContent);
-                        sw.WriteLine(line);
-                    }
-
+                        item.recordId1,
+                        item.recordId2,
+                        item.value
+                    };
+                    var line = string.Join(delimiter, lineContent);
+                    sw.WriteLine(line);
                 }
             }
         }
