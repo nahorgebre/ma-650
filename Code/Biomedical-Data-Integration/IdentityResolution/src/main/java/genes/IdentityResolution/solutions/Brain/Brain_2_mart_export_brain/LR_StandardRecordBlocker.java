@@ -73,7 +73,7 @@ public class LR_StandardRecordBlocker {
             Correspondences.output(outputDirectory, correspondences);
 
             // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription);
+            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, geneLinearCombinationMatchingRule_EnsemblId.modelType);
         }
     }
 }

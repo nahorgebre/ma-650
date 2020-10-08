@@ -13,19 +13,20 @@ import genes.IdentityResolution.model.Gene;
 
 public class Evaluation {
         
-    public static void run(Processable<Correspondence<Gene, Attribute>> correspondences, MatchingGoldStandard goldStandard, String outputDirectory, String comparisonDescription) throws Exception {
+    public static void run(Processable<Correspondence<Gene, Attribute>> correspondences, MatchingGoldStandard goldStandard, String outputDirectory, String comparisonDescription, String modelType) throws Exception {
         
         System.out.println("*\n*\tEvaluating result\n*");
         MatchingEvaluator<Gene, Attribute> evaluator = new MatchingEvaluator<Gene, Attribute>();
         Performance perfTest = evaluator.evaluateMatching(correspondences,
                 goldStandard);
         
-        printEvaluationResult(perfTest, comparisonDescription);
-        writeEvaluationResult(perfTest, outputDirectory, comparisonDescription);
+        printEvaluationResult(perfTest, comparisonDescription, modelType);
+        writeEvaluationResult(perfTest, outputDirectory, comparisonDescription, modelType);
     }
 
-    public static void printEvaluationResult(Performance perfTest, String comparisonDescription) {
+    public static void printEvaluationResult(Performance perfTest, String comparisonDescription, String modelType) {
         System.out.println(comparisonDescription);
+        System.out.println("Model type: " + modelType);
         System.out.println(String.format(
                 "Precision: %.4f",perfTest.getPrecision()));
         System.out.println(String.format(
@@ -34,10 +35,11 @@ public class Evaluation {
                 "F1: %.4f",perfTest.getF1()));
     }
 
-    public static void writeEvaluationResult(Performance perfTest, String outputDirectory, String comparisonDescription) throws Exception {
+    public static void writeEvaluationResult(Performance perfTest, String outputDirectory, String comparisonDescription, String modelType) throws Exception {
         File file = new File(outputDirectory + "/evaluation.txt");
         PrintWriter writer = new PrintWriter(file);
         writer.println(comparisonDescription);
+        System.out.println("Model type: " + modelType);
         writer.println(String.format(
                 "Precision: %.4f",perfTest.getPrecision()));
         writer.println(String.format(

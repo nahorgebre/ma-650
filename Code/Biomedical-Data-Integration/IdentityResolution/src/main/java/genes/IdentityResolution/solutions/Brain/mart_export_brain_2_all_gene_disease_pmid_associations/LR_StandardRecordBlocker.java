@@ -27,6 +27,7 @@ import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
+import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_EnsemblId;
 import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_GeneName;
 import genes.IdentityResolution.solutions.GoldStandard;
 
@@ -73,7 +74,7 @@ public class LR_StandardRecordBlocker {
             Correspondences.output(outputDirectory, correspondences);
 
             // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription);
+            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, geneLinearCombinationMatchingRule_GeneName.modelType);
         }
     }
 }

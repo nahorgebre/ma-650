@@ -7,13 +7,13 @@ namespace UploadToAWS
     {
         static void Main(string[] args)
         {
-            foreach (string organ in Directory.GetDirectories("{0}/data/output", getProjectDirectory()))
+            foreach (string directory in Directory.GetDirectories("{0}/data/output", getProjectDirectory()))
             {
-                foreach (string comparison in Directory.GetDirectories(organ))
+                foreach (string comparison in Directory.GetDirectories(directory))
                 {
                     foreach (string fileName in Directory.GetFiles(comparison))
                     {                        
-                        string keyName = string.Format("identity-resolution/output/{0}/{1}/{2}", organ, comparison, fileName.Substring(fileName.LastIndexOf("/") + 1));
+                        string keyName = string.Format("identity-resolution/output/{0}/{1}/{2}", directory, comparison, fileName.Substring(fileName.LastIndexOf("/") + 1));
                         string bucketName = "nahorgebre-ma-650-master-thesis";
                         AWSupload.UploadFileAsync(bucketName, fileName, keyName).Wait();
                     }
