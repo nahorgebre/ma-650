@@ -58,14 +58,21 @@ public class ML_StandardRecordBlocker {
         for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
 
             String blockerName = "_StandardRecordBlocker";
-            String modelType = geneMatchingRule.modelType + blockerName;
+            String className = geneMatchingRule.className + blockerName;
 
             // output directory
-            String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + modelType;
+            String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
             new File(outputDirectory).mkdirs();
-            
+
             // create matching rule
-            WekaMatchingRule<Gene, Attribute> matchingRule = geneMatchingRule.matchingRule;
+            String options[] = geneMatchingRule.options;
+            String modelType = geneMatchingRule.modelType;
+            WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+            if (geneMatchingRule.backwardSelection) {
+                matchingRule.setBackwardSelection(true);
+            }
+
+            // create debug log
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
             // add comparators
