@@ -5,6 +5,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.beust.jcommander.internal.Console;
+
 // winter
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard;
@@ -65,6 +67,8 @@ public class ML_StandardRecordBlocker {
 
             String blockerName = "_StandardRecordBlocker";
             String className = geneMatchingRule.className + blockerName;
+
+            System.out.println("--" + className + "--");
 
             // output directory
             String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
