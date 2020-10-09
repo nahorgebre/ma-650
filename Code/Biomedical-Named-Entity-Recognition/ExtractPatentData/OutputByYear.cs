@@ -27,8 +27,10 @@ namespace ExtractPatentData
 
         public static void titleOutputByYear(string[] files, string outputByYearDirectory, string year)
         {
+            /*
             try
             {
+            */
                 string fileNameTitle = string.Format(outputByYearDirectory + string.Format("title_y{0}.tsv", year));
                 if (!File.Exists(fileNameTitle))
                 {
@@ -56,8 +58,10 @@ namespace ExtractPatentData
                                         var line = reader.ReadLine();
                                         if (!line.Equals(string.Empty))
                                         {
+                                            /*
                                             try
                                             {
+                                            */
                                                 String[] values = line.Split(delimiter);
                                                 List<string> itemContent = new List<string>()
                                                 {
@@ -67,6 +71,7 @@ namespace ExtractPatentData
                                                 };
                                                 var inputLine = string.Join(delimiter, itemContent);
                                                 file.WriteLine(inputLine);
+                                            /*
                                             }
                                             catch (System.Exception)
                                             {
@@ -74,6 +79,7 @@ namespace ExtractPatentData
                                                 Console.WriteLine("File Name: {0}", fileName);
                                                 Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
                                             }
+                                            */
                                         }
                                     }
                                 }
@@ -83,11 +89,14 @@ namespace ExtractPatentData
                 }
 
                 Console.WriteLine("Output patent titles for the year {0} - {1}", year, DateTime.UtcNow.ToString());
+
+            /*
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
+            */
 
         }
 
@@ -120,8 +129,10 @@ namespace ExtractPatentData
                                     var line = reader.ReadLine();
                                     if (!line.Equals(string.Empty))
                                     {
+                                        /*
                                         try
                                         {
+                                        */
                                             String[] values = line.Split(delimiter);
                                             List<string> itemContent = new List<string>()
                                             {
@@ -131,6 +142,8 @@ namespace ExtractPatentData
                                             };
                                             var inputLine = string.Join(delimiter, itemContent);
                                             file.WriteLine(inputLine);
+                                        
+                                        /*
                                         }
                                         catch (System.Exception)
                                         {
@@ -138,6 +151,7 @@ namespace ExtractPatentData
                                             Console.WriteLine("File Name: {0}", fileName);
                                             Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
                                         }
+                                        */
 
                                     }                    
                                 }
@@ -178,8 +192,10 @@ namespace ExtractPatentData
                                     var line = reader.ReadLine();
                                     if (!line.Equals(string.Empty))
                                     {
+                                        /*
                                         try
                                         {
+                                        */
                                             String[] values = line.Split(delimiter);
                                             List<string> itemContent = new List<string>()
                                             {
@@ -189,6 +205,7 @@ namespace ExtractPatentData
                                             };
                                             var inputLine = string.Join(delimiter, itemContent);
                                             file.WriteLine(inputLine);
+                                        /*
                                         }
                                         catch (System.Exception)
                                         {
@@ -196,6 +213,7 @@ namespace ExtractPatentData
                                             Console.WriteLine("File Name: {0}", fileName);
                                             Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
                                         }
+                                        */
 
                                     }                    
                                 }
@@ -238,8 +256,10 @@ namespace ExtractPatentData
                                     var line = reader.ReadLine();
                                     if (!line.Equals(string.Empty))
                                     {
+                                        /*
                                         try
                                         {
+                                        */
                                             String[] values = line.Split(delimiter);
                                             List<string> itemContent = new List<string>()
                                             {
@@ -249,7 +269,8 @@ namespace ExtractPatentData
                                                 values[3].ToString()
                                             };
                                             var inputLine = string.Join(delimiter, itemContent);
-                                            file.WriteLine(inputLine); 
+                                            file.WriteLine(inputLine);
+                                        /*
                                         }
                                         catch (System.Exception)
                                         {
@@ -257,6 +278,7 @@ namespace ExtractPatentData
                                             Console.WriteLine("File Name: {0}", fileName);
                                             Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
                                         }
+                                        */
 
                                     }                    
                                 }
