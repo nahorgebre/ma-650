@@ -14,8 +14,9 @@ namespace ExtractPatentData
         public static void run()
         {
 
-            for (int year = 2016; year < 2016; year++)
-            {                              
+            //for (int year = 2005; year < 2016; year++)
+            //{   
+                int year = 2016;                           
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
 
                 // 1 - Decompress all files
@@ -27,7 +28,7 @@ namespace ExtractPatentData
                 // 3 - Parse XML files
                 ParseXML(directorySelected, year.ToString());
 
-            }
+            //}
         }
 
         public static void MergeXmlFiles(DirectoryInfo directorySelected, int year)
