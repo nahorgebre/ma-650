@@ -102,7 +102,7 @@ public class ML_StandardRecordBlocker {
             Correspondences.output(outputDirectory, correspondences);
         
             // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, geneMatchingRule.modelType);
+            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className);
 
         }
     }  

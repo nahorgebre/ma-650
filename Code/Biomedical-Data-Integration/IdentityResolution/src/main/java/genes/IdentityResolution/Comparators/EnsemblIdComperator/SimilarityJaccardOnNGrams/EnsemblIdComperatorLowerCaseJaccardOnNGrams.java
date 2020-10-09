@@ -12,7 +12,7 @@ import genes.IdentityResolution.model.Gene;
 public class EnsemblIdComperatorLowerCaseJaccardOnNGrams implements Comparator<Gene, Attribute> {
     
     private static final long serialVersionUID = 1L;
-    JaccardOnNGramsSimilarity sim = new JaccardOnNGramsSimilarity(3);
+    JaccardOnNGramsSimilarity sim = new JaccardOnNGramsSimilarity(4);
 
     private ComparatorLogger comparisonLog;
 
