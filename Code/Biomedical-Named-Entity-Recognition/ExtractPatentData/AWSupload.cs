@@ -12,7 +12,7 @@ namespace ExtractPatentData
 
         public static void run()
         {
-            foreach (string fileName in Directory.GetFiles("./data/output"))
+            foreach (string fileName in Directory.GetFiles("./data/outputByYear"))
             {
                 string keyName = string.Format("data-preparation/input/parser/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
                 string bucketName = "nahorgebre-ma-650-master-thesis";
