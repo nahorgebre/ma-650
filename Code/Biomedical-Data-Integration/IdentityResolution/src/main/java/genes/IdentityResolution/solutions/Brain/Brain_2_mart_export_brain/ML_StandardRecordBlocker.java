@@ -66,6 +66,8 @@ public class ML_StandardRecordBlocker {
             String blockerName = "_StandardRecordBlocker";
             String className = geneMatchingRule.className + blockerName;
 
+            System.out.println("Class Name: " + className);
+
             // output directory
             String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
             new File(outputDirectory).mkdirs();
