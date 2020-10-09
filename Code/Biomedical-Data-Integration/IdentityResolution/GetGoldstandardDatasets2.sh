@@ -1,38 +1,38 @@
 ## Brain
 # Brain_2_mart_export_brain
-mkdir -p data/goldstandard/
+mkdir -p data/goldstandard/Brain/Brain_2_mart_export_brain
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_mart_export_brain/train.csv -O data/goldstandard/Brain/Brain_2_mart_export_brain/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_mart_export_brain/test.csv -O data/goldstandard/Brain/Brain_2_mart_export_brain/test.csv 
 # mart_export_brain_2_all_gene_disease_pmid_associations
-mkdir -p data/goldstandard/
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_all_gene_disease_pmid_associations
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_all_gene_disease_pmid_associations/train.csv -O data/goldstandard/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_all_gene_disease_pmid_associations/test.csv -O data/goldstandard/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/test.csv
 # mart_export_brain_2_gene2pubtatorcentral
-mkdir -p data/goldstandard/
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral/test.csv
 
 ## Cerebellum
 # Cerebellum_2_mart_export_cerebellum
-mkdir -p data/goldstandard/
+mkdir -p data/goldstandard/Cerebellum/Cerebellum_2_mart_export_cerebellum
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_mart_export_cerebellum/train.csv -O data/goldstandard/Cerebellum/Cerebellum_2_mart_export_cerebellum/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_mart_export_cerebellum/test.csv -O data/goldstandard/Cerebellum/Cerebellum_2_mart_export_cerebellum/test.csv 
 # mart_export_cerebellum_2_all_gene_disease_pmid_associations
-mkdir -p data/goldstandard/
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_all_gene_disease_pmid_associations
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_all_gene_disease_pmid_associations/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_all_gene_disease_pmid_associations/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_all_gene_disease_pmid_associations/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_all_gene_disease_pmid_associations/test.csv
 # mart_export_cerebellum_2_gene2pubtatorcentral
-mkdir -p data/goldstandard/
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral/test.csv
 
 ## Heart
 # Heart_2_Heart_Ensembl_NCBI_Crosswalk
-mkdir -p data/goldstandard/
+mkdir -p data/goldstandard/Heart/Heart_2_Heart_Ensembl_NCBI_Crosswalk
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_2_Heart_Ensembl_NCBI_Crosswalk/train.csv -O data/goldstandard/Heart/Heart_2_Heart_Ensembl_NCBI_Crosswalk/train.csv 
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_2_Heart_Ensembl_NCBI_Crosswalk/test.csv -O data/goldstandard/Heart/Heart_2_Heart_Ensembl_NCBI_Crosswalk/test.csv 
 # Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations
-mkdir -p data/goldstandard/
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations/test.csv
 # Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral
