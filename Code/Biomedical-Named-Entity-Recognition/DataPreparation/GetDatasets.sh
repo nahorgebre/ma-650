@@ -1,6 +1,9 @@
 mkdir -p data/input/parser
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/parser/title.tsv -O data/input/parser/title.tsv
 
+mkdir -p data/input/PatNum
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/PatNum/US_Patents_1985_2016_313392.csv -O data/input/PatNum/US_Patents_1985_2016_313392.csv
+
 mkdir -p data/input/CHEMDNERgoldstandard/CHEMDNER_TEST_TEXT
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/CHEMDNERgoldstandard/CHEMDNER_TEST_TEXT/Readme_CHEMDNER_test.pdf -O data/input/CHEMDNERgoldstandard/CHEMDNER_TEST_TEXT/Readme_CHEMDNER_test.pdf
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/CHEMDNERgoldstandard/CHEMDNER_TEST_TEXT/chemdner_patents_test_background_text_release.txt -O data/input/CHEMDNERgoldstandard/CHEMDNER_TEST_TEXT/chemdner_patents_test_background_text_release.txt

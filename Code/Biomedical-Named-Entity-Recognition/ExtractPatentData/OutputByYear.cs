@@ -32,53 +32,54 @@ namespace ExtractPatentData
                 string fileNameTitle = string.Format(outputByYearDirectory + string.Format("title_y{0}.tsv", year));
                 if (!File.Exists(fileNameTitle))
                 {
-                    var tsvFile = new StringBuilder();
-                    var delimiter = "\t";
-                    List<string> firstLineContent = new List<string>()
+                    using (StreamWriter file = new StreamWriter(fileNameTitle))
                     {
-                        "patentNumber",
-                        "patentDate",
-                        "patentTitle"
-                    };
-                    var firstLine = string.Join(delimiter, firstLineContent);
-                    tsvFile.AppendLine(firstLine);
-
-                    foreach (string fileName in files)
-                    {
-                        if (fileName.Contains("title"))
+                        var delimiter = "\t";
+                        List<string> firstLineContent = new List<string>()
                         {
-                            using (var reader = new StreamReader(fileName))
+                            "patentNumber",
+                            "patentDate",
+                            "patentTitle"
+                        };
+                        var firstLine = string.Join(delimiter, firstLineContent);
+                        file.WriteLine(firstLine);
+
+                        foreach (string fileName in files)
+                        {
+                            if (fileName.Contains("title"))
                             {
-                                reader.ReadLine();
-                                while (!reader.EndOfStream)
+                                using (var reader = new StreamReader(fileName))
                                 {
-                                    var line = reader.ReadLine();
-                                    if (!line.Equals(string.Empty))
+                                    reader.ReadLine();
+                                    while (!reader.EndOfStream)
                                     {
-                                        try
+                                        var line = reader.ReadLine();
+                                        if (!line.Equals(string.Empty))
                                         {
-                                            String[] values = line.Split(delimiter);
-                                            List<string> itemContent = new List<string>()
+                                            try
                                             {
-                                                values[0].ToString(),
-                                                values[1].ToString(),
-                                                values[2].ToString()
-                                            };
-                                            var inputLine = string.Join(delimiter, itemContent);
-                                            tsvFile.AppendLine(inputLine);
-                                        }
-                                        catch (System.Exception)
-                                        {
-                                            Console.WriteLine("Exception in Input File!");
-                                            Console.WriteLine("File Name: {0}", fileName);
-                                            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                                String[] values = line.Split(delimiter);
+                                                List<string> itemContent = new List<string>()
+                                                {
+                                                    values[0].ToString(),
+                                                    values[1].ToString(),
+                                                    values[2].ToString()
+                                                };
+                                                var inputLine = string.Join(delimiter, itemContent);
+                                                file.WriteLine(inputLine);
+                                            }
+                                            catch (System.Exception)
+                                            {
+                                                Console.WriteLine("Exception in Input File!");
+                                                Console.WriteLine("File Name: {0}", fileName);
+                                                Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                    File.WriteAllText(fileNameTitle, tsvFile.ToString());
                 }
 
                 Console.WriteLine("Output patent titles for the year {0} - {1}", year, DateTime.UtcNow.ToString());
@@ -95,54 +96,55 @@ namespace ExtractPatentData
             string fileNameAbstract = string.Format(outputByYearDirectory + string.Format("abstract_y{0}.tsv", year));
             if (!File.Exists(fileNameAbstract))
             {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
+                using (StreamWriter file = new StreamWriter(fileNameAbstract))
                 {
-                    "patentNumber",
-                    "patentDate",
-                    "patentAbstract"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (string fileName in files)
-                {
-                    if (fileName.Contains("abstract"))
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
                     {
-                        using (var reader = new StreamReader(fileName))
-                        {
-                            reader.ReadLine();
-                            while (!reader.EndOfStream)
-                            {
-                                var line = reader.ReadLine();
-                                if (!line.Equals(string.Empty))
-                                {
-                                    try
-                                    {
-                                        String[] values = line.Split(delimiter);
-                                        List<string> itemContent = new List<string>()
-                                        {
-                                            values[0].ToString(), 
-                                            values[1].ToString(), 
-                                            values[2].ToString()
-                                        };
-                                        var inputLine = string.Join(delimiter, itemContent);
-                                        tsvFile.AppendLine(inputLine);  
-                                    }
-                                    catch (System.Exception)
-                                    {
-                                        Console.WriteLine("Exception in Input File!");
-                                        Console.WriteLine("File Name: {0}", fileName);
-                                        Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
-                                    }
+                        "patentNumber",
+                        "patentDate",
+                        "patentAbstract"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    file.WriteLine(firstLine);
 
-                                }                    
-                            }
-                        } 
+                    foreach (string fileName in files)
+                    {
+                        if (fileName.Contains("abstract"))
+                        {
+                            using (var reader = new StreamReader(fileName))
+                            {
+                                reader.ReadLine();
+                                while (!reader.EndOfStream)
+                                {
+                                    var line = reader.ReadLine();
+                                    if (!line.Equals(string.Empty))
+                                    {
+                                        try
+                                        {
+                                            String[] values = line.Split(delimiter);
+                                            List<string> itemContent = new List<string>()
+                                            {
+                                                values[0].ToString(), 
+                                                values[1].ToString(), 
+                                                values[2].ToString()
+                                            };
+                                            var inputLine = string.Join(delimiter, itemContent);
+                                            file.WriteLine(inputLine);
+                                        }
+                                        catch (System.Exception)
+                                        {
+                                            Console.WriteLine("Exception in Input File!");
+                                            Console.WriteLine("File Name: {0}", fileName);
+                                            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                        }
+
+                                    }                    
+                                }
+                            } 
+                        }
                     }
                 }
-                File.WriteAllText(fileNameAbstract, tsvFile.ToString());
             }
             Console.WriteLine("Output patent abstracts for the year {0} - {1}", year, DateTime.UtcNow.ToString());
         }
@@ -152,54 +154,55 @@ namespace ExtractPatentData
             string fileNameDescription = string.Format(outputByYearDirectory + string.Format("description_y{0}.tsv", year));
             if (!File.Exists(fileNameDescription))
             {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
+                using (StreamWriter file = new StreamWriter(fileNameDescription))
                 {
-                    "patentNumber",
-                    "patentDate",
-                    "patentDescription"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (string fileName in files)
-                {
-                    if (fileName.Contains("description"))
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
                     {
-                        using (var reader = new StreamReader(fileName))
-                        {
-                            reader.ReadLine();
-                            while (!reader.EndOfStream)
-                            {
-                                var line = reader.ReadLine();
-                                if (!line.Equals(string.Empty))
-                                {
-                                    try
-                                    {
-                                        String[] values = line.Split(delimiter);
-                                        List<string> itemContent = new List<string>()
-                                        {
-                                            values[0].ToString(), 
-                                            values[1].ToString(), 
-                                            values[2].ToString()
-                                        };
-                                        var inputLine = string.Join(delimiter, itemContent);
-                                        tsvFile.AppendLine(inputLine); 
-                                    }
-                                    catch (System.Exception)
-                                    {
-                                        Console.WriteLine("Exception in Input File!");
-                                        Console.WriteLine("File Name: {0}", fileName);
-                                        Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
-                                    }
+                        "patentNumber",
+                        "patentDate",
+                        "patentDescription"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    file.WriteLine(firstLine);
 
-                                }                    
-                            }
-                        } 
+                    foreach (string fileName in files)
+                    {
+                        if (fileName.Contains("description"))
+                        {
+                            using (var reader = new StreamReader(fileName))
+                            {
+                                reader.ReadLine();
+                                while (!reader.EndOfStream)
+                                {
+                                    var line = reader.ReadLine();
+                                    if (!line.Equals(string.Empty))
+                                    {
+                                        try
+                                        {
+                                            String[] values = line.Split(delimiter);
+                                            List<string> itemContent = new List<string>()
+                                            {
+                                                values[0].ToString(), 
+                                                values[1].ToString(), 
+                                                values[2].ToString()
+                                            };
+                                            var inputLine = string.Join(delimiter, itemContent);
+                                            file.WriteLine(inputLine);
+                                        }
+                                        catch (System.Exception)
+                                        {
+                                            Console.WriteLine("Exception in Input File!");
+                                            Console.WriteLine("File Name: {0}", fileName);
+                                            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                        }
+
+                                    }                    
+                                }
+                            } 
+                        }
                     }
                 }
-                File.WriteAllText(fileNameDescription, tsvFile.ToString());
             }
 
             Console.WriteLine("Output patent descriptions for the year {0} - {1}", year, DateTime.UtcNow.ToString());
@@ -210,56 +213,58 @@ namespace ExtractPatentData
             string fileNameClaims = string.Format(outputByYearDirectory + string.Format("claims_y{0}.tsv", year));
             if (!File.Exists(fileNameClaims))
             {
-                var tsvFile = new StringBuilder();
-                var delimiter = "\t";
-                List<string> firstLineContent = new List<string>()
+                using (StreamWriter file = new StreamWriter(fileNameClaims))
                 {
-                    "patentNumber",
-                    "patentDate",
-                    "patentClaimsCount",
-                    "patentClaims"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                tsvFile.AppendLine(firstLine);
-
-                foreach (string fileName in files)
-                {
-                    if (fileName.Contains("claims"))
+                    var delimiter = "\t";
+                    List<string> firstLineContent = new List<string>()
                     {
-                        using (var reader = new StreamReader(fileName))
+                        "patentNumber",
+                        "patentDate",
+                        "patentClaimsCount",
+                        "patentClaims"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    file.WriteLine(firstLine);
+   
+                    foreach (string fileName in files)
+                    {
+                        if (fileName.Contains("claims"))
                         {
-                            reader.ReadLine();
-                            while (!reader.EndOfStream)
+                            using (var reader = new StreamReader(fileName))
                             {
-                                var line = reader.ReadLine();
-                                if (!line.Equals(string.Empty))
+                                reader.ReadLine();
+                                while (!reader.EndOfStream)
                                 {
-                                    try
+                                    var line = reader.ReadLine();
+                                    if (!line.Equals(string.Empty))
                                     {
-                                        String[] values = line.Split(delimiter);
-                                        List<string> itemContent = new List<string>()
+                                        try
                                         {
-                                            values[0].ToString(), 
-                                            values[1].ToString(), 
-                                            values[2].ToString(),
-                                            values[3].ToString()
-                                        };
-                                        var inputLine = string.Join(delimiter, itemContent);
-                                        tsvFile.AppendLine(inputLine);   
-                                    }
-                                    catch (System.Exception)
-                                    {
-                                        Console.WriteLine("Exception in Input File!");
-                                        Console.WriteLine("File Name: {0}", fileName);
-                                        Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
-                                    }
+                                            String[] values = line.Split(delimiter);
+                                            List<string> itemContent = new List<string>()
+                                            {
+                                                values[0].ToString(), 
+                                                values[1].ToString(), 
+                                                values[2].ToString(),
+                                                values[3].ToString()
+                                            };
+                                            var inputLine = string.Join(delimiter, itemContent);
+                                            file.WriteLine(inputLine); 
+                                        }
+                                        catch (System.Exception)
+                                        {
+                                            Console.WriteLine("Exception in Input File!");
+                                            Console.WriteLine("File Name: {0}", fileName);
+                                            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                        }
 
-                                }                    
-                            }
-                        } 
+                                    }                    
+                                }
+                            } 
+                        }
                     }
                 }
-                File.WriteAllText(fileNameClaims, tsvFile.ToString());
+
             }
             Console.WriteLine("Output patent claims for the year {0} - {1}", year, DateTime.UtcNow.ToString());
         }
