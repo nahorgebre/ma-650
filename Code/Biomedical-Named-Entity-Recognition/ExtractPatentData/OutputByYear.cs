@@ -69,9 +69,8 @@ namespace ExtractPatentData
                                             }
                                             catch (System.Exception)
                                             {
-                                                Console.WriteLine("Exception in Input File!");
-                                                Console.WriteLine("File Name: {0}", fileName);
-                                                Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                                exceptionMethod( fileName: fileName,
+                                                    line: line);
                                             }
                                             // ---
                                         }
@@ -130,9 +129,8 @@ namespace ExtractPatentData
                                         }
                                         catch (System.Exception)
                                         {
-                                            Console.WriteLine("Exception in Input File!");
-                                            Console.WriteLine("File Name: {0}", fileName);
-                                            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                            exceptionMethod( fileName: fileName,
+                                                line: line);
                                         }
                                         // ---
                                     }                    
@@ -189,9 +187,8 @@ namespace ExtractPatentData
                                         }
                                         catch (System.Exception)
                                         {
-                                            Console.WriteLine("Exception in Input File!");
-                                            Console.WriteLine("File Name: {0}", fileName);
-                                            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                            exceptionMethod( fileName: fileName,
+                                                line: line);
                                         }
                                         // ---
 
@@ -251,10 +248,9 @@ namespace ExtractPatentData
                                             file.WriteLine(inputLine);
                                         }
                                         catch (System.Exception)
-                                        {
-                                            Console.WriteLine("Exception in Input File!");
-                                            Console.WriteLine("File Name: {0}", fileName);
-                                            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+                                        {           
+                                            exceptionMethod( fileName: fileName,
+                                                line: line);
                                         }
                                         // ---
 
@@ -267,6 +263,16 @@ namespace ExtractPatentData
 
             }
             Console.WriteLine("Output patent claims for the year {0} - {1}", year, DateTime.UtcNow.ToString());
+        }
+
+        public static void exceptionMethod(string fileName, string line)
+        {
+            var delimiter = "\t";
+
+            Console.WriteLine("Exception in Input File!");
+            Console.WriteLine("File Name: {0}", fileName);
+            Console.WriteLine("Patent Number: {0}", line.Split(delimiter)[0].ToString());
+            System.Environment.Exit(1);
         }
 
         public static void deleteOutputByWeek(string year)
