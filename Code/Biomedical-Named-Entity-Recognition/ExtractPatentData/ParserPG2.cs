@@ -137,7 +137,7 @@ namespace ExtractPatentData
                                         patentTitle = b540Inner.ReadElementContentAsString();
 
                                         // Add to patent instance
-                                        patentItem.patentTitle = patentTitle;
+                                        patentItem.patentTitle = StringPreprocessing.run(patentTitle);
 
                                         // Parsing Abstract SDOAB
                                         string patentAbstarct = string.Empty;
@@ -156,7 +156,7 @@ namespace ExtractPatentData
                                         abstractInner.Close();
 
                                         // Add to patent instance
-                                        patentItem.patentAbstract = patentAbstarct;
+                                        patentItem.patentAbstract = StringPreprocessing.run(patentAbstarct);
 
                                         // Parsing Descriptions
                                         string patentDescription = string.Empty;
@@ -176,7 +176,7 @@ namespace ExtractPatentData
                                         patentDescription = RemoveLineBreaks(patentDescription);
 
                                         // Add to patent instance
-                                        patentItem.patentDescription = patentDescription;
+                                        patentItem.patentDescription = StringPreprocessing.run(patentDescription);
 
                                         // Parsing Claims
                                         string patentClaims = string.Empty;
@@ -196,7 +196,7 @@ namespace ExtractPatentData
                                         patentClaims = RemoveLineBreaks(patentClaims);
 
                                         // Add to patent instance
-                                        patentItem.patentClaims = patentClaims;
+                                        patentItem.patentClaims = StringPreprocessing.run(patentClaims);
 
                                         // Add patent item to list
                                         patentListByWeekParsed.Add(patentItem);             

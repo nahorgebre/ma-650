@@ -1,6 +1,3 @@
-mkdir -p data/input/parser
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/parser/title.tsv -O data/input/parser/title.tsv
-
 mkdir -p data/input/PatNum
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/PatNum/US_Patents_1985_2016_313392.csv -O data/input/PatNum/US_Patents_1985_2016_313392.csv
 
@@ -26,3 +23,6 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/CHEMDNERgoldstandard/gpro_training_set_v02/chemdner_gpro_gold_standard_train_v02.tsv -O data/input/CHEMDNERgoldstandard/gpro_training_set_v02/chemdner_gpro_gold_standard_train_v02.tsv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/CHEMDNERgoldstandard/gpro_training_set_v02/chemdner_patents_train_text.txt -O data/input/CHEMDNERgoldstandard/gpro_training_set_v02/chemdner_patents_train_text.txt
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/CHEMDNERgoldstandard/gpro_training_set_v02/gpro_patent_guidelines_v1.pdf -O data/input/CHEMDNERgoldstandard/gpro_training_set_v02/gpro_patent_guidelines_v1.pdf
+
+mkdir -p data/input/parser
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/parser/title.tsv -O data/input/parser/title.tsv
