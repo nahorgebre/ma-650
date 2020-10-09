@@ -85,6 +85,11 @@ namespace ExtractPatentData
         {
             foreach (FileInfo item in directorySelected.GetFiles("*.xml"))
             {
+                // check if output files exist
+                if (OutputByWeek.checkIfOutputExist(year.ToString(), getFileNamePattern(item.Name)) == false)
+                {
+
+                // parse & create output
                 List<Patent> patentListByWeekParsed = new List<Patent>();
 
                 if (item.Name.Contains("edit"))
@@ -205,7 +210,10 @@ namespace ExtractPatentData
                     }
                 }
 
+                // Create output files
                 OutputByWeek.run(patentListByWeekParsed, year, getFileNamePattern(item.Name));
+
+                }
             }
         }
 

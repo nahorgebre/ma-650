@@ -14,8 +14,8 @@ namespace ExtractPatentData
         {
             foreach (string fileName in Directory.GetFiles("./data/output"))
             {
-                string keyName = string.Format("output/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
-                string bucketName = "extract-patent-data";
+                string keyName = string.Format("data-preparation/input/parser/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
+                string bucketName = "nahorgebre-ma-650-master-thesis";
                 UploadFileAsync(bucketName, fileName, keyName).Wait();
             }
 
