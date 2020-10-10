@@ -41,7 +41,7 @@ namespace ExtractPatentData
                     {
                         patent.patentNumber,
                         patent.patentDate,
-                        string.Format("\"{0}\"", patent.patentTitle)
+                        patent.patentTitle
                     };
                     var line = string.Join(delimiter, itemContent);
                     tsvFile.AppendLine(line);  
@@ -73,7 +73,7 @@ namespace ExtractPatentData
                     {
                         patent.patentNumber,
                         patent.patentDate,
-                        string.Format("\"{0}\"", patent.patentAbstract)
+                        patent.patentAbstract
                     };
                     var line = string.Join(delimiter, itemContent);
                     tsvFile.AppendLine(line);  
@@ -105,7 +105,7 @@ namespace ExtractPatentData
                     {
                         patent.patentNumber,
                         patent.patentDate,
-                        string.Format("\"{0}\"", patent.patentDescription)
+                        patent.patentDescription
                     };
                     var line = string.Join(delimiter, itemContent);
                     tsvFile.AppendLine(line);  
@@ -139,7 +139,7 @@ namespace ExtractPatentData
                         patent.patentNumber,
                         patent.patentDate,     
                         patent.patentClaimsCount,
-                        string.Format("\"{0}\"", patent.patentClaims),
+                        patent.patentClaims
                     };
                     var line = string.Join(delimiter, itemContent);
                     tsvFile.AppendLine(line);  
