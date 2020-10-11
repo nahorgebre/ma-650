@@ -31,7 +31,7 @@ namespace Data_Preparation
         // 1- Patent identifier
         // 2- Offset string consisting in a triplet joined by the ':' character. You have to provide the text type (T: Title, A:Abstract), the start offset and the end offset.
 
-        public static string chemdner_gpro_gold_standard_development = string.Format("{0}/data/input/CHEMDNERgoldstandard/gpro_development_set/chemdner_gpro_gold_standard_development.tsv", Environment.CurrentDirectory);
+        public static FileInfo chemdner_gpro_gold_standard_development = new FileInfo(string.Format("{0}/data/input/CHEMDNERgoldstandard/gpro_development_set/chemdner_gpro_gold_standard_development.tsv", Environment.CurrentDirectory));
         // 1- Patent identifier
         // 2- Type of text from which the annotation was derived (T: Title, A: Abstract)
         // 3- Start offset
@@ -52,7 +52,7 @@ namespace Data_Preparation
         // 1- Patent identifier
         // 2- Offset string consisting in a triplet joined by the ':' character. You have to provide the text type (T: Title, A:Abstract), the start offset and the end offset.
 
-        public static string chemdner_gpro_gold_standard_train_v02 = string.Format("{0}/data/input/CHEMDNERgoldstandard/gpro_training_set_v02/chemdner_gpro_gold_standard_train_v02.tsv", Environment.CurrentDirectory);
+        public static FileInfo chemdner_gpro_gold_standard_train_v02 = new FileInfo(string.Format("{0}/data/input/CHEMDNERgoldstandard/gpro_training_set_v02/chemdner_gpro_gold_standard_train_v02.tsv", Environment.CurrentDirectory));
         // 1- Patent identifier
         // 2- Type of text from which the annotation was derived (T: Title, A: Abstract)
         // 3- Start offset
