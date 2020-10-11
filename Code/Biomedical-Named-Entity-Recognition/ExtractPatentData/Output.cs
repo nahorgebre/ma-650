@@ -31,6 +31,33 @@ namespace ExtractPatentData
                 };
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
+
+                foreach (FileInfo file in outputByYearDirectory.GetFiles("title?.tsv"))
+                {
+                    using (StreamReader sr = new StreamReader(file.FullName))
+                    {
+                        sr.ReadLine();
+                        while (!sr.EndOfStream)
+                        {
+
+                            var line = sr.ReadLine();
+                            if (!line.Equals(string.Empty))
+                            {
+                                String[] values = line.Split(delimiter);
+                                List<string> itemContent = new List<string>()
+                                {
+                                    values[0].Trim(),
+                                    values[1].Trim(),
+                                    values[2].Trim()
+                                };
+                                var inpuLine = string.Join(delimiter, itemContent);
+                                sw.WriteLine(inpuLine);     
+                            }
+
+                        }
+                    }
+                }
+
             }
         }
 
@@ -48,6 +75,33 @@ namespace ExtractPatentData
                 };
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
+
+                foreach (FileInfo file in outputByYearDirectory.GetFiles("abstract?.tsv"))
+                {
+                    using (StreamReader sr = new StreamReader(file.FullName))
+                    {
+                        sr.ReadLine();
+                        while (!sr.EndOfStream)
+                        {
+
+                            var line = sr.ReadLine();
+                            if (!line.Equals(string.Empty))
+                            {
+                                String[] values = line.Split(delimiter);
+                                List<string> itemContent = new List<string>()
+                                {
+                                    values[0].Trim(),
+                                    values[1].Trim(),
+                                    values[2].Trim()
+                                };
+                                var inpuLine = string.Join(delimiter, itemContent);
+                                sw.WriteLine(inpuLine);     
+                            }
+
+                        }
+                    }
+                }
+
             }
         }
 
@@ -65,6 +119,33 @@ namespace ExtractPatentData
                 };
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
+
+                foreach (FileInfo file in outputByYearDirectory.GetFiles("description?.tsv"))
+                {
+                    using (StreamReader sr = new StreamReader(file.FullName))
+                    {
+                        sr.ReadLine();
+                        while (!sr.EndOfStream)
+                        {
+
+                            var line = sr.ReadLine();
+                            if (!line.Equals(string.Empty))
+                            {
+                                String[] values = line.Split(delimiter);
+                                List<string> itemContent = new List<string>()
+                                {
+                                    values[0].Trim(),
+                                    values[1].Trim(),
+                                    values[2].Trim()
+                                };
+                                var inpuLine = string.Join(delimiter, itemContent);
+                                sw.WriteLine(inpuLine);     
+                            }
+
+                        }
+                    }
+                }
+
             }
         }
 
@@ -84,7 +165,32 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
-                
+                foreach (FileInfo file in outputByYearDirectory.GetFiles("claims?.tsv"))
+                {
+                    using (StreamReader sr = new StreamReader(file.FullName))
+                    {
+                        sr.ReadLine();
+                        while (!sr.EndOfStream)
+                        {
+
+                            var line = sr.ReadLine();
+                            if (!line.Equals(string.Empty))
+                            {
+                                String[] values = line.Split(delimiter);
+                                List<string> itemContent = new List<string>()
+                                {
+                                    values[0].Trim(),
+                                    values[1].Trim(),
+                                    values[2].Trim(),
+                                    values[3].Trim(),
+                                };
+                                var inpuLine = string.Join(delimiter, itemContent);
+                                sw.WriteLine(inpuLine);     
+                            }
+
+                        }
+                    }
+                }
 
             }
         }
