@@ -165,6 +165,8 @@ namespace ExtractPatentData
 
             foreach (var item in fileNameList)
             {
+                File.Delete(item);
+                
                 if (!File.Exists(item))
                 {
                     status = false;
