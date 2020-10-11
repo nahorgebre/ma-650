@@ -1,4 +1,5 @@
 ﻿using System;
+using Stanford.NLP.NER;
 
 namespace StanfordNamedEntityRecognizer
 {
