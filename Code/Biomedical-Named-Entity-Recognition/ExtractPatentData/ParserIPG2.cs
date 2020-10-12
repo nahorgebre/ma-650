@@ -90,6 +90,10 @@ namespace ExtractPatentData
                 {
 
                 Console.WriteLine("1");
+                if (item.Name.Contains("edit"))
+                {
+                    Console.WriteLine(item.Name);
+                }
 
                 // parse & create output
                 List<Patent> patentListByWeekParsed = new List<Patent>();
