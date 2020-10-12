@@ -90,9 +90,10 @@ namespace ExtractPatentData
                 {
 
                 Console.WriteLine("1");
+                Console.WriteLine("item: " + item.Name);
                 if (item.Name.Contains("edit"))
                 {
-                    Console.WriteLine(item.Name);
+                    Console.WriteLine("edit: " + item.Name);
                 }
 
                 // parse & create output
