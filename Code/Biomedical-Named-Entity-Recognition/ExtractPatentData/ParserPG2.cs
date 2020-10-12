@@ -91,129 +91,129 @@ namespace ExtractPatentData
                 if (OutputByWeek.checkIfOutputExist(year.ToString(), getFileNamePattern(item.Name)) == false)
                 {
 
-                // parse & create output
-                List<Patent> patentListByWeekParsed = new List<Patent>();
+                    // parse & create output
+                    List<Patent> patentListByWeekParsed = new List<Patent>();
 
-                if (item.Name.Contains("edit"))
-                {
-                    string patentNumberException = string.Empty;
-                    try
+                    if (item.Name.Contains("edit"))
                     {
-                        XmlReaderSettings settings = new XmlReaderSettings();
-                        settings.DtdProcessing = DtdProcessing.Parse;
-
-                        using (XmlReader reader = XmlReader.Create(item.FullName, settings))
+                        string patentNumberException = string.Empty;
+                        try
                         {
+                            XmlReaderSettings settings = new XmlReaderSettings();
+                            settings.DtdProcessing = DtdProcessing.Parse;
 
-                            while (reader.ReadToFollowing("PATDOC"))
+                            using (XmlReader reader = XmlReader.Create(item.FullName, settings))
                             {
 
-                                // Parsing Patent Number
-                                string patentNumber = string.Empty;
-                                reader.ReadToFollowing("B110");
-                                XmlReader b110Inner = reader.ReadSubtree();
-                                b110Inner.ReadToFollowing("PDAT");
-                                patentNumber = b110Inner.ReadElementContentAsString();
-
-                                foreach (TargetPatentNumber targetPatentNumber in Patent.getTargetPatentNumbers(year))
+                                while (reader.ReadToFollowing("PATDOC"))
                                 {
-                                    if (patentNumber.Contains(targetPatentNumber.targetPatentNumber))
+
+                                    // Parsing Patent Number
+                                    string patentNumber = string.Empty;
+                                    reader.ReadToFollowing("B110");
+                                    XmlReader b110Inner = reader.ReadSubtree();
+                                    b110Inner.ReadToFollowing("PDAT");
+                                    patentNumber = b110Inner.ReadElementContentAsString();
+
+                                    foreach (TargetPatentNumber targetPatentNumber in Patent.getTargetPatentNumbers(year))
                                     {
-
-                                        // Create instance of patent
-                                        Patent patentItem = new Patent();
-                                        patentItem.patentNumber = patentNumber;
-                                        patentItem.patentDate = targetPatentNumber.targetPatentDate;
-                                        patentItem.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
-
-                                        // Used for exception log
-                                        patentNumberException = patentItem.patentNumber;
-
-                                        // Parsing Title
-                                        string patentTitle = string.Empty;
-                                        reader.ReadToFollowing("B540");
-                                        XmlReader b540Inner = reader.ReadSubtree();
-                                        b540Inner.ReadToFollowing("PDAT");
-                                        patentTitle = b540Inner.ReadElementContentAsString();
-
-                                        // Add to patent instance
-                                        patentItem.patentTitle = StringPreprocessing.run(patentTitle);
-
-                                        // Parsing Abstract SDOAB
-                                        string patentAbstarct = string.Empty;
-                                        reader.ReadToFollowing("SDOAB");
-                                        XmlReader abstractInner = reader.ReadSubtree();
-                                        while (abstractInner.Read())
+                                        if (patentNumber.Contains(targetPatentNumber.targetPatentNumber))
                                         {
-                                            if (abstractInner.HasValue)  
+
+                                            // Create instance of patent
+                                            Patent patentItem = new Patent();
+                                            patentItem.patentNumber = patentNumber;
+                                            patentItem.patentDate = targetPatentNumber.targetPatentDate;
+                                            patentItem.patentClaimsCount = targetPatentNumber.targetPatentClaimsCount;
+
+                                            // Used for exception log
+                                            patentNumberException = patentItem.patentNumber;
+
+                                            // Parsing Title
+                                            string patentTitle = string.Empty;
+                                            reader.ReadToFollowing("B540");
+                                            XmlReader b540Inner = reader.ReadSubtree();
+                                            b540Inner.ReadToFollowing("PDAT");
+                                            patentTitle = b540Inner.ReadElementContentAsString();
+
+                                            // Add to patent instance
+                                            patentItem.patentTitle = StringPreprocessing.run(patentTitle);
+
+                                            // Parsing Abstract SDOAB
+                                            string patentAbstarct = string.Empty;
+                                            reader.ReadToFollowing("SDOAB");
+                                            XmlReader abstractInner = reader.ReadSubtree();
+                                            while (abstractInner.Read())
                                             {
-                                                if (!abstractInner.Value.Trim().Equals(string.Empty))
+                                                if (abstractInner.HasValue)  
                                                 {
-                                                    patentAbstarct = string.Concat(patentAbstarct, addWhiteSpace(abstractInner.Value));
+                                                    if (!abstractInner.Value.Trim().Equals(string.Empty))
+                                                    {
+                                                        patentAbstarct = string.Concat(patentAbstarct, addWhiteSpace(abstractInner.Value));
+                                                    }
                                                 }
                                             }
-                                        }
-                                        abstractInner.Close();
+                                            abstractInner.Close();
 
-                                        // Add to patent instance
-                                        patentItem.patentAbstract = StringPreprocessing.run(patentAbstarct);
+                                            // Add to patent instance
+                                            patentItem.patentAbstract = StringPreprocessing.run(patentAbstarct);
 
-                                        // Parsing Descriptions
-                                        string patentDescription = string.Empty;
-                                        reader.ReadToFollowing("SDODE"); 
-                                        XmlReader descriptionInner = reader.ReadSubtree();
-                                        while (descriptionInner.Read())
-                                        {
-                                            if (descriptionInner.HasValue)
+                                            // Parsing Descriptions
+                                            string patentDescription = string.Empty;
+                                            reader.ReadToFollowing("SDODE"); 
+                                            XmlReader descriptionInner = reader.ReadSubtree();
+                                            while (descriptionInner.Read())
                                             {
-                                                if (!descriptionInner.Value.Trim().Equals(string.Empty))
+                                                if (descriptionInner.HasValue)
                                                 {
-                                                    patentDescription = string.Concat(patentDescription, descriptionInner.Value);                                   
+                                                    if (!descriptionInner.Value.Trim().Equals(string.Empty))
+                                                    {
+                                                        patentDescription = string.Concat(patentDescription, descriptionInner.Value);                                   
+                                                    }
                                                 }
                                             }
-                                        }
-                                        descriptionInner.Close();
-                                        patentDescription = RemoveLineBreaks(patentDescription);
+                                            descriptionInner.Close();
+                                            patentDescription = RemoveLineBreaks(patentDescription);
 
-                                        // Add to patent instance
-                                        patentItem.patentDescription = StringPreprocessing.run(patentDescription);
+                                            // Add to patent instance
+                                            patentItem.patentDescription = StringPreprocessing.run(patentDescription);
 
-                                        // Parsing Claims
-                                        string patentClaims = string.Empty;
-                                        reader.ReadToFollowing("SDOCL"); 
-                                        XmlReader claimsInner = reader.ReadSubtree();
-                                        while (claimsInner.Read())
-                                        {
-                                            if (claimsInner.HasValue)
+                                            // Parsing Claims
+                                            string patentClaims = string.Empty;
+                                            reader.ReadToFollowing("SDOCL"); 
+                                            XmlReader claimsInner = reader.ReadSubtree();
+                                            while (claimsInner.Read())
                                             {
-                                                if (!claimsInner.Value.Trim().Equals(string.Empty))
+                                                if (claimsInner.HasValue)
                                                 {
-                                                    patentClaims = string.Concat(patentClaims, claimsInner.Value);                                   
+                                                    if (!claimsInner.Value.Trim().Equals(string.Empty))
+                                                    {
+                                                        patentClaims = string.Concat(patentClaims, claimsInner.Value);                                   
+                                                    }
                                                 }
                                             }
+                                            claimsInner.Close();
+                                            patentClaims = RemoveLineBreaks(patentClaims);
+
+                                            // Add to patent instance
+                                            patentItem.patentClaims = StringPreprocessing.run(patentClaims);
+
+                                            // Add patent item to list
+                                            patentListByWeekParsed.Add(patentItem);             
                                         }
-                                        claimsInner.Close();
-                                        patentClaims = RemoveLineBreaks(patentClaims);
-
-                                        // Add to patent instance
-                                        patentItem.patentClaims = StringPreprocessing.run(patentClaims);
-
-                                        // Add patent item to list
-                                        patentListByWeekParsed.Add(patentItem);             
                                     }
                                 }
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                            Console.WriteLine("Patent number: " + patentNumberException);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                        Console.WriteLine("Patent number: " + patentNumberException);
-                    }
-                }
 
-                // Create output files
-                OutputByWeek.run(patentListByWeekParsed, year, getFileNamePattern(item.Name));
+                    // Create output files
+                    OutputByWeek.run(patentListByWeekParsed, year, getFileNamePattern(item.Name));
 
                 }
             }
