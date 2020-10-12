@@ -56,10 +56,10 @@ public class GeneLinearCombinationMatchingRule_EnsemblId {
         matchingRuleList.add(levenshtein);
 
         // SorensenDice
-        GeneLinearCombinationMatchingRule_EnsemblId sorensenDice = new GeneLinearCombinationMatchingRule_EnsemblId();
-        sorensenDice.modelType = "LR_SorensenDice" + blockerName;
-        sorensenDice.outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + cosine.modelType;
-        sorensenDice.matchingRule = EnsemblId_SorensenDice(sorensenDice.outputDirectory, gsTest);
+        //GeneLinearCombinationMatchingRule_EnsemblId sorensenDice = new GeneLinearCombinationMatchingRule_EnsemblId();
+        //sorensenDice.modelType = "LR_SorensenDice" + blockerName;
+        //sorensenDice.outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + cosine.modelType;
+        //sorensenDice.matchingRule = EnsemblId_SorensenDice(sorensenDice.outputDirectory, gsTest);
         //matchingRuleList.add(sorensenDice);
 
         return matchingRuleList;

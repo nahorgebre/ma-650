@@ -20,14 +20,14 @@ public class GeneWekaMatchingRule {
         matchingRule1.options = new String[] { "" };
         matchingRule1.modelType = "AdaBoostM1";
         matchingRule1.backwardSelection = true;
-        matchingRuleList.add(matchingRule1);
+        //matchingRuleList.add(matchingRule1);
 
         GeneWekaMatchingRule matchingRule2 = new GeneWekaMatchingRule();
         matchingRule2.className = "ML_DecisionTree";
         matchingRule2.options = new String[] { "" };
         matchingRule2.modelType = "J48";
         matchingRule2.backwardSelection = true;
-        //matchingRuleList.add(matchingRule2);
+        matchingRuleList.add(matchingRule2);
 
         GeneWekaMatchingRule matchingRule3 = new GeneWekaMatchingRule();
         matchingRule3.className = "ML_KNN";

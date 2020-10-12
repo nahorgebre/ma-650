@@ -112,10 +112,15 @@ namespace ExtractPatentData
                                 publicationReferenceInner.ReadToFollowing("doc-number");
                                 patentNumber = publicationReferenceInner.ReadElementContentAsString();
 
+// ---------------------------------------------------------------------------------
+                                Console.WriteLine("Patent Number: " + patentNumber);
+
                                 foreach (TargetPatentNumber targetPatentNumber in Patent.getTargetPatentNumbers(year))
                                 {
                                     if (patentNumber.Contains(targetPatentNumber.targetPatentNumber))
                                     {
+
+// -----------------------------------------------------------------------------------
                                         Console.WriteLine("Parsing: " + patentNumber);
 
                                         // Create instance of patent
