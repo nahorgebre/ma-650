@@ -83,20 +83,13 @@ namespace ExtractPatentData
 
         public static void ParseXML(DirectoryInfo directorySelected, string year) 
         {
-            Console.WriteLine("Parse");
+
             foreach (FileInfo item in directorySelected.GetFiles("*edit*"))
             {
-                Console.WriteLine("Parse2");
+
                 // check if output files exist
                 if (OutputByWeek.checkIfOutputExist(year.ToString(), getFileNamePattern(item.Name)) == false)
                 {
-
-                    Console.WriteLine("1");
-                    Console.WriteLine("item: " + item.Name);
-                    if (item.Name.Contains("edit"))
-                    {
-                        Console.WriteLine("edit: " + item.Name);
-                    }
 
                     // parse & create output
                     List<Patent> patentListByWeekParsed = new List<Patent>();
@@ -106,7 +99,6 @@ namespace ExtractPatentData
                         string patentNumberException = string.Empty;
                         try
                         {
-                            Console.WriteLine("2");
 
                             XmlReaderSettings settings = new XmlReaderSettings();
                             settings.DtdProcessing = DtdProcessing.Parse;
@@ -116,8 +108,6 @@ namespace ExtractPatentData
                                 while (reader.ReadToFollowing("us-patent-grant"))
                                 {
 
-                                    Console.WriteLine("3");
-
                                     // Parsing Patent Number
                                     string patentNumber = string.Empty;
                                     reader.ReadToFollowing("publication-reference");
@@ -125,14 +115,10 @@ namespace ExtractPatentData
                                     publicationReferenceInner.ReadToFollowing("doc-number");
                                     patentNumber = publicationReferenceInner.ReadElementContentAsString();
 
-                                    Console.WriteLine("Patent Number: " + patentNumber);
-
                                     foreach (TargetPatentNumber targetPatentNumber in Patent.getTargetPatentNumbers(year))
                                     {
                                         if (patentNumber.Contains(targetPatentNumber.targetPatentNumber))
                                         {
-
-                                            Console.WriteLine("Parsing: " + patentNumber);
 
                                             // Create instance of patent
                                             Patent patentItem = new Patent();
