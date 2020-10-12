@@ -20,11 +20,12 @@ public class Evaluation {
         Performance perfTest = evaluator.evaluateMatching(correspondences,
                 goldStandard);
         
-        printEvaluationResult(perfTest, comparisonDescription, modelType);
+        printEvaluationResult(perfTest, outputDirectory, comparisonDescription, modelType);
         writeEvaluationResult(perfTest, outputDirectory, comparisonDescription, modelType);
     }
 
-    public static void printEvaluationResult(Performance perfTest, String comparisonDescription, String modelType) {
+    public static void printEvaluationResult(Performance perfTest, String outputDirectory, String comparisonDescription, String modelType) {
+        System.out.println("File name: " + outputDirectory + "/evaluation.txt");
         System.out.println("Comparison: " + comparisonDescription);
         System.out.println("Model type: " + modelType);
         System.out.println(String.format(

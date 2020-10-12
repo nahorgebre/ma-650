@@ -39,14 +39,14 @@ public class GeneLinearCombinationMatchingRule_EnsemblId {
         cosine.modelType = "LR_Cosine" + blockerName;
         cosine.outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + cosine.modelType;
         cosine.matchingRule = EnsemblId_Cosine(cosine.outputDirectory, gsTest);
-        matchingRuleList.add(cosine);
+        //matchingRuleList.add(cosine);
 
         // Jaccard
         GeneLinearCombinationMatchingRule_EnsemblId jaccard = new GeneLinearCombinationMatchingRule_EnsemblId();
         jaccard.modelType = "LR_Jaccard" + blockerName;
         jaccard.outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + cosine.modelType;
         jaccard.matchingRule = EnsemblId_Jaccard(jaccard.outputDirectory, gsTest);
-        matchingRuleList.add(jaccard);
+        //matchingRuleList.add(jaccard);
 
         // Levenshtein
         GeneLinearCombinationMatchingRule_EnsemblId levenshtein = new GeneLinearCombinationMatchingRule_EnsemblId();
@@ -60,7 +60,7 @@ public class GeneLinearCombinationMatchingRule_EnsemblId {
         sorensenDice.modelType = "LR_SorensenDice" + blockerName;
         sorensenDice.outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + cosine.modelType;
         sorensenDice.matchingRule = EnsemblId_SorensenDice(sorensenDice.outputDirectory, gsTest);
-        matchingRuleList.add(sorensenDice);
+        //matchingRuleList.add(sorensenDice);
 
         return matchingRuleList;
     }
@@ -93,8 +93,8 @@ public class GeneLinearCombinationMatchingRule_EnsemblId {
         // add comparators
         //matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams(), 0.25);
         //matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams(), 0.25);
-        matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard(), 0.25);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard(), 0.25);
+        matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard(), 0.5);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard(), 0.5);
 
         return matchingRule;
     }

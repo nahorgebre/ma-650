@@ -101,10 +101,10 @@ public class GeneLinearCombinationMatchingRule_GeneName_NCBI {
         // add comparators
         //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.16);
         //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.16);
-        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.2);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.16);
-        //matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams(), 0.16);
-        matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard(), 0.16);
+        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.4);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.3);
+        //matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams(), 0.2);
+        matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard(), 0.3);
 
         return matchingRule;
     }

@@ -93,8 +93,8 @@ public class GeneLinearCombinationMatchingRule_GeneName {
         // add comparators
         //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.25);
         //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.25);
-        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.25);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.25);
+        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.5);
 
         return matchingRule;
     }

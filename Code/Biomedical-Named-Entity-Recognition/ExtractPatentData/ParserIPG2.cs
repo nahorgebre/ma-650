@@ -116,6 +116,7 @@ namespace ExtractPatentData
                                 {
                                     if (patentNumber.Contains(targetPatentNumber.targetPatentNumber))
                                     {
+                                        Console.WriteLine("Parsing: " + patentNumber);
 
                                         // Create instance of patent
                                         Patent patentItem = new Patent();
