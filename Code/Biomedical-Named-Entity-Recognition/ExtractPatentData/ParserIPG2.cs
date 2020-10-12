@@ -28,7 +28,7 @@ namespace ExtractPatentData
                 // 3 - Parse XML files
                 ParseXML(directorySelected, year.ToString());
 
-                OutputByYear.run(year.ToString());
+                //OutputByYear.run(year.ToString());
 
             }
         }
