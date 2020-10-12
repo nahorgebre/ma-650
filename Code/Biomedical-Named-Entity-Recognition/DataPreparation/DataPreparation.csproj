@@ -6,4 +6,8 @@
     <RootNamespace>DataPreparation</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.5.3.2" />
+  </ItemGroup>
+
 </Project>

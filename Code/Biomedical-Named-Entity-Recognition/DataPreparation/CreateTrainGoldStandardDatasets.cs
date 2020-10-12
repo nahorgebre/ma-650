@@ -37,7 +37,7 @@ namespace Data_Preparation
         }
 
         public static void create_patents_test_gold_title(DirectoryInfo outputDirectory, List<FileInfo> patents_goldstandard_list) {
-            FileInfo fileName = new FileInfo(string.Format("{0}/patents_test_gold_title.txt", outputDirectory.FullName));
+            FileInfo fileName = new FileInfo(string.Format("{0}/patents_train_gold_title.txt", outputDirectory.FullName));
             fileName.Delete();
 
             using (StreamWriter sw = new StreamWriter(fileName.FullName))
@@ -107,7 +107,7 @@ namespace Data_Preparation
         }
 
         public static void create_patents_test_gold_abstract(DirectoryInfo outputDirectory, List<FileInfo> patents_goldstandard_list) {
-            FileInfo fileName = new FileInfo(string.Format("{0}/patents_test_gold_abstract.txt", outputDirectory.FullName));
+            FileInfo fileName = new FileInfo(string.Format("{0}/patents_train_gold_abstract.txt", outputDirectory.FullName));
             fileName.Delete();
 
             using (StreamWriter sw = new StreamWriter(fileName.FullName))
