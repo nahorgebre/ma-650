@@ -7,7 +7,10 @@
            TargetPatentNumber.getPatentNumbersByYear();
 
            CreateTrainTextDatasets.run();
+           CreateTrainGoldStandardDatasets.run();
+          
            CreateTestTextDatasets.run();
+           CreateTestGoldStandardDatasets.run();
         }
 
     }

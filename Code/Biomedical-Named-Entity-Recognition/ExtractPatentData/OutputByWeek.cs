@@ -156,26 +156,27 @@ namespace ExtractPatentData
 
         public static bool checkIfOutputExist(string year, string fileNamePattern)
         {
+            // files do exist
             bool status = true;
 
-            string directory = string.Format("./data/output/outputByWeek{0}/", year);
-            Directory.CreateDirectory(directory);
-            List<string> fileNameList = new List<string>
+            DirectoryInfo directory = new DirectoryInfo(string.Format("{0}/data/output/outputByWeek{1}", Environment.CurrentDirectory, year));
+
+            List<FileInfo> fileList = new List<FileInfo>
             {
-                directory + string.Format("title{0}.tsv", fileNamePattern),
-                directory + string.Format("abstract{0}.tsv", fileNamePattern),
-                directory + string.Format("description{0}.tsv", fileNamePattern),
-                directory + string.Format("claims{0}.tsv", fileNamePattern)
+                new FileInfo(string.Format("{0}/title{1}.tsv", directory.FullName, fileNamePattern)),
+                new FileInfo(string.Format("{0}/abstract{1}.tsv", directory.FullName, fileNamePattern)),
+                new FileInfo(string.Format("{0}/description{1}.tsv", directory.FullName, fileNamePattern)),
+                new FileInfo(string.Format("{0}/claims{1}.tsv", directory.FullName, fileNamePattern))
             };
 
-            foreach (var item in fileNameList)
+            foreach (var file in fileList)
             {
-                File.Delete(item);
 
-                if (!File.Exists(item))
+                if (!File.Exists(file.FullName))
                 {
+                    // files do not exist
                     status = false;
-                    Console.WriteLine("{0} does not exist.", item.Substring(item.LastIndexOf("/")));
+                    Console.WriteLine("{0} does not exist.", file.FullName);
                 }
             }
 

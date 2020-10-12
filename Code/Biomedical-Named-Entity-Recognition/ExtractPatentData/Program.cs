@@ -32,13 +32,13 @@ namespace ExtractPatentData
 
             Patent.getPatentNumbersByYear();
             
-            //ParserPFTAPS.run();
-            //ParserPG2.run();
+            ParserPFTAPS.run();
+            ParserPG2.run();
             ParserIPG2.run();
 
-            //Output.run();
+            Output.run();
 
-            //AWSupload.run();
+            AWSupload.run();
 
             /*
             Console.SetOut(consoleOut);

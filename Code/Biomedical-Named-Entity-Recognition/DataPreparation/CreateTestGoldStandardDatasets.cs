@@ -7,6 +7,7 @@ namespace Data_Preparation
     class CreateTestGoldStandardDatasets
     {
         public string patNumber;
+        public string textType;
         public string startOffset;
         public string endOffset;
         public string entityMention;
@@ -31,18 +32,147 @@ namespace Data_Preparation
                 Datasets_gpro_training_set_v02.chemdner_gpro_gold_standard_train_v02
             };
 
-            create_patents_test_gold_title(outputDirectory);
-            create_patents_test_gold_abstract(outputDirectory);
+            create_patents_test_gold_title(outputDirectory, patents_goldstandard_list);
+            create_patents_test_gold_abstract(outputDirectory, patents_goldstandard_list);
         }
 
-        public static void create_patents_test_gold_title(DirectoryInfo outputDirectory ) {
+        public static void create_patents_test_gold_title(DirectoryInfo outputDirectory, List<FileInfo> patents_goldstandard_list) {
             FileInfo fileName = new FileInfo(string.Format("{0}/patents_test_gold_title.txt", outputDirectory.FullName));
             fileName.Delete();
+
+            using (StreamWriter sw = new StreamWriter(fileName.FullName))
+            {
+                var delimiter = "\t";
+                List<string> firstLineContent = new List<string>()
+                {
+                    "patentNumber",
+                    "startOffset",
+                    "endOffset",
+                    "entityMention",
+                    "entityMentionType",
+                    "databaseIdentifier"
+                };
+                var firstLine = string.Join(delimiter, firstLineContent);
+                sw.WriteLine(firstLine);  
+
+                foreach (FileInfo patents_goldstandard in patents_goldstandard_list)
+                {
+                    using (StreamReader sr = new StreamReader(patents_goldstandard.FullName))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            var line = sr.ReadLine();
+                            if (!line.Equals(string.Empty))
+                            {
+                                
+                                String[] values = line.Split(delimiter);
+
+                                CreateTestGoldStandardDatasets gs = new CreateTestGoldStandardDatasets();
+                                gs.patNumber = values[0].Trim();
+                                gs.textType = values[1].Trim();
+                                gs.startOffset = values[2].Trim();
+                                gs.endOffset = values[3].Trim();
+                                gs.entityMention = values[4].Trim();
+                                gs.entityMentionType = values[5].Trim();
+                                gs.databaseIdentifier = values[6].Trim();
+
+                                if (gs.textType.Equals("T"))
+                                {
+                                    foreach (TargetPatentNumber patNum in TargetPatentNumber.getTargetPatentNumbers())
+                                    {
+                                        if (gs.patNumber.Contains(patNum.patentNumber))
+                                        {
+                                            List<string> itemContent = new List<string>()
+                                            {
+                                                gs.patNumber,
+                                                gs.startOffset,
+                                                gs.endOffset,
+                                                gs.entityMention,
+                                                gs.entityMentionType,
+                                                gs.databaseIdentifier
+                                            };
+                                            var inpuLine = string.Join(delimiter, itemContent);
+                                            sw.WriteLine(inpuLine);  
+                                        }
+                                    }
+                                }
+   
+                            }
+                        }
+                    }
+                }
+            
+            
+            }
         }
 
-        public static void create_patents_test_gold_abstract(DirectoryInfo outputDirectory ) {
+        public static void create_patents_test_gold_abstract(DirectoryInfo outputDirectory, List<FileInfo> patents_goldstandard_list) {
             FileInfo fileName = new FileInfo(string.Format("{0}/patents_test_gold_abstract.txt", outputDirectory.FullName));
             fileName.Delete();
+
+            using (StreamWriter sw = new StreamWriter(fileName.FullName))
+            {
+                var delimiter = "\t";
+                List<string> firstLineContent = new List<string>()
+                {
+                    "patentNumber",
+                    "startOffset",
+                    "endOffset",
+                    "entityMention",
+                    "entityMentionType",
+                    "databaseIdentifier"
+                };
+                var firstLine = string.Join(delimiter, firstLineContent);
+                sw.WriteLine(firstLine);  
+
+                foreach (FileInfo patents_goldstandard in patents_goldstandard_list)
+                {
+                    using (StreamReader sr = new StreamReader(patents_goldstandard.FullName))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            var line = sr.ReadLine();
+                            if (!line.Equals(string.Empty))
+                            {
+                                
+                                String[] values = line.Split(delimiter);
+
+                                CreateTestGoldStandardDatasets gs = new CreateTestGoldStandardDatasets();
+                                gs.patNumber = values[0].Trim();
+                                gs.textType = values[1].Trim();
+                                gs.startOffset = values[2].Trim();
+                                gs.endOffset = values[3].Trim();
+                                gs.entityMention = values[4].Trim();
+                                gs.entityMentionType = values[5].Trim();
+                                gs.databaseIdentifier = values[6].Trim();
+
+                                if (gs.textType.Equals("A"))
+                                {
+                                    foreach (TargetPatentNumber patNum in TargetPatentNumber.getTargetPatentNumbers())
+                                    {
+                                        if (gs.patNumber.Contains(patNum.patentNumber))
+                                        {
+                                            List<string> itemContent = new List<string>()
+                                            {
+                                                gs.patNumber,
+                                                gs.startOffset,
+                                                gs.endOffset,
+                                                gs.entityMention,
+                                                gs.entityMentionType,
+                                                gs.databaseIdentifier
+                                            };
+                                            var inpuLine = string.Join(delimiter, itemContent);
+                                            sw.WriteLine(inpuLine);  
+                                        }
+                                    }
+                                }
+   
+                            }
+                        }
+                    }
+                }
+            
+            }
         }
     }
 }
