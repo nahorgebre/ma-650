@@ -89,6 +89,8 @@ namespace ExtractPatentData
                 if (OutputByWeek.checkIfOutputExist(year.ToString(), getFileNamePattern(item.Name)) == false)
                 {
 
+                Console.WriteLine("1");
+
                 // parse & create output
                 List<Patent> patentListByWeekParsed = new List<Patent>();
 
@@ -97,6 +99,8 @@ namespace ExtractPatentData
                     string patentNumberException = string.Empty;
                     try
                     {
+                        Console.WriteLine("2");
+
                         XmlReaderSettings settings = new XmlReaderSettings();
                         settings.DtdProcessing = DtdProcessing.Parse;
 
@@ -104,6 +108,8 @@ namespace ExtractPatentData
                         {
                             while (reader.ReadToFollowing("us-patent-grant"))
                             {
+
+                                Console.WriteLine("3");
 
                                 // Parsing Patent Number
                                 string patentNumber = string.Empty;
