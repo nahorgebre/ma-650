@@ -84,7 +84,7 @@ namespace ExtractPatentData
         public static void ParseXML(DirectoryInfo directorySelected, string year) 
         {
             Console.WriteLine("Parse");
-            foreach (FileInfo item in directorySelected.GetFiles("?edit.xml"))
+            foreach (FileInfo item in directorySelected.GetFiles("*edit*"))
             {
                 Console.WriteLine("Parse2");
                 // check if output files exist
