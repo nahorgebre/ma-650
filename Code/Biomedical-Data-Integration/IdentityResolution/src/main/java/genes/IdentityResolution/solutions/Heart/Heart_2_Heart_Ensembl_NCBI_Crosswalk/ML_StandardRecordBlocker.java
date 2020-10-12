@@ -82,8 +82,8 @@ public class ML_StandardRecordBlocker {
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
             // add comparators
-            matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams());
-            matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams());
+            //matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams());
+            //matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams());
             matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard());
             matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard());
             matchingRule.addComparator(new EnsemblIdComperatorCosine());

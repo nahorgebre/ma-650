@@ -94,8 +94,8 @@ public class ML_StandardRecordBlocker {
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
             // add comparators
-            matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams());
-            matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams());
+            //matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams());
+            //matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams());
             matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard());
             matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard());
             matchingRule.addComparator(new EnsemblIdComperatorCosine());
@@ -105,8 +105,8 @@ public class ML_StandardRecordBlocker {
             matchingRule.addComparator(new EnsemblIdComperatorSorensenDice());
             matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice());
 
-            matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
+            //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
+            //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
             matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
             matchingRule.addComparator(new GeneNameComperatorCosine());

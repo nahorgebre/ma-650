@@ -90,8 +90,8 @@ public class ML_StandardRecordBlocker {
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
             // add comparators
-            matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
+            //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
+            //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
             matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
             matchingRule.addComparator(new GeneNameComperatorCosine());

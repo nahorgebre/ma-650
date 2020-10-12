@@ -99,11 +99,11 @@ public class GeneLinearCombinationMatchingRule_GeneName_NCBI {
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = createMatchingRule(outputDirectory,gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.16);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.16);
+        //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.16);
+        //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.16);
         matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.2);
         matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.16);
-        matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams(), 0.16);
+        //matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams(), 0.16);
         matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard(), 0.16);
 
         return matchingRule;

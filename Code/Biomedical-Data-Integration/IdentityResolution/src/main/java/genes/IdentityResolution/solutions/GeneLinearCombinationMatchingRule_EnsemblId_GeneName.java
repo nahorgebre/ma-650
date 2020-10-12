@@ -106,13 +106,13 @@ public class GeneLinearCombinationMatchingRule_EnsemblId_GeneName {
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = createMatchingRule(outputDirectory, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams(), 0.125);
+        //matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams(), 0.125);
+        //matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams(), 0.125);
         matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard(), 0.125);
         matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard(), 0.125);
 
-        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.125);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.125);
+        //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.125);
+        //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.125);
         matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.125);
         matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.125);
 

@@ -85,7 +85,7 @@ public class GeneLinearCombinationMatchingRule_PmId {
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = createMatchingRule(outputDirectory,gsTest);
 
         // add comparators
-        matchingRule.addComparator(new PmIdComperatorJaccardOnNGrams(), 0.5);
+        //matchingRule.addComparator(new PmIdComperatorJaccardOnNGrams(), 0.5);
         matchingRule.addComparator(new PmIdComperatorTokenizingJaccard(), 0.5);
 
         return matchingRule;

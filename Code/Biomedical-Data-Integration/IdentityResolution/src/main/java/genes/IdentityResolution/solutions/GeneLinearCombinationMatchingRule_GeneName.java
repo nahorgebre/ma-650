@@ -91,8 +91,8 @@ public class GeneLinearCombinationMatchingRule_GeneName {
         LinearCombinationMatchingRule<Gene, Attribute> matchingRule = createMatchingRule(outputDirectory,gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.25);
-        matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.25);
+        //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams(), 0.25);
+        //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams(), 0.25);
         matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.25);
         matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.25);
 

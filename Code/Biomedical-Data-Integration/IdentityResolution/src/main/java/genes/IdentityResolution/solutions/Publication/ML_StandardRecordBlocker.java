@@ -77,7 +77,7 @@ public class ML_StandardRecordBlocker {
 
             // add comparators
             matchingRule.addComparator(new PmIdComperatorCosine());
-            matchingRule.addComparator(new PmIdComperatorJaccardOnNGrams());
+            //matchingRule.addComparator(new PmIdComperatorJaccardOnNGrams());
             matchingRule.addComparator(new PmIdComperatorLevenshtein());
             matchingRule.addComparator(new PmIdComperatorSorensenDice());
             matchingRule.addComparator(new PmIdComperatorTokenizingJaccard());
