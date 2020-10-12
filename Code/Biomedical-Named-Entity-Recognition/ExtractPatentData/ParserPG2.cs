@@ -14,7 +14,7 @@ namespace ExtractPatentData
     {
         public static void run()
         {
-            for (int year = 2002; year < 2004; year++)
+            for (int year = 2002; year <= 2004; year++)
             {
 
                 DirectoryInfo directorySelected = new DirectoryInfo(string.Format("{0}/data/input/PatentGrantFullTextData/{1}", Environment.CurrentDirectory, year));
