@@ -32,7 +32,7 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
-                foreach (FileInfo file in outputByYearDirectory.GetFiles("title?.tsv"))
+                foreach (FileInfo file in outputByYearDirectory.GetFiles("*title*"))
                 {
                     using (StreamReader sr = new StreamReader(file.FullName))
                     {
@@ -76,7 +76,7 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
-                foreach (FileInfo file in outputByYearDirectory.GetFiles("abstract?.tsv"))
+                foreach (FileInfo file in outputByYearDirectory.GetFiles("*abstract*"))
                 {
                     using (StreamReader sr = new StreamReader(file.FullName))
                     {
@@ -120,7 +120,7 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
-                foreach (FileInfo file in outputByYearDirectory.GetFiles("description?.tsv"))
+                foreach (FileInfo file in outputByYearDirectory.GetFiles("*description*"))
                 {
                     using (StreamReader sr = new StreamReader(file.FullName))
                     {
@@ -165,7 +165,7 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
-                foreach (FileInfo file in outputByYearDirectory.GetFiles("claims?.tsv"))
+                foreach (FileInfo file in outputByYearDirectory.GetFiles("*claims*"))
                 {
                     using (StreamReader sr = new StreamReader(file.FullName))
                     {
