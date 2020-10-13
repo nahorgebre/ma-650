@@ -12,12 +12,6 @@ namespace ExtractPatentData
 
         public static void run()
         {
-            foreach (string fileName in Directory.GetFiles("./data/outputByYear"))
-            {
-                string keyName = string.Format("data-preparation/input/parser/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
-                string bucketName = "nahorgebre-ma-650-master-thesis";
-                UploadFileAsync(bucketName, fileName, keyName).Wait();
-            }
 
             DirectoryInfo directory = new DirectoryInfo(string.Format("{0}/data/output", Environment.CurrentDirectory));
 

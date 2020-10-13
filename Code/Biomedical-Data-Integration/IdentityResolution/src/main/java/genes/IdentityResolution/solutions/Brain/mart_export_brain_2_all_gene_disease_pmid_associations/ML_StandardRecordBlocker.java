@@ -52,8 +52,8 @@ public class ML_StandardRecordBlocker {
     {            
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
         HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
 
         // goldstandard directory
         String comparisonDescription = "mart_export_brain_2_all_gene_disease_pmid_associations";
