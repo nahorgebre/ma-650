@@ -20,6 +20,8 @@ namespace ExtractPatentData
         public static void titleOutput(DirectoryInfo outputDirectory, DirectoryInfo outputByYearDirectory) {
             FileInfo titleOutput = new FileInfo(string.Format("{0}/title.tsv", outputDirectory.FullName));
 
+            Console.WriteLine("1");
+
             using (StreamWriter sw = new StreamWriter(titleOutput.FullName))
             {
                 var delimiter = "\t";
@@ -32,17 +34,30 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
+                Console.WriteLine("2");
+
                 foreach (FileInfo file in outputByYearDirectory.GetFiles("*title*"))
                 {
+
+                    Console.WriteLine("3");
+
                     using (StreamReader sr = new StreamReader(file.FullName))
                     {
+
+                        Console.WriteLine("4");
+
                         sr.ReadLine();
                         while (!sr.EndOfStream)
                         {
 
+                            Console.WriteLine("5");
+
                             var line = sr.ReadLine();
                             if (!line.Equals(string.Empty))
                             {
+
+                                Console.WriteLine("6");
+
                                 String[] values = line.Split(delimiter);
                                 List<string> itemContent = new List<string>()
                                 {
@@ -165,13 +180,8 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
-                Console.WriteLine("Claims");
-
                 foreach (FileInfo file in outputByYearDirectory.GetFiles("*claims*"))
                 {
-
-                    Console.WriteLine("File: " + file.Name);
-
                     using (StreamReader sr = new StreamReader(file.FullName))
                     {
                         sr.ReadLine();
