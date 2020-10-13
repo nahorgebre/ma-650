@@ -9,7 +9,7 @@ namespace ExtractPatentData
     {
         public static void run() {
             DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/output", Environment.CurrentDirectory));
-            DirectoryInfo outputByYearDirectory = new DirectoryInfo(string.Format("{0}/data/outputByYear", Environment.CurrentDirectory));
+            DirectoryInfo outputByYearDirectory = new DirectoryInfo(string.Format("{0}/data/output/outputByYear", Environment.CurrentDirectory));
             
             titleOutput(outputDirectory, outputByYearDirectory);
             abstractOutput(outputDirectory, outputByYearDirectory);
