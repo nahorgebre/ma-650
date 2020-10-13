@@ -19,11 +19,14 @@ namespace ExtractPatentData
                 UploadFileAsync(bucketName, fileName, keyName).Wait();
             }
 
-            UploadFileAsync(
-                bucketName: "extract-patent-data", 
-                fileName: "./data/logs/ExtractPatentData.log", 
-                keyName: "logs/ExtractPatentData.log"
-                ).Wait();
+            DirectoryInfo directory = new DirectoryInfo(string.Format("{0}/data/output", Environment.CurrentDirectory));
+
+            foreach (FileInfo file in directory.GetFiles())
+            {
+                string keyName = string.Format("data-preparation/input/parser/{0}", file.Name);
+                string bucketName = "nahorgebre-ma-650-master-thesis";
+                UploadFileAsync(bucketName, file.FullName, keyName).Wait();        
+            }
         }
 
         public static async Task UploadFileAsync(string bucketName, string fileName, string keyName)
