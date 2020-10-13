@@ -165,8 +165,13 @@ namespace ExtractPatentData
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
+                Console.WriteLine("Claims");
+
                 foreach (FileInfo file in outputByYearDirectory.GetFiles("*claims*"))
                 {
+
+                    Console.WriteLine("File: " + file.Name);
+
                     using (StreamReader sr = new StreamReader(file.FullName))
                     {
                         sr.ReadLine();
