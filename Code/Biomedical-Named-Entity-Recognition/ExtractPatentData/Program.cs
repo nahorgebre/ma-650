@@ -16,7 +16,7 @@ namespace ExtractPatentData
 
             Output.run();
 
-            //AWSupload.run();
+            AWSupload.run();
 
         }
     }
