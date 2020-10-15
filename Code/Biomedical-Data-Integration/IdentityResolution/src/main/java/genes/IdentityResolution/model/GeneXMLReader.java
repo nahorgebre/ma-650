@@ -19,6 +19,8 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> {
     public Gene createModelFromElement(Node node, String provenanceInfo) {
         String recordId = getValueFromChildElement(node, "recordId");
 
+        System.out.println("Provenance Info: " + provenanceInfo);
+
         Gene gene = new Gene(recordId, provenanceInfo);
 
         gene.setEnsemblId(getValueFromChildElement(node, "ensemblId"));
@@ -29,6 +31,7 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> {
         gene.setGeneDescriptions(geneDescriptions);
         
         List<Organ> organs = getObjectListFromChildElement(node, "organs", "organs", new OrganXMLReader(), provenanceInfo);
+        gene.setOrgans(organs);
         List<Disease> diseases = getObjectListFromChildElement(node, "diseaseAssociations", "diseaseAssociations", new DiseaseXMLReader(), provenanceInfo);
         gene.setDiseases(diseases);
         List<Publication> publications = getObjectListFromChildElement(node, "publicationMentions", "publicationMentions", new PublicationXMLReader(), provenanceInfo);

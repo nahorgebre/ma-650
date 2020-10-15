@@ -5,6 +5,10 @@
         public static void Main(string[] args)
         {
             //createTargetSchema();
+
+            TargetSchema2.createTargetSchema();
+
+            /*
             Heart.runDataTranslation();
             Brain.runDataTranslation();
             Cerebellum.runDataTranslation();
@@ -14,6 +18,7 @@
             GeneDiseaseAssociations.runDataTranslation();
             Publication.runDataTranslation();
             AWSupload.run();
+            */
         }
     }
 }
