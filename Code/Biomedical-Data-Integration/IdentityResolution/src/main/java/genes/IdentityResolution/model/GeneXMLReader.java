@@ -19,8 +19,6 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> {
     public Gene createModelFromElement(Node node, String provenanceInfo) {
         String recordId = getValueFromChildElement(node, "recordId");
 
-        System.out.println("Provenance Info: " + provenanceInfo);
-
         Gene gene = new Gene(recordId, provenanceInfo);
 
         gene.setEnsemblId(getValueFromChildElement(node, "ensemblId"));
