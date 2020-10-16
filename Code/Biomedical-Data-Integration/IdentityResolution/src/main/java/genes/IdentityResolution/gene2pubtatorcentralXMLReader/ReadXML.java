@@ -1,7 +1,9 @@
 package genes.IdentityResolution.gene2pubtatorcentralXMLReader;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,8 @@ public class ReadXML {
 
             SAXParser saxParser = saxParserFactory.newSAXParser();
             gene2pubtatorcentralHandler gene2pubtatorcentralHandler = new gene2pubtatorcentralHandler();
-            saxParser.parse(new File("data/input/gene2pubtatorcentral_dt.xml"), gene2pubtatorcentralHandler);
+            //saxParser.parse(new File("data/input/gene2pubtatorcentral_dt.xml"), gene2pubtatorcentralHandler);
+            saxParser.parse(new File("data/input/TargetSchema.xml"), gene2pubtatorcentralHandler);
 
             List <gene2pubtatorcentral> gene2pubtatorcentralsList = gene2pubtatorcentralHandler.getGene2pubtatorcentralsList();
 
@@ -73,20 +76,30 @@ public class ReadXML {
     }
 
     public static void main(String[] args) {
+        test();
+    }
+
+    public static void test() {
 
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 
         try {
 
+            String path = System.getProperty("user.dir") + "\\output.txt";
+            System.out.println(path);
+
             SAXParser saxParser = saxParserFactory.newSAXParser();
             gene2pubtatorcentralHandler gene2pubtatorcentralHandler = new gene2pubtatorcentralHandler();
-            saxParser.parse(new File("data/input/TargetSchema.xml"), gene2pubtatorcentralHandler);
+            saxParser.parse(new File("data/input/gene2pubtatorcentral_dt.xml"), gene2pubtatorcentralHandler);
 
             List <gene2pubtatorcentral> gene2pubtatorcentralsList = gene2pubtatorcentralHandler.getGene2pubtatorcentralsList();
-
+            
+            Writer writer = new FileWriter(path);
             for (gene2pubtatorcentral gene2pubtatorcentral : gene2pubtatorcentralsList) {
-                System.out.println(gene2pubtatorcentral);
+                String inputText = gene2pubtatorcentral.recordId + "," + gene2pubtatorcentral.ncbiId + "," + gene2pubtatorcentral.name + "," + gene2pubtatorcentral.pmid + "," + gene2pubtatorcentral.ressource;
+                writer.write(inputText);
             }
+            writer.close();
                      
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();

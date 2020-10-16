@@ -6,7 +6,7 @@ import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import genes.IdentityResolution.model.Gene;
 import genes.IdentityResolution.model.GeneXMLReader;
-import genes.IdentityResolution.gene2pubtatorcentralXMLReader.ReadXML;
+import genes.IdentityResolution.gene2pubtatorcentralTSVReader.gene2pubtatorcentralTSVReader;
 
 public class Datasets {
 
@@ -16,7 +16,7 @@ public class Datasets {
         return all_gene_disease_pmid_associations;
     }
     public static HashedDataSet<Gene, Attribute> gene2pubtatorcentral() throws Exception {
-        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = ReadXML.getGene2pubtatorcentralHashDataSet();
+        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = gene2pubtatorcentralTSVReader.getGene2pubtatorcentralHashedDataSet();
         return gene2pubtatorcentral;
     }
     public static HashedDataSet<Gene, Attribute> gene2pubtatorcentral2() throws Exception {
