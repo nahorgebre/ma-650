@@ -75,9 +75,9 @@ namespace DataTranslation
                         string pmid = "NaN";
                         if (item.publicationMentions != null)
                         {
-                            if (item.publicationMentions[0].pmid != null)
+                            if (item.publicationMentions[0].pmId != null)
                             {
-                                pmid = item.publicationMentions[0].pmid.Trim();
+                                pmid = item.publicationMentions[0].pmId.Trim();
                             }                        
                         }
 
