@@ -44,6 +44,8 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevensh
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorLowerCaseSorensenDice;
 
+import genes.IdentityResolution.gene2pubtatorcentralTSVReader.gene2pubtatorcentralTSVReader;
+
 public class ML_StandardRecordBlocker {
     
     private static final Logger logger = WinterLogManager.activateLogger("default");
@@ -52,7 +54,7 @@ public class ML_StandardRecordBlocker {
     {            
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
+        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = gene2pubtatorcentralTSVReader.getGene2pubtatorcentralHashedDataSet();
         HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
         // goldstandard directory
