@@ -39,17 +39,28 @@ import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevens
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorLowerCaseSorensenDice;
 
+import genes.IdentityResolution.TSVReader.TSVReader;
+
+import java.lang.instrument.Instrumentation;
 
 public class ML_StandardRecordBlocker {
 
+    private static Instrumentation instrumentation;
     private static final Logger logger = WinterLogManager.activateLogger("default");
 
     public static void main( String[] args ) throws Exception
     {            
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        //HashedDataSet<Gene, Attribute> Brain = Datasets.Brain();
+        HashedDataSet<Gene, Attribute> Brain = TSVReader.getBrainHashedDataSet();
+        System.out.println("Brain");
+        getObjectSize(Brain);
+
+        //HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        HashedDataSet<Gene, Attribute> mart_export_brain = TSVReader.getMartExportBrainHashedDataSet();
+        System.out.println("mart_export_brain");
+        getObjectSize(mart_export_brain);
 
         // goldstandard directory
         String comparisonDescription = "Brain_2_mart_export_brain";
@@ -119,5 +130,9 @@ public class ML_StandardRecordBlocker {
         }
 
     }
-    
+
+    public static void getObjectSize(Object o) {
+        System.out.println("Size: " + instrumentation.getObjectSize(o)); 
+    }
+
 }

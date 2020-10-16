@@ -1,15 +1,20 @@
 ## Input datasets
 mkdir -p data/input
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/all_gene_disease_pmid_associations_dt.xml -O data/input/all_gene_disease_pmid_associations_dt.xml
+wget -N  https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/all_gene_disease_pmid_associations_dt.tsv -O data/input/all_gene_disease_pmid_associations_dt.tsv
 
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_dt.xml -O data/input/gene2pubtatorcentral_dt.xml
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_dt.tsv -O data/input/gene2pubtatorcentral_dt.tsv
 
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/PubMedDate_dt.xml -O data/input/PubMedDate_dt.xml
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/PubMedDate_dt.tsv -O data/input/PubMedDate_dt.tsv
 
 mkdir -p data/input/Brain
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Brain_dt.xml -O data/input/Brain/Brain_dt.xml
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Brain_dt.tsv -O data/input/Brain/Brain_dt.tsv
+
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/mart_export_brain_dt.xml -O data/input/Brain/mart_export_brain_dt.xml
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/mart_export_brain_dt.tsv -O data/input/Brain/mart_export_brain_dt.tsv
 
 mkdir -p data/input/Cerebellum
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Cerebellum_dt.xml -O data/input/Cerebellum/Cerebellum_dt.xml
