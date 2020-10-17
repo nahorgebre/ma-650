@@ -45,7 +45,7 @@ namespace GoldstandardCreation
         }
 
         public static void Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral() {
-            for (int i = 0; i <= 15; i++)
+            for (int i = 1; i <= 15; i++)
             {
                 // gene name
                 string comparison = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_" + i;
