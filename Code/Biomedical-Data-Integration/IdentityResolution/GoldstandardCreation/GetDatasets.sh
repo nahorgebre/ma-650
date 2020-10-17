@@ -21,8 +21,6 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 
 mkdir -p data/input/Publication
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/PubMedDate_dt.tsv -O data/input/Publication/PubMedDate_dt.tsv
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_dt.tsv -O data/input/Publication/gene2pubtatorcentral_dt.tsv
-
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_1_dt.tsv -O data/input/Publication/gene2pubtatorcentral_1_dt.tsv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_2_dt.tsv -O data/input/Publication/gene2pubtatorcentral_2_dt.tsv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_3_dt.tsv -O data/input/Publication/gene2pubtatorcentral_3_dt.tsv
