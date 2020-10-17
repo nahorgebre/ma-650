@@ -44,8 +44,6 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevensh
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorLowerCaseSorensenDice;
 
-import genes.IdentityResolution.TSVReader.TSVReader;
-
 public class ML_StandardRecordBlocker {
     
     private static final Logger logger = WinterLogManager.activateLogger("default");
