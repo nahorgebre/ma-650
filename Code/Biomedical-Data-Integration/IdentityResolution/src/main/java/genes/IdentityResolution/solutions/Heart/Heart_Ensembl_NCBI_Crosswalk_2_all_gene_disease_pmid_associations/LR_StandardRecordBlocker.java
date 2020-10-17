@@ -35,6 +35,11 @@ public class LR_StandardRecordBlocker {
 
     public static void main( String[] args ) throws Exception
     {
+
+        for (int fileNumber = 1; fileNumber <= 15; fileNumber++) {
+
+        }
+        
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
         HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();

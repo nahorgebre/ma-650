@@ -51,77 +51,84 @@ public class ML_StandardRecordBlocker {
     private static final Logger logger = WinterLogManager.activateLogger("default");
 
     public static void main( String[] args ) throws Exception
-    {            
-        // loading datasets
-        System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = TSVReader.getGene2pubtatorcentralHashedDataSet_GeneName();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+    {
 
-        // goldstandard directory
-        String comparisonDescription = "mart_export_brain_2_gene2pubtatorcentral";
-        String solution = "Brain";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+        for (int fileNumber = 1; fileNumber <= 15; fileNumber++) {
 
-        // load the gold standard (test set)
-        MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
-        MatchingGoldStandard gsTrain = GoldStandard.getTrainDataset(goldstandardDirectory);
+            // loading datasets
+            System.out.println("*\n*\tLoading datasets\n*");
+            HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral(fileNumber);
+            HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
-        // iterate gene matching rules
-        List<GeneWekaMatchingRule> matchingRuleList = GeneWekaMatchingRule.createGeneMatchingRuleList();
-        for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
+            // goldstandard directory
+            String comparisonDescription = "mart_export_brain_2_gene2pubtatorcentral_" + fileNumber;
+            String solution = "Brain";
+            String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
-            String blockerName = "_StandardRecordBlocker";
-            String className = geneMatchingRule.className + blockerName;
+            // load the gold standard (test set)
+            MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
+            MatchingGoldStandard gsTrain = GoldStandard.getTrainDataset(goldstandardDirectory);
 
-            // output directory
-            String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
-            new File(outputDirectory).mkdirs();
+            // iterate gene matching rules
+            List<GeneWekaMatchingRule> matchingRuleList = GeneWekaMatchingRule.createGeneMatchingRuleList();
+            for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
 
-            // create matching rule
-            String options[] = geneMatchingRule.options;
-            String modelType = geneMatchingRule.modelType;
-            WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
-            if (geneMatchingRule.backwardSelection) {
-                matchingRule.setBackwardSelection(true);
-            }
+                String blockerName = "_StandardRecordBlocker";
+                String className = geneMatchingRule.className + blockerName;
+
+                // output directory
+                String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
+                new File(outputDirectory).mkdirs();
+
+                // create matching rule
+                String options[] = geneMatchingRule.options;
+                String modelType = geneMatchingRule.modelType;
+                WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+                if (geneMatchingRule.backwardSelection) {
+                    matchingRule.setBackwardSelection(true);
+                }
             
-            // create debug log
-            matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
+                // create debug log
+                matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
-            // add comparators
-            //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
-            //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
-            matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
-            matchingRule.addComparator(new GeneNameComperatorCosine());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
-            matchingRule.addComparator(new GeneNameComperatorLevenshtein());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
-            matchingRule.addComparator(new GeneNameComperatorSorensenDice());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
+                // add comparators
+                //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
+                //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
+                matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
+                matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
+                matchingRule.addComparator(new GeneNameComperatorCosine());
+                matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
+                matchingRule.addComparator(new GeneNameComperatorLevenshtein());
+                matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
+                matchingRule.addComparator(new GeneNameComperatorSorensenDice());
+                matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
 
-            // learn the matching rule
-            RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-            learner.learnMatchingRule(gene2pubtatorcentral, mart_export_brain, null, matchingRule, gsTrain);
+                // learn the matching rule
+                RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
+                learner.learnMatchingRule(gene2pubtatorcentral, mart_export_brain, null, matchingRule, gsTrain);
 
-            // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
-            blocker.setMeasureBlockSizes(true);
-            blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+                // create a blocker (blocking strategy)
+                StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
+                blocker.setMeasureBlockSizes(true);
+                blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-            // initialize matching engine
-            MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
+                // initialize matching engine
+                MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
    
-            // execute the matching
-            Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                gene2pubtatorcentral, mart_export_brain, null, matchingRule, blocker);
+                // execute the matching
+                Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
+                    gene2pubtatorcentral, mart_export_brain, null, matchingRule, blocker);
         
-            // write the correspondences to the output file
-            Correspondences.output(outputDirectory, correspondences);
+                // write the correspondences to the output file
+                Correspondences.output(outputDirectory, correspondences);
 
-            // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className);
+                // evaluate your result
+                Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className);
+
+            }
 
         }
+
     }
+    
 }

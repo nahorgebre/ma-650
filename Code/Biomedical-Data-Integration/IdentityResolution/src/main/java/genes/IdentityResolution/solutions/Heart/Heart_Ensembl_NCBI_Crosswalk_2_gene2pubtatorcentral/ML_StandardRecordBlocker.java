@@ -51,82 +51,89 @@ public class ML_StandardRecordBlocker {
 
     public static void main( String[] args ) throws Exception
     {
-        // loading datasets
-        System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
-        HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
-        // goldstandard directory
-        String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral";
-        String solution = "Heart";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
-        
-        // load the gold standard (test set)
-        MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
-        MatchingGoldStandard gsTrain = GoldStandard.getTrainDataset(goldstandardDirectory);
-
-        // iterate gene matching rules
-        List<GeneWekaMatchingRule> matchingRuleList = GeneWekaMatchingRule.createGeneMatchingRuleList();
-        for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
-
-            String blockerName = "_StandardRecordBlocker";
-            String className = geneMatchingRule.className + blockerName;
-
-            // output directory
-            String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
-            new File(outputDirectory).mkdirs();
-
-            // create matching rule
-            String options[] = geneMatchingRule.options;
-            String modelType = geneMatchingRule.modelType;
-            WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
-            if (geneMatchingRule.backwardSelection) {
-                matchingRule.setBackwardSelection(true);
+        for (int fileNumber = 1; fileNumber <= 15; fileNumber++) {
+            
+            // loading datasets
+            System.out.println("*\n*\tLoading datasets\n*");
+            HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral(fileNumber);
+            HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
+    
+            // goldstandard directory
+            String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_" + fileNumber;
+            String solution = "Heart";
+            String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+            
+            // load the gold standard (test set)
+            MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
+            MatchingGoldStandard gsTrain = GoldStandard.getTrainDataset(goldstandardDirectory);
+    
+            // iterate gene matching rules
+            List<GeneWekaMatchingRule> matchingRuleList = GeneWekaMatchingRule.createGeneMatchingRuleList();
+            for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
+    
+                String blockerName = "_StandardRecordBlocker";
+                String className = geneMatchingRule.className + blockerName;
+    
+                // output directory
+                String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
+                new File(outputDirectory).mkdirs();
+    
+                // create matching rule
+                String options[] = geneMatchingRule.options;
+                String modelType = geneMatchingRule.modelType;
+                WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+                if (geneMatchingRule.backwardSelection) {
+                    matchingRule.setBackwardSelection(true);
+                }
+    
+                // create debug log
+                matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
+    
+                // add comparators
+                matchingRule.addComparator(new NcbiIdComperatorCosine());
+                //matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams());
+                matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
+                matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
+                matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
+    
+                //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
+                //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
+                matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
+                matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
+                matchingRule.addComparator(new GeneNameComperatorCosine());
+                matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
+                matchingRule.addComparator(new GeneNameComperatorLevenshtein());
+                matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
+                matchingRule.addComparator(new GeneNameComperatorSorensenDice());
+                matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
+    
+                // learn the matching rule
+                RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
+                learner.learnMatchingRule(Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, gsTrain);
+    
+                // create a blocker (blocking strategy)
+                StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
+                blocker.setMeasureBlockSizes(true);
+                blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+    
+                // initialize matching engine
+                MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
+       
+                // execute the matching
+                Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
+                    Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, blocker);
+                    
+                // write the correspondences to the output file
+                Correspondences.output(outputDirectory, correspondences);
+            
+                // evaluate your result
+                Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className);
+               
             }
 
-            // create debug log
-            matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
-
-            // add comparators
-            matchingRule.addComparator(new NcbiIdComperatorCosine());
-            //matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams());
-            matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
-            matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
-            matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
-
-            //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
-            //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
-            matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
-            matchingRule.addComparator(new GeneNameComperatorCosine());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
-            matchingRule.addComparator(new GeneNameComperatorLevenshtein());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
-            matchingRule.addComparator(new GeneNameComperatorSorensenDice());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
-
-            // learn the matching rule
-            RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-            learner.learnMatchingRule(Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, gsTrain);
-
-            // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
-            blocker.setMeasureBlockSizes(true);
-            blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
-
-            // initialize matching engine
-            MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
-   
-            // execute the matching
-            Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, blocker);
-                
-            // write the correspondences to the output file
-            Correspondences.output(outputDirectory, correspondences);
-        
-            // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className);
-           
         }
-    }  
+
+    }
+
 }

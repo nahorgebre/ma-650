@@ -13,7 +13,7 @@ This repository contains the source for my Master Thesis: "Is Science Effective 
 - Python 3.x
 - Maven 3.x
 - Java 1.8 or later
-- .NET Core 3.x or later
+- .NET Core 3.x
 
 ## Code Documentation
 
@@ -21,13 +21,16 @@ The layout of the  Code directory is as follows:
 
 ```
 Code
+├── Biomedical-Named-Entity-Recognition
+|   ├── ExtractPatentData
+|   ├── DataPreparation
+|   ├── HunFlair
+|   └── SciSpacy
 ├── Biomedical-Data-Integration
 |   ├── DataTranslation
 |   ├── IdentityResolution
 |   └── DataFusion
-└── Biomedical-Named-Entity-Recognition
-    ├── ExtractPatentData
-    └── DataPreparation
+└── Data-Analysis
 ```
 
 **Code/Biomedical-Data-Integration/DataTranslation**

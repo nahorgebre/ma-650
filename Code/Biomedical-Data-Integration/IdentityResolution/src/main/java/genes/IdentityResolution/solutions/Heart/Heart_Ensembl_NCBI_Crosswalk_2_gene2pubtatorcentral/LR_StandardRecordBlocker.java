@@ -35,45 +35,53 @@ public class LR_StandardRecordBlocker {
 
     public static void main( String[] args ) throws Exception
     {
-        // loading datasets
-        System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
-        HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
-        // goldstandard directory
-        String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral";
-        String solution = "Heart";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+        for (int fileNumber = 1; fileNumber <= 15; fileNumber++) {
 
-        // load the gold standard (test set)
-        MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
+            // loading datasets
+            System.out.println("*\n*\tLoading datasets\n*");
+            HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral(fileNumber);
+            HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
+    
+            // goldstandard directory
+            String comparisonDescription = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_" + fileNumber;
+            String solution = "Heart";
+            String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+    
+            // load the gold standard (test set)
+            MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
+    
+            String blockerName = "_StandardRecordBlocker";
+            List<GeneLinearCombinationMatchingRule_GeneName_NCBI> matchingRuleList = GeneLinearCombinationMatchingRule_GeneName_NCBI.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
+    
+            for (GeneLinearCombinationMatchingRule_GeneName_NCBI geneLinearCombinationMatchingRule_NCBI_GeneName : matchingRuleList) {
+    
+                LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_NCBI_GeneName.matchingRule;
+                String outputDirectory = geneLinearCombinationMatchingRule_NCBI_GeneName.outputDirectory;
+    
+                // create a blocker (blocking strategy)
+                StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
+                blocker.setMeasureBlockSizes(true);
+                blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+    
+                // initialize matching engine
+                MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
+    
+                // execute the matching
+                System.out.println("*\n*\tRunning identity resolution\n*");
+                Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
+                    Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, blocker);
+    
+                // write the correspondences to the output file
+                Correspondences.output(outputDirectory, correspondences);
+    
+                // evaluate your result
+                Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, geneLinearCombinationMatchingRule_NCBI_GeneName.modelType);
+            
+            }
 
-        String blockerName = "_StandardRecordBlocker";
-        List<GeneLinearCombinationMatchingRule_GeneName_NCBI> matchingRuleList = GeneLinearCombinationMatchingRule_GeneName_NCBI.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
-
-        for (GeneLinearCombinationMatchingRule_GeneName_NCBI geneLinearCombinationMatchingRule_NCBI_GeneName : matchingRuleList) {
-
-            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_NCBI_GeneName.matchingRule;
-            String outputDirectory = geneLinearCombinationMatchingRule_NCBI_GeneName.outputDirectory;
-
-            // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
-            blocker.setMeasureBlockSizes(true);
-            blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
-
-            // initialize matching engine
-            MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
-
-            // execute the matching
-            System.out.println("*\n*\tRunning identity resolution\n*");
-            Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, blocker);
-
-            // write the correspondences to the output file
-            Correspondences.output(outputDirectory, correspondences);
-
-            // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, geneLinearCombinationMatchingRule_NCBI_GeneName.modelType);
         }
+
     }
+
 }

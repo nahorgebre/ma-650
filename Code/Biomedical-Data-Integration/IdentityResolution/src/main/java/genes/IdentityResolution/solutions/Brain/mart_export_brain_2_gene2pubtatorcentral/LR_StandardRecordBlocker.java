@@ -35,45 +35,53 @@ public class LR_StandardRecordBlocker {
 
     public static void main( String[] args ) throws Exception
     {
-        // loading datasets
-        System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
-        HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
-        // goldstandard directory
-        String comparisonDescription = "mart_export_brain_2_gene2pubtatorcentral";
-        String solution = "Brain";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+        for (int fileNumber = 1; fileNumber <= 15; fileNumber++) {
 
-        // load the gold standard (test set)
-        MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
+            // loading datasets
+            System.out.println("*\n*\tLoading datasets\n*");
+            HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral(fileNumber);
+            HashedDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
 
-        String blockerName = "_StandardRecordBlocker";
-        List<GeneLinearCombinationMatchingRule_GeneName> matchingRuleList = GeneLinearCombinationMatchingRule_GeneName.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
+            // goldstandard directory
+            String comparisonDescription = "mart_export_brain_2_gene2pubtatorcentral_" + fileNumber;
+            String solution = "Brain";
+            String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
-        for (GeneLinearCombinationMatchingRule_GeneName geneLinearCombinationMatchingRule_GeneName : matchingRuleList) {
+            // load the gold standard (test set)
+            MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
 
-            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_GeneName.matchingRule;
-            String outputDirectory = geneLinearCombinationMatchingRule_GeneName.outputDirectory;
+            String blockerName = "_StandardRecordBlocker";
+            List<GeneLinearCombinationMatchingRule_GeneName> matchingRuleList = GeneLinearCombinationMatchingRule_GeneName.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
 
-            // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
-            blocker.setMeasureBlockSizes(true);
-            blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+            for (GeneLinearCombinationMatchingRule_GeneName geneLinearCombinationMatchingRule_GeneName : matchingRuleList) {
 
-            // initialize matching engine
-            MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
+                LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_GeneName.matchingRule;
+                String outputDirectory = geneLinearCombinationMatchingRule_GeneName.outputDirectory;
 
-            // execute the matching
-            System.out.println("*\n*\tRunning identity resolution\n*");
-            Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                gene2pubtatorcentral, mart_export_brain, null, matchingRule, blocker);
+                // create a blocker (blocking strategy)
+                StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
+                blocker.setMeasureBlockSizes(true);
+                blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-            // write the correspondences to the output file
-            Correspondences.output(outputDirectory, correspondences);
+                // initialize matching engine
+                MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
-            // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, geneLinearCombinationMatchingRule_GeneName.modelType);
+                // execute the matching
+                System.out.println("*\n*\tRunning identity resolution\n*");
+                Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
+                    gene2pubtatorcentral, mart_export_brain, null, matchingRule, blocker);
+
+                // write the correspondences to the output file
+                Correspondences.output(outputDirectory, correspondences);
+
+                // evaluate your result
+                Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, geneLinearCombinationMatchingRule_GeneName.modelType);
+            
+            }   
+
         }
+
     }
+
 }

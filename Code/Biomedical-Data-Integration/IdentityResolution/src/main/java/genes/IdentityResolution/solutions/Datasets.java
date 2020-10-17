@@ -14,9 +14,9 @@ public class Datasets {
         new GeneXMLReader().loadFromXML(new File("data/input/all_gene_disease_pmid_associations_dt.xml"), "/genes/gene", all_gene_disease_pmid_associations);
         return all_gene_disease_pmid_associations;
     }
-    public static HashedDataSet<Gene, Attribute> gene2pubtatorcentral() throws Exception {
+    public static HashedDataSet<Gene, Attribute> gene2pubtatorcentral(int fileNumber) throws Exception {
         HashedDataSet<Gene, Attribute> gene2pubtatorcentral = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/gene2pubtatorcentral_dt.xml"), "/genes/gene", gene2pubtatorcentral);
+        new GeneXMLReader().loadFromXML(new File("data/input/gene2pubtatorcentral_" + fileNumber + "_dt.xml"), "/genes/gene", gene2pubtatorcentral);
         return gene2pubtatorcentral;
     }
     public static HashedDataSet<Gene, Attribute> PubMedDate() throws Exception {

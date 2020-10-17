@@ -53,7 +53,7 @@ public class ML_StandardRecordBlocker {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> gene2pubtatorcentral = Datasets.gene2pubtatorcentral();
+        HashedDataSet<Gene, Attribute> all_gene_disease_pmid_associations = Datasets.all_gene_disease_pmid_associations();
         HashedDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
 
         // goldstandard directory
@@ -107,7 +107,7 @@ public class ML_StandardRecordBlocker {
 
             // learn the matching rule
             RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-            learner.learnMatchingRule(Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, gsTrain);
+            learner.learnMatchingRule(Heart_Ensembl_NCBI_Crosswalk, all_gene_disease_pmid_associations, null, matchingRule, gsTrain);
 
             // create a blocker (blocking strategy)
             StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
@@ -119,7 +119,7 @@ public class ML_StandardRecordBlocker {
    
             // execute the matching
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral, null, matchingRule, blocker);
+                Heart_Ensembl_NCBI_Crosswalk, all_gene_disease_pmid_associations, null, matchingRule, blocker);
                 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
