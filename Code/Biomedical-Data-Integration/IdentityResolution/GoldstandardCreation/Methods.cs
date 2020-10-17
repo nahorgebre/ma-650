@@ -52,7 +52,7 @@ namespace GoldstandardCreation
 
                                     goldstandardListTrue.Add(goldstandardItem);
 
-                                    Console.WriteLine("True Count: " + goldstandardListTrue.Count());
+                                    //Console.WriteLine("True Count: " + goldstandardListTrue.Count());
                                 }
                                 else
                                 {

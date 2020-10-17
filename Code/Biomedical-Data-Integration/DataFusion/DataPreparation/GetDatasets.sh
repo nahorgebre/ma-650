@@ -44,3 +44,5 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/mart_export_testis_dt.xml -O data/input/Testis/mart_export_testis_dt.xml
 
 # Get correspondences
+
+https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-fusion/correspondences/Brain/Brain_2_mart_export_brain/correspondences.csv
