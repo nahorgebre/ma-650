@@ -27,9 +27,12 @@ namespace GoldstandardCreation
 
         // Publication
         public static string PubMedDate_path = Environment.CurrentDirectory + "/data/input/Publication/PubMedDate_dt.tsv";
+        public static string getGene2pubtatorcentral_path(int fileNumber) {
+            String gene2pubtatorcentral_path = Environment.CurrentDirectory + "/data/input/Publication/gene2pubtatorcentral_" + fileNumber + "_dt.tsv";
+            return gene2pubtatorcentral_path;
+        }
         public static string gene2pubtatorcentral_path = Environment.CurrentDirectory + "/data/input/Publication/gene2pubtatorcentral_dt.tsv";
         
-
         // Testis
         public static string Testis_path = Environment.CurrentDirectory + "/data/input/Testis/Testis_dt.tsv";
         public static string mart_export_testis_path = Environment.CurrentDirectory + "/data/input/Testis/mart_export_testis_dt.tsv";

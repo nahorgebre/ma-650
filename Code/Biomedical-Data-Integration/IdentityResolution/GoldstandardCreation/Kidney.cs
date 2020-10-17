@@ -44,18 +44,22 @@ namespace GoldstandardCreation
         }
 
         public static void mart_export_kidney_2_gene2pubtatorcentral() {
-            // gene name
-            string comparison = "mart_export_kidney_2_gene2pubtatorcentral";
-            string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
-            string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/false.csv", directoryName);
-            Directory.CreateDirectory(directoryName);
-            if (!File.Exists(trueFile) | !File.Exists(falseFile))
+            for (int i = 0; i <= 15; i++)
             {
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.mart_export_kidney_path, Datasets.gene2pubtatorcentral_path, 3);
-                Methods.createOuput(trueFile, trueList);
-                Methods.createOuput(falseFile, falseList);
+                // gene name
+                string comparison = "mart_export_kidney_2_gene2pubtatorcentral_" + i;
+                string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+                string trueFile = string.Format("{0}/true.csv", directoryName);
+                string falseFile = string.Format("{0}/false.csv", directoryName);
+                Directory.CreateDirectory(directoryName);
+                if (!File.Exists(trueFile) | !File.Exists(falseFile))
+                {
+                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.mart_export_kidney_path, Datasets.getGene2pubtatorcentral_path(i), 3);
+                    Methods.createOuput(trueFile, trueList);
+                    Methods.createOuput(falseFile, falseList);
+                }
             }
+
         }
         
     }

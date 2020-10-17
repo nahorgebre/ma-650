@@ -1,9 +1,12 @@
-﻿namespace GoldstandardCreation
+﻿using System;
+
+namespace GoldstandardCreation
 {
     class Program
     {
         static void Main(string[] args)
         {
+            
             Brain.run();
             Cerebellum.run();
             Heart.run();
@@ -12,10 +15,10 @@
             Organs.run();     
             Testis.run();
             Publication.run();
-
             Output.run();
 
             AWSupload.run();
+
         }
     }
 }

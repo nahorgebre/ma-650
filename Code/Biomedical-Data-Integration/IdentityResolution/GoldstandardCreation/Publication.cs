@@ -9,8 +9,27 @@ namespace GoldstandardCreation
         public static void run() {
             gene2pubtatorcentral_2_PubMedDate();
         }
-        
+
         public static void gene2pubtatorcentral_2_PubMedDate() {
+
+            for (int i = 1; i <= 15; i++)
+            {
+                string comparison = "gene2pubtatorcentral_" + i + "_2_PubMedDate";
+                string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+                string trueFile = string.Format("{0}/true.csv", directoryName);
+                string falseFile = string.Format("{0}/false.csv", directoryName);
+                Directory.CreateDirectory(directoryName);
+                if (!File.Exists(trueFile) | !File.Exists(falseFile))
+                {
+                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.getGene2pubtatorcentral_path(i), Datasets.PubMedDate_path, 4);
+                    Methods.createOuput(trueFile, trueList);
+                    Methods.createOuput(falseFile, falseList);
+                }
+            }
+
+        }
+        
+        public static void gene2pubtatorcentral_2_PubMedDate2() {
             string comparison = "gene2pubtatorcentral_2_PubMedDate";
             string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
