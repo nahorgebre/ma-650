@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GoldstandardCreation
+﻿namespace GoldstandardCreation
 {
     class Program
     {
