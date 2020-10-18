@@ -32,10 +32,10 @@ public class GeneBlockingKeyByGeneName extends
         }
 
         String key;
-        if (shortestGeneName.length() <= 3) {
+        if (shortestGeneName.length() <= 2) {
             key = "XYZ";
         } else {
-            key = shortestGeneName.substring(0,2);
+            key = shortestGeneName.substring(0,1);
         }
 
         resultCollector.next(new Pair<>(key, record));
