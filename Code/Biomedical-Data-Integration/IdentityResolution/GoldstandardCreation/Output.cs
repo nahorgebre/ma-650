@@ -9,7 +9,7 @@ namespace GoldstandardCreation
 
         public static void run() {
 
-            Console.WriteLine("Create output files!")
+            Console.WriteLine("Create output files!");
 
             DirectoryInfo outputDirectory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/");
 
