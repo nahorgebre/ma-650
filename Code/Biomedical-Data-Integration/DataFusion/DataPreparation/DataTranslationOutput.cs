@@ -1,52 +1,57 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace DataPreparation
 {
 
     class DataTranslationOutput
     {
-        mkdir -p data/input
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/all_gene_disease_pmid_associations_dt.xml -O data/input/all_gene_disease_pmid_associations_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/PubMedDate_dt.xml -O data/input/PubMedDate_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_1_dt.xml -O data/input/gene2pubtatorcentral_1_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_2_dt.xml -O data/input/gene2pubtatorcentral_2_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_3_dt.xml -O data/input/gene2pubtatorcentral_3_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_4_dt.xml -O data/input/gene2pubtatorcentral_4_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_5_dt.xml -O data/input/gene2pubtatorcentral_5_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_6_dt.xml -O data/input/gene2pubtatorcentral_6_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_7_dt.xml -O data/input/gene2pubtatorcentral_7_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_8_dt.xml -O data/input/gene2pubtatorcentral_8_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_9_dt.xml -O data/input/gene2pubtatorcentral_9_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_10_dt.xml -O data/input/gene2pubtatorcentral_10_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_11_dt.xml -O data/input/gene2pubtatorcentral_11_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_12_dt.xml -O data/input/gene2pubtatorcentral_12_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_13_dt.xml -O data/input/gene2pubtatorcentral_13_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_14_dt.xml -O data/input/gene2pubtatorcentral_14_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_15_dt.xml -O data/input/gene2pubtatorcentral_15_dt.xml
+        
+        // Disease
+        public static String all_gene_disease_pmid_associations_dt = string.Format("{0}/data/input/all_gene_disease_pmid_associations_dt.xml", Environment.CurrentDirectory);
 
-mkdir -p data/input/Brain
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Brain_dt.xml -O data/input/Brain/Brain_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/mart_export_brain_dt.xml -O data/input/Brain/mart_export_brain_dt.xml
+        // Publication
+        public static String PubMedDate_dt = string.Format("{0}/data/input/PubMedDate_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_1_dt = string.Format("{0}/data/input/gene2pubtatorcentral_1_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_2_dt = string.Format("{0}/data/input/gene2pubtatorcentral_2_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_3_dt = string.Format("{0}/data/input/gene2pubtatorcentral_3_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_4_dt = string.Format("{0}/data/input/gene2pubtatorcentral_4_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_5_dt = string.Format("{0}/data/input/gene2pubtatorcentral_5_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_6_dt = string.Format("{0}/data/input/gene2pubtatorcentral_6_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_7_dt = string.Format("{0}/data/input/gene2pubtatorcentral_7_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_8_dt = string.Format("{0}/data/input/gene2pubtatorcentral_8_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_9_dt = string.Format("{0}/data/input/gene2pubtatorcentral_9_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_10_dt = string.Format("{0}/data/input/gene2pubtatorcentral_10_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_11_dt = string.Format("{0}/data/input/gene2pubtatorcentral_11_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_12_dt = string.Format("{0}/data/input/gene2pubtatorcentral_12_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_13_dt = string.Format("{0}/data/input/gene2pubtatorcentral_13_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_14_dt = string.Format("{0}/data/input/gene2pubtatorcentral_14_dt.xml", Environment.CurrentDirectory);
+        public static String gene2pubtatorcentral_15_dt = string.Format("{0}/data/input/gene2pubtatorcentral_15_dt.xml", Environment.CurrentDirectory);
 
-mkdir -p data/input/Cerebellum
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Cerebellum_dt.xml -O data/input/Cerebellum/Cerebellum_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/mart_export_cerebellum_dt.xml -O data/input/Cerebellum/mart_export_cerebellum_dt.xml
+        // Brain
+        public static String Brain_dt = string.Format("{0}/data/input/Brain/Brain_dt.xml", Environment.CurrentDirectory);
+        public static String mart_export_brain_dt = string.Format("{0}/data/input/Brain/mart_export_brain_dt.xml", Environment.CurrentDirectory);
 
-mkdir -p data/input/Heart
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Heart_Ensembl_NCBI_Crosswalk_dt.xml -O data/input/Heart/Heart_Ensembl_NCBI_Crosswalk_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Heart_dt.xml -O data/input/Heart/Heart_dt.xml
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/mart_export_heart_dt.xml -O data/input/Heart/mart_export_heart_dt.xml
+        // Cerebellum
+        public static String Cerebellum_dt = string.Format("{0}/data/input/Cerebellum/Cerebellum_dt.xml", Environment.CurrentDirectory);
+        public static String mart_export_cerebellum_dt = string.Format("{0}/data/input/Cerebellum/mart_export_cerebellum_dt.xml", Environment.CurrentDirectory);
 
-data/input/Kidney/Kidney_dt.xml
-data/input/Kidney/mart_export_kidney_dt.xml
+        // Heart
+        public static String Heart_Ensembl_NCBI_Crosswalk_dt = string.Format("{0}/data/input/Heart/Heart_Ensembl_NCBI_Crosswalk_dt.xml", Environment.CurrentDirectory);
+        public static String Heart_dt = string.Format("{0}/data/input/Heart/Heart_dt.xml", Environment.CurrentDirectory);
+        public static String mart_export_heart_dt = string.Format("{0}/data/input/Heart/mart_export_heart_dt.xml", Environment.CurrentDirectory);
 
-data/input/Liver/Liver_dt.xml
-data/input/Liver/mart_export_liver_dt.xml
+        // Kidney
+        public static String Kidney_dt = string.Format("{0}/data/input/Kidney/Kidney_dt.xml", Environment.CurrentDirectory);
+        public static String mart_export_kidney_dt = string.Format("{0}/data/input/Kidney/mart_export_kidney_dt.xml", Environment.CurrentDirectory);
 
-data/input/Testis/Testis_dt.xml
-data/input/Testis/mart_export_testis_dt.xml
+        // Liver
+        public static String Liver_dt = string.Format("{0}/data/input/Liver/Liver_dt.xml", Environment.CurrentDirectory);
+        public static String mart_export_liver_dt = string.Format("{0}/data/input/Liver/mart_export_liver_dt.xml", Environment.CurrentDirectory);
+
+        // Testis
+        public static String Testis_dt = string.Format("{0}/data/input/Testis/Testis_dt.xml", Environment.CurrentDirectory);
+        public static String mart_export_testis_dt= string.Format("{0}/data/input/Testis/mart_export_testis_dt.xml", Environment.CurrentDirectory);
+
     }
 
 }
