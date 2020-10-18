@@ -21,6 +21,7 @@ namespace GoldstandardCreation
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
+                Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.mart_export_cerebellum_path, 1);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -36,6 +37,7 @@ namespace GoldstandardCreation
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
+                Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.mart_export_cerebellum_path, Datasets.all_gene_disease_pmid_associations_path, 3);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -53,6 +55,7 @@ namespace GoldstandardCreation
                 Directory.CreateDirectory(directoryName);
                 if (!File.Exists(trueFile) | !File.Exists(falseFile))
                 {
+                    Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
                     (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.mart_export_cerebellum_path, Datasets.getGene2pubtatorcentral_path(i), 3);
                     Methods.createOuput(trueFile, trueList);
                     Methods.createOuput(falseFile, falseList);

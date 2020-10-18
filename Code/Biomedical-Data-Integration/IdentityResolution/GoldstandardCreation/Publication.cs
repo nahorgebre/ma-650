@@ -21,6 +21,7 @@ namespace GoldstandardCreation
                 Directory.CreateDirectory(directoryName);
                 if (!File.Exists(trueFile) | !File.Exists(falseFile))
                 {
+                    Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
                     (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.getGene2pubtatorcentral_path(i), Datasets.PubMedDate_path, 4);
                     Methods.createOuput(trueFile, trueList);
                     Methods.createOuput(falseFile, falseList);
@@ -37,6 +38,7 @@ namespace GoldstandardCreation
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
+                Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.gene2pubtatorcentral_path, Datasets.PubMedDate_path, 4);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
