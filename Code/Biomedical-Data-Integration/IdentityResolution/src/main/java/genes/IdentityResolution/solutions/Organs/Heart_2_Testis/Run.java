@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_testis;
+package genes.IdentityResolution.solutions.Organs.Heart_2_Testis;
 
 public class Run {
 

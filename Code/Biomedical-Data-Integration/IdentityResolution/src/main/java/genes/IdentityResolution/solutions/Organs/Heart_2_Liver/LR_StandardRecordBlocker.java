@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_liver;
+package genes.IdentityResolution.solutions.Organs.Heart_2_Liver;
 
 // java
 import java.util.List;

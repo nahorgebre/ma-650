@@ -31,6 +31,13 @@ public class GeneBlockingKeyByGeneName extends
             }
         }
 
-        resultCollector.next(new Pair<>(shortestGeneName.substring(0,2), record));
+        String key;
+        if (shortestGeneName.length() <= 3) {
+            key = "XYZ";
+        } else {
+            key = shortestGeneName.substring(0,2);
+        }
+
+        resultCollector.next(new Pair<>(key, record));
     }
 }

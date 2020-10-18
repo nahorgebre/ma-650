@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_testis;
+package genes.IdentityResolution.solutions.Organs.Heart_2_Cerebellum;
 
 // java
 import java.io.File;
@@ -59,11 +59,11 @@ public class ML_StandardRecordBlocker {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
-        HashedDataSet<Gene, Attribute> mart_export_testis = Datasets.mart_export_testis();
+        HashedDataSet<Gene, Attribute> Heart = Datasets.Heart();
+        HashedDataSet<Gene, Attribute> Cerebellum = Datasets.Cerebellum();
 
         // goldstandard directory
-        String comparisonDescription = "mart_export_heart_2_mart_export_testis";
+        String comparisonDescription = "Heart_2_Cerebellum";
         String solution = "Organs";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
         
@@ -118,7 +118,7 @@ public class ML_StandardRecordBlocker {
 
             // learn the matching rule
             RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-            learner.learnMatchingRule(mart_export_testis, mart_export_heart, null, matchingRule, gsTrain);
+            learner.learnMatchingRule(Cerebellum, Heart, null, matchingRule, gsTrain);
 
             // create a blocker (blocking strategy)
             StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
@@ -130,7 +130,7 @@ public class ML_StandardRecordBlocker {
    
             // execute the matching
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                mart_export_testis, mart_export_heart, null, matchingRule, blocker);
+                Cerebellum, Heart, null, matchingRule, blocker);
                 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);

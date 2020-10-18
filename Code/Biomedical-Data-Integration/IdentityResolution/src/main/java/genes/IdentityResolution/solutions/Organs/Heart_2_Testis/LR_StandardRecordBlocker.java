@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_cerebellum;
+package genes.IdentityResolution.solutions.Organs.Heart_2_Testis;
 
 // java
 import java.util.List;
@@ -38,10 +38,10 @@ public class LR_StandardRecordBlocker {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
         HashedDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
-        HashedDataSet<Gene, Attribute> mart_export_cerebellum = Datasets.mart_export_cerebellum();
+        HashedDataSet<Gene, Attribute> mart_export_testis = Datasets.mart_export_testis();
 
         // goldstandard directory
-        String comparisonDescription = "mart_export_heart_2_mart_export_cerebellum";
+        String comparisonDescription = "mart_export_heart_2_mart_export_testis";
         String solution = "Organs";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
@@ -67,7 +67,7 @@ public class LR_StandardRecordBlocker {
             // execute the matching
             System.out.println("*\n*\tRunning identity resolution\n*");
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                mart_export_cerebellum, mart_export_heart, null, matchingRule, blocker);
+                mart_export_testis, mart_export_heart, null, matchingRule, blocker);
 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
