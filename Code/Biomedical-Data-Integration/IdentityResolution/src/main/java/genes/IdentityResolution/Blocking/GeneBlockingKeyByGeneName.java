@@ -24,12 +24,15 @@ public class GeneBlockingKeyByGeneName extends
         
         List<GeneName> geneNameList = record.getGeneNames();
         String shortestGeneName = geneNameList.get(0).getName().toLowerCase();
+
+        /*
         for (GeneName geneNameItem : geneNameList) {
             String name = geneNameItem.getName().toLowerCase();
             if (shortestGeneName.length() > name.length()) {
                 shortestGeneName = name;
             }
         }
+        */
 
         String key;
         if (shortestGeneName.length() <= 2) {
