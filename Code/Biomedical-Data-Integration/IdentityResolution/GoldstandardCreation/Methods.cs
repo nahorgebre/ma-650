@@ -99,7 +99,7 @@ namespace GoldstandardCreation
                 {
                     // go through all lines
                     var lineSr1 = sr1.ReadLine();
-                    if (goldstandardListTrue.Count() < 20)
+                    if (goldstandardListTrue.Count() < 15)
                     {
                         String[] valuesSr1 = lineSr1.Split(delimiter);
                         string pmIdSr1 = valuesSr1[index].Trim();
@@ -129,7 +129,7 @@ namespace GoldstandardCreation
                                 }
                                 else
                                 {
-                                    if (goldstandardListFalse.Count() < 20)
+                                    if (goldstandardListFalse.Count() < 15)
                                     {
                                         Goldstandard goldstandardItem = new Goldstandard();
                                         goldstandardItem.recordId1 = recordIdSr1;
