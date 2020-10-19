@@ -114,7 +114,7 @@ namespace GoldstandardCreation
                             {
                                 var lineSr2 = sr2.ReadLine();
 
-                                if (!lineSr2.Equals(string.Empty))
+                                if (lineSr2 != null)
                                 {
 
                                     String[] valuesSr2 = lineSr2.Split(delimiter);
