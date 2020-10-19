@@ -30,17 +30,24 @@ namespace DataTranslation
                     var line = reader.ReadLine();
                     String[] values = line.Split(",");
 
-                    Gene gene = new Gene();
-                    gene.recordId = string.Format("pubMedDate_{0}_rid", counter);
+                    List<String> pmIdList = getPmIdList();
 
-                    List<PublicationMention> publicationMentions_list = new List<PublicationMention>();
-                    PublicationMention publicationMention = new PublicationMention();
-                    publicationMention.pmId = values[0].Trim();
-                    publicationMention.year = values[1].Trim();
-                    publicationMentions_list.Add(publicationMention);
-                    gene.publicationMentions = publicationMentions_list;
+                    string pmId = values[0].Trim();
 
-                    gene_list.Add(gene);
+                    if (pmIdList.Contains(pmId))
+                    {
+                        Gene gene = new Gene();
+                        gene.recordId = string.Format("pubMedDate_{0}_rid", counter);
+
+                        List<PublicationMention> publicationMentions_list = new List<PublicationMention>();
+                        PublicationMention publicationMention = new PublicationMention();
+                        publicationMention.pmId = values[0].Trim();
+                        publicationMention.year = values[1].Trim();
+                        publicationMentions_list.Add(publicationMention);
+                        gene.publicationMentions = publicationMentions_list;
+
+                        gene_list.Add(gene);
+                    }
 
                     counter++;
                 }
@@ -50,6 +57,31 @@ namespace DataTranslation
             Methods.createTsv(gene_list: gene_list, fileName: "PubMedDate_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
         }
 
+        public static List<String> getPmIdList()
+        {
+            String fileName = string.Format("{0}/data/input/PatNum/US_Patents_1985_2016_313392.csv", Environment.CurrentDirectory);
+
+            List<String> pmIdList = new List<string>();
+
+            String delimiter = ",";
+
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                sr.ReadLine();
+                while (!sr.EndOfStream)
+                {
+                    var line = sr.ReadLine();
+                    String[] values = line.Split(delimiter);
+                    string pmId = values[0].Replace("\"", string.Empty).Trim();
+                    pmIdList.Add(pmId);
+                }
+            }
+
+            return pmIdList;
+        }
+
+        
+        
         // 15 output files - (54.367.006 - 1) / 15 = 54.367.005 / 15 = 3.624.467
         // 30 output files - (54.367.006 - 1) / 30 = 54.367.005 / 35 = 1.553.343
         public static void gene2pubtatorcentral_dt()

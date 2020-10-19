@@ -15,6 +15,9 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene2Pubtatorcentral/README.txt -O data/input/Gene2Pubtatorcentral/README.txt
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene2Pubtatorcentral/PubMedDate.csv -O data/input/Gene2Pubtatorcentral/PubMedDate.csv
 
+mkdir -p data/input/PatNum
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/parser/input/PatNum/US_Patents_1985_2016_313392.csv -O data/input/PatNum/US_Patents_1985_2016_313392.csv
+
 mkdir -p data/input/Heart
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Heart/Heart.csv -O data/input/Heart/Heart.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Heart/Heart_Ensembl_NCBI_Crosswalk.txt -O data/input/Heart/Heart_Ensembl_NCBI_Crosswalk.txt
