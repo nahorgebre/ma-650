@@ -36,7 +36,7 @@ namespace GoldstandardCreation
                         using (StreamReader sr2 = new StreamReader(fileName2))
                         {
                             // Reducing number of comparisons -- while (!sr2.EndOfStream) -- for (int j = 0; j < 100000; j++)              
-                            while (!sr2.EndOfStream)                       
+                            while (!sr2.EndOfStream)
                             {
                                 var lineSr2 = sr2.ReadLine();
 
@@ -64,7 +64,7 @@ namespace GoldstandardCreation
                                         goldstandardItem.recordId2 = recordIdSr2;
                                         goldstandardItem.value = "FALSE";
 
-                                        goldstandardListFalse.Add(goldstandardItem);                     
+                                        goldstandardListFalse.Add(goldstandardItem);
                                     }
                                 }
 
@@ -110,39 +110,42 @@ namespace GoldstandardCreation
                         using (StreamReader sr2 = new StreamReader(fileName2))
                         {
                             // Reducing number of comparisons -- while (!sr2.EndOfStream) -- for (int j = 0; j < 100000; j++)              
-                            while (goldstandardListTrue.Count() < gsSize)                       
+                            while (goldstandardListTrue.Count() < gsSize)
                             {
                                 var lineSr2 = sr2.ReadLine();
-                                Console.WriteLine(lineSr2);
 
-                                String[] valuesSr2 = lineSr2.Split(delimiter);
-                                string pmIdSr2 = valuesSr2[index].Trim();
-                                string recordIdSr2 = valuesSr2[0];
-
-                                if (pmIdSr1.Equals(pmIdSr2))
+                                if (!lineSr2.Equals(string.Empty))
                                 {
-                                    Goldstandard goldstandardItem = new Goldstandard();
-                                    goldstandardItem.recordId1 = recordIdSr1;
-                                    goldstandardItem.recordId2 = recordIdSr2;
-                                    goldstandardItem.value = "TRUE";
 
-                                    goldstandardListTrue.Add(goldstandardItem);
+                                    String[] valuesSr2 = lineSr2.Split(delimiter);
+                                    string pmIdSr2 = valuesSr2[index].Trim();
+                                    string recordIdSr2 = valuesSr2[0];
 
-                                    //Console.WriteLine("True Count: " + goldstandardListTrue.Count());
-                                }
-                                else
-                                {
-                                    if (goldstandardListFalse.Count() < gsSize)
+                                    if (pmIdSr1.Equals(pmIdSr2))
                                     {
                                         Goldstandard goldstandardItem = new Goldstandard();
                                         goldstandardItem.recordId1 = recordIdSr1;
                                         goldstandardItem.recordId2 = recordIdSr2;
-                                        goldstandardItem.value = "FALSE";
+                                        goldstandardItem.value = "TRUE";
 
-                                        goldstandardListFalse.Add(goldstandardItem);                     
+                                        goldstandardListTrue.Add(goldstandardItem);
+
+                                        //Console.WriteLine("True Count: " + goldstandardListTrue.Count());
                                     }
-                                }
+                                    else
+                                    {
+                                        if (goldstandardListFalse.Count() < gsSize)
+                                        {
+                                            Goldstandard goldstandardItem = new Goldstandard();
+                                            goldstandardItem.recordId1 = recordIdSr1;
+                                            goldstandardItem.recordId2 = recordIdSr2;
+                                            goldstandardItem.value = "FALSE";
 
+                                            goldstandardListFalse.Add(goldstandardItem);
+                                        }
+                                    }
+
+                                }
 
                             }
                         }
@@ -156,7 +159,8 @@ namespace GoldstandardCreation
             return (goldstandardListTrue, goldstandardListFalse);
         }
 
-        public static void createOuput(string fileName, List<Goldstandard> goldstandardList) {
+        public static void createOuput(string fileName, List<Goldstandard> goldstandardList)
+        {
 
             using (StreamWriter sw = new StreamWriter(fileName))
             {
