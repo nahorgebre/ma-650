@@ -36,7 +36,7 @@ public class LR_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= 15; fileNumber++) {
+        for (int fileNumber = 1; fileNumber <= 35; fileNumber++) {
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");
