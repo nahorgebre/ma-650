@@ -17,6 +17,26 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_13_dt.xml -O data/input/gene2pubtatorcentral_13_dt.xml
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_14_dt.xml -O data/input/gene2pubtatorcentral_14_dt.xml
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_15_dt.xml -O data/input/gene2pubtatorcentral_15_dt.xml
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_16_dt.tsv -O data/input/Publication/gene2pubtatorcentral_16_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_17_dt.tsv -O data/input/Publication/gene2pubtatorcentral_17_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_18_dt.tsv -O data/input/Publication/gene2pubtatorcentral_18_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_19_dt.tsv -O data/input/Publication/gene2pubtatorcentral_19_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_20_dt.tsv -O data/input/Publication/gene2pubtatorcentral_20_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_21_dt.tsv -O data/input/Publication/gene2pubtatorcentral_21_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_22_dt.tsv -O data/input/Publication/gene2pubtatorcentral_22_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_23_dt.tsv -O data/input/Publication/gene2pubtatorcentral_23_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_24_dt.tsv -O data/input/Publication/gene2pubtatorcentral_24_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_25_dt.tsv -O data/input/Publication/gene2pubtatorcentral_25_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_26_dt.tsv -O data/input/Publication/gene2pubtatorcentral_26_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_27_dt.tsv -O data/input/Publication/gene2pubtatorcentral_27_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_28_dt.tsv -O data/input/Publication/gene2pubtatorcentral_28_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_29_dt.tsv -O data/input/Publication/gene2pubtatorcentral_29_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_30_dt.tsv -O data/input/Publication/gene2pubtatorcentral_30_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_31_dt.tsv -O data/input/Publication/gene2pubtatorcentral_31_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_32_dt.tsv -O data/input/Publication/gene2pubtatorcentral_32_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_33_dt.tsv -O data/input/Publication/gene2pubtatorcentral_33_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_34_dt.tsv -O data/input/Publication/gene2pubtatorcentral_34_dt.tsv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/gene2pubtatorcentral_35_dt.tsv -O data/input/Publication/gene2pubtatorcentral_35_dt.tsv
 
 mkdir -p data/input/Brain
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/Brain_dt.xml -O data/input/Brain/Brain_dt.xml
