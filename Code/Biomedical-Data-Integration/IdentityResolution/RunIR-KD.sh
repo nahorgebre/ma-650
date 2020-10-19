@@ -5,7 +5,6 @@ mvn compile
 # Brain
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Brain.Brain_2_mart_export_brain.Run"
 
-
 # Cerebellum
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Cerebellum.Cerebellum_2_mart_export_cerebellum.Run"
 
@@ -23,8 +22,8 @@ mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Liver.Liver_2
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Testis.Testis_2_mart_export_testis.Run"
 
 # Organs
-mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_brain.Run"
-mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_cerebellum.Run"
-mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_kidney.Run"
-mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_liver.Run"
-mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_testis.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Heart_2_Brain.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Heart_2_Cerebellum.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Heart_2_Kidney.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Heart_2_Liver.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Heart_2_Testis.Run"
