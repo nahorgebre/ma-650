@@ -108,7 +108,7 @@ namespace GoldstandardCreation
                         using (StreamReader sr2 = new StreamReader(fileName2))
                         {
                             // Reducing number of comparisons -- while (!sr2.EndOfStream) -- for (int j = 0; j < 100000; j++)              
-                            while (!sr2.EndOfStream)                       
+                            while (goldstandardListTrue.Count() < 15)                       
                             {
                                 var lineSr2 = sr2.ReadLine();
 

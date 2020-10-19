@@ -9,7 +9,7 @@ namespace DataTranslation
     {
         public static void Main(string[] args)
         {
-
+            
             Heart.runDataTranslation();
             Brain.runDataTranslation();
             Cerebellum.runDataTranslation();
@@ -19,7 +19,24 @@ namespace DataTranslation
             GeneDiseaseAssociations.runDataTranslation();
             Publication.runDataTranslation();
             AWSupload.run();
-            
+
+            /*
+            for (int i = 36; i <= 100; i++)
+            {
+                string listElement = "List<Gene> gene_list_" + i + " = new List<Gene>();";
+
+                string elseIfElement = "else if (counter <= partitionSize * " + i + ")" + Environment.NewLine + 
+                                        "{" + Environment.NewLine + 
+                                        "gene.recordId = string.Format(\"gene2pubtatorcentral_{0}_{1}_rid\", " + i + ".ToString(), counter);" + Environment.NewLine + 
+                                        "gene_list_" + i + ".Add(gene);" + Environment.NewLine + 
+                                        "}";
+
+                string saveElement = "Methods.createXml(gene_list: gene_list_" + i + ", fileName: \"gene2pubtatorcentral_" + i + "_dt.xml\", directory: gene2PubtatorcentralOutputDirectory);" + Environment.NewLine + 
+                                        "Methods.createTsv(gene_list: gene_list_" + i + ", fileName: \"gene2pubtatorcentral_" + i + "_dt.tsv\", directory: gene2PubtatorcentralOutputDirectory);" + Environment.NewLine;
+
+                Console.WriteLine(saveElement);
+            }
+            */
         }
  
         public static void createEmptyTargetSchema()

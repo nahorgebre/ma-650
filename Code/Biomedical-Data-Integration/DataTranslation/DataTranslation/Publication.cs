@@ -8,7 +8,7 @@ namespace DataTranslation
     {
         public static void runDataTranslation()
         {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Publication.gene2PubtatorcentralOutputDirectory)); 
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Publication.gene2PubtatorcentralOutputDirectory));
             Publication.gene2pubtatorcentral_dt();
             Publication.pubMedDate_dt();
         }
@@ -50,14 +50,16 @@ namespace DataTranslation
             Methods.createXml(gene_list: gene_list, fileName: "PubMedDate_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
             Methods.createTsv(gene_list: gene_list, fileName: "PubMedDate_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
         }
-        
+
         // 15 output files - (54.367.006 - 1) / 15 = 54.367.005 / 15 = 3.624.467
-        // 30 output files - (54.367.006 - 1) / 30 = 54.367.005 / 35 = 1.553.343
+        // 35 output files - (54.367.006 - 1) / 35 = 54.367.005 / 35 = 1.553.343
+        // 55 output files - (54.367.006 - 1) / 55 = 54.367.005 / 55 = 988.491
+        // 100 output files - (54.367.006 - 1) / 100 = 54.367.005 / 100 = 543.670
         public static void gene2pubtatorcentral_dt()
         {
             Genes genes = new Genes();
 
-            int partitionSize = 1553343;
+            int partitionSize = 543670;
 
             List<Gene> gene_list_1 = new List<Gene>();
             List<Gene> gene_list_2 = new List<Gene>();
@@ -94,6 +96,71 @@ namespace DataTranslation
             List<Gene> gene_list_33 = new List<Gene>();
             List<Gene> gene_list_34 = new List<Gene>();
             List<Gene> gene_list_35 = new List<Gene>();
+            List<Gene> gene_list_36 = new List<Gene>();
+            List<Gene> gene_list_37 = new List<Gene>();
+            List<Gene> gene_list_38 = new List<Gene>();
+            List<Gene> gene_list_39 = new List<Gene>();
+            List<Gene> gene_list_40 = new List<Gene>();
+            List<Gene> gene_list_41 = new List<Gene>();
+            List<Gene> gene_list_42 = new List<Gene>();
+            List<Gene> gene_list_43 = new List<Gene>();
+            List<Gene> gene_list_44 = new List<Gene>();
+            List<Gene> gene_list_45 = new List<Gene>();
+            List<Gene> gene_list_46 = new List<Gene>();
+            List<Gene> gene_list_47 = new List<Gene>();
+            List<Gene> gene_list_48 = new List<Gene>();
+            List<Gene> gene_list_49 = new List<Gene>();
+            List<Gene> gene_list_50 = new List<Gene>();
+            List<Gene> gene_list_51 = new List<Gene>();
+            List<Gene> gene_list_52 = new List<Gene>();
+            List<Gene> gene_list_53 = new List<Gene>();
+            List<Gene> gene_list_54 = new List<Gene>();
+            List<Gene> gene_list_55 = new List<Gene>();
+            List<Gene> gene_list_56 = new List<Gene>();
+            List<Gene> gene_list_57 = new List<Gene>();
+            List<Gene> gene_list_58 = new List<Gene>();
+            List<Gene> gene_list_59 = new List<Gene>();
+            List<Gene> gene_list_60 = new List<Gene>();
+            List<Gene> gene_list_61 = new List<Gene>();
+            List<Gene> gene_list_62 = new List<Gene>();
+            List<Gene> gene_list_63 = new List<Gene>();
+            List<Gene> gene_list_64 = new List<Gene>();
+            List<Gene> gene_list_65 = new List<Gene>();
+            List<Gene> gene_list_66 = new List<Gene>();
+            List<Gene> gene_list_67 = new List<Gene>();
+            List<Gene> gene_list_68 = new List<Gene>();
+            List<Gene> gene_list_69 = new List<Gene>();
+            List<Gene> gene_list_70 = new List<Gene>();
+            List<Gene> gene_list_71 = new List<Gene>();
+            List<Gene> gene_list_72 = new List<Gene>();
+            List<Gene> gene_list_73 = new List<Gene>();
+            List<Gene> gene_list_74 = new List<Gene>();
+            List<Gene> gene_list_75 = new List<Gene>();
+            List<Gene> gene_list_76 = new List<Gene>();
+            List<Gene> gene_list_77 = new List<Gene>();
+            List<Gene> gene_list_78 = new List<Gene>();
+            List<Gene> gene_list_79 = new List<Gene>();
+            List<Gene> gene_list_80 = new List<Gene>();
+            List<Gene> gene_list_81 = new List<Gene>();
+            List<Gene> gene_list_82 = new List<Gene>();
+            List<Gene> gene_list_83 = new List<Gene>();
+            List<Gene> gene_list_84 = new List<Gene>();
+            List<Gene> gene_list_85 = new List<Gene>();
+            List<Gene> gene_list_86 = new List<Gene>();
+            List<Gene> gene_list_87 = new List<Gene>();
+            List<Gene> gene_list_88 = new List<Gene>();
+            List<Gene> gene_list_89 = new List<Gene>();
+            List<Gene> gene_list_90 = new List<Gene>();
+            List<Gene> gene_list_91 = new List<Gene>();
+            List<Gene> gene_list_92 = new List<Gene>();
+            List<Gene> gene_list_93 = new List<Gene>();
+            List<Gene> gene_list_94 = new List<Gene>();
+            List<Gene> gene_list_95 = new List<Gene>();
+            List<Gene> gene_list_96 = new List<Gene>();
+            List<Gene> gene_list_97 = new List<Gene>();
+            List<Gene> gene_list_98 = new List<Gene>();
+            List<Gene> gene_list_99 = new List<Gene>();
+            List<Gene> gene_list_100 = new List<Gene>();
 
             using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, gene2PubtatorcentralInputDirectory, "gene2pubtatorcentral.tsv")))
             {
@@ -294,12 +361,342 @@ namespace DataTranslation
                         else if (counter <= partitionSize * 34)
                         {
                             gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 34.ToString(), counter);
-                            gene_list_34.Add(gene);                        
+                            gene_list_34.Add(gene);
                         }
-                        else if (counter > partitionSize * 34)
+                        else if (counter <= partitionSize * 35)
                         {
                             gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 35.ToString(), counter);
                             gene_list_35.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 36)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 36.ToString(), counter);
+                            gene_list_36.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 37)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 37.ToString(), counter);
+                            gene_list_37.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 38)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 38.ToString(), counter);
+                            gene_list_38.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 39)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 39.ToString(), counter);
+                            gene_list_39.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 40)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 40.ToString(), counter);
+                            gene_list_40.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 41)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 41.ToString(), counter);
+                            gene_list_41.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 42)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 42.ToString(), counter);
+                            gene_list_42.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 43)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 43.ToString(), counter);
+                            gene_list_43.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 44)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 44.ToString(), counter);
+                            gene_list_44.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 45)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 45.ToString(), counter);
+                            gene_list_45.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 46)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 46.ToString(), counter);
+                            gene_list_46.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 47)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 47.ToString(), counter);
+                            gene_list_47.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 48)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 48.ToString(), counter);
+                            gene_list_48.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 49)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 49.ToString(), counter);
+                            gene_list_49.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 50)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 50.ToString(), counter);
+                            gene_list_50.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 51)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 51.ToString(), counter);
+                            gene_list_51.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 52)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 52.ToString(), counter);
+                            gene_list_52.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 53)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 53.ToString(), counter);
+                            gene_list_53.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 54)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 54.ToString(), counter);
+                            gene_list_54.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 55)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 55.ToString(), counter);
+                            gene_list_55.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 56)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 56.ToString(), counter);
+                            gene_list_56.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 57)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 57.ToString(), counter);
+                            gene_list_57.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 58)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 58.ToString(), counter);
+                            gene_list_58.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 59)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 59.ToString(), counter);
+                            gene_list_59.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 60)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 60.ToString(), counter);
+                            gene_list_60.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 61)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 61.ToString(), counter);
+                            gene_list_61.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 62)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 62.ToString(), counter);
+                            gene_list_62.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 63)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 63.ToString(), counter);
+                            gene_list_63.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 64)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 64.ToString(), counter);
+                            gene_list_64.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 65)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 65.ToString(), counter);
+                            gene_list_65.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 66)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 66.ToString(), counter);
+                            gene_list_66.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 67)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 67.ToString(), counter);
+                            gene_list_67.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 68)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 68.ToString(), counter);
+                            gene_list_68.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 69)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 69.ToString(), counter);
+                            gene_list_69.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 70)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 70.ToString(), counter);
+                            gene_list_70.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 71)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 71.ToString(), counter);
+                            gene_list_71.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 72)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 72.ToString(), counter);
+                            gene_list_72.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 73)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 73.ToString(), counter);
+                            gene_list_73.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 74)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 74.ToString(), counter);
+                            gene_list_74.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 75)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 75.ToString(), counter);
+                            gene_list_75.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 76)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 76.ToString(), counter);
+                            gene_list_76.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 77)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 77.ToString(), counter);
+                            gene_list_77.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 78)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 78.ToString(), counter);
+                            gene_list_78.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 79)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 79.ToString(), counter);
+                            gene_list_79.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 80)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 80.ToString(), counter);
+                            gene_list_80.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 81)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 81.ToString(), counter);
+                            gene_list_81.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 82)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 82.ToString(), counter);
+                            gene_list_82.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 83)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 83.ToString(), counter);
+                            gene_list_83.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 84)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 84.ToString(), counter);
+                            gene_list_84.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 85)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 85.ToString(), counter);
+                            gene_list_85.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 86)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 86.ToString(), counter);
+                            gene_list_86.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 87)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 87.ToString(), counter);
+                            gene_list_87.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 88)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 88.ToString(), counter);
+                            gene_list_88.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 89)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 89.ToString(), counter);
+                            gene_list_89.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 90)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 90.ToString(), counter);
+                            gene_list_90.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 91)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 91.ToString(), counter);
+                            gene_list_91.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 92)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 92.ToString(), counter);
+                            gene_list_92.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 93)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 93.ToString(), counter);
+                            gene_list_93.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 94)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 94.ToString(), counter);
+                            gene_list_94.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 95)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 95.ToString(), counter);
+                            gene_list_95.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 96)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 96.ToString(), counter);
+                            gene_list_96.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 97)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 97.ToString(), counter);
+                            gene_list_97.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 98)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 98.ToString(), counter);
+                            gene_list_98.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 99)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 99.ToString(), counter);
+                            gene_list_99.Add(gene);
+                        }
+                        else if (counter <= partitionSize * 100)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 100.ToString(), counter);
+                            gene_list_100.Add(gene);
+                        }
+                        else if (counter > partitionSize * 99)
+                        {
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", 100.ToString(), counter);
+                            gene_list_100.Add(gene);
                         }
 
                         counter++;
@@ -400,18 +797,213 @@ namespace DataTranslation
 
             Methods.createXml(gene_list: gene_list_31, fileName: "gene2pubtatorcentral_31_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
             Methods.createTsv(gene_list: gene_list_31, fileName: "gene2pubtatorcentral_31_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
-            
+
             Methods.createXml(gene_list: gene_list_32, fileName: "gene2pubtatorcentral_32_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
             Methods.createTsv(gene_list: gene_list_32, fileName: "gene2pubtatorcentral_32_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
-            
+
             Methods.createXml(gene_list: gene_list_33, fileName: "gene2pubtatorcentral_33_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
             Methods.createTsv(gene_list: gene_list_33, fileName: "gene2pubtatorcentral_33_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
-            
+
             Methods.createXml(gene_list: gene_list_34, fileName: "gene2pubtatorcentral_34_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
             Methods.createTsv(gene_list: gene_list_34, fileName: "gene2pubtatorcentral_34_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
-            
+
             Methods.createXml(gene_list: gene_list_35, fileName: "gene2pubtatorcentral_35_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
             Methods.createTsv(gene_list: gene_list_35, fileName: "gene2pubtatorcentral_35_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_36, fileName: "gene2pubtatorcentral_36_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_36, fileName: "gene2pubtatorcentral_36_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_37, fileName: "gene2pubtatorcentral_37_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_37, fileName: "gene2pubtatorcentral_37_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_38, fileName: "gene2pubtatorcentral_38_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_38, fileName: "gene2pubtatorcentral_38_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_39, fileName: "gene2pubtatorcentral_39_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_39, fileName: "gene2pubtatorcentral_39_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_40, fileName: "gene2pubtatorcentral_40_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_40, fileName: "gene2pubtatorcentral_40_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_41, fileName: "gene2pubtatorcentral_41_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_41, fileName: "gene2pubtatorcentral_41_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_42, fileName: "gene2pubtatorcentral_42_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_42, fileName: "gene2pubtatorcentral_42_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_43, fileName: "gene2pubtatorcentral_43_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_43, fileName: "gene2pubtatorcentral_43_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_44, fileName: "gene2pubtatorcentral_44_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_44, fileName: "gene2pubtatorcentral_44_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_45, fileName: "gene2pubtatorcentral_45_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_45, fileName: "gene2pubtatorcentral_45_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_46, fileName: "gene2pubtatorcentral_46_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_46, fileName: "gene2pubtatorcentral_46_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_47, fileName: "gene2pubtatorcentral_47_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_47, fileName: "gene2pubtatorcentral_47_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_48, fileName: "gene2pubtatorcentral_48_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_48, fileName: "gene2pubtatorcentral_48_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_49, fileName: "gene2pubtatorcentral_49_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_49, fileName: "gene2pubtatorcentral_49_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_50, fileName: "gene2pubtatorcentral_50_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_50, fileName: "gene2pubtatorcentral_50_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_51, fileName: "gene2pubtatorcentral_51_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_51, fileName: "gene2pubtatorcentral_51_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_52, fileName: "gene2pubtatorcentral_52_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_52, fileName: "gene2pubtatorcentral_52_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_53, fileName: "gene2pubtatorcentral_53_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_53, fileName: "gene2pubtatorcentral_53_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_54, fileName: "gene2pubtatorcentral_54_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_54, fileName: "gene2pubtatorcentral_54_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_55, fileName: "gene2pubtatorcentral_55_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_55, fileName: "gene2pubtatorcentral_55_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_56, fileName: "gene2pubtatorcentral_56_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_56, fileName: "gene2pubtatorcentral_56_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_57, fileName: "gene2pubtatorcentral_57_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_57, fileName: "gene2pubtatorcentral_57_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_58, fileName: "gene2pubtatorcentral_58_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_58, fileName: "gene2pubtatorcentral_58_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_59, fileName: "gene2pubtatorcentral_59_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_59, fileName: "gene2pubtatorcentral_59_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_60, fileName: "gene2pubtatorcentral_60_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_60, fileName: "gene2pubtatorcentral_60_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_61, fileName: "gene2pubtatorcentral_61_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_61, fileName: "gene2pubtatorcentral_61_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_62, fileName: "gene2pubtatorcentral_62_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_62, fileName: "gene2pubtatorcentral_62_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_63, fileName: "gene2pubtatorcentral_63_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_63, fileName: "gene2pubtatorcentral_63_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_64, fileName: "gene2pubtatorcentral_64_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_64, fileName: "gene2pubtatorcentral_64_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_65, fileName: "gene2pubtatorcentral_65_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_65, fileName: "gene2pubtatorcentral_65_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_66, fileName: "gene2pubtatorcentral_66_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_66, fileName: "gene2pubtatorcentral_66_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_67, fileName: "gene2pubtatorcentral_67_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_67, fileName: "gene2pubtatorcentral_67_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_68, fileName: "gene2pubtatorcentral_68_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_68, fileName: "gene2pubtatorcentral_68_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_69, fileName: "gene2pubtatorcentral_69_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_69, fileName: "gene2pubtatorcentral_69_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_70, fileName: "gene2pubtatorcentral_70_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_70, fileName: "gene2pubtatorcentral_70_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_71, fileName: "gene2pubtatorcentral_71_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_71, fileName: "gene2pubtatorcentral_71_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_72, fileName: "gene2pubtatorcentral_72_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_72, fileName: "gene2pubtatorcentral_72_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_73, fileName: "gene2pubtatorcentral_73_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_73, fileName: "gene2pubtatorcentral_73_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_74, fileName: "gene2pubtatorcentral_74_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_74, fileName: "gene2pubtatorcentral_74_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_75, fileName: "gene2pubtatorcentral_75_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_75, fileName: "gene2pubtatorcentral_75_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_76, fileName: "gene2pubtatorcentral_76_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_76, fileName: "gene2pubtatorcentral_76_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_77, fileName: "gene2pubtatorcentral_77_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_77, fileName: "gene2pubtatorcentral_77_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_78, fileName: "gene2pubtatorcentral_78_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_78, fileName: "gene2pubtatorcentral_78_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_79, fileName: "gene2pubtatorcentral_79_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_79, fileName: "gene2pubtatorcentral_79_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_80, fileName: "gene2pubtatorcentral_80_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_80, fileName: "gene2pubtatorcentral_80_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_81, fileName: "gene2pubtatorcentral_81_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_81, fileName: "gene2pubtatorcentral_81_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_82, fileName: "gene2pubtatorcentral_82_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_82, fileName: "gene2pubtatorcentral_82_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_83, fileName: "gene2pubtatorcentral_83_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_83, fileName: "gene2pubtatorcentral_83_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_84, fileName: "gene2pubtatorcentral_84_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_84, fileName: "gene2pubtatorcentral_84_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_85, fileName: "gene2pubtatorcentral_85_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_85, fileName: "gene2pubtatorcentral_85_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_86, fileName: "gene2pubtatorcentral_86_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_86, fileName: "gene2pubtatorcentral_86_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_87, fileName: "gene2pubtatorcentral_87_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_87, fileName: "gene2pubtatorcentral_87_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_88, fileName: "gene2pubtatorcentral_88_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_88, fileName: "gene2pubtatorcentral_88_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_89, fileName: "gene2pubtatorcentral_89_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_89, fileName: "gene2pubtatorcentral_89_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_90, fileName: "gene2pubtatorcentral_90_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_90, fileName: "gene2pubtatorcentral_90_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_91, fileName: "gene2pubtatorcentral_91_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_91, fileName: "gene2pubtatorcentral_91_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_92, fileName: "gene2pubtatorcentral_92_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_92, fileName: "gene2pubtatorcentral_92_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_93, fileName: "gene2pubtatorcentral_93_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_93, fileName: "gene2pubtatorcentral_93_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_94, fileName: "gene2pubtatorcentral_94_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_94, fileName: "gene2pubtatorcentral_94_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_95, fileName: "gene2pubtatorcentral_95_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_95, fileName: "gene2pubtatorcentral_95_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_96, fileName: "gene2pubtatorcentral_96_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_96, fileName: "gene2pubtatorcentral_96_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_97, fileName: "gene2pubtatorcentral_97_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_97, fileName: "gene2pubtatorcentral_97_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_98, fileName: "gene2pubtatorcentral_98_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_98, fileName: "gene2pubtatorcentral_98_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_99, fileName: "gene2pubtatorcentral_99_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_99, fileName: "gene2pubtatorcentral_99_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list_100, fileName: "gene2pubtatorcentral_100_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
+            Methods.createTsv(gene_list: gene_list_100, fileName: "gene2pubtatorcentral_100_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
 
         }
 
