@@ -75,6 +75,86 @@ mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_15
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_15/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_15/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_15/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_15/test.csv
 
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_16
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_16/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_16/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_16/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_16/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_17
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_17/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_17/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_17/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_17/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_18
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_18/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_18/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_18/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_18/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_19
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_19/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_19/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_19/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_19/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_20
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_20/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_20/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_20/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_20/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_21
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_21/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_21/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_21/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_21/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_22
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_22/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_22/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_22/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_22/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_23
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_23/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_23/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_23/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_23/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_24
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_24/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_24/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_24/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_24/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_25
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_25/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_25/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_25/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_25/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_26
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_26/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_26/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_26/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_26/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_27
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_27/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_27/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_27/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_27/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_28
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_28/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_28/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_28/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_28/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_29
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_29/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_29/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_29/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_29/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_30
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_30/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_30/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_30/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_30/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_31
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_31/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_31/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_31/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_31/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_32
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_32/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_32/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_32/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_32/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_33
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_33/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_33/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_33/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_33/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_34
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_34/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_34/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_34/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_34/test.csv
+
+mkdir -p data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_35
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_35/train.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_35/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_brain_2_gene2pubtatorcentral_35/test.csv -O data/goldstandard/Brain/mart_export_brain_2_gene2pubtatorcentral_35/test.csv
+
 
 ## Cerebellum
 
@@ -148,6 +228,86 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_15
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_15/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_15/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_15/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_15/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_16
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_16/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_16/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_16/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_16/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_17
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_17/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_17/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_17/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_17/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_18
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_18/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_18/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_18/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_18/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_19
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_19/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_19/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_19/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_19/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_20
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_20/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_20/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_20/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_20/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_21
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_21/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_21/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_21/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_21/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_22
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_22/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_22/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_22/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_22/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_23
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_23/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_23/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_23/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_23/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_24
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_24/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_24/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_24/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_24/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_25
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_25/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_25/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_25/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_25/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_26
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_26/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_26/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_26/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_26/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_27
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_27/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_27/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_27/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_27/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_28
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_28/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_28/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_28/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_28/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_29
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_29/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_29/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_29/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_29/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_30
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_30/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_30/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_30/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_30/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_31
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_31/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_31/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_31/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_31/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_32
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_32/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_32/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_32/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_32/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_33
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_33/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_33/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_33/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_33/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_34
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_34/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_34/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_34/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_34/test.csv
+
+mkdir -p data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_35
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_35/train.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_35/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_cerebellum_2_gene2pubtatorcentral_35/test.csv -O data/goldstandard/Cerebellum/mart_export_cerebellum_2_gene2pubtatorcentral_35/test.csv
 
 
 ## Heart
@@ -228,6 +388,86 @@ mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcen
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_15/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_15/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_15/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_15/test.csv
 
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_16
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_16/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_16/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_16/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_16/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_17
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_17/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_17/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_17/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_17/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_18
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_18/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_18/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_18/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_18/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_19
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_19/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_19/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_19/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_19/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_20
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_20/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_20/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_20/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_20/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_21
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_21/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_21/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_21/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_21/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_22
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_22/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_22/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_22/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_22/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_23
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_23/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_23/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_23/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_23/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_24
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_24/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_24/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_24/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_24/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_25
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_25/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_25/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_25/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_25/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_26
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_26/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_26/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_26/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_26/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_27
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_27/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_27/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_27/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_27/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_28
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_28/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_28/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_28/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_28/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_29
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_29/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_29/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_29/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_29/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_30
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_30/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_30/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_30/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_30/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_31
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_31/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_31/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_31/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_31/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_32
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_32/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_32/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_32/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_32/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_33
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_33/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_33/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_33/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_33/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_34
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_34/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_34/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_34/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_34/test.csv
+
+mkdir -p data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_35
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_35/train.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_35/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_35/test.csv -O data/goldstandard/Heart/Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_35/test.csv
+
 
 ## Kidney
 
@@ -301,6 +541,86 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_15
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_15/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_15/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_15/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_15/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_16
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_16/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_16/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_16/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_16/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_17
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_17/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_17/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_17/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_17/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_18
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_18/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_18/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_18/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_18/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_19
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_19/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_19/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_19/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_19/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_20
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_20/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_20/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_20/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_20/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_21
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_21/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_21/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_21/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_21/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_22
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_22/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_22/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_22/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_22/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_23
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_23/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_23/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_23/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_23/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_24
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_24/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_24/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_24/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_24/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_25
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_25/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_25/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_25/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_25/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_26
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_26/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_26/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_26/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_26/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_27
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_27/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_27/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_27/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_27/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_28
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_28/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_28/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_28/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_28/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_29
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_29/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_29/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_29/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_29/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_30
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_30/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_30/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_30/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_30/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_31
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_31/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_31/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_31/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_31/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_32
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_32/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_32/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_32/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_32/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_33
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_33/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_33/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_33/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_33/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_34
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_34/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_34/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_34/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_34/test.csv
+
+mkdir -p data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_35
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_35/train.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_35/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_kidney_2_gene2pubtatorcentral_35/test.csv -O data/goldstandard/Kidney/mart_export_kidney_2_gene2pubtatorcentral_35/test.csv
 
 
 ## Liver
@@ -376,6 +696,86 @@ mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_15
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_15/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_15/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_15/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_15/test.csv
 
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_16
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_16/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_16/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_16/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_16/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_17
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_17/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_17/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_17/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_17/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_18
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_18/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_18/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_18/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_18/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_19
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_19/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_19/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_19/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_19/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_20
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_20/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_20/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_20/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_20/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_21
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_21/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_21/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_21/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_21/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_22
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_22/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_22/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_22/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_22/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_23
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_23/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_23/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_23/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_23/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_24
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_24/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_24/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_24/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_24/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_25
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_25/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_25/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_25/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_25/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_26
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_26/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_26/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_26/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_26/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_27
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_27/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_27/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_27/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_27/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_28
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_28/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_28/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_28/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_28/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_29
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_29/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_29/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_29/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_29/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_30
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_30/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_30/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_30/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_30/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_31
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_31/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_31/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_31/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_31/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_32
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_32/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_32/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_32/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_32/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_33
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_33/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_33/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_33/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_33/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_34
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_34/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_34/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_34/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_34/test.csv
+
+mkdir -p data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_35
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_35/train.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_35/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_liver_2_gene2pubtatorcentral_35/test.csv -O data/goldstandard/Liver/mart_export_liver_2_gene2pubtatorcentral_35/test.csv
+
 
 ## Testis
 
@@ -450,6 +850,86 @@ mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_15
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_15/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_15/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_15/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_15/test.csv
 
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_16
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_16/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_16/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_16/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_16/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_17
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_17/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_17/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_17/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_17/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_18
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_18/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_18/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_18/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_18/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_19
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_19/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_19/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_19/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_19/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_20
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_20/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_20/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_20/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_20/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_21
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_21/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_21/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_21/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_21/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_22
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_22/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_22/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_22/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_22/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_23
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_23/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_23/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_23/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_23/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_24
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_24/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_24/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_24/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_24/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_25
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_25/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_25/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_25/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_25/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_26
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_26/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_26/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_26/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_26/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_27
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_27/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_27/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_27/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_27/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_28
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_28/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_28/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_28/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_28/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_29
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_29/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_29/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_29/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_29/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_30
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_30/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_30/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_30/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_30/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_31
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_31/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_31/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_31/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_31/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_32
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_32/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_32/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_32/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_32/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_33
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_33/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_33/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_33/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_33/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_34
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_34/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_34/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_34/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_34/test.csv
+
+mkdir -p data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_35
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_35/train.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_35/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/mart_export_testis_2_gene2pubtatorcentral_35/test.csv -O data/goldstandard/Testis/mart_export_testis_2_gene2pubtatorcentral_35/test.csv
+
 
 ## Publications
 
@@ -513,6 +993,86 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_15_2_PubMedDate
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_15_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_15_2_PubMedDate/train.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_15_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_15_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_16_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_16_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_16_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_16_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_16_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_17_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_17_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_17_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_17_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_17_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_18_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_18_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_18_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_18_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_18_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_19_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_19_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_19_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_19_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_19_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_20_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_20_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_20_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_20_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_20_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_21_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_21_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_21_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_21_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_21_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_22_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_22_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_22_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_22_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_22_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_23_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_23_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_23_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_23_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_23_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_24_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_24_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_24_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_24_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_24_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_25_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_25_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_25_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_25_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_25_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_26_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_26_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_26_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_26_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_26_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_27_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_27_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_27_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_27_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_27_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_28_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_28_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_28_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_28_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_28_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_29_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_29_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_29_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_29_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_29_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_30_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_30_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_30_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_30_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_30_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_31_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_31_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_31_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_31_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_31_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_32_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_32_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_32_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_32_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_32_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_33_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_33_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_33_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_33_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_33_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_34_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_34_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_34_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_34_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_34_2_PubMedDate/test.csv
+
+mkdir -p data/goldstandard/Publication/gene2pubtatorcentral_35_2_PubMedDate
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_35_2_PubMedDate/train.csv -O data/goldstandard/Publication/gene2pubtatorcentral_35_2_PubMedDate/train.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/gene2pubtatorcentral_35_2_PubMedDate/test.csv -O data/goldstandard/Publication/gene2pubtatorcentral_35_2_PubMedDate/test.csv
 
 
 ## Organs
