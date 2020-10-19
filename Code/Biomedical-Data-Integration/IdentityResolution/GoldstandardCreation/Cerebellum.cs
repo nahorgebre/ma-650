@@ -56,7 +56,7 @@ namespace GoldstandardCreation
                 if (!File.Exists(trueFile) | !File.Exists(falseFile))
                 {
                     Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.mart_export_cerebellum_path, Datasets.getGene2pubtatorcentral_path(i), 3);
+                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles20(Datasets.mart_export_cerebellum_path, Datasets.getGene2pubtatorcentral_path(i), 3);
                     Methods.createOuput(trueFile, trueList);
                     Methods.createOuput(falseFile, falseList);
                 }   

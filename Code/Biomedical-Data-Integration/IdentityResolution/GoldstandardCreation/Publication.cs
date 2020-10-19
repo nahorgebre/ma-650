@@ -22,7 +22,7 @@ namespace GoldstandardCreation
                 if (!File.Exists(trueFile) | !File.Exists(falseFile))
                 {
                     Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.getGene2pubtatorcentral_path(i), Datasets.PubMedDate_path, 4);
+                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles20(Datasets.getGene2pubtatorcentral_path(i), Datasets.PubMedDate_path, 4);
                     Methods.createOuput(trueFile, trueList);
                     Methods.createOuput(falseFile, falseList);
                 }
