@@ -113,6 +113,7 @@ namespace GoldstandardCreation
                             while (goldstandardListTrue.Count() < gsSize)                       
                             {
                                 var lineSr2 = sr2.ReadLine();
+                                Console.WriteLine(lineSr2);
 
                                 String[] valuesSr2 = lineSr2.Split(delimiter);
                                 string pmIdSr2 = valuesSr2[index].Trim();
