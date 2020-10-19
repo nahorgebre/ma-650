@@ -47,7 +47,7 @@ namespace GoldstandardCreation
         }
 
         public static void Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral() {
-            for (int i = 1; i <= 35; i++)
+            for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
             {
                 // gene name
                 string comparison = "Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral_" + i;
@@ -58,7 +58,7 @@ namespace GoldstandardCreation
                 if (!File.Exists(trueFile) | !File.Exists(falseFile))
                 {
                     Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles20(Datasets.Heart_Ensembl_NCBI_Crosswalk_path, Datasets.getGene2pubtatorcentral_path(i), 3);
+                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFilesPubTator(Datasets.Heart_Ensembl_NCBI_Crosswalk_path, Datasets.getGene2pubtatorcentral_path(i), 3);
                     Methods.createOuput(trueFile, trueList);
                     Methods.createOuput(falseFile, falseList);
                 }       

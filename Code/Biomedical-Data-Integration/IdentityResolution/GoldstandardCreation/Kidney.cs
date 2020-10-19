@@ -46,7 +46,7 @@ namespace GoldstandardCreation
         }
 
         public static void mart_export_kidney_2_gene2pubtatorcentral() {
-            for (int i = 1; i <= 35; i++)
+            for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
             {
                 // gene name
                 string comparison = "mart_export_kidney_2_gene2pubtatorcentral_" + i;
@@ -57,7 +57,7 @@ namespace GoldstandardCreation
                 if (!File.Exists(trueFile) | !File.Exists(falseFile))
                 {
                     Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles20(Datasets.mart_export_kidney_path, Datasets.getGene2pubtatorcentral_path(i), 3);
+                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFilesPubTator(Datasets.mart_export_kidney_path, Datasets.getGene2pubtatorcentral_path(i), 3);
                     Methods.createOuput(trueFile, trueList);
                     Methods.createOuput(falseFile, falseList);
                 }

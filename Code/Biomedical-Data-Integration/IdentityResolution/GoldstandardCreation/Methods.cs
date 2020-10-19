@@ -81,11 +81,13 @@ namespace GoldstandardCreation
             return (goldstandardListTrue, goldstandardListFalse);
         }
 
-        public static (List<Goldstandard>, List<Goldstandard>) compareFiles20(string fileName1, string fileName2, int index)
+        public static (List<Goldstandard>, List<Goldstandard>) compareFilesPubTator(string fileName1, string fileName2, int index)
         {
             // ensemblId -> 1
             // geneName -> 3
             // pmId -> 4
+
+            int gsSize = 10;
 
             List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
             List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
@@ -99,7 +101,7 @@ namespace GoldstandardCreation
                 {
                     // go through all lines
                     var lineSr1 = sr1.ReadLine();
-                    if (goldstandardListTrue.Count() < 15)
+                    if (goldstandardListTrue.Count() < gsSize)
                     {
                         String[] valuesSr1 = lineSr1.Split(delimiter);
                         string pmIdSr1 = valuesSr1[index].Trim();
@@ -108,7 +110,7 @@ namespace GoldstandardCreation
                         using (StreamReader sr2 = new StreamReader(fileName2))
                         {
                             // Reducing number of comparisons -- while (!sr2.EndOfStream) -- for (int j = 0; j < 100000; j++)              
-                            while (goldstandardListTrue.Count() < 15)                       
+                            while (goldstandardListTrue.Count() < gsSize)                       
                             {
                                 var lineSr2 = sr2.ReadLine();
 
@@ -129,7 +131,7 @@ namespace GoldstandardCreation
                                 }
                                 else
                                 {
-                                    if (goldstandardListFalse.Count() < 15)
+                                    if (goldstandardListFalse.Count() < gsSize)
                                     {
                                         Goldstandard goldstandardItem = new Goldstandard();
                                         goldstandardItem.recordId1 = recordIdSr1;

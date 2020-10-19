@@ -6,13 +6,16 @@ namespace GoldstandardCreation
 {
     class Publication
     {
+
+        public static int pubTatorPartitionSize = 100;
+
         public static void run() {
             gene2pubtatorcentral_2_PubMedDate();
         }
 
         public static void gene2pubtatorcentral_2_PubMedDate() {
 
-            for (int i = 1; i <= 35; i++)
+            for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
             {
                 string comparison = "gene2pubtatorcentral_" + i + "_2_PubMedDate";
                 string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
@@ -22,7 +25,7 @@ namespace GoldstandardCreation
                 if (!File.Exists(trueFile) | !File.Exists(falseFile))
                 {
                     Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles20(Datasets.getGene2pubtatorcentral_path(i), Datasets.PubMedDate_path, 4);
+                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFilesPubTator(Datasets.getGene2pubtatorcentral_path(i), Datasets.PubMedDate_path, 4);
                     Methods.createOuput(trueFile, trueList);
                     Methods.createOuput(falseFile, falseList);
                 }
