@@ -14,7 +14,7 @@ namespace GoldstandardCreation
             Liver.run();
             Organs.run();     
             Testis.run();
-            //Publication.run();
+            Publication.run();
 
             Output.run();
 
