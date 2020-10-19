@@ -12,7 +12,7 @@ namespace GoldstandardCreation
 
         public static void gene2pubtatorcentral_2_PubMedDate() {
 
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= 35; i++)
             {
                 string comparison = "gene2pubtatorcentral_" + i + "_2_PubMedDate";
                 string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);

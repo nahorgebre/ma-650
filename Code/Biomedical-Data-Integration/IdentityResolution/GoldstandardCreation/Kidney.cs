@@ -46,7 +46,7 @@ namespace GoldstandardCreation
         }
 
         public static void mart_export_kidney_2_gene2pubtatorcentral() {
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= 35; i++)
             {
                 // gene name
                 string comparison = "mart_export_kidney_2_gene2pubtatorcentral_" + i;
