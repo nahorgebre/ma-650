@@ -87,7 +87,7 @@ namespace GoldstandardCreation
             // geneName -> 3
             // pmId -> 4
 
-            int gsSize = 10;
+            int gsSize = 20;
 
             List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
             List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
