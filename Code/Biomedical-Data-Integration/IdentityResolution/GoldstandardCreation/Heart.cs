@@ -57,7 +57,7 @@ namespace GoldstandardCreation
                 Directory.CreateDirectory(directoryName);
                 if (!File.Exists(trueFile) | !File.Exists(falseFile))
                 {
-                    Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    Console.WriteLine(comparison);
                     (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFilesPubTator(Datasets.Heart_Ensembl_NCBI_Crosswalk_path, Datasets.getGene2pubtatorcentral_path(i), 3);
                     Methods.createOuput(trueFile, trueList);
                     Methods.createOuput(falseFile, falseList);
