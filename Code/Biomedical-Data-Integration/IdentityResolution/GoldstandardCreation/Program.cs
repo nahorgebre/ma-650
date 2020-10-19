@@ -18,7 +18,7 @@ namespace GoldstandardCreation
 
             Output.run();
 
-            AWSupload.run();
+            //AWSupload.run();
 
         }
 
