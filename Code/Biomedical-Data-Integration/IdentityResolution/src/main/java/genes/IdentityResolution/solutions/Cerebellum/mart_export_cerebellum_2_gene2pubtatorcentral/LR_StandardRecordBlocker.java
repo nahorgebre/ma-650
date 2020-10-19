@@ -30,13 +30,15 @@ import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_GeneName;
 import genes.IdentityResolution.solutions.GoldStandard;
 
+import genes.IdentityResolution.solutions.Variables;
+
 public class LR_StandardRecordBlocker {
     private static final Logger logger = WinterLogManager.activateLogger("default");
 
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= 35; fileNumber++) {
+        for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");

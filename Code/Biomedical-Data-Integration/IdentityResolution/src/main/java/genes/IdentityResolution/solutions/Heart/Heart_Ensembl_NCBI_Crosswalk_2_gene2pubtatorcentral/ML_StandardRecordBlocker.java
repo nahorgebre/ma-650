@@ -4,6 +4,8 @@ package genes.IdentityResolution.solutions.Heart.Heart_Ensembl_NCBI_Crosswalk_2_
 import java.io.File;
 import java.util.List;
 
+import org.apache.jena.sparql.core.Var;
+
 // winter
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard;
@@ -47,12 +49,14 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorense
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
 
+import genes.IdentityResolution.solutions.Variables;
+
 public class ML_StandardRecordBlocker {
 
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= 35; fileNumber++) {
+        for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
             
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");

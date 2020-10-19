@@ -3,6 +3,7 @@ package genes.IdentityResolution.solutions.Publication;
 // java
 import java.util.List;
 
+import org.apache.xpath.operations.Variable;
 // logger
 import org.slf4j.Logger;
 
@@ -29,6 +30,7 @@ import genes.IdentityResolution.solutions.Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_PmId;
 import genes.IdentityResolution.solutions.GoldStandard;
+import genes.IdentityResolution.solutions.Variables;
 
 public class LR_StandardRecordBlocker {
     private static final Logger logger = WinterLogManager.activateLogger("default");
@@ -36,7 +38,7 @@ public class LR_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= 35; fileNumber++) {
+        for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");

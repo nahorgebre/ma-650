@@ -44,6 +44,8 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevensh
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorLowerCaseSorensenDice;
 
+import genes.IdentityResolution.solutions.Variables;
+
 public class ML_StandardRecordBlocker {
     
     private static final Logger logger = WinterLogManager.activateLogger("default");
@@ -51,7 +53,7 @@ public class ML_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= 35; fileNumber++) {
+        for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");

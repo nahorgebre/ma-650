@@ -35,12 +35,14 @@ import genes.IdentityResolution.Comparators.PmIdComperator.SimilarityLevenshtein
 import genes.IdentityResolution.Comparators.PmIdComperator.SimilaritySorensenDice.PmIdComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.PmIdComperator.SimilarityTokenizingJaccard.PmIdComperatorTokenizingJaccard;
 
+import genes.IdentityResolution.solutions.Variables;
+
 public class ML_StandardRecordBlocker {
 
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= 35; fileNumber++) {
+        for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");
