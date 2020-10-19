@@ -32,7 +32,7 @@ mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Testis.Testis
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Testis.mart_export_testis_2_gene2pubtatorcentral.Run"
 
 # Publication
-mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Publication.Run"
+#mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Publication.Run"
 
 # Organs
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.mart_export_heart_2_mart_export_brain.Run"
