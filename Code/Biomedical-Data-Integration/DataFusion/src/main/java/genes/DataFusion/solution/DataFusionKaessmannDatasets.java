@@ -78,38 +78,23 @@ public class DataFusionKaessmannDatasets {
 
         // Brain
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_all_gene_disease_pmid_associations), mart_export_brain, all_gene_disease_pmid_associations);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_gene2pubtatorcentral), mart_export_brain, gene2pubtatorcentral);
 
         // Cerebellum
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_mart_export_cerebellum), Cerebellum, mart_export_cerebellum);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_all_gene_disease_pmid_associations), mart_export_cerebellum, all_gene_disease_pmid_associations);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_gene2pubtatorcentral), mart_export_cerebellum, gene2pubtatorcentral);
-        
+   
         // Heart
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Heart_Ensembl_NCBI_Crosswalk), Heart, Heart_Ensembl_NCBI_Crosswalk);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_Ensembl_NCBI_Crosswalk_2_all_gene_disease_pmid_associations), Heart_Ensembl_NCBI_Crosswalk, all_gene_disease_pmid_associations);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_Ensembl_NCBI_Crosswalk_2_gene2pubtatorcentral), Heart_Ensembl_NCBI_Crosswalk, gene2pubtatorcentral);
         correspondences.loadCorrespondences(new File(Correspondences.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk), mart_export_heart);
         
         // Kidney
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_mart_export_kidney), Kidney, mart_export_kidney);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_kidney_2_all_gene_disease_pmid_associations), mart_export_kidney, all_gene_disease_pmid_associations);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_kidney_2_gene2pubtatorcentral), mart_export_kidney, gene2pubtatorcentral);
         
         // Liver
         correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_liver_2_all_gene_disease_pmid_associations), mart_export_liver, all_gene_disease_pmid_associations);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_brain_2_gene2pubtatorcentral), mart_export_liver, gene2pubtatorcentral);
         
         // Testis
         correspondences.loadCorrespondences(new File(Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_testis_2_all_gene_disease_pmid_associations), mart_export_testis, all_gene_disease_pmid_associations);
-        correspondences.loadCorrespondences(new File(Correspondences.mart_export_testis_2_gene2pubtatorcentral), mart_export_testis, gene2pubtatorcentral);
         
-        // Publications
-        correspondences.loadCorrespondences(new File(Correspondences.gene2pubtatorcentral_2_PubMedDate), gene2pubtatorcentral, PubMedDate);
-
         // Organs
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Brain), Heart, Brain);
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Cerebellum), Heart, Cerebellum);
@@ -133,18 +118,9 @@ public class DataFusionKaessmannDatasets {
         // add attribute fusers
         strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new EnsemblIdEvaluationRule());
         strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
-        
         strategy.addAttributeFuser(Gene.GENENAMES, new GeneNamesFuserUnion(), new GeneNamesEvaluationRule());
-
         strategy.addAttributeFuser(Gene.GENEDESCRIPTIONS, new GeneDescriptionsFuserUnion(), new GeneDescriptionsEvaluationRule());
-
-        strategy.addAttributeFuser(Gene.DISEASEASSOCIATIONS, new DiseasesFuserUnion(), new DisaesesEvaluationRule());
-
         strategy.addAttributeFuser(Gene.ORGANS, new OrgansFuserUnion(), new OrgansEvaluationRule());
-
-        strategy.addAttributeFuser(Gene.PATENTMENTIONS, new PatentsFuserUnion(), new PatentsEvaluationRule());
-
-        strategy.addAttributeFuser(Gene.PUBLICATIONMENTIONS, new PublicationsFuserUnion(), new PublicationsEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Gene, Attribute> engine = new DataFusionEngine<Gene, Attribute>(strategy);
@@ -159,7 +135,7 @@ public class DataFusionKaessmannDatasets {
 
         // write the result
         new File("data/output/").mkdirs();
-        new GeneXMLFormatter().writeXML(new File("data/output/fused.xml"), fusedDataSet);
+        new GeneXMLFormatter().writeXML(new File("data/output/kaessmann-fused.xml"), fusedDataSet);
         
         // evaluate
         System.out.println("*\n*\tEvaluating results\n*");
