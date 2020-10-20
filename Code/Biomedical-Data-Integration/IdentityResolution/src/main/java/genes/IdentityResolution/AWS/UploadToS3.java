@@ -111,7 +111,7 @@ public class UploadToS3 {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        String xmlFileName = "credentials.config";
+        String xmlFileName = System.getProperty("user.dir") + "/credentials.config";
         Document doc = builder.parse(xmlFileName);
 
         XPathFactory xPathFactory = XPathFactory.newInstance();
