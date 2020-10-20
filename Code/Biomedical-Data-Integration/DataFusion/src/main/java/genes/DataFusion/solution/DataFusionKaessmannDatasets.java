@@ -120,7 +120,7 @@ public class DataFusionKaessmannDatasets {
         strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
         strategy.addAttributeFuser(Gene.GENENAMES, new GeneNamesFuserUnion(), new GeneNamesEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTIONS, new GeneDescriptionsFuserUnion(), new GeneDescriptionsEvaluationRule());
-        strategy.addAttributeFuser(Gene.ORGANS, new OrgansFuserUnion(), new OrgansEvaluationRule());
+        //strategy.addAttributeFuser(Gene.ORGANS, new OrgansFuserUnion(), new OrgansEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Gene, Attribute> engine = new DataFusionEngine<Gene, Attribute>(strategy);
