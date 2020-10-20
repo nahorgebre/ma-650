@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <gene>
+    <id>mart_export_brain_1669</id>
+    <ensemblId>ENSMUSG00000021811</ensemblId>
+    <geneNames>
+        <geneNames>
+            <name>Dnajc9</name>
+        </geneNames>
+    </geneNames>
+    <geneDescriptions>
+        <geneDescriptions>
+          <description>DnaJ heat shock protein family (Hsp40) member C9 [Source:MGI Symbol;Acc:MGI:1915326]</description>
+        </geneDescriptions>
+    </geneDescriptions>
+    <organs>
+        <organs>
+          <organName>Brain</organName>
+          <disagreement>0.048495341</disagreement>
+          <call>Same</call>
+        </organs>
+    </organs>
+  </gene>
+</genes>

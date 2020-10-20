@@ -107,7 +107,7 @@ public class DataFusionKaessmannDatasets {
 
         // load the gold standard
         DataSet<Gene, Attribute> gs = new FusibleHashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/goldstandard/goldstandard.xml"), "/genes/gene", gs);
+        new GeneXMLReader().loadFromXML(new File("data/goldstandard/kaessmann-gs.xml"), "/genes/gene", gs);
 
         // define the fusion strategy
         DataFusionStrategy<Gene, Attribute> strategy = new DataFusionStrategy<>(new GeneXMLReader());
