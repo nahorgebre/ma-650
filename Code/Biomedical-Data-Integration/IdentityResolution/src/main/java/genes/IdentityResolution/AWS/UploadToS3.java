@@ -93,21 +93,23 @@ public class UploadToS3 {
 
         AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(getCredentials())).withRegion(Regions.US_EAST_2).build();
 
-        System.out.println("Upload - Key Name: " + bucketName + "/" + keyName);
-        System.out.println("Upload - File Name: " + filePath);
+        try {
+            s3client.putObject(
+                bucketName, 
+                keyName, 
+                new File(filePath)
+            );
+        } catch (Exception e) {
+            System.out.println("Upload failed!");
+            System.out.println("Upload - Key Name: " + bucketName + "/" + keyName);
+            System.out.println("Upload - File Name: " + filePath);
+            System.out.println(e);
 
-        s3client.putObject(
-            bucketName, 
-            keyName, 
-            new File(filePath)
-        );
-
-        System.out.println("Upload succeeded!");
+        }
 
     }
 
-    public static AWSCredentials getCredentials() throws ParserConfigurationException, SAXException, IOException,
-            XPathExpressionException {
+    public static AWSCredentials getCredentials() throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
