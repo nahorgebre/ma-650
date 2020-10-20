@@ -19,47 +19,48 @@ Heart_2_Kidney=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.co
 
 Heart_2_Liver=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Liver/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 
-Heart_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Testis/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+
 
 # Brain
 mkdir -p data/correspondences/Brain/Brain_2_mart_export_brain
-wget -N $Brain_2_mart_export_brain -O data/correspondences/Brain/Brain_2_mart_export_brain/correspondences.csv
+wget $Brain_2_mart_export_brain -O data/correspondences/Brain/Brain_2_mart_export_brain/correspondences.csv
 
 # Cerebellum
 mkdir -p data/correspondences/Cerebellum/Cerebellum_2_mart_export_cerebellum
-wget -N $Cerebellum_2_mart_export_cerebellum -O data/correspondences/Cerebellum/Cerebellum_2_mart_export_cerebellum/correspondences.csv
+wget $Cerebellum_2_mart_export_cerebellum -O data/correspondences/Cerebellum/Cerebellum_2_mart_export_cerebellum/correspondences.csv
 
 # Heart
 mkdir -p data/correspondences/Heart/Heart_2_Heart_Ensembl_NCBI_Crosswalk
-wget - N $Heart_2_Heart_Ensembl_NCBI_Crosswalk -O data/correspondences/Heart/Heart_2_Heart_Ensembl_NCBI_Crosswalk/correspondences.csv
+wget $Heart_2_Heart_Ensembl_NCBI_Crosswalk -O data/correspondences/Heart/Heart_2_Heart_Ensembl_NCBI_Crosswalk/correspondences.csv
 
 mkdir -p data/correspondences/Heart/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk
 # missing
 
 # Kidney
 mkdir -p data/correspondences/Kidney/Kidney_2_mart_export_kidney
-wget -N $Kidney_2_mart_export_kidney -O data/correspondences/Kidney/Kidney_2_mart_export_kidney/correspondences.csv
+wget $Kidney_2_mart_export_kidney -O data/correspondences/Kidney/Kidney_2_mart_export_kidney/correspondences.csv
 
 # Liver
 mkdir -p data/correspondences/Liver/Liver_2_mart_export_liver
-wget -N $Liver_2_mart_export_liver -O data/correspondences/Liver/Liver_2_mart_export_liver/correspondences.csv
+wget $Liver_2_mart_export_liver -O data/correspondences/Liver/Liver_2_mart_export_liver/correspondences.csv
 
 # Testis
 mkdir -p data/correspondences/Testis/Testis_2_mart_export_testis
-wget -N $Testis_2_mart_export_testis -O data/correspondences/Testis/Testis_2_mart_export_testis/correspondences.csv
+wget $Testis_2_mart_export_testis -O data/correspondences/Testis/Testis_2_mart_export_testis/correspondences.csv
 
 # Organs
 mkdir -p data/correspondences/Organs/Heart_2_Brain
-wget -N $Heart_2_Brain -O data/correspondences/Organs/Heart_2_Brain/correspondences.csv
+wget $Heart_2_Brain -O data/correspondences/Organs/Heart_2_Brain/correspondences.csv
 
 mkdir -p data/correspondences/Organs/Heart_2_Cerebellum
-wget -N $Heart_2_Cerebellum -O data/correspondences/Organs/Heart_2_Cerebellum/correspondences.csv
+wget $Heart_2_Cerebellum -O data/correspondences/Organs/Heart_2_Cerebellum/correspondences.csv
 
 mkdir -p data/correspondences/Organs/Heart_2_Kidney
-wget -N $Heart_2_Kidney -O data/correspondences/Organs/Heart_2_Kidney/correspondences.csv
+wget $Heart_2_Kidney -O data/correspondences/Organs/Heart_2_Kidney/correspondences.csv
 
 mkdir -p data/correspondences/Organs/Heart_2_Liver
-wget -N $Heart_2_Liver -O data/correspondences/Organs/Heart_2_Liver/correspondences.csv
+wget $Heart_2_Liver -O data/correspondences/Organs/Heart_2_Liver/correspondences.csv
 
 mkdir -p data/correspondences/Organs/Heart_2_Testis
-wget -N $Heart_2_Testis -O data/correspondences/Organs/Heart_2_Testis/correspondences.csv
+Heart_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Testis/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+wget $Heart_2_Testis -O data/correspondences/Organs/Heart_2_Testis/correspondences.csv
