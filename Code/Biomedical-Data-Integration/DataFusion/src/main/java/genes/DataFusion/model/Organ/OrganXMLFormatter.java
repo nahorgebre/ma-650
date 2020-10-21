@@ -14,11 +14,6 @@ public class OrganXMLFormatter extends XMLFormatter<Organ> {
     @Override
     public Element createElementFromRecord(Organ record, Document doc) {
         Element organ = doc.createElement("organs");
-
-        organ.appendChild(createTextElement("organName", record.getOrganName(), doc));
-        organ.appendChild(createTextElement("disagreement", record.getDisagreement(), doc));
-        organ.appendChild(createTextElement("probEqualOrthoAdj", record.getProbEqualOrthoAdj(), doc));
-        organ.appendChild(createTextElement("call", record.getCall(), doc));
         
         if(record.getOrganName()!=null) {
             organ.appendChild(createTextElement("organName", record.getOrganName(), doc));

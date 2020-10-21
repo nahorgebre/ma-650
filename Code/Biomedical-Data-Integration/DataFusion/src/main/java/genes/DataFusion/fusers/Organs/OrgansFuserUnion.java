@@ -31,7 +31,11 @@ public class OrgansFuserUnion extends AttributeValueFuser<List<Organ>, Gene, Att
     }
 
     @Override
-    public void fuse(RecordGroup<Gene, Attribute> group, Gene fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
+    public void fuse(RecordGroup<Gene, Attribute> group, 
+        Gene fusedRecord, 
+        Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, 
+        Attribute schemaElement) {
+
         FusedValue<List<Organ>, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
         fusedRecord.setOrgans(fused.getValue());
         fusedRecord.setAttributeProvenance(Gene.ORGANS, fused.getOriginalIds());

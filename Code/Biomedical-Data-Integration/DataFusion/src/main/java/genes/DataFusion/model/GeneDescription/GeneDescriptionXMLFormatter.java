@@ -16,7 +16,7 @@ public class GeneDescriptionXMLFormatter extends XMLFormatter<GeneDescription> {
     public Element createElementFromRecord(GeneDescription record, Document doc) {
         Element geneDescription = doc.createElement("geneDescriptions");
 
-        geneDescription.appendChild(createTextElement("description", record.getDescription(), doc));
+        //geneDescription.appendChild(createTextElement("description", record.getDescription(), doc));
        
         if(record.getDescription()!=null) {
             geneDescription.appendChild(createTextElement("description", record.getDescription(), doc));

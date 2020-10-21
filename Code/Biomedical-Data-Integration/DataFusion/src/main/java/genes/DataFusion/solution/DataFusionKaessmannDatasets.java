@@ -77,30 +77,30 @@ public class DataFusionKaessmannDatasets {
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
 
         // Brain
-        //correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
+        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
 
         // Cerebellum
-        //correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_mart_export_cerebellum), Cerebellum, mart_export_cerebellum);
+        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_mart_export_cerebellum), Cerebellum, mart_export_cerebellum);
    
         // Heart
-        //correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Heart_Ensembl_NCBI_Crosswalk), Heart, Heart_Ensembl_NCBI_Crosswalk);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Heart_Ensembl_NCBI_Crosswalk), Heart, Heart_Ensembl_NCBI_Crosswalk);
         //correspondences.loadCorrespondences(new File(Correspondences.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk), mart_export_heart);
         
         // Kidney
-        //correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_mart_export_kidney), Kidney, mart_export_kidney);
+        correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_mart_export_kidney), Kidney, mart_export_kidney);
         
         // Liver
-        //correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
+        correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
         
         // Testis
-        //correspondences.loadCorrespondences(new File(Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
+        correspondences.loadCorrespondences(new File(Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
         
         // Organs
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Brain), Heart, Brain);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Cerebellum), Heart, Cerebellum);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Kidney), Heart, Kidney);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Liver), Heart, Liver);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Testis), Heart, Testis);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Brain), Brain, Heart);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Cerebellum), Cerebellum, Heart);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Kidney), Kidney, Heart);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Liver), Liver, Heart);
+        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Testis), Testis, Heart);
 
         // write group size distribution
         correspondences.printGroupSizeDistribution();
@@ -120,7 +120,7 @@ public class DataFusionKaessmannDatasets {
         strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
         strategy.addAttributeFuser(Gene.GENENAMES, new GeneNamesFuserUnion(), new GeneNamesEvaluationRule());
         strategy.addAttributeFuser(Gene.GENEDESCRIPTIONS, new GeneDescriptionsFuserUnion(), new GeneDescriptionsEvaluationRule());
-        //strategy.addAttributeFuser(Gene.ORGANS, new OrgansFuserUnion(), new OrgansEvaluationRule());
+        strategy.addAttributeFuser(Gene.ORGANS, new OrgansFuserUnion(), new OrgansEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Gene, Attribute> engine = new DataFusionEngine<Gene, Attribute>(strategy);

@@ -16,7 +16,7 @@ public class GeneNameXMLFormatter extends XMLFormatter<GeneName> {
     public Element createElementFromRecord(GeneName record, Document doc) {
         Element geneName = doc.createElement("geneName");
 
-        geneName.appendChild(createTextElement("name", record.getName(), doc));
+        //geneName.appendChild(createTextElement("name", record.getName(), doc));
        
         if(record.getName()!=null) {
             geneName.appendChild(createTextElement("name", record.getName(), doc));
