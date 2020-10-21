@@ -28,5 +28,17 @@ mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Heart_
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Heart_2_Liver.Run"
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Heart_2_Testis.Run"
 
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Cerebellum_2_Brain.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Cerebellum_2_Kidney.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Cerebellum_2_Liver.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Cerebellum_2_Testis.Run"
+
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Brain_2_Kidney.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Brain_2_Liver.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Brain_2_Testis.Run"
+
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Kidney_2_Liver.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Organs.Kidney_2_Testis.Run"
+
 # Upload results to S3
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.AWS.UploadToS3"
