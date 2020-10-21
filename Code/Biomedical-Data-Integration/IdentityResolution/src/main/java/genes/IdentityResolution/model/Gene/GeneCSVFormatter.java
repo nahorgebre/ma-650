@@ -1,4 +1,4 @@
-package genes.IdentityResolution.model;
+package genes.IdentityResolution.model.Gene;
 
 import java.util.List;
 

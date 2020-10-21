@@ -1,4 +1,4 @@
-package genes.IdentityResolution.model;
+package genes.IdentityResolution.model.GeneDescription;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

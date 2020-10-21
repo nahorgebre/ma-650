@@ -8,7 +8,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 import info.debatty.java.stringsimilarity.SorensenDice;
 
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 public class NcbiIdComperatorSorensenDice implements Comparator<Gene, Attribute> {
     

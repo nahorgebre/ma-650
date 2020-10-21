@@ -1,6 +1,12 @@
-package genes.IdentityResolution.model;
+package genes.IdentityResolution.model.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
+import genes.IdentityResolution.model.Disease.Disease;
+import genes.IdentityResolution.model.GeneDescription.GeneDescription;
+import genes.IdentityResolution.model.GeneName.GeneName;
+import genes.IdentityResolution.model.Organ.Organ;
+import genes.IdentityResolution.model.Patent.Patent;
+import genes.IdentityResolution.model.Publication.Publication;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -83,4 +89,5 @@ public class Gene implements Matchable {
             return false;
         }
     }
+
 }

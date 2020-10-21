@@ -8,7 +8,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 import info.debatty.java.stringsimilarity.Cosine;
 
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
 

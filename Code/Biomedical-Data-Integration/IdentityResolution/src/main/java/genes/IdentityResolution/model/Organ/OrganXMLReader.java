@@ -1,4 +1,4 @@
-package genes.IdentityResolution.model;
+package genes.IdentityResolution.model.Organ;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;

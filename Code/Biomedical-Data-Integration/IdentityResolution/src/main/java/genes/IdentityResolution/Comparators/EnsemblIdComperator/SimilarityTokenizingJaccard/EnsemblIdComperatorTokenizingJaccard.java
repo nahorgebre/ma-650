@@ -7,7 +7,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 public class EnsemblIdComperatorTokenizingJaccard implements Comparator<Gene, Attribute> {
 

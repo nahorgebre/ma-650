@@ -4,8 +4,8 @@ import java.io.File;
 
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-import genes.IdentityResolution.model.Gene;
-import genes.IdentityResolution.model.GeneXMLReader;
+import genes.IdentityResolution.model.Gene.Gene;
+import genes.IdentityResolution.model.Gene.GeneXMLReader;
 
 public class Datasets {
 

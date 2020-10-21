@@ -18,7 +18,7 @@ import genes.IdentityResolution.Comparators.PmIdComperator.SimilaritySorensenDic
 import genes.IdentityResolution.Comparators.PmIdComperator.SimilarityTokenizingJaccard.PmIdComperatorTokenizingJaccard;
 
 // model
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 public class GeneLinearCombinationMatchingRule_PmId {
 

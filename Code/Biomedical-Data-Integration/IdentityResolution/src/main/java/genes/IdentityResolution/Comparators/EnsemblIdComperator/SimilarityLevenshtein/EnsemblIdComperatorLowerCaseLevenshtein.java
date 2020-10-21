@@ -7,7 +7,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
 
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 public class EnsemblIdComperatorLowerCaseLevenshtein implements Comparator<Gene, Attribute> {
    

@@ -23,7 +23,7 @@ import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokeni
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorTokenizingJaccard;
 
 // model
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 public class GeneLinearCombinationMatchingRule_EnsemblId {
 

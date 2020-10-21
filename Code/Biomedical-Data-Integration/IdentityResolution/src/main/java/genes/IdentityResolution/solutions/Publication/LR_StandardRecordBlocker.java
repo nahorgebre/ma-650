@@ -22,7 +22,7 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import genes.IdentityResolution.Blocking.PublicationBlockingKeyByPmId;
 
 // model
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 // solutions
 import genes.IdentityResolution.solutions.Correspondences;

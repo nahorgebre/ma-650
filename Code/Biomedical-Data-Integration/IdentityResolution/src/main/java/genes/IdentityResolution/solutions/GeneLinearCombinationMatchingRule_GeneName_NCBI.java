@@ -30,7 +30,7 @@ import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilaritySorensenD
 import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityTokenizingJaccard.NcbiIdComperatorTokenizingJaccard;
 
 // model
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 public class GeneLinearCombinationMatchingRule_GeneName_NCBI {
 

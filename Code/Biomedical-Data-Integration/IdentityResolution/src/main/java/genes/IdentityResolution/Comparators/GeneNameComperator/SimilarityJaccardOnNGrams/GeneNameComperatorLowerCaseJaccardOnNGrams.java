@@ -8,8 +8,8 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.JaccardOnNGramsSimilarity;
 
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
-import genes.IdentityResolution.model.Gene;
-import genes.IdentityResolution.model.GeneName;
+import genes.IdentityResolution.model.Gene.Gene;
+import genes.IdentityResolution.model.GeneName.GeneName;
 
 import java.util.List;
 import java.util.ArrayList;

@@ -16,7 +16,7 @@ import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlo
 import de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule;
 
 // models
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 // solutions
 import genes.IdentityResolution.solutions.Datasets;

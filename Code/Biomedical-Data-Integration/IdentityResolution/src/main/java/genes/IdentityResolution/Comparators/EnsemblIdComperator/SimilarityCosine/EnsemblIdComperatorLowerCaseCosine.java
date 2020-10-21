@@ -5,10 +5,8 @@ import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-
+import genes.IdentityResolution.model.Gene.Gene;
 import info.debatty.java.stringsimilarity.Cosine;
-
-import genes.IdentityResolution.model.Gene;
 
 public class EnsemblIdComperatorLowerCaseCosine implements Comparator<Gene, Attribute> {
 

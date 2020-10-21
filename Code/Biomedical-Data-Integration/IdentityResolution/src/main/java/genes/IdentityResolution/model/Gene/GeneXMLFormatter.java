@@ -1,9 +1,21 @@
-package genes.IdentityResolution.model;
+package genes.IdentityResolution.model.Gene;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
+import genes.IdentityResolution.model.Disease.Disease;
+import genes.IdentityResolution.model.Disease.DiseaseXMLFormatter;
+import genes.IdentityResolution.model.GeneDescription.GeneDescription;
+import genes.IdentityResolution.model.GeneDescription.GeneDescriptionXMLFormatter;
+import genes.IdentityResolution.model.GeneName.GeneName;
+import genes.IdentityResolution.model.GeneName.GeneNameXMLFormatter;
+import genes.IdentityResolution.model.Organ.Organ;
+import genes.IdentityResolution.model.Organ.OrganXMLFormatter;
+import genes.IdentityResolution.model.Patent.Patent;
+import genes.IdentityResolution.model.Patent.PatentXMLFormatter;
+import genes.IdentityResolution.model.Publication.Publication;
+import genes.IdentityResolution.model.Publication.PublicationXMLFormatter;
 
 public class GeneXMLFormatter extends XMLFormatter<Gene> {
 

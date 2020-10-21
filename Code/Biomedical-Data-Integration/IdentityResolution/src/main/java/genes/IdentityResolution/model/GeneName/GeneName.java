@@ -1,4 +1,4 @@
-package genes.IdentityResolution.model;
+package genes.IdentityResolution.model.GeneName;
 
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;

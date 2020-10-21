@@ -64,41 +64,41 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity
 # Cerebellum_2_Brain
 mkdir -p data/goldstandard/Organs/Cerebellum_2_Brain
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Brain/test.csv -O data/goldstandard/Organs/Cerebellum_2_Brain/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Brain/train.csv -O data/goldstandard/Organs/Cerebellum_2_Brain/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Brain/train.csv -O data/goldstandard/Organs/Cerebellum_2_Brain/train.csv
 # Cerebellum_2_Kidney
 mkdir -p data/goldstandard/Organs/Cerebellum_2_Kidney
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Kidney/test.csv -O data/goldstandard/Organs/Cerebellum_2_Kidney/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Kidney/train.csv -O data/goldstandard/Organs/Cerebellum_2_Kidney/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Kidney/train.csv -O data/goldstandard/Organs/Cerebellum_2_Kidney/train.csv
 # Cerebellum_2_Liver
 mkdir -p data/goldstandard/Organs/Cerebellum_2_Liver
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Liver/test.csv -O data/goldstandard/Organs/Cerebellum_2_Liver/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Liver/train.csv -O data/goldstandard/Organs/Cerebellum_2_Liver/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Liver/train.csv -O data/goldstandard/Organs/Cerebellum_2_Liver/train.csv
 # Cerebellum_2_Testis
 mkdir -p data/goldstandard/Organs/Cerebellum_2_Testis
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Testis/test.csv -O data/goldstandard/Organs/Cerebellum_2_Testis/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Testis/train.csv -O data/goldstandard/Organs/Cerebellum_2_Testis/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Cerebellum_2_Testis/train.csv -O data/goldstandard/Organs/Cerebellum_2_Testis/train.csv
 
 # Brain_2_Kidney
 mkdir -p data/goldstandard/Organs/Brain_2_Kidney
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Kidney/test.csv -O data/goldstandard/Organs/Brain_2_Kidney/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Kidney/train.csv -O data/goldstandard/Organs/HeaBrain_2_Kidneyrt_2_Testis/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Kidney/train.csv -O data/goldstandard/Organs/Brain_2_Kidney/train.csv
 # Brain_2_Liver
 mkdir -p data/goldstandard/Organs/Brain_2_Liver
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Liver/test.csv -O data/goldstandard/Organs/Brain_2_Liver/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Liver/train.csv -O data/goldstandard/Organs/Brain_2_Liver/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Liver/train.csv -O data/goldstandard/Organs/Brain_2_Liver/train.csv
 # Brain_2_Testis
 mkdir -p data/goldstandard/Organs/Brain_2_Testis
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Testis/test.csv -O data/goldstandard/Organs/Brain_2_Testis/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Testis/train.csv -O data/goldstandard/Organs/Brain_2_Testis/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Brain_2_Testis/train.csv -O data/goldstandard/Organs/Brain_2_Testis/train.csv
 
 # Kidney_2_Liver
 mkdir -p data/goldstandard/Organs/Kidney_2_Liver
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Kidney_2_Liver/test.csv -O data/goldstandard/Organs/Kidney_2_Liver/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Kidney_2_Liver/train.csv -O data/goldstandard/Organs/Kidney_2_Liver/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Kidney_2_Liver/train.csv -O data/goldstandard/Organs/Kidney_2_Liver/train.csv
 # Kidney_2_Testis
 mkdir -p data/goldstandard/Organs/Kidney_2_Testis
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Kidney_2_Testis/test.csv -O data/goldstandard/Organs/Kidney_2_Testis/test.csv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Kidney_2_Testis/train.csv -O data/goldstandard/Organs/Kidney_2_Testis/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Kidney_2_Testis/train.csv -O data/goldstandard/Organs/Kidney_2_Testis/train.csv
 
 #bash GetBrainGoldstandardDatasets.sh
 #bash GetCerebellumGoldstandardDatasets.sh

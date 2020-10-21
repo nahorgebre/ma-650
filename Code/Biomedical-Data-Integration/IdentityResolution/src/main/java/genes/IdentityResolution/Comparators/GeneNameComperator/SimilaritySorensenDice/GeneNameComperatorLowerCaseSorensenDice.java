@@ -9,8 +9,8 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import info.debatty.java.stringsimilarity.SorensenDice;
 
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
-import genes.IdentityResolution.model.Gene;
-import genes.IdentityResolution.model.GeneName;
+import genes.IdentityResolution.model.Gene.Gene;
+import genes.IdentityResolution.model.GeneName.GeneName;
 
 import java.util.List;
 import java.util.ArrayList;

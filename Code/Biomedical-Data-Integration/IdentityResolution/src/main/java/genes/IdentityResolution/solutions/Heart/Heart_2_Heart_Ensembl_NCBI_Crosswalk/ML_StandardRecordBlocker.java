@@ -13,7 +13,7 @@ import de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleLearner;
 
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
 
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;

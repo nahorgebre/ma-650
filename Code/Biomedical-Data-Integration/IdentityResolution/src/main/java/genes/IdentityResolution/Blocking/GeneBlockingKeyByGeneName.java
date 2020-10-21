@@ -10,8 +10,8 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.DataIterator;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
-import genes.IdentityResolution.model.Gene;
-import genes.IdentityResolution.model.GeneName;
+import genes.IdentityResolution.model.Gene.Gene;
+import genes.IdentityResolution.model.GeneName.GeneName;
 
 public class GeneBlockingKeyByGeneName extends
         RecordBlockingKeyGenerator<Gene, Attribute> {

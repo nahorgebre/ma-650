@@ -35,7 +35,7 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokeniz
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
 
 // model
-import genes.IdentityResolution.model.Gene;
+import genes.IdentityResolution.model.Gene.Gene;
 
 public class GeneLinearCombinationMatchingRule_EnsemblId_GeneName {
 
