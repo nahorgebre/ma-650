@@ -17,12 +17,10 @@ namespace Analysis
             {
                 Gene gene = new Gene();
                 gene.ensemblId = node.SelectSingleNode("ensemblId").InnerText;
-                gene.geneDescription = node.SelectSingleNode("geneDescription").InnerText;
-                gene.disagreement = node.SelectSingleNode("disagreement").InnerText;
-                gene.probEqualOrthoAdj = node.SelectSingleNode("probEqualOrthoAdj").InnerText;
-                gene.call = node.SelectSingleNode("call").InnerText;
                 gene.ncbiId = node.SelectSingleNode("ncbiId").InnerText;
 
+                gene.descriptions = GeneDescription.getDescriptionList(node.SelectSingleNode("geneDescriptions").ChildNodes);
+                gene.organs = Organ.getOrganList(node.SelectSingleNode("organs").ChildNodes);
                 gene.geneNames = GeneName.getGeneNameList(node.SelectSingleNode("geneNames").ChildNodes);
                 gene.patentMentions = PatentMention.getPatentMentionList(node.SelectSingleNode("patentMentions").ChildNodes);
                 gene.publicationMentions = PublicationMention.getPublicationMentionList(node.SelectSingleNode("publicationMentions").ChildNodes);
@@ -40,15 +38,76 @@ namespace Analysis
     public class Gene 
     {
         public string ensemblId;
-        public string geneDescription;
-        public string disagreement;
-        public string probEqualOrthoAdj;
-        public string call;
         public string ncbiId;
+        public List<Organ> organs;
+        public List<GeneDescription> descriptions;
         public List<GeneName> geneNames;
         public List<DiseaseAssociation> diseaseAssociations;
         public List<PublicationMention> publicationMentions;
         public List<PatentMention> patentMentions;
+    }
+
+    public class GeneDescription
+    {
+        public string description;
+
+        public static List<GeneDescription> getDescriptionList (XmlNodeList childNodes)
+        {
+
+            List<GeneDescription> descriptionList = new List<GeneDescription>();
+            foreach(XmlNode node in childNodes)
+            {
+
+                GeneDescription geneDescription = new GeneDescription();
+
+                geneDescription.description = node.SelectSingleNode("description").InnerText;
+
+                descriptionList.Add(geneDescription);
+            }
+
+            return descriptionList;
+        }
+    }
+
+    public class Organ
+    {
+        public string organName;
+        public string disagreement;
+        public string probEqualOrthoAdj;
+        public string call;
+
+        public static List<Organ> getOrganList (XmlNodeList childNodes)
+        {
+            List<Organ> organList = new List<Organ>();
+            foreach(XmlNode node in childNodes)
+            {
+                Organ organ = new Organ();
+
+                if (node.SelectSingleNode("organName")!=null)
+                {
+                    organ.organName = node.SelectSingleNode("organName").InnerText;
+                }
+
+                if (node.SelectSingleNode("disagreement")!=null)
+                {
+                    organ.disagreement = node.SelectSingleNode("disagreement").InnerText;
+                }
+
+                if (node.SelectSingleNode("probEqualOrthoAdj")!=null)
+                {
+                    organ.probEqualOrthoAdj = node.SelectSingleNode("probEqualOrthoAdj").InnerText;
+                }
+
+                if (node.SelectSingleNode("call")!=null)
+                {
+                    organ.call = node.SelectSingleNode("call").InnerText;
+                } 
+
+                organList.Add(organ);
+            }
+
+            return organList;
+        }
     }
 
     public class GeneName 
@@ -160,5 +219,7 @@ namespace Analysis
 
             return patentMentionList;
         }
+
     }
+
 }

@@ -8,13 +8,13 @@ namespace GoldstandardCreation
         {
 
             
-            Brain.run();
-            Cerebellum.run();
-            Heart.run();
-            Kidney.run();
-            Liver.run();
+            //Brain.run();
+            //Cerebellum.run();
+            //Heart.run();
+            //Kidney.run();
+            //Liver.run();
             Organs.run();     
-            Testis.run();
+            //Testis.run();
             //Publication.run();
 
             Output.run();

@@ -9,6 +9,7 @@ namespace Analysis
 {
     public class Analysis1
     {
+        /*
         public string UniqueGene;
         public string Brain = "N/A";
         //public string Cerebellum = "N/A";
@@ -165,5 +166,6 @@ namespace Analysis
 
             return returnValue;
         }
+        */
     }
 }

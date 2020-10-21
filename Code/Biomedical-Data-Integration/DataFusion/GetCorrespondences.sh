@@ -19,6 +19,7 @@ Heart_2_Kidney=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.co
 
 Heart_2_Liver=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Liver/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 
+Heart_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Testis/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 
 
 # Brain
@@ -62,5 +63,4 @@ mkdir -p data/correspondences/Organs/Heart_2_Liver
 wget $Heart_2_Liver -O data/correspondences/Organs/Heart_2_Liver/correspondences.csv
 
 mkdir -p data/correspondences/Organs/Heart_2_Testis
-Heart_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Testis/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 wget $Heart_2_Testis -O data/correspondences/Organs/Heart_2_Testis/correspondences.csv
