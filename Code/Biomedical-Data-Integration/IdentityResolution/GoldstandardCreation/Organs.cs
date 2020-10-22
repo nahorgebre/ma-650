@@ -15,8 +15,7 @@ namespace GoldstandardCreation
             Heart_2_Kidney();
             Heart_2_Liver();
             Heart_2_Testis();
-            */
-
+            
             Cerebellum_2_Brain();
             Cerebellum_2_Kidney();
             Cerebellum_2_Liver();
@@ -26,6 +25,9 @@ namespace GoldstandardCreation
             Brain_2_Testis();
             Kidney_2_Liver();
             Kidney_2_Testis();
+            */
+
+            Testis_2_Liver();
 
         }
 
@@ -262,6 +264,23 @@ namespace GoldstandardCreation
             {
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Testis_path, 1);
+                Methods.createOuput(trueFile, trueList);
+                Methods.createOuput(falseFile, falseList);
+            }
+        }
+
+        public static void Testis_2_Liver()
+        {
+            // ensembl id
+            string comparison = "Testis_2_Liver";
+            string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+            string trueFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
+            Directory.CreateDirectory(directoryName);
+            if (!File.Exists(trueFile) | !File.Exists(falseFile))
+            {
+                Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.Liver_path, 1);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
             }
