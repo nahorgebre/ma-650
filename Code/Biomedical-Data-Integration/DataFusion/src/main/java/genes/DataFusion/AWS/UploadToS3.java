@@ -32,37 +32,14 @@ public class UploadToS3 {
 
         String outputDirectory = System.getProperty("user.dir") + "/data/output";
 
-        for (String solution : getSubDirectoryList(outputDirectory)) {
-            
-            String solutionDirectory = outputDirectory + "/" + solution;
+        for (String file : getFiles(outputDirectory)) {
 
-            for (String comparisonDescription : getSubDirectoryList(solutionDirectory)) {
+            String fileName = outputDirectory + "/" + file;
 
-                String comparisonDescriptionDirectory = solutionDirectory + "/" + comparisonDescription;
-
-                for (String className : getSubDirectoryList(comparisonDescriptionDirectory)) {
-
-                    String classNameDirectory = comparisonDescriptionDirectory + "/" + className;
-
-                    for (String file : getFiles(classNameDirectory)) {
-
-                        String fileName = classNameDirectory + "/" + file;
-
-                        if (file.contains("evaluation") | file.contains("correspondences")) {
-                            
-                            String keyName = "identity-resolution/output/" + solution + "/" + comparisonDescription + "/" + className + "/" + file;
-                            uploadFile("nahorgebre-ma-650-master-thesis", keyName, fileName);
-
-                        }
-
-                    }
-          
-                }
-                
-            }
+            String keyName = "data-fusion/output/" + file;
+            uploadFile("nahorgebre-ma-650-master-thesis", keyName, fileName);
 
         }
-
     }
 
     public static String[] getSubDirectoryList(String directory) {
