@@ -110,7 +110,7 @@ public class DataFusionKaessmannDatasets {
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Testis), Testis, Cerebellum);
 
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Kidney), Kidney, Brain);
-        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Liver), Liver, Brain);
+        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Liver), Brain, Liver);
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Testis), Testis, Brain);
 
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Liver), Liver, Kidney);
