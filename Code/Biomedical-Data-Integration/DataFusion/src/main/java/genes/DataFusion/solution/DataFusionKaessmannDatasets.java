@@ -78,6 +78,8 @@ public class DataFusionKaessmannDatasets {
         System.out.println("*\n*\tLoading correspondences\n*");
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
 
+        /*
+
         // Brain
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
 
@@ -96,6 +98,8 @@ public class DataFusionKaessmannDatasets {
         
         // Testis
         correspondences.loadCorrespondences(new File(Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
+
+        */
         
         // Organs
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Brain), Brain, Heart);
@@ -116,6 +120,8 @@ public class DataFusionKaessmannDatasets {
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Liver), Liver, Kidney);
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Testis), Testis, Kidney);
 
+        
+
         // write group size distribution
         correspondences.printGroupSizeDistribution();
 
@@ -131,9 +137,6 @@ public class DataFusionKaessmannDatasets {
 
         // add attribute fusers
         strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new EnsemblIdEvaluationRule());
-        strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
-        strategy.addAttributeFuser(Gene.GENENAMES, new GeneNamesFuserUnion(), new GeneNamesEvaluationRule());
-        strategy.addAttributeFuser(Gene.GENEDESCRIPTIONS, new GeneDescriptionsFuserUnion(), new GeneDescriptionsEvaluationRule());
         strategy.addAttributeFuser(Gene.ORGANS, new OrgansFuserUnion(), new OrgansEvaluationRule());
 
         // create the fusion engine
