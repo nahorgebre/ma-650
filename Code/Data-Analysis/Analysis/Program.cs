@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace Analysis
+﻿namespace Analysis
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Analysis1_2.run();
+            Analysis1.run();
         }
 
     }

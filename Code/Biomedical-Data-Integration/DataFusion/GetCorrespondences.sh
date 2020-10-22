@@ -103,3 +103,6 @@ wget $Kidney_2_Liver -O data/correspondences/Organs/Kidney_2_Liver/correspondenc
 
 mkdir -p data/correspondences/Organs/Kidney_2_Testis
 wget $Kidney_2_Testis -O data/correspondences/Organs/Kidney_2_Testis/correspondences.csv
+
+Testis_2_Liver=
+mkdir -p data/correspondences/Organs/Testis_2_Liver

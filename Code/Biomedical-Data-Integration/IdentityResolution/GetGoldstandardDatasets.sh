@@ -99,11 +99,3 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity
 mkdir -p data/goldstandard/Organs/Kidney_2_Testis
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Kidney_2_Testis/test.csv -O data/goldstandard/Organs/Kidney_2_Testis/test.csv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Kidney_2_Testis/train.csv -O data/goldstandard/Organs/Kidney_2_Testis/train.csv
-
-#bash GetBrainGoldstandardDatasets.sh
-#bash GetCerebellumGoldstandardDatasets.sh
-#bash GetHeartGoldstandardDatasets.sh
-#bash GetKidneyGoldstandardDatasets.sh
-#bash GetLiverGoldstandardDatasets.sh
-#bash GetTestisGoldstandardDatasets.sh
-#bash GetPublicationsGoldstandardDatasets.sh

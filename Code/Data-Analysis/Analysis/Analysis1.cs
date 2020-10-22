@@ -1,46 +1,26 @@
-using System.Collections.Generic;
-using System.Xml;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Analysis
 {
+
     public class Analysis1
     {
-        /*
-        public string UniqueGene;
-        public string Brain = "N/A";
-        //public string Cerebellum = "N/A";
-        //public string Heart = "N/A";
-        public string Liver = "N/A";
-        public string Kidney = "N/A";
-        public string Testis = "N/A";
-        public string OverallExpression;
 
-        public static void run() {
-            
-            string brainInput = Environment.CurrentDirectory + "/data/fused-kaessmann-brain.xml";
-            string cerebellumInput = Environment.CurrentDirectory + "/data/fused-kaessmann-cerebellum.xml";
-            string heartInput = Environment.CurrentDirectory + "/data/fused-kaessmann-heart.xml";          
-            string liverInput = Environment.CurrentDirectory + "/data/fused-kaessmann-liver.xml";
-            string kidneyInput = Environment.CurrentDirectory + "/data/fused-kaessmann-kidney.xml";
-            string testisInput = Environment.CurrentDirectory + "/data/fused-kaessmann-testis.xml";
+        public static void run()
+        {
 
-            String outputDirectory = Environment.CurrentDirectory + "/data/output";
-            Directory.CreateDirectory(outputDirectory);
-
-            string fileName = outputDirectory + "/analysis1.tsv";
-            using (StreamWriter sw = new StreamWriter(fileName)) 
+            FileInfo outputFile = new FileInfo(string.Format("{0}/data/output/analysis1.tsv", Environment.CurrentDirectory));
+            using (StreamWriter sw = new StreamWriter(outputFile.FullName))
             {
                 var delimiter = "\t";
                 List<string> firstLineContent = new List<string>()
                 {
                     "UniqueGene",
                     "Brain",
-                    //"Cerebellum",
-                    //"Heart",
+                    "Cerebellum",
+                    "Heart",
                     "Liver",
                     "Kidney",
                     "Testis",
@@ -49,92 +29,90 @@ namespace Analysis
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
-                foreach (Gene brainGene in Genes.getGenes(brainInput))
+                FileInfo inputFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.xml", Environment.CurrentDirectory));
+                foreach (Gene geneItem in Genes.getGenes(inputFile.FullName))
                 {
-                    Analysis1 analysis1 = new Analysis1();
+                    string UniqueGene = geneItem.ensemblId;
 
-                    analysis1.UniqueGene = brainGene.ensemblId;
-                    analysis1.Brain = getExpression(brainGene.call);
-
-                    foreach (Gene kidneyGene in Genes.getGenes(kidneyInput))
+                    string Brain = "N/A";
+                    string Cerebellum = "N/A";
+                    string Heart = "N/A";
+                    string Liver = "N/A";
+                    string Kidney = "N/A";
+                    string Testis = "N/A";
+ 
+                    foreach (Organ organItem in geneItem.organs)
                     {
-                        if (kidneyGene.ensemblId.Equals(analysis1.UniqueGene))
+                        if (organItem.organName.Equals("brain"))
                         {
-                            analysis1.Kidney = getExpression(kidneyGene.call);
+                            Brain = getExpression(organItem.call);
+                        }
+                        else if (organItem.organName.Equals("cerebellum"))
+                        {
+                            Cerebellum = getExpression(organItem.call);
+                        }
+                        else if (organItem.organName.Equals("heart"))
+                        {
+                            Heart = getExpression(organItem.call);
+                        }
+                        else if (organItem.organName.Equals("liver"))
+                        {
+                            Liver = getExpression(organItem.call);
+                        }
+                        else if (organItem.organName.Equals("kidney"))
+                        {
+                            Kidney = getExpression(organItem.call);
+                        }
+                        else if (organItem.organName.Equals("testis"))
+                        {
+                            Testis = getExpression(organItem.call);
                         }
                     }
 
-                    foreach (Gene liverGene in Genes.getGenes(liverInput))
-                    {
-                        if (liverGene.ensemblId.Equals(analysis1.UniqueGene))
-                        {
-                            analysis1.Liver = getExpression(liverGene.call);
-                        }
-                    }
+                    List<string> expressionList = new List<string>();
+                    expressionList.Add(Brain);
+                    expressionList.Add(Cerebellum);
+                    expressionList.Add(Heart);
+                    expressionList.Add(Liver);
+                    expressionList.Add(Kidney);
+                    expressionList.Add(Testis);
 
-                    foreach (Gene testisGene in Genes.getGenes(testisInput))
-                    {
-                        if (testisGene.ensemblId.Equals(analysis1.UniqueGene))
-                        {
-                            analysis1.Testis = getExpression(testisGene.call);
-                        }
-                    }
+                    string OverallExpression = getOverallExpression(expressionList);
 
-                    analysis1.OverallExpression = getOverallExpression(analysis1);
-
-                    List<string> itemContent = new List<string>()
+                    List<string> lineContent = new List<string>()
                     {
-                        analysis1.UniqueGene,
-                        analysis1.Brain,
-                        analysis1.Liver,
-                        analysis1.Kidney,
-                        analysis1.Testis,
-                        analysis1.OverallExpression
+                        UniqueGene,
+                        Brain,
+                        Cerebellum,
+                        Heart,
+                        Liver,
+                        Kidney,
+                        Testis,
+                        OverallExpression
                     };
-                    
-                    var inputLine = string.Join(delimiter, itemContent);
-                    sw.WriteLine(inputLine);
-
-                    Console.WriteLine(inputLine);
-                    
+                    var line = string.Join(delimiter, lineContent);
+                    sw.WriteLine(line);
                 }
+
             }
+
         }
 
-        public static string getExpression(string input)
-        {
-            string returnValue = "N/A";
-            if (input.Equals("Different"))
-            {
-                returnValue = "0";
-            }
-            else if (input.Equals("Same"))
-            {
-                returnValue = "1";
-            }
-            return returnValue;
-        }
-
-        public static string getOverallExpression(Analysis1 analysis1)
+        public static string getOverallExpression(List<string> expressionList)
         {
             string returnValue = string.Empty;
             
             bool contains1 = false;
             bool contains0 = false;
 
-            List<string> organList = new List<string>();
-            organList.Add(analysis1.Brain.ToString());          
-            organList.Add(analysis1.Liver.ToString());
-            organList.Add(analysis1.Kidney.ToString());
-            organList.Add(analysis1.Testis.ToString());
-
-            foreach (string organ in organList)
+            
+            foreach (string expression in expressionList)
             {
-                if (organ.Equals("0"))
+                if (expression.Equals("0"))
                 {
                     contains0 = true;
                 }
-                else if (organ.Equals("1"))
+                else if (expression.Equals("1"))
                 {
                     contains1 = true;
                 }
@@ -166,6 +144,24 @@ namespace Analysis
 
             return returnValue;
         }
-        */
+
+        public static string getExpression(string input)
+        {
+
+            string returnValue = "N/A";
+            if (input.Equals("Different"))
+            {
+                returnValue = "0";
+            }
+            else if (input.Equals("Same"))
+            {
+                returnValue = "1";
+            }
+
+            return returnValue;
+
+        }
+
     }
+
 }
