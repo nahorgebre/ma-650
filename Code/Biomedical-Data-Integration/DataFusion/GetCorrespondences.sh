@@ -11,16 +11,23 @@ Liver_2_mart_export_liver=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.a
 
 Testis_2_mart_export_testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Testis/Testis_2_mart_export_testis/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 
+# Organs
+
 Heart_2_Brain=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Brain/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
-
 Heart_2_Cerebellum=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Cerebellum/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
-
 Heart_2_Kidney=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Kidney/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
-
 Heart_2_Liver=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Liver/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
-
 Heart_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Heart_2_Testis/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 
+Cerebellum_2_Brain=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Cerebellum_2_Brain/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+Cerebellum_2_Kidney=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Cerebellum_2_Kidney/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+
+Brain_2_Kidney=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Brain_2_Kidney/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+Brain_2_Liver=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Brain_2_Liver/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+Brain_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Brain_2_Testis/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+
+Kidney_2_Liver=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Kidney_2_Liver/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+Kidney_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Kidney_2_Testis/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 
 # Brain
 mkdir -p data/correspondences/Brain/Brain_2_mart_export_brain

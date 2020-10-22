@@ -59,8 +59,8 @@ public class ML_StandardRecordBlocker {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Heart = Datasets.Heart();
-        HashedDataSet<Gene, Attribute> Testis = Datasets.Testis();
+        HashedDataSet<Gene, Attribute> ds1 = Datasets.Heart();
+        HashedDataSet<Gene, Attribute> ds2 = Datasets.Testis();
 
         // goldstandard directory
         String comparisonDescription = "Heart_2_Testis";
@@ -107,7 +107,7 @@ public class ML_StandardRecordBlocker {
 
             // learn the matching rule
             RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-            learner.learnMatchingRule(Testis, Heart, null, matchingRule, gsTrain);
+            learner.learnMatchingRule(ds2, ds1, null, matchingRule, gsTrain);
 
             // create a blocker (blocking strategy)
             StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
@@ -119,7 +119,7 @@ public class ML_StandardRecordBlocker {
    
             // execute the matching
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Testis, Heart, null, matchingRule, blocker);
+                ds2, ds1, null, matchingRule, blocker);
                 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);

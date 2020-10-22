@@ -37,8 +37,8 @@ public class LR_StandardRecordBlocker {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> Heart = Datasets.Heart();
-        HashedDataSet<Gene, Attribute> Cerebellum = Datasets.Cerebellum();
+        HashedDataSet<Gene, Attribute> ds1 = Datasets.Heart();
+        HashedDataSet<Gene, Attribute> ds2 = Datasets.Cerebellum();
 
         // goldstandard directory
         String comparisonDescription = "Heart_2_Cerebellum";
@@ -67,7 +67,7 @@ public class LR_StandardRecordBlocker {
             // execute the matching
             System.out.println("*\n*\tRunning identity resolution\n*");
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                Cerebellum, Heart, null, matchingRule, blocker);
+                ds2, ds1, null, matchingRule, blocker);
 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
