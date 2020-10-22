@@ -107,6 +107,7 @@ public class DataFusionKaessmannDatasets {
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Kidney), Kidney, Heart);
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Liver), Liver, Heart);
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Testis), Testis, Heart);
+        /*
 
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Brain), Brain, Cerebellum);
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Kidney), Kidney, Cerebellum);
@@ -119,7 +120,7 @@ public class DataFusionKaessmannDatasets {
 
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Liver), Liver, Kidney);
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Testis), Testis, Kidney);
-
+*/
         
 
         // write group size distribution
