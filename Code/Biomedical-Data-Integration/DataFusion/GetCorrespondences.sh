@@ -21,6 +21,8 @@ Heart_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.co
 
 Cerebellum_2_Brain=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Cerebellum_2_Brain/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 Cerebellum_2_Kidney=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Cerebellum_2_Kidney/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
+Cerebellum_2_Liver=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Cerebellum_2_Liver/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv
+Cerebellum_2_Testis=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Cerebellum_2_Testis/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv
 
 Brain_2_Kidney=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Brain_2_Kidney/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
 Brain_2_Liver=https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/Organs/Brain_2_Liver/ML_AdaBoost_StandardRecordBlocker/correspondences.csv
@@ -71,3 +73,33 @@ wget $Heart_2_Liver -O data/correspondences/Organs/Heart_2_Liver/correspondences
 
 mkdir -p data/correspondences/Organs/Heart_2_Testis
 wget $Heart_2_Testis -O data/correspondences/Organs/Heart_2_Testis/correspondences.csv
+
+
+mkdir -p data/correspondences/Organs/Cerebellum_2_Brain
+wget $Cerebellum_2_Brain -O data/correspondences/Organs/Cerebellum_2_Brain/correspondences.csv
+
+mkdir -p data/correspondences/Organs/Cerebellum_2_Kidney
+wget $Cerebellum_2_Kidney -O data/correspondences/Organs/Cerebellum_2_Kidney/correspondences.csv
+
+mkdir -p data/correspondences/Organs/Cerebellum_2_Liver
+wget $Cerebellum_2_Liver -O data/correspondences/Organs/Cerebellum_2_Liver/correspondences.csv
+
+mkdir -p data/correspondences/Organs/Cerebellum_2_Testis
+wget $Cerebellum_2_Testis -O data/correspondences/Organs/Cerebellum_2_Testis/correspondences.csv
+
+
+mkdir -p data/correspondences/Organs/Brain_2_Kidney
+wget $Brain_2_Kidney -O data/correspondences/Organs/Brain_2_Kidney/correspondences.csv
+
+mkdir -p data/correspondences/Organs/Brain_2_Liver
+wget $Brain_2_Liver -O data/correspondences/Organs/Brain_2_Liver/correspondences.csv
+
+mkdir -p data/correspondences/Organs/Brain_2_Testis
+wget $Brain_2_Testis -O data/correspondences/Organs/Brain_2_Testis/correspondences.csv
+
+
+mkdir -p data/correspondences/Organs/Kidney_2_Liver
+wget $Kidney_2_Liver -O data/correspondences/Organs/Kidney_2_Liver/correspondences.csv
+
+mkdir -p data/correspondences/Organs/Kidney_2_Testis
+wget $Kidney_2_Testis -O data/correspondences/Organs/Kidney_2_Testis/correspondences.csv

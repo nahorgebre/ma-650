@@ -43,4 +43,16 @@ public class Correspondences {
     public static String Heart_2_Liver = "data/correspondences/Organs/Heart_2_Liver/correspondences.csv";
     public static String Heart_2_Testis = "data/correspondences/Organs/Heart_2_Testis/correspondences.csv";
 
+    public static String Cerebellum_2_Brain = "data/correspondences/Organs/Cerebellum_2_Brain/correspondences.csv";
+    public static String Cerebellum_2_Kidney = "data/correspondences/Organs/Cerebellum_2_Kidney/correspondences.csv";
+    public static String Cerebellum_2_Liver = "data/correspondences/Organs/Cerebellum_2_Liver/correspondences.csv";
+    public static String Cerebellum_2_Testis = "data/correspondences/Organs/Cerebellum_2_Testis/correspondences.csv";
+
+    public static String Brain_2_Kidney = "data/correspondences/Organs/Brain_2_Kidney/correspondences.csv";
+    public static String Brain_2_Liver = "data/correspondences/Organs/Brain_2_Liver/correspondences.csv";
+    public static String Brain_2_Testis = "data/correspondences/Organs/Brain_2_Testis/correspondences.csv";
+
+    public static String Kidney_2_Liver = "data/correspondences/Organs/Kidney_2_Liver/correspondences.csv";
+    public static String Kidney_2_Testis = "data/correspondences/Organs/Kidney_2_Testis/correspondences.csv";
+
 }

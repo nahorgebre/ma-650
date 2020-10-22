@@ -3,6 +3,8 @@ package genes.DataFusion.solution;
 import org.apache.logging.log4j.Logger;
 import java.io.File;
 
+import com.amazonaws.services.devicefarm.model.Test;
+
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEvaluator;
@@ -101,6 +103,18 @@ public class DataFusionKaessmannDatasets {
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Kidney), Kidney, Heart);
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Liver), Liver, Heart);
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Testis), Testis, Heart);
+
+        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Brain), Cerebellum, Brain);
+        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Kidney), Cerebellum, Kidney);
+        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Liver), Cerebellum, Liver);
+        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Testis), Cerebellum, Testis);
+
+        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Kidney), Brain, Kidney);
+        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Liver), Brain, Liver);
+        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Testis), Brain, Testis);
+
+        correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Liver), Kidney, Liver);
+        correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Testis), Kidney, Testis);
 
         // write group size distribution
         correspondences.printGroupSizeDistribution();
