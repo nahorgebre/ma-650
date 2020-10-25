@@ -13,9 +13,9 @@ namespace GoldstandardCreation
             //Heart.run();
             //Kidney.run();
             //Liver.run();
-            Organs.run();     
+            //Organs.run();     
             //Testis.run();
-            //Publication.run();
+            Publication.run();
 
             Output.run();
 

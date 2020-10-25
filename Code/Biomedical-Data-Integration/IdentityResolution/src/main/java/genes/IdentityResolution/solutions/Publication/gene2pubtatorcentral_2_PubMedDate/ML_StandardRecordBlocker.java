@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.gene2pubtatorcentral_2_PubMedDate;
+package genes.IdentityResolution.solutions.Publication.gene2pubtatorcentral_2_PubMedDate;
 
 // java
 import java.io.File;

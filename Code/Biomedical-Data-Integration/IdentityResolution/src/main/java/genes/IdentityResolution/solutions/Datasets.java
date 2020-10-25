@@ -25,6 +25,13 @@ public class Datasets {
         return PubMedDate;
     }
 
+    // kaessmann
+    public static HashedDataSet<Gene, Attribute> kaessmann() throws Exception {
+        HashedDataSet<Gene, Attribute> Brain = new HashedDataSet<>();
+        new GeneXMLReader().loadFromXML(new File("data/input/kaessmann-fused.xml"), "/genes/gene", Brain);
+        return Brain;
+    }
+
     // Brain
     public static HashedDataSet<Gene, Attribute> Brain() throws Exception {
         HashedDataSet<Gene, Attribute> Brain = new HashedDataSet<>();
