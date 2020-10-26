@@ -39,7 +39,6 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Testis_2_mart_export_testis/test.csv -O data/goldstandard/Kaessmann/Testis_2_mart_export_testis/test.csv
 
 ## Organs
-
 # Heart_2_Brain
 mkdir -p data/goldstandard/Kaessmann/Heart_2_Brain
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/Heart_2_Brain/train.csv -O data/goldstandard/Kaessmann/Heart_2_Brain/train.csv

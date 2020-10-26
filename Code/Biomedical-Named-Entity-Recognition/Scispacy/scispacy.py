@@ -8,3 +8,6 @@ def getGeneNames(document):
         if ent.label_=='GENE_OR_GENE_PRODUCT':
             entityList.append(ent.text)
     return '|'.join(entityList)
+
+
+getGeneNames("XBP1 increases transactivation of somatic mutants of ESR1 and loss of XBP1 reverses endocrine resistance conferred by gain-of-function Y537S ESR1 mutation.")

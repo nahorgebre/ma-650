@@ -9,7 +9,7 @@ namespace GoldstandardCreation
 
         public static void run()
         {
-            /*
+
             Heart_2_Brain();
             Heart_2_Cerebellum();
             Heart_2_Kidney();
@@ -20,12 +20,13 @@ namespace GoldstandardCreation
             Cerebellum_2_Kidney();
             Cerebellum_2_Liver();
             Cerebellum_2_Testis();
+            
             Brain_2_Kidney();
             Brain_2_Liver();
             Brain_2_Testis();
+
             Kidney_2_Liver();
             Kidney_2_Testis();
-            */
 
             Testis_2_Liver();
 

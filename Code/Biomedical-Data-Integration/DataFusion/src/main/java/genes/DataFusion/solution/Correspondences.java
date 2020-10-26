@@ -2,6 +2,8 @@ package genes.DataFusion.solution;
 
 public class Correspondences {
 
+    // Corres
+
     // Brain
     public static String Brain_2_mart_export_brain = "data/correspondences/Brain/Brain_2_mart_export_brain/correspondences.csv";
     public static String mart_export_brain_2_all_gene_disease_pmid_associations = "data/correspondences/Brain/mart_export_brain_2_all_gene_disease_pmid_associations/correspondences.csv";

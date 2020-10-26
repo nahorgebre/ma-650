@@ -91,7 +91,7 @@ public class UploadToS3 {
     
     public static void uploadFile(String bucketName, String keyName, String filePath) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException{
 
-        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(getCredentials())).withRegion(Regions.US_EAST_2).build();
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
 
         try {
             s3client.putObject(
@@ -107,33 +107,6 @@ public class UploadToS3 {
 
         }
 
-    }
-
-    public static AWSCredentials getCredentials() throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
-
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        String xmlFileName = System.getProperty("user.dir") + "/credentials.config";
-        Document doc = builder.parse(xmlFileName);
-
-        XPathFactory xPathFactory = XPathFactory.newInstance();
-        XPath xPath = xPathFactory.newXPath();
-
-        XPathExpression exprAccessKey = xPath.compile("/credentials/accessKey");
-        XPathExpression exprSecretKey = xPath.compile("/credentials/secretKey");
-
-        Node nodeAccessKey = (Node) exprAccessKey.evaluate(doc, XPathConstants.NODE);
-        Node nodeSecretKey = (Node) exprSecretKey.evaluate(doc, XPathConstants.NODE);
-
-        String accesskey = nodeAccessKey.getTextContent();
-        String secretkey = nodeSecretKey.getTextContent();
-        
-        AWSCredentials credentials = new BasicAWSCredentials(
-            accesskey, 
-            secretkey
-        );
-
-        return credentials;
     }
 
 }
