@@ -4,26 +4,17 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
+
 
 public class UploadToS3 {
 
@@ -68,7 +59,7 @@ public class UploadToS3 {
     
     public static void uploadFile(String bucketName, String keyName, String filePath) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException{
 
-        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(getCredentials())).withRegion(Regions.US_EAST_2).build();
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
 
         try {
             s3client.putObject(
@@ -84,33 +75,6 @@ public class UploadToS3 {
 
         }
 
-    }
-
-    public static AWSCredentials getCredentials() throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
-
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        String xmlFileName = System.getProperty("user.dir") + "/credentials.config";
-        Document doc = builder.parse(xmlFileName);
-
-        XPathFactory xPathFactory = XPathFactory.newInstance();
-        XPath xPath = xPathFactory.newXPath();
-
-        XPathExpression exprAccessKey = xPath.compile("/credentials/accessKey");
-        XPathExpression exprSecretKey = xPath.compile("/credentials/secretKey");
-
-        Node nodeAccessKey = (Node) exprAccessKey.evaluate(doc, XPathConstants.NODE);
-        Node nodeSecretKey = (Node) exprSecretKey.evaluate(doc, XPathConstants.NODE);
-
-        String accesskey = nodeAccessKey.getTextContent();
-        String secretkey = nodeSecretKey.getTextContent();
-        
-        AWSCredentials credentials = new BasicAWSCredentials(
-            accesskey, 
-            secretkey
-        );
-
-        return credentials;
     }
 
 }
