@@ -57,21 +57,27 @@ namespace GoldstandardCreation
 
             FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.tsv", Environment.CurrentDirectory));
 
-            for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
+            if (File.Exists(tsvFile.FullName))
             {
-                string comparison = "kaessmann_2_gene2pubtatorcentral_" + i;
-                string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
-                string trueFile = string.Format("{0}/true.csv", directoryName);
-                string falseFile = string.Format("{0}/false.csv", directoryName);
-                Directory.CreateDirectory(directoryName);
-                if (!File.Exists(trueFile) | !File.Exists(falseFile))
+
+                for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
                 {
-                    Console.WriteLine(comparison);
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFilesPubTator(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 4);
-                    Methods.createOuput(trueFile, trueList);
-                    Methods.createOuput(falseFile, falseList);
+                    string comparison = "kaessmann_2_gene2pubtatorcentral_" + i;
+                    string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+                    string trueFile = string.Format("{0}/true.csv", directoryName);
+                    string falseFile = string.Format("{0}/false.csv", directoryName);
+                    Directory.CreateDirectory(directoryName);
+                    if (!File.Exists(trueFile) | !File.Exists(falseFile))
+                    {
+                        Console.WriteLine(comparison);
+                        (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFilesPubTator(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 4);
+                        Methods.createOuput(trueFile, trueList);
+                        Methods.createOuput(falseFile, falseList);
+                    }
                 }
+                
             }
+
         }
 
         public static void createKaessmannTsv() {
@@ -79,55 +85,63 @@ namespace GoldstandardCreation
             FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.xml", Environment.CurrentDirectory));
             FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.tsv", Environment.CurrentDirectory));
 
-            var delimiter = "\t";
-
-            using (StreamWriter sw = new StreamWriter(tsvFile.FullName)) 
+            if (File.Exists(xmlFile.FullName))
             {
+
+                var delimiter = "\t";
+
+                using (StreamWriter sw = new StreamWriter(tsvFile.FullName)) 
+                {
                 
-                List<string> firstLineContent = new List<string>()
-                {
-                    "recordId",
-                    "ensemblId",
-                    "ncbiId",
-                    "geneName",
-                    "pmId"
-                };
-                var firstLine = string.Join(delimiter, firstLineContent);
-                sw.WriteLine(firstLine);
-
-                XmlReaderSettings settings = new XmlReaderSettings();
-                settings.DtdProcessing = DtdProcessing.Parse;
-
-                using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
-                {
-                    while (reader.ReadToFollowing("gene"))
+                    List<string> firstLineContent = new List<string>()
                     {
-                        
-                        string recordId = "NaN";
-                        reader.ReadToFollowing("recordId");
-                        recordId = reader.ReadElementContentAsString();
+                        "recordId",
+                        "ensemblId",
+                        "ncbiId",
+                        "geneName",
+                        "pmId"
+                    };
+                    var firstLine = string.Join(delimiter, firstLineContent);
+                    sw.WriteLine(firstLine);
 
-                        string ensemblId = "NaN";
-                        reader.ReadToFollowing("ensemblId");
-                        ensemblId = reader.ReadElementContentAsString();
+                    XmlReaderSettings settings = new XmlReaderSettings();
+                    settings.DtdProcessing = DtdProcessing.Parse;
 
-                        List<string> lineContent = new List<string>()
+                    using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
+                    {
+
+                        while (reader.ReadToFollowing("gene"))
                         {
-                            "recordId",
-                            "ensemblId",
-                            "NaN",
-                            "NaN",
-                            "NaN"
-                        };
-                        var line = string.Join(delimiter, lineContent);
-                        sw.WriteLine(line);
+                        
+                            string recordId = "NaN";
+                            reader.ReadToFollowing("recordId");
+                            recordId = reader.ReadElementContentAsString();
+
+                            string ensemblId = "NaN";
+                            reader.ReadToFollowing("ensemblId");
+                            ensemblId = reader.ReadElementContentAsString();
+
+                            List<string> lineContent = new List<string>()
+                            {
+                                "recordId",
+                                "ensemblId",
+                                "NaN",
+                                "NaN",
+                                "NaN"
+                            };
+                            var line = string.Join(delimiter, lineContent);
+                            sw.WriteLine(line);
+
+                        }
 
                     }
-                }
 
+                }
+                
             }
 
         }
     
     }
+
 }

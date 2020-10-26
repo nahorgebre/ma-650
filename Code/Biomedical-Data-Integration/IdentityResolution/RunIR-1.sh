@@ -21,7 +21,7 @@ mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Kaessmann.Bra
 
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Kaessmann.Kidney_2_Liver.Run"
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Kaessmann.Kidney_2_Testis.Run"
-mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Kidney.Kidney_2_mart_export_kidney.Run"
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Kaessmann.Kidney_2_mart_export_kidney.Run"
 
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Kaessmann.Testis_2_Liver.Run"
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.Kaessmann.Liver_2_mart_export_liver.Run"
