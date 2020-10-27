@@ -13,17 +13,27 @@ namespace GoldstandardCreation
 
             DirectoryInfo outputDirectory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/");
 
-            foreach (DirectoryInfo subDirectory in outputDirectory.GetDirectories())
+            String[] javaFileList = Directory.GetFiles(outputDirectory.FullName, "*.java", SearchOption.AllDirectories);
+
+            foreach (DirectoryInfo directory in outputDirectory.GetDirectories())
             {
-                string trueFile = subDirectory.FullName + "/true.csv";
-                string falseFile = subDirectory.FullName + "/false.csv";
+                
+                foreach (DirectoryInfo subDirectory in directory.GetDirectories())
+                {
+                    
+                    string trueFile = subDirectory.FullName + "/true.csv";
+                    string falseFile = subDirectory.FullName + "/false.csv";
 
-                (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
-                (List<Goldstandard> train_FALSE, List<Goldstandard> test_FALSE) = divideIntoTrainTest(falseFile);
+                    (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
+                    (List<Goldstandard> train_FALSE, List<Goldstandard> test_FALSE) = divideIntoTrainTest(falseFile);
 
-                createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
-                createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
+                    createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
+                    createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
+
+                }
+
             }
+            
         }
 
         public static void createOuputFiles(List<Goldstandard> trueList, List<Goldstandard> falseList, string fileName)
