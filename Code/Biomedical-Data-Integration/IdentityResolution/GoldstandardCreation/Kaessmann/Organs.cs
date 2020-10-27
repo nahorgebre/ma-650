@@ -38,7 +38,7 @@ namespace GoldstandardCreation
             string comparison = "Heart_2_Brain";
             string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
@@ -55,7 +55,7 @@ namespace GoldstandardCreation
             string comparison = "Heart_2_Cerebellum";
             string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
@@ -72,7 +72,7 @@ namespace GoldstandardCreation
             string comparison = "Heart_2_Kidney";
             string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
@@ -89,7 +89,7 @@ namespace GoldstandardCreation
             string comparison = "Heart_2_Liver";
             string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
