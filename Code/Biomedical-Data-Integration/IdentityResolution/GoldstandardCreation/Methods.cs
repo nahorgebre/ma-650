@@ -66,7 +66,7 @@ namespace GoldstandardCreation
                                     if (goldstandardListFalse.Count() < 200)
                                     {
                                         
-                                        if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2))
+                                        if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalse.Exists(x => x.recordId1 == recordIdSr1))
                                         {
 
                                             Goldstandard goldstandardItem = new Goldstandard();
