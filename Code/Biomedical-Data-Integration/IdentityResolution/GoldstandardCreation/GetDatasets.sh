@@ -128,3 +128,6 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/ident
 
 mkdir -p data/input/Disease
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/all_gene_disease_pmid_associations_dt.tsv -O data/input/Disease/all_gene_disease_pmid_associations_dt.tsv
+
+mkdir -p data/input/Kaessmann
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-fusion/output/kaessmann-fused.xml -O data/input/Kaessmann/kaessmann-fused.xml

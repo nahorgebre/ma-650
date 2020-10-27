@@ -14,48 +14,12 @@ namespace GoldstandardCreation
 
             createKaessmannTsv();
             kaessmann_2_gene2pubtatorcentral();
-            //gene2pubtatorcentral_2_PubMedDate();
 
-        }
-
-        public static void gene2pubtatorcentral_2_PubMedDate() {
-
-            for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
-            {
-                string comparison = "gene2pubtatorcentral_" + i + "_2_PubMedDate";
-                string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
-                string trueFile = string.Format("{0}/true.csv", directoryName);
-                string falseFile = string.Format("{0}/false.csv", directoryName);
-                Directory.CreateDirectory(directoryName);
-                if (!File.Exists(trueFile) | !File.Exists(falseFile))
-                {
-                    Console.WriteLine(comparison);
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFilesPubTator(Datasets.getGene2pubtatorcentral_path(i), Datasets.PubMedDate_path, 4);
-                    Methods.createOuput(trueFile, trueList);
-                    Methods.createOuput(falseFile, falseList);
-                }
-            }
-
-        }
-        
-        public static void gene2pubtatorcentral_2_PubMedDate2() {
-            string comparison = "gene2pubtatorcentral_2_PubMedDate";
-            string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
-            string trueFile = string.Format("{0}/true.csv", directoryName);
-            string falseFile = string.Format("{0}/false.csv", directoryName);
-            Directory.CreateDirectory(directoryName);
-            if (!File.Exists(trueFile) | !File.Exists(falseFile))
-            {
-                Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.gene2pubtatorcentral_path, Datasets.PubMedDate_path, 4);
-                Methods.createOuput(trueFile, trueList);
-                Methods.createOuput(falseFile, falseList);
-            }
         }
 
         public static void kaessmann_2_gene2pubtatorcentral() {
 
-            FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.tsv", Environment.CurrentDirectory));
+            FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/Kaessmann/kaessmann-fused.tsv", Environment.CurrentDirectory));
 
             if (File.Exists(tsvFile.FullName))
             {
@@ -63,7 +27,7 @@ namespace GoldstandardCreation
                 for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
                 {
                     string comparison = "kaessmann_2_gene2pubtatorcentral_" + i;
-                    string directoryName = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, comparison);
+                    string directoryName = string.Format("{0}/data/output/Publication/{1}", Environment.CurrentDirectory, comparison);
                     string trueFile = string.Format("{0}/true.csv", directoryName);
                     string falseFile = string.Format("{0}/false.csv", directoryName);
                     Directory.CreateDirectory(directoryName);
@@ -82,8 +46,8 @@ namespace GoldstandardCreation
 
         public static void createKaessmannTsv() {
 
-            FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.xml", Environment.CurrentDirectory));
-            FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.tsv", Environment.CurrentDirectory));
+            FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/Kaessmann/kaessmann-fused.xml", Environment.CurrentDirectory));
+            FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/Kaessmann/kaessmann-fused.tsv", Environment.CurrentDirectory));
 
             if (File.Exists(xmlFile.FullName))
             {

@@ -58,4 +58,20 @@ public class ListingS3Objects {
 
     }
 
+    public static void getGoldstandardDatasets() throws Exception {
+
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
+        
+        ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis", "identity-resolution");
+        for(S3ObjectSummary os : objectListing.getObjectSummaries()) {
+
+            String key = os.getKey();
+
+            if (key.contains("goldstandard")) {
+                
+            }
+        }
+
+    }
+
 }
