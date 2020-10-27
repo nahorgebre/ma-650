@@ -15,8 +15,6 @@ public class GeneNameXMLReader extends XMLMatchableReader<GeneName, Attribute> {
 
         geneName.setName(getValueFromChildElement(node, "name"));
 
-        System.out.println(geneName.getName());
-
         return geneName;
     }
 

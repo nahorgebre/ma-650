@@ -78,7 +78,6 @@ public class DataFusion1 {
         System.out.println("*\n*\tLoading correspondences\n*");
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
 
-        /*
         // Heart
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Brain), Brain, Heart);
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Cerebellum), Cerebellum, Heart);
@@ -108,7 +107,6 @@ public class DataFusion1 {
         
         // Liver
         correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
-        */
         
         // Testis
         correspondences.loadCorrespondences(new File(Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
