@@ -92,6 +92,9 @@ namespace GoldstandardCreation
 
             }
 
+            Console.WriteLine("GS-True-List Count: " + goldstandardListTrue.Count);
+            Console.WriteLine("GS-False-List Count: " + goldstandardListFalse.Count);
+            
             return (goldstandardListTrue, goldstandardListFalse);
 
         }
