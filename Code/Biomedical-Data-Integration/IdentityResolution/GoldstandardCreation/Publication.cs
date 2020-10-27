@@ -34,7 +34,7 @@ namespace GoldstandardCreation
                     if (!File.Exists(trueFile) | !File.Exists(falseFile))
                     {
                         Console.WriteLine(comparison);
-                        (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFilesPubTator(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 4);
+                        (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 3);
                         Methods.createOuput(trueFile, trueList);
                         Methods.createOuput(falseFile, falseList);
                     }
