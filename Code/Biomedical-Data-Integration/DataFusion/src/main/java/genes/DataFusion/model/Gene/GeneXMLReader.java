@@ -51,7 +51,7 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
 
         gene.setEnsemblId(getValueFromChildElement(node, "ensemblId"));
         gene.setNcbiId(getValueFromChildElement(node, "ncbiId"));
-        List<GeneName> geneNames = getObjectListFromChildElement(node, "geneNames", "geneName", new GeneNameXMLReader(), provenanceInfo);
+        List<GeneName> geneNames = getObjectListFromChildElement(node, "geneNames", "geneNames", new GeneNameXMLReader(), provenanceInfo);
         gene.setGeneNames(geneNames);
         List<GeneDescription> geneDescriptions = getObjectListFromChildElement(node, "geneDescriptions", "geneDescriptions", new GeneDescriptionXMLReader(), provenanceInfo);
         gene.setGeneDescriptions(geneDescriptions);
