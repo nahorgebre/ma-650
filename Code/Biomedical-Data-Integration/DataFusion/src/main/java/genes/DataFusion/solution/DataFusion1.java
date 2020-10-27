@@ -42,7 +42,7 @@ import genes.DataFusion.model.Gene.Gene;
 import genes.DataFusion.model.Gene.GeneXMLFormatter;
 import genes.DataFusion.model.Gene.GeneXMLReader;
 
-public class DataFusionKaessmannDatasets {
+public class DataFusion1 {
 
     private static final Logger logger = WinterLogManager.activateLogger("trace");
 
@@ -78,7 +78,6 @@ public class DataFusionKaessmannDatasets {
         System.out.println("*\n*\tLoading correspondences\n*");
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
 
-        
         // Heart
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Brain), Brain, Heart);
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Cerebellum), Cerebellum, Heart);
@@ -88,22 +87,22 @@ public class DataFusionKaessmannDatasets {
         correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Heart_Ensembl_NCBI_Crosswalk), Heart, Heart_Ensembl_NCBI_Crosswalk);
         //correspondences.loadCorrespondences(new File(Correspondences.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk), mart_export_heart);
 
-        
+        // Cerebellum
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Brain), Brain, Cerebellum);
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Kidney), Kidney, Cerebellum);
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Liver), Liver, Cerebellum);
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Testis), Testis, Cerebellum);
         correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_mart_export_cerebellum), Cerebellum, mart_export_cerebellum);
 
+        // Brain
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Kidney), Kidney, Brain);
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Liver), Brain, Liver);
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Testis), Testis, Brain);
         correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
 
+        // Kidney
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Liver), Liver, Kidney);
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Testis), Testis, Kidney);
-
-        // Kidney
         correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_mart_export_kidney), Kidney, mart_export_kidney);
         
         // Liver
