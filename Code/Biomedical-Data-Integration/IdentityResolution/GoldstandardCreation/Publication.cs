@@ -85,13 +85,21 @@ namespace GoldstandardCreation
                             reader.ReadToFollowing("ensemblId");
                             ensemblId = reader.ReadElementContentAsString();
 
+                            string ncbiId = "NaN";
+
+                            string geneName = "NaN";
+                            reader.ReadToFollowing("geneName");
+                            geneName = reader.ReadElementContentAsString();
+
+                            string pmId = "NaN";
+
                             List<string> lineContent = new List<string>()
                             {
-                                "recordId",
-                                "ensemblId",
-                                "NaN",
-                                "NaN",
-                                "NaN"
+                                recordId,
+                                ensemblId,
+                                ncbiId,
+                                geneName,
+                                pmId
                             };
                             var line = string.Join(delimiter, lineContent);
                             sw.WriteLine(line);
