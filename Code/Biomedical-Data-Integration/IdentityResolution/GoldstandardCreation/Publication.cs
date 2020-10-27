@@ -88,7 +88,7 @@ namespace GoldstandardCreation
                             string ncbiId = "NaN";
 
                             string geneName = "NaN";
-                            reader.ReadToFollowing("geneName");
+                            reader.ReadToFollowing("name");
                             geneName = reader.ReadElementContentAsString();
 
                             string pmId = "NaN";
