@@ -34,6 +34,7 @@ namespace GoldstandardCreation
                         {
 
                             string keyName = string.Format("identity-resolution/goldstandard/{0}/{1}/{2}", solution, comparison, file.Name);
+                            Console.WriteLine(keyName);
                             string bucketName = "nahorgebre-ma-650-master-thesis";
                             UploadFileAsync(bucketName, file.FullName, keyName).Wait();
 

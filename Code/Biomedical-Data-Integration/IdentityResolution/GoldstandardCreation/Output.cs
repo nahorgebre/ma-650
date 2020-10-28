@@ -13,8 +13,6 @@ namespace GoldstandardCreation
 
             DirectoryInfo outputDirectory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/");
 
-            String[] javaFileList = Directory.GetFiles(outputDirectory.FullName, "*.java", SearchOption.AllDirectories);
-
             foreach (DirectoryInfo directory in outputDirectory.GetDirectories())
             {
                 
@@ -33,7 +31,7 @@ namespace GoldstandardCreation
                 }
 
             }
-            
+
         }
 
         public static void createOuputFiles(List<Goldstandard> trueList, List<Goldstandard> falseList, string fileName)
