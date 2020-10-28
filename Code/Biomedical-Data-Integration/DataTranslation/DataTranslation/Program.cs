@@ -11,8 +11,11 @@ namespace DataTranslation
         {
             
             DI1.runDataTranslation();
-            GeneDiseaseAssociations.runDataTranslation();
-            Publication.runDataTranslation();
+            
+            DI2.runDataTranslation();
+
+            //GeneDiseaseAssociations.runDataTranslation();
+
             AWSupload.run();
 
             /*
