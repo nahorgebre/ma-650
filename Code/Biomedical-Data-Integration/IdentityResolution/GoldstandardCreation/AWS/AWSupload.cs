@@ -24,7 +24,7 @@ namespace GoldstandardCreation
 
                 string solution = directory.Name;
 
-                foreach (DirectoryInfo subDirectory in outputDirectory.GetDirectories())
+                foreach (DirectoryInfo subDirectory in directory.GetDirectories())
                 {
 
                     string comparison = subDirectory.Name;
