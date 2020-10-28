@@ -10,12 +10,7 @@ namespace DataTranslation
         public static void Main(string[] args)
         {
             
-            Heart.runDataTranslation();
-            Brain.runDataTranslation();
-            Cerebellum.runDataTranslation();
-            Kidney.runDataTranslation();
-            Liver.runDataTranslation();
-            Testis.runDataTranslation();
+            DI1.runDataTranslation();
             GeneDiseaseAssociations.runDataTranslation();
             Publication.runDataTranslation();
             AWSupload.run();

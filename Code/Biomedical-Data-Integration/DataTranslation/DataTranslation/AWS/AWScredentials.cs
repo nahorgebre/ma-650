@@ -4,6 +4,7 @@ using System.Xml;
 
 namespace DataTranslation
 {
+    
     public class AWScredentials
     {
 
@@ -14,27 +15,34 @@ namespace DataTranslation
 
         public static string getAccessKey()
         {
+
             XmlDocument doc = new XmlDocument();
             doc.Load(Environment.CurrentDirectory + "/credentials.config");
             accessKey = doc.DocumentElement.SelectSingleNode("/credentials/accessKey").InnerText;
             return accessKey;
+
         }
 
         public static string getSecretKey()
         {
+
             XmlDocument doc = new XmlDocument();
             doc.Load(Environment.CurrentDirectory + "/credentials.config");
             secretKey = doc.DocumentElement.SelectSingleNode("/credentials/secretKey").InnerText;
             return secretKey;
+
         }
 
         public static string getConsoleKey()
         {
+
             XmlDocument doc = new XmlDocument();
             doc.Load(Environment.CurrentDirectory + "/credentials.config");
             consoleKey = doc.DocumentElement.SelectSingleNode("/credentials/consoleKey").InnerText;
             return consoleKey;
+
         }
 
     }
+
 }

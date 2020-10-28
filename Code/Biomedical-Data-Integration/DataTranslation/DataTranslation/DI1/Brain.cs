@@ -4,40 +4,48 @@ using System.Collections.Generic;
 
 namespace DataTranslation
 {
-    public class Cerebellum
+
+    public class Brain
     {
+
         public static void runDataTranslation() 
         {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Cerebellum.cerebellumOutputDirectory)); 
-            Cerebellum.Cerebellum_dt();
-            Cerebellum.mart_export_cerebellum_dt();
+
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Brain.brainOutputDirectory)); 
+            Brain.Brain_dt();
+            Brain.mart_export_brain_dt();
+
         }
 
-        public static string cerebellumInputDirectory = "data/input/Cerebellum";
-        public static string cerebellumOutputDirectory = "data/output/Cerebellum";
-        
-        // Cerebellum.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
-        public static void Cerebellum_dt()
+        public static string brainInputDirectory = "data/input/Brain";
+        public static string brainOutputDirectory = "data/output/DI1";
+
+        // Brain.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
+        public static void Brain_dt()
         {
+
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
             
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, cerebellumInputDirectory, "Cerebellum.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "Brain.csv")))
             {
+
                 reader.ReadLine();
                 int counter = 1;
+
                 while (!reader.EndOfStream)
                 {
+
                     var line = reader.ReadLine();
                     String[] values = line.Split(',');
 
-                    Gene gene = new Gene();
-                    gene.recordId = string.Format("Cerebellum_{0}_rid", counter);
+                    Gene gene = new Gene();        
+                    gene.recordId = string.Format("Brain_{0}_rid", counter);
                     gene.ensemblId = values[0];
 
                     List<Organ> organList = new List<Organ>();
                     Organ organ = new Organ();
-                    organ.organName = OrganNames.cerebellum;
+                    organ.organName = OrganNames.brain;
                     organ.disagreement = values[1];
                     organ.probEqualOrthoAdj = values[2];
                     organ.call = values[3];
@@ -47,29 +55,37 @@ namespace DataTranslation
                     gene_list.Add(gene);
 
                     counter++;
+
                 }
+
             }
-            Methods.createXml(gene_list: gene_list, fileName: "Cerebellum_dt.xml", directory: cerebellumOutputDirectory);
-            Methods.createTsv(gene_list: gene_list, fileName: "Cerebellum_dt.tsv", directory: cerebellumOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list, fileName: "Brain_dt.xml", directory: brainOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Brain_dt.tsv", directory: brainOutputDirectory);
+
         }
 
-        // mart_export_cerebellum.txt; 0-geneId; 1-geneDescription; 2-geneName
-        public static void mart_export_cerebellum_dt()
+        // mart_export_brain.txt; 0-geneId; 1-geneDescription; 2-geneName
+        public static void mart_export_brain_dt()
         {
+
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
-
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, cerebellumInputDirectory, "mart_export_cerebellum.txt")))
+            
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "mart_export_brain.txt")))
             {
+
                 reader.ReadLine();
                 int counter = 1;
+
                 while (!reader.EndOfStream)
                 {
+
                     var line = reader.ReadLine();
                     String[] values = line.Split(',');
 
                     Gene gene = new Gene();
-                    gene.recordId = string.Format("mart_export_cerebellum_{0}_rid", counter);
+                    gene.recordId = string.Format("mart_export_brain_{0}_rid", counter);
                     gene.ensemblId = values[0];
                     
                     List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
@@ -86,10 +102,16 @@ namespace DataTranslation
                     gene_list.Add(gene);
 
                     counter++;
+
                 }
+
             }
-            Methods.createXml(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.xml", directory: cerebellumOutputDirectory);
-            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.tsv", directory: cerebellumOutputDirectory);
+
+            Methods.createXml(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: brainOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_brain_dt.tsv", directory: brainOutputDirectory);
+
         }
+
     }
+
 }

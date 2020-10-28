@@ -18,7 +18,7 @@ namespace GoldstandardCreation
 
             // ensembl id
             string comparison = "Heart_2_Heart_Ensembl_NCBI_Crosswalk";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -36,7 +36,7 @@ namespace GoldstandardCreation
 
             // ensembl id
             string comparison = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);

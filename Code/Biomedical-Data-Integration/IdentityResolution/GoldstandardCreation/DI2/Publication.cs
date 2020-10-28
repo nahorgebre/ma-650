@@ -10,6 +10,9 @@ namespace GoldstandardCreation
 
         public static int pubTatorPartitionSize = 100;
 
+        public static FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.xml", Environment.CurrentDirectory));
+        public static FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.tsv", Environment.CurrentDirectory));
+
         public static void run() {
 
             createKaessmannTsv();
@@ -19,15 +22,13 @@ namespace GoldstandardCreation
 
         public static void kaessmann_2_gene2pubtatorcentral() {
 
-            FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/Kaessmann/kaessmann-fused.tsv", Environment.CurrentDirectory));
-
             if (File.Exists(tsvFile.FullName))
             {
 
                 for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
                 {
                     string comparison = "kaessmann_2_gene2pubtatorcentral_" + i;
-                    string directoryName = string.Format("{0}/data/output/Publication/{1}", Environment.CurrentDirectory, comparison);
+                    string directoryName = string.Format("{0}/data/output/DI2/{1}", Environment.CurrentDirectory, comparison);
                     string trueFile = string.Format("{0}/true.csv", directoryName);
                     string falseFile = string.Format("{0}/false.csv", directoryName);
                     Directory.CreateDirectory(directoryName);
@@ -38,6 +39,7 @@ namespace GoldstandardCreation
                         Methods.createOuput(trueFile, trueList);
                         Methods.createOuput(falseFile, falseList);
                     }
+                    
                 }
                 
             }
@@ -45,9 +47,6 @@ namespace GoldstandardCreation
         }
 
         public static void createKaessmannTsv() {
-
-            FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/Kaessmann/kaessmann-fused.xml", Environment.CurrentDirectory));
-            FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/Kaessmann/kaessmann-fused.tsv", Environment.CurrentDirectory));
 
             if (File.Exists(xmlFile.FullName))
             {

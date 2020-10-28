@@ -36,7 +36,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Heart_2_Brain";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -53,7 +53,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Heart_2_Cerebellum";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -70,7 +70,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Heart_2_Kidney";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -87,7 +87,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Heart_2_Liver";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -104,7 +104,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Heart_2_Testis";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -123,7 +123,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Cerebellum_2_Brain";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -140,7 +140,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Cerebellum_2_Kidney";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -157,7 +157,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Cerebellum_2_Liver";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -174,7 +174,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Cerebellum_2_Testis";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -193,7 +193,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Brain_2_Kidney";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -210,7 +210,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Brain_2_Liver";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -227,7 +227,7 @@ namespace GoldstandardCreation
         {
                         // ensembl id
             string comparison = "Brain_2_Testis";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -246,7 +246,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Kidney_2_Liver";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -263,7 +263,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Kidney_2_Testis";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
@@ -280,7 +280,7 @@ namespace GoldstandardCreation
         {
             // ensembl id
             string comparison = "Testis_2_Liver";
-            string directoryName = string.Format("{0}/data/output/Kaessmann/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
             Directory.CreateDirectory(directoryName);
