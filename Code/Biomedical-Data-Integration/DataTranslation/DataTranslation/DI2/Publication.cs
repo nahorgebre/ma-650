@@ -85,6 +85,8 @@ namespace DataTranslation
                     }
 
                 }
+
+                Console.WriteLine("Gene list length: " + gene_list.Count);
                     
                 Methods.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
                 Methods.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
