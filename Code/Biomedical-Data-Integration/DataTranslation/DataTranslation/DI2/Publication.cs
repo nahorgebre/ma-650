@@ -25,6 +25,8 @@ namespace DataTranslation
         public static void gene2pubtatorcentral_dt()
         {
 
+            Console.WriteLine("Start gene2pubtatorcentral_dt()");
+
             int partitionSize = 362446;
             int partitionNumbers = 150;
 
@@ -41,12 +43,12 @@ namespace DataTranslation
 
                     while (!reader.EndOfStream)
                     {
-                        
-                        if (counter > partitionSize * (i - 1) & counter <= partitionSize * i)
-                        {
 
-                            var line = reader.ReadLine();
-                            String[] values = line.Split('\t');
+                        var line = reader.ReadLine();
+                        String[] values = line.Split('\t');
+                        
+                        if ((counter > partitionSize * (i - 1)) & (counter <= partitionSize * i))
+                        {
 
                             if (values[1].Trim().Equals("Gene"))
                             {
@@ -74,13 +76,13 @@ namespace DataTranslation
                                 publicationMentions_list.Add(publicationMention);
                                 gene.publicationMentions = publicationMentions_list;
 
-                                gene_list.Add(gene);
-
-                                counter++;
+                                gene_list.Add(gene);                               
                             
                             }
                             
                         }
+
+                        counter++;
 
                     }
 
