@@ -39,12 +39,11 @@ public class ListingS3Objects {
 
             String[] parts = key.split("/");
 
-            if (parts.length == 5) {
+            if (parts.length == 4) {
 
-                String comparison = parts[3];
-                String fileName = parts[4];
+                String fileName = parts[3];
     
-                String mkdir = "mkdir -p data/input/" + solution + "/" + comparison;
+                String mkdir = "mkdir -p data/input/" + solution;
 
                 if (!mkdirList.contains(mkdir)) {
 
@@ -55,7 +54,7 @@ public class ListingS3Objects {
     
                 }
 
-                String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/input/" + solution + "/" + comparison + "/" + fileName;
+                String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/input/" + solution + "/" + fileName;
                 
                 writer.println(wgetString);
 
