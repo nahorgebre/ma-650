@@ -14,6 +14,8 @@ namespace DataTranslation
         public static void createXml(List<Gene> gene_list, string fileName, string directory)
         {
 
+            Console.WriteLine("Create Xml: " + fileName);
+
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, directory));
 
             XmlSerializer serializer = new XmlSerializer(typeof(Genes));
