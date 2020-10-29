@@ -300,3 +300,4 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI2/gene2pubtatorcentral_99_dt.xml -O data/input/DI2/gene2pubtatorcentral_99_dt.xml
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI2/gene2pubtatorcentral_9_dt.tsv -O data/input/DI2/gene2pubtatorcentral_9_dt.tsv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI2/gene2pubtatorcentral_9_dt.xml -O data/input/DI2/gene2pubtatorcentral_9_dt.xml
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI2/kaessmann-fused.xml -O data/input/DI2/kaessmann-fused.xml

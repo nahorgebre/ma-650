@@ -30,7 +30,6 @@ namespace GoldstandardCreation
                     string comparison = "kaessmann_2_gene2pubtatorcentral_" + i;
                     string directoryName = string.Format("{0}/data/output/DI2/{1}", Environment.CurrentDirectory, comparison);
                     string trueFile = string.Format("{0}/true.csv", directoryName);
-                    Console.WriteLine("True File: " + trueFile);
                     string falseFile = string.Format("{0}/false.csv", directoryName);
                     Directory.CreateDirectory(directoryName);
                     if (!File.Exists(trueFile) | !File.Exists(falseFile))
