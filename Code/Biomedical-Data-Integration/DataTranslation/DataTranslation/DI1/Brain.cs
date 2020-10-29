@@ -23,7 +23,7 @@ namespace DataTranslation
         // Brain.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
         public static void Brain_dt()
         {
-
+            
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
             
