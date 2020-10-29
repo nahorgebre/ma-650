@@ -39,50 +39,75 @@ namespace DataTranslation
                 {
 
                     reader.ReadLine();
-                    int counter = 1;
+                    int conditionCounter = 1;
+                    int recordIdCounter = 1;
 
                     while (!reader.EndOfStream)
                     {
 
                         var line = reader.ReadLine();
                         String[] values = line.Split('\t');
+
+                        bool condition;
+
+                        if (i == partitionNumbers)
+                        {
+
+                            condition = conditionCounter > partitionSize * (i - 1);
+
+                        }
+                        else
+                        {
+
+                            condition = (conditionCounter > partitionSize * (i - 1)) & (conditionCounter <= partitionSize * i);
+
+                        }
                         
-                        if ((counter > partitionSize * (i - 1)) & (counter <= partitionSize * i))
+                        if (condition)
                         {
 
                             if (values[1].Trim().Equals("Gene"))
                             {
 
-                                Gene gene = new Gene();
-
-                                gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", i.ToString(), counter);
-
-                                gene.ncbiId = values[2].Trim();
-
-                                string[] geneNames = values[3].Split('|');
-                                List<GeneName> geneNameList = new List<GeneName>();
-                                foreach (string name in geneNames)
+                                string[] ncbiIdArray = values[2].Split(';');
+                                foreach (String ncbiId in ncbiIdArray)
                                 {
-                                    GeneName GeneName = new GeneName();
-                                    GeneName.name = name.Trim();
-                                    geneNameList.Add(GeneName);
+
+                                    Gene gene = new Gene();
+
+                                    gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", i.ToString(), recordIdCounter);
+
+                                    gene.ncbiId = ncbiId;
+
+                                    HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
+
+                                    List<GeneName> geneNameList = new List<GeneName>();
+                                    foreach (string name in geneNameHashSet)
+                                    {
+                                        GeneName GeneName = new GeneName();
+                                        GeneName.name = name.Trim();
+                                        geneNameList.Add(GeneName);
+                                    }
+                                    gene.geneNames = geneNameList;
+
+                                    List<PublicationMention> publicationMentions_list = new List<PublicationMention>();
+                                    PublicationMention publicationMention = new PublicationMention();
+                                    publicationMention.pmId = values[0].Trim();
+                                    publicationMention.ressource = values[4].Trim();
+                                    publicationMentions_list.Add(publicationMention);
+                                    gene.publicationMentions = publicationMentions_list;
+
+                                    gene_list.Add(gene);   
+
+                                    recordIdCounter++;
+
                                 }
-                                gene.geneNames = geneNameList;
-
-                                List<PublicationMention> publicationMentions_list = new List<PublicationMention>();
-                                PublicationMention publicationMention = new PublicationMention();
-                                publicationMention.pmId = values[0].Trim();
-                                publicationMention.ressource = values[4].Trim();
-                                publicationMentions_list.Add(publicationMention);
-                                gene.publicationMentions = publicationMentions_list;
-
-                                gene_list.Add(gene);                               
                             
                             }
                             
                         }
 
-                        counter++;
+                        conditionCounter++;
 
                     }
 
@@ -94,6 +119,25 @@ namespace DataTranslation
                 Methods.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
 
             }
+
+        }
+
+        public static HashSet<string> getGeneNameHashSet(string geneNameValues)
+        {
+
+            HashSet<string> geneNameHashSet = new HashSet<string>();
+
+            geneNameValues = geneNameValues.Replace("and", ",");
+            string[] geneNameSplitArray = geneNameValues.Split(new Char [] { '|' , ',' });
+
+            foreach (string geneNameSplit in geneNameSplitArray)
+            {
+
+                geneNameHashSet.Add(geneNameSplit.Trim());
+            
+            }
+
+            return geneNameHashSet;
 
         }
 

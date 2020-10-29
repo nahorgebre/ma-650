@@ -15,15 +15,17 @@ namespace DataTranslation
         public static void run()
         {
 
-            foreach (string directory in Directory.GetDirectories(string.Format("{0}/{1}", Environment.CurrentDirectory, "data/output")))
-            {
+            DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/{1}", Environment.CurrentDirectory, "data/output"));
 
-                foreach (string fileName in Directory.GetFiles(directory))
+            foreach (DirectoryInfo subDirectory in outputDirectory.GetDirectories())
+            {
+                
+                foreach (FileInfo file in subDirectory.GetFiles())
                 {
 
-                    string keyName = string.Format("identity-resolution/input/{0}", fileName.Substring(fileName.LastIndexOf("/") + 1));
+                    string keyName = string.Format("identity-resolution/input/{0}/{1}", subDirectory.Name, file.Name);
                     string bucketName = "nahorgebre-ma-650-master-thesis";
-                    UploadFileAsync(bucketName, fileName, keyName).Wait();
+                    UploadFileAsync(bucketName, file.FullName, keyName).Wait();
 
                 }
 
