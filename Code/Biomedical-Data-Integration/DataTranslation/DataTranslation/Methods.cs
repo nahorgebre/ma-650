@@ -4,15 +4,16 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DataTranslation
 {
+
     public class Methods
     {
 
         public static void createXml(List<Gene> gene_list, string fileName, string directory)
         {
+
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, directory));
 
             XmlSerializer serializer = new XmlSerializer(typeof(Genes));
@@ -22,16 +23,21 @@ namespace DataTranslation
             genes.gene = gene_list;
             serializer.Serialize(writer, genes);
             writer.Close();
+
         }
 
         public static void createTsv(List<Gene> gene_list, string fileName, string directory)
         {
+
             string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
+            var delimiter = "\t";
+
             if (!File.Exists(gsFileName))
             {
+
                 using (StreamWriter sw = new StreamWriter(gsFileName)) 
                 {
-                    var delimiter = "\t";
+           
                     List<string> firstLineContent = new List<string>()
                     {
                         "recordId",
@@ -45,6 +51,7 @@ namespace DataTranslation
 
                     foreach (Gene item in gene_list)
                     {
+
                         string recordId = "NaN";
                         if (item.recordId != null)
                         {
@@ -91,16 +98,23 @@ namespace DataTranslation
                         };
                         var line = string.Join(delimiter, lineContent);
                         sw.WriteLine(line);
+
                     }
+
                 }
+
             }
+
         }
 
         public void validateXmlFile(string filepath)
         {
+
             Console.WriteLine("Start validating XML file: " + filepath);
+
             try
             {
+
                 XmlReaderSettings settings = new XmlReaderSettings();
                 string path = System.Environment.CurrentDirectory.Substring(0, System.Environment.CurrentDirectory.LastIndexOf("\\"));
                 path = path.Substring(0, path.LastIndexOf("\\"));
@@ -114,17 +128,23 @@ namespace DataTranslation
                 ValidationEventHandler eventHandler = new ValidationEventHandler(ValidationEventHandler);
 
                 document.Validate(eventHandler);
+
             }
             catch (Exception ex)
             {
+
                 Console.WriteLine(ex.Message);
+
             }
+            
         }
 
         static void ValidationEventHandler(object sender, ValidationEventArgs e)
         {
+
             switch (e.Severity)
             {
+
                 case XmlSeverityType.Error:
                     Console.WriteLine("Error: {0}", e.Message);
                     break;
@@ -134,7 +154,11 @@ namespace DataTranslation
                 default:
                     Console.WriteLine("XML file does fulfill the requirements of the Schema.");
                     break;
+
             }
+
         }
+
     }
+
 }
