@@ -104,6 +104,7 @@ public class ML_StandardRecordBlocker {
     
                 //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
                 //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
+                
                 matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
                 matchingRule.addComparator(new GeneNameComperatorCosine());
