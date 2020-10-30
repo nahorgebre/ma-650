@@ -96,11 +96,11 @@ public class ML_StandardRecordBlocker {
                 matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
     
                 // add comparators
-                matchingRule.addComparator(new NcbiIdComperatorCosine());
+                //matchingRule.addComparator(new NcbiIdComperatorCosine());
                 //matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams());
-                matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
-                matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
-                matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
+                //matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
+                //matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
+                //matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
     
                 //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
                 //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
