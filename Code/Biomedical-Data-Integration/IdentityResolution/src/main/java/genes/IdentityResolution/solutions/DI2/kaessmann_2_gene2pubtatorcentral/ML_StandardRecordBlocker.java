@@ -56,8 +56,9 @@ public class ML_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
-            
+        //for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
+        for (int fileNumber = 1; fileNumber <= 1; fileNumber++) { 
+
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  
             HashedDataSet<Gene, Attribute> ds1 = Datasets.kaessmann();
