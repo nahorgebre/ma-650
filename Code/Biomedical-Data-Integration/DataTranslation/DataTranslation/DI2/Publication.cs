@@ -23,12 +23,13 @@ namespace DataTranslation
         // 150 output files - (54.367.006 - 1) / 150 = 54.367.005 / 150 = 362.446,7
         // 200 output files - (54.367.006 - 1) / 200 = 54.367.005 / 200 = 271.835,025
         // 400 output files - (54.367.006 - 1) / 400 = 54.367.005 / 400 = 135.917,5125
+        // 800 output files - (54.367.006 - 1) / 800 = 54.367.005 / 800 = 67.958,8
         public static void gene2pubtatorcentral_dt()
         {
 
             Console.WriteLine("Start gene2pubtatorcentral_dt()");
 
-            int partitionSize = 135917;
+            int partitionSize = 67958;
             int partitionNumbers = 800;
 
             for (int i = 1; i <= partitionNumbers; i++)
