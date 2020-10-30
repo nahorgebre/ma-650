@@ -64,7 +64,7 @@ public class ML_StandardRecordBlocker {
 
         // goldstandard directory
         String comparisonDescription = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
-        String solution = "Kaessmann";
+        String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
         
         // load the gold standard (test set)

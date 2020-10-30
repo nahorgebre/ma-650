@@ -42,7 +42,7 @@ public class LR_StandardRecordBlocker {
 
         // goldstandard directory
         String comparisonDescription = "Heart_2_Heart_Ensembl_NCBI_Crosswalk";
-        String solution = "Kaessmann";
+        String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
         // load the gold standard (test set)
