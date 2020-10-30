@@ -29,7 +29,7 @@ namespace DataTranslation
             Console.WriteLine("Start gene2pubtatorcentral_dt()");
 
             int partitionSize = 135917;
-            int partitionNumbers = 400;
+            int partitionNumbers = 800;
 
             for (int i = 1; i <= partitionNumbers; i++)
             {
