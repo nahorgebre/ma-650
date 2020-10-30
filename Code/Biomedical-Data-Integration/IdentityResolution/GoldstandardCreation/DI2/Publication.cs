@@ -8,7 +8,7 @@ namespace GoldstandardCreation
     class Publication
     {
 
-        public static int pubTatorPartitionSize = 150;
+        public static int pubTatorPartitionSize = 800;
 
         public static FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.xml", Environment.CurrentDirectory));
         public static FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.tsv", Environment.CurrentDirectory));
