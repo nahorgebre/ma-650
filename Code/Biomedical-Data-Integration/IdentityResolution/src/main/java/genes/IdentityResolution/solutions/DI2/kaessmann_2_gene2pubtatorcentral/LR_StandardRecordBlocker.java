@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.Publication.kaessmann_2_gene2pubtatorcentral;
+package genes.IdentityResolution.solutions.DI2.kaessmann_2_gene2pubtatorcentral;
 
 // java
 import java.util.List;
@@ -47,7 +47,7 @@ public class LR_StandardRecordBlocker {
     
             // goldstandard directory
             String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_" + fileNumber;
-            String solution = "Publication";
+            String solution = "DI2";
             String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
     
             // load the gold standard (test set)
