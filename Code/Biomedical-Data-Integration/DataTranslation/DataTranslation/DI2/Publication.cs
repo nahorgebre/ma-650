@@ -64,7 +64,8 @@ namespace DataTranslation
                             condition = (conditionCounter > partitionSize * (i - 1)) & (conditionCounter <= partitionSize * i);
 
                         }
-                        
+
+                        /*
                         if (condition)
                         {
 
@@ -108,6 +109,7 @@ namespace DataTranslation
                             }
                             
                         }
+                        */
 
                         conditionCounter++;
 
