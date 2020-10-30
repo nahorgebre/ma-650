@@ -31,13 +31,19 @@ public class GeneNameComperatorLevenshtein implements Comparator<Gene, Attribute
         List<GeneName> record2GeneNames = record2.getGeneNames();
 
         Comparison comparison = new Comparison();
-        comparison.s1 = record1GeneNames.get(0).getName();
+        comparison.s1 = record1GeneNames.get(0).getName();    
         comparison.s2 = record2GeneNames.get(0).getName(); 
         comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
 
         double postSimilarity = 0;
         if (comparison.similarity <= 0.3) {
             postSimilarity = 0;
+        }
+
+        if (comparison.similarity > 0.7) {
+            System.out.println("String 1: " + comparison.s1);
+            System.out.println("String 2: " + comparison.s2);
+            System.out.println("Sim Measure: " + comparison.similarity);
         }
 
         if(this.comparisonLog != null){
