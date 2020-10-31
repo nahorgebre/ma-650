@@ -4,13 +4,17 @@ using System.Collections.Generic;
 
 namespace DataTranslation
 {
+
     public class Publication
     {
+        
         public static void runDataTranslation()
         {
+
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Publication.gene2PubtatorcentralOutputDirectory));
             Publication.gene2pubtatorcentral_dt();
             //Publication.pubMedDate_dt();
+
         }
 
         public static string gene2PubtatorcentralInputDirectory = "data/input/Gene2Pubtatorcentral";
@@ -147,15 +151,18 @@ namespace DataTranslation
         // gespiegelte partitionierung
         public static void pubMedDate_dt()
         {
+
             Genes genes = new Genes();
             List<Gene> gene_list = new List<Gene>();
 
             using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, gene2PubtatorcentralInputDirectory, "PubMedDate.csv")))
             {
+
                 reader.ReadLine();
                 int counter = 1;
                 while (!reader.EndOfStream)
                 {
+
                     var line = reader.ReadLine();
                     String[] values = line.Split(",");
 
@@ -172,12 +179,16 @@ namespace DataTranslation
                     gene_list.Add(gene);
 
                     counter++;
+
                 }
+
             }
 
             Methods.createXml(gene_list: gene_list, fileName: "PubMedDate_dt.xml", directory: gene2PubtatorcentralOutputDirectory);
             Methods.createTsv(gene_list: gene_list, fileName: "PubMedDate_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
+
         }
 
     }
+
 }

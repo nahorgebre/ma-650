@@ -12,7 +12,23 @@ namespace DataTranslation
         
         private static IAmazonS3 s3Client;
 
-        public static void run()
+        public static void run(String parameter)
+        {
+
+            DirectoryInfo directory = new DirectoryInfo(string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, parameter));
+
+            foreach (FileInfo file in directory.GetFiles())
+            {
+
+                string keyName = string.Format("identity-resolution/input/{0}/{1}", directory.Name, file.Name);
+                string bucketName = "nahorgebre-ma-650-master-thesis";
+                UploadFileAsync(bucketName, file.FullName, keyName).Wait();
+
+            }
+
+        }
+
+        public static void uploadAllFiles()
         {
 
             DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/{1}", Environment.CurrentDirectory, "data/output"));

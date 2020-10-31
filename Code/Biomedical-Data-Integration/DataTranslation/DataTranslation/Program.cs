@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace DataTranslation
 {
@@ -9,15 +6,27 @@ namespace DataTranslation
     {
         public static void Main(string[] args)
         {
+
+            foreach (String parameter in args)
+            {
+                
+                if (parameter.Equals("DI1"))
+                {
+
+                    DI1.runDataTranslation();
+                    AWSupload.run(parameter);
+                    
+                }
+                else if (parameter.Equals("DI2"))
+                {
+
+                    DI2.runDataTranslation();
+                    AWSupload.run(parameter);
+
+                }
+
+            }
             
-            DI1.runDataTranslation();
-            
-            DI2.runDataTranslation();
-
-            //GeneDiseaseAssociations.runDataTranslation();
-
-            AWSupload.run();
-
         }
 
     }
