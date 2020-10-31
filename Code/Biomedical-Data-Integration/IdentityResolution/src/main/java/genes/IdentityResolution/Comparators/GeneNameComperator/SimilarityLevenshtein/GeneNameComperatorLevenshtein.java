@@ -40,7 +40,7 @@ public class GeneNameComperatorLevenshtein implements Comparator<Gene, Attribute
             postSimilarity = 0;
         }
 
-        if (comparison.similarity > 0.7) {
+        if (comparison.similarity >= 0.9) {
             System.out.println("String 1: " + comparison.s1);
             System.out.println("String 2: " + comparison.s2);
             System.out.println("Sim Measure: " + comparison.similarity);
