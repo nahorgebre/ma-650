@@ -103,18 +103,22 @@ public class ML_StandardRecordBlocker {
                 //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
                 //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
                 
+                /*
                 matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
                 matchingRule.addComparator(new GeneNameComperatorCosine());
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
+                */
                 matchingRule.addComparator(new GeneNameComperatorLevenshtein());
+                /*
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
                 matchingRule.addComparator(new GeneNameComperatorSorensenDice());
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
+                */
     
                 // learn the matching rule
                 RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-                learner.learnMatchingRule(ds1, ds2, null, matchingRule, gsTrain);
+                learner.learnMatchingRule( ds2, ds1, null, matchingRule, gsTrain);
     
                 // create a blocker (blocking strategy)
                 StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
