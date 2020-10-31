@@ -124,7 +124,8 @@ public class ML_StandardRecordBlocker {
                 // initialize matching engine
                 MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
        
-                // execute the matching!
+                // execute the matching
+                System.out.println("--- Execute the mathcing! ---");
                 Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
                     ds1, ds2, null, matchingRule, blocker);
                     
