@@ -114,7 +114,7 @@ public class ML_StandardRecordBlocker {
     
                 // learn the matching rule
                 RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-                learner.learnMatchingRule( ds2, ds1, null, matchingRule, gsTrain);
+                learner.learnMatchingRule( ds1, ds2, null, matchingRule, gsTrain);
     
                 // create a blocker (blocking strategy)
                 StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
