@@ -4,8 +4,6 @@ package genes.IdentityResolution.solutions.DI2.kaessmann_2_gene2pubtatorcentral;
 import java.io.File;
 import java.util.List;
 
-import org.apache.jena.sparql.core.Var;
-
 // winter
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard;
