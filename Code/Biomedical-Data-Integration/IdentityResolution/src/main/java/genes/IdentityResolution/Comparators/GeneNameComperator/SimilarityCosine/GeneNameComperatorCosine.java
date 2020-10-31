@@ -46,7 +46,7 @@ public class GeneNameComperatorCosine implements Comparator<Gene, Attribute> {
             this.comparisonLog.setRecord1Value(comparison.s1);
             this.comparisonLog.setRecord2Value(comparison.s2);
             this.comparisonLog.setSimilarity(Double.toString(comparison.similarity));
-            this.comparisonLog.setPostprocessedSimilarity(Double.toString(postSimilarity));
+            this.comparisonLog.setPostprocessedSimilarity(Double.toString(comparison.similarity));
         }
 
         return comparison.similarity;
