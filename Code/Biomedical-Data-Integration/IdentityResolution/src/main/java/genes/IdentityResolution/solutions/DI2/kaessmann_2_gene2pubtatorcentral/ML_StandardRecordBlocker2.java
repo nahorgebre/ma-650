@@ -45,7 +45,7 @@ public class ML_StandardRecordBlocker2 {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = Datasets.kaessmann();
+        HashedDataSet<Gene, Attribute> ds1 = Datasets.Heart();
         HashedDataSet<Gene, Attribute> ds2 = Datasets.gene2pubtatorcentral(1);
 
         // goldstandard directory
