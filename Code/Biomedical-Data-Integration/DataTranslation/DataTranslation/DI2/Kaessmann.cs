@@ -26,7 +26,7 @@ namespace DataTranslation
             List<Gene> geneList = new List<Gene>();
 
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(file.Name);
+            doc.LoadXml(file.FullName);
 
             XmlNodeList geneNodeList = doc.DocumentElement.SelectNodes("/genes/gene");
             foreach (XmlNode geneNode in geneNodeList)
