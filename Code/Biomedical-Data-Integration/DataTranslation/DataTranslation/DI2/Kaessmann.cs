@@ -16,6 +16,18 @@ namespace DataTranslation
 
             List<Gene> gene_list = extractXml(file);
 
+            foreach (Gene geneItem in gene_list)
+            {
+                
+                foreach (GeneName geneNameItem in geneItem.geneNames)
+                {
+                    
+                    Console.WriteLine("Name: " + geneNameItem.name);
+
+                }
+
+            }
+
             Methods.createXml(gene_list: gene_list, fileName: "Kaessmann_dt.xml", directory: "data/output/DI2");
             //Methods.createTsv(gene_list: gene_list, fileName: "Kaessmann_dt.tsv", directory: string.Format("{0}/data/input/DI2/", Environment.CurrentDirectory) );
 
@@ -43,9 +55,6 @@ namespace DataTranslation
 
                 String ncbiId = (geneNode?.SelectSingleNode("ncbiId").InnerText ?? null);
                 gene.ncbiId = ncbiId;
-
-                Console.WriteLine("ncbiId: " + geneNode.SelectSingleNode("ncbiId").InnerText);
-
 
                 // geneDescriptions
                 List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
