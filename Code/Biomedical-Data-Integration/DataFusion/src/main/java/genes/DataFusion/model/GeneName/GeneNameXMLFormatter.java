@@ -9,18 +9,24 @@ public class GeneNameXMLFormatter extends XMLFormatter<GeneName> {
 
     @Override
     public Element createRootElement(Document doc) {
+
         return doc.createElement("geneNames");
+        
     }
 
     @Override
     public Element createElementFromRecord(GeneName record, Document doc) {
-        Element geneName = doc.createElement("geneNames");
+
+        Element geneName = doc.createElement("geneName");
        
         if(record.getName()!=null) {
+
             geneName.appendChild(createTextElement("name", record.getName(), doc));
+
         }
 
         return geneName;
+
     }
 
 }
