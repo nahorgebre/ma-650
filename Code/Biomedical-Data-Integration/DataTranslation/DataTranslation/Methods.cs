@@ -28,6 +28,8 @@ namespace DataTranslation
             serializer.Serialize(writer, genes);
             writer.Close();
 
+            Console.WriteLine(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
+
         }
 
         public static void createTsv(List<Gene> gene_list, string fileName, string directory)
