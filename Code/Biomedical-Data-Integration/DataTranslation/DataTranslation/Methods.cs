@@ -16,6 +16,8 @@ namespace DataTranslation
 
             Console.WriteLine("Create Xml: " + fileName);
 
+            Console.WriteLine("Count: " + gene_list.Count);
+
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, directory));
 
             XmlSerializer serializer = new XmlSerializer(typeof(Genes));
