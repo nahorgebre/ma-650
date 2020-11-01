@@ -44,7 +44,7 @@ namespace DataTranslation
                 String ncbiId = (geneNode?.SelectSingleNode("ncbiId").InnerText ?? null);
                 gene.ncbiId = ncbiId;
 
-                Console.WriteLine("ncbiId: " + geneNode.SelectSingleNode("ncbiId").Value);
+                Console.WriteLine("ncbiId: " + geneNode.SelectSingleNode("ncbiId").InnerText);
 
 
                 // geneDescriptions
