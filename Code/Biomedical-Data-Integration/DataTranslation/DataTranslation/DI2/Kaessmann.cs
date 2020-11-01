@@ -16,8 +16,8 @@ namespace DataTranslation
 
             List<Gene> gene_list = extractXml(file);
 
-            Methods.createXml(gene_list: gene_list, fileName: "Kaessmann_dt.xml", directory: string.Format("{0}/data/input/DI2/", Environment.CurrentDirectory) );
-            Methods.createTsv(gene_list: gene_list, fileName: "Kaessmann_dt.tsv", directory: string.Format("{0}/data/input/DI2/", Environment.CurrentDirectory) );
+            Methods.createXml(gene_list: gene_list, fileName: "Kaessmann_dt.xml", directory: string.Format("{0}/data/output/DI2/", Environment.CurrentDirectory) );
+            //Methods.createTsv(gene_list: gene_list, fileName: "Kaessmann_dt.tsv", directory: string.Format("{0}/data/input/DI2/", Environment.CurrentDirectory) );
 
         }
 
