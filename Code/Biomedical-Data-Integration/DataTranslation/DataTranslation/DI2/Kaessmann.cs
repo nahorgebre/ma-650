@@ -177,6 +177,8 @@ namespace DataTranslation
             
             String name = (geneNameNode?.SelectSingleNode("/geneName/name").InnerText ?? null);
             geneNameItem.name = name;
+
+            Console.WriteLine(name);
         
 
             return geneNameItem;
