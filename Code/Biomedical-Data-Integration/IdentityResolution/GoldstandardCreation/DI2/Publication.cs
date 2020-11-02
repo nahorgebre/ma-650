@@ -5,10 +5,9 @@ using System.Xml;
 
 namespace GoldstandardCreation
 {
+
     class Publication
     {
-
-        public static int pubTatorPartitionSize = 800;
 
         public static FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.xml", Environment.CurrentDirectory));
         public static FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.tsv", Environment.CurrentDirectory));
@@ -16,6 +15,7 @@ namespace GoldstandardCreation
         public static void run() {
 
             createKaessmannTsv();
+
             kaessmann_2_gene2pubtatorcentral();
 
         }
@@ -25,19 +25,26 @@ namespace GoldstandardCreation
             if (File.Exists(tsvFile.FullName))
             {
 
-                for (int i = 1; i <= Publication.pubTatorPartitionSize; i++)
+                for (int i = 1; i <= Variables.pubTatorPartitionSize; i++)
                 {
+                    
                     string comparison = "kaessmann_2_gene2pubtatorcentral_" + i;
-                    string directoryName = string.Format("{0}/data/output/DI2/{1}", Environment.CurrentDirectory, comparison);
+                    string directoryName = string.Format("{0}/data/output/DI2/{1}/{2}", Environment.CurrentDirectory, Variables.pubTatorPartitionSize, comparison);
                     string trueFile = string.Format("{0}/true.csv", directoryName);
                     string falseFile = string.Format("{0}/false.csv", directoryName);
+
                     Directory.CreateDirectory(directoryName);
+
                     if (!File.Exists(trueFile) | !File.Exists(falseFile))
                     {
+
                         Console.WriteLine(comparison);
+
                         (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 3);
+                        
                         Methods.createOuput(trueFile, trueList);
                         Methods.createOuput(falseFile, falseList);
+
                     }
                     
                 }

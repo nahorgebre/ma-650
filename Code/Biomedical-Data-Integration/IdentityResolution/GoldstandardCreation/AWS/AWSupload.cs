@@ -12,34 +12,42 @@ namespace GoldstandardCreation
 
         private static IAmazonS3 s3Client;
 
-        public static void run()
+        public static void run(DirectoryInfo outputDirectory, String parameter = null)
         {
 
             Console.WriteLine("Start uploading files!");
 
-            DirectoryInfo outputDirectory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/");
+            string solution = outputDirectory.Name;
 
-            foreach (DirectoryInfo directory in outputDirectory.GetDirectories())
+            foreach (DirectoryInfo subDirectory in outputDirectory.GetDirectories())
             {
 
-                string solution = directory.Name;
+                string comparison = subDirectory.Name;
 
-                foreach (DirectoryInfo subDirectory in directory.GetDirectories())
+                foreach (FileInfo file in subDirectory.GetFiles())
                 {
 
-                    string comparison = subDirectory.Name;
-
-                    foreach (FileInfo file in subDirectory.GetFiles())
+                    if (file.Name.Contains("train") | file.Name.Contains("test"))
                     {
 
-                        if (file.Name.Contains("train") | file.Name.Contains("test"))
+                        string keyName = string.Empty;
+
+                        if (parameter != null)
                         {
 
-                            string keyName = string.Format("identity-resolution/goldstandard/{0}/{1}/{2}", solution, comparison, file.Name);
-                            string bucketName = "nahorgebre-ma-650-master-thesis";
-                            UploadFileAsync(bucketName, file.FullName, keyName).Wait();
+                            keyName = string.Format("identity-resolution/goldstandard/{0}/{1}/{2}/{3}", parameter, Variables.pubTatorPartitionSize, comparison, file.Name);
+                        
+                        }
+                        else
+                        {
+
+                            keyName = string.Format("identity-resolution/goldstandard/{0}/{1}/{2}/", parameter, comparison, file.Name);
 
                         }
+                        
+                        string bucketName = "nahorgebre-ma-650-master-thesis";
+
+                        UploadFileAsync(bucketName, file.FullName, keyName).Wait();
 
                     }
 

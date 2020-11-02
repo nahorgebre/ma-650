@@ -7,11 +7,9 @@ namespace GoldstandardCreation
     class Output
     {
 
-        public static void run() {
+        public static void run(DirectoryInfo outputDirectory) {
 
             Console.WriteLine("Create output files!");
-
-            DirectoryInfo outputDirectory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/");
 
             foreach (DirectoryInfo directory in outputDirectory.GetDirectories())
             {
