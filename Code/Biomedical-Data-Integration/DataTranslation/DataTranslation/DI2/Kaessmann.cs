@@ -151,16 +151,22 @@ namespace DataTranslation
             List<GeneName> geneNameList = new List<GeneName>();
 
             XmlDocument doc = new XmlDocument();
+
             doc.LoadXml(xml);
 
             XmlNodeList NodeList = doc.DocumentElement.SelectNodes("/geneNames/geneName");
+
             foreach (XmlNode node in NodeList)
             {
 
                 GeneName geneName = new GeneName();
 
-                String name = (node?.SelectSingleNode("name").InnerText ?? null);
-                geneName.name = name;
+                if(checkIfNodeExist(node, "organName"))
+                {
+                    
+                    geneName.name = (node?.SelectSingleNode("name").InnerText ?? null);
+
+                }
 
                 geneNameList.Add(geneName);
 
@@ -176,40 +182,66 @@ namespace DataTranslation
             List<Organ> organList = new List<Organ>();
 
             XmlDocument doc = new XmlDocument();
+
             doc.LoadXml(xml);
 
             XmlNodeList NodeList = doc.DocumentElement.SelectNodes("/organs/organ");
+
             foreach (XmlNode node in NodeList)
             {
 
                 Organ organItem = new Organ();
 
-                String organName = (node?.SelectSingleNode("organName").InnerText ?? null);
-                organItem.organName = organName;
-
-                String disagreement = (node?.SelectSingleNode("disagreement").InnerText ?? null);
-                organItem.disagreement = disagreement;
-
-                var langNode = node.SelectSingleNode("probEqualOrthoAdj");
-                if(langNode==null)
+                if(checkIfNodeExist(node, "organName"))
                 {
-                    Console.WriteLine("true");
+
+                    organItem.organName = (node?.SelectSingleNode("organName").InnerText ?? null);
+
                 }
 
-                if(node.SelectSingleNode("//probEqualOrthoAdj") != null)
+                if(checkIfNodeExist(node, "disagreement"))
                 {
-                    String probEqualOrthoAdj = (node?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
-                    organItem.probEqualOrthoAdj = probEqualOrthoAdj;
+
+                    organItem.disagreement = (node?.SelectSingleNode("disagreement").InnerText ?? null);
+
                 }
 
-                String call = (node?.SelectSingleNode("call").InnerText ?? null);
-                organItem.call = call;
+                if(checkIfNodeExist(node, "probEqualOrthoAdj"))
+                {
+
+                    organItem.probEqualOrthoAdj = (node?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
+
+                }
+
+                if(checkIfNodeExist(node, "call"))
+                {
+
+                    organItem.call = (node?.SelectSingleNode("call").InnerText ?? null);
+
+                }
 
                 organList.Add(organItem);
 
             }
             
             return organList;
+
+        }
+
+        public static bool checkIfNodeExist(XmlNode node, String xpath)
+        {
+
+            bool status = false;
+
+            var langNode = node.SelectSingleNode(xpath);
+            if(langNode==null)
+            {
+
+                status = true;
+
+            }
+
+            return status;
 
         }
 
