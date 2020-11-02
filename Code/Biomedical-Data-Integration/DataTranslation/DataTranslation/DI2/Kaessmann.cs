@@ -86,7 +86,7 @@ namespace DataTranslation
                     while (geneNamesInner.Read())
                     {
                                         
-                        if (geneNamesInner.HasValue)
+                        if (!geneNamesInner.IsEmptyElement)
                         {
 
                             geneNamesInner.ReadToFollowing("geneName");
@@ -113,7 +113,7 @@ namespace DataTranslation
                     while (organsInner.Read())
                     {
 
-                        if (organsInner.HasValue)
+                        if (!organsInner.IsEmptyElement)
                         {
 
                             organsInner.ReadToFollowing("organ");
