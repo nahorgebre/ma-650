@@ -86,8 +86,9 @@ namespace DataTranslation
                     while (geneNamesInner.Read())
                     {
                         
-                        Console.WriteLine("1:" + geneNamesInner.ReadInnerXml());
+                        Console.WriteLine("Inner XML:" + geneNamesInner.ReadInnerXml());
 
+                        /*
                         if (geneNamesInner.HasValue)
                         {
 
@@ -98,7 +99,7 @@ namespace DataTranslation
                             while (geneNameInner.Read())
                             {
 
-                                Console.WriteLine("2:" + geneNameInner.ReadInnerXml());
+                                Console.WriteLine("Inner XML:" + geneNameInner.ReadInnerXml());
 
                                 if (geneNameInner.HasValue)
                                 {
@@ -112,14 +113,13 @@ namespace DataTranslation
                                     geneName.name = name;
 
                                 }
-
-
-
+                                
                             }
 
                             geneNameList.Add(geneName);
 
                         }
+                        */
 
                     }
 
@@ -134,6 +134,9 @@ namespace DataTranslation
                     while (organsInner.Read())
                     {
 
+                        Console.WriteLine("Inner XML:" + organsInner.ReadInnerXml());
+
+                        /*
                         if (organsInner.HasValue)
                         {
                             
@@ -181,6 +184,7 @@ namespace DataTranslation
                             }
 
                         }
+                        */
                         
                     }
 
