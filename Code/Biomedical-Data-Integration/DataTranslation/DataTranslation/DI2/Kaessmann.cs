@@ -86,14 +86,14 @@ namespace DataTranslation
                     while (geneNamesInner.Read())
                     {
 
-                        GeneName geneName = new GeneName();
-
-                        geneNamesInner.ReadToFollowing("geneName");
-                        XmlReader geneNameInner = geneNamesInner.ReadSubtree();
-                        while (geneNameInner.Read())
+                        if (geneNamesInner.HasValue)
                         {
 
-                            if (geneNameInner.HasValue)
+                            GeneName geneName = new GeneName();
+
+                            geneNamesInner.ReadToFollowing("geneName");
+                            XmlReader geneNameInner = geneNamesInner.ReadSubtree();
+                            while (geneNameInner.Read())
                             {
 
                                 String name = string.Empty;
@@ -104,9 +104,9 @@ namespace DataTranslation
 
                             }
 
-                        }
+                            geneNameList.Add(geneName);
 
-                        geneNameList.Add(geneName);
+                        }
 
                     }
 
@@ -166,7 +166,7 @@ namespace DataTranslation
                                 organList.Add(organ);
 
                             }
-                            
+
                         }
                         
                     }
