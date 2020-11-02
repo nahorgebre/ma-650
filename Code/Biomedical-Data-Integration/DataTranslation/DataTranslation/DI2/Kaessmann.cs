@@ -79,7 +79,7 @@ namespace DataTranslation
 
 
                     // geneNames
-                    List<GeneName> geneNameList = new List<GeneName>();
+                     new List<GeneName>();
 
                     reader.ReadToFollowing("geneNames"); 
                     XmlReader geneNamesInner = reader.ReadSubtree();
@@ -88,9 +88,9 @@ namespace DataTranslation
 
                         String xml = geneNamesInner.ReadInnerXml();
 
-                        Console.WriteLine(xml);
+                        List<GeneName> geneNameList = parseGeneName2(xml);
 
-                        Console.WriteLine("----");
+                        gene.geneNames = geneNameList;
 
                         /*                
                         if (geneNamesInner.HasValue)
@@ -103,7 +103,7 @@ namespace DataTranslation
 
                                 Console.WriteLine(geneNameInner.ReadInnerXml());
 
-                                //geneNameList.Add(parseGeneName(geneNameInner.ReadInnerXml()));
+                                //
 
                             }
 
@@ -111,9 +111,7 @@ namespace DataTranslation
                         */
 
                     }
-
-                    gene.geneNames = geneNameList;
-
+                    
 
                     // organs
                     List<Organ> organList = new List<Organ>();
@@ -182,6 +180,31 @@ namespace DataTranslation
             }
 
             return geneList;
+
+        }
+
+        public static List<GeneName> parseGeneName2(String xml)
+        {
+
+            List<GeneName> geneNameList = new List<GeneName>();
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+
+            XmlNodeList NodeList = doc.DocumentElement.SelectNodes("/geneNames/geneName");
+            foreach (XmlNode node in NodeList)
+            {
+
+                GeneName geneName = new GeneName();
+
+                String name = (node?.SelectSingleNode("name").InnerText ?? null);
+                geneName.name = name;
+
+                geneNameList.Add(geneName);
+
+            }
+
+            return geneNameList;
 
         }
 
