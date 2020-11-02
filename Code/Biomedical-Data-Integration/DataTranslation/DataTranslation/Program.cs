@@ -14,6 +14,7 @@ namespace DataTranslation
                 {
 
                     DI1.runDataTranslation();
+                    
                     AWSupload.run(parameter);
                     
                 }
@@ -21,6 +22,7 @@ namespace DataTranslation
                 {
 
                     DI2.runDataTranslation();
+
                     AWSupload.run(parameter);
 
                 }

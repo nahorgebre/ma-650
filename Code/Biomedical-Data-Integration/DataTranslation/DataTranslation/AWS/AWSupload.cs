@@ -12,16 +12,46 @@ namespace DataTranslation
         
         private static IAmazonS3 s3Client;
 
-        public static void run(String parameter)
+        public static void run(String parameter, String partitionNumbers = null)
         {
 
-            DirectoryInfo directory = new DirectoryInfo(string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, parameter));
+            string directoryPath = string.Empty;
+
+            if (partitionNumbers != null)
+            {
+
+                directoryPath = string.Format("{0}/data/output/{1}/{2}", Environment.CurrentDirectory, parameter, partitionNumbers);
+
+            }
+            else
+            {
+
+                directoryPath = string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, parameter);
+
+            }
+
+            DirectoryInfo directory = new DirectoryInfo(directoryPath);
 
             foreach (FileInfo file in directory.GetFiles())
             {
 
-                string keyName = string.Format("identity-resolution/input/{0}/{1}", directory.Name, file.Name);
+                string keyName = string.Empty;
+
+                if (partitionNumbers != null)
+                {
+
+                    keyName = string.Format("identity-resolution/input/{0}/{1}/{2}", parameter, partitionNumbers, file.Name);
+
+                }
+                else
+                {
+
+                    keyName = string.Format("identity-resolution/input/{0}/{1}", directory.Name, file.Name);
+
+                }
+
                 string bucketName = "nahorgebre-ma-650-master-thesis";
+
                 UploadFileAsync(bucketName, file.FullName, keyName).Wait();
 
             }
@@ -40,7 +70,9 @@ namespace DataTranslation
                 {
 
                     string keyName = string.Format("identity-resolution/input/{0}/{1}", subDirectory.Name, file.Name);
+
                     string bucketName = "nahorgebre-ma-650-master-thesis";
+
                     UploadFileAsync(bucketName, file.FullName, keyName).Wait();
 
                 }
@@ -65,8 +97,11 @@ namespace DataTranslation
                 {
 
                     s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
+
                     var fileTransferUtility = new TransferUtility(s3Client);
+
                     await fileTransferUtility.UploadAsync(filePath, bucketName, keyName);
+
                     Console.WriteLine("Upload complited!");
 
                 }

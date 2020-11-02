@@ -20,23 +20,14 @@ namespace DataTranslation
         public static string gene2PubtatorcentralInputDirectory = "data/input/Gene2Pubtatorcentral";
         public static string gene2PubtatorcentralOutputDirectory = "data/output/DI2";
 
-        // 15 output files - (54.367.006 - 1) / 15 = 54.367.005 / 15 = 3.624.467
-        // 35 output files - (54.367.006 - 1) / 35 = 54.367.005 / 35 = 1.553.343
-        // 55 output files - (54.367.006 - 1) / 55 = 54.367.005 / 55 = 988.491
-        // 100 output files - (54.367.006 - 1) / 100 = 54.367.005 / 100 = 543.670
-        // 150 output files - (54.367.006 - 1) / 150 = 54.367.005 / 150 = 362.446,7
-        // 200 output files - (54.367.006 - 1) / 200 = 54.367.005 / 200 = 271.835,025
-        // 400 output files - (54.367.006 - 1) / 400 = 54.367.005 / 400 = 135.917,5125
-        // 800 output files - (54.367.006 - 1) / 800 = 54.367.005 / 800 = 67.958,8
+
         public static void gene2pubtatorcentral_dt()
         {
 
             Console.WriteLine("Start gene2pubtatorcentral_dt()");
 
-            int partitionSize = 362446;
-            int partitionNumbers = 150;
 
-            for (int i = 1; i <= partitionNumbers; i++)
+            for (int i = 1; i <= Variables.partitionNumbers; i++)
             {
 
                 List<Gene> gene_list = new List<Gene>();
@@ -56,16 +47,16 @@ namespace DataTranslation
 
                         bool condition;
 
-                        if (i == partitionNumbers)
+                        if (i == Variables.partitionNumbers)
                         {
 
-                            condition = conditionCounter > partitionSize * (i - 1);
+                            condition = conditionCounter > Variables.partitionSize * (i - 1);
 
                         }
                         else
                         {
 
-                            condition = (conditionCounter > partitionSize * (i - 1)) & (conditionCounter <= partitionSize * i);
+                            condition = (conditionCounter > Variables.partitionSize * (i - 1)) & (conditionCounter <= Variables.partitionSize * i);
 
                         }
 
@@ -122,8 +113,8 @@ namespace DataTranslation
 
                 Console.WriteLine("Gene list length: " + gene_list.Count);
                     
-                Methods.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: gene2PubtatorcentralOutputDirectory + "/" + partitionNumbers.ToString());
-                Methods.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: gene2PubtatorcentralOutputDirectory + "/" + partitionNumbers.ToString());
+                Methods.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: gene2PubtatorcentralOutputDirectory + "/" + Variables.partitionNumbers.ToString());
+                Methods.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: gene2PubtatorcentralOutputDirectory + "/" + Variables.partitionNumbers.ToString());
  
             }
 
