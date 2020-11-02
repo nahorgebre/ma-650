@@ -86,7 +86,7 @@ namespace DataTranslation
                     while (geneNamesInner.Read())
                     {
 
-                        String xml = geneNamesInner.ReadInnerXml();
+                        String xml = "<geneNames>" + geneNamesInner.ReadInnerXml() + "</geneNames>";
 
                         List<GeneName> geneNameList = parseGeneName2(xml);
 
@@ -111,7 +111,7 @@ namespace DataTranslation
                         */
 
                     }
-                    
+
 
                     // organs
                     List<Organ> organList = new List<Organ>();
