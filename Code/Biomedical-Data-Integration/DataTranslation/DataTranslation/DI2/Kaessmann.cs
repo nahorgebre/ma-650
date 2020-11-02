@@ -96,13 +96,20 @@ namespace DataTranslation
                             while (geneNameInner.Read())
                             {
 
-                                String name = string.Empty;
-                                geneNameInner.ReadToFollowing("name");
-                                name = geneNameInner.ReadElementContentAsString();
+                                if (geneNameInner.HasValue)
+                                {
 
-                                Console.WriteLine("Name: " + name);
+                                    String name = string.Empty;
+                                    geneNameInner.ReadToFollowing("name");
+                                    name = geneNameInner.ReadElementContentAsString();
 
-                                geneName.name = name;
+                                    Console.WriteLine("Name: " + name);
+
+                                    geneName.name = name;
+                                    
+                                }
+
+
 
                             }
 
