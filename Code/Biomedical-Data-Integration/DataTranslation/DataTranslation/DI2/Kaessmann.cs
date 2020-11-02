@@ -163,7 +163,7 @@ namespace DataTranslation
 
                 if(checkIfNodeExist(node, "organName"))
                 {
-                    
+
                     geneName.name = (node?.SelectSingleNode("name").InnerText ?? null);
 
                 }
@@ -231,13 +231,14 @@ namespace DataTranslation
         public static bool checkIfNodeExist(XmlNode node, String xpath)
         {
 
-            bool status = false;
+            bool status = true;
 
             var langNode = node.SelectSingleNode(xpath);
+
             if(langNode==null)
             {
 
-                status = true;
+                status = false;
 
             }
 
