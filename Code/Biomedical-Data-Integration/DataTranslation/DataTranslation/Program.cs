@@ -25,6 +25,8 @@ namespace DataTranslation
 
                     AWSupload.run(parameter);
 
+                    AWSupload.run(parameter, Variables.partitionNumbers.ToString());
+
                 }
 
             }
