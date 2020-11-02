@@ -86,7 +86,11 @@ namespace DataTranslation
                     while (geneNamesInner.Read())
                     {
 
-                        Console.WriteLine(geneNamesInner.ReadInnerXml());
+                        String xml = geneNamesInner.ReadInnerXml();
+
+                        Console.WriteLine(xml);
+
+                        Console.WriteLine("----");
 
                         /*                
                         if (geneNamesInner.HasValue)
@@ -119,7 +123,11 @@ namespace DataTranslation
                     while (organsInner.Read())
                     {
 
-                        Console.WriteLine(organsInner.ReadInnerXml());
+                        String xml = organsInner.ReadInnerXml();
+
+                        Console.WriteLine(xml);
+
+                        Console.WriteLine("----");
 
                         /*
                         if (organsInner.HasValue)
