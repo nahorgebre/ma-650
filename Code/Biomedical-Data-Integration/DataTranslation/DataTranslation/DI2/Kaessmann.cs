@@ -190,6 +190,12 @@ namespace DataTranslation
                 String disagreement = (node?.SelectSingleNode("disagreement").InnerText ?? null);
                 organItem.disagreement = disagreement;
 
+                var langNode = node.SelectSingleNode("probEqualOrthoAdj");
+                if(langNode==null)
+                {
+                    Console.WriteLine("true");
+                }
+
                 if(node.SelectSingleNode("//probEqualOrthoAdj") != null)
                 {
                     String probEqualOrthoAdj = (node?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
