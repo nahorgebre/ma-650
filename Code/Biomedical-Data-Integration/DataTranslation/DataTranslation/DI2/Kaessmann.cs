@@ -123,7 +123,9 @@ namespace DataTranslation
                             while (organInner.Read())
                             {
 
-                                organList.Add(parseOrgan(organInner.ReadInnerXml()));
+                                Console.WriteLine(organInner.ReadInnerXml());
+
+                                //organList.Add(parseOrgan(organInner.ReadInnerXml()));
 
                             }
 
