@@ -88,66 +88,26 @@ namespace DataTranslation
 
                         String xml = "<geneNames>" + geneNamesInner.ReadInnerXml() + "</geneNames>";
 
-                        List<GeneName> geneNameList = parseGeneName2(xml);
+                        List<GeneName> geneNameList = parseGeneName(xml);
 
                         gene.geneNames = geneNameList;
-
-                        /*                
-                        if (geneNamesInner.HasValue)
-                        {
-
-                            geneNamesInner.ReadToFollowing("geneName");
-                            XmlReader geneNameInner = geneNamesInner.ReadSubtree();
-                            while (geneNameInner.Read())
-                            {
-
-                                Console.WriteLine(geneNameInner.ReadInnerXml());
-
-                                //
-
-                            }
-
-                        }
-                        */
 
                     }
 
 
                     // organs
-                    List<Organ> organList = new List<Organ>();
-
                     reader.ReadToFollowing("organs"); 
                     XmlReader organsInner = reader.ReadSubtree();
                     while (organsInner.Read())
                     {
 
-                        String xml = organsInner.ReadInnerXml();
+                        String xml = "<organs>" + organsInner.ReadInnerXml() + "</organs>";
 
-                        Console.WriteLine(xml);
+                        List<Organ> organList = parseOrgan(xml);
 
-                        Console.WriteLine("----");
-
-                        /*
-                        if (organsInner.HasValue)
-                        {
-
-                            organsInner.ReadToFollowing("organ");
-                            XmlReader organInner = organsInner.ReadSubtree();
-                            while (organInner.Read())
-                            {
-
-                                Console.WriteLine(organInner.ReadInnerXml());
-
-                                //organList.Add(parseOrgan(organInner.ReadInnerXml()));
-
-                            }
-
-                        }
-                        */
+                        gene.organs = organList;
                         
                     }
-
-                    gene.organs = organList;
                     
 
                     // publicationMentions
@@ -183,7 +143,7 @@ namespace DataTranslation
 
         }
 
-        public static List<GeneName> parseGeneName2(String xml)
+        public static List<GeneName> parseGeneName(String xml)
         {
 
             List<GeneName> geneNameList = new List<GeneName>();
@@ -208,27 +168,41 @@ namespace DataTranslation
 
         }
 
-        public static GeneName parseGeneName(String Xml)
+        public static List<Organ> parseOrgan(String xml)
         {
 
-            GeneName geneNameItem = new GeneName();
+            List<Organ> organList = new List<Organ>();
 
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(Xml);
+            doc.LoadXml(xml);
 
-            XmlNode geneNameNode = doc.DocumentElement.SelectSingleNode("geneName");
+            XmlNodeList NodeList = doc.DocumentElement.SelectNodes("/organs/organ");
+            foreach (XmlNode node in NodeList)
+            {
+
+                Organ organItem = new Organ();
+
+                String organName = (node?.SelectSingleNode("organName").InnerText ?? null);
+                organItem.organName = organName;
+
+                String disagreement = (node?.SelectSingleNode("disagreement").InnerText ?? null);
+                organItem.disagreement = disagreement;
+
+                String probEqualOrthoAdj = (node?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
+                organItem.probEqualOrthoAdj = probEqualOrthoAdj;
+
+                String call = (node?.SelectSingleNode("call").InnerText ?? null);
+                organItem.call = call;
+
+                organList.Add(organItem);
+
+            }
             
-            String name = (geneNameNode?.SelectSingleNode("/geneName/name").InnerText ?? null);
-            geneNameItem.name = name;
-
-            Console.WriteLine(name);
-        
-
-            return geneNameItem;
+            return organList;
 
         }
 
-        public static Organ parseOrgan(String Xml)
+        public static Organ parseOrgan2(String Xml)
         {
 
             Organ organItem = new Organ();
