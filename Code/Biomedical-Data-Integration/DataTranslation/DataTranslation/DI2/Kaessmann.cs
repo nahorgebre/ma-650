@@ -161,7 +161,7 @@ namespace DataTranslation
 
                 GeneName geneName = new GeneName();
 
-                if(checkIfNodeExist(node, "organName"))
+                if(checkIfNodeExist(node, "geneName"))
                 {
 
                     geneName.name = (node?.SelectSingleNode("name").InnerText ?? null);
