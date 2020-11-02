@@ -98,7 +98,7 @@ namespace DataTranslation
 
                                 String name = string.Empty;
                                 geneNameInner.ReadToFollowing("name");
-                                name = geneNameInner.ReadElementContentAsString();
+                                name = geneNameInner.Value;
 
                                 geneName.name = name;
 
@@ -134,7 +134,7 @@ namespace DataTranslation
                                 // organName
                                 String organName = string.Empty;
                                 organInner.ReadToFollowing("organName");
-                                organName = organInner.ReadElementContentAsString();
+                                organName = organInner.Value;
 
                                 organ.organName = organName;
 
@@ -142,7 +142,7 @@ namespace DataTranslation
                                 // disagreement
                                 String disagreement = string.Empty;
                                 organInner.ReadToFollowing("disagreement");
-                                disagreement = organInner.ReadElementContentAsString();
+                                disagreement = organInner.Value;
 
                                 organ.disagreement = disagreement;
 
@@ -150,7 +150,7 @@ namespace DataTranslation
                                 // probEqualOrthoAdj
                                 String probEqualOrthoAdj = string.Empty;
                                 organInner.ReadToFollowing("probEqualOrthoAdj");
-                                probEqualOrthoAdj = organInner.ReadElementContentAsString();
+                                probEqualOrthoAdj = organInner.Value;
 
                                 organ.probEqualOrthoAdj = probEqualOrthoAdj;
 
@@ -158,7 +158,7 @@ namespace DataTranslation
                                 // call
                                 String call = string.Empty;
                                 organInner.ReadToFollowing("call");
-                                call = organInner.ReadElementContentAsString();
+                                call = organInner.Value;
 
                                 organ.call = call;
 
