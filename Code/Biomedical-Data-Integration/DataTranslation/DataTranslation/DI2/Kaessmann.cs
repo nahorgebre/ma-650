@@ -93,11 +93,16 @@ namespace DataTranslation
                         while (geneNameInner.Read())
                         {
 
-                            String name = string.Empty;
-                            geneNameInner.ReadToFollowing("name");
-                            name = geneNameInner.ReadElementContentAsString();
+                            if (geneNameInner.HasValue)
+                            {
 
-                            geneName.name = name;
+                                String name = string.Empty;
+                                geneNameInner.ReadToFollowing("name");
+                                name = geneNameInner.ReadElementContentAsString();
+
+                                geneName.name = name;
+
+                            }
 
                         }
 
@@ -115,50 +120,55 @@ namespace DataTranslation
                     XmlReader organsInner = reader.ReadSubtree();
                     while (organsInner.Read())
                     {
-                        
-                        organsInner.ReadToFollowing("organ");
-                        XmlReader organInner = organsInner.ReadSubtree();
-                        while (organInner.Read())
+
+                        if (organsInner.HasValue)
                         {
+                            
+                            organsInner.ReadToFollowing("organ");
+                            XmlReader organInner = organsInner.ReadSubtree();
+                            while (organInner.Read())
+                            {
 
-                            Organ organ = new Organ();
+                                Organ organ = new Organ();
 
-                            // organName
-                            String organName = string.Empty;
-                            organInner.ReadToFollowing("organName");
-                            organName = organInner.ReadElementContentAsString();
+                                // organName
+                                String organName = string.Empty;
+                                organInner.ReadToFollowing("organName");
+                                organName = organInner.ReadElementContentAsString();
 
-                            organ.organName = organName;
-
-
-                            // disagreement
-                            String disagreement = string.Empty;
-                            organInner.ReadToFollowing("disagreement");
-                            disagreement = organInner.ReadElementContentAsString();
-
-                            organ.disagreement = disagreement;
+                                organ.organName = organName;
 
 
-                            // probEqualOrthoAdj
-                            String probEqualOrthoAdj = string.Empty;
-                            organInner.ReadToFollowing("probEqualOrthoAdj");
-                            probEqualOrthoAdj = organInner.ReadElementContentAsString();
+                                // disagreement
+                                String disagreement = string.Empty;
+                                organInner.ReadToFollowing("disagreement");
+                                disagreement = organInner.ReadElementContentAsString();
 
-                            organ.probEqualOrthoAdj = probEqualOrthoAdj;
-
-
-                            // call
-                            String call = string.Empty;
-                            organInner.ReadToFollowing("call");
-                            call = organInner.ReadElementContentAsString();
-
-                            organ.call = call;
+                                organ.disagreement = disagreement;
 
 
-                            organList.Add(organ);
+                                // probEqualOrthoAdj
+                                String probEqualOrthoAdj = string.Empty;
+                                organInner.ReadToFollowing("probEqualOrthoAdj");
+                                probEqualOrthoAdj = organInner.ReadElementContentAsString();
 
+                                organ.probEqualOrthoAdj = probEqualOrthoAdj;
+
+
+                                // call
+                                String call = string.Empty;
+                                organInner.ReadToFollowing("call");
+                                call = organInner.ReadElementContentAsString();
+
+                                organ.call = call;
+
+
+                                organList.Add(organ);
+
+                            }
+                            
                         }
-
+                        
                     }
 
                     gene.organs = organList;
