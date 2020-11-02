@@ -85,7 +85,10 @@ namespace DataTranslation
                     XmlReader geneNamesInner = reader.ReadSubtree();
                     while (geneNamesInner.Read())
                     {
-                                        
+
+                        Console.WriteLine(geneNamesInner.ReadInnerXml());
+
+                        /*                
                         if (geneNamesInner.HasValue)
                         {
 
@@ -101,6 +104,7 @@ namespace DataTranslation
                             }
 
                         }
+                        */
 
                     }
 
@@ -115,6 +119,9 @@ namespace DataTranslation
                     while (organsInner.Read())
                     {
 
+                        Console.WriteLine(organsInner.ReadInnerXml());
+
+                        /*
                         if (organsInner.HasValue)
                         {
 
@@ -130,6 +137,7 @@ namespace DataTranslation
                             }
 
                         }
+                        */
                         
                     }
 
