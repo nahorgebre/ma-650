@@ -185,6 +185,8 @@ namespace DataTranslation
                 String organName = (node?.SelectSingleNode("organName").InnerText ?? null);
                 organItem.organName = organName;
 
+                Console.WriteLine("Organ Name: " + organName);
+
                 String disagreement = (node?.SelectSingleNode("disagreement").InnerText ?? null);
                 organItem.disagreement = disagreement;
 
