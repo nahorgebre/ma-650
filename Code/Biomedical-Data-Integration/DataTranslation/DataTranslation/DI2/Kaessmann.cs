@@ -172,8 +172,10 @@ namespace DataTranslation
 
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(Xml);
+
+            XmlNode geneNameNode = doc.DocumentElement.SelectSingleNode("geneName");
             
-            String name = (doc.DocumentElement?.SelectSingleNode("/geneName/name").InnerText ?? null);
+            String name = (geneNameNode?.SelectSingleNode("/geneName/name").InnerText ?? null);
             geneNameItem.name = name;
         
 
@@ -189,16 +191,18 @@ namespace DataTranslation
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(Xml);
 
-            String organName = (doc.DocumentElement?.SelectSingleNode("organName").InnerText ?? null);
+            XmlNode organNode = doc.DocumentElement.SelectSingleNode("organ");
+
+            String organName = (organNode?.SelectSingleNode("organName").InnerText ?? null);
             organItem.organName = organName;
 
-            String disagreement = (doc.DocumentElement?.SelectSingleNode("disagreement").InnerText ?? null);
+            String disagreement = (organNode?.SelectSingleNode("disagreement").InnerText ?? null);
             organItem.disagreement = disagreement;
 
-            String probEqualOrthoAdj = (doc.DocumentElement?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
+            String probEqualOrthoAdj = (organNode?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
             organItem.probEqualOrthoAdj = probEqualOrthoAdj;
 
-            String call = (doc.DocumentElement?.SelectSingleNode("call").InnerText ?? null);
+            String call = (organNode?.SelectSingleNode("call").InnerText ?? null);
             organItem.call = call;
 
             return organItem;
