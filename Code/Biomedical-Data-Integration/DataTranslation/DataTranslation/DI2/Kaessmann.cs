@@ -52,8 +52,7 @@ namespace DataTranslation
 
                     Gene gene = new Gene();
 
-                    gene.recordId = string.Format("Kaessmann_{0}_rid", counter);
-                    Console.WriteLine("Record Id: " + gene.recordId);
+                    gene.recordId = string.Format("Kaessmann_{0}_rid", counter);     
 
                     // ensemblId
                     String ensemblId = string.Empty;
@@ -61,6 +60,8 @@ namespace DataTranslation
                     ensemblId = reader.ReadElementContentAsString();
 
                     gene.ensemblId = ensemblId;
+
+                    Console.WriteLine("Ensembl Id: " + gene.ensemblId);
 
 
                     // ncbiId
