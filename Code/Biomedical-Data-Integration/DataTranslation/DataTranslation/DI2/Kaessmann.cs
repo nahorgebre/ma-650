@@ -86,7 +86,7 @@ namespace DataTranslation
                     while (geneNamesInner.Read())
                     {
                                         
-                        if (geneNamesInner.IsEmptyElement)
+                        if (geneNamesInner.HasValue)
                         {
 
                             geneNamesInner.ReadToFollowing("geneName");
@@ -94,7 +94,9 @@ namespace DataTranslation
                             while (geneNameInner.Read())
                             {
 
-                                geneNameList.Add(parseGeneName(geneNameInner.ReadInnerXml()));
+                                Console.WriteLine(geneNameInner.ReadInnerXml());
+
+                                //geneNameList.Add(parseGeneName(geneNameInner.ReadInnerXml()));
 
                             }
 
