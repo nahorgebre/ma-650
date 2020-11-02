@@ -15,7 +15,7 @@ namespace DataTranslation
         // 800 output files - (54.367.006 - 1) / 800 = 54.367.005 / 800 = 67.958,8
 
         public static int partitionSize = 1087340;
-        public static int partitionNumbers = 150;
+        public static int partitionNumbers = 50;
 
     }
 
