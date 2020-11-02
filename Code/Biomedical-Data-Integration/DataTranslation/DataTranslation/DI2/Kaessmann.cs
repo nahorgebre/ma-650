@@ -190,7 +190,7 @@ namespace DataTranslation
                 String disagreement = (node?.SelectSingleNode("disagreement").InnerText ?? null);
                 organItem.disagreement = disagreement;
 
-                if(doc.SelectSingleNode("//probEqualOrthoAdj") != null)
+                if(node.SelectSingleNode("//probEqualOrthoAdj") != null)
                 {
                     String probEqualOrthoAdj = (node?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
                     organItem.probEqualOrthoAdj = probEqualOrthoAdj;
