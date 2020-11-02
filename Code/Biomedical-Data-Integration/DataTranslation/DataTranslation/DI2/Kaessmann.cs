@@ -224,6 +224,64 @@ namespace DataTranslation
 
         }
 
+        public static List<GeneName> parseGeneNames(String Xml)
+        {
+
+            List<GeneName> geneNameList = new List<GeneName>();
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(Xml);
+              
+            XmlNodeList geneNameXmlNodeList = doc.DocumentElement.SelectNodes("/geneNames/geneNames");
+            foreach (XmlNode geneName in geneNameXmlNodeList)
+            {
+
+                GeneName geneNameItem = new GeneName();
+                String name = (geneName?.SelectSingleNode("name").InnerText ?? null);
+                geneNameItem.name = name;
+
+                geneNameList.Add(geneNameItem);
+            
+            }
+
+            return geneNameList;
+
+        }
+
+        public static List<Organ> parseOrgans(String Xml)
+        {
+
+            List<Organ> organList = new List<Organ>();
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(Xml);
+    
+            XmlNodeList organXmlNodeList = doc.DocumentElement.SelectNodes("/organs/organs");
+            foreach (XmlNode organ in organXmlNodeList)
+            {
+
+                Organ organItem = new Organ();
+
+                String organName = (organ?.SelectSingleNode("organName").InnerText ?? null);
+                organItem.organName = organName;
+
+                String disagreement = (organ?.SelectSingleNode("disagreement").InnerText ?? null);
+                organItem.disagreement = disagreement;
+
+                String probEqualOrthoAdj = (organ?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
+                organItem.probEqualOrthoAdj = probEqualOrthoAdj;
+
+                String call = (organ?.SelectSingleNode("call").InnerText ?? null);
+                organItem.call = call;
+
+                organList.Add(organItem);
+
+            }
+
+            return organList;
+
+        }
+
         public static List<Gene> extractXml(FileInfo file) {
 
             List<Gene> geneList = new List<Gene>();
