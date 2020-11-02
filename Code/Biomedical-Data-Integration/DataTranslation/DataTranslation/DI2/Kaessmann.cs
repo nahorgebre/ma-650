@@ -188,7 +188,8 @@ namespace DataTranslation
                 String disagreement = (node?.SelectSingleNode("disagreement").InnerText ?? null);
                 organItem.disagreement = disagreement;
 
-                String probEqualOrthoAdj = (node?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
+                String probEqualOrthoAdj = string.Empty;
+                probEqualOrthoAdj = (node?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
                 organItem.probEqualOrthoAdj = probEqualOrthoAdj;
 
                 String call = (node?.SelectSingleNode("call").InnerText ?? null);
