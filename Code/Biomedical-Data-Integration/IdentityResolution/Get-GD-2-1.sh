@@ -11,25 +11,225 @@ mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_100
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_100/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_100/test.csv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_100/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_100/train.csv
 
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_101
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_101/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_101/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_101/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_101/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_102
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_102/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_102/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_102/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_102/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_103
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_103/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_103/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_103/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_103/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_104
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_104/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_104/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_104/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_104/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_105
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_105/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_105/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_105/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_105/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_106
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_106/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_106/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_106/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_106/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_107
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_107/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_107/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_107/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_107/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_108
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_108/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_108/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_108/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_108/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_109
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_109/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_109/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_109/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_109/train.csv
+
 mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_11
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_11/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_11/test.csv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_11/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_11/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_110
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_110/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_110/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_110/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_110/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_111
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_111/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_111/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_111/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_111/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_112
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_112/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_112/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_112/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_112/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_113
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_113/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_113/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_113/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_113/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_114
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_114/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_114/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_114/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_114/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_115
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_115/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_115/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_115/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_115/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_116
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_116/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_116/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_116/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_116/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_117
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_117/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_117/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_117/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_117/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_118
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_118/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_118/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_118/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_118/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_119
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_119/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_119/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_119/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_119/train.csv
 
 mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_12
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_12/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_12/test.csv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_12/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_12/train.csv
 
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_120
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_120/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_120/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_120/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_120/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_121
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_121/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_121/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_121/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_121/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_122
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_122/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_122/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_122/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_122/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_123
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_123/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_123/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_123/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_123/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_124
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_124/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_124/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_124/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_124/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_125
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_125/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_125/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_125/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_125/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_126
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_126/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_126/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_126/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_126/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_127
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_127/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_127/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_127/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_127/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_128
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_128/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_128/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_128/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_128/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_129
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_129/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_129/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_129/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_129/train.csv
+
 mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_13
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_13/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_13/test.csv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_13/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_13/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_130
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_130/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_130/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_130/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_130/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_131
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_131/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_131/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_131/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_131/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_132
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_132/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_132/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_132/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_132/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_133
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_133/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_133/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_133/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_133/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_134
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_134/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_134/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_134/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_134/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_135
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_135/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_135/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_135/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_135/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_136
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_136/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_136/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_136/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_136/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_137
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_137/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_137/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_137/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_137/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_138
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_138/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_138/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_138/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_138/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_139
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_139/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_139/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_139/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_139/train.csv
 
 mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_14
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_14/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_14/test.csv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_14/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_14/train.csv
 
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_140
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_140/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_140/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_140/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_140/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_141
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_141/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_141/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_141/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_141/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_142
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_142/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_142/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_142/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_142/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_143
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_143/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_143/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_143/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_143/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_144
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_144/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_144/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_144/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_144/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_145
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_145/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_145/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_145/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_145/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_146
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_146/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_146/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_146/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_146/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_147
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_147/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_147/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_147/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_147/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_148
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_148/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_148/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_148/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_148/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_149
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_149/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_149/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_149/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_149/train.csv
+
 mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_15
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_15/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_15/test.csv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_15/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_15/train.csv
+
+mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_150
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_150/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_150/test.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_150/train.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_150/train.csv
 
 mkdir -p data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_16
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_16/test.csv -O data/goldstandard/DI2/kaessmann_2_gene2pubtatorcentral_16/test.csv

@@ -2,5 +2,6 @@ package genes.IdentityResolution.solutions;
 
 public class Variables {
     
-    public static int partitionNumbers = 800;
+    public static int partitionNumbers = 50;
+    
 }
