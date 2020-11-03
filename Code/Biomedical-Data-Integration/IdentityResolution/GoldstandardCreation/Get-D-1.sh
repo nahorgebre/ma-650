@@ -1,5 +1,5 @@
 
-mkdir -p data/input/DI1
+mkdir -p data/input/DI1/50
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI1/Brain_dt.tsv -O data/input/DI1/Brain_dt.tsv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI1/Brain_dt.xml -O data/input/DI1/Brain_dt.xml
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI1/Cerebellum_dt.tsv -O data/input/DI1/Cerebellum_dt.tsv

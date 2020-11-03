@@ -55,7 +55,7 @@ public class ListingS3Objects {
 
                 String fileName = parts[3];
     
-                String mkdir = "mkdir -p data/input/" + solution;
+                String mkdir = "mkdir -p data/input/" + solution + "/" + Variables.partitionNumbers;
 
                 if (!mkdirList.contains(mkdir)) {
 
