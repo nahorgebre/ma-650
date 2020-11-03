@@ -11,6 +11,8 @@ namespace GoldstandardCreation
 
             Console.WriteLine("Create output files!");
 
+            Console.WriteLine(outputDirectory);
+
             foreach (DirectoryInfo directory in outputDirectory.GetDirectories())
             {
                 
