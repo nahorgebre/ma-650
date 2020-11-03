@@ -1,5 +1,5 @@
 
-mkdir -p data/input/DI2
+mkdir -p data/input/DI2/50
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI2/50/gene2pubtatorcentral_10_dt.tsv -O data/input/DI2/50/gene2pubtatorcentral_10_dt.tsv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI2/50/gene2pubtatorcentral_10_dt.xml -O data/input/DI2/50/gene2pubtatorcentral_10_dt.xml
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI2/50/gene2pubtatorcentral_11_dt.tsv -O data/input/DI2/50/gene2pubtatorcentral_11_dt.tsv
