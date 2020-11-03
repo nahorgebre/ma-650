@@ -34,7 +34,8 @@ namespace GoldstandardCreation
 
         public static void createOuputFiles(List<Goldstandard> trueList, List<Goldstandard> falseList, string fileName)
         {
-             var delimiter = ",";
+
+            var delimiter = ",";
 
             using (StreamWriter sw = new StreamWriter(fileName))
             {

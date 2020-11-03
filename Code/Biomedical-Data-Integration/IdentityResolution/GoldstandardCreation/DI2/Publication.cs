@@ -33,12 +33,12 @@ namespace GoldstandardCreation
                     string trueFile = string.Format("{0}/true.csv", directoryName);
                     string falseFile = string.Format("{0}/false.csv", directoryName);
 
-                    Directory.CreateDirectory(directoryName);
-
                     if (!File.Exists(trueFile) | !File.Exists(falseFile))
                     {
 
                         Console.WriteLine(comparison);
+
+                        Directory.CreateDirectory(directoryName);
 
                         (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 3);
                         

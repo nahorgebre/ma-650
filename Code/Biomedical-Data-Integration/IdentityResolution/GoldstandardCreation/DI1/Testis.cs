@@ -22,12 +22,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.mart_export_testis_path, 1);
                 

@@ -58,12 +58,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Brain_path, 1);
                 
@@ -83,12 +83,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Cerebellum_path, 1);
                 
@@ -108,12 +108,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Kidney_path, 1);
                 
@@ -133,12 +133,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Liver_path, 1);
                 
@@ -157,12 +157,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Testis_path, 1);
                 
@@ -184,12 +184,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Brain_path, 1);
                 
@@ -209,12 +209,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Kidney_path, 1);
                 
@@ -234,12 +234,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Liver_path, 1);
                 
@@ -259,12 +259,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Testis_path, 1);
                 
@@ -287,12 +287,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Kidney_path, 1);
                 
@@ -311,13 +311,13 @@ namespace GoldstandardCreation
             string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
-            
-            Directory.CreateDirectory(directoryName);
-
+              
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Liver_path, 1);
                 
@@ -337,12 +337,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Testis_path, 1);
                 
@@ -365,12 +365,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Liver_path, 1);
                 
@@ -390,12 +390,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
                 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Testis_path, 1);
                 
@@ -415,12 +415,12 @@ namespace GoldstandardCreation
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
-            Directory.CreateDirectory(directoryName);
-
             if (!File.Exists(trueFile) | !File.Exists(falseFile))
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                Directory.CreateDirectory(directoryName);
 
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.Liver_path, 1);
                 
