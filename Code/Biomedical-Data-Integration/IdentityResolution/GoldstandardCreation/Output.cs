@@ -18,6 +18,7 @@ namespace GoldstandardCreation
                 {
                     
                     string trueFile = subDirectory.FullName + "/true.csv";
+                    Console.WriteLine(trueFile);
                     string falseFile = subDirectory.FullName + "/false.csv";
 
                     (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
