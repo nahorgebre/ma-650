@@ -7,29 +7,24 @@ namespace GoldstandardCreation
     class Output
     {
 
-        public static void run(DirectoryInfo outputDirectory) {
+        public static void run(DirectoryInfo directory) {
 
             Console.WriteLine("Create output files!");
 
-            Console.WriteLine(outputDirectory);
-
-            foreach (DirectoryInfo directory in outputDirectory.GetDirectories())
+            foreach (DirectoryInfo subDirectory in directory.GetDirectories())
             {
-                
-                foreach (DirectoryInfo subDirectory in directory.GetDirectories())
-                {
-                    
-                    string trueFile = subDirectory.FullName + "/true.csv";
-                    Console.WriteLine(trueFile);
-                    string falseFile = subDirectory.FullName + "/false.csv";
 
-                    (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
-                    (List<Goldstandard> train_FALSE, List<Goldstandard> test_FALSE) = divideIntoTrainTest(falseFile);
+                string trueFile = subDirectory.FullName + "/true.csv";
+                string falseFile = subDirectory.FullName + "/false.csv";
 
-                    createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
-                    createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
+                Console.WriteLine("True file: " + trueFile);
+                Console.WriteLine("False file: " + falseFile);
 
-                }
+                (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
+                (List<Goldstandard> train_FALSE, List<Goldstandard> test_FALSE) = divideIntoTrainTest(falseFile);
+
+                createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
+                createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
 
             }
 
