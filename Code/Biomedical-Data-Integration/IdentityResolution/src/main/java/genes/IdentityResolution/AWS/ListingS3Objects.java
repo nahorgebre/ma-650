@@ -1,6 +1,12 @@
 package genes.IdentityResolution.AWS;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +16,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
+
+import org.apache.commons.io.FileUtils;
 
 import genes.IdentityResolution.solutions.Variables;
 
@@ -68,6 +76,11 @@ public class ListingS3Objects {
 
         writer.close();
 
+        Path source = Paths.get(System.getProperty("user.dir") + "/" + outputFileName);
+        Path dest = Paths.get(System.getProperty("user.dir") + "/GoldstandardCreation/" + outputFileName);
+
+        Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
+
     }
 
     public static void getDatasets2(String solution, String outputFileName) throws Exception {
@@ -82,8 +95,6 @@ public class ListingS3Objects {
         for(S3ObjectSummary os : objectListing.getObjectSummaries()) {
 
             String key = os.getKey();
-
-            System.out.println(key);
 
             String[] parts = key.split("/");
 
@@ -111,6 +122,11 @@ public class ListingS3Objects {
         }
 
         writer.close();
+
+        Path source = Paths.get(System.getProperty("user.dir") + "/" + outputFileName);
+        Path dest = Paths.get(System.getProperty("user.dir") + "/GoldstandardCreation/" + outputFileName);
+
+        Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
 
     }
 
