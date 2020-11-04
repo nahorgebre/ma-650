@@ -24,7 +24,7 @@ import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
-
+import genes.IdentityResolution.solutions.Variables;
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 
@@ -45,13 +45,13 @@ public class ML_StandardRecordBlocker2 {
     {
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = Datasets.Heart();
+        HashedDataSet<Gene, Attribute> ds1 = Datasets.kaessmann();
         HashedDataSet<Gene, Attribute> ds2 = Datasets.gene2pubtatorcentral(1);
 
         // goldstandard directory
-        String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_1";
+        String comparisonDescription = "Kaessmann_2_gene2pubtatorcentral_1";
         String solution = "DI2";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+        String goldstandardDirectory = "data/goldstandard/" + solution + "/" + Variables.partitionNumbers + "/" + comparisonDescription;
         
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
@@ -65,7 +65,7 @@ public class ML_StandardRecordBlocker2 {
             String className = geneMatchingRule.className + blockerName;
 
             // output directory
-            String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
+            String outputDirectory = "data/output/" + solution + "/" + Variables.partitionNumbers + "/" + comparisonDescription + "/" + className;
             new File(outputDirectory).mkdirs();
 
             // create matching rule
