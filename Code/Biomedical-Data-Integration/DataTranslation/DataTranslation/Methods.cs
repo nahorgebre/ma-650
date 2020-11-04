@@ -35,78 +35,89 @@ namespace DataTranslation
         public static void createTsv(List<Gene> gene_list, string fileName, string directory)
         {
 
+            Console.WriteLine("TSV: " + fileName);
+
             string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
             var delimiter = "\t";
 
-            if (!File.Exists(gsFileName))
+            using (StreamWriter sw = new StreamWriter(gsFileName)) 
             {
-
-                using (StreamWriter sw = new StreamWriter(gsFileName)) 
-                {
            
-                    List<string> firstLineContent = new List<string>()
+                List<string> firstLineContent = new List<string>()
+                {
+                    "recordId",
+                    "ensemblId",
+                    "ncbiId",
+                    "geneName",
+                    "pmId"
+                };
+                var firstLine = string.Join(delimiter, firstLineContent);
+                sw.WriteLine(firstLine);
+
+                foreach (Gene item in gene_list)
+                {
+
+                    string recordId = "NaN";
+                    if (item.recordId != null)
                     {
-                        "recordId",
-                        "ensemblId",
-                        "ncbiId",
-                        "geneName",
-                        "pmId"
-                    };
-                    var firstLine = string.Join(delimiter, firstLineContent);
-                    sw.WriteLine(firstLine);
 
-                    foreach (Gene item in gene_list)
-                    {
-
-                        string recordId = "NaN";
-                        if (item.recordId != null)
-                        {
-                            recordId = item.recordId.Trim();
-                        }
-
-                        string ensemblId = "NaN";
-                        if (item.ensemblId != null)
-                        {
-                            ensemblId = item.ensemblId.Trim();
-                        }
-
-                        string ncbiId = "NaN";
-                        if (item.ncbiId != null)
-                        {
-                            ncbiId = item.ncbiId.Trim();
-                        }
-
-                        string geneName = "NaN";
-                        if (item.geneNames != null)
-                        {
-                            if (item.geneNames[0].name != null)
-                            {
-                                geneName = item.geneNames[0].name.Trim();
-                                Console.WriteLine(geneName);
-                            }
-                        }
-
-                        string pmid = "NaN";
-                        if (item.publicationMentions != null)
-                        {
-                            if (item.publicationMentions[0].pmId != null)
-                            {
-                                pmid = item.publicationMentions[0].pmId.Trim();
-                            }                        
-                        }
-
-                        List<string> lineContent = new List<string>()
-                        {
-                            recordId,
-                            ensemblId,
-                            ncbiId,
-                            geneName,
-                            pmid
-                        };
-                        var line = string.Join(delimiter, lineContent);
-                        sw.WriteLine(line);
+                        recordId = item.recordId.Trim();
 
                     }
+
+                    string ensemblId = "NaN";
+                    if (item.ensemblId != null)
+                    {
+
+                        ensemblId = item.ensemblId.Trim();
+
+                    }
+
+                    string ncbiId = "NaN";
+                    if (item.ncbiId != null)
+                    {
+
+                        ncbiId = item.ncbiId.Trim();
+
+                    }
+
+                    string geneName = "NaN";
+                    if (item.geneNames != null)
+                    {
+
+                        if (item.geneNames[0].name != null)
+                        {
+
+                            geneName = item.geneNames[0].name.Trim();
+                            Console.WriteLine(geneName);
+
+                        }
+
+                    }
+
+                    string pmid = "NaN";
+                    if (item.publicationMentions != null)
+                    {
+
+                        if (item.publicationMentions[0].pmId != null)
+                        {
+
+                                pmid = item.publicationMentions[0].pmId.Trim();
+
+                        }
+
+                    }
+
+                    List<string> lineContent = new List<string>()
+                    {
+                        recordId,
+                        ensemblId,
+                        ncbiId,
+                        geneName,
+                        pmid
+                    };
+                    var line = string.Join(delimiter, lineContent);
+                    sw.WriteLine(line);
 
                 }
 
