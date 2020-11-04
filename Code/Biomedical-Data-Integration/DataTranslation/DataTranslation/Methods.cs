@@ -74,7 +74,7 @@ namespace DataTranslation
                     }
 
                     string ncbiId = "NaN";
-                    if (item.ncbiId != null | item.ncbiId != string.Empty)
+                    if (item.ncbiId != null | item.ncbiId.Trim() != string.Empty)
                     {
 
                         ncbiId = item.ncbiId.Trim();
