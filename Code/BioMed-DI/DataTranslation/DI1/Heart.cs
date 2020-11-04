@@ -97,7 +97,7 @@ namespace DataTranslation
                     GeneName GeneName = new GeneName();
                     GeneName.name = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
                     geneNameList.Add(GeneName);
-                    gene.geneNames = geneNameList;
+                    //gene.geneNames = geneNameList;
 
                     gene_list.Add(gene);
 
@@ -140,7 +140,7 @@ namespace DataTranslation
                     GeneName GeneName = new GeneName();
                     GeneName.name = values[2];
                     geneNameList.Add(GeneName);
-                    gene.geneNames = geneNameList;
+                    //gene.geneNames = geneNameList;
 
                     gene_list.Add(gene);
 

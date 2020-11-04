@@ -87,12 +87,7 @@ namespace DataTranslation
                     if (item.geneNames != null)
                     {
 
-                        if (item.geneNames[0].name != null)
-                        {
-
-                            geneName = item.geneNames[0].name.Trim();
-
-                        }
+                        geneName = item.geneNames;
 
                     }
 

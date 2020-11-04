@@ -18,7 +18,7 @@ public class Gene implements Matchable {
 
     private String ensemblId;
     private String ncbiId;
-    private List<GeneName> geneNames;
+    private String geneNames;
     private List<GeneDescription> geneDescriptions;
 
     private List<Organ> organs;
@@ -30,7 +30,6 @@ public class Gene implements Matchable {
         recordId = identifier;
         this.provenance = provenance;
 
-        geneNames = new LinkedList<>();
         geneDescriptions = new LinkedList<>();
 
         organs = new LinkedList<>();
@@ -52,7 +51,8 @@ public class Gene implements Matchable {
     // Getter
     public String getEnsemblId() { return ensemblId; }
     public String getNcbiId() { return ncbiId; }
-    public List<GeneName> getGeneNames() { return geneNames; }
+    public String getGeneNames() { return geneNames; }
+
     public List<GeneDescription> getGeneDescriptions() { return geneDescriptions; }
 
     public List<Organ> getOrgans() { return organs; }
@@ -63,7 +63,8 @@ public class Gene implements Matchable {
     // Setter
     public void setEnsemblId(String geneId) { this.ensemblId = geneId; }
     public void setNcbiId(String ncbiId) { this.ncbiId = ncbiId; }
-    public void setGeneNames(List<GeneName> geneNames) { this.geneNames = geneNames; }
+    public void setGeneNames(String geneNames) { this.geneNames = geneNames; }
+
     public void setGeneDescriptions(List<GeneDescription> geneDescriptions) { this.geneDescriptions = geneDescriptions; }
    
     public void setOrgans(List<Organ> organs) { this.organs = organs; }

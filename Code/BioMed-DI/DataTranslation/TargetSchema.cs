@@ -16,9 +16,7 @@ namespace DataTranslation
         public string recordId;
         public string ensemblId;
         public string ncbiId;
-
-        [XmlArrayItem("geneNames")]
-        public List<GeneName> geneNames;
+        public string geneNames;
 
         [XmlArrayItem("geneDescriptions")]
         public List<GeneDescription> geneDescriptions;
@@ -36,6 +34,11 @@ namespace DataTranslation
         public List<PatentMention> patentMentions;
     }
 
+    public class GeneName 
+    {
+        public string name;
+    }
+
     [XmlType("organ")]
     public class Organ
     {
@@ -43,12 +46,6 @@ namespace DataTranslation
         public string disagreement;
         public string probEqualOrthoAdj;
         public string call;  
-    }
-
-    [XmlType("geneName")]
-    public class GeneName 
-    {
-        public string name;
     }
 
     [XmlType("geneDescription")]

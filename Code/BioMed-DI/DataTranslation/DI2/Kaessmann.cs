@@ -67,8 +67,6 @@ namespace DataTranslation
 
 
                     // geneNames
-                     new List<GeneName>();
-
                     reader.ReadToFollowing("geneNames"); 
                     XmlReader geneNamesInner = reader.ReadSubtree();
                     while (geneNamesInner.Read())
@@ -78,7 +76,7 @@ namespace DataTranslation
 
                         List<GeneName> geneNameList = parseGeneName(xml);
 
-                        gene.geneNames = geneNameList;
+                        gene.geneNames = string.Join("|", geneNameList);
 
                     }
 
@@ -229,129 +227,6 @@ namespace DataTranslation
             }
 
             return status;
-
-        }
-
-        public static Organ parseOrgan2(String Xml)
-        {
-
-            Organ organItem = new Organ();
-
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(Xml);
-
-            XmlNode organNode = doc.DocumentElement.SelectSingleNode("organ");
-
-            String organName = (organNode?.SelectSingleNode("organName").InnerText ?? null);
-            organItem.organName = organName;
-
-            String disagreement = (organNode?.SelectSingleNode("disagreement").InnerText ?? null);
-            organItem.disagreement = disagreement;
-
-            String probEqualOrthoAdj = (organNode?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
-            organItem.probEqualOrthoAdj = probEqualOrthoAdj;
-
-            String call = (organNode?.SelectSingleNode("call").InnerText ?? null);
-            organItem.call = call;
-
-            return organItem;
-
-        }
-
-        public static List<Gene> extractXml(FileInfo file) {
-
-            List<Gene> geneList = new List<Gene>();
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load(file.FullName);
-
-            int counter = 1;
-
-            XmlNodeList geneNodeList = doc.DocumentElement.SelectNodes("/genes/gene");
-            foreach (XmlNode geneNode in geneNodeList)
-            {
-
-                Gene gene = new Gene();
-
-                gene.recordId = string.Format("Kaessmann_{0}_rid", counter);
-
-                String ensemblId = (geneNode?.SelectSingleNode("ensemblId").InnerText ?? null);
-                gene.ensemblId = ensemblId;
-
-                String ncbiId = (geneNode?.SelectSingleNode("ncbiId").InnerText ?? null);
-                gene.ncbiId = ncbiId;
-
-                // geneDescriptions
-                List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
-
-                XmlNodeList geneDescriptionXmlNodeList = geneNode.SelectNodes("/geneDescriptions/geneDescriptions");
-                foreach (XmlNode geneDescription in geneDescriptionXmlNodeList)
-                {
-
-                    GeneDescription geneDescriptionItem = new GeneDescription();
-                    String description = (geneDescription?.SelectSingleNode("description").InnerText ?? null);
-                    geneDescriptionItem.description = description;
-
-                    geneDescriptionList.Add(geneDescriptionItem);
-
-                }
-
-                gene.geneDescriptions = geneDescriptionList;
-
-
-                // geneNames
-                List<GeneName> geneNameList = new List<GeneName>();
-              
-                XmlNodeList geneNameXmlNodeList = geneNode.SelectNodes("/geneNames/geneNames");
-                foreach (XmlNode geneName in geneNameXmlNodeList)
-                {
-
-                    GeneName geneNameItem = new GeneName();
-                    String name = (geneName?.SelectSingleNode("name").InnerText ?? null);
-                    geneNameItem.name = name;
-
-                    geneNameList.Add(geneNameItem);
-            
-                }
-
-                gene.geneNames = geneNameList;
-
-
-                // organs
-                List<Organ> organList = new List<Organ>();
-    
-                XmlNodeList organXmlNodeList = geneNode.SelectNodes("/organs/organs");
-                foreach (XmlNode organ in organXmlNodeList)
-                {
-
-                    Organ organItem = new Organ();
-
-                    String organName = (organ?.SelectSingleNode("organName").InnerText ?? null);
-                    organItem.organName = organName;
-
-                    String disagreement = (organ?.SelectSingleNode("disagreement").InnerText ?? null);
-                    organItem.disagreement = disagreement;
-
-                    String probEqualOrthoAdj = (organ?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
-                    organItem.probEqualOrthoAdj = probEqualOrthoAdj;
-
-                    String call = (organ?.SelectSingleNode("call").InnerText ?? null);
-                    organItem.call = call;
-
-                    organList.Add(organItem);
-
-                }
-
-                gene.organs = organList; 
-                
-
-                geneList.Add(gene);
-
-                counter++;
-                          
-            }
-
-            return geneList;
 
         }
 

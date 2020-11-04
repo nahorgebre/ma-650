@@ -86,7 +86,7 @@ namespace DataTranslation
                                         GeneName.name = name.Trim();
                                         geneNameList.Add(GeneName);
                                     }
-                                    gene.geneNames = geneNameList;
+                                    gene.geneNames = string.Join("|", geneNameList);
 
                                     List<PublicationMention> publicationMentions_list = new List<PublicationMention>();
                                     PublicationMention publicationMention = new PublicationMention();

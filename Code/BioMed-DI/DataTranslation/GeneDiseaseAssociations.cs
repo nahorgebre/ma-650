@@ -59,7 +59,7 @@ namespace DataTranslation
                         GeneName GeneName = new GeneName();
                         GeneName.name = name;
                         geneNameList.Add(GeneName);
-                        gene.geneNames = geneNameList;
+                        //gene.geneNames = geneNameList;
                     }
 
                     List<DiseaseAssociation> diseases_list = new List<DiseaseAssociation>();
