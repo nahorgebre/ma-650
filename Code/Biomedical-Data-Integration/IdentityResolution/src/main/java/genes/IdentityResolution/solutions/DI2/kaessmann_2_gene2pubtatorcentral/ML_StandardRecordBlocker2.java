@@ -44,6 +44,9 @@ public class ML_StandardRecordBlocker2 {
 
     public static void main( String[] args ) throws Exception
     {
+
+        System.out.println("ML_StandardRecordBlocker2");
+
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
         HashedDataSet<Gene, Attribute> ds1 = Datasets.kaessmann();
@@ -52,7 +55,7 @@ public class ML_StandardRecordBlocker2 {
         System.out.println("--- Test: " + ds2.getRecord("gene2pubtatorcentral_1_7_rid").getGeneNames().get(0).getName());
 
         // goldstandard directory
-        String comparisonDescription = "Kaessmann_2_gene2pubtatorcentral_1";
+        String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_1";
         String solution = "DI2";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + Variables.partitionNumbers + "/" + comparisonDescription;
         
