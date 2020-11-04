@@ -102,7 +102,7 @@ namespace DataTranslation
                         if (item.publicationMentions[0].pmId != null)
                         {
 
-                                pmid = item.publicationMentions[0].pmId.Trim();
+                            pmid = item.publicationMentions[0].pmId.Trim();
 
                         }
 
