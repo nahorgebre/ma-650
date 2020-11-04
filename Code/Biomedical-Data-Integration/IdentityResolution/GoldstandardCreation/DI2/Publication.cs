@@ -9,8 +9,8 @@ namespace GoldstandardCreation
     class Publication
     {
 
-        public static FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.xml", Environment.CurrentDirectory));
-        public static FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.tsv", Environment.CurrentDirectory));
+        public static FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/DI2/Kaessmann_dt.xml", Environment.CurrentDirectory));
+        public static FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/DI2/Kaessmann_dt.tsv", Environment.CurrentDirectory));
 
         public static void run() {
 
