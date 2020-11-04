@@ -28,6 +28,8 @@ public class NcbiIdComperatorLevenshtein implements Comparator<Gene, Attribute> 
         // calculate similarity
         double similarity = sim.calculate(s1, s2);
 
+        System.out.println("--- Comparison: " + s1 + " -- " + s2 + " -- " + similarity);
+
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
 

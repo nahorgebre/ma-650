@@ -37,6 +37,7 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorense
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityLevenshtein.NcbiIdComperatorLevenshtein;
 
 
 public class ML_StandardRecordBlocker2 {
@@ -92,6 +93,7 @@ public class ML_StandardRecordBlocker2 {
             matchingRule.addComparator(new GeneNameComperatorSorensenDice());
             */
             matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
+            matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
 
             // learn the matching rule
             RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
@@ -105,9 +107,11 @@ public class ML_StandardRecordBlocker2 {
             // initialize matching engine
             MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
+            /*
             Processable<CorType> correspondences
             Processable<? extends Correspondence<SchemaElementType, ? extends Matchable>> schemaCorrespondences
             Correspondence.toMatchable(schemaCorrespondences);
+            */
    
             // execute the matching
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
