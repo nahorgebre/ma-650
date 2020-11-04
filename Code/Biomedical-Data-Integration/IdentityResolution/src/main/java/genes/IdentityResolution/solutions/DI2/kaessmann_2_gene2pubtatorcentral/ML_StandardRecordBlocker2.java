@@ -80,6 +80,7 @@ public class ML_StandardRecordBlocker2 {
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
             // add comparators
+            /*
             matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
             matchingRule.addComparator(new GeneNameComperatorCosine());
@@ -87,6 +88,7 @@ public class ML_StandardRecordBlocker2 {
             matchingRule.addComparator(new GeneNameComperatorLevenshtein());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
             matchingRule.addComparator(new GeneNameComperatorSorensenDice());
+            */
             matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
 
             // learn the matching rule
