@@ -89,7 +89,6 @@ namespace DataTranslation
                         {
 
                             geneName = item.geneNames[0].name.Trim();
-                            Console.WriteLine(geneName);
 
                         }
 
