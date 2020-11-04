@@ -14,8 +14,6 @@ namespace GoldstandardCreation
 
         public static void run() {
 
-            createKaessmannTsv();
-
             kaessmann_2_gene2pubtatorcentral();
 
         }
