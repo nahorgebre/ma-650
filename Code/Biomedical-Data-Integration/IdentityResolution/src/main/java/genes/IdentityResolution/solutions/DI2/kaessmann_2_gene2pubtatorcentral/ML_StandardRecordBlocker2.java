@@ -48,6 +48,8 @@ public class ML_StandardRecordBlocker2 {
         HashedDataSet<Gene, Attribute> ds1 = Datasets.kaessmann();
         HashedDataSet<Gene, Attribute> ds2 = Datasets.gene2pubtatorcentral(1);
 
+        System.out.println("--- Test: " + ds2.getRecord("gene2pubtatorcentral_1_7_rid").getGeneNames().get(0).getName());
+
         // goldstandard directory
         String comparisonDescription = "Kaessmann_2_gene2pubtatorcentral_1";
         String solution = "DI2";
@@ -102,6 +104,10 @@ public class ML_StandardRecordBlocker2 {
 
             // initialize matching engine
             MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
+
+            Processable<CorType> correspondences
+            Processable<? extends Correspondence<SchemaElementType, ? extends Matchable>> schemaCorrespondences
+            Correspondence.toMatchable(schemaCorrespondences);
    
             // execute the matching
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(

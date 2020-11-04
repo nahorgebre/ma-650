@@ -11,7 +11,9 @@ import genes.IdentityResolution.model.Gene.Gene;
 public class Correspondences {
 
     public static void output(String outputDirectory, Processable<Correspondence<Gene, Attribute>> correspondences) throws Exception {
+        
         System.out.println("Correspondences size: " + correspondences.size());
         new CSVCorrespondenceFormatter().writeCSV(new File(outputDirectory + "/correspondences.csv"), correspondences);
+
     }
 }
