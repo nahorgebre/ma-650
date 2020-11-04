@@ -17,7 +17,7 @@ namespace DataTranslation
 
         }
 
-        public static string gene2PubtatorcentralInputDirectory = "data/input/Gene2Pubtatorcentral";
+        public static string gene2PubtatorcentralInputDirectory = "data/input/DI2";
         public static string gene2PubtatorcentralOutputDirectory = "data/output/DI2";
 
 
