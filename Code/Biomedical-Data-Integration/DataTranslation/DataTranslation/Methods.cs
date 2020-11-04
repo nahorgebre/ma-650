@@ -74,12 +74,14 @@ namespace DataTranslation
                     }
 
                     string ncbiId = "NaN";
+                    /*
                     if (item.ncbiId != null | item.ncbiId.Trim() != string.Empty)
                     {
 
                         ncbiId = item.ncbiId.Trim();
 
                     }
+                    */
 
                     string geneName = "NaN";
                     if (item.geneNames != null)
