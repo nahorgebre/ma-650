@@ -31,8 +31,7 @@ public class ListingS3Objects {
         getDatasets2("DI2", "Get-D-2-2.sh");
 
         getGoldstandardDatasets("DI1", "Get-GD-1.sh");
-        //getGoldstandardDatasets("DI2", "Get-GD-2-1.sh");
-        //getGoldstandardDatasets("DI2/50", "Get-GD-2-2.sh");
+        getGoldstandardDatasets2("DI2", "Get-GD-2.sh");
         
     }
 
@@ -162,6 +161,49 @@ public class ListingS3Objects {
                 }
 
                 String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/goldstandard/" + solution + "/" + comparison + "/" + fileName;
+                
+                writer.println(wgetString);
+
+            }
+
+        }
+
+        writer.close();
+
+    }
+
+    public static void getGoldstandardDatasets2(String solution, String outputFileName) throws Exception {
+
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
+        
+        List<String> mkdirList = new ArrayList<String>();
+
+        PrintWriter writer = new PrintWriter(outputFileName, "UTF-8");
+
+        ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis", "identity-resolution/goldstandard/" + solution + "/" + Variables.partitionNumbers);
+        for(S3ObjectSummary os : objectListing.getObjectSummaries()) {
+
+            String key = os.getKey();
+
+            String[] parts = key.split("/");
+
+            if (parts.length == 6) {
+
+                String comparison = parts[4];
+                String fileName = parts[5];
+    
+                String mkdir = "mkdir -p data/goldstandard/" + solution + "/" + Variables.partitionNumbers + "/" + comparison;
+
+                if (!mkdirList.contains(mkdir)) {
+
+                    mkdirList.add(mkdir);
+
+                    writer.println("");
+                    writer.println(mkdir);
+    
+                }
+
+                String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/goldstandard/" + solution + "/" + Variables.partitionNumbers + "/" + comparison + "/" + fileName;
                 
                 writer.println(wgetString);
 

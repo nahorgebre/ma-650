@@ -92,7 +92,7 @@ public class Datasets {
     // DI2
     public static HashedDataSet<Gene, Attribute> kaessmann() throws Exception {
         HashedDataSet<Gene, Attribute> Brain = new HashedDataSet<>();
-        new GeneXMLReader().loadFromXML(new File("data/input/DI2/kaessmann-fused.xml"), "/genes/gene", Brain);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI2/Kaessmann_dt.xml"), "/genes/gene", Brain);
         return Brain;
     }
 

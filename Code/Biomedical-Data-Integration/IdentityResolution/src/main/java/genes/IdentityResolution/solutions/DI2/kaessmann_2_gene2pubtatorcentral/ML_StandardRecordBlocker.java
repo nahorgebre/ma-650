@@ -65,7 +65,7 @@ public class ML_StandardRecordBlocker {
             // goldstandard directory
             String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_" + fileNumber;
             String solution = "DI2";
-            String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+            String goldstandardDirectory = "data/goldstandard/" + solution + "/" + Variables.partitionNumbers + "/" + comparisonDescription;
             
             // load the gold standard (test set)
             MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
