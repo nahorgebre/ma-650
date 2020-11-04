@@ -147,7 +147,7 @@ namespace DataTranslation
 
                 GeneName geneName = new GeneName();
 
-                if(checkIfNodeExist(node, "node"))
+                if(checkIfNodeExist(node, "name"))
                 {
 
                     geneName.name = (node?.SelectSingleNode("name").InnerText ?? null);
