@@ -46,7 +46,7 @@ public class GeneNameComperatorLowerCaseCosine implements Comparator<Gene, Attri
 
                 comparison.s2 = record2GeneName;
 
-                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
+                comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
 
                 comparisonList.add(comparison);
                 
