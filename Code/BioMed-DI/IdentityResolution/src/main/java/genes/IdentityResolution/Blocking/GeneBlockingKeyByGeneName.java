@@ -23,8 +23,6 @@ public class GeneBlockingKeyByGeneName extends
 
         String geneNames = record.getGeneNames();
 
-        System.out.println("Gene Names: " + geneNames);
-
         String[] geneNameArray = geneNames.split("\\|");
 
         String geneName = geneNameArray[0].toLowerCase();
@@ -61,8 +59,6 @@ public class GeneBlockingKeyByGeneName extends
             key = geneName;
 
         }
-
-        System.out.println("Key: " + key);
 
         resultCollector.next(new Pair<>(key, record));
 
