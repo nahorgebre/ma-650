@@ -21,17 +21,19 @@ public class GeneBlockingKeyByGeneName extends
 
         String key = "XYZ";
 
-        String geneNames = record.getGeneNames().toLowerCase();
+        String geneNames = record.getGeneNames();
+
+        System.out.println("Gene Names: " + geneNames);
 
         String[] geneNameArray = geneNames.split("|");
 
-        String geneName = geneNameArray[0];
+        String geneName = geneNameArray[0].toLowerCase();
 
         for (String geneNameItem : geneNameArray) {
             
             if (geneNameItem.length() > geneName.length()) {
                 
-                geneName = geneNameItem;
+                geneName = geneNameItem.toLowerCase();
 
             }
 
