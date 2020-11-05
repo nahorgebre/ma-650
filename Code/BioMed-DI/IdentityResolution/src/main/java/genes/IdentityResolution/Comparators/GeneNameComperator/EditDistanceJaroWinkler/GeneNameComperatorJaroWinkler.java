@@ -12,6 +12,7 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene.Gene;
 import genes.IdentityResolution.model.GeneName.GeneName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GeneNameComperatorJaroWinkler implements Comparator<Gene, Attribute> {
@@ -45,14 +46,14 @@ public class GeneNameComperatorJaroWinkler implements Comparator<Gene, Attribute
 
                 comparison.s2 = record2GeneName;
 
-                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
+                comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
 
                 comparisonList.add(comparison);
                 
             }
         }
 
-        Comparison comparison = getBestComparisonResult(comparisonList);
+        Comparison comparison = Comparison.getBestComparisonResult(comparisonList);
 
         double postSimilarity = 0;
         if (comparison.similarity <= 0.3) {

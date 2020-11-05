@@ -52,7 +52,7 @@ public class GeneNameComperatorLowerCaseJaccardOnNGrams implements Comparator<Ge
             }
         }
 
-        Comparison comparison = getBestComparisonResult(comparisonList);
+        Comparison comparison = Comparison.getBestComparisonResult(comparisonList);
 
         double postSimilarity = 0;
         if (comparison.similarity <= 0.3) {

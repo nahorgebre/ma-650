@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class GeneNameComperatorGeneralisedStringJaccard implements Comparator<Gene, Attribute> {
     
     private static final long serialVersionUID = 1L;
-    // GeneralisedStringJaccard sim = new GeneralisedStringJaccard();
+    //GeneralisedStringJaccard sim = new GeneralisedStringJaccard();
 
     private ComparatorLogger comparisonLog;
 
@@ -45,29 +45,29 @@ public class GeneNameComperatorGeneralisedStringJaccard implements Comparator<Ge
 
                 comparison.s2 = record2GeneName;
 
-                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
+                //comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
 
                 comparisonList.add(comparison);
                 
             }
         }
 
-        Comparison comparison = getBestComparisonResult(comparisonList);
+        Comparison comparison = Comparison.getBestComparisonResult(comparisonList);
 
         double postSimilarity = 0;
-        if (result.similarity <= 0.3) {
+        if (comparison.similarity <= 0.3) {
             postSimilarity = 0;
         }
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
-            this.comparisonLog.setRecord1Value(result.s1);
-            this.comparisonLog.setRecord2Value(result.s2);
-            this.comparisonLog.setSimilarity(Double.toString(result.similarity));
+            this.comparisonLog.setRecord1Value(comparison.s1);
+            this.comparisonLog.setRecord2Value(comparison.s2);
+            this.comparisonLog.setSimilarity(Double.toString(comparison.similarity));
             this.comparisonLog.setPostprocessedSimilarity(Double.toString(postSimilarity));
         }
 
-        return result.similarity;
+        return comparison.similarity;
     }
 
     @Override
