@@ -76,9 +76,18 @@ namespace DataTranslation
 
                         List<GeneName> geneNameList = parseGeneName(xml);
 
-                        gene.geneNames = string.Join("|", geneNameList);
+                        List<String> geneNameList2 = new List<string>();
+
+                        foreach (var item in geneNameList)
+                        {
+                            geneNameList2.Add(item.name);
+                        }
+
+                        gene.geneNames = string.Join("|", geneNameList2);
 
                     }
+
+                    Console.WriteLine("Gene Names: " + gene.geneNames);
 
 
                     // organs

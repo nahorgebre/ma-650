@@ -80,13 +80,15 @@ namespace DataTranslation
                                     HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
 
                                     List<GeneName> geneNameList = new List<GeneName>();
+                                    List<String> geneNameList2 = new List<string>();
                                     foreach (string name in geneNameHashSet)
                                     {
                                         GeneName GeneName = new GeneName();
                                         GeneName.name = name.Trim();
                                         geneNameList.Add(GeneName);
+                                        geneNameList2.Add(name);
                                     }
-                                    gene.geneNames = string.Join("|", geneNameList);
+                                    gene.geneNames = string.Join("|", geneNameList2);
 
                                     List<PublicationMention> publicationMentions_list = new List<PublicationMention>();
                                     PublicationMention publicationMention = new PublicationMention();
