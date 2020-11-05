@@ -27,28 +27,32 @@ public class GeneNameComperatorGeneralisedStringJaccard implements Comparator<Ge
             Gene record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        List<GeneName> record1GeneNames = record1.getGeneNames();
-        List<GeneName> record2GeneNames = record2.getGeneNames();
+        String record1GeneNames = record1.getGeneNames();
+        String record2GeneNames = record2.getGeneNames();
 
-        List<Comparison> comparisonList = new ArrayList<Comparison>();
-        for (GeneName record1geneName : record1GeneNames) {
-            for (GeneName record2geneName : record2GeneNames) {
+        String[] record1GeneNameArray = record1GeneNames.split("|");
+        String[] record2GeneNameArray = record2GeneNames.split("|");
+
+        List<Comparison> comparisonList = new List<Comparison>();
+
+        for (String record1GeneName : record1GeneNameArray) {
+            
+            for (String record2GeneName : record2GeneNameArray) {
+
                 Comparison comparison = new Comparison();
-                comparison.s1 = record1geneName.getName().toLowerCase();
-                comparison.s2 = record2geneName.getName().toLowerCase(); 
-                //comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
+
+                comparison.s1 = record1GeneName;
+
+                comparison.s2 = record2GeneName;
+
+                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
+
                 comparisonList.add(comparison);
+                
             }
         }
 
-        Comparison result = new Comparison();
-        for (Comparison comparison : comparisonList) {
-            if (result.similarity < comparison.similarity) {
-                result.s1 = comparison.s1;
-                result.s2 = comparison.s2;
-                result.similarity = comparison.similarity;
-            }
-        }
+        Comparison comparison = getBestComparisonResult(comparisonList);
 
         double postSimilarity = 0;
         if (result.similarity <= 0.3) {

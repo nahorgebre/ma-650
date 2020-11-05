@@ -28,13 +28,32 @@ public class GeneNameComperatorCosine implements Comparator<Gene, Attribute> {
             Gene record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
         
-        List<GeneName> record1GeneNames = record1.getGeneNames();
-        List<GeneName> record2GeneNames = record2.getGeneNames();
+        String record1GeneNames = record1.getGeneNames();
+        String record2GeneNames = record2.getGeneNames();
 
-        Comparison comparison = new Comparison();
-        comparison.s1 = record1GeneNames.get(0).getName();
-        comparison.s2 = record2GeneNames.get(0).getName(); 
-        comparison.similarity = sim.similarity(comparison.s1, comparison.s2);
+        String[] record1GeneNameArray = record1GeneNames.split("|");
+        String[] record2GeneNameArray = record2GeneNames.split("|");
+
+        List<Comparison> comparisonList = new List<Comparison>();
+
+        for (String record1GeneName : record1GeneNameArray) {
+            
+            for (String record2GeneName : record2GeneNameArray) {
+
+                Comparison comparison = new Comparison();
+
+                comparison.s1 = record1GeneName;
+
+                comparison.s2 = record2GeneName;
+
+                comparison.similarity = sim.calculate(comparison.s1, comparison.s2);
+
+                comparisonList.add(comparison);
+                
+            }
+        }
+
+        Comparison comparison = getBestComparisonResult(comparisonList);
 
         double postSimilarity = 0;
         if (comparison.similarity <= 0.3) {

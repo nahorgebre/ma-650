@@ -52,8 +52,6 @@ public class ML_StandardRecordBlocker2 {
         HashedDataSet<Gene, Attribute> ds1 = Datasets.kaessmann();
         HashedDataSet<Gene, Attribute> ds2 = Datasets.gene2pubtatorcentral(1);
 
-        System.out.println("--- Test: " + ds2.getRecord("gene2pubtatorcentral_1_7_rid").getGeneNames().get(0).getName());
-
         // goldstandard directory
         String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_1";
         String solution = "DI2";
@@ -92,11 +90,13 @@ public class ML_StandardRecordBlocker2 {
             matchingRule.addComparator(new GeneNameComperatorCosine());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
             matchingRule.addComparator(new GeneNameComperatorLevenshtein());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
-            matchingRule.addComparator(new GeneNameComperatorSorensenDice());
             */
+            matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
+            /*
+            matchingRule.addComparator(new GeneNameComperatorSorensenDice());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
             matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
+            */
 
             // learn the matching rule
             RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
