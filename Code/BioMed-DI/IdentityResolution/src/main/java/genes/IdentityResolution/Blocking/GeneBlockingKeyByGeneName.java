@@ -41,7 +41,6 @@ public class GeneBlockingKeyByGeneName extends
 
         geneName = geneName.replaceAll("\\s+","");
 
-        /*
         int nameLength = geneName.length();
 
         if (nameLength >= 4) {
@@ -62,9 +61,6 @@ public class GeneBlockingKeyByGeneName extends
             key = geneName;
 
         }
-        */
-
-        key = geneName;
 
         System.out.println("Key: " + key);
 
