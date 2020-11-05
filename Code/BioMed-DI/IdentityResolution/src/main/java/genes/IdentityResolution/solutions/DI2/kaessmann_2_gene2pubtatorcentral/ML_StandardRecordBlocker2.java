@@ -75,7 +75,7 @@ public class ML_StandardRecordBlocker2 {
             // create matching rule
             String options[] = geneMatchingRule.options;
             String modelType = geneMatchingRule.modelType;
-            WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.9, modelType, options);
+            WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
             if (geneMatchingRule.backwardSelection) {
                 matchingRule.setBackwardSelection(true);
             }
@@ -84,19 +84,15 @@ public class ML_StandardRecordBlocker2 {
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
             // add comparators
-            /*
             matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
             matchingRule.addComparator(new GeneNameComperatorCosine());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
             matchingRule.addComparator(new GeneNameComperatorLevenshtein());
-            */
             matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
-            /*
             matchingRule.addComparator(new GeneNameComperatorSorensenDice());
             matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
             matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
-            */
 
             // learn the matching rule
             RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
