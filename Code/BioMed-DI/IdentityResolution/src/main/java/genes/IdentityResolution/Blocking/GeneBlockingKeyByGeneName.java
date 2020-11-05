@@ -25,7 +25,7 @@ public class GeneBlockingKeyByGeneName extends
 
         String[] geneNameArray = geneNames.split("|");
 
-        String geneName = "";
+        String geneName = geneNameArray[0];
 
         for (String geneNameItem : geneNameArray) {
             
