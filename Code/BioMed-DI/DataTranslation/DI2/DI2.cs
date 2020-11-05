@@ -7,9 +7,9 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            Publication.runDataTranslation();
+            //Publication.runDataTranslation();
 
-            Kaessmann.runDataTranslation();
+            //Kaessmann.runDataTranslation();
 
         }
 
