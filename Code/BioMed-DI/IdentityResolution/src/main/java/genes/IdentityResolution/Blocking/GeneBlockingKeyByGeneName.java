@@ -60,6 +60,8 @@ public class GeneBlockingKeyByGeneName extends
 
         }
 
+        System.out.println("Key: " + key);
+
         resultCollector.next(new Pair<>(key, record));
 
     }
