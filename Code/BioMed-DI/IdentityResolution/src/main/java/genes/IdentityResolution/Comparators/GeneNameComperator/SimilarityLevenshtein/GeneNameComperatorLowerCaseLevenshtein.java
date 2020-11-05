@@ -33,7 +33,7 @@ public class GeneNameComperatorLowerCaseLevenshtein implements Comparator<Gene, 
         String[] record1GeneNameArray = record1GeneNames.split("|");
         String[] record2GeneNameArray = record2GeneNames.split("|");
 
-        List<Comparison> comparisonList = new List<Comparison>();
+        List<Comparison> comparisonList = new ArrayList();
 
         for (String record1GeneName : record1GeneNameArray) {
             

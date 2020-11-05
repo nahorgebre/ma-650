@@ -32,7 +32,7 @@ public class GeneNameComperatorTokenizingJaccard implements Comparator<Gene, Att
         String[] record1GeneNameArray = record1GeneNames.split("|");
         String[] record2GeneNameArray = record2GeneNames.split("|");
 
-        List<Comparison> comparisonList = new List<Comparison>();
+        List<Comparison> comparisonList = new ArrayList();
 
         for (String record1GeneName : record1GeneNameArray) {
             
@@ -49,6 +49,7 @@ public class GeneNameComperatorTokenizingJaccard implements Comparator<Gene, Att
                 comparisonList.add(comparison);
                 
             }
+            
         }
 
         Comparison comparison = getBestComparisonResult(comparisonList);

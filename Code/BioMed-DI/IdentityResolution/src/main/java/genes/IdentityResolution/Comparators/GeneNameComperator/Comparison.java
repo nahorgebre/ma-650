@@ -1,5 +1,8 @@
 package genes.IdentityResolution.Comparators.GeneNameComperator;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Comparison {
 
     public String s1 = null;
