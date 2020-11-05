@@ -30,8 +30,8 @@ public class GeneNameComperatorLowerCaseLevenshtein implements Comparator<Gene, 
         String record1GeneNames = record1.getGeneNames();
         String record2GeneNames = record2.getGeneNames();
 
-        String[] record1GeneNameArray = record1GeneNames.split("|");
-        String[] record2GeneNameArray = record2GeneNames.split("|");
+        String[] record1GeneNameArray = record1GeneNames.split("\\|");
+        String[] record2GeneNameArray = record2GeneNames.split("\\|");
 
         List<Comparison> comparisonList = new ArrayList();
 
@@ -57,7 +57,7 @@ public class GeneNameComperatorLowerCaseLevenshtein implements Comparator<Gene, 
         if (comparison.similarity > 0.8) {
             
             System.out.println("S1: " + comparison.s1 + " - S2: " + comparison.s2 + " - Sim: " + comparison.similarity);
-            
+
         }
 
         double postSimilarity = 0;

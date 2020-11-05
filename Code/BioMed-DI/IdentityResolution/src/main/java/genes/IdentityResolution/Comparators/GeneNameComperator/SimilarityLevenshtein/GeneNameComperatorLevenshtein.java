@@ -30,8 +30,8 @@ public class GeneNameComperatorLevenshtein implements Comparator<Gene, Attribute
         String record1GeneNames = record1.getGeneNames();
         String record2GeneNames = record2.getGeneNames();
 
-        String[] record1GeneNameArray = record1GeneNames.split("|");
-        String[] record2GeneNameArray = record2GeneNames.split("|");
+        String[] record1GeneNameArray = record1GeneNames.split("\\|");
+        String[] record2GeneNameArray = record2GeneNames.split("\\|");
 
         List<Comparison> comparisonList = new ArrayList();
 
