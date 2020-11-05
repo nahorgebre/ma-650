@@ -19,13 +19,13 @@ public class GeneBlockingKeyByGeneName extends
     public void generateBlockingKeys(Gene record, Processable<Correspondence<Attribute, Matchable>> correspondences,
                                      DataIterator<Pair<String, Gene>> resultCollector) {
 
-        String key = "XYZ";
+        String key = "default";
 
         String geneNames = record.getGeneNames();
 
         System.out.println("Gene Names: " + geneNames);
 
-        String[] geneNameArray = geneNames.split("|");
+        String[] geneNameArray = geneNames.split("\\|");
 
         String geneName = geneNameArray[0].toLowerCase();
 
