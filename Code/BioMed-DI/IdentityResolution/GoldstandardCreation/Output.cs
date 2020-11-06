@@ -44,7 +44,7 @@ namespace GoldstandardCreation
                     {
                         trueItem.recordId1,
                         trueItem.recordId2,
-                        trueItem.value
+                        trueItem.boolValue
                     };
                     var line = string.Join(delimiter, lineContent);
                     sw.WriteLine(line);
@@ -56,7 +56,7 @@ namespace GoldstandardCreation
                     {
                         falseItem.recordId1,
                         falseItem.recordId2,
-                        falseItem.value
+                        falseItem.boolValue
                     };
                     var line = string.Join(delimiter, lineContent);
                     sw.WriteLine(line);
@@ -89,8 +89,8 @@ namespace GoldstandardCreation
 
                     Goldstandard goldstandard = new Goldstandard();
                     goldstandard.recordId1 = values[0].Trim();
-                    goldstandard.recordId2 =values[1].Trim();
-                    goldstandard.value = values[2].Trim();
+                    goldstandard.recordId2 =values[2].Trim();
+                    goldstandard.boolValue = values[4].Trim();
 
                     if (counter < threshold)
                     {

@@ -54,18 +54,21 @@ namespace GoldstandardCreation
                                 var jw = new JaroWinkler();
                                 double sim = jw.Similarity(compareValueSr1, compareValueSr2);
 
-                                if (sim == 1.0)
+                                if (sim > 0.95)
                                 {
 
                                     Goldstandard goldstandardItem = new Goldstandard();
                                     goldstandardItem.recordId1 = recordIdSr1;
+                                    goldstandardItem.value1 = compareValueSr1;
                                     goldstandardItem.recordId2 = recordIdSr2;
-                                    goldstandardItem.value = "TRUE";
+                                    goldstandardItem.value2 = compareValueSr2;
+                                    goldstandardItem.boolValue = "TRUE";
+                                    goldstandardItem.sim = sim;
 
                                     goldstandardListTrue.Add(goldstandardItem);
 
                                 }
-                                else if (sim < 1.0 & sim > 0.7)
+                                else if (sim <= 0.95 & sim > 0.7)
                                 {
                                     
                                     if (goldstandardListFalse.Count() < 200)
@@ -76,8 +79,11 @@ namespace GoldstandardCreation
 
                                             Goldstandard goldstandardItem = new Goldstandard();
                                             goldstandardItem.recordId1 = recordIdSr1;
+                                            goldstandardItem.value1 = compareValueSr1;
                                             goldstandardItem.recordId2 = recordIdSr2;
-                                            goldstandardItem.value = "FALSE";
+                                            goldstandardItem.recordId2 = recordIdSr2;
+                                            goldstandardItem.boolValue = "FALSE";
+                                            goldstandardItem.sim = sim;
 
                                             goldstandardListFalse.Add(goldstandardItem);
 
@@ -152,7 +158,7 @@ namespace GoldstandardCreation
                                             Goldstandard goldstandardItem = new Goldstandard();
                                             goldstandardItem.recordId1 = recordIdSr1;
                                             goldstandardItem.recordId2 = recordIdSr2;
-                                            goldstandardItem.value = "TRUE";
+                                            goldstandardItem.boolValue = "TRUE";
 
                                             goldstandardListTrue.Add(goldstandardItem);
 
@@ -165,7 +171,7 @@ namespace GoldstandardCreation
                                                 Goldstandard goldstandardItem = new Goldstandard();
                                                 goldstandardItem.recordId1 = recordIdSr1;
                                                 goldstandardItem.recordId2 = recordIdSr2;
-                                                goldstandardItem.value = "FALSE";
+                                                goldstandardItem.boolValue = "FALSE";
 
                                                 goldstandardListFalse.Add(goldstandardItem);
                                             }
@@ -197,8 +203,11 @@ namespace GoldstandardCreation
                     List<string> lineContent = new List<string>()
                     {
                         item.recordId1,
+                        item.value1,
                         item.recordId2,
-                        item.value
+                        item.value2,
+                        item.boolValue,
+                        item.sim.ToString()
                     };
                     var line = string.Join(delimiter, lineContent);
                     sw.WriteLine(line);
