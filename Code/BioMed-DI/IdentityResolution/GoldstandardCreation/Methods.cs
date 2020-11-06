@@ -142,12 +142,18 @@ namespace GoldstandardCreation
                 foreach (String geneNameItem in geneNameArray)
                 {
 
-                    if (geneNameItem.Count() > geneName.Count())
+                    if (geneNameItem.Count() < geneName.Count())
                     {
-                
-                        geneName = geneNameItem.ToLower();
 
-                    }      
+                        if (!geneNameItem.Trim().Equals(string.Empty))
+                        {
+                            
+                            geneName = geneNameItem.ToLower();
+
+                        }
+                
+                    }    
+
                 }
 
             }
@@ -156,6 +162,14 @@ namespace GoldstandardCreation
 
             int nameLength = geneName.Count();
 
+            if (nameLength >= 2)
+            {
+
+                key = geneName.Substring(0,2).Trim();
+                
+            }
+
+            /*
             if (nameLength >= 4) {
 
                 int keyIndex = geneName.Count() / 2;
@@ -174,6 +188,7 @@ namespace GoldstandardCreation
                 key = geneName;
 
             }
+            */
 
             return key;
 
