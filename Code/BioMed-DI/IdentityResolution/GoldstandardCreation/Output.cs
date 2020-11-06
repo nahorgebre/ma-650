@@ -7,12 +7,13 @@ namespace GoldstandardCreation
     class Output
     {
 
-        public static void run(DirectoryInfo directory) {
+        //public static void run(DirectoryInfo directory) {
+        public static void run(DirectoryInfo subDirectory) {
 
             Console.WriteLine("Create output files!");
 
-            foreach (DirectoryInfo subDirectory in directory.GetDirectories())
-            {
+            //foreach (DirectoryInfo subDirectory in directory.GetDirectories())
+            //{
 
                 string trueFile = subDirectory.FullName + "/true.csv";
                 string falseFile = subDirectory.FullName + "/false.csv";
@@ -26,7 +27,7 @@ namespace GoldstandardCreation
                 createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
                 createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
 
-            }
+            //}
 
         }
 
