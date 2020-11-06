@@ -54,7 +54,7 @@ public class GeneNameComperatorLowerCaseLevenshtein implements Comparator<Gene, 
 
         Comparison comparison = Comparison.getBestComparisonResult(comparisonList);
 
-        if (comparison.similarity > 0.8) {
+        if (comparison.similarity < 1.0) {
             
             System.out.println("S1: " + comparison.s1 + " - S2: " + comparison.s2 + " - Sim: " + comparison.similarity);
 
