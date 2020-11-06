@@ -22,6 +22,8 @@ namespace GoldstandardCreation
 
             var delimiter = "\t";
 
+            HashSet<String> blockingKeys = new HashSet<string>();
+
             using (StreamReader sr1 = new StreamReader(fileName1))
             {
 
@@ -54,6 +56,9 @@ namespace GoldstandardCreation
                                 string key1 = getGeneNameBlockingKey(compareValueSr1);
                                 string key2 = getGeneNameBlockingKey(compareValueSr2);
 
+                                blockingKeys.Add(key1);
+                                blockingKeys.Add(key2);
+
                                 if (key1.Equals(key2))
                                 {
 
@@ -71,6 +76,7 @@ namespace GoldstandardCreation
                                         goldstandardItem.value2 = compareValueSr2;
                                         goldstandardItem.boolValue = "TRUE";
                                         goldstandardItem.sim = sim;
+                                        goldstandardItem.blockingKey = key1;
 
                                         goldstandardListTrue.Add(goldstandardItem);
 
@@ -91,6 +97,7 @@ namespace GoldstandardCreation
                                                 goldstandardItem.value2 = compareValueSr2;
                                                 goldstandardItem.boolValue = "FALSE";
                                                 goldstandardItem.sim = sim;
+                                                goldstandardItem.blockingKey = key1;
 
                                                 goldstandardListFalse.Add(goldstandardItem);
 
@@ -172,6 +179,22 @@ namespace GoldstandardCreation
 
         }
 
+        public static void createBlockingKeyOutput(HashSet<String> blockingKeys) {
+
+            string fileName = string.Format("{0}/data/output/test.csv", Environment.CurrentDirectory);
+
+            using (StreamWriter sw = new StreamWriter(fileName))
+            {
+
+                foreach (var key in blockingKeys)
+                {
+
+                    sw.WriteLine(key);
+                    
+                }
+            }
+        }
+
         public static void createOuput(string fileName, List<Goldstandard> goldstandardList)
         {
 
@@ -188,7 +211,8 @@ namespace GoldstandardCreation
                         item.recordId2,
                         item.value2,
                         item.boolValue,
-                        item.sim.ToString()
+                        item.sim.ToString(),
+                        item.blockingKey
                     };
                     var line = string.Join(delimiter, lineContent);
                     sw.WriteLine(line);

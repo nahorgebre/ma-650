@@ -8,6 +8,7 @@ namespace GoldstandardCreation
         public string value2;
         public string boolValue;
         public double sim;
+        public string blockingKey;
 
     }
 }                       
