@@ -28,11 +28,9 @@ namespace GoldstandardCreation
                 else if (parameter.Equals("DI2"))
                 {
 
-                    DI2.run();
+                    //DI2.run();
 
-                    //DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/output/{1}/{2}", Environment.CurrentDirectory, parameter, Variables.pubTatorPartitionSize));
-
-                    DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/input/DI2/50/gene2pubtatorcentral_1", Environment.CurrentDirectory));
+                    DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/output/{1}/{2}", Environment.CurrentDirectory, parameter, Variables.pubTatorPartitionSize));
 
                     Output.run(outputDirectory);
 
