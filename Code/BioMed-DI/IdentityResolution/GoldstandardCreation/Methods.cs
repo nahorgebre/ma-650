@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using F23.StringSimilarity;
 
 namespace GoldstandardCreation
@@ -50,42 +51,50 @@ namespace GoldstandardCreation
                                 string compareValueSr2 = valuesSr2[index].Trim();
                                 string recordIdSr2 = valuesSr2[0];
 
-                                // calculate similarity
-                                var jw = new JaroWinkler();
-                                double sim = jw.Similarity(compareValueSr1, compareValueSr2);
+                                string key1 = getGeneNameBlockingKey(compareValueSr1);
+                                string key2 = getGeneNameBlockingKey(compareValueSr2);
 
-                                if (sim > 0.95)
+                                if (key1.Equals(key2))
                                 {
 
-                                    Goldstandard goldstandardItem = new Goldstandard();
-                                    goldstandardItem.recordId1 = recordIdSr1;
-                                    goldstandardItem.value1 = compareValueSr1;
-                                    goldstandardItem.recordId2 = recordIdSr2;
-                                    goldstandardItem.value2 = compareValueSr2;
-                                    goldstandardItem.boolValue = "TRUE";
-                                    goldstandardItem.sim = sim;
+                                    // calculate similarity
+                                    var jw = new JaroWinkler();
+                                    double sim = jw.Similarity(compareValueSr1, compareValueSr2);
 
-                                    goldstandardListTrue.Add(goldstandardItem);
-
-                                }
-                                else if (sim <= 0.95 & sim > 0.7)
-                                {
-                                    
-                                    if (goldstandardListFalse.Count() < 200)
+                                    if (sim > 0.95)
                                     {
-                                        
-                                        if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalse.Exists(x => x.recordId1 == recordIdSr1))
+
+                                        Goldstandard goldstandardItem = new Goldstandard();
+                                        goldstandardItem.recordId1 = recordIdSr1;
+                                        goldstandardItem.value1 = compareValueSr1;
+                                        goldstandardItem.recordId2 = recordIdSr2;
+                                        goldstandardItem.value2 = compareValueSr2;
+                                        goldstandardItem.boolValue = "TRUE";
+                                        goldstandardItem.sim = sim;
+
+                                        goldstandardListTrue.Add(goldstandardItem);
+
+                                    }
+                                    else if (sim <= 0.95 & sim > 0.7)
+                                    {
+                                    
+                                        if (goldstandardListFalse.Count() < 200)
                                         {
+                                        
+                                            if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalse.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
 
-                                            Goldstandard goldstandardItem = new Goldstandard();
-                                            goldstandardItem.recordId1 = recordIdSr1;
-                                            goldstandardItem.value1 = compareValueSr1;
-                                            goldstandardItem.recordId2 = recordIdSr2;
-                                            goldstandardItem.value2 = compareValueSr2;
-                                            goldstandardItem.boolValue = "FALSE";
-                                            goldstandardItem.sim = sim;
+                                                Goldstandard goldstandardItem = new Goldstandard();
+                                                goldstandardItem.recordId1 = recordIdSr1;
+                                                goldstandardItem.value1 = compareValueSr1;
+                                                goldstandardItem.recordId2 = recordIdSr2;
+                                                goldstandardItem.value2 = compareValueSr2;
+                                                goldstandardItem.boolValue = "FALSE";
+                                                goldstandardItem.sim = sim;
 
-                                            goldstandardListFalse.Add(goldstandardItem);
+                                                goldstandardListFalse.Add(goldstandardItem);
+
+                                            }
 
                                         }
 
@@ -100,13 +109,66 @@ namespace GoldstandardCreation
                     }
 
                 }
-
+            
             }
 
             Console.WriteLine("GS-True-List Count: " + goldstandardListTrue.Count);
             Console.WriteLine("GS-False-List Count: " + goldstandardListFalse.Count);
             
             return (goldstandardListTrue, goldstandardListFalse);
+
+        }
+
+        public static String getGeneNameBlockingKey(String geneNames)
+        {
+            string key = "default";
+
+            String geneName = geneNames;
+
+            if (geneNames.Contains("|")) 
+            {
+
+                String[] geneNameArray = geneNames.Split("|");
+
+                geneName = geneNameArray[0].ToLower();
+
+                foreach (String geneNameItem in geneNameArray)
+                {
+
+                    if (geneNameItem.Count() > geneName.Count())
+                    {
+                
+                        geneName = geneNameItem.ToLower();
+
+                    }      
+                }
+
+            }
+
+            geneName = Regex.Replace(geneName, @"\s+", String.Empty);
+
+            int nameLength = geneName.Count();
+
+            if (nameLength >= 4) {
+
+                int keyIndex = geneName.Count() / 2;
+                key = geneName.Substring(0, keyIndex);
+
+            } else if (nameLength == 1) {
+
+                key = geneName;
+
+            } else if (nameLength == 2) {
+
+                key = geneName;
+
+            } else if (nameLength == 3) {
+            
+                key = geneName;
+
+            }
+
+            return key;
 
         }
 
