@@ -69,16 +69,21 @@ namespace GoldstandardCreation
                                     if (sim > 0.95)
                                     {
 
-                                        Goldstandard goldstandardItem = new Goldstandard();
-                                        goldstandardItem.recordId1 = recordIdSr1;
-                                        goldstandardItem.value1 = compareValueSr1;
-                                        goldstandardItem.recordId2 = recordIdSr2;
-                                        goldstandardItem.value2 = compareValueSr2;
-                                        goldstandardItem.boolValue = "TRUE";
-                                        goldstandardItem.sim = sim;
-                                        goldstandardItem.blockingKey = key1;
+                                        if (!goldstandardListTrue.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrue.Exists(x => x.recordId1 == recordIdSr1))
+                                        {
 
-                                        goldstandardListTrue.Add(goldstandardItem);
+                                            Goldstandard goldstandardItem = new Goldstandard();
+                                            goldstandardItem.recordId1 = recordIdSr1;
+                                            goldstandardItem.value1 = compareValueSr1;
+                                            goldstandardItem.recordId2 = recordIdSr2;
+                                            goldstandardItem.value2 = compareValueSr2;
+                                            goldstandardItem.boolValue = "TRUE";
+                                            goldstandardItem.sim = sim;
+                                            goldstandardItem.blockingKey = key1;
+
+                                            goldstandardListTrue.Add(goldstandardItem);
+
+                                        }
 
                                     }
                                     else if (sim <= 0.95 & sim > 0.7)
@@ -166,7 +171,7 @@ namespace GoldstandardCreation
             {
 
                 key = geneName.Substring(0,2).Trim();
-                
+
             }
 
             /*
