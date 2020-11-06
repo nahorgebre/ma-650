@@ -11,13 +11,16 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Brain.brainOutputDirectory)); 
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Brain.brainOutputDirectory));
+
             Brain.Brain_dt();
+
             Brain.mart_export_brain_dt();
 
         }
 
         public static string brainInputDirectory = "data/input/Brain";
+
         public static string brainOutputDirectory = "data/output/DI1";
 
         // Brain.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
@@ -25,31 +28,43 @@ namespace DataTranslation
         {
             
             Genes genes = new Genes();
+
             List<Gene> gene_list = new List<Gene>();
             
             using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "Brain.csv")))
             {
 
                 reader.ReadLine();
+
                 int counter = 1;
 
                 while (!reader.EndOfStream)
                 {
 
                     var line = reader.ReadLine();
+
                     String[] values = line.Split(',');
 
-                    Gene gene = new Gene();        
+                    Gene gene = new Gene();
+
                     gene.recordId = string.Format("Brain_{0}_rid", counter);
+
                     gene.ensemblId = values[0];
 
                     List<Organ> organList = new List<Organ>();
+
                     Organ organ = new Organ();
+
                     organ.organName = OrganNames.brain;
+
                     organ.disagreement = values[1];
+
                     organ.probEqualOrthoAdj = values[2];
+
                     organ.call = values[3];
+
                     organList.Add(organ);
+
                     gene.organs = organList;
 
                     gene_list.Add(gene);
@@ -61,6 +76,7 @@ namespace DataTranslation
             }
 
             Methods.createXml(gene_list: gene_list, fileName: "Brain_dt.xml", directory: brainOutputDirectory);
+
             Methods.createTsv(gene_list: gene_list, fileName: "Brain_dt.tsv", directory: brainOutputDirectory);
 
         }
@@ -70,34 +86,32 @@ namespace DataTranslation
         {
 
             Genes genes = new Genes();
+
             List<Gene> gene_list = new List<Gene>();
             
             using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "mart_export_brain.txt")))
             {
 
                 reader.ReadLine();
+
                 int counter = 1;
 
                 while (!reader.EndOfStream)
                 {
 
                     var line = reader.ReadLine();
+
                     String[] values = line.Split(',');
 
                     Gene gene = new Gene();
-                    gene.recordId = string.Format("mart_export_brain_{0}_rid", counter);
-                    gene.ensemblId = values[0];
-                    
-                    List<GeneDescription> geneDescriptionList = new List<GeneDescription>();
-                    GeneDescription geneDescription = new GeneDescription();
-                    geneDescription.description = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
-                    gene.geneDescriptions = geneDescriptionList;
 
-                    List<GeneName> geneNameList = new List<GeneName>();
-                    GeneName GeneName = new GeneName();
-                    GeneName.name = line.Substring(line.LastIndexOf(",") + 1);
-                    geneNameList.Add(GeneName);
-                    //gene.geneNames = geneNameList;
+                    gene.recordId = string.Format("mart_export_brain_{0}_rid", counter);
+
+                    gene.ensemblId = values[0];
+
+                    gene.geneDescriptions = (line.Substring(line.IndexOf(",") + 1)).Substring(0, line.Substring(line.IndexOf(",") + 1).LastIndexOf(","));
+
+                    gene.geneNames = line.Substring(line.LastIndexOf(",") + 1);
 
                     gene_list.Add(gene);
 
