@@ -34,7 +34,7 @@ namespace GoldstandardCreation
 
                     DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/input/DI2/50/gene2pubtatorcentral_1", Environment.CurrentDirectory));
 
-                    Output.run(outputDirectory);
+                    //Output.run(outputDirectory);
 
                     //AWSupload.run(outputDirectory, parameter);
 
