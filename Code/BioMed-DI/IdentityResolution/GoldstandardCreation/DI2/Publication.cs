@@ -23,8 +23,10 @@ namespace GoldstandardCreation
             if (File.Exists(tsvFile.FullName))
             {
 
-                for (int i = 1; i <= Variables.pubTatorPartitionSize; i++)
-                {
+                //for (int i = 1; i <= Variables.pubTatorPartitionSize; i++)
+                //{
+
+                    int i = 1;
                     
                     string comparison = "kaessmann_2_gene2pubtatorcentral_" + i;
                     string directoryName = string.Format("{0}/data/output/DI2/{1}/{2}", Environment.CurrentDirectory, Variables.pubTatorPartitionSize, comparison);
@@ -45,7 +47,7 @@ namespace GoldstandardCreation
 
                     }
                     
-                }
+                //}
                 
             }
 

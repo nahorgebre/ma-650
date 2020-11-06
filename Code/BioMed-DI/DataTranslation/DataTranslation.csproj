@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.S3" Version="3.5.1.6" />
+    <PackageReference Include="SimMetrics.Net" Version="1.0.5" />
   </ItemGroup>
 
 </Project>

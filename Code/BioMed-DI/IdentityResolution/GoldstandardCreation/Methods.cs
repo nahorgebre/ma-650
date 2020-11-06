@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using F23.StringSimilarity;
 
 namespace GoldstandardCreation
 {
@@ -33,7 +34,7 @@ namespace GoldstandardCreation
                     {
 
                         String[] valuesSr1 = lineSr1.Split(delimiter);
-                        string pmIdSr1 = valuesSr1[index].Trim();
+                        string compareValueSr1 = valuesSr1[index].Trim();
                         string recordIdSr1 = valuesSr1[0];
 
                         using (StreamReader sr2 = new StreamReader(fileName2))
@@ -46,10 +47,14 @@ namespace GoldstandardCreation
                                 var lineSr2 = sr2.ReadLine();
 
                                 String[] valuesSr2 = lineSr2.Split(delimiter);
-                                string pmIdSr2 = valuesSr2[index].Trim();
+                                string compareValueSr2 = valuesSr2[index].Trim();
                                 string recordIdSr2 = valuesSr2[0];
 
-                                if (pmIdSr1.Equals(pmIdSr2))
+                                // calculate similarity
+                                var jw = new JaroWinkler();
+                                double sim = jw.Similarity(compareValueSr1, compareValueSr2);
+
+                                if (sim == 1.0)
                                 {
 
                                     Goldstandard goldstandardItem = new Goldstandard();
@@ -60,9 +65,9 @@ namespace GoldstandardCreation
                                     goldstandardListTrue.Add(goldstandardItem);
 
                                 }
-                                else
+                                else if (sim < 1.0 & sim > 0.7)
                                 {
-
+                                    
                                     if (goldstandardListFalse.Count() < 200)
                                     {
                                         
