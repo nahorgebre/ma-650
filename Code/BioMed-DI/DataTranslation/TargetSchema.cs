@@ -26,9 +26,7 @@ namespace DataTranslation
 
         public string geneNames;
 
-
-        [XmlArrayItem("geneDescriptions")]
-        public List<GeneDescription> geneDescriptions;
+        public string geneDescriptions;
 
         
         [XmlArrayItem("organs")]

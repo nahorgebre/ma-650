@@ -1,7 +1,7 @@
 namespace DataTranslation
 {
 
-    public class DI2
+    public class DI3
     {
 
         public static void runDataTranslation() 

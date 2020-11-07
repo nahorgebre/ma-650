@@ -8,10 +8,15 @@ namespace DataTranslation
         {
 
             Heart.runDataTranslation();
+
             Brain.runDataTranslation();
+
             Cerebellum.runDataTranslation();
+
             Kidney.runDataTranslation();
+
             Liver.runDataTranslation();
+            
             Testis.runDataTranslation();
 
         }

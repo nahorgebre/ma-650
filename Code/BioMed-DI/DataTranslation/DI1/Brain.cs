@@ -19,9 +19,11 @@ namespace DataTranslation
 
         }
 
+
         public static string brainInputDirectory = "data/input/Brain";
 
         public static string brainOutputDirectory = "data/output/DI1";
+
 
         // Brain.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
         public static void Brain_dt()
@@ -81,6 +83,7 @@ namespace DataTranslation
 
         }
 
+
         // mart_export_brain.txt; 0-geneId; 1-geneDescription; 2-geneName
         public static void mart_export_brain_dt()
         {
@@ -122,6 +125,7 @@ namespace DataTranslation
             }
 
             Methods.createXml(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: brainOutputDirectory);
+            
             Methods.createTsv(gene_list: gene_list, fileName: "mart_export_brain_dt.tsv", directory: brainOutputDirectory);
 
         }

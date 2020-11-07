@@ -28,6 +28,12 @@ namespace DataTranslation
                     AWSupload.run(parameter, Variables.partitionNumbers.ToString());
 
                 }
+                else if (parameter.Equals("DI3"))
+                {
+
+                    
+
+                }
 
             }
             

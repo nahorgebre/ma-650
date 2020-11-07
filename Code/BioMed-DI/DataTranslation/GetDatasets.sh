@@ -7,8 +7,7 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Cerebellum/mart_export_cerebellum.txt -O data/input/Cerebellum/mart_export_cerebellum.txt
 
 mkdir -p data/input/Gene-Disease-Associations
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene-Disease-Associations/all_gene_disease_pmid_associations.tsv -O data/input/Gene-Disease-Associations/all_gene_disease_pmid_associations.tsv
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene-Disease-Associations/readme.txt -O data/input/Gene-Disease-Associations/readme.txt
+
 
 mkdir -p data/input/Gene2Pubtatorcentral
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene2Pubtatorcentral/gene2pubtatorcentral.tsv -O data/input/Gene2Pubtatorcentral/gene2pubtatorcentral.tsv

@@ -1015,5 +1015,3 @@ wget ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/pubmed20n1012.xml.gz -O data/inp
 wget ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/pubmed20n1013.xml.gz -O data/input/pubmed20n1013.xml.gz
 wget ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/pubmed20n1014.xml.gz -O data/input/pubmed20n1014.xml.gz
 wget ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/pubmed20n1015.xml.gz -O data/input/pubmed20n1015.xml.gz
-
-dotnet run

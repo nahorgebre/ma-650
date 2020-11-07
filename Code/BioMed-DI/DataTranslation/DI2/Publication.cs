@@ -12,8 +12,8 @@ namespace DataTranslation
         {
 
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Publication.gene2PubtatorcentralOutputDirectory));
+            
             Publication.gene2pubtatorcentral_dt();
-            //Publication.pubMedDate_dt();
 
         }
 
@@ -36,13 +36,16 @@ namespace DataTranslation
                 {
 
                     reader.ReadLine();
+
                     int conditionCounter = 1;
+
                     int recordIdCounter = 1;
 
                     while (!reader.EndOfStream)
                     {
 
                         var line = reader.ReadLine();
+
                         String[] values = line.Split('\t');
 
                         bool condition;
@@ -68,6 +71,7 @@ namespace DataTranslation
                             {
 
                                 string[] ncbiIdArray = values[2].Split(';');
+
                                 foreach (String ncbiId in ncbiIdArray)
                                 {
 
@@ -79,22 +83,58 @@ namespace DataTranslation
 
                                     HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
 
-                                    List<GeneName> geneNameList = new List<GeneName>();
-                                    List<String> geneNameList2 = new List<string>();
+                                    List<String> geneNameList = new List<string>();
+
                                     foreach (string name in geneNameHashSet)
                                     {
+
                                         GeneName GeneName = new GeneName();
+
                                         GeneName.name = name.Trim();
-                                        geneNameList.Add(GeneName);
-                                        geneNameList2.Add(name);
+
+                                        geneNameList.Add(name);
+
                                     }
-                                    gene.geneNames = string.Join("|", geneNameList2);
+
+                                    gene.geneNames = string.Join("|", geneNameList);
 
                                     List<PublicationMention> publicationMentions_list = new List<PublicationMention>();
+
                                     PublicationMention publicationMention = new PublicationMention();
+
                                     publicationMention.pmId = values[0].Trim();
+
                                     publicationMention.ressource = values[4].Trim();
+
+                                    string year = string.Empty;
+
+                                    using(StreamReader sr = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, gene2PubtatorcentralInputDirectory, "PubMedDate.csv")))
+                                    {
+
+                                        sr.ReadLine();
+
+                                        while (!sr.EndOfStream)
+                                        {
+
+                                            var pubMedDateLine = sr.ReadLine();
+
+                                            String[] pubMedDateValues = pubMedDateLine.Split(',');
+
+                                            if (publicationMention.pmId.Equals(pubMedDateValues[0]))
+                                            {
+
+                                                year = pubMedDateValues[0];
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    publicationMention.year = year;
+
                                     publicationMentions_list.Add(publicationMention);
+
                                     gene.publicationMentions = publicationMentions_list;
 
                                     gene_list.Add(gene);   
@@ -116,6 +156,7 @@ namespace DataTranslation
                 Console.WriteLine("Gene list length: " + gene_list.Count);
                     
                 Methods.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: gene2PubtatorcentralOutputDirectory + "/" + Variables.partitionNumbers.ToString());
+
                 Methods.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: gene2PubtatorcentralOutputDirectory + "/" + Variables.partitionNumbers.ToString());
  
             }
@@ -128,6 +169,7 @@ namespace DataTranslation
             HashSet<string> geneNameHashSet = new HashSet<string>();
 
             geneNameValues = geneNameValues.Replace("and", ",");
+
             string[] geneNameSplitArray = geneNameValues.Split(new Char [] { '|' , ',' });
 
             foreach (string geneNameSplit in geneNameSplitArray)
@@ -141,6 +183,7 @@ namespace DataTranslation
 
         }
 
+        /*
         // gespiegelte partitionierung
         public static void pubMedDate_dt()
         {
@@ -181,6 +224,7 @@ namespace DataTranslation
             Methods.createTsv(gene_list: gene_list, fileName: "PubMedDate_dt.tsv", directory: gene2PubtatorcentralOutputDirectory);
 
         }
+        */
 
     }
 
