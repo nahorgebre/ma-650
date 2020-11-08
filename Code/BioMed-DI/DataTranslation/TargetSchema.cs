@@ -18,13 +18,13 @@ namespace DataTranslation
     public class Gene
     {
 
-        public string recordId = null;
+        public string recordId;
 
-        public string ensemblId = null;
+        public string ensemblId;
 
-        public string ncbiId = null;
+        public string ncbiId;
 
-        public string geneNames = null;
+        public string geneNames;
 
         public string geneDescriptions;
 
@@ -133,13 +133,13 @@ namespace DataTranslation
     public class Publication
     {
 
-        public string recordId = null;
+        public string recordId;
         
-        public string pmId = null;
+        public string pmId;
         
-        public string geneNames = null;
+        public string geneNames;
 
-        public string ncbiId = null;
+        public string ncbiId;
 
         public string ressource;
 

@@ -228,19 +228,12 @@ namespace DataTranslation
 
             Console.WriteLine("--" + value + "--");
 
-            bool returnValue = true;
+            bool returnValue = false;
 
-            if (value.Equals(null))
+            if (value != null)
             {
 
-                returnValue = false;
-
-            }
-
-            if (value.Equals(string.Empty))
-            {
-
-                returnValue = false;
+                returnValue = true;
 
             }
 
