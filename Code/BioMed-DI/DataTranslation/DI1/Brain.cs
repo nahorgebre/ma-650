@@ -8,21 +8,17 @@ namespace DataTranslation
     public class Brain
     {
 
+
         public static void runDataTranslation() 
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Brain.brainOutputDirectory));
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI1.outputDirectory));
 
             Brain.Brain_dt();
 
             Brain.mart_export_brain_dt();
 
         }
-
-
-        public static string brainInputDirectory = "data/input/Brain";
-
-        public static string brainOutputDirectory = "data/output/DI1";
 
 
         // Brain.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
@@ -33,7 +29,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
             
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "Brain.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "Brain.csv")))
             {
 
                 reader.ReadLine();
@@ -77,9 +73,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "Brain_dt.xml", directory: brainOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Brain_dt.xml", directory: DI1.outputDirectory);
 
-            Methods.createTsv(gene_list: gene_list, fileName: "Brain_dt.tsv", directory: brainOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Brain_dt.tsv", directory: DI1.outputDirectory);
 
         }
 
@@ -92,7 +88,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
             
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, brainInputDirectory, "mart_export_brain.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "mart_export_brain.txt")))
             {
 
                 reader.ReadLine();
@@ -124,9 +120,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: brainOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: DI1.outputDirectory);
             
-            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_brain_dt.tsv", directory: brainOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_brain_dt.tsv", directory: DI1.outputDirectory);
 
         }
 

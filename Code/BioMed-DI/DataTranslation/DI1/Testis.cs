@@ -11,18 +11,13 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Testis.testisOutputDirectory)); 
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI1.outputDirectory)); 
             
             Testis.Testis_dt();
             
             Testis.mart_export_testis_dt();
 
         }
-
-
-        public static string testisInputDirectory = "data/input/Testis";
-
-        public static string testisOutputDirectory = "data/output/DI1";
 
 
         // testis.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
@@ -33,7 +28,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, testisInputDirectory, "Testis.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "Testis.csv")))
             {
 
                 reader.ReadLine();
@@ -77,9 +72,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "Testis_dt.xml", directory: testisOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Testis_dt.xml", directory: DI1.outputDirectory);
 
-            Methods.createTsv(gene_list: gene_list, fileName: "Testis_dt.tsv", directory: testisOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Testis_dt.tsv", directory: DI1.outputDirectory);
 
         }
 
@@ -92,7 +87,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, testisInputDirectory, "mart_export_testis.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "mart_export_testis.txt")))
             {
 
                 reader.ReadLine();
@@ -124,9 +119,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_testis_dt.xml", directory: testisOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_testis_dt.xml", directory: DI1.outputDirectory);
             
-            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_testis_dt.tsv", directory: testisOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_testis_dt.tsv", directory: DI1.outputDirectory);
 
         }
 

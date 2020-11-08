@@ -8,10 +8,11 @@ namespace DataTranslation
     public class Heart
     {
 
+
         public static void runDataTranslation() 
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Heart.heartOutputDirectory));
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI1.outputDirectory));
 
             Heart.Heart_dt();
 
@@ -22,11 +23,6 @@ namespace DataTranslation
         }
 
 
-        public static string heartInputDirectory = "data/input/Heart";
-
-        public static string heartOutputDirectory = "data/output/DI1";
-
-
         // heart.csv; 0-geneId; 1-disagreement; 2-call
         public static void Heart_dt()
         {
@@ -35,7 +31,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, heartInputDirectory, "Heart.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "Heart.csv")))
             {
 
                 reader.ReadLine();
@@ -77,9 +73,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "Heart_dt.xml", directory: heartOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Heart_dt.xml", directory: DI1.outputDirectory);
 
-            Methods.createTsv(gene_list: gene_list, fileName: "Heart_dt.tsv", directory: heartOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Heart_dt.tsv", directory: DI1.outputDirectory);
 
         }
 
@@ -92,7 +88,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, heartInputDirectory, "mart_export_heart.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "mart_export_heart.txt")))
             {
 
                 reader.ReadLine();
@@ -124,9 +120,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_heart_dt.xml", directory: heartOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_heart_dt.xml", directory: DI1.outputDirectory);
 
-            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_heart_dt.tsv", directory: heartOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_heart_dt.tsv", directory: DI1.outputDirectory);
 
         }
 
@@ -139,7 +135,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, heartInputDirectory, "Heart_Ensembl_NCBI_Crosswalk.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "Heart_Ensembl_NCBI_Crosswalk.txt")))
             {
 
                 reader.ReadLine();
@@ -171,9 +167,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.xml", directory: heartOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.xml", directory: DI1.outputDirectory);
             
-            Methods.createTsv(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.tsv", directory: heartOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.tsv", directory: DI1.outputDirectory);
 
         }
 

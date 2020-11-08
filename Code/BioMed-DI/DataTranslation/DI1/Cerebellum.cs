@@ -8,10 +8,11 @@ namespace DataTranslation
     public class Cerebellum
     {
 
+
         public static void runDataTranslation() 
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, Cerebellum.cerebellumOutputDirectory));
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI1.outputDirectory));
 
             Cerebellum.Cerebellum_dt();
 
@@ -19,11 +20,6 @@ namespace DataTranslation
 
         }
 
-
-        public static string cerebellumInputDirectory = "data/input/Cerebellum";
-
-        public static string cerebellumOutputDirectory = "data/output/DI1";
-        
 
         // Cerebellum.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
         public static void Cerebellum_dt()
@@ -33,7 +29,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
             
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, cerebellumInputDirectory, "Cerebellum.csv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "Cerebellum.csv")))
             {
 
                 reader.ReadLine();
@@ -77,9 +73,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "Cerebellum_dt.xml", directory: cerebellumOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Cerebellum_dt.xml", directory: DI1.outputDirectory);
 
-            Methods.createTsv(gene_list: gene_list, fileName: "Cerebellum_dt.tsv", directory: cerebellumOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "Cerebellum_dt.tsv", directory: DI1.outputDirectory);
 
         }
 
@@ -92,7 +88,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, cerebellumInputDirectory, "mart_export_cerebellum.txt")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "mart_export_cerebellum.txt")))
             {
 
                 reader.ReadLine();
@@ -124,9 +120,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.xml", directory: cerebellumOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.xml", directory: DI1.outputDirectory);
 
-            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.tsv", directory: cerebellumOutputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.tsv", directory: DI1.outputDirectory);
 
         }
 
