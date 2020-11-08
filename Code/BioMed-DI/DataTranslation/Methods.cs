@@ -232,19 +232,17 @@ namespace DataTranslation
         public static bool checkIfNullOrEmpty(string value)
         {
 
-            bool returnValue = true;
+            bool returnValue = false;
 
-            if (value == null)
+            if (value != null)
             {
 
-                returnValue = false;
+                if (value.Equals(string.Empty))
+                {
 
-            }
+                    returnValue = true;
 
-            if (value.Equals(string.Empty))
-            {
-
-                returnValue = false;
+                }
 
             }
 
