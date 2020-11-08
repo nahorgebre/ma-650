@@ -9,8 +9,8 @@ namespace GoldstandardCreation
     class Publication
     {
 
-        public static FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/DI2/Kaessmann_dt.xml", Environment.CurrentDirectory));
-        public static FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/DI2/Kaessmann_dt.tsv", Environment.CurrentDirectory));
+        public static FileInfo xmlFile = new FileInfo(string.Format("{0}/data/input/DI2/PubMedDate_dt.xml", Environment.CurrentDirectory));
+        public static FileInfo tsvFile = new FileInfo(string.Format("{0}/data/input/DI2/PubMedDate_dt.tsv", Environment.CurrentDirectory));
 
         public static void run() {
 
@@ -23,12 +23,10 @@ namespace GoldstandardCreation
             if (File.Exists(tsvFile.FullName))
             {
 
-                //for (int i = 1; i <= Variables.pubTatorPartitionSize; i++)
-                //{
-
-                    int i = 1;
+                for (int i = 1; i <= Variables.pubTatorPartitionSize; i++)
+                {
                     
-                    string comparison = "kaessmann_2_gene2pubtatorcentral_" + i;
+                    string comparison = "PubMedDate_2_gene2pubtatorcentral_" + i;
                     string directoryName = string.Format("{0}/data/output/DI2/{1}/{2}", Environment.CurrentDirectory, Variables.pubTatorPartitionSize, comparison);
                     string trueFile = string.Format("{0}/true.csv", directoryName);
                     string falseFile = string.Format("{0}/false.csv", directoryName);
@@ -40,14 +38,14 @@ namespace GoldstandardCreation
 
                         Directory.CreateDirectory(directoryName);
 
-                        (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 3);
+                        (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 4, Methods.PmId);
                         
                         Methods.createOuput(trueFile, trueList);
                         Methods.createOuput(falseFile, falseList);
 
                     }
                     
-                //}
+                }
                 
             }
 

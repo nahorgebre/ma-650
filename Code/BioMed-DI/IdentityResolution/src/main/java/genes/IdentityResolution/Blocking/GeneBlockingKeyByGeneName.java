@@ -29,10 +29,14 @@ public class GeneBlockingKeyByGeneName extends
 
         for (String geneNameItem : geneNameArray) {
             
-            if (geneNameItem.length() > geneName.length()) {
-                
-                geneName = geneNameItem.toLowerCase();
+            if (geneNameItem.length() < geneName.length()) {
 
+                if (!geneNameItem.isEmpty()) {
+
+                    geneName = geneNameItem.toLowerCase();
+
+                }
+                
             }
 
         }
@@ -41,6 +45,14 @@ public class GeneBlockingKeyByGeneName extends
 
         int nameLength = geneName.length();
 
+        if (nameLength >= 2)
+        {
+
+            key = geneName.substring(0,1);
+
+        }
+
+        /*
         if (nameLength >= 4) {
 
             int keyIndex = geneName.length() / 2;
@@ -59,6 +71,7 @@ public class GeneBlockingKeyByGeneName extends
             key = geneName;
 
         }
+        */
 
         resultCollector.next(new Pair<>(key, record));
 

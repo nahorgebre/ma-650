@@ -29,7 +29,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.mart_export_testis_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.mart_export_testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);

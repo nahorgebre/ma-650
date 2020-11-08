@@ -18,8 +18,22 @@ public class PublicationBlockingKeyByPmId extends
     @Override
     public void generateBlockingKeys(Gene record, Processable<Correspondence<Attribute, Matchable>> correspondences,
                                     DataIterator<Pair<String, Gene>> resultCollector) {
+
+        String key = "default";
+
         String pmId = record.getPublications().get(0).getPmId();
-        String key = pmId.substring(0, 1);
+
+        int pmIdLength = pmId.length();
+
+        if (pmIdLength >= 2)
+        {
+
+            key = pmId.substring(0,1);
+
+        }
+
         resultCollector.next(new Pair<>(key, record));
+
     }
+
 }

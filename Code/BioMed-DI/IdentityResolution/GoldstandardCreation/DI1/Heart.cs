@@ -30,7 +30,7 @@ namespace GoldstandardCreation
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1, Methods.EnsemblId);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
 
@@ -52,7 +52,7 @@ namespace GoldstandardCreation
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.mart_export_brain_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.mart_export_brain_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1, Methods.EnsemblId);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
 

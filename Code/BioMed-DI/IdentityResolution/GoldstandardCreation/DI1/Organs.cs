@@ -65,7 +65,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Brain_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Brain_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -90,7 +90,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Cerebellum_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Cerebellum_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -115,7 +115,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Kidney_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Kidney_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -140,7 +140,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Liver_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -164,7 +164,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Testis_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -191,7 +191,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Brain_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Brain_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -216,7 +216,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Kidney_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Kidney_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -241,7 +241,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Liver_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -266,7 +266,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Testis_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -294,7 +294,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Kidney_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Kidney_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -319,7 +319,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Liver_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -344,7 +344,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Testis_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -372,7 +372,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Liver_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -397,7 +397,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Testis_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -422,7 +422,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.Liver_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);

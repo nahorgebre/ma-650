@@ -28,7 +28,7 @@ namespace GoldstandardCreation
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.mart_export_cerebellum_path, 1);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.mart_export_cerebellum_path, 1, Methods.EnsemblId);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
 

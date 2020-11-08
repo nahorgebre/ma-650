@@ -28,10 +28,10 @@ public class ListingS3Objects {
 
         getDatasets("DI1", "Get-D-1.sh");
         getDatasets("DI2", "Get-D-2-1.sh");
-        getDatasets2("DI2", "Get-D-2-2.sh");
+        getDatasetsPartitionNumbers("DI2", "Get-D-2-2.sh");
 
-        getGoldstandardDatasets("DI1", "Get-GD-1.sh");
-        getGoldstandardDatasets2("DI2", "Get-GD-2.sh");
+        //getGoldstandardDatasets("DI1", "Get-GD-1.sh");
+        //getGoldstandardDatasets2("DI2", "Get-GD-2.sh");
         
     }
 
@@ -82,7 +82,7 @@ public class ListingS3Objects {
 
     }
 
-    public static void getDatasets2(String solution, String outputFileName) throws Exception {
+    public static void getDatasetsPartitionNumbers(String solution, String outputFileName) throws Exception {
 
         AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
         

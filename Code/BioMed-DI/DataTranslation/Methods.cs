@@ -62,7 +62,7 @@ namespace DataTranslation
         public static void createTsv(List<Gene> gene_list, string fileName, string directory)
         {
 
-            Console.WriteLine("TSV: " + fileName);
+            Console.WriteLine("Create TSV: " + fileName);
 
             string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
             
@@ -143,7 +143,7 @@ namespace DataTranslation
         public static void createTsvPublication(List<Publication> publication_list, string fileName, string directory)
         {
 
-            Console.WriteLine("TSV: " + fileName);
+            Console.WriteLine("Create TSV: " + fileName);
 
             string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
 

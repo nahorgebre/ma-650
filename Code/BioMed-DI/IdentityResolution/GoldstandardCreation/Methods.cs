@@ -11,7 +11,15 @@ namespace GoldstandardCreation
     class Methods
     {
 
-        public static (List<Goldstandard>, List<Goldstandard>) compareFiles(string fileName1, string fileName2, int index)
+
+        public static String EnsemblId = "EnsemblId";
+
+        public static String GeneName = "GeneName";
+
+        public static String PmId = "PmId";
+
+
+        public static (List<Goldstandard>, List<Goldstandard>) compareFiles(string fileName1, string fileName2, int index, string blocking)
         {
             // ensemblId -> 1
             // geneName -> 3
@@ -53,8 +61,30 @@ namespace GoldstandardCreation
                                 string compareValueSr2 = valuesSr2[index].Trim();
                                 string recordIdSr2 = valuesSr2[0];
 
-                                string key1 = getGeneNameBlockingKey(compareValueSr1);
-                                string key2 = getGeneNameBlockingKey(compareValueSr2);
+                                string key1 = "default";
+                                string key2 = "default";
+
+                                if (blocking.Equals(GeneName))
+                                {
+
+                                    key1 = getGeneNameBlockingKey(compareValueSr1);
+                                    key2 = getGeneNameBlockingKey(compareValueSr2);
+                                    
+                                }
+                                else if (blocking.Equals(PmId))
+                                {
+
+                                    key1 = getPmIdBlockingKey(compareValueSr1);
+                                    key2 = getPmIdBlockingKey(compareValueSr2);
+                                    
+                                }
+                                else if (blocking.Equals(EnsemblId))
+                                {
+
+                                    key1 = getEnsemblIdBlockingKey(compareValueSr1);
+                                    key2 = getEnsemblIdBlockingKey(compareValueSr2);
+                                    
+                                }
 
                                 blockingKeys.Add(key1);
                                 blockingKeys.Add(key2);
@@ -194,6 +224,41 @@ namespace GoldstandardCreation
 
             }
             */
+
+            return key;
+
+        }
+
+        public static String getEnsemblIdBlockingKey(String ensemblId)
+        {
+
+            String key = "deafult";
+
+            int beginIndex = ensemblId.Count() - 2;
+
+            int endIndex = ensemblId.Count() - 1;
+
+            int length = endIndex - beginIndex;
+
+            key = ensemblId.Substring(beginIndex, length);
+
+            return key;
+
+        }
+
+        public static String getPmIdBlockingKey(String pmId)
+        {
+
+            String key = "deafult";
+
+            int pmIdLength = pmId.Count();
+
+            if (pmIdLength >= 2)
+            {
+
+                key = pmId.Substring(0,2).Trim();
+
+            }
 
             return key;
 
