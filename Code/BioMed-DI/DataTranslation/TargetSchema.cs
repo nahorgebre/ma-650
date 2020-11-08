@@ -38,11 +38,11 @@ namespace DataTranslation
 
 
         [XmlArrayAttribute("publicationMentions")]
-        public List<PublicationMention> publicationMentions;
+        public List<GenePublicationMention> publicationMentions;
 
 
         [XmlArrayAttribute("patentMentions")]
-        public List<PatentMention> patentMentions;
+        public List<GenePatentMention> patentMentions;
 
     }
 
@@ -96,7 +96,7 @@ namespace DataTranslation
 
 
     [XmlType("publicationMention")]
-    public class PublicationMention
+    public class GenePublicationMention
     {
 
         public string pmId;
@@ -109,7 +109,7 @@ namespace DataTranslation
 
 
     [XmlType("patentMention")]
-    public class PatentMention
+    public class GenePatentMention
     {
 
         public string patentId;
@@ -121,6 +121,34 @@ namespace DataTranslation
     }
 
 
+    [XmlRoot("publications")]
+    public class Publications
+    {
+
+        [XmlElement("publication")]
+        public List<Publication> publication;
+
+    }
+
+    public class Publication
+    {
+
+        public string recordId;
+        
+        public string pmId;
+        
+        public string geneNames;
+
+        public string ncbiId;
+
+        public string ressource;
+
+        public string year;       
+
+    }
+
+
+    // delete this later
     public class GeneDescription
     {
         public string description;
@@ -129,5 +157,6 @@ namespace DataTranslation
     {
         public string name;
     }
+
 
 }

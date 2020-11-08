@@ -77,7 +77,7 @@ namespace DataTranslation
 
             }
 
-            Methods.createXml(gene_list: gene_list, fileName: "Cerebellum_dt.xml", directory: cerebellumOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Cerebellum_dt.xml", directory: cerebellumOutputDirectory);
 
             Methods.createTsv(gene_list: gene_list, fileName: "Cerebellum_dt.tsv", directory: cerebellumOutputDirectory);
 
@@ -124,7 +124,7 @@ namespace DataTranslation
 
             }
 
-            Methods.createXml(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.xml", directory: cerebellumOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.xml", directory: cerebellumOutputDirectory);
 
             Methods.createTsv(gene_list: gene_list, fileName: "mart_export_cerebellum_dt.tsv", directory: cerebellumOutputDirectory);
 

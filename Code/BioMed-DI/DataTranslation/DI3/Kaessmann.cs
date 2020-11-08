@@ -16,7 +16,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = parseXml(file, "Kaessmann_{0}_rid");
 
-            Methods.createXml(gene_list: gene_list, fileName: "Kaessmann_dt.xml", directory: "data/output/DI2");
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Kaessmann_dt.xml", directory: "data/output/DI2");
             Methods.createTsv(gene_list: gene_list, fileName: "Kaessmann_dt.tsv", directory: "data/output/DI2");
 
         }

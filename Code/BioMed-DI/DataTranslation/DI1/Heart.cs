@@ -77,7 +77,7 @@ namespace DataTranslation
 
             }
 
-            Methods.createXml(gene_list: gene_list, fileName: "Heart_dt.xml", directory: heartOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Heart_dt.xml", directory: heartOutputDirectory);
 
             Methods.createTsv(gene_list: gene_list, fileName: "Heart_dt.tsv", directory: heartOutputDirectory);
 
@@ -124,7 +124,7 @@ namespace DataTranslation
 
             }
 
-            Methods.createXml(gene_list: gene_list, fileName: "mart_export_heart_dt.xml", directory: heartOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_heart_dt.xml", directory: heartOutputDirectory);
 
             Methods.createTsv(gene_list: gene_list, fileName: "mart_export_heart_dt.tsv", directory: heartOutputDirectory);
 
@@ -171,7 +171,7 @@ namespace DataTranslation
 
             }
 
-            Methods.createXml(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.xml", directory: heartOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.xml", directory: heartOutputDirectory);
             
             Methods.createTsv(gene_list: gene_list, fileName: "Heart_Ensembl_NCBI_Crosswalk_dt.tsv", directory: heartOutputDirectory);
 

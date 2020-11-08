@@ -14,8 +14,9 @@ namespace DataTranslation
         // 400 output files - (54.367.006 - 1) / 400 = 54.367.005 / 400 = 135.917,5125
         // 800 output files - (54.367.006 - 1) / 800 = 54.367.005 / 800 = 67.958,8
 
-        public static int partitionSize = 1087340;
-        public static int partitionNumbers = 50;
+        public static int gene2pubtatorcentral_partitionSize = 1087340;
+        
+        public static int gene2pubtatorcentral_partitionNumbers = 50;
 
     }
 

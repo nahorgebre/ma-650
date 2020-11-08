@@ -152,7 +152,7 @@ namespace DataTranslation
                     counter++;
                 }
             }
-            Methods.createXml(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_dt.xml", directory: geneDiseaseAssociationsOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_dt.xml", directory: geneDiseaseAssociationsOutputDirectory);
             Methods.createTsv(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_dt.tsv", directory: geneDiseaseAssociationsOutputDirectory);
         }
 

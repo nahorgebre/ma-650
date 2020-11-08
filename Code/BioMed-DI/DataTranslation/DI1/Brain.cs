@@ -77,7 +77,7 @@ namespace DataTranslation
 
             }
 
-            Methods.createXml(gene_list: gene_list, fileName: "Brain_dt.xml", directory: brainOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "Brain_dt.xml", directory: brainOutputDirectory);
 
             Methods.createTsv(gene_list: gene_list, fileName: "Brain_dt.tsv", directory: brainOutputDirectory);
 
@@ -124,7 +124,7 @@ namespace DataTranslation
 
             }
 
-            Methods.createXml(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: brainOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: brainOutputDirectory);
             
             Methods.createTsv(gene_list: gene_list, fileName: "mart_export_brain_dt.tsv", directory: brainOutputDirectory);
 

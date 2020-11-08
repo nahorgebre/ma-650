@@ -7,8 +7,8 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            Publication.runDataTranslation();
-
+            //Check if data translation is required for kaessmann or publication dataset
+            // make adjustment to kaessmann class
             //Kaessmann.runDataTranslation();
 
         }

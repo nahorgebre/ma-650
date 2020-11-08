@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Xml;
-using System.Xml.Schema;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
@@ -11,7 +9,7 @@ namespace DataTranslation
     public class Methods
     {
 
-        public static void createXml(List<Gene> gene_list, string fileName, string directory)
+        public static void createXmlGene(List<Gene> gene_list, string fileName, string directory)
         {
 
             Console.WriteLine("Create Xml: " + fileName);
@@ -21,11 +19,40 @@ namespace DataTranslation
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, directory));
 
             XmlSerializer serializer = new XmlSerializer(typeof(Genes));
+
             TextWriter writer = new StreamWriter(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
 
             Genes genes = new Genes();
+
             genes.gene = gene_list;
+
             serializer.Serialize(writer, genes);
+
+            writer.Close();
+
+            Console.WriteLine(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
+
+        }
+
+        public static void createXmlPublication(List<Publication> publication_list, string fileName, string directory)
+        {
+
+            Console.WriteLine("Create Xml: " + fileName);
+
+            Console.WriteLine("Count: " + publication_list.Count);
+
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, directory));
+
+            XmlSerializer serializer = new XmlSerializer(typeof(Publications));
+
+            TextWriter writer = new StreamWriter(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
+
+            Publications publications = new Publications();
+
+            publications.publication = publication_list;
+
+            serializer.Serialize(writer, publications);
+            
             writer.Close();
 
             Console.WriteLine(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
@@ -38,6 +65,7 @@ namespace DataTranslation
             Console.WriteLine("TSV: " + fileName);
 
             string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
+            
             var delimiter = "\t";
 
             using (StreamWriter sw = new StreamWriter(gsFileName)) 
@@ -51,14 +79,16 @@ namespace DataTranslation
                     "geneName",
                     "pmId"
                 };
+
                 var firstLine = string.Join(delimiter, firstLineContent);
+
                 sw.WriteLine(firstLine);
 
                 foreach (Gene item in gene_list)
                 {
 
                     string recordId = "NaN";
-                    if (item.recordId != null)
+                    if (checkIfNullOrEmpty(item.recordId))
                     {
 
                         recordId = item.recordId.Trim();
@@ -66,7 +96,7 @@ namespace DataTranslation
                     }
 
                     string ensemblId = "NaN";
-                    if (item.ensemblId != null)
+                    if (checkIfNullOrEmpty(item.ensemblId))
                     {
 
                         ensemblId = item.ensemblId.Trim();
@@ -74,17 +104,15 @@ namespace DataTranslation
                     }
 
                     string ncbiId = "NaN";
-                    /*
-                    if (item.ncbiId != null | item.ncbiId.Trim() != string.Empty)
+                    if (checkIfNullOrEmpty(item.ncbiId))
                     {
 
                         ncbiId = item.ncbiId.Trim();
 
                     }
-                    */
 
                     string geneName = "NaN";
-                    if (item.geneNames != null)
+                    if (checkIfNullOrEmpty(item.geneNames))
                     {
 
                         geneName = item.geneNames;
@@ -92,15 +120,10 @@ namespace DataTranslation
                     }
 
                     string pmid = "NaN";
-                    if (item.publicationMentions != null)
+                    if (checkIfNullOrEmpty(item.publicationMentions[0].pmId))
                     {
 
-                        if (item.publicationMentions[0].pmId != null)
-                        {
-
-                            pmid = item.publicationMentions[0].pmId.Trim();
-
-                        }
+                        pmid = item.publicationMentions[0].pmId.Trim();
 
                     }
 
@@ -112,7 +135,9 @@ namespace DataTranslation
                         geneName,
                         pmid
                     };
+
                     var line = string.Join(delimiter, lineContent);
+
                     sw.WriteLine(line);
 
                 }
@@ -121,55 +146,109 @@ namespace DataTranslation
 
         }
 
-        public void validateXmlFile(string filepath)
+        public static void createTsvPublication(List<Publication> publication_list, string fileName, string directory)
         {
 
-            Console.WriteLine("Start validating XML file: " + filepath);
+            Console.WriteLine("TSV: " + fileName);
 
-            try
+            string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
+
+            var delimiter = "\t";
+
+            using (StreamWriter sw = new StreamWriter(gsFileName)) 
             {
+           
+                List<string> firstLineContent = new List<string>()
+                {
+                    "recordId",
+                    "ensemblId",
+                    "ncbiId",
+                    "geneName",
+                    "pmId"
+                };
 
-                XmlReaderSettings settings = new XmlReaderSettings();
-                string path = System.Environment.CurrentDirectory.Substring(0, System.Environment.CurrentDirectory.LastIndexOf("\\"));
-                path = path.Substring(0, path.LastIndexOf("\\"));
-                settings.Schemas.Add("http://www.w3.org/2001/XMLSchema", path + "/targetSchema/heart.xsd");
-                settings.ValidationType = ValidationType.Schema;
+                var firstLine = string.Join(delimiter, firstLineContent);
 
-                XmlReader reader = XmlReader.Create(filepath, settings);
-                XmlDocument document = new XmlDocument();
-                document.Load(reader);
+                sw.WriteLine(firstLine);
 
-                ValidationEventHandler eventHandler = new ValidationEventHandler(ValidationEventHandler);
+                foreach (Publication item in publication_list)
+                {
 
-                document.Validate(eventHandler);
+                    string recordId = "NaN";
+                    if (checkIfNullOrEmpty(item.recordId))
+                    {
+
+                        recordId = item.recordId.Trim();
+
+                    }
+
+                    string ensemblId = "NaN";
+
+                    string ncbiId = "NaN";
+                    if (checkIfNullOrEmpty(item.ncbiId))
+                    {
+
+                        ncbiId = item.ncbiId.Trim();
+
+                    }
+
+                    string geneName = "NaN";
+                    if (checkIfNullOrEmpty(item.geneNames))
+                    {
+
+                        geneName = item.geneNames;
+
+                    }
+
+                    string pmid = "NaN";
+                    if (checkIfNullOrEmpty(item.pmId))
+                    {
+
+                        pmid = item.pmId.Trim();
+
+                    }
+
+                    List<string> lineContent = new List<string>()
+                    {
+                        recordId,
+                        ensemblId,
+                        ncbiId,
+                        geneName,
+                        pmid
+                    };
+
+                    var line = string.Join(delimiter, lineContent);
+
+                    sw.WriteLine(line);
+
+                }
 
             }
-            catch (Exception ex)
-            {
 
-                Console.WriteLine(ex.Message);
-
-            }
-            
         }
 
-        static void ValidationEventHandler(object sender, ValidationEventArgs e)
+    
+    
+        public static bool checkIfNullOrEmpty(string value)
         {
 
-            switch (e.Severity)
+            bool returnValue = true;
+
+            if (value == null)
             {
 
-                case XmlSeverityType.Error:
-                    Console.WriteLine("Error: {0}", e.Message);
-                    break;
-                case XmlSeverityType.Warning:
-                    Console.WriteLine("Warning: {0}", e.Message);
-                    break;
-                default:
-                    Console.WriteLine("XML file does fulfill the requirements of the Schema.");
-                    break;
+                returnValue = false;
 
             }
+
+            if (value.Equals(string.Empty))
+            {
+
+                returnValue = false;
+
+            }
+
+            return returnValue;
 
         }
 
