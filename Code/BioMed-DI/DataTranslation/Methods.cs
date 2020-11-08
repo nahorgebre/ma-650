@@ -232,7 +232,7 @@ namespace DataTranslation
         public static bool checkIfNullOrEmpty(string value)
         {
 
-            Console.WriteLine(value);
+            Console.WriteLine("-||-" + value);
 
             bool returnValue = true;
 
