@@ -232,6 +232,8 @@ namespace DataTranslation
         public static bool checkIfNullOrEmpty(string value)
         {
 
+            Console.WriteLine(value);
+
             bool returnValue = true;
 
             if (value == null)
