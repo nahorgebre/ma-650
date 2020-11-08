@@ -7,7 +7,7 @@ wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Cerebellum/Cerebellum.csv -O data/input/DI1/Cerebellum.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Cerebellum/mart_export_cerebellum.txt -O data/input/DI1/mart_export_cerebellum.txt
 
-wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Heart/Heart.csv -O data/input/Heart/Heart.csv
+wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Heart/Heart.csv -O data/input/DI1/Heart.csv
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Heart/Heart_Ensembl_NCBI_Crosswalk.txt -O data/input/DI1/Heart_Ensembl_NCBI_Crosswalk.txt
 wget -N https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Heart/mart_export_heart.txt -O data/input/DI1/mart_export_heart.txt
 
