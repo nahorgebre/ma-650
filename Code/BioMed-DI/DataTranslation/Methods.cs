@@ -232,12 +232,12 @@ namespace DataTranslation
         public static bool checkIfNullOrEmpty(string value)
         {
 
-            bool returnValue = false;
+            bool returnValue = true;
 
-            if (value != null)
+            if (value == null)
             {
 
-                returnValue = true;
+                returnValue = false;
 
             }
 
