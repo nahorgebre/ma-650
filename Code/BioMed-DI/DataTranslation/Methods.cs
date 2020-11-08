@@ -237,12 +237,7 @@ namespace DataTranslation
             if (value != null)
             {
 
-                if (!value.Equals(string.Empty))
-                {
-
-                    returnValue = true;
-
-                }
+                returnValue = true;
 
             }
 
