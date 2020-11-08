@@ -232,11 +232,16 @@ namespace DataTranslation
         public static bool checkIfNullOrEmpty(string value)
         {
 
-            Console.WriteLine("-||-" + value);
-
             bool returnValue = true;
 
-            if (value == null)
+            if (value.Equals(null))
+            {
+
+                returnValue = false;
+
+            }
+
+            if (value.Equals(string.Empty))
             {
 
                 returnValue = false;
