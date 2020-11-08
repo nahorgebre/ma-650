@@ -120,12 +120,6 @@ namespace DataTranslation
                     }
 
                     string pmid = "NaN";
-                    if (checkIfNullOrEmpty(item.publicationMentions[0].pmId))
-                    {
-
-                        pmid = item.publicationMentions[0].pmId.Trim();
-
-                    }
 
                     List<string> lineContent = new List<string>()
                     {
