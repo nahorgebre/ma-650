@@ -127,7 +127,7 @@ namespace GoldstandardCreation
                                         // PmId
                                     }
 
-                                    if (sim > 0.95)
+                                    if (trueFile)
                                     {
 
                                         if (!goldstandardListTrue.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrue.Exists(x => x.recordId1 == recordIdSr1))
@@ -147,7 +147,7 @@ namespace GoldstandardCreation
                                         }
 
                                     }
-                                    else if (sim <= 0.95 & sim > 0.7)
+                                    else if (falseFile)
                                     {
                                     
                                         if (goldstandardListFalse.Count() < 200)
