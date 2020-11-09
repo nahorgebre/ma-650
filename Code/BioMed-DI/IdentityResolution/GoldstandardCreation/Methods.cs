@@ -115,7 +115,11 @@ namespace GoldstandardCreation
                                     {
                                         // Ensembl Id
                                         if (sim >= 0.99) trueFile = true;
-                                        if (sim < 0.99 & sim > 0.8) falseFile = true;
+                                        if (sim < 0.99 & sim > 0.8) 
+                                        {
+                                            Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+                                            falseFile = true;
+                                        }
 
                                     }
                                     else if (index == 4)
