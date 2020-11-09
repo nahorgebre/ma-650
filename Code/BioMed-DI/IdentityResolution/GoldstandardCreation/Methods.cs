@@ -162,6 +162,9 @@ namespace GoldstandardCreation
                                             if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalse.Exists(x => x.recordId1 == recordIdSr1))
                                             {
 
+                                                
+                                                Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+
                                                 Goldstandard goldstandardItem = new Goldstandard();
                                                 goldstandardItem.recordId1 = recordIdSr1;
                                                 goldstandardItem.value1 = compareValueSr1;
