@@ -64,6 +64,8 @@ namespace GoldstandardCreation
                                 string key1 = "default";
                                 string key2 = "default";
 
+
+
                                 if (blocking.Equals(GeneName))
                                 {
 
@@ -96,7 +98,30 @@ namespace GoldstandardCreation
                                     var jw = new JaroWinkler();
                                     double sim = jw.Similarity(compareValueSr1, compareValueSr2);
 
-                                    Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+                                    //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+
+                                    bool trueFile = false;
+                                    bool falseFile = false;
+
+                                    if (index == 3)
+                                    {
+
+                                        // GeneName
+                                        if (sim > 0.95) trueFile = true;
+                                        if (sim <= 0.95 & sim > 0.7) falseFile = true;
+
+                                    }
+                                    else if (index == 1)
+                                    {
+                                        // Ensembl Id
+                                        if (sim > 0.98) trueFile = true;
+                                        if (sim <= 0.98 & sim > 0.95) falseFile = true;
+
+                                    }
+                                    else if (index == 4)
+                                    {
+                                        // PmId
+                                    }
 
                                     if (sim > 0.95)
                                     {
