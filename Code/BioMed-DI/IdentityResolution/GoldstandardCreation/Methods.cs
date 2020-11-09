@@ -96,6 +96,8 @@ namespace GoldstandardCreation
                                     var jw = new JaroWinkler();
                                     double sim = jw.Similarity(compareValueSr1, compareValueSr2);
 
+                                    Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+
                                     if (sim > 0.95)
                                     {
 
