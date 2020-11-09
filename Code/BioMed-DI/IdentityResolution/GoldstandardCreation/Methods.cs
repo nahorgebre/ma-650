@@ -98,7 +98,7 @@ namespace GoldstandardCreation
                                     var jw = new JaroWinkler();
                                     double sim = jw.Similarity(compareValueSr1, compareValueSr2);
 
-                                    Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+                                    //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
 
                                     bool trueFile = false;
                                     bool falseFile = false;
@@ -126,7 +126,7 @@ namespace GoldstandardCreation
                                     {
                                         // PmId
                                         if (sim >= 0.99) trueFile = true;
-                                        if (sim < 0.99 & sim > 0.7) 
+                                        if (sim < 0.99 & sim > 0.6) 
                                         {
                                             //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
                                             falseFile = true;
