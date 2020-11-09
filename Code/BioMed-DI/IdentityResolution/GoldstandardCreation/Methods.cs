@@ -126,7 +126,7 @@ namespace GoldstandardCreation
                                     {
                                         // PmId
                                         if (sim >= 0.99) trueFile = true;
-                                        if (sim < 0.99 & sim > 0.6) 
+                                        if (sim < 0.99 & sim > 0.1) 
                                         {
                                             //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
                                             falseFile = true;
