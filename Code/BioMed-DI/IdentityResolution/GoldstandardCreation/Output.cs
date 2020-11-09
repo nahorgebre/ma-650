@@ -1,11 +1,38 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace GoldstandardCreation
 {
     class Output
     {
+
+        public static void runPmId(DirectoryInfo directory) {
+
+            Console.WriteLine("Create output files!");
+
+            foreach (DirectoryInfo subDirectory in directory.GetDirectories())
+            {
+
+                string trueFile = subDirectory.FullName + "/true.csv";
+                string falseFileClose = subDirectory.FullName + "/falseClose.csv";
+                string falseFileFar = subDirectory.FullName + "/falseFar.csv";
+
+                (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
+
+                (List<Goldstandard> train_FALSE_Close, List<Goldstandard> test_FALSE_Close) = divideIntoTrainTest(falseFileClose);
+                (List<Goldstandard> train_FALSE_Far, List<Goldstandard> test_FALSE_Far) = divideIntoTrainTest(falseFileFar);
+
+                List<Goldstandard> train_FALSE = train_FALSE_Close.Concat(train_FALSE_Far).ToList();
+                List<Goldstandard> test_FALSE = test_FALSE_Close.Concat(test_FALSE_Far).ToList();
+
+                createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
+                createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
+            
+            }
+
+        }
 
         public static void run(DirectoryInfo directory) {
 
@@ -23,8 +50,7 @@ namespace GoldstandardCreation
                 (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
                 (List<Goldstandard> train_FALSE, List<Goldstandard> test_FALSE) = divideIntoTrainTest(falseFile);
 
-                createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
-                createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
+
 
             }
 

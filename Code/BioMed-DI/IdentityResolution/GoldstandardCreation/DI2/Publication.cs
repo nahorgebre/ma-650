@@ -14,11 +14,11 @@ namespace GoldstandardCreation
 
         public static void run() {
 
-            kaessmann_2_gene2pubtatorcentral();
+            PubMedDate_2_gene2pubtatorcentral();
 
         }
 
-        public static void kaessmann_2_gene2pubtatorcentral() {
+        public static void PubMedDate_2_gene2pubtatorcentral() {
 
             if (File.Exists(tsvFile.FullName))
             {
@@ -29,19 +29,21 @@ namespace GoldstandardCreation
                     string comparison = "PubMedDate_2_gene2pubtatorcentral_" + i;
                     string directoryName = string.Format("{0}/data/output/DI2/{1}/{2}", Environment.CurrentDirectory, Variables.pubTatorPartitionSize, comparison);
                     string trueFile = string.Format("{0}/true.csv", directoryName);
-                    string falseFile = string.Format("{0}/false.csv", directoryName);
+                    string falseFileClose = string.Format("{0}/falseClose.csv", directoryName);
+                    string falseFileFar = string.Format("{0}/falseFar.csv", directoryName);
 
-                    if (!File.Exists(trueFile) | !File.Exists(falseFile))
+                    if (!File.Exists(trueFile) | !File.Exists(falseFileClose) | !File.Exists(falseFileFar))
                     {
 
                         Console.WriteLine(comparison);
 
                         Directory.CreateDirectory(directoryName);
 
-                        (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i), 4, Methods.PmId);
+                        (List<Goldstandard> trueList, List<Goldstandard> falseListClose, List<Goldstandard> falseListFar) = Methods.compareFilesPmIdBlockingComparator(tsvFile.FullName, Datasets.getGene2pubtatorcentral_path(i));
                         
                         Methods.createOuput(trueFile, trueList);
-                        Methods.createOuput(falseFile, falseList);
+                        Methods.createOuput(falseFileClose, falseListClose);
+                        Methods.createOuput(falseFileFar, falseListFar);
 
                     }
                     
