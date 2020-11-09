@@ -488,10 +488,10 @@ namespace GoldstandardCreation
 
             int pmIdLength = pmId.Count();
 
-            if (pmIdLength >= 4)
+            if (pmIdLength >= 5)
             {
 
-                key = pmId.Substring(0, 3).Trim();
+                key = pmId.Substring(0, 4).Trim();
 
             }
 
