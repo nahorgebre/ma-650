@@ -263,7 +263,7 @@ namespace GoldstandardCreation
         public static String getEnsemblIdBlockingKey(String ensemblId)
         {
 
-            String key = "deafult";
+            String key = "default";
 
             int beginIndex = ensemblId.Count() - 2;
 
@@ -280,7 +280,7 @@ namespace GoldstandardCreation
         public static String getPmIdBlockingKey(String pmId)
         {
 
-            String key = "deafult";
+            String key = "default";
 
             int pmIdLength = pmId.Count();
 
@@ -319,7 +319,7 @@ namespace GoldstandardCreation
                 foreach (Goldstandard item in goldstandardList)
                 {
 
-                    Console.WriteLine("Sim: " + item.sim);
+                    //Console.WriteLine("Sim: " + item.sim);
 
                     var delimiter = "\t";
                     List<string> lineContent = new List<string>()
