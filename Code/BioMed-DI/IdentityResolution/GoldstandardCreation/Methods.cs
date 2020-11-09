@@ -491,7 +491,7 @@ namespace GoldstandardCreation
             if (pmIdLength >= 4)
             {
 
-                key = pmId.Substring(0,4).Trim();
+                key = pmId.Substring(0, 3).Trim();
 
             }
 
