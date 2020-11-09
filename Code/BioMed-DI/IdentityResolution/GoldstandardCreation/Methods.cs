@@ -114,8 +114,8 @@ namespace GoldstandardCreation
                                     else if (index == 1)
                                     {
                                         // Ensembl Id
-                                        if (sim >= 0.98) trueFile = true;
-                                        if (sim < 0.98 & sim > 0.7) 
+                                        if (sim >= 0.99) trueFile = true;
+                                        if (sim < 0.99 & sim > 0.7) 
                                         {
                                             //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
                                             falseFile = true;
@@ -125,8 +125,8 @@ namespace GoldstandardCreation
                                     else if (index == 4)
                                     {
                                         // PmId
-                                        if (sim >= 0.98) trueFile = true;
-                                        if (sim < 0.98 & sim > 0.7) 
+                                        if (sim >= 0.99) trueFile = true;
+                                        if (sim < 0.99 & sim > 0.7) 
                                         {
                                             //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
                                             falseFile = true;
