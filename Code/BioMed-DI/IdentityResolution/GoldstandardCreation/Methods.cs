@@ -319,6 +319,8 @@ namespace GoldstandardCreation
                 foreach (Goldstandard item in goldstandardList)
                 {
 
+                    Console.WriteLine("Sim: " + item.sim);
+
                     var delimiter = "\t";
                     List<string> lineContent = new List<string>()
                     {
