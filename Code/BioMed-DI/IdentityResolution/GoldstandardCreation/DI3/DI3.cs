@@ -1,13 +1,14 @@
 namespace GoldstandardCreation
 {
-    class DI2
+    class DI3
     {
 
         public static void run() 
         {
 
-            
+            Publication.run();
 
+            
         }
 
     }
