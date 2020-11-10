@@ -75,6 +75,9 @@ namespace GoldstandardCreation
                     s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
                     var fileTransferUtility = new TransferUtility(s3Client);
                     await fileTransferUtility.UploadAsync(filePath, bucketName, keyName);
+
+                    Console.WriteLine("File Path: " + filePath);
+                    Console.WriteLine("Key Name: " + keyName);
                     Console.WriteLine("Upload complited!");
 
                 }
