@@ -96,7 +96,7 @@ namespace GoldstandardCreation
                                     {
 
                                         // Ensembl Id
-                                        if (sim >= 0.99) trueFile = true;
+                                        if (sim >= 0.98) trueFile = true;
                                         if (sim < 0.99 & sim > 0.7) falseFile = true;
 
                                     }
@@ -370,9 +370,9 @@ namespace GoldstandardCreation
                                     bool falseFileFar = false;
 
 
-                                    if (sim >= 0.97 & sim < 1.0) trueFileClose = true;
+                                    if (sim >= 0.96 & sim < 0.98) trueFileClose = true;
 
-                                    if (sim == 1) trueFileFar = true;
+                                    if (sim > 0.98) trueFileFar = true;
 
                                     if (sim < 0.97 & sim > 0.1) falseFileClose = true;
 

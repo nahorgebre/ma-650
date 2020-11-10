@@ -10,9 +10,37 @@ namespace GoldstandardCreation
         
         public static void run() {
 
-            Brain_2_mart_export_brain();
+            //Brain_2_mart_export_brain();
+
+            Brain_2_mart_export_brain2();
 
         }
+
+        public static void Brain_2_mart_export_brain2() {
+
+            // ensembl Id
+            string comparison = "Brain_2_mart_export_brain";
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
+
+            string trueFile = string.Format("{0}/true.csv", directoryName);
+            string falseFile = string.Format("{0}/false.csv", directoryName);
+
+            Directory.CreateDirectory(directoryName);
+
+            if (!File.Exists(trueFile) | 
+                !File.Exists(falseFile))
+            {
+
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.mart_export_brain_path, 1, Methods.EnsemblId);
+
+                Methods.createOuput(trueFile, trueList);
+                Methods.createOuput(falseFile, falseList);
+
+            }
+
+        }
+
+        
         
         public static void Brain_2_mart_export_brain() {
             
