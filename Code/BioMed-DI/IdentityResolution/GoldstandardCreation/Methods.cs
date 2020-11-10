@@ -11,13 +11,9 @@ namespace GoldstandardCreation
     class Methods
     {
 
-
         public static String EnsemblId = "EnsemblId";
 
         public static String GeneName = "GeneName";
-
-        public static String PmId = "PmId";
-
 
         public static (List<Goldstandard>, List<Goldstandard>) compareFiles(string fileName1, string fileName2, int index, string blocking)
         {
@@ -27,17 +23,10 @@ namespace GoldstandardCreation
 
             int gsSize = 200;
 
-            if (index == 4)
-            { 
-                gsSize = 50;
-            }
-
             List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
             List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
 
             var delimiter = "\t";
-
-            HashSet<String> blockingKeys = new HashSet<string>();
 
             using (StreamReader sr1 = new StreamReader(fileName1))
             {
@@ -71,20 +60,11 @@ namespace GoldstandardCreation
                                 string key1 = "default";
                                 string key2 = "default";
 
-
-
                                 if (blocking.Equals(GeneName))
                                 {
 
                                     key1 = getGeneNameBlockingKey(compareValueSr1);
                                     key2 = getGeneNameBlockingKey(compareValueSr2);
-                                    
-                                }
-                                else if (blocking.Equals(PmId))
-                                {
-
-                                    key1 = getPmIdBlockingKey(compareValueSr1);
-                                    key2 = getPmIdBlockingKey(compareValueSr2);
                                     
                                 }
                                 else if (blocking.Equals(EnsemblId))
@@ -95,17 +75,11 @@ namespace GoldstandardCreation
                                     
                                 }
 
-                                blockingKeys.Add(key1);
-                                blockingKeys.Add(key2);
-
                                 if (key1.Equals(key2))
                                 {
 
-                                    // calculate similarity
                                     var jw = new JaroWinkler();
                                     double sim = jw.Similarity(compareValueSr1, compareValueSr2);
-
-                                    //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
 
                                     bool trueFile = false;
                                     bool falseFile = false;
@@ -120,24 +94,11 @@ namespace GoldstandardCreation
                                     }
                                     else if (index == 1)
                                     {
+
                                         // Ensembl Id
                                         if (sim >= 0.99) trueFile = true;
-                                        if (sim < 0.99 & sim > 0.7) 
-                                        {
-                                            //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
-                                            falseFile = true;
-                                        }
+                                        if (sim < 0.99 & sim > 0.7) falseFile = true;
 
-                                    }
-                                    else if (index == 4)
-                                    {
-                                        // PmId
-                                        if (sim >= 0.99) trueFile = true;
-                                        if (sim < 0.99 & sim > 0.1) 
-                                        {
-                                            //Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
-                                            falseFile = true;
-                                        }
                                     }
 
                                     if (trueFile)
@@ -145,6 +106,8 @@ namespace GoldstandardCreation
 
                                         if (!goldstandardListTrue.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrue.Exists(x => x.recordId1 == recordIdSr1))
                                         {
+
+                                            Console.WriteLine("GS True #" + (goldstandardListTrue.Count() + 1).ToString() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
 
                                             Goldstandard goldstandardItem = new Goldstandard();
                                             goldstandardItem.recordId1 = recordIdSr1;
@@ -168,9 +131,8 @@ namespace GoldstandardCreation
                                         
                                             if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalse.Exists(x => x.recordId1 == recordIdSr1))
                                             {
-
-                                                
-                                                Console.WriteLine(compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+                               
+                                                Console.WriteLine("GS False #" + (goldstandardListFalse.Count() + 1).ToString() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
 
                                                 Goldstandard goldstandardItem = new Goldstandard();
                                                 goldstandardItem.recordId1 = recordIdSr1;
@@ -208,6 +170,146 @@ namespace GoldstandardCreation
 
         }
 
+
+
+        public static String getGeneNameBlockingKey(String geneNames)
+        {
+            string key = "default";
+
+            String geneName = geneNames;
+
+            if (geneNames.Contains("|")) 
+            {
+
+                String[] geneNameArray = geneNames.Split("|");
+
+                geneName = geneNameArray[0].ToLower();
+
+                foreach (String geneNameItem in geneNameArray)
+                {
+
+                    if (geneNameItem.Count() < geneName.Count())
+                    {
+
+                        if (!geneNameItem.Trim().Equals(string.Empty))
+                        {
+                            
+                            geneName = geneNameItem.ToLower();
+
+                        }
+                
+                    }    
+
+                }
+
+            }
+
+            geneName = Regex.Replace(geneName, @"\s+", String.Empty);
+
+            int nameLength = geneName.Count();
+
+            if (nameLength >= 2)
+            {
+
+                key = geneName.Substring(0,2).Trim();
+
+            }
+
+            /*
+            if (nameLength >= 4) {
+
+                int keyIndex = geneName.Count() / 2;
+                key = geneName.Substring(0, keyIndex);
+
+            } else if (nameLength == 1) {
+
+                key = geneName;
+
+            } else if (nameLength == 2) {
+
+                key = geneName;
+
+            } else if (nameLength == 3) {
+            
+                key = geneName;
+
+            }
+            */
+
+            return key;
+
+        }
+
+        public static String getEnsemblIdBlockingKey(String ensemblId)
+        {
+
+            String key = "default";
+
+            int beginIndex = ensemblId.Count() - 2;
+
+            int endIndex = ensemblId.Count() - 1;
+
+            int length = endIndex - beginIndex;
+
+            key = ensemblId.Substring(beginIndex, length);
+
+            return key;
+
+        }
+
+
+
+
+
+        public static void createOuput(string fileName, List<Goldstandard> goldstandardList)
+        {
+
+            using (StreamWriter sw = new StreamWriter(fileName))
+            {
+                foreach (Goldstandard item in goldstandardList)
+                {
+
+                    var delimiter = "\t";
+                    List<string> lineContent = new List<string>()
+                    {
+                        item.recordId1,
+                        item.value1,
+                        item.recordId2,
+                        item.value2,
+                        item.boolValue,
+                        item.sim.ToString(),
+                        item.blockingKey
+                    };
+                    var line = string.Join(delimiter, lineContent);
+                    sw.WriteLine(line);
+
+                }
+
+            }
+
+        }
+
+        /*
+        public static String getPmIdBlockingKey(String pmId)
+        {
+
+            String key = "default";
+
+            int pmIdLength = pmId.Count();
+
+            if (pmIdLength >= 5)
+            {
+
+                key = pmId.Substring(0, 4).Trim();
+
+            }
+
+            return key;
+
+        }
+        */
+
+        /*
         public static (List<Goldstandard>, List<Goldstandard>, List<Goldstandard>) compareFilesPmIdBlockingComparator(string fileName1, string fileName2)
         {
 
@@ -395,110 +497,9 @@ namespace GoldstandardCreation
             return (goldstandardListTrue, goldstandardListFalseClose, goldstandardListFalseFar);
 
         }
+        */
 
-        public static String getGeneNameBlockingKey(String geneNames)
-        {
-            string key = "default";
-
-            String geneName = geneNames;
-
-            if (geneNames.Contains("|")) 
-            {
-
-                String[] geneNameArray = geneNames.Split("|");
-
-                geneName = geneNameArray[0].ToLower();
-
-                foreach (String geneNameItem in geneNameArray)
-                {
-
-                    if (geneNameItem.Count() < geneName.Count())
-                    {
-
-                        if (!geneNameItem.Trim().Equals(string.Empty))
-                        {
-                            
-                            geneName = geneNameItem.ToLower();
-
-                        }
-                
-                    }    
-
-                }
-
-            }
-
-            geneName = Regex.Replace(geneName, @"\s+", String.Empty);
-
-            int nameLength = geneName.Count();
-
-            if (nameLength >= 2)
-            {
-
-                key = geneName.Substring(0,2).Trim();
-
-            }
-
-            /*
-            if (nameLength >= 4) {
-
-                int keyIndex = geneName.Count() / 2;
-                key = geneName.Substring(0, keyIndex);
-
-            } else if (nameLength == 1) {
-
-                key = geneName;
-
-            } else if (nameLength == 2) {
-
-                key = geneName;
-
-            } else if (nameLength == 3) {
-            
-                key = geneName;
-
-            }
-            */
-
-            return key;
-
-        }
-
-        public static String getEnsemblIdBlockingKey(String ensemblId)
-        {
-
-            String key = "default";
-
-            int beginIndex = ensemblId.Count() - 2;
-
-            int endIndex = ensemblId.Count() - 1;
-
-            int length = endIndex - beginIndex;
-
-            key = ensemblId.Substring(beginIndex, length);
-
-            return key;
-
-        }
-
-        public static String getPmIdBlockingKey(String pmId)
-        {
-
-            String key = "default";
-
-            int pmIdLength = pmId.Count();
-
-            if (pmIdLength >= 5)
-            {
-
-                key = pmId.Substring(0, 4).Trim();
-
-            }
-
-            return key;
-
-        }
-
+        /*
         public static void createBlockingKeyOutput(HashSet<String> blockingKeys) {
 
             string fileName = string.Format("{0}/data/output/test.csv", Environment.CurrentDirectory);
@@ -514,36 +515,7 @@ namespace GoldstandardCreation
                 }
             }
         }
-
-        public static void createOuput(string fileName, List<Goldstandard> goldstandardList)
-        {
-
-            using (StreamWriter sw = new StreamWriter(fileName))
-            {
-                foreach (Goldstandard item in goldstandardList)
-                {
-
-                    //Console.WriteLine("Sim: " + item.sim);
-
-                    var delimiter = "\t";
-                    List<string> lineContent = new List<string>()
-                    {
-                        item.recordId1,
-                        item.value1,
-                        item.recordId2,
-                        item.value2,
-                        item.boolValue,
-                        item.sim.ToString(),
-                        item.blockingKey
-                    };
-                    var line = string.Join(delimiter, lineContent);
-                    sw.WriteLine(line);
-
-                }
-
-            }
-
-        }
+        */
 
     }
 

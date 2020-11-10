@@ -14,10 +14,11 @@ namespace GoldstandardCreation
 
         public static void run() {
 
-            PubMedDate_2_gene2pubtatorcentral();
+            //PubMedDate_2_gene2pubtatorcentral();
 
         }
 
+        /*
         public static void PubMedDate_2_gene2pubtatorcentral() {
 
             if (File.Exists(tsvFile.FullName))
@@ -52,7 +53,9 @@ namespace GoldstandardCreation
             }
 
         }
+        */
 
+        /*
         public static void createKaessmannTsv() {
 
             if (File.Exists(xmlFile.FullName))
@@ -119,6 +122,7 @@ namespace GoldstandardCreation
             }
 
         }
+        */
     
     }
 
