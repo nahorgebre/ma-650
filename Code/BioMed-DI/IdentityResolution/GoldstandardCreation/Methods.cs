@@ -97,7 +97,7 @@ namespace GoldstandardCreation
 
                                         // Ensembl Id
                                         if (sim >= 0.98) trueFile = true;
-                                        if (sim < 0.99 & sim > 0.7) falseFile = true;
+                                        if (sim < 0.98 & sim > 0.7) falseFile = true;
 
                                     }
 
