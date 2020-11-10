@@ -286,13 +286,13 @@ namespace GoldstandardCreation
         public static (List<Goldstandard>, List<Goldstandard>, List<Goldstandard>, List<Goldstandard>) compareFilesEnsemblIdBlockingComparator(string fileName1, string fileName2)
         {
 
-            int gsSizeTrueClose = 50;
+            int gsSizeTrueClose = 80;
 
-            int gsSizeTrueFar = 50;
+            int gsSizeTrueFar = 20;
 
-            int gsSizeFalseClose = 50;
+            int gsSizeFalseClose = 80;
 
-            int gsSizeFalseFar = 50;
+            int gsSizeFalseFar = 20;
 
 
             List<Goldstandard> goldstandardListTrueClose = new List<Goldstandard>();

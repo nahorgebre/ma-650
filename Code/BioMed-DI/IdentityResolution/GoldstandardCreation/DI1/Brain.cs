@@ -10,9 +10,9 @@ namespace GoldstandardCreation
         
         public static void run() {
 
-            //Brain_2_mart_export_brain();
+            Brain_2_mart_export_brain();
 
-            Brain_2_mart_export_brain2();
+            //Brain_2_mart_export_brain2();
 
         }
 
