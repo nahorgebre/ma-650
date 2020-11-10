@@ -20,7 +20,7 @@ namespace GoldstandardCreation
 
                     DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, parameter));
 
-                    Output.runEnsemblId(outputDirectory);
+                    Output.run(outputDirectory);
 
                     AWSupload.run(outputDirectory);
 
