@@ -353,8 +353,8 @@ namespace GoldstandardCreation
                                 string key2 = getEnsemblIdBlockingKey(compareValueSr2);
 
 
-                                if (key1.Equals(key2))
-                                {
+                                //if (key1.Equals(key2))
+                                //{
 
                                     var jw = new JaroWinkler();
 
@@ -516,7 +516,7 @@ namespace GoldstandardCreation
 
                                     }
 
-                                }
+                                //}
                                 
                             }
 
