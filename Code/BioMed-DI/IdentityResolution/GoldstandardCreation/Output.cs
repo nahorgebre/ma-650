@@ -55,7 +55,8 @@ namespace GoldstandardCreation
                 (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
                 (List<Goldstandard> train_FALSE, List<Goldstandard> test_FALSE) = divideIntoTrainTest(falseFile);
 
-
+                createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
+                createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
 
             }
 
