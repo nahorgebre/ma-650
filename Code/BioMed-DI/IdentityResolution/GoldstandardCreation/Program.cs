@@ -20,7 +20,7 @@ namespace GoldstandardCreation
 
                     DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, parameter));
 
-                    Output.run(outputDirectory);
+                    Output.runEnsemblId(outputDirectory);
 
                     AWSupload.run(outputDirectory);
 
@@ -28,6 +28,7 @@ namespace GoldstandardCreation
                 else if (parameter.Equals("DI2"))
                 {
 
+                    /*
                     DI2.run();
 
                     DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/output/{1}/{2}", Environment.CurrentDirectory, parameter, Variables.pubTatorPartitionSize));
@@ -35,6 +36,7 @@ namespace GoldstandardCreation
                     Output.runPmId(outputDirectory);
 
                     AWSupload.run(outputDirectory, parameter);
+                    */
 
                 }
 

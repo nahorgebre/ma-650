@@ -170,8 +170,6 @@ namespace GoldstandardCreation
 
         }
 
-
-
         public static String getGeneNameBlockingKey(String geneNames)
         {
             string key = "default";
@@ -257,10 +255,6 @@ namespace GoldstandardCreation
 
         }
 
-
-
-
-
         public static void createOuput(string fileName, List<Goldstandard> goldstandardList)
         {
 
@@ -289,44 +283,275 @@ namespace GoldstandardCreation
 
         }
 
-        /*
-        public static String getPmIdBlockingKey(String pmId)
+        public static (List<Goldstandard>, List<Goldstandard>, List<Goldstandard>, List<Goldstandard>) compareFilesEnsemblIdBlockingComparator(string fileName1, string fileName2)
         {
 
-            String key = "default";
+            int gsSizeTrueClose = 50;
 
-            int pmIdLength = pmId.Count();
+            int gsSizeTrueFar = 50;
 
-            if (pmIdLength >= 5)
-            {
+            int gsSizeFalseClose = 50;
 
-                key = pmId.Substring(0, 4).Trim();
+            int gsSizeFalseFar = 50;
 
-            }
 
-            return key;
+            List<Goldstandard> goldstandardListTrueClose = new List<Goldstandard>();
 
-        }
-        */
+            List<Goldstandard> goldstandardListTrueFar = new List<Goldstandard>();
 
-        /*
-        public static (List<Goldstandard>, List<Goldstandard>, List<Goldstandard>) compareFilesPmIdBlockingComparator(string fileName1, string fileName2)
-        {
-
-            int gsSizeTrue = 30;
-
-            int gsSizeFalseClose = 10;
-
-            int gsSizeFalseFar = 20;
-
-            List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
 
             List<Goldstandard> goldstandardListFalseClose = new List<Goldstandard>();
 
             List<Goldstandard> goldstandardListFalseFar = new List<Goldstandard>();
 
+
             var delimiter = "\t";
 
+
+            using (StreamReader sr1 = new StreamReader(fileName1))
+            {
+
+                sr1.ReadLine();
+
+                while (!sr1.EndOfStream)
+                {
+
+                    var lineSr1 = sr1.ReadLine();
+
+                    using (StreamReader sr2 = new StreamReader(fileName2))
+                    {
+
+                        sr2.ReadLine();
+           
+                        while (!sr2.EndOfStream)
+                        {
+                                
+                            var lineSr2 = sr2.ReadLine();
+
+                            if (goldstandardListTrueClose.Count() < gsSizeTrueClose |
+                                goldstandardListTrueFar.Count() < gsSizeTrueFar |
+                                goldstandardListFalseClose.Count() < gsSizeFalseClose |
+                                goldstandardListFalseFar.Count() < gsSizeFalseFar)
+                            {
+
+                                String[] valuesSr1 = lineSr1.Split(delimiter);
+
+                                string compareValueSr1 = valuesSr1[4].Trim();
+
+                                string recordIdSr1 = valuesSr1[0];
+
+
+                                String[] valuesSr2 = lineSr2.Split(delimiter);
+
+                                string compareValueSr2 = valuesSr2[4].Trim();
+
+                                string recordIdSr2 = valuesSr2[0];
+
+
+                                string key1 = getEnsemblIdBlockingKey(compareValueSr1);
+
+                                string key2 = getEnsemblIdBlockingKey(compareValueSr2);
+
+
+                                if (key1.Equals(key2))
+                                {
+
+                                    var jw = new JaroWinkler();
+
+                                    double sim = jw.Similarity(compareValueSr1, compareValueSr2);
+
+
+                                    bool trueFileClose = false;
+
+                                    bool trueFileFar = false;
+
+                                    bool falseFileClose = false;
+
+                                    bool falseFileFar = false;
+
+
+                                    if (sim >= 0.97 & sim < 1.0) trueFileClose = true;
+
+                                    if (sim == 1) trueFileFar = true;
+
+                                    if (sim < 0.97 & sim > 0.1) falseFileClose = true;
+
+                                    if (sim == 0) falseFileFar = true;
+
+
+                                    if (trueFileClose)
+                                    {
+
+                                        if (goldstandardListTrueClose.Count() < gsSizeTrueClose)
+                                        {
+                                        
+                                            if (!goldstandardListTrueClose.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrueClose.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
+                                  
+                                                Console.WriteLine("Goldstandard True Close #" + goldstandardListTrueClose.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+
+                                                Goldstandard goldstandardItem = new Goldstandard();
+
+                                                goldstandardItem.recordId1 = recordIdSr1;
+
+                                                goldstandardItem.value1 = compareValueSr1;
+
+                                                goldstandardItem.recordId2 = recordIdSr2;
+
+                                                goldstandardItem.value2 = compareValueSr2;
+
+                                                goldstandardItem.boolValue = "TRUE";
+
+                                                goldstandardItem.sim = sim;
+
+                                                goldstandardItem.blockingKey = key1;
+
+                                                goldstandardListTrueClose.Add(goldstandardItem);
+
+                                            }
+
+                                        }
+                                       
+                                    }
+                                    else if (trueFileFar)
+                                    {
+
+                                        if (goldstandardListTrueFar.Count() < gsSizeTrueFar)
+                                        {
+                                        
+                                            if (!goldstandardListTrueFar.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrueFar.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
+                                  
+                                                Console.WriteLine("Goldstandard True Far #" + goldstandardListTrueFar.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+
+                                                Goldstandard goldstandardItem = new Goldstandard();
+
+                                                goldstandardItem.recordId1 = recordIdSr1;
+
+                                                goldstandardItem.value1 = compareValueSr1;
+
+                                                goldstandardItem.recordId2 = recordIdSr2;
+
+                                                goldstandardItem.value2 = compareValueSr2;
+
+                                                goldstandardItem.boolValue = "TRUE";
+
+                                                goldstandardItem.sim = sim;
+
+                                                goldstandardItem.blockingKey = key1;
+
+                                                goldstandardListTrueFar.Add(goldstandardItem);
+
+                                            }
+
+                                        }
+
+                                    }
+                                    else if (falseFileClose)
+                                    {
+
+                                        if (goldstandardListFalseClose.Count() < gsSizeFalseClose)
+                                        {
+                                        
+                                            if (!goldstandardListFalseClose.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalseClose.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
+                                  
+                                                Console.WriteLine("Goldstandard False Close #" + goldstandardListFalseClose.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+
+                                                Goldstandard goldstandardItem = new Goldstandard();
+
+                                                goldstandardItem.recordId1 = recordIdSr1;
+
+                                                goldstandardItem.value1 = compareValueSr1;
+
+                                                goldstandardItem.recordId2 = recordIdSr2;
+
+                                                goldstandardItem.value2 = compareValueSr2;
+
+                                                goldstandardItem.boolValue = "FALSE";
+
+                                                goldstandardItem.sim = sim;
+
+                                                goldstandardItem.blockingKey = key1;
+
+                                                goldstandardListFalseClose.Add(goldstandardItem);
+
+                                            }
+
+                                        }
+
+                                    }
+                                    else if (falseFileFar)
+                                    {
+
+                                        if (goldstandardListFalseFar.Count() < gsSizeFalseFar)
+                                        {
+                                        
+                                            if (!goldstandardListFalseFar.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalseFar.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
+                                  
+                                                Console.WriteLine("Goldstandard False Far #" + goldstandardListFalseFar.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
+
+                                                Goldstandard goldstandardItem = new Goldstandard();
+
+                                                goldstandardItem.recordId1 = recordIdSr1;
+
+                                                goldstandardItem.value1 = compareValueSr1;
+
+                                                goldstandardItem.recordId2 = recordIdSr2;
+
+                                                goldstandardItem.value2 = compareValueSr2;
+
+                                                goldstandardItem.boolValue = "FALSE";
+
+                                                goldstandardItem.sim = sim;
+
+                                                goldstandardItem.blockingKey = key1;
+
+                                                goldstandardListFalseFar.Add(goldstandardItem);
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+                                
+                            }
+
+                        }
+                        
+                    }
+                
+                }
+
+            }
+     
+            return (goldstandardListTrueClose, goldstandardListTrueFar, goldstandardListFalseClose, goldstandardListFalseFar);
+
+        }
+
+
+        /*
+        public static void createBlockingKeyOutput(HashSet<String> blockingKeys) {
+
+            string fileName = string.Format("{0}/data/output/test.csv", Environment.CurrentDirectory);
+
+            using (StreamWriter sw = new StreamWriter(fileName))
+            {
+
+                foreach (var key in blockingKeys)
+                {
+
+                    sw.WriteLine(key);
+                    
+                }
+            }
+        }
+        */
+
+                   /*
             using (StreamReader sr1 = new StreamReader(fileName1))
             {
 
@@ -493,27 +718,25 @@ namespace GoldstandardCreation
                 }
             
             }
-            
-            return (goldstandardListTrue, goldstandardListFalseClose, goldstandardListFalseFar);
+            */
 
-        }
-        */
+                /*
+        public static String getPmIdBlockingKey(String pmId)
+        {
 
-        /*
-        public static void createBlockingKeyOutput(HashSet<String> blockingKeys) {
+            String key = "default";
 
-            string fileName = string.Format("{0}/data/output/test.csv", Environment.CurrentDirectory);
+            int pmIdLength = pmId.Count();
 
-            using (StreamWriter sw = new StreamWriter(fileName))
+            if (pmIdLength >= 5)
             {
 
-                foreach (var key in blockingKeys)
-                {
+                key = pmId.Substring(0, 4).Trim();
 
-                    sw.WriteLine(key);
-                    
-                }
             }
+
+            return key;
+
         }
         */
 

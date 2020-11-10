@@ -8,7 +8,7 @@ namespace GoldstandardCreation
     class Output
     {
 
-        public static void runPmId(DirectoryInfo directory) {
+        public static void runEnsemblId(DirectoryInfo directory) {
 
             Console.WriteLine("Create output files!");
 
@@ -19,13 +19,17 @@ namespace GoldstandardCreation
                 string falseFileClose = subDirectory.FullName + "/falseClose.csv";
                 string falseFileFar = subDirectory.FullName + "/falseFar.csv";
 
-                (List<Goldstandard> train_TRUE, List<Goldstandard> test_TRUE) = divideIntoTrainTest(trueFile);
+                (List<Goldstandard> train_TRUE_Close, List<Goldstandard> test_TRUE_Close) = divideIntoTrainTest(trueFile);
+                (List<Goldstandard> train_TRUE_Far, List<Goldstandard> test_TRUE_Far) = divideIntoTrainTest(trueFile);
 
                 (List<Goldstandard> train_FALSE_Close, List<Goldstandard> test_FALSE_Close) = divideIntoTrainTest(falseFileClose);
                 (List<Goldstandard> train_FALSE_Far, List<Goldstandard> test_FALSE_Far) = divideIntoTrainTest(falseFileFar);
 
                 List<Goldstandard> train_FALSE = train_FALSE_Close.Concat(train_FALSE_Far).ToList();
                 List<Goldstandard> test_FALSE = test_FALSE_Close.Concat(test_FALSE_Far).ToList();
+
+                List<Goldstandard> train_TRUE = train_TRUE_Close.Concat(train_TRUE_Far).ToList();
+                List<Goldstandard> test_TRUE = test_TRUE_Close.Concat(test_TRUE_Far).ToList();
 
                 createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
                 createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
