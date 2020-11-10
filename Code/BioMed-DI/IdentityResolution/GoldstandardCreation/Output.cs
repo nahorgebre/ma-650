@@ -15,12 +15,13 @@ namespace GoldstandardCreation
             foreach (DirectoryInfo subDirectory in directory.GetDirectories())
             {
 
-                string trueFile = subDirectory.FullName + "/true.csv";
+                string trueFileClose = subDirectory.FullName + "/trueClose.csv";
+                string trueFileFar = subDirectory.FullName + "/trueFar.csv";
                 string falseFileClose = subDirectory.FullName + "/falseClose.csv";
                 string falseFileFar = subDirectory.FullName + "/falseFar.csv";
 
-                (List<Goldstandard> train_TRUE_Close, List<Goldstandard> test_TRUE_Close) = divideIntoTrainTest(trueFile);
-                (List<Goldstandard> train_TRUE_Far, List<Goldstandard> test_TRUE_Far) = divideIntoTrainTest(trueFile);
+                (List<Goldstandard> train_TRUE_Close, List<Goldstandard> test_TRUE_Close) = divideIntoTrainTest(trueFileClose);
+                (List<Goldstandard> train_TRUE_Far, List<Goldstandard> test_TRUE_Far) = divideIntoTrainTest(trueFileFar);
 
                 (List<Goldstandard> train_FALSE_Close, List<Goldstandard> test_FALSE_Close) = divideIntoTrainTest(falseFileClose);
                 (List<Goldstandard> train_FALSE_Far, List<Goldstandard> test_FALSE_Far) = divideIntoTrainTest(falseFileFar);
