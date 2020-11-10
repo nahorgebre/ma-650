@@ -336,14 +336,14 @@ namespace GoldstandardCreation
 
                                 String[] valuesSr1 = lineSr1.Split(delimiter);
 
-                                string compareValueSr1 = valuesSr1[3].Trim();
+                                string compareValueSr1 = valuesSr1[1].Trim();
 
                                 string recordIdSr1 = valuesSr1[0];
 
 
                                 String[] valuesSr2 = lineSr2.Split(delimiter);
 
-                                string compareValueSr2 = valuesSr2[3].Trim();
+                                string compareValueSr2 = valuesSr2[1].Trim();
 
                                 string recordIdSr2 = valuesSr2[0];
 
