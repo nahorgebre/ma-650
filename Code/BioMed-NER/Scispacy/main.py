@@ -4,7 +4,7 @@
 
 import spacy
 import scispacy
-from pprint import pprint
+#from pprint import pprint
 import pandas as pd
 import csv
 
