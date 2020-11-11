@@ -1,2 +1,2 @@
 mkdir -p data/input
-wget -N https://data-translation.s3.us-east-2.amazonaws.com/input/Brain/Brain.csv -O data/input/Brain/Brain.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-preparation/input/parser/title.tsv -O data/input/parser/title.tsv

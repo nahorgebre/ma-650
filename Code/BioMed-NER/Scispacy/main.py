@@ -1,3 +1,6 @@
+!pip install scispacy
+!pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.3.0/en_ner_bionlp13cg_md-0.3.0.tar.gz
+
 import spacy
 from spacy import displacy
 import scispacy
@@ -5,12 +8,13 @@ from pprint import pprint
 import pandas as pd
 import boto3
 import csv
-import Patent
-import NERoutput
 
+
+'''
 def download_s3_file(BUCKET_NAME, BUCKET_FILE_NAME, LOCAL_FILE_NAME):
     s3 = boto3.client('s3')
     s3.download_file(BUCKET_NAME, BUCKET_FILE_NAME, LOCAL_FILE_NAME)
+'''
 
 def getPatentAbstract(data_key):
     patentAbstractList = []
@@ -29,11 +33,12 @@ def getGeneNames(document):
             entityList.append(ent.text)
     return '|'.join(entityList)
 
-download_s3_file('ngebret', 'abstract_y1985.tsv', 'abstract_y1985.tsv')
+#download_s3_file('ngebret', 'abstract_y1985.tsv', 'abstract_y1985.tsv')
+
 with open('output.tsv','wt') as f1:
     writer = csv.writer(f1, delimiter='\t')
     writer.writerow(['patentNumber', 'patentDate', 'genes'])
-    for line in getPatentAbstract('abstract_y1985.tsv'):
+    for line in getPatentAbstract('title.tsv'):
         writer.writerow([line.patentNumber, line.patentDate, getGeneNames(line.patentAbstract)])
 
  
