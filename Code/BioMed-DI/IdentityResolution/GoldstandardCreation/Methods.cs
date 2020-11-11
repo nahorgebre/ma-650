@@ -527,6 +527,11 @@ namespace GoldstandardCreation
                 }
 
             }
+
+            Console.WriteLine("True Close: " + gsSizeTrueClose + " - " + goldstandardListTrueClose.Count());
+            Console.WriteLine("True Far: " + gsSizeTrueFar + " - " + goldstandardListTrueFar.Count());
+            Console.WriteLine("False Close: " + gsSizeFalseClose + " - " +  goldstandardListFalseClose.Count());
+            Console.WriteLine("False Far: " + gsSizeFalseFar + " - " + goldstandardListFalseFar.Count());
      
             return (goldstandardListTrueClose, goldstandardListTrueFar, goldstandardListFalseClose, goldstandardListFalseFar);
 
