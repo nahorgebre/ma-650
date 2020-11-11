@@ -370,11 +370,11 @@ namespace GoldstandardCreation
                                     bool falseFileFar = false;
 
 
-                                    if (sim >= 0.96 & sim < 0.98) trueFileClose = true;
+                                    if (sim == 1) trueFileClose = true;
 
-                                    if (sim > 0.98) trueFileFar = true;
+                                    if (sim >= 0.991 & sim < 1) trueFileFar = true;
 
-                                    if (sim < 0.97 & sim > 0.1) falseFileClose = true;
+                                    if (sim < 0.991) falseFileClose = true;
 
                                     if (sim == 0) falseFileFar = true;
 
