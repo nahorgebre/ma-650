@@ -75,7 +75,7 @@ public class ML_StandardRecordBlocker {
             // create matching rule
             String options[] = geneMatchingRule.options;
             String modelType = geneMatchingRule.modelType;
-            WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.999, modelType, options);
+            WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.98, modelType, options);
             if (geneMatchingRule.backwardSelection) {
                 matchingRule.setBackwardSelection(true);
             }
