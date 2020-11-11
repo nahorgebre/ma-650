@@ -7,15 +7,7 @@ from spacy import displacy
 import scispacy
 from pprint import pprint
 import pandas as pd
-#import boto3
 import csv
-
-
-'''
-def download_s3_file(BUCKET_NAME, BUCKET_FILE_NAME, LOCAL_FILE_NAME):
-    s3 = boto3.client('s3')
-    s3.download_file(BUCKET_NAME, BUCKET_FILE_NAME, LOCAL_FILE_NAME)
-'''
 
 def getPatentAbstract(data_key):
     patentAbstractList = []
@@ -34,7 +26,6 @@ def getGeneNames(document):
             entityList.append(ent.text)
     return '|'.join(entityList)
 
-#download_s3_file('ngebret', 'abstract_y1985.tsv', 'abstract_y1985.tsv')
 
 with open('output.tsv','wt') as f1:
     writer = csv.writer(f1, delimiter='\t')

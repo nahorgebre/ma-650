@@ -286,13 +286,13 @@ namespace GoldstandardCreation
         public static (List<Goldstandard>, List<Goldstandard>, List<Goldstandard>, List<Goldstandard>) compareFilesEnsemblIdBlockingComparator(string fileName1, string fileName2)
         {
 
-            int gsSizeTrueClose = 40;
+            int gsSizeTrueClose = 45;
 
-            int gsSizeTrueFar = 10;
+            int gsSizeTrueFar = 5;
 
-            int gsSizeFalseClose = 50;
+            int gsSizeFalseClose = 49;
 
-            int gsSizeFalseFar = 0;
+            int gsSizeFalseFar = 1;
 
 
             List<Goldstandard> goldstandardListTrueClose = new List<Goldstandard>();
@@ -376,7 +376,7 @@ namespace GoldstandardCreation
 
                                     if (sim < 0.991) falseFileClose = true;
 
-                                    if (sim == 0) falseFileFar = true;
+                                    if (sim == 1) falseFileFar = true;
 
 
                                     if (trueFileClose)
