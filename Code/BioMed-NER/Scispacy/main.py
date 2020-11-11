@@ -3,7 +3,6 @@
 #pip install spacy==2.3.2
 
 import spacy
-from spacy import displacy
 import scispacy
 from pprint import pprint
 import pandas as pd
