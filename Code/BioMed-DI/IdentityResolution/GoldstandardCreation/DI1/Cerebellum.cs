@@ -13,6 +13,39 @@ namespace GoldstandardCreation
             Cerebellum_2_mart_export_cerebellum();
 
         }
+
+        public static void Cerebellum_2_mart_export_cerebellum_4() {
+
+            // ensembl Id
+            string comparison = "Cerebellum_2_mart_export_cerebellum";
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
+
+            string trueCloseFile = string.Format("{0}/trueClose.csv", directoryName);
+            string trueFarFile = string.Format("{0}/trueFar.csv", directoryName);
+            string falseCloseFile = string.Format("{0}/falseClose.csv", directoryName);
+            string falseFarFile = string.Format("{0}/falseFar.csv", directoryName);
+
+            Directory.CreateDirectory(directoryName);
+
+            if (!File.Exists(trueCloseFile) | 
+                !File.Exists(trueFarFile) |
+                !File.Exists(falseCloseFile) |
+                !File.Exists(falseFarFile))
+            {
+
+                Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Cerebellum_path, Datasets.mart_export_cerebellum_path);
+                
+                Methods.createOuput(trueCloseFile, trueCloseList);
+                Methods.createOuput(trueFarFile, trueFarList);
+
+                Methods.createOuput(falseCloseFile, falseCloseList);
+                Methods.createOuput(falseFarFile, falseFarList);
+
+            }
+
+        }
         
         public static void Cerebellum_2_mart_export_cerebellum() {
 

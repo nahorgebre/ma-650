@@ -10,7 +10,7 @@ namespace GoldstandardCreation
         
         public static void run() {
 
-            Brain_2_mart_export_brain();
+            Brain_2_mart_export_brain_4();
 
             //Brain_2_mart_export_brain2();
 
@@ -42,7 +42,7 @@ namespace GoldstandardCreation
 
         
         
-        public static void Brain_2_mart_export_brain() {
+        public static void Brain_2_mart_export_brain_4() {
             
             // ensembl Id
             string comparison = "Brain_2_mart_export_brain";
