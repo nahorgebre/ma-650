@@ -385,8 +385,8 @@ namespace GoldstandardCreation
                                         if (goldstandardListTrueClose.Count() < gsSizeTrueClose)
                                         {
                                         
-                                            //if (!goldstandardListTrueClose.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrueClose.Exists(x => x.recordId1 == recordIdSr1))
-                                            //{
+                                            if (!goldstandardListTrueClose.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrueClose.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
                                   
                                                 Console.WriteLine("Goldstandard True Close #" + goldstandardListTrueClose.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
 
@@ -408,7 +408,7 @@ namespace GoldstandardCreation
 
                                                 goldstandardListTrueClose.Add(goldstandardItem);
 
-                                            //}
+                                            }
 
                                         }
                                        
@@ -419,8 +419,8 @@ namespace GoldstandardCreation
                                         if (goldstandardListTrueFar.Count() < gsSizeTrueFar)
                                         {
                                         
-                                            //if (!goldstandardListTrueFar.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrueFar.Exists(x => x.recordId1 == recordIdSr1))
-                                            //{
+                                            if (!goldstandardListTrueFar.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrueFar.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
                                   
                                                 Console.WriteLine("Goldstandard True Far #" + goldstandardListTrueFar.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
 
@@ -442,7 +442,7 @@ namespace GoldstandardCreation
 
                                                 goldstandardListTrueFar.Add(goldstandardItem);
 
-                                            //}
+                                            }
 
                                         }
 
@@ -453,8 +453,8 @@ namespace GoldstandardCreation
                                         if (goldstandardListFalseClose.Count() < gsSizeFalseClose)
                                         {
                                         
-                                            //if (!goldstandardListFalseClose.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalseClose.Exists(x => x.recordId1 == recordIdSr1))
-                                            //{
+                                            if (!goldstandardListFalseClose.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalseClose.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
                                   
                                                 Console.WriteLine("Goldstandard False Close #" + goldstandardListFalseClose.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
 
@@ -476,7 +476,7 @@ namespace GoldstandardCreation
 
                                                 goldstandardListFalseClose.Add(goldstandardItem);
 
-                                            //}
+                                            }
 
                                         }
 
@@ -487,8 +487,8 @@ namespace GoldstandardCreation
                                         if (goldstandardListFalseFar.Count() < gsSizeFalseFar)
                                         {
                                         
-                                            //if (!goldstandardListFalseFar.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalseFar.Exists(x => x.recordId1 == recordIdSr1))
-                                            //{
+                                            if (!goldstandardListFalseFar.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalseFar.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
                                   
                                                 Console.WriteLine("Goldstandard False Far #" + goldstandardListFalseFar.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
 
@@ -510,7 +510,7 @@ namespace GoldstandardCreation
 
                                                 goldstandardListFalseFar.Add(goldstandardItem);
 
-                                            //}
+                                            }
 
                                         }
 
