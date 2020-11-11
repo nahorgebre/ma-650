@@ -7,7 +7,7 @@ from spacy import displacy
 import scispacy
 from pprint import pprint
 import pandas as pd
-import boto3
+#import boto3
 import csv
 
 
