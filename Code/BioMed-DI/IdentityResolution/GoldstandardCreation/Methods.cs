@@ -286,9 +286,9 @@ namespace GoldstandardCreation
         public static (List<Goldstandard>, List<Goldstandard>, List<Goldstandard>, List<Goldstandard>) compareFilesEnsemblIdBlockingComparator(string fileName1, string fileName2)
         {
 
-            int gsSizeTrueClose = 45;
+            int gsSizeTrueClose = 48;
 
-            int gsSizeTrueFar = 5;
+            int gsSizeTrueFar = 2;
 
             int gsSizeFalseClose = 50;
 
