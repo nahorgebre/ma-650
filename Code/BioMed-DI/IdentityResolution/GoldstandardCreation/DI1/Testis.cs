@@ -10,7 +10,9 @@ namespace GoldstandardCreation
 
         public static void run() {
 
-            Testis_2_mart_export_testis();
+            //Testis_2_mart_export_testis();
+
+            Testis_2_mart_export_testis_4();
             
         }
 
