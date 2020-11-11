@@ -290,9 +290,9 @@ namespace GoldstandardCreation
 
             int gsSizeTrueFar = 10;
 
-            int gsSizeFalseClose = 40;
+            int gsSizeFalseClose = 50;
 
-            int gsSizeFalseFar = 10;
+            int gsSizeFalseFar = 0;
 
 
             List<Goldstandard> goldstandardListTrueClose = new List<Goldstandard>();
