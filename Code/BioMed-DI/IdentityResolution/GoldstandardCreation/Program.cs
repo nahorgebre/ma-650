@@ -22,7 +22,7 @@ namespace GoldstandardCreation
 
                     Output.runEnsemblId(outputDirectory);
 
-                    AWSupload.run(outputDirectory);
+                    AWSupload.runDI1(outputDirectory);
 
                 } 
                 else if (parameter.Equals("DI2"))

@@ -10,9 +10,44 @@ namespace GoldstandardCreation
     
         public static void run() {
 
-            Heart_2_Heart_Ensembl_NCBI_Crosswalk();
+            //Heart_2_Heart_Ensembl_NCBI_Crosswalk();
+            Heart_2_Heart_Ensembl_NCBI_Crosswalk_4();
 
-            mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk();
+            //mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk();
+            mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk_4();
+
+        }
+
+        public static void Heart_2_Heart_Ensembl_NCBI_Crosswalk_4() {
+
+            // ensembl Id
+            string comparison = "Heart_2_Heart_Ensembl_NCBI_Crosswalk";
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
+
+            string trueCloseFile = string.Format("{0}/trueClose.csv", directoryName);
+            string trueFarFile = string.Format("{0}/trueFar.csv", directoryName);
+            string falseCloseFile = string.Format("{0}/falseClose.csv", directoryName);
+            string falseFarFile = string.Format("{0}/falseFar.csv", directoryName);
+
+            Directory.CreateDirectory(directoryName);
+
+            if (!File.Exists(trueCloseFile) | 
+                !File.Exists(trueFarFile) |
+                !File.Exists(falseCloseFile) |
+                !File.Exists(falseFarFile))
+            {
+
+                Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Heart_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path);
+                
+                Methods.createOuput(trueCloseFile, trueCloseList);
+                Methods.createOuput(trueFarFile, trueFarList);
+
+                Methods.createOuput(falseCloseFile, falseCloseList);
+                Methods.createOuput(falseFarFile, falseFarList);
+
+            }
 
         }
         
@@ -33,6 +68,39 @@ namespace GoldstandardCreation
                 (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1, Methods.EnsemblId);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
+
+            }
+
+        }
+
+        public static void mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk_4() {
+
+            // ensembl Id
+            string comparison = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
+            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
+
+            string trueCloseFile = string.Format("{0}/trueClose.csv", directoryName);
+            string trueFarFile = string.Format("{0}/trueFar.csv", directoryName);
+            string falseCloseFile = string.Format("{0}/falseClose.csv", directoryName);
+            string falseFarFile = string.Format("{0}/falseFar.csv", directoryName);
+
+            Directory.CreateDirectory(directoryName);
+
+            if (!File.Exists(trueCloseFile) | 
+                !File.Exists(trueFarFile) |
+                !File.Exists(falseCloseFile) |
+                !File.Exists(falseFarFile))
+            {
+
+                Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.mart_export_heart_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path);
+                
+                Methods.createOuput(trueCloseFile, trueCloseList);
+                Methods.createOuput(trueFarFile, trueFarList);
+
+                Methods.createOuput(falseCloseFile, falseCloseList);
+                Methods.createOuput(falseFarFile, falseFarList);
 
             }
 

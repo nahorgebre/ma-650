@@ -12,6 +12,34 @@ namespace GoldstandardCreation
 
         private static IAmazonS3 s3Client;
 
+        public static void runDI1(DirectoryInfo outputDirectory)
+        {
+
+            foreach (DirectoryInfo subDirectory in outputDirectory.GetDirectories())
+            {
+
+                string comparison = subDirectory.Name;
+
+                foreach (FileInfo file in subDirectory.GetFiles())
+                {
+
+                    if (file.Name.Contains("train") | file.Name.Contains("test"))
+                    {
+
+                        string keyName = string.Format("identity-resolution/goldstandard/DI1/{0}/{1}", comparison, file.Name);
+
+                        string bucketName = "nahorgebre-ma-650-master-thesis";
+
+                        UploadFileAsync(bucketName, file.FullName, keyName).Wait();
+
+                    }
+
+                }
+
+            }
+
+        }
+
         public static void run(DirectoryInfo outputDirectory, String parameter = null)
         {
 
