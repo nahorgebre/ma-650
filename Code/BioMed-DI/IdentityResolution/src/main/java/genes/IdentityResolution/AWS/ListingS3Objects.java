@@ -30,7 +30,7 @@ public class ListingS3Objects {
         getDatasets("DI2", "Get-D-2-1.sh");
         getDatasetsPartitionNumbers("DI2", "Get-D-2-2.sh");
 
-        getGoldstandardDatasets("DI1", "Get-GD-1.sh");
+        //getGoldstandardDatasets("DI1", "Get-GD-1.sh");
         //getGoldstandardDatasets2("DI2", "Get-GD-2.sh");
         
     }

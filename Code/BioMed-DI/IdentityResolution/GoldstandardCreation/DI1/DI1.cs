@@ -9,8 +9,6 @@ namespace GoldstandardCreation
 
             Brain.run();
 
-            /*
-
             Cerebellum.run();
 
             Heart.run();
@@ -22,8 +20,6 @@ namespace GoldstandardCreation
             Organs.run(); 
 
             Testis.run();
-
-            */
 
         }
 
