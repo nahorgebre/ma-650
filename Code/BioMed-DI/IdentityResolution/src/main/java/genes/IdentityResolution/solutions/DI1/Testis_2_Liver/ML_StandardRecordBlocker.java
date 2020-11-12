@@ -48,7 +48,7 @@ public class ML_StandardRecordBlocker {
         HashedDataSet<Gene, Attribute> ds2 = Datasets.Liver();
 
         // goldstandard directory
-        String comparisonDescription = "Testis_2_mart_export_testis";
+        String comparisonDescription = "Testis_2_Liver";
         String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
         
