@@ -29,8 +29,6 @@ import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
 
 // EnsemblIdComperator
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityJaccardOnNGrams.EnsemblIdComperatorLowerCaseJaccardOnNGrams;
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorTokenizingJaccard;
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorCosine;
@@ -81,8 +79,6 @@ public class ML_StandardRecordBlocker {
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
 
             // add comparators
-            //matchingRule.addComparator(new EnsemblIdComperatorJaccardOnNGrams());
-            //matchingRule.addComparator(new EnsemblIdComperatorLowerCaseJaccardOnNGrams());
             matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard());
             matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard());
             matchingRule.addComparator(new EnsemblIdComperatorCosine());

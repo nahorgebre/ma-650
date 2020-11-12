@@ -8,18 +8,15 @@ namespace DataTranslation
     {
         public static void runDataTranslation()
         {
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, GeneDiseaseAssociations.geneDiseaseAssociationsOutputDirectory)); 
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI2.outputDirectory)); 
             GeneDiseaseAssociations.all_gene_disease_pmid_associations_dt();
         }
-
-        public static string geneDiseaseAssociationsInputDirectory = "data/input/Gene-Disease-Associations";
-        public static string geneDiseaseAssociationsOutputDirectory = "data/output/Gene-Disease-Associations";
 
         public static void all_gene_disease_pmid_associations_dt()
         {
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, geneDiseaseAssociationsInputDirectory, "all_gene_disease_pmid_associations.tsv")))
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI2.inputDirectory, "all_gene_disease_pmid_associations.tsv")))
             {
                 reader.ReadLine();
                 int counter = 1;
@@ -152,8 +149,8 @@ namespace DataTranslation
                     counter++;
                 }
             }
-            Methods.createXmlGene(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_dt.xml", directory: geneDiseaseAssociationsOutputDirectory);
-            Methods.createTsv(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_dt.tsv", directory: geneDiseaseAssociationsOutputDirectory);
+            Methods.createXmlGene(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_dt.xml", directory: DI2.outputDirectory);
+            Methods.createTsv(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_dt.tsv", directory: DI2.outputDirectory);
         }
 
     }
