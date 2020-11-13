@@ -79,37 +79,37 @@ public class DataFusion1 {
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
 
         // Heart
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Brain), Brain, Heart);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Cerebellum), Cerebellum, Heart);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Kidney), Kidney, Heart);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Liver), Liver, Heart);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Testis), Testis, Heart);
-        correspondences.loadCorrespondences(new File(Correspondences.Heart_2_Heart_Ensembl_NCBI_Crosswalk), Heart, Heart_Ensembl_NCBI_Crosswalk);
-        //correspondences.loadCorrespondences(new File(Correspondences.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk), mart_export_heart);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Brain), Brain, Heart);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Cerebellum), Cerebellum, Heart);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Kidney), Kidney, Heart);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Liver), Liver, Heart);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Testis), Testis, Heart);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Heart_Ensembl_NCBI_Crosswalk), Heart, Heart_Ensembl_NCBI_Crosswalk);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk), mart_export_heart);
 
         // Cerebellum
-        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Brain), Brain, Cerebellum);
-        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Kidney), Kidney, Cerebellum);
-        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Liver), Liver, Cerebellum);
-        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_Testis), Testis, Cerebellum);
-        correspondences.loadCorrespondences(new File(Correspondences.Cerebellum_2_mart_export_cerebellum), Cerebellum, mart_export_cerebellum);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_Brain), Brain, Cerebellum);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_Kidney), Kidney, Cerebellum);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_Liver), Liver, Cerebellum);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_Testis), Testis, Cerebellum);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_mart_export_cerebellum), Cerebellum, mart_export_cerebellum);
 
         // Brain
-        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Kidney), Kidney, Brain);
-        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Liver), Brain, Liver);
-        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_Testis), Testis, Brain);
-        correspondences.loadCorrespondences(new File(Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Brain_2_Kidney), Kidney, Brain);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Brain_2_Liver), Brain, Liver);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Brain_2_Testis), Testis, Brain);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
 
         // Kidney
-        correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Liver), Liver, Kidney);
-        correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_Testis), Testis, Kidney);
-        correspondences.loadCorrespondences(new File(Correspondences.Kidney_2_mart_export_kidney), Kidney, mart_export_kidney);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Kidney_2_Liver), Liver, Kidney);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Kidney_2_Testis), Testis, Kidney);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Kidney_2_mart_export_kidney), Kidney, mart_export_kidney);
         
         // Liver
-        correspondences.loadCorrespondences(new File(Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
         
         // Testis
-        correspondences.loadCorrespondences(new File(Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
         
 
         // write group size distribution
