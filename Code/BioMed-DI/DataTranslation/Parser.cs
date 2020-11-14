@@ -89,6 +89,8 @@ namespace DataTranslation
 
                     reader.ReadToFollowing("diseaseAssociations");
 
+                    Console.WriteLine("Ass. has value? " + reader.HasValue);
+
                     XmlReader diseaseAssociationsInner = reader.ReadSubtree();
 
                     while (diseaseAssociationsInner.Read())
@@ -104,6 +106,8 @@ namespace DataTranslation
                     
 
                     reader.ReadToFollowing("publicationMentions");
+
+                    Console.WriteLine("Pub. has value? " + reader.HasValue);
 
                     XmlReader publicationMentionsInner = reader.ReadSubtree();
 
