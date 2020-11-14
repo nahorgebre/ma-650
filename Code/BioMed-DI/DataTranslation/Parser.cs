@@ -73,68 +73,86 @@ namespace DataTranslation
                     
                     reader.ReadToFollowing("organs");
 
-                    XmlReader organsInner = reader.ReadSubtree();
-
-                    while (organsInner.Read())
+                    if (reader.HasValue)
                     {
 
-                        String xml = "<organs>" + organsInner.ReadInnerXml() + "</organs>";
+                        Console.WriteLine(reader.HasValue);
 
-                        List<Organ> organList = Parser.parseOrgan(xml);
+                        XmlReader organsInner = reader.ReadSubtree();
 
-                        gene.organs = organList;
+                        while (organsInner.Read())
+                        {
+
+                            String xml = "<organs>" + organsInner.ReadInnerXml() + "</organs>";
+
+                            List<Organ> organList = Parser.parseOrgan(xml);
+
+                            gene.organs = organList;
+                        
+                        }
                         
                     }
 
 
                     reader.ReadToFollowing("diseaseAssociations");
 
-                    Console.WriteLine("Ass. has value? " + reader.HasValue);
-
-                    XmlReader diseaseAssociationsInner = reader.ReadSubtree();
-
-                    while (diseaseAssociationsInner.Read())
+                    if (reader.HasValue)
                     {
 
-                        String xml = "<diseaseAssociations>" + organsInner.ReadInnerXml() + "</diseaseAssociations>";
+                        XmlReader diseaseAssociationsInner = reader.ReadSubtree();
 
-                        List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(xml);
+                        while (diseaseAssociationsInner.Read())
+                        {
 
-                        gene.diseaseAssociations = geneDiseaseAssociationsList;
+                            String xml = "<diseaseAssociations>" + diseaseAssociationsInner.ReadInnerXml() + "</diseaseAssociations>";
+
+                            List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(xml);
+
+                            gene.diseaseAssociations = geneDiseaseAssociationsList;
+
+                        }
 
                     }
-                    
+
 
                     reader.ReadToFollowing("publicationMentions");
 
-                    Console.WriteLine("Pub. has value? " + reader.HasValue);
-
-                    XmlReader publicationMentionsInner = reader.ReadSubtree();
-
-                    while (publicationMentionsInner.Read())
+                    if (reader.HasValue)
                     {
 
-                        String xml = "<publicationMentions>" + organsInner.ReadInnerXml() + "</publicationMentions>";
+                        XmlReader publicationMentionsInner = reader.ReadSubtree();
 
-                        List<GenePublicationMention> genePublicationMentionList = Parser.parsePublicationMention(xml);
+                        while (publicationMentionsInner.Read())
+                        {
 
-                        gene.publicationMentions = genePublicationMentionList;
+                            String xml = "<publicationMentions>" + publicationMentionsInner.ReadInnerXml() + "</publicationMentions>";
+
+                            List<GenePublicationMention> genePublicationMentionList = Parser.parsePublicationMention(xml);
+
+                            gene.publicationMentions = genePublicationMentionList;
+
+                        }
 
                     }
 
-                    
+   
                     reader.ReadToFollowing("patentMentions");
 
-                    XmlReader patentMentionsInner = reader.ReadSubtree();
-
-                    while (patentMentionsInner.Read())
+                    if (reader.HasValue)
                     {
+                        
+                        XmlReader patentMentionsInner = reader.ReadSubtree();
 
-                        String xml = "<patentMentions>" + organsInner.ReadInnerXml() + "</patentMentions>";
+                        while (patentMentionsInner.Read())
+                        {
 
-                        List<GenePatentMention> genePatentMentionList = Parser.parsePatentMention(xml);
+                            String xml = "<patentMentions>" + patentMentionsInner.ReadInnerXml() + "</patentMentions>";
 
-                        gene.patentMentions = genePatentMentionList;
+                            List<GenePatentMention> genePatentMentionList = Parser.parsePatentMention(xml);
+
+                            gene.patentMentions = genePatentMentionList;
+
+                        }
 
                     }
 
@@ -142,6 +160,7 @@ namespace DataTranslation
                     geneList.Add(gene);
 
                     counter++;
+
 
                 }
 
