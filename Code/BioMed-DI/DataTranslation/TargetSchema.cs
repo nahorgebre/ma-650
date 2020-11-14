@@ -149,6 +149,7 @@ namespace DataTranslation
 
 
     // delete this later
+    /*
     public class GeneDescription
     {
         public string description;
@@ -157,6 +158,7 @@ namespace DataTranslation
     {
         public string name;
     }
+    */
 
 
 }

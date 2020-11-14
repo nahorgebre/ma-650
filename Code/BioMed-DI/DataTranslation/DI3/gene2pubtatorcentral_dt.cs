@@ -78,6 +78,8 @@ namespace DataTranslation
 
                                     List<String> geneNameList = new List<string>();
 
+                                    /*
+
                                     foreach (string name in geneNameHashSet)
                                     {
 
@@ -88,6 +90,8 @@ namespace DataTranslation
                                         geneNameList.Add(name);
 
                                     }
+
+                                    */
 
                                     publication.geneNames = string.Join("|", geneNameList);
 
