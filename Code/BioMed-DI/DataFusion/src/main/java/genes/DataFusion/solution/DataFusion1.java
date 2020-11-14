@@ -50,29 +50,29 @@ public class DataFusion1 {
 
         // load the data into FusibleDataSet
         System.out.println("*\n*\tLoading brain datasets\n*");
-        FusibleDataSet<Gene, Attribute> Brain = Datasets.Brain();
-        FusibleDataSet<Gene, Attribute> mart_export_brain = Datasets.mart_export_brain();
+        FusibleDataSet<Gene, Attribute> Brain = DI1Datasets.Brain();
+        FusibleDataSet<Gene, Attribute> mart_export_brain = DI1Datasets.mart_export_brain();
 
         System.out.println("*\n*\tLoading cerebellum datasets\n*");
-        FusibleDataSet<Gene, Attribute> Cerebellum = Datasets.Cerebellum();
-        FusibleDataSet<Gene, Attribute> mart_export_cerebellum = Datasets.mart_export_cerebellum();
+        FusibleDataSet<Gene, Attribute> Cerebellum = DI1Datasets.Cerebellum();
+        FusibleDataSet<Gene, Attribute> mart_export_cerebellum = DI1Datasets.mart_export_cerebellum();
 
         System.out.println("*\n*\tLoading heart datasets\n*");
-        FusibleDataSet<Gene, Attribute> Heart = Datasets.Heart();
-        FusibleDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = Datasets.Heart_Ensembl_NCBI_Crosswalk();
-        FusibleDataSet<Gene, Attribute> mart_export_heart = Datasets.mart_export_heart();
+        FusibleDataSet<Gene, Attribute> Heart = DI1Datasets.Heart();
+        FusibleDataSet<Gene, Attribute> Heart_Ensembl_NCBI_Crosswalk = DI1Datasets.Heart_Ensembl_NCBI_Crosswalk();
+        FusibleDataSet<Gene, Attribute> mart_export_heart = DI1Datasets.mart_export_heart();
 
         System.out.println("*\n*\tLoading kidney datasets\n*");
-        FusibleDataSet<Gene, Attribute> Kidney = Datasets.Kidney();
-        FusibleDataSet<Gene, Attribute> mart_export_kidney = Datasets.mart_export_kidney();
+        FusibleDataSet<Gene, Attribute> Kidney = DI1Datasets.Kidney();
+        FusibleDataSet<Gene, Attribute> mart_export_kidney = DI1Datasets.mart_export_kidney();
 
         System.out.println("*\n*\tLoading liver datasets\n*");
-        FusibleDataSet<Gene, Attribute> Liver = Datasets.Liver();
-        FusibleDataSet<Gene, Attribute> mart_export_liver = Datasets.mart_export_liver();
+        FusibleDataSet<Gene, Attribute> Liver = DI1Datasets.Liver();
+        FusibleDataSet<Gene, Attribute> mart_export_liver = DI1Datasets.mart_export_liver();
 
         System.out.println("*\n*\tLoading testis datasets\n*");
-        FusibleDataSet<Gene, Attribute> Testis = Datasets.Testis();
-        FusibleDataSet<Gene, Attribute> mart_export_testis = Datasets.mart_export_testis();
+        FusibleDataSet<Gene, Attribute> Testis = DI1Datasets.Testis();
+        FusibleDataSet<Gene, Attribute> mart_export_testis = DI1Datasets.mart_export_testis();
 
         // load correspondences
         System.out.println("*\n*\tLoading correspondences\n*");
