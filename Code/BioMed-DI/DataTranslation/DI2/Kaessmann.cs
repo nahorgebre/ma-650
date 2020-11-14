@@ -18,8 +18,13 @@ namespace DataTranslation
 
             List<Gene> gene_list = Parser.parseGene(file, "Kaessmann_{0}_rid");
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "Kaessmann_dt.xml", directory: "data/output/DI2");
-            Methods.createTsv(gene_list: gene_list, fileName: "Kaessmann_dt.tsv", directory: "data/output/DI2");
+            foreach (Gene item in gene_list)
+            {
+                Console.WriteLine("NCBI ID: |" + item.ncbiId + "|");
+            }
+
+            //Methods.createXmlGene(gene_list: gene_list, fileName: "Kaessmann_dt.xml", directory: "data/output/DI2");
+            //Methods.createTsv(gene_list: gene_list, fileName: "Kaessmann_dt.tsv", directory: "data/output/DI2");
 
         }
 

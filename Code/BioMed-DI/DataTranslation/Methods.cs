@@ -76,8 +76,7 @@ namespace DataTranslation
                     "recordId",
                     "ensemblId",
                     "ncbiId",
-                    "geneName",
-                    "pmId"
+                    "geneName"
                 };
 
                 var firstLine = string.Join(delimiter, firstLineContent);
@@ -119,15 +118,12 @@ namespace DataTranslation
 
                     }
 
-                    string pmid = "NaN";
-
                     List<string> lineContent = new List<string>()
                     {
                         recordId,
                         ensemblId,
                         ncbiId,
-                        geneName,
-                        pmid
+                        geneName
                     };
 
                     var line = string.Join(delimiter, lineContent);
