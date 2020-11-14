@@ -151,7 +151,8 @@ public class DataFusion1 {
             strategy, new RecordGroupFactory<Gene, Attribute>());
         double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
         
-        logger.info(String.format("Accuracy: %.2f", accuracy));   
+        logger.info(String.format("Accuracy: %.2f", accuracy));
+          
     }
     
 }
