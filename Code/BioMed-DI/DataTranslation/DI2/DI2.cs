@@ -14,6 +14,8 @@ namespace DataTranslation
         {
 
             GeneDiseaseAssociations.runDataTranslation();
+            
+            Kaessmann.runDataTranslation();
 
         }
 

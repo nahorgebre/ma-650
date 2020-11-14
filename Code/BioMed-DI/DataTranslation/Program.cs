@@ -25,7 +25,7 @@ namespace DataTranslation
 
                     AWSupload.run(parameter);
 
-                    AWSupload.run(parameter, Variables.gene2pubtatorcentral_partitionNumbers.ToString());
+                    //AWSupload.run(parameter, Variables.gene2pubtatorcentral_partitionNumbers.ToString());
 
                 }
                 else if (parameter.Equals("DI3"))
