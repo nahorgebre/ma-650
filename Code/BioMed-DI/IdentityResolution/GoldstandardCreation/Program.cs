@@ -28,6 +28,8 @@ namespace GoldstandardCreation
                 else if (parameter.Equals("DI2"))
                 {
 
+                    DI2.runDataTranslation();
+
                     /*
                     DI2.run();
 
