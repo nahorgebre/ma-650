@@ -10,7 +10,6 @@ import info.debatty.java.stringsimilarity.JaroWinkler;
 
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene.Gene;
-import genes.IdentityResolution.model.GeneName.GeneName;
 
 import java.util.ArrayList;
 import java.util.List;

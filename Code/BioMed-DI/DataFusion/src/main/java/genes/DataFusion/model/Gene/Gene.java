@@ -4,8 +4,6 @@ import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 import genes.DataFusion.model.Disease.Disease;
-import genes.DataFusion.model.GeneDescription.GeneDescription;
-import genes.DataFusion.model.GeneName.GeneName;
 import genes.DataFusion.model.Organ.Organ;
 import genes.DataFusion.model.Patent.Patent;
 import genes.DataFusion.model.Publication.Publication;
@@ -25,19 +23,17 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     public Gene(String identifier, String provenance) {
         super(identifier, provenance);
 
-        geneNames = new LinkedList<>();
-        geneDescriptions = new LinkedList<>();
-
         organs = new LinkedList<>();
         publicationMentions = new LinkedList<>();
         patentMentions = new LinkedList<>();
         diseaseAssociations = new LinkedList<>();
+
     }
 
     private String ensemblId;
     private String ncbiId;
-    private List<GeneName> geneNames;
-    private List<GeneDescription> geneDescriptions;
+    private String geneNames;
+    private String geneDescriptions;
 
     private List<Organ> organs;
     private List<Publication> publicationMentions;
@@ -47,8 +43,8 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     // Getter
     public String getEnsemblId() { return ensemblId; }
     public String getNcbiId() { return ncbiId; }
-    public List<GeneName> getGeneNames() { return geneNames; }
-    public List<GeneDescription> getGeneDescriptions() { return geneDescriptions; }
+    public String getGeneNames() { return geneNames; }
+    public String getGeneDescriptions() { return geneDescriptions; }
 
     public List<Organ> getOrgans() { return organs; }
     public List<Publication> getPublicationMentions() { return publicationMentions; }
@@ -58,8 +54,8 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
     // Setter
     public void setEnsemblId(String ensemblId) { this.ensemblId = ensemblId; }
     public void setNcbiId(String ncbiId) { this.ncbiId = ncbiId; }
-    public void setGeneNames(List<GeneName> geneNames) { this.geneNames = geneNames; }
-    public void setGeneDescriptions(List<GeneDescription> geneDescriptions) { this.geneDescriptions = geneDescriptions; }
+    public void setGeneNames(String geneNames) { this.geneNames = geneNames; }
+    public void setGeneDescriptions(String geneDescriptions) { this.geneDescriptions = geneDescriptions; }
     
     public void setOrgans(List<Organ> organs) { this.organs = organs; }
     public void setPublicationMentions(List<Publication> publicationMentions) { this.publicationMentions = publicationMentions; }
@@ -113,9 +109,9 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
         else if(attribute==NCBIID)
             return getNcbiId() != null && !getNcbiId().isEmpty();
         else if(attribute== GENENAMES)
-            return getGeneNames() != null && getGeneNames().size() > 0;
+            return getGeneNames() != null && getGeneNames().isEmpty();
         else if(attribute==GENEDESCRIPTIONS)
-            return getGeneDescriptions() != null && getGeneDescriptions().size() > 0;
+            return getGeneDescriptions() != null && getGeneDescriptions().isEmpty();
         else if(attribute==ORGANS)
             return getOrgans() != null && getOrgans().size() > 0;
         else if(attribute== PUBLICATIONMENTIONS)

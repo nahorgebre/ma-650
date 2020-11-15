@@ -15,10 +15,6 @@ import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 
 import genes.DataFusion.model.Disease.Disease;
 import genes.DataFusion.model.Disease.DiseaseXMLReader;
-import genes.DataFusion.model.GeneDescription.GeneDescription;
-import genes.DataFusion.model.GeneDescription.GeneDescriptionXMLReader;
-import genes.DataFusion.model.GeneName.GeneName;
-import genes.DataFusion.model.GeneName.GeneNameXMLReader;
 import genes.DataFusion.model.Organ.Organ;
 import genes.DataFusion.model.Organ.OrganXMLReader;
 import genes.DataFusion.model.Patent.Patent;
@@ -51,10 +47,8 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
 
         gene.setEnsemblId(getValueFromChildElement(node, "ensemblId"));
         gene.setNcbiId(getValueFromChildElement(node, "ncbiId"));
-        List<GeneName> geneNames = getObjectListFromChildElement(node, "geneNames", "geneNames", new GeneNameXMLReader(), provenanceInfo);
-        gene.setGeneNames(geneNames);
-        List<GeneDescription> geneDescriptions = getObjectListFromChildElement(node, "geneDescriptions", "geneDescriptions", new GeneDescriptionXMLReader(), provenanceInfo);
-        gene.setGeneDescriptions(geneDescriptions);
+        gene.setGeneNames(getValueFromChildElement(node, "geneNames"));
+        gene.setGeneDescriptions(getValueFromChildElement(node, "geneDescriptions"));
         
         List<Organ> organs = getObjectListFromChildElement(node, "organs", "organs", new OrganXMLReader(), provenanceInfo);
         gene.setOrgans(organs);

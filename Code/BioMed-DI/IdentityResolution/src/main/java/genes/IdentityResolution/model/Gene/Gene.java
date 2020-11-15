@@ -1,9 +1,8 @@
 package genes.IdentityResolution.model.Gene;
 
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
+
 import genes.IdentityResolution.model.Disease.Disease;
-import genes.IdentityResolution.model.GeneDescription.GeneDescription;
-import genes.IdentityResolution.model.GeneName.GeneName;
 import genes.IdentityResolution.model.Organ.Organ;
 import genes.IdentityResolution.model.Patent.Patent;
 import genes.IdentityResolution.model.Publication.Publication;
@@ -19,7 +18,7 @@ public class Gene implements Matchable {
     private String ensemblId;
     private String ncbiId;
     private String geneNames;
-    private List<GeneDescription> geneDescriptions;
+    private String geneDescriptions;
 
     private List<Organ> organs;
     private List<Disease> diseases;
@@ -29,8 +28,6 @@ public class Gene implements Matchable {
     public Gene(String identifier, String provenance) {
         recordId = identifier;
         this.provenance = provenance;
-
-        geneDescriptions = new LinkedList<>();
 
         organs = new LinkedList<>();
         diseases = new LinkedList<>();
@@ -52,8 +49,7 @@ public class Gene implements Matchable {
     public String getEnsemblId() { return ensemblId; }
     public String getNcbiId() { return ncbiId; }
     public String getGeneNames() { return geneNames; }
-
-    public List<GeneDescription> getGeneDescriptions() { return geneDescriptions; }
+    public String getGeneDescriptions() { return geneDescriptions; }
 
     public List<Organ> getOrgans() { return organs; }
     public List<Disease> getDiseases() { return diseases; }
@@ -64,8 +60,7 @@ public class Gene implements Matchable {
     public void setEnsemblId(String geneId) { this.ensemblId = geneId; }
     public void setNcbiId(String ncbiId) { this.ncbiId = ncbiId; }
     public void setGeneNames(String geneNames) { this.geneNames = geneNames; }
-
-    public void setGeneDescriptions(List<GeneDescription> geneDescriptions) { this.geneDescriptions = geneDescriptions; }
+    public void setGeneDescriptions(String geneDescriptions) { this.geneDescriptions = geneDescriptions; }
    
     public void setOrgans(List<Organ> organs) { this.organs = organs; }
     public void setDiseases(List<Disease> diseases) { this.diseases = diseases; }

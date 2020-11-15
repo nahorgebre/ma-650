@@ -23,7 +23,7 @@ namespace DataTranslation
 
                     DI2.runDataTranslation();
 
-                    AWSupload.run(parameter);
+                    //AWSupload.run(parameter);
 
                     //AWSupload.run(parameter, Variables.gene2pubtatorcentral_partitionNumbers.ToString());
 

@@ -35,48 +35,58 @@ namespace DataTranslation
                     gene.recordId = string.Format(recordIdPattern, counter);     
 
 
-                    String ensemblId = string.Empty;
-
                     reader.ReadToFollowing("ensemblId");
 
-                    ensemblId = reader.ReadElementContentAsString();
+                    if (reader.HasAttributes)
+                    {
 
-                    gene.ensemblId = ensemblId;
+                        String ensemblId = reader.ReadElementContentAsString();
 
+                        gene.ensemblId = ensemblId;
 
-                    String ncbiId = string.Empty;
+                    }
+
 
                     reader.ReadToFollowing("ncbiId");
 
-                    ncbiId = reader.ReadElementContentAsString();
+                    if (reader.HasAttributes)
+                    {
+                        
+                        String ncbiId = reader.ReadElementContentAsString();
 
-                    gene.ncbiId = ncbiId;
+                        gene.ncbiId = ncbiId;
 
+                    }
 
-                    String geneDescriptions = string.Empty;
 
                     reader.ReadToFollowing("geneDescriptions");
 
-                    geneDescriptions = reader.ReadElementContentAsString();
+                    if (reader.HasAttributes)
+                    {
+                        
+                        String geneDescriptions = reader.ReadElementContentAsString();
 
-                    gene.geneDescriptions = geneDescriptions;
+                        gene.geneDescriptions = geneDescriptions;
 
+                    }
 
-                    String geneNames = string.Empty;
 
                     reader.ReadToFollowing("geneNames");
 
-                    geneNames = reader.ReadElementContentAsString();
-                    
-                    gene.geneNames = geneNames;
+                    if (reader.HasAttributes)
+                    {
+                        
+                        String geneNames = reader.ReadElementContentAsString();
 
-                    
+                        gene.geneNames = geneNames;
+
+                    }
+
+            
                     reader.ReadToFollowing("organs");
 
-                    if (reader.HasValue)
+                    if (reader.HasAttributes)
                     {
-
-                        Console.WriteLine(reader.HasValue);
 
                         XmlReader organsInner = reader.ReadSubtree();
 
@@ -96,7 +106,7 @@ namespace DataTranslation
 
                     reader.ReadToFollowing("diseaseAssociations");
 
-                    if (reader.HasValue)
+                    if (reader.HasAttributes)
                     {
 
                         XmlReader diseaseAssociationsInner = reader.ReadSubtree();
@@ -117,7 +127,7 @@ namespace DataTranslation
 
                     reader.ReadToFollowing("publicationMentions");
 
-                    if (reader.HasValue)
+                    if (reader.HasAttributes)
                     {
 
                         XmlReader publicationMentionsInner = reader.ReadSubtree();
@@ -138,7 +148,7 @@ namespace DataTranslation
    
                     reader.ReadToFollowing("patentMentions");
 
-                    if (reader.HasValue)
+                    if (reader.HasAttributes)
                     {
                         
                         XmlReader patentMentionsInner = reader.ReadSubtree();

@@ -9,7 +9,6 @@ import de.uni_mannheim.informatik.dws.winter.similarity.string.JaccardOnNGramsSi
 
 import genes.IdentityResolution.Comparators.GeneNameComperator.Comparison;
 import genes.IdentityResolution.model.Gene.Gene;
-import genes.IdentityResolution.model.GeneName.GeneName;
 
 import java.util.List;
 import java.util.ArrayList;

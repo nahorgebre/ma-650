@@ -9,10 +9,6 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 import genes.IdentityResolution.model.Disease.Disease;
 import genes.IdentityResolution.model.Disease.DiseaseXMLReader;
-import genes.IdentityResolution.model.GeneDescription.GeneDescription;
-import genes.IdentityResolution.model.GeneDescription.GeneDescriptionXMLReader;
-import genes.IdentityResolution.model.GeneName.GeneName;
-import genes.IdentityResolution.model.GeneName.GeneNameXMLReader;
 import genes.IdentityResolution.model.Organ.Organ;
 import genes.IdentityResolution.model.Organ.OrganXMLReader;
 import genes.IdentityResolution.model.Patent.Patent;
@@ -42,9 +38,7 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> {
 
         gene.setGeneNames(getValueFromChildElement(node, "geneNames"));
 
-        List<GeneDescription> geneDescriptions = getObjectListFromChildElement(node, "geneDescriptions", "geneDescriptions", new GeneDescriptionXMLReader(), provenanceInfo);
-        
-        gene.setGeneDescriptions(geneDescriptions);
+        gene.setGeneDescriptions(getValueFromChildElement(node, "geneDescriptions"));
         
         List<Organ> organs = getObjectListFromChildElement(node, "organs", "organs", new OrganXMLReader(), provenanceInfo);
 

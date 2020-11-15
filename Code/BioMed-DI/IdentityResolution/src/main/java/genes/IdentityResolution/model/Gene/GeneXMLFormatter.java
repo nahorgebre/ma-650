@@ -6,10 +6,6 @@ import org.w3c.dom.Element;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLFormatter;
 import genes.IdentityResolution.model.Disease.Disease;
 import genes.IdentityResolution.model.Disease.DiseaseXMLFormatter;
-import genes.IdentityResolution.model.GeneDescription.GeneDescription;
-import genes.IdentityResolution.model.GeneDescription.GeneDescriptionXMLFormatter;
-import genes.IdentityResolution.model.GeneName.GeneName;
-import genes.IdentityResolution.model.GeneName.GeneNameXMLFormatter;
 import genes.IdentityResolution.model.Organ.Organ;
 import genes.IdentityResolution.model.Organ.OrganXMLFormatter;
 import genes.IdentityResolution.model.Patent.Patent;
@@ -18,8 +14,6 @@ import genes.IdentityResolution.model.Publication.Publication;
 import genes.IdentityResolution.model.Publication.PublicationXMLFormatter;
 
 public class GeneXMLFormatter extends XMLFormatter<Gene> {
-
-    GeneDescriptionXMLFormatter geneDescriptionFormatter = new GeneDescriptionXMLFormatter();
 
     OrganXMLFormatter organFormatter = new OrganXMLFormatter();
 
@@ -49,7 +43,7 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
 
         gene.appendChild(createTextElement("geneNames", record.getGeneNames(), doc));
 
-        gene.appendChild(createGeneDescriptionsElement(record, doc));
+        gene.appendChild(createTextElement("geneDescriptions", record.getGeneDescriptions(), doc));
         
         gene.appendChild(createOrganElement(record, doc));
 
@@ -112,20 +106,6 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
         }
 
         return patentRoot;
-
-    }
-
-    protected Element createGeneDescriptionsElement(Gene record, Document doc) {
-
-        Element geneDescriptionRoot = geneDescriptionFormatter.createRootElement(doc);
-
-        for (GeneDescription a : record.getGeneDescriptions()) {
-
-            geneDescriptionRoot.appendChild(geneDescriptionFormatter.createElementFromRecord(a, doc));
-
-        }
-
-        return geneDescriptionRoot;
 
     }
 
