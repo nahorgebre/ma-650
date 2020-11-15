@@ -174,9 +174,9 @@ public class DataFusion1 {
 
 
         // write the result
-        new File("data/output/").mkdirs();
+        new File("data/output/DI1/").mkdirs();
 
-        new GeneXMLFormatter().writeXML(new File("data/output/kaessmann-fused.xml"), fusedDataSet);
+        new GeneXMLFormatter().writeXML(new File("data/output/DI1/kaessmann-fused.xml"), fusedDataSet);
         
 
         // evaluate
