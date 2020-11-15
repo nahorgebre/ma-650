@@ -23,4 +23,5 @@ public class NcbiIdEvaluationRule extends EvaluationRule<Gene, Attribute> {
                            Correspondence<Attribute, Matchable> schemaCorrespondence) {
         return isEqual(record1, record2, (Attribute)null);
     }
+    
 }
