@@ -60,24 +60,21 @@ namespace DataTranslation
 
                         bool condition;
 
-                        if (i == Variables.gene2pubtatorcentral_partitionNumbers)
+                        if (i == all_gene_disease_pmid_associations_partitionNumbers)
                         {
 
-                            condition = conditionCounter > Variables.gene2pubtatorcentral_partitionSize * (i - 1);
+                            condition = conditionCounter > all_gene_disease_pmid_associations_partitionSize * (i - 1);
 
                         }
                         else
                         {
 
-                            condition = (conditionCounter > Variables.gene2pubtatorcentral_partitionSize * (i - 1)) & (conditionCounter <= Variables.gene2pubtatorcentral_partitionSize * i);
+                            condition = (conditionCounter > all_gene_disease_pmid_associations_partitionSize * (i - 1)) & (conditionCounter <= all_gene_disease_pmid_associations_partitionSize * i);
 
                         }
 
                         if (condition)
                         {
-
-                            Console.WriteLine("Condition Counter: " + conditionCounter);
-
 
                             Gene gene = new Gene();
 
