@@ -24,7 +24,7 @@ public class EnsemblIdFuserLongestString extends
         // get the fused value
         FusedValue<String, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
 
-        System.out.println("fused getValue - Ensembl Id: " + fused.getValue());
+        //System.out.println("fused getValue - Ensembl Id: " + fused.getValue());
 
         // set the value for the fused record
         fusedRecord.setEnsemblId(fused.getValue());
