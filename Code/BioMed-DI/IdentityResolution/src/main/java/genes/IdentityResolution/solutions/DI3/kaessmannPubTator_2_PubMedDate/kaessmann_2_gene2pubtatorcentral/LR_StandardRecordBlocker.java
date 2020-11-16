@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI2.kaessmann_2_gene2pubtatorcentral;
+package genes.IdentityResolution.solutions.DI3.kaessmannPubTator_2_PubMedDate.kaessmann_2_gene2pubtatorcentral;
 
 // java
 import java.util.List;
