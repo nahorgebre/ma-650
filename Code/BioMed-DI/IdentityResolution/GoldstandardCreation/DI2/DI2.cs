@@ -25,8 +25,11 @@ namespace GoldstandardCreation
                 {
 
                     Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI2Datasets.kaessmann_path, DI2Datasets.all_gene_disease_pmid_associations_path(i), 3, Methods.GeneName);
+                    
+                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles_NcbiId_GeneName(DI2Datasets.kaessmann_path, DI2Datasets.all_gene_disease_pmid_associations_path(i));
+                    
                     Methods.createOuput(trueFile, trueList);
+
                     Methods.createOuput(falseFile, falseList);
 
                 }
