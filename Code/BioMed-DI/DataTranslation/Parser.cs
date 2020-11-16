@@ -79,8 +79,6 @@ namespace DataTranslation
                         if (!geneDescriptions.Equals(string.Empty))
                         {
 
-                            Console.WriteLine("Gene Descriptions: " + geneDescriptions);
-
                             gene.geneDescriptions = geneDescriptions;
                             
                         }
@@ -97,8 +95,6 @@ namespace DataTranslation
 
                         if (!geneNames.Equals(string.Empty))
                         {
-
-                            Console.WriteLine("Gene Names: " + geneNames);
 
                             gene.geneNames = geneNames;
                             
