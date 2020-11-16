@@ -76,6 +76,8 @@ namespace DataTranslation
                         if (condition)
                         {
 
+                            Console.WriteLine("Condition Counter: " + conditionCounter);
+
 
                             Gene gene = new Gene();
 
