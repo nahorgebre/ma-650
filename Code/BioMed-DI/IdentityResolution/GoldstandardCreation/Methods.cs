@@ -230,6 +230,8 @@ namespace GoldstandardCreation
                                 if (key1.Equals(key2))
                                 {
 
+                                    Console.WriteLine("Key: " + key1);
+
                                     double geneNameSim = getBestGeneNameSimilarity(geneNameSr1, geneNameSr2);
 
                                     var jw = new JaroWinkler();
@@ -423,7 +425,7 @@ namespace GoldstandardCreation
 
             int nameLength = geneName.Count();
 
-            if (nameLength >= 2)
+            if (nameLength >= 3)
             {
 
                 key = geneName.Substring(0,2).Trim();
