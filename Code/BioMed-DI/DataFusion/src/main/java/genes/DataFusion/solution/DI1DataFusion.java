@@ -3,8 +3,6 @@ package genes.DataFusion.solution;
 import org.apache.logging.log4j.Logger;
 import java.io.File;
 
-import com.amazonaws.services.devicefarm.model.Test;
-
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEvaluator;
@@ -15,7 +13,6 @@ import de.uni_mannheim.informatik.dws.winter.model.FusibleHashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroupFactory;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
-import de.uni_mannheim.informatik.dws.winter.model.FusibleDataSet;
 
 // Evaluation
 import genes.DataFusion.evaluation.EnsemblIdEvaluationRule;
@@ -42,7 +39,7 @@ import genes.DataFusion.model.Gene.Gene;
 import genes.DataFusion.model.Gene.GeneXMLFormatter;
 import genes.DataFusion.model.Gene.GeneXMLReader;
 
-public class DataFusion1 {
+public class DI1DataFusion {
 
     private static final Logger logger = WinterLogManager.activateLogger("trace");
 
