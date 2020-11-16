@@ -73,8 +73,7 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
         return recordProvenance;
     }
 
-    public void setAttributeProvenance(Attribute attribute,
-                                       Collection<String> provenance) {
+    public void setAttributeProvenance(Attribute attribute, Collection<String> provenance) {
         this.provenance.put(attribute, provenance);
     }
 

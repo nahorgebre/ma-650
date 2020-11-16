@@ -33,9 +33,11 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
         gene.appendChild(createTextElement("recordId",
                 record.getIdentifier(),
                 doc));
+                
         gene.appendChild(createTextElementWithProvenance("ensemblId",
                 record.getEnsemblId(),
                 record.getMergedAttributeProvenance(Gene.ENSEMBLID), doc));
+
         gene.appendChild(createTextElementWithProvenance("ncbiId",
                 record.getNcbiId(),
                 record.getMergedAttributeProvenance(Gene.NCBIID), doc));
