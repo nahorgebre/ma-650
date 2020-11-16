@@ -137,7 +137,7 @@ public class DI1DataFusion {
         DataFusionStrategy<Gene, Attribute> strategy = new DataFusionStrategy<>(new GeneXMLReader());
 
         // write debug results to file
-        strategy.activateDebugReport("data/output/debugResultsDatafusion.csv", 1000, gs);
+        strategy.activateDebugReport("data/output/DI1/debugResultsDatafusion.csv", 1000, gs);
 
         // add attribute fusers
         strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new EnsemblIdEvaluationRule());
