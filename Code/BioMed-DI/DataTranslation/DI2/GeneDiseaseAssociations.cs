@@ -12,7 +12,7 @@ namespace DataTranslation
 
         public static int all_gene_disease_pmid_associations_partitionSize = 221151;
         
-        public static int all_gene_disease_pmid_associations_partitionNumbers = 7;
+        public static int all_gene_disease_pmid_associations_partitionNumbers = 6;
 
         public static void runDataTranslation()
         {
