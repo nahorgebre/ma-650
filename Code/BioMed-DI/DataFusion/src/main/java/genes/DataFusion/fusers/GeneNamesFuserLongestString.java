@@ -22,8 +22,6 @@ public class GeneNamesFuserLongestString extends AttributeValueFuser<String, Gen
 
         // get the fused value
         FusedValue<String, Gene, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-  
-        //System.out.println("fused getValue - Gene Names: " + fused.getValue());
 
         // set the value for the fused record
         fusedRecord.setGeneNames(fused.getValue());

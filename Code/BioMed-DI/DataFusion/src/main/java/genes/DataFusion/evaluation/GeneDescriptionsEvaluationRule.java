@@ -15,13 +15,16 @@ public class GeneDescriptionsEvaluationRule extends EvaluationRule<Gene, Attribu
 
     @Override
     public boolean isEqual(Gene record1, Gene record2, Attribute schemaElement) {
+
         return sim.calculate(record1.getGeneDescriptions(), record2.getGeneDescriptions()) == 1.0;
+
     }
 
     @Override
-    public boolean isEqual(Gene record1, Gene record2,
-                           Correspondence<Attribute, Matchable> schemaCorrespondence) {
+    public boolean isEqual(Gene record1, Gene record2, Correspondence<Attribute, Matchable> schemaCorrespondence) {
+
         return isEqual(record1, record2, (Attribute)null);
+        
     }
     
 }
