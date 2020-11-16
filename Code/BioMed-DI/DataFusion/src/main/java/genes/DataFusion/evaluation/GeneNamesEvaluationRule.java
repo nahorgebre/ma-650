@@ -15,7 +15,7 @@ public class GeneNamesEvaluationRule extends EvaluationRule<Gene, Attribute> {
 
     @Override
     public boolean isEqual(Gene record1, Gene record2, Attribute schemaElement) {
-        return sim.calculate(record1.getGeneNames(), record2.getGeneNames()) == 1.0;
+        return sim.calculate(record1.getGeneNames(), record2.getGeneNames()) == 0;
     }
 
     @Override
