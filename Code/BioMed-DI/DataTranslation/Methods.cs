@@ -87,7 +87,7 @@ namespace DataTranslation
                 {
 
                     string recordId = "NaN";
-                    if (checkIfNullOrEmpty(item.recordId))
+                    if (checkIfNull(item.recordId))
                     {
 
                         recordId = item.recordId.Trim();
@@ -95,7 +95,7 @@ namespace DataTranslation
                     }
 
                     string ensemblId = "NaN";
-                    if (checkIfNullOrEmpty(item.ensemblId))
+                    if (checkIfNull(item.ensemblId))
                     {
 
                         ensemblId = item.ensemblId.Trim();
@@ -103,7 +103,7 @@ namespace DataTranslation
                     }
 
                     string ncbiId = "NaN";
-                    if (checkIfNullOrEmpty(item.ncbiId))
+                    if (checkIfNull(item.ncbiId))
                     {
 
                         ncbiId = item.ncbiId.Trim();
@@ -111,7 +111,7 @@ namespace DataTranslation
                     }
 
                     string geneName = "NaN";
-                    if (checkIfNullOrEmpty(item.geneNames))
+                    if (checkIfNull(item.geneNames))
                     {
 
                         geneName = item.geneNames;
@@ -165,7 +165,7 @@ namespace DataTranslation
                 {
 
                     string recordId = "NaN";
-                    if (checkIfNullOrEmpty(item.recordId))
+                    if (checkIfNull(item.recordId))
                     {
 
                         recordId = item.recordId.Trim();
@@ -175,7 +175,7 @@ namespace DataTranslation
                     string ensemblId = "NaN";
 
                     string ncbiId = "NaN";
-                    if (checkIfNullOrEmpty(item.ncbiId))
+                    if (checkIfNull(item.ncbiId))
                     {
 
                         ncbiId = item.ncbiId.Trim();
@@ -183,7 +183,7 @@ namespace DataTranslation
                     }
 
                     string geneName = "NaN";
-                    if (checkIfNullOrEmpty(item.geneNames))
+                    if (checkIfNull(item.geneNames))
                     {
 
                         geneName = item.geneNames;
@@ -191,7 +191,7 @@ namespace DataTranslation
                     }
 
                     string pmid = "NaN";
-                    if (checkIfNullOrEmpty(item.pmId))
+                    if (checkIfNull(item.pmId))
                     {
 
                         pmid = item.pmId.Trim();
@@ -219,7 +219,7 @@ namespace DataTranslation
 
     
     
-        public static bool checkIfNullOrEmpty(string value)
+        public static bool checkIfNull(string value)
         {
 
             bool returnValue = false;

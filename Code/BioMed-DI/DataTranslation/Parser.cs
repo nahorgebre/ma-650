@@ -40,9 +40,14 @@ namespace DataTranslation
                     if (reader.HasAttributes)
                     {
 
-                        String ensemblId = reader.ReadElementContentAsString();
+                        String ensemblId = reader.ReadElementContentAsString().Trim();
 
-                        gene.ensemblId = ensemblId;
+                        if (!ensemblId.Equals(string.Empty))
+                        {
+                            
+                            gene.ensemblId = ensemblId;
+
+                        }                        
 
                     }
 
@@ -52,9 +57,14 @@ namespace DataTranslation
                     if (reader.HasAttributes)
                     {
                         
-                        String ncbiId = reader.ReadElementContentAsString();
+                        String ncbiId = reader.ReadElementContentAsString().Trim();
 
-                        gene.ncbiId = ncbiId;
+                        if (!ncbiId.Equals(string.Empty))
+                        {
+
+                            gene.ncbiId = ncbiId;
+                            
+                        }
 
                     }
 
@@ -64,9 +74,14 @@ namespace DataTranslation
                     if (reader.HasAttributes)
                     {
                         
-                        String geneDescriptions = reader.ReadElementContentAsString();
+                        String geneDescriptions = reader.ReadElementContentAsString().Trim();
 
-                        gene.geneDescriptions = geneDescriptions;
+                        if (!geneDescriptions.Equals(string.Empty))
+                        {
+
+                            gene.geneDescriptions = geneDescriptions;
+                            
+                        }
 
                     }
 
@@ -76,9 +91,14 @@ namespace DataTranslation
                     if (reader.HasAttributes)
                     {
                         
-                        String geneNames = reader.ReadElementContentAsString();
+                        String geneNames = reader.ReadElementContentAsString().Trim();
 
-                        gene.geneNames = geneNames;
+                        if (!geneNames.Equals(string.Empty))
+                        {
+
+                            gene.geneNames = geneNames;
+                            
+                        }        
 
                     }
 
