@@ -248,8 +248,8 @@ namespace GoldstandardCreation
 
                                     if (ncbiIdSim == 1 ) trueFile = true;
 
-
-                                    if (geneNameSim <= 0.95 & geneNameSim > 0.6) falseFile = true;
+                                    // geneNameSim <= 0.95 & geneNameSim > 0.6
+                                    if (geneNameSim <= 0.95) falseFile = true;
 
 
                                     if (trueFile)
