@@ -108,9 +108,9 @@ public class Gene extends AbstractRecord<Attribute> implements Serializable {
         else if(attribute==NCBIID)
             return getNcbiId() != null && !getNcbiId().isEmpty();
         else if(attribute== GENENAMES)
-            return getGeneNames() != null && getGeneNames().isEmpty();
+            return getGeneNames() != null && !getGeneNames().isEmpty();
         else if(attribute==GENEDESCRIPTIONS)
-            return getGeneDescriptions() != null && getGeneDescriptions().isEmpty();
+            return getGeneDescriptions() != null && !getGeneDescriptions().isEmpty();
         else if(attribute==ORGANS)
             return getOrgans() != null && getOrgans().size() > 0;
         else if(attribute== PUBLICATIONMENTIONS)
