@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 import javax.xml.xpath.XPathExpressionException;
 
 
-public class UploadToS3 {
+public class UploadDI1ToS3 {
 
     public static void main( String[] args ) throws Exception
     {
