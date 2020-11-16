@@ -455,7 +455,7 @@ namespace GoldstandardCreation
             }
             */
 
-            return key;
+            return key.ToLower();
 
         }
 
