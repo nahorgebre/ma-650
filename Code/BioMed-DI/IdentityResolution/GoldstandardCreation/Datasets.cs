@@ -2,7 +2,7 @@ using System;
 
 namespace GoldstandardCreation
 {
-    class Datasets
+    class DI1Datasets
     {
 
         // // DI1
@@ -25,13 +25,6 @@ namespace GoldstandardCreation
         // Testis
         public static string Testis_path = Environment.CurrentDirectory + "/data/input/DI1/Testis_dt.tsv";
         public static string mart_export_testis_path = Environment.CurrentDirectory + "/data/input/DI1/mart_export_testis_dt.tsv";
-
-        // // DI2
-        // Publication
-        public static string getGene2pubtatorcentral_path(int fileNumber) {
-            String gene2pubtatorcentral_path = Environment.CurrentDirectory + "/data/input/DI2/" + Variables.pubTatorPartitionSize + "/gene2pubtatorcentral_" + fileNumber + "_dt.tsv";
-            return gene2pubtatorcentral_path;
-        }
 
     }
     

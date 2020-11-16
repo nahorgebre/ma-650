@@ -39,7 +39,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Heart_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Heart_path, DI1Datasets.Heart_Ensembl_NCBI_Crosswalk_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -65,7 +65,7 @@ namespace GoldstandardCreation
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Heart_path, DI1Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1, Methods.EnsemblId);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
 
@@ -94,7 +94,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.mart_export_heart_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.mart_export_heart_path, DI1Datasets.Heart_Ensembl_NCBI_Crosswalk_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -120,7 +120,7 @@ namespace GoldstandardCreation
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.mart_export_brain_path, Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.mart_export_brain_path, DI1Datasets.Heart_Ensembl_NCBI_Crosswalk_path, 1, Methods.EnsemblId);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
 

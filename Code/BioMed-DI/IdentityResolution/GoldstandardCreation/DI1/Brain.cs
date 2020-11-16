@@ -30,7 +30,7 @@ namespace GoldstandardCreation
                 !File.Exists(falseFile))
             {
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.mart_export_brain_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Brain_path, DI1Datasets.mart_export_brain_path, 1, Methods.EnsemblId);
 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -64,7 +64,7 @@ namespace GoldstandardCreation
 
                 //(List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.mart_export_brain_path, 1, Methods.EnsemblId);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Brain_path, Datasets.mart_export_brain_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Brain_path, DI1Datasets.mart_export_brain_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);

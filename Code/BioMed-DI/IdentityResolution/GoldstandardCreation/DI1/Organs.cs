@@ -75,7 +75,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Heart_path, Datasets.Brain_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Heart_path, DI1Datasets.Brain_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -101,7 +101,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Brain_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Heart_path, DI1Datasets.Brain_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -131,7 +131,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Heart_path, Datasets.Cerebellum_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Heart_path, DI1Datasets.Cerebellum_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -158,7 +158,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Cerebellum_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Heart_path, DI1Datasets.Cerebellum_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -188,7 +188,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Heart_path, Datasets.Kidney_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Heart_path, DI1Datasets.Kidney_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -215,7 +215,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Kidney_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Heart_path, DI1Datasets.Kidney_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -245,7 +245,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Heart_path, Datasets.Liver_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Heart_path, DI1Datasets.Liver_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -272,7 +272,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Liver_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Heart_path, DI1Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -301,7 +301,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Heart_path, Datasets.Testis_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Heart_path, DI1Datasets.Testis_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -328,7 +328,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Heart_path, Datasets.Testis_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Heart_path, DI1Datasets.Testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -360,7 +360,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Cerebellum_path, Datasets.Brain_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Cerebellum_path, DI1Datasets.Brain_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -386,7 +386,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Brain_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Cerebellum_path, DI1Datasets.Brain_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -416,7 +416,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Cerebellum_path, Datasets.Kidney_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Cerebellum_path, DI1Datasets.Kidney_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -443,7 +443,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Kidney_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Cerebellum_path, DI1Datasets.Kidney_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -473,7 +473,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Cerebellum_path, Datasets.Liver_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Cerebellum_path, DI1Datasets.Liver_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -500,7 +500,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Liver_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Cerebellum_path, DI1Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -530,7 +530,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Cerebellum_path, Datasets.Testis_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Cerebellum_path, DI1Datasets.Testis_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -557,7 +557,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Cerebellum_path, Datasets.Testis_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Cerebellum_path, DI1Datasets.Testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -589,7 +589,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Brain_path, Datasets.Kidney_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Brain_path, DI1Datasets.Kidney_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -616,7 +616,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Kidney_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Brain_path, DI1Datasets.Kidney_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -646,7 +646,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Brain_path, Datasets.Liver_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Brain_path, DI1Datasets.Liver_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -673,7 +673,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Liver_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Brain_path, DI1Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -703,7 +703,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Brain_path, Datasets.Testis_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Brain_path, DI1Datasets.Testis_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -730,7 +730,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Brain_path, Datasets.Testis_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Brain_path, DI1Datasets.Testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -762,7 +762,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Kidney_path, Datasets.Liver_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Kidney_path, DI1Datasets.Liver_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -789,7 +789,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Liver_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Kidney_path, DI1Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -819,7 +819,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Kidney_path, Datasets.Testis_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Kidney_path, DI1Datasets.Testis_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -846,7 +846,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
                 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Kidney_path, Datasets.Testis_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Kidney_path, DI1Datasets.Testis_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
@@ -876,7 +876,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(Datasets.Testis_path, Datasets.Liver_path);
+                (List<Goldstandard> trueCloseList, List<Goldstandard> trueFarList, List<Goldstandard> falseCloseList, List<Goldstandard> falseFarList) = Methods.compareFilesEnsemblIdBlockingComparator(DI1Datasets.Testis_path, DI1Datasets.Liver_path);
                 
                 Methods.createOuput(trueCloseFile, trueCloseList);
                 Methods.createOuput(trueFarFile, trueFarList);
@@ -903,7 +903,7 @@ namespace GoldstandardCreation
 
                 Directory.CreateDirectory(directoryName);
 
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.Testis_path, Datasets.Liver_path, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI1Datasets.Testis_path, DI1Datasets.Liver_path, 1, Methods.EnsemblId);
                 
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
