@@ -179,7 +179,7 @@ namespace GoldstandardCreation
             // ncbiId - 2
             // geneName - 3
 
-            int gsSize = 200;
+            int gsSize = 100;
 
             List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
             List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
