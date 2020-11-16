@@ -242,12 +242,13 @@ namespace GoldstandardCreation
 
                                     bool falseFile = false;
 
+                                    // 0.95
+                                    if (geneNameSim == 1) trueFile = true;
 
-                                    if (geneNameSim > 0.95) trueFile = true;
+                                    if (ncbiIdSim == 1) trueFile = true;
 
-                                    if (ncbiIdSim == 1 ) trueFile = true;
-
-                                    if (geneNameSim <= 0.95 & geneNameSim > 0.6) falseFile = true;
+                                    // 0.95
+                                    if (geneNameSim <= 0.9 & geneNameSim > 0.6) falseFile = true;
 
 
                                     if (trueFile)
