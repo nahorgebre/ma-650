@@ -11,7 +11,7 @@ namespace GoldstandardCreation
         {
 
             string comparison = "kaessmann_2_all_gene_disease_pmid_associations";
-            string directoryName = string.Format("{0}/data/output/DI1/{1}", Environment.CurrentDirectory, comparison);
+            string directoryName = string.Format("{0}/data/output/DI2/{1}", Environment.CurrentDirectory, comparison);
             string trueFile = string.Format("{0}/true.csv", directoryName);
             string falseFile = string.Format("{0}/false.csv", directoryName);
 
@@ -21,7 +21,7 @@ namespace GoldstandardCreation
             {
 
                 Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(Datasets.k, Datasets.all, 1, Methods.EnsemblId);
+                (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles(DI2Datasets.kaessmann_path, DI2Datasets.all_gene_disease_pmid_associations_path, 3, Methods.GeneName);
                 Methods.createOuput(trueFile, trueList);
                 Methods.createOuput(falseFile, falseList);
 

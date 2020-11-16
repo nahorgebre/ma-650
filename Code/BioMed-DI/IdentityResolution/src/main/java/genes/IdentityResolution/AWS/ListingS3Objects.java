@@ -149,29 +149,6 @@ public class ListingS3Objects {
 
         }
 
-        ObjectListing objectListing2 = s3client.listObjects("nahorgebre-ma-650-master-thesis", "data-fusion/output/DI1");
-        for(S3ObjectSummary os : objectListing2.getObjectSummaries()) {
-
-            String key = os.getKey();
-
-            String[] parts = key.split("/");
-
-            if (parts.length == 4) {
-
-                String fileName = parts[3];
-
-                if (fileName.contains(".xml")) {
-
-                    String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/input/DI2/" + fileName;
-                
-                    writer.println(wgetString);
-
-                }
-
-            }
-
-        }
-
         writer.close();
 
         Path source = Paths.get(System.getProperty("user.dir") + "/Get-D-2.sh");
