@@ -21,7 +21,7 @@ public class UploadToS3 {
     public static void main( String[] args ) throws Exception
     {
 
-        String outputDirectory = System.getProperty("user.dir") + "/data/output";
+        String outputDirectory = System.getProperty("user.dir") + "/data/output/DI1";
 
         for (String file : getFiles(outputDirectory)) {
 
