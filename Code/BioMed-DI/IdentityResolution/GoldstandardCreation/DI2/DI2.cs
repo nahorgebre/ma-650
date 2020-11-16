@@ -15,7 +15,7 @@ namespace GoldstandardCreation
             for (int i = 1; i <= kaessmann_2_all_gene_disease_pmid_associations_partitionNumbers; i++)
             {
                 string comparison = "kaessmann_2_all_gene_disease_pmid_associations_" + i;
-                string directoryName = string.Format("{0}/data/output/DI2/{1}/{2}", Environment.CurrentDirectory, kaessmann_2_all_gene_disease_pmid_associations_partitionNumbers, comparison);
+                string directoryName = string.Format("{0}/data/output/DI2/{1}", Environment.CurrentDirectory, comparison);
                 string trueFile = string.Format("{0}/true.csv", directoryName);
                 string falseFile = string.Format("{0}/false.csv", directoryName);
 
@@ -30,7 +30,7 @@ namespace GoldstandardCreation
                     Methods.createOuput(falseFile, falseList);
 
                 }
-                
+
             }
 
         }
