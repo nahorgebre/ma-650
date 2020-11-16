@@ -227,6 +227,8 @@ namespace GoldstandardCreation
 
                                 string key2 = getGeneNameBlockingKey(geneNameSr2);
 
+                                Console.WriteLine("Key 1: " + key1 + " - Key 2: " + key2);
+
                                 if (key1.Equals(key2))
                                 {
 
