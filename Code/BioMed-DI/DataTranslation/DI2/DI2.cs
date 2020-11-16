@@ -13,7 +13,7 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            //GeneDiseaseAssociations.runDataTranslation();
+            GeneDiseaseAssociations.runDataTranslation();
             
             Kaessmann.runDataTranslation();
 
