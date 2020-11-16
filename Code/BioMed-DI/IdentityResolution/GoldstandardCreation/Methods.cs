@@ -232,7 +232,7 @@ namespace GoldstandardCreation
                                 if (key1.Equals(key2))
                                 {
 
-                                    Console.WriteLine("Key: " + key1);
+                                    //Console.WriteLine("Key: " + key1);
 
                                     double geneNameSim = getBestGeneNameSimilarity(geneNameSr1, geneNameSr2);
 
