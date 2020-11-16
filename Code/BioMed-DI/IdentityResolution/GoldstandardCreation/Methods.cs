@@ -227,12 +227,8 @@ namespace GoldstandardCreation
 
                                 string key2 = getGeneNameBlockingKey(geneNameSr2);
 
-                                //Console.WriteLine("Key 1: " + key1 + " - Key 2: " + key2);
-
                                 if (key1.Equals(key2))
                                 {
-
-                                    //Console.WriteLine("Key: " + key1);
 
                                     double geneNameSim = getBestGeneNameSimilarity(geneNameSr1, geneNameSr2);
 
@@ -251,7 +247,7 @@ namespace GoldstandardCreation
                                     if (ncbiIdSim == 1 ) trueFile = true;
 
                                     // geneNameSim <= 0.95 & geneNameSim > 0.6
-                                    if (geneNameSim <= 0.95) falseFile = true;
+                                    if (geneNameSim <= 0.95 & geneNameSim > 0.6) falseFile = true;
 
 
                                     if (trueFile)
