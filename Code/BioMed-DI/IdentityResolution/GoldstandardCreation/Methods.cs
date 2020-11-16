@@ -170,6 +170,223 @@ namespace GoldstandardCreation
 
         }
 
+
+        public static (List<Goldstandard>, List<Goldstandard>) compareFiles_NcbiId_GeneName(string fileName1, string fileName2)
+        {
+
+            // recordId - 0
+            // ensemblId - 1
+            // ncbiId - 2
+            // geneName - 3
+
+            int gsSize = 200;
+
+            List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
+            List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
+
+            var delimiter = "\t";
+
+            using (StreamReader sr1 = new StreamReader(fileName1))
+            {
+
+                sr1.ReadLine();
+                while (!sr1.EndOfStream)
+                {
+
+                    var lineSr1 = sr1.ReadLine();
+
+                    if (goldstandardListTrue.Count() < gsSize)
+                    {
+
+                        String[] valuesSr1 = lineSr1.Split(delimiter);
+
+                        string geneNameSr1 = valuesSr1[3].Trim();
+
+                        string ncbiIdSr1 = valuesSr1[2].Trim();
+
+                        string recordIdSr1 = valuesSr1[0];
+
+                        using (StreamReader sr2 = new StreamReader(fileName2))
+                        {
+
+                            sr2.ReadLine();
+                
+                            while (!sr2.EndOfStream)
+                            {
+                                var lineSr2 = sr2.ReadLine();
+
+                                String[] valuesSr2 = lineSr2.Split(delimiter);
+
+                                string geneNameSr2 = valuesSr2[3].Trim();
+
+                                string ncbiIdSr2 = valuesSr2[2].Trim();
+
+                                string recordIdSr2 = valuesSr2[0];
+
+                                string key1 = getGeneNameBlockingKey(geneNameSr1);
+
+                                string key2 = getGeneNameBlockingKey(geneNameSr2);
+
+                                if (key1.Equals(key2))
+                                {
+
+                                    double geneNameSim = getBestGeneNameSimilarity(geneNameSr1, geneNameSr2);
+
+                                    var jw = new JaroWinkler();
+
+                                    double ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
+
+
+                                    bool trueFile = false;
+
+                                    bool falseFile = false;
+
+
+                                    if (geneNameSim > 0.95) trueFile = true;
+
+                                    if (ncbiIdSim == 1 ) trueFile = true;
+
+
+                                    if (geneNameSim <= 0.95 & geneNameSim > 0.7) falseFile = true;
+
+
+                                    if (trueFile)
+                                    {
+
+                                        if (!goldstandardListTrue.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrue.Exists(x => x.recordId1 == recordIdSr1))
+                                        {
+
+                                            Console.WriteLine("GS True #" + (goldstandardListTrue.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + ncbiIdSim);
+
+                                            Goldstandard goldstandardItem = new Goldstandard();
+                                            goldstandardItem.recordId1 = recordIdSr1;
+                                            goldstandardItem.value1 = geneNameSr1;
+                                            goldstandardItem.recordId2 = recordIdSr2;
+                                            goldstandardItem.value2 = geneNameSr2;
+                                            goldstandardItem.boolValue = "TRUE";
+                                            goldstandardItem.sim = ncbiIdSim;
+                                            goldstandardItem.blockingKey = key1;
+
+                                            goldstandardListTrue.Add(goldstandardItem);
+
+                                        }
+
+                                    }
+                                    else if (falseFile)
+                                    {
+                                    
+                                        if (goldstandardListFalse.Count() < gsSize)
+                                        {
+                                        
+                                            if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalse.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
+                               
+                                                Console.WriteLine("GS False #" + (goldstandardListFalse.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + ncbiIdSim);
+
+                                                Goldstandard goldstandardItem = new Goldstandard();
+                                                goldstandardItem.recordId1 = recordIdSr1;
+                                                goldstandardItem.value1 = geneNameSr1;
+                                                goldstandardItem.recordId2 = recordIdSr2;
+                                                goldstandardItem.value2 = geneNameSr2;
+                                                goldstandardItem.boolValue = "FALSE";
+                                                goldstandardItem.sim = ncbiIdSim;
+                                                goldstandardItem.blockingKey = key1;
+
+                                                goldstandardListFalse.Add(goldstandardItem);
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            
+            }
+
+            Console.WriteLine("GS-True-List Count: " + goldstandardListTrue.Count);
+            Console.WriteLine("GS-False-List Count: " + goldstandardListFalse.Count);
+            
+            return (goldstandardListTrue, goldstandardListFalse);
+
+        }
+
+        public static double getBestGeneNameSimilarity(String geneNameSr1, String geneNameSr2)
+        {
+
+            var jw = new JaroWinkler();
+
+            List<String> geneNameListSr1 = getGeneNameList(geneNameSr1);
+
+            List<String> geneNameListSr2 = getGeneNameList(geneNameSr2);
+
+            SimComparison simComp = new SimComparison();
+
+            foreach (string geneNameSr1Item in geneNameListSr1)
+            {
+                
+                foreach (string geneNameSr2Item in geneNameListSr2)
+                {
+
+                    double sim = jw.Similarity(geneNameSr1Item.ToLower(), geneNameSr2Item.ToLower());
+
+                    if (sim > simComp.similarity)
+                    {
+
+                        simComp.s1 = geneNameSr1Item;
+
+                        simComp.s2 = geneNameSr2Item;
+
+                        simComp.similarity = sim;
+
+                    }
+                    
+                }
+
+            }
+
+            return simComp.similarity;
+
+        }
+
+        public static List<String> getGeneNameList(string geneNames)
+        {
+
+            List<String> geneNameList = new List<String>();
+
+            if (geneNames.Contains("|"))
+            {
+
+                String[] geneNameArray = geneNames.Split("|");
+
+                foreach (String geneNameItem in geneNameArray)
+                {
+
+                    geneNameList.Add(geneNameItem.Trim());
+
+                }
+                
+            }
+            else
+            {
+
+                geneNameList.Add(geneNames);
+
+            }
+
+            return geneNameList;
+
+        }
+
+
         public static String getGeneNameBlockingKey(String geneNames)
         {
             string key = "default";
@@ -547,214 +764,6 @@ namespace GoldstandardCreation
             return (goldstandardListTrueClose, goldstandardListTrueFar, goldstandardListFalseClose, goldstandardListFalseFar);
 
         }
-
-
-        /*
-        public static void createBlockingKeyOutput(HashSet<String> blockingKeys) {
-
-            string fileName = string.Format("{0}/data/output/test.csv", Environment.CurrentDirectory);
-
-            using (StreamWriter sw = new StreamWriter(fileName))
-            {
-
-                foreach (var key in blockingKeys)
-                {
-
-                    sw.WriteLine(key);
-                    
-                }
-            }
-        }
-        */
-
-                   /*
-            using (StreamReader sr1 = new StreamReader(fileName1))
-            {
-
-                sr1.ReadLine();
-
-                while (!sr1.EndOfStream)
-                {
-
-                    var lineSr1 = sr1.ReadLine();
-
-                    if (goldstandardListTrue.Count() < gsSizeTrue)
-                    {
-
-                        String[] valuesSr1 = lineSr1.Split(delimiter);
-
-                        string compareValueSr1 = valuesSr1[4].Trim();
-
-                        string recordIdSr1 = valuesSr1[0];
-
-                        using (StreamReader sr2 = new StreamReader(fileName2))
-                        {
-
-                            sr2.ReadLine();
-           
-                            while (!sr2.EndOfStream)
-                            {
-                                var lineSr2 = sr2.ReadLine();
-
-                                String[] valuesSr2 = lineSr2.Split(delimiter);
-
-                                string compareValueSr2 = valuesSr2[4].Trim();
-
-                                string recordIdSr2 = valuesSr2[0];
-
-                                string key1 = getPmIdBlockingKey(compareValueSr1);
-
-                                string key2 = getPmIdBlockingKey(compareValueSr2);
-                                
-                                if (key1.Equals(key2))
-                                {
-
-                                    var jw = new JaroWinkler();
-
-                                    double sim = jw.Similarity(compareValueSr1, compareValueSr2);
-
-                                    bool trueFile = false;
-
-                                    bool falseFileClose = false;
-
-                                    bool falseFileFar = false;
-
-                                    if (sim >= 0.97) trueFile = true;
-
-                                    if (sim < 0.97 & sim > 0.1) falseFileClose = true;
-
-                                    if (sim == 0) falseFileFar = true;
-
-                                    if (trueFile)
-                                    {
-
-                                        if (!goldstandardListTrue.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrue.Exists(x => x.recordId1 == recordIdSr1))
-                                        {
-
-                                            Console.WriteLine("Goldstandard True - " + goldstandardListTrue.Count() +" : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
-
-                                            Goldstandard goldstandardItem = new Goldstandard();
-
-                                            goldstandardItem.recordId1 = recordIdSr1;
-
-                                            goldstandardItem.value1 = compareValueSr1;
-
-                                            goldstandardItem.recordId2 = recordIdSr2;
-
-                                            goldstandardItem.value2 = compareValueSr2;
-
-                                            goldstandardItem.boolValue = "TRUE";
-
-                                            goldstandardItem.sim = sim;
-
-                                            goldstandardItem.blockingKey = key1;
-
-                                            goldstandardListTrue.Add(goldstandardItem);
-
-                                        }
-
-                                    }
-                                    else if (falseFileClose)
-                                    {
-                                    
-                                        if (goldstandardListFalseClose.Count() < gsSizeFalseClose)
-                                        {
-                                        
-                                            if (!goldstandardListFalseClose.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalseClose.Exists(x => x.recordId1 == recordIdSr1))
-                                            {
-                                  
-                                                Console.WriteLine("Goldstandard False Close - " + goldstandardListFalseClose.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
-
-                                                Goldstandard goldstandardItem = new Goldstandard();
-
-                                                goldstandardItem.recordId1 = recordIdSr1;
-
-                                                goldstandardItem.value1 = compareValueSr1;
-
-                                                goldstandardItem.recordId2 = recordIdSr2;
-
-                                                goldstandardItem.value2 = compareValueSr2;
-
-                                                goldstandardItem.boolValue = "FALSE";
-
-                                                goldstandardItem.sim = sim;
-
-                                                goldstandardItem.blockingKey = key1;
-
-                                                goldstandardListFalseClose.Add(goldstandardItem);
-
-                                            }
-
-                                        }
-
-                                    }
-                                    else if (falseFileFar)
-                                    {
-
-                                        if (goldstandardListFalseFar.Count() < gsSizeFalseFar)
-                                        {
-
-                                            if (!goldstandardListFalseFar.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalseFar.Exists(x => x.recordId1 == recordIdSr1))
-                                            {
-
-                                                Console.WriteLine("Goldstandard False Far - " + goldstandardListFalseFar.Count() + " : " + compareValueSr1 + " - " + compareValueSr2 + " - " + sim);
-
-                                                Goldstandard goldstandardItem = new Goldstandard();
-
-                                                goldstandardItem.recordId1 = recordIdSr1;
-
-                                                goldstandardItem.value1 = compareValueSr1;
-
-                                                goldstandardItem.recordId2 = recordIdSr2;
-
-                                                goldstandardItem.value2 = compareValueSr2;
-
-                                                goldstandardItem.boolValue = "FALSE";
-
-                                                goldstandardItem.sim = sim;
-
-                                                goldstandardItem.blockingKey = key1;
-
-                                                goldstandardListFalseFar.Add(goldstandardItem);
-
-                                            }
-
-                                        }
-
-                                    }
-
-                                }
-
-                            }
-
-                        }
-
-                    }
-
-                }
-            
-            }
-            */
-
-                /*
-        public static String getPmIdBlockingKey(String pmId)
-        {
-
-            String key = "default";
-
-            int pmIdLength = pmId.Count();
-
-            if (pmIdLength >= 5)
-            {
-
-                key = pmId.Substring(0, 4).Trim();
-
-            }
-
-            return key;
-
-        }
-        */
 
     }
 
