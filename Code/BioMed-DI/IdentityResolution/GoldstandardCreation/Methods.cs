@@ -190,6 +190,7 @@ namespace GoldstandardCreation
             {
 
                 sr1.ReadLine();
+
                 while (!sr1.EndOfStream)
                 {
 
@@ -246,7 +247,6 @@ namespace GoldstandardCreation
 
                                     if (ncbiIdSim == 1 ) trueFile = true;
 
-                                    // geneNameSim <= 0.95 & geneNameSim > 0.6
                                     if (geneNameSim <= 0.95 & geneNameSim > 0.6) falseFile = true;
 
 
@@ -256,7 +256,7 @@ namespace GoldstandardCreation
                                         if (!goldstandardListTrue.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrue.Exists(x => x.recordId1 == recordIdSr1))
                                         {
 
-                                            Console.WriteLine("GS True #" + (goldstandardListTrue.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + ncbiIdSim);
+                                            Console.WriteLine("GS True #" + (goldstandardListTrue.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + geneNameSim);
 
                                             Goldstandard goldstandardItem = new Goldstandard();
                                             goldstandardItem.recordId1 = recordIdSr1;
@@ -264,7 +264,7 @@ namespace GoldstandardCreation
                                             goldstandardItem.recordId2 = recordIdSr2;
                                             goldstandardItem.value2 = geneNameSr2;
                                             goldstandardItem.boolValue = "TRUE";
-                                            goldstandardItem.sim = ncbiIdSim;
+                                            goldstandardItem.sim = geneNameSim;
                                             goldstandardItem.blockingKey = key1;
 
                                             goldstandardListTrue.Add(goldstandardItem);
@@ -281,7 +281,7 @@ namespace GoldstandardCreation
                                             if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalse.Exists(x => x.recordId1 == recordIdSr1))
                                             {
                                
-                                                Console.WriteLine("GS False #" + (goldstandardListFalse.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + ncbiIdSim);
+                                                Console.WriteLine("GS False #" + (goldstandardListFalse.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + geneNameSim);
 
                                                 Goldstandard goldstandardItem = new Goldstandard();
                                                 goldstandardItem.recordId1 = recordIdSr1;
@@ -289,7 +289,7 @@ namespace GoldstandardCreation
                                                 goldstandardItem.recordId2 = recordIdSr2;
                                                 goldstandardItem.value2 = geneNameSr2;
                                                 goldstandardItem.boolValue = "FALSE";
-                                                goldstandardItem.sim = ncbiIdSim;
+                                                goldstandardItem.sim = geneNameSim;
                                                 goldstandardItem.blockingKey = key1;
 
                                                 goldstandardListFalse.Add(goldstandardItem);
