@@ -12,7 +12,7 @@ namespace GoldstandardCreation
 
         private static IAmazonS3 s3Client;
 
-        public static void runDI1(DirectoryInfo outputDirectory)
+        public static void run(DirectoryInfo outputDirectory)
         {
 
             foreach (DirectoryInfo subDirectory in outputDirectory.GetDirectories())
@@ -40,7 +40,7 @@ namespace GoldstandardCreation
 
         }
 
-        public static void run(DirectoryInfo outputDirectory, String parameter = null)
+        public static void runX(DirectoryInfo outputDirectory, String parameter = null)
         {
 
             Console.WriteLine("Start uploading files!");

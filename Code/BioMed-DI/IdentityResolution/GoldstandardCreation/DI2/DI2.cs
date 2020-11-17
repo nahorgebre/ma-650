@@ -9,7 +9,7 @@ namespace GoldstandardCreation
 
         public static int kaessmann_2_all_gene_disease_pmid_associations_partitionNumbers = 7;
 
-        public static void runDataTranslation() 
+        public static void run() 
         {
 
             for (int i = 1; i <= kaessmann_2_all_gene_disease_pmid_associations_partitionNumbers; i++)
