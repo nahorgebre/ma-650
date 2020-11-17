@@ -52,8 +52,7 @@ public class ML_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        //for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
-        for (int fileNumber = 1; fileNumber <= 1; fileNumber++) { 
+        for (int fileNumber = 1; fileNumber <= 7; fileNumber++) { 
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  
