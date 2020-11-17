@@ -25,6 +25,8 @@ public class ListingS3Objects {
         getDI1GoldstandardDatasets();
 
         getDI2Datasets();
+
+        getDI2GoldstandardDatasets();
    
     }
 
