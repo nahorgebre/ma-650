@@ -19,8 +19,8 @@ import de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule;
 import genes.IdentityResolution.model.Gene.Gene;
 
 // solutions
-import genes.IdentityResolution.solutions.Datasets;
 import genes.IdentityResolution.solutions.Correspondences;
+import genes.IdentityResolution.solutions.DI2Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
@@ -45,7 +45,6 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorense
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
 
-import genes.IdentityResolution.solutions.Variables;
 
 public class ML_StandardRecordBlocker {
 
@@ -56,8 +55,8 @@ public class ML_StandardRecordBlocker {
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  
-            HashedDataSet<Gene, Attribute> ds1 = Datasets.kaessmann();
-            HashedDataSet<Gene, Attribute> ds2 = Datasets.gene2pubtatorcentral(fileNumber);
+            HashedDataSet<Gene, Attribute> ds1 = DI2Datasets.kaessmann();
+            HashedDataSet<Gene, Attribute> ds2 = DI2Datasets.all_gene_disease_pmid_associations(fileNumber);
     
             // goldstandard directory
             String comparisonDescription = "kaessmann_2_all_gene_disease_pmid_associations_" + fileNumber;
@@ -91,13 +90,11 @@ public class ML_StandardRecordBlocker {
                 matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
     
                 // add comparators
-                /*
                 matchingRule.addComparator(new NcbiIdComperatorCosine());
                 matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams());
                 matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
                 matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
                 matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
-                */
                 
                 matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
