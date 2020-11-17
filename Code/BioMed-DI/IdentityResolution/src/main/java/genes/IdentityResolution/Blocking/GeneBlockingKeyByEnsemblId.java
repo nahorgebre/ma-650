@@ -18,12 +18,20 @@ public class GeneBlockingKeyByEnsemblId extends
     @Override
     public void generateBlockingKeys(Gene record, Processable<Correspondence<Attribute, Matchable>> correspondences,
                                     DataIterator<Pair<String, Gene>> resultCollector) {
+        
+        String key = "default";
 
-        int beginIndex = record.getEnsemblId().length() - 2;
+        String ensemblId = record.getEnsemblId();
 
-        int endIndex = record.getEnsemblId().length() - 1;
+        if (ensemblId != null) {
 
-        String key = record.getEnsemblId().substring(beginIndex, endIndex);
+            int beginIndex = ensemblId.length() - 2;
+
+            int endIndex = ensemblId.length() - 1;
+    
+            key = ensemblId.substring(beginIndex, endIndex);
+            
+        }
 
         resultCollector.next(new Pair<>(key, record));
 
