@@ -2,6 +2,7 @@ package genes.DataFusion.solution;
 
 public class DI1Correspondences {
 
+
     public static String Brain_2_Kidney = "data/correspondences/DI1/Brain_2_Kidney/correspondences.csv";
 
     public static String Brain_2_Liver = "data/correspondences/DI1/Brain_2_Liver/correspondences.csv";
@@ -45,5 +46,6 @@ public class DI1Correspondences {
     public static String Testis_2_mart_export_testis = "data/correspondences/DI1/Testis_2_mart_export_testis/correspondences.csv";
     
     public static String mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk = "data/correspondences/DI1/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk/correspondences.csv";
+    
     
 }

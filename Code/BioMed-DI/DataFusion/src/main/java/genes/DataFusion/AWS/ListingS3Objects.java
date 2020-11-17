@@ -2,10 +2,6 @@ package genes.DataFusion.AWS;
 
 // Java
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +18,16 @@ public class ListingS3Objects {
     public static void main( String[] args ) throws Exception
     {
 
+
         getCorrespondences("DI1", "Get-C-1.sh");
 
         getDatasets("DI1", "Get-D-1.sh");
+
+
+        getCorrespondences("DI2", "Get-C-2.sh");
+
+        getDatasets("DI2", "Get-D-2.sh");
+
         
     }
 
@@ -50,7 +53,7 @@ public class ListingS3Objects {
 
             String fileName = parts[5];
 
-            String mkdir = "mkdir -p data/correspondences/DI1/" + comparison;
+            String mkdir = "mkdir -p data/correspondences/" + solution + "/" + comparison;
 
             if (!mkdirList.contains(mkdir)) {
 
@@ -64,7 +67,7 @@ public class ListingS3Objects {
 
             if (solution.equals("DI1")) {
 
-                if(DI1Comparisons.checkMatchingEngine(comparison, matchingEngine)) {
+                if (DI1Comparisons.checkMatchingEngine(comparison, matchingEngine)) {
 
                     String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/correspondences/DI1/" + comparison + "/" + fileName;
                 
@@ -72,6 +75,16 @@ public class ListingS3Objects {
 
                 }
                 
+            } else if (solution.equals("DI2")) {
+
+                if (DI2Comparisons.checkMatchingEngine(comparison, matchingEngine)) {
+
+                    String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/correspondences/DI2/" + comparison + "/" + fileName;
+                
+                    writer.println(wgetString);
+
+                }
+
             }
 
         }

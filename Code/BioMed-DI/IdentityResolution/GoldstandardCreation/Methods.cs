@@ -179,6 +179,10 @@ namespace GoldstandardCreation
             // ncbiId - 2
             // geneName - 3
 
+            // Corner cases
+            // very different records describe same entity
+            // similar records describe different entities
+
             int gsSize = 50;
 
             List<Goldstandard> goldstandardListTrue = new List<Goldstandard>();
