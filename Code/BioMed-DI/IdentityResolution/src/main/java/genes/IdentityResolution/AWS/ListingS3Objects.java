@@ -20,9 +20,9 @@ public class ListingS3Objects {
     public static void main( String[] args ) throws Exception
     {
 
-        //getDI1Datasets();
+        getDI1Datasets();
 
-        //getDI1GoldstandardDatasets();
+        getDI1GoldstandardDatasets();
 
         getDI2Datasets();
    
@@ -155,6 +155,49 @@ public class ListingS3Objects {
         Path dest = Paths.get(System.getProperty("user.dir") + "/GoldstandardCreation/Get-D-2.sh");
 
         Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
+
+    }
+
+    public static void getDI2GoldstandardDatasets() throws Exception {
+
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
+        
+        List<String> mkdirList = new ArrayList<String>();
+
+        PrintWriter writer = new PrintWriter("Get-GD-2.sh", "UTF-8");
+
+        ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis", "identity-resolution/goldstandard/DI2");
+        for(S3ObjectSummary os : objectListing.getObjectSummaries()) {
+
+            String key = os.getKey();
+
+            String[] parts = key.split("/");
+
+            if (parts.length == 5) {
+
+                String comparison = parts[3];
+                String fileName = parts[4];
+    
+                String mkdir = "mkdir -p data/goldstandard/DI2/" + comparison;
+
+                if (!mkdirList.contains(mkdir)) {
+
+                    mkdirList.add(mkdir);
+
+                    writer.println("");
+                    writer.println(mkdir);
+    
+                }
+
+                String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/goldstandard/DI2/" + comparison + "/" + fileName;
+                
+                writer.println(wgetString);
+
+            }
+
+        }
+
+        writer.close();
 
     }
 
