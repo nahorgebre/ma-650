@@ -47,35 +47,35 @@ public class GeneBlockingKeyByGeneName extends
     
             int nameLength = geneName.length();
     
+            /*
             if (nameLength >= 2)
             {
     
                 key = geneName.substring(0,1);
     
             }
+            */
 
-        }
+            if (nameLength >= 4) {
 
-        /*
-        if (nameLength >= 4) {
+                int keyIndex = geneName.length() / 2;
+                key = geneName.substring(0, keyIndex);
 
-            int keyIndex = geneName.length() / 2;
-            key = geneName.substring(0, keyIndex);
+            } else if (nameLength == 1) {
 
-        } else if (nameLength == 1) {
+                key = geneName;
 
-            key = geneName;
+            } else if (nameLength == 2) {
 
-        } else if (nameLength == 2) {
+                key = geneName;
 
-            key = geneName;
-
-        } else if (nameLength == 3) {
+            } else if (nameLength == 3) {
             
-            key = geneName;
+                key = geneName;
 
+            }
+        
         }
-        */
 
         resultCollector.next(new Pair<>(key, record));
 
