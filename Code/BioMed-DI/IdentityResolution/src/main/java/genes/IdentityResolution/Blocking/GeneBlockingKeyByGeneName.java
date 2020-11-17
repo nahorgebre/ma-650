@@ -23,32 +23,36 @@ public class GeneBlockingKeyByGeneName extends
 
         String geneNames = record.getGeneNames();
 
-        String[] geneNameArray = geneNames.split("\\|");
-
-        String geneName = geneNameArray[0].toLowerCase();
-
-        for (String geneNameItem : geneNameArray) {
+        if (geneNames != null) {
             
-            if (geneNameItem.length() < geneName.length()) {
+            String[] geneNameArray = geneNames.split("\\|");
 
-                if (!geneNameItem.isEmpty()) {
-
-                    geneName = geneNameItem.toLowerCase();
-
-                }
+            String geneName = geneNameArray[0].toLowerCase();
+    
+            for (String geneNameItem : geneNameArray) {
                 
+                if (geneNameItem.length() < geneName.length()) {
+    
+                    if (!geneNameItem.isEmpty()) {
+    
+                        geneName = geneNameItem.toLowerCase();
+    
+                    }
+                    
+                }
+    
             }
-
-        }
-
-        geneName = geneName.replaceAll("\\s+","");
-
-        int nameLength = geneName.length();
-
-        if (nameLength >= 2)
-        {
-
-            key = geneName.substring(0,1);
+    
+            geneName = geneName.replaceAll("\\s+","");
+    
+            int nameLength = geneName.length();
+    
+            if (nameLength >= 2)
+            {
+    
+                key = geneName.substring(0,1);
+    
+            }
 
         }
 
