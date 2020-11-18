@@ -113,6 +113,8 @@ namespace DataPreparation
 
             }
 
+            /*
+
 
             reader.ReadToFollowing("organs");
 
@@ -196,6 +198,8 @@ namespace DataPreparation
                 }
 
             }
+
+            */
 
             return gene;
 
