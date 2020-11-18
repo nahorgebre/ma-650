@@ -39,6 +39,8 @@ namespace DataPreparation
                     using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
                     {
 
+                        int counter = 0;
+
                         while (!sr.EndOfStream)
                         {
 
@@ -46,7 +48,7 @@ namespace DataPreparation
 
                             string line = sr.ReadLine().Trim();
 
-                            Console.WriteLine("Id 2: " + line);
+                            counter ++;
 
                             /*
 
@@ -222,6 +224,8 @@ namespace DataPreparation
 
                         }
 
+                    
+                        Console.WriteLine("Counter: " + counter);
                     }
 
                 }
