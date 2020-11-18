@@ -225,7 +225,33 @@ namespace DataPreparation
             do
             {
 
-                Gene gene = getGeneItem(reader);
+                //Gene gene = getGeneItem(reader);
+
+                Gene gene = new Gene();
+
+            
+                reader.ReadToFollowing("recordId");
+
+                String recordId = reader.ReadElementContentAsString().Trim();
+
+                gene.recordId = recordId;
+
+
+                reader.ReadToFollowing("ensemblId");
+
+                if (reader.HasValue)
+                {
+
+                    String ensemblId = reader.ReadElementContentAsString().Trim();
+
+                    if (!ensemblId.Equals(string.Empty))
+                    {
+
+                        gene.ensemblId = ensemblId;
+
+                    }
+
+                }
 
                 geneList.Add(gene);
 
