@@ -32,16 +32,172 @@ namespace DataPreparation
 
         }
 
-        public static string getGeneItem(XmlReader reader)
+        public static Gene getGeneItem(XmlReader reader)
         {
-            
-            String recordId = string.Empty;
+
+
+            Gene gene = new Gene();
+
 
             reader.ReadToFollowing("recordId");
 
-            recordId = reader.ReadElementContentAsString().Trim();
+            String recordId = reader.ReadElementContentAsString().Trim();
 
-            return recordId;
+            gene.recordId = recordId;
+
+
+            reader.ReadToFollowing("ensemblId");
+
+            if (reader.HasValue)
+            {
+
+                String ensemblId = reader.ReadElementContentAsString().Trim();
+
+                if (!ensemblId.Equals(string.Empty))
+                {
+
+                    gene.ensemblId = ensemblId;
+
+                }
+
+            }
+
+
+            reader.ReadToFollowing("ncbiId");
+
+            if (reader.HasValue)
+            {
+
+                String ncbiId = reader.ReadElementContentAsString().Trim();
+
+                if (!ncbiId.Equals(string.Empty))
+                {
+
+                    gene.ncbiId = ncbiId;
+
+                }
+
+            }
+
+
+            reader.ReadToFollowing("geneDescriptions");
+
+            if (reader.HasValue)
+            {
+
+                String geneDescriptions = reader.ReadElementContentAsString().Trim();
+
+                if (!geneDescriptions.Equals(string.Empty))
+                {
+
+                    gene.geneDescriptions = geneDescriptions;
+
+                }
+
+            }
+
+
+            reader.ReadToFollowing("geneNames");
+
+            if (reader.HasValue)
+            {
+
+                String geneNames = reader.ReadElementContentAsString().Trim();
+
+                if (!geneNames.Equals(string.Empty))
+                {
+
+                    gene.geneNames = geneNames;
+
+                }
+
+            }
+
+
+            reader.ReadToFollowing("organs");
+
+            if (reader.HasValue)
+            {
+
+                XmlReader organsInner = reader.ReadSubtree();
+
+                while (organsInner.Read())
+                {
+
+                    String xml = "<organs>" + organsInner.ReadInnerXml() + "</organs>";
+
+                    List<Organ> organList = Parser.parseOrgan(xml);
+
+                    gene.organs = organList;
+
+                }
+
+            }
+
+
+            reader.ReadToFollowing("diseaseAssociations");
+
+            if (reader.HasValue)
+            {
+
+                XmlReader diseaseAssociationsInner = reader.ReadSubtree();
+
+                while (diseaseAssociationsInner.Read())
+                {
+
+                    String xml = "<diseaseAssociations>" + diseaseAssociationsInner.ReadInnerXml() + "</diseaseAssociations>";
+
+                    List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(xml);
+
+                    gene.diseaseAssociations = geneDiseaseAssociationsList;
+
+                }
+
+            }
+
+
+            reader.ReadToFollowing("publicationMentions");
+
+            if (reader.HasValue)
+            {
+
+                XmlReader publicationMentionsInner = reader.ReadSubtree();
+
+                while (publicationMentionsInner.Read())
+                {
+
+                    String xml = "<publicationMentions>" + publicationMentionsInner.ReadInnerXml() + "</publicationMentions>";
+
+                    List<GenePublicationMention> genePublicationMentionList = Parser.parsePublicationMention(xml);
+
+                    gene.publicationMentions = genePublicationMentionList;
+
+                }
+
+            }
+
+
+            reader.ReadToFollowing("patentMentions");
+
+            if (reader.HasValue)
+            {
+
+                XmlReader patentMentionsInner = reader.ReadSubtree();
+
+                while (patentMentionsInner.Read())
+                {
+
+                    String xml = "<patentMentions>" + patentMentionsInner.ReadInnerXml() + "</patentMentions>";
+
+                    List<GenePatentMention> genePatentMentionList = Parser.parsePatentMention(xml);
+
+                    gene.patentMentions = genePatentMentionList;
+
+                }
+
+            }
+
+            return gene;
 
         }
 
@@ -69,190 +225,18 @@ namespace DataPreparation
                 while (reader.ReadToFollowing("gene"))
                 {
 
-                    /*
-                    String recordId = string.Empty;
+                    Gene gene = getGeneItem(reader);
 
-                    reader.ReadToFollowing("recordId");
-
-                    recordId = reader.ReadElementContentAsString().Trim();
-                    */
-
-                    string recordId = getGeneItem(reader);
-
-                    
-                    if (recordIdList.ContainsKey(recordId))
+                    if (recordIdList.ContainsKey(gene.recordId))
                     {
-                        counterTrue ++;
+                        counterTrue++;
 
-                                /*
-
-                                Gene gene = new Gene();
-
-
-                                gene.recordId = recordId;
-
-
-                                reader.ReadToFollowing("ensemblId");
-
-                                if (reader.HasAttributes)
-                                {
-
-                                    String ensemblId = reader.ReadElementContentAsString().Trim();
-
-                                    if (!ensemblId.Equals(string.Empty))
-                                    {
-
-                                        gene.ensemblId = ensemblId;
-
-                                    }
-
-                                }
-
-
-                                reader.ReadToFollowing("ncbiId");
-
-                                if (reader.HasAttributes)
-                                {
-
-                                    String ncbiId = reader.ReadElementContentAsString().Trim();
-
-                                    if (!ncbiId.Equals(string.Empty))
-                                    {
-
-                                        gene.ncbiId = ncbiId;
-
-                                    }
-
-                                }
-
-
-                                reader.ReadToFollowing("geneDescriptions");
-
-                                if (reader.HasAttributes)
-                                {
-
-                                    String geneDescriptions = reader.ReadElementContentAsString().Trim();
-
-                                    if (!geneDescriptions.Equals(string.Empty))
-                                    {
-
-                                        gene.geneDescriptions = geneDescriptions;
-
-                                    }
-
-                                }
-
-
-                                reader.ReadToFollowing("geneNames");
-
-                                if (reader.HasAttributes)
-                                {
-
-                                    String geneNames = reader.ReadElementContentAsString().Trim();
-
-                                    if (!geneNames.Equals(string.Empty))
-                                    {
-
-                                        gene.geneNames = geneNames;
-
-                                    }
-
-                                }
-
-
-                                reader.ReadToFollowing("organs");
-
-                                if (reader.HasAttributes)
-                                {
-
-                                    XmlReader organsInner = reader.ReadSubtree();
-
-                                    while (organsInner.Read())
-                                    {
-
-                                        String xml = "<organs>" + organsInner.ReadInnerXml() + "</organs>";
-
-                                        List<Organ> organList = Parser.parseOrgan(xml);
-
-                                        gene.organs = organList;
-
-                                    }
-
-                                }
-
-
-                                reader.ReadToFollowing("diseaseAssociations");
-
-                                if (reader.HasAttributes)
-                                {
-
-                                    XmlReader diseaseAssociationsInner = reader.ReadSubtree();
-
-                                    while (diseaseAssociationsInner.Read())
-                                    {
-
-                                        String xml = "<diseaseAssociations>" + diseaseAssociationsInner.ReadInnerXml() + "</diseaseAssociations>";
-
-                                        List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(xml);
-
-                                        gene.diseaseAssociations = geneDiseaseAssociationsList;
-
-                                    }
-
-                                }
-
-
-                                reader.ReadToFollowing("publicationMentions");
-
-                                if (reader.HasAttributes)
-                                {
-
-                                    XmlReader publicationMentionsInner = reader.ReadSubtree();
-
-                                    while (publicationMentionsInner.Read())
-                                    {
-
-                                        String xml = "<publicationMentions>" + publicationMentionsInner.ReadInnerXml() + "</publicationMentions>";
-
-                                        List<GenePublicationMention> genePublicationMentionList = Parser.parsePublicationMention(xml);
-
-                                        gene.publicationMentions = genePublicationMentionList;
-
-                                    }
-
-                                }
-
-
-                                reader.ReadToFollowing("patentMentions");
-
-                                if (reader.HasAttributes)
-                                {
-
-                                    XmlReader patentMentionsInner = reader.ReadSubtree();
-
-                                    while (patentMentionsInner.Read())
-                                    {
-
-                                        String xml = "<patentMentions>" + patentMentionsInner.ReadInnerXml() + "</patentMentions>";
-
-                                        List<GenePatentMention> genePatentMentionList = Parser.parsePatentMention(xml);
-
-                                        gene.patentMentions = genePatentMentionList;
-
-                                    }
-
-                                }
-
-
-                                geneList.Add(gene);
-
-                                */
+                        geneList.Add(gene);
 
                     }
-                    
 
-                    counter ++;
-             
+                    counter++;
+
                 }
 
             }
