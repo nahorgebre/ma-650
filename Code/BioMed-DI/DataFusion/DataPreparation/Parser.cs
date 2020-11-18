@@ -38,7 +38,7 @@ namespace DataPreparation
 
             Gene gene = new Gene();
 
-
+            
             reader.ReadToFollowing("recordId");
 
             String recordId = reader.ReadElementContentAsString().Trim();
@@ -112,8 +112,6 @@ namespace DataPreparation
                 }
 
             }
-
-            /*
 
 
             reader.ReadToFollowing("organs");
@@ -199,7 +197,6 @@ namespace DataPreparation
 
             }
 
-            */
 
             return gene;
 
@@ -231,6 +228,9 @@ namespace DataPreparation
 
                     Gene gene = getGeneItem(reader);
 
+                    geneList.Add(gene);
+
+                    /*
                     if (recordIdList.ContainsKey(gene.recordId))
                     {
                         counterTrue++;
@@ -238,6 +238,7 @@ namespace DataPreparation
                         geneList.Add(gene);
 
                     }
+                    */
 
                     counter++;
 
