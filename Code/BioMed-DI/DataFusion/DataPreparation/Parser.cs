@@ -10,7 +10,7 @@ namespace DataPreparation
     {
 
 
-        public static List<Gene> parseGene(FileInfo correspondences, FileInfo recordIdListFile)
+        public static List<Gene> parseGene(FileInfo xmlFile, FileInfo recordIdListFile)
         {
 
             List<Gene> geneList = new List<Gene>();
@@ -19,8 +19,9 @@ namespace DataPreparation
 
             settings.DtdProcessing = DtdProcessing.Parse;
 
-            using (XmlReader reader = XmlReader.Create(correspondences.FullName, settings))
+            using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
             {
+
 
                 while (reader.ReadToFollowing("gene"))
                 {
