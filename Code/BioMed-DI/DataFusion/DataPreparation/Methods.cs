@@ -91,6 +91,8 @@ namespace DataPreparation
                     if (line.Contains(inputRecordId.Trim()))
                     {
 
+                        Console.WriteLine("Line: " + line + " - Record: " + inputRecordId);
+
                         returnValue = true;
                         
                     }
