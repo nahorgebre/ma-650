@@ -52,7 +52,7 @@ namespace DataPreparation
 
                     string[] values = line.Split(",");
 
-                    recordIdHashSet.Add(values[index]);
+                    recordIdHashSet.Add(values[index].Replace("\"", string.Empty));
 
                 }
 
