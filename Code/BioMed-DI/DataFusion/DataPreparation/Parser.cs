@@ -19,11 +19,12 @@ namespace DataPreparation
 
             settings.DtdProcessing = DtdProcessing.Parse;
 
+            Console.WriteLine(xmlFile.Name);
+
             int counterTrue = 0;
 
             using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
             {
-
 
                 while (reader.ReadToFollowing("gene"))
                 {
@@ -34,10 +35,7 @@ namespace DataPreparation
                     reader.ReadToFollowing("recordId");
 
                     recordId = reader.ReadElementContentAsString().Trim();
-
-                    Console.WriteLine("Id 1: " + recordId);
-
-                    
+             
                     using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
                     {
 
