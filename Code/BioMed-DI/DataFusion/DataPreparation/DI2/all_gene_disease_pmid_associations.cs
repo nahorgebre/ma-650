@@ -11,7 +11,7 @@ namespace DataPreparation
         public static void runDataPreparation()
         {
 
-            for (int i = 7; i < 7; i++)
+            for (int i = 1; i < 7; i++)
             {
 
                 FileInfo kaessmann_2_all_gene_disease_pmid_associations_recordIdListFile = new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI2/kaessmann_2_all_gene_disease_pmid_associations_" + i + ".tsv");
