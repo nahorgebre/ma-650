@@ -41,6 +41,8 @@ namespace DataPreparation
 
                         int counter = 0;
 
+                        int counterTrue = 0;
+
                         while (!sr.EndOfStream)
                         {
 
@@ -49,6 +51,11 @@ namespace DataPreparation
                             string line = sr.ReadLine().Trim();
 
                             counter ++;
+
+                            if (line.Equals(recordId))
+                            {
+                                counterTrue ++;
+                            }
 
                             /*
 
@@ -226,6 +233,8 @@ namespace DataPreparation
 
                     
                         Console.WriteLine("Counter: " + counter);
+
+                        Console.WriteLine("Counter True: " + counterTrue);
                     }
 
                 }
