@@ -226,7 +226,9 @@ namespace DataPreparation
                 while (reader.ReadToFollowing("gene"))
                 {
 
-                    Gene gene = getGeneItem(reader);
+                    //Gene gene = getGeneItem(reader);
+
+                    Gene gene = new Gene();
 
                     geneList.Add(gene);
 
