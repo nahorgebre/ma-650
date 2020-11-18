@@ -23,6 +23,8 @@ namespace DataPreparation
 
             int counterTrue = 0;
 
+            int counter = 0;
+
             using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
             {
 
@@ -44,12 +46,15 @@ namespace DataPreparation
 
                             string line = sr.ReadLine().Trim();
 
+                            /*
                             if (line.Equals(recordId))
                             {
                                 counterTrue ++;
 
-                                Console.WriteLine("Yep!");
                             }
+                            */
+
+                            counter ++;
 
                             /*
 
@@ -230,6 +235,8 @@ namespace DataPreparation
                 }
 
             }
+
+            Console.WriteLine("Counter: " + counter);
 
             Console.WriteLine("Counter True: " + counterTrue);
 
