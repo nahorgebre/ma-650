@@ -68,7 +68,9 @@ namespace DataPreparation
                     {
                         counterTrue ++;
 
-                                                        Gene gene = new Gene();
+                                /*
+
+                                Gene gene = new Gene();
 
 
                                 gene.recordId = recordId;
@@ -227,6 +229,8 @@ namespace DataPreparation
 
 
                                 geneList.Add(gene);
+
+                                */
 
                     }
                     
