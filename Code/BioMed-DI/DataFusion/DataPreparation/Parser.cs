@@ -232,7 +232,12 @@ namespace DataPreparation
                 String recordId = reader.ReadElementContentAsString().Trim();
                 gene.recordId = recordId;
 
-                Console.WriteLine(reader.ReadContentAsString());
+                string x = reader.ReadContentAsString();
+
+                using (StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "/data/sap.txt"))
+                {
+                    sw.Write(x);
+                }
 
                     
                 reader.ReadToFollowing("ncbiId");
