@@ -33,18 +33,22 @@ namespace DataPreparation
 
                     recordId = reader.ReadElementContentAsString().Trim();
 
-                    Console.WriteLine(recordId);
+                    Console.WriteLine("Id 1: " + recordId);
 
-                    /*
+                    
                     using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
                     {
 
                         while (!sr.EndOfStream)
                         {
 
-                            //Console.WriteLine("Count - " + recordId);
+                            
 
                             string line = sr.ReadLine().Trim();
+
+                            Console.WriteLine("Id 2: " + line);
+
+                            /*
 
                             if (line.Equals(recordId))
                             {
@@ -214,11 +218,12 @@ namespace DataPreparation
 
                             }
 
+                            */
+
                         }
 
                     }
 
-                    */
                 }
 
             }
