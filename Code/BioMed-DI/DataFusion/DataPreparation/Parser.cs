@@ -19,6 +19,8 @@ namespace DataPreparation
 
             settings.DtdProcessing = DtdProcessing.Parse;
 
+            int counterTrue = 0;
+
             using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
             {
 
@@ -39,18 +41,10 @@ namespace DataPreparation
                     using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
                     {
 
-                        int counter = 0;
-
-                        int counterTrue = 0;
-
                         while (!sr.EndOfStream)
                         {
 
-                            
-
                             string line = sr.ReadLine().Trim();
-
-                            counter ++;
 
                             if (line.Equals(recordId))
                             {
@@ -230,16 +224,14 @@ namespace DataPreparation
                             */
 
                         }
-
-                    
-                        Console.WriteLine("Counter: " + counter);
-
-                        Console.WriteLine("Counter True: " + counterTrue);
+     
                     }
 
                 }
 
             }
+
+            Console.WriteLine("Counter True: " + counterTrue);
 
             Console.WriteLine("Gene List Size: " + geneList.Count);
 
