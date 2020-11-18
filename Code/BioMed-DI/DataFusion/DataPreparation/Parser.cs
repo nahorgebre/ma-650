@@ -236,7 +236,7 @@ namespace DataPreparation
 
                 gene.recordId = recordId;
 
-
+                /*
                 reader.ReadToFollowing("ensemblId");
 
                 if (reader.HasValue)
@@ -252,6 +252,7 @@ namespace DataPreparation
                     }
 
                 }
+                */
 
                 geneList.Add(gene);
 
