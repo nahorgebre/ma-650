@@ -228,7 +228,13 @@ namespace DataPreparation
 
                     //Gene gene = getGeneItem(reader);
 
+                    reader.ReadToFollowing("recordId");
+
+                    String recordId = reader.ReadElementContentAsString().Trim();
+
                     Gene gene = new Gene();
+
+                    gene.recordId = recordId;
 
                     geneList.Add(gene);
 
