@@ -220,35 +220,18 @@ namespace DataPreparation
 
             int counter = 0;
 
-            using var reader = XmlReader.Create(xmlFile.FullName);
-
+            using var reader = XmlReader.Create(xmlFile.FullName, settings);
 
             do
             {
 
-                Gene gene = new Gene();
+                Gene gene = getGeneItem(reader);
 
-                reader.ReadToFollowing("recordId");
-                String recordId = reader.ReadElementContentAsString().Trim();
-                gene.recordId = recordId;
-
-                string x = reader.ReadContentAsString();
-
-                using (StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "/data/sap.txt"))
+                if (recordIdList.ContainsKey(gene.recordId))
                 {
-                    sw.Write(x);
-                }
-
-                    
-                reader.ReadToFollowing("ncbiId");
-                if (reader.HasValue)
-                {
-                    String ncbiId = reader.ReadElementContentAsString().Trim();
-                    gene.ncbiId = ncbiId;
+                    geneList.Add(gene);
                 }
                     
-                geneList.Add(gene);
-
                 counter++;
 
             } while (reader.ReadToFollowing("gene"));

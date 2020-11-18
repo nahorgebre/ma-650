@@ -13,9 +13,9 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            Heart.runDataTranslation();
-
             Brain.runDataTranslation();
+
+            Heart.runDataTranslation();
 
             Cerebellum.runDataTranslation();
 
@@ -24,7 +24,7 @@ namespace DataTranslation
             Liver.runDataTranslation();
             
             Testis.runDataTranslation();
-
+            
         }
 
     }
