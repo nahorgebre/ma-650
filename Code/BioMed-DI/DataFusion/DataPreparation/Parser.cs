@@ -43,6 +43,9 @@ namespace DataPreparation
                         gene.recordId = recordId;
 
 
+                        Console.WriteLine("Record ID: " + gene.recordId);
+
+
                         reader.ReadToFollowing("ensemblId");
 
                         if (reader.HasAttributes)
