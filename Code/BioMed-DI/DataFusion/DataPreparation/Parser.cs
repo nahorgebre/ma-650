@@ -232,17 +232,17 @@ namespace DataPreparation
                     String recordId = reader.ReadElementContentAsString().Trim();
                     gene.recordId = recordId;
 
-                    /*
+                    
                     reader.ReadToFollowing("ensemblId");
-                    if (reader.HasValue)
-                    {
+                    //if (reader.HasValue)
+                    //{
                         String ensemblId = reader.ReadElementContentAsString().Trim();
-                        if (!ensemblId.Equals(string.Empty))
-                        {
+                        //if (!ensemblId.Equals(string.Empty))
+                        //{
                             gene.ensemblId = ensemblId;
-                        }
-                    }
-                    */ 
+                        //}
+                    //}
+                    
 
 
 
