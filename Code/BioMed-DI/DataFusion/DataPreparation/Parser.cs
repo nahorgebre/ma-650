@@ -216,10 +216,6 @@ namespace DataPreparation
 
             Console.WriteLine(xmlFile.Name);
 
-            int counterTrue = 0;
-
-            int counter = 0;
-
             using var reader = XmlReader.Create(xmlFile.FullName, settings);
 
             do
@@ -227,23 +223,14 @@ namespace DataPreparation
 
                 Gene gene = getGeneItem(reader);
 
-                
                 if (recordIdList.ContainsKey(gene.recordId))
                 {
+
                     geneList.Add(gene);
+
                 }
-                
-                
-                counter++;
 
             } while (reader.ReadToFollowing("gene"));
-
-
-            Console.WriteLine("Counter: " + counter);
-
-            Console.WriteLine("Counter True: " + counterTrue);
-
-            Console.WriteLine("Gene List Size: " + geneList.Count);
 
             return geneList;
 
