@@ -88,12 +88,12 @@ namespace DataPreparation
                     
                     string line = sr.ReadLine().Trim();
 
-                    Console.WriteLine("Line: " + line + " - Record: " + inputRecordId);
+                    //Console.WriteLine("Line: " + line + " - Record: " + inputRecordId);
 
                     if (line.Equals(inputRecordId.Trim()))
                     {
 
-                        //Console.WriteLine("Line: " + line + " - Record: " + inputRecordId);
+                        Console.WriteLine("Line: " + line + " - Record: " + inputRecordId);
 
                         returnValue = true;
                         
