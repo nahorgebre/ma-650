@@ -10,25 +10,15 @@ namespace DataPreparation
     {
         private static IAmazonS3 s3Client;
 
-        public static void run()
+        public static void uploadDataFusionInput(FileInfo file, string solution)
         {
-            DirectoryInfo outputDirectory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/");
 
-            foreach (DirectoryInfo subDirectory in outputDirectory.GetDirectories())
-            {
-                string comparison = subDirectory.Name;
+            string keyName = string.Format("data-fusion/input/{0}/{1}", solution, file.Name);
 
-                foreach (FileInfo file in subDirectory.GetFiles())
-                {
-                    if (file.Name.Contains("train") | file.Name.Contains("test"))
-                    {
-                        string keyName = string.Format("identity-resolution/goldstandard/{0}/{1}", comparison, file.Name);
-                        string bucketName = "nahorgebre-ma-650-master-thesis";
-                        UploadFileAsync(bucketName, file.FullName, keyName).Wait();
-                    }
-                }
+            string bucketName = "nahorgebre-ma-650-master-thesis";
 
-            }
+            UploadFileAsync(bucketName, file.FullName, keyName).Wait();
+
         }
 
         public static async Task UploadFileAsync(string bucketName, string filePath, string keyName)

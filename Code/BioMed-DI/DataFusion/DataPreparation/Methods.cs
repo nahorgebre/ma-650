@@ -1,79 +1,110 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace DataPreparation
 {
 
-    class Methods
+
+    public class Methods
     {
 
-        public static void getDistinctRecordIds(List<(int, String)> recordIdList, string fileName) 
+
+        public static void createXmlGene(List<Gene> gene_list, FileInfo file)
         {
 
-            HashSet<String> recordIdHashSet = new HashSet<String>();
+            Console.WriteLine("Create Xml: " + file.Name);
 
-            foreach (var recordId in recordIdList)
+            Console.WriteLine("Count: " + gene_list.Count);
+
+            file.Directory.Create();
+
+            XmlSerializer serializer = new XmlSerializer(typeof(Genes));
+
+            TextWriter writer = new StreamWriter(file.FullName);
+
+            Genes genes = new Genes();
+
+            genes.gene = gene_list;
+
+            serializer.Serialize(writer, genes);
+
+            writer.Close();
+
+            Console.WriteLine(file.FullName);
+
+        }
+
+
+        public static void createRecordIdListFile(FileInfo correspondences, FileInfo recordIdListFile, int index) 
+        {
+
+            HashSet<string> recordIdHashSet = new HashSet<string>();
+
+            using (StreamReader sr = new StreamReader(correspondences.FullName))
             {
-                using (StreamReader sr = new StreamReader(recordId.Item2.ToString()))
+                
+                while (!sr.EndOfStream)
                 {
-                    while (!sr.EndOfStream)
-                    {
-                        var line = sr.ReadLine();
-                        String[] values = line.Split(',');
+                    
+                    var line = sr.ReadLine();
 
-                        recordIdHashSet.Add(values[recordId.Item1 - 1].Trim());
-                    }
+                    string[] values = line.Split(",");
+
+                    recordIdHashSet.Add(values[index]);
+
                 }
+
             }
 
-            DirectoryInfo directory = new DirectoryInfo(string.Format("{0}/data/output/recordIds", Environment.CurrentDirectory));
-            directory.Create();
+            recordIdListFile.Directory.Create();
 
-            using (StreamWriter sw = new StreamWriter(string.Format("{0}/{1}.tsv", directory.FullName, fileName)))
+            using (StreamWriter sw = new StreamWriter(recordIdListFile.FullName))
             {
-                foreach (String item in recordIdHashSet)
+
+                foreach (string item in recordIdHashSet)
                 {
+
                     sw.WriteLine(item);
+
                 }
+
             }
 
         }
 
-        public static void filterDataTranslationOutput(String dataTranslationOutputFileName, String recordIdFileName, String fileName) {
 
-            DirectoryInfo directory = new DirectoryInfo(string.Format("{0}/data/output/dataFusionInput", Environment.CurrentDirectory));
-            directory.Create();
-
-            FileInfo file = new FileInfo(string.Format("{0}/{1}.xml", directory.FullName, fileName));
-
-            using (StreamWriter sw = new StreamWriter(file.FullName))
-            {
-                
-            }
-
-            // Loop record Id ...
-            foreach (String recordId in getRecordIdList(recordIdFileName))
-            {
-                
-            }
-        }
-
-        public static List<string> getRecordIdList(String recordIdFileName)
+        public static bool checkRecordId(string inputRecordId, FileInfo recordIdListFile)
         {
-           List<String> recordIdList = new List<string>();
 
-           using (StreamReader sr = new StreamReader(recordIdFileName))
-           {
-               while (!sr.EndOfStream)
-               {
-                   string line = sr.ReadLine().Trim();
-                   recordIdList.Add(line);
-               }
-           }
-           
-           return recordIdList; 
+            bool returnValue = false;
+
+            using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
+            {
+                
+                while (!sr.EndOfStream)
+                {
+                    
+                    string line = sr.ReadLine().Trim();
+
+                    if (inputRecordId.Equals(line))
+                    {
+
+                        returnValue = true;
+                        
+                    }
+
+                }
+
+            }
+
+            return returnValue;
+
         }
+
 
     }
+
+
 }

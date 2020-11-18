@@ -8,13 +8,7 @@ namespace DataPreparation
         static void Main(string[] args)
         {
 
-            Brain.run();
-            Cerebellum.run();
-            Disease.run();
-            Heart.run();
-            Kidney.run();
-            Liver.run();
-            Testis.run();
+            all_gene_disease_pmid_associations.runDataPreparation();
             
         }
     }
