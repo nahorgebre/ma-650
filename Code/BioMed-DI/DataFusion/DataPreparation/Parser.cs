@@ -9,10 +9,10 @@ namespace DataPreparation
     public class Parser
     {
 
-        public static List<String> getRecordIdList(FileInfo recordIdListFile)
+        public static Dictionary<string, bool> getRecordIdList(FileInfo recordIdListFile)
         {
 
-            List<string> recordIdList = new List<string>();
+            Dictionary<string, bool> recordIdList = new Dictionary<string, bool>();
 
             using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
             {
@@ -22,7 +22,7 @@ namespace DataPreparation
 
                     string line = sr.ReadLine().Trim();
 
-                    recordIdList.Add(line);
+                    recordIdList.Add(line, true);
 
                 }
 
@@ -36,7 +36,7 @@ namespace DataPreparation
         public static List<Gene> parseGene(FileInfo xmlFile, FileInfo recordIdListFile)
         {
 
-            List<string> recordIdList = getRecordIdList(recordIdListFile);
+            Dictionary<string, bool> recordIdList = getRecordIdList(recordIdListFile);
 
             List<Gene> geneList = new List<Gene>();
 
@@ -62,10 +62,9 @@ namespace DataPreparation
                     reader.ReadToFollowing("recordId");
 
                     recordId = reader.ReadElementContentAsString().Trim();
-
-
                     
-                    if (recordIdList.Contains(recordId))
+                    
+                    if (recordIdList.ContainsKey(recordId))
                     {
                         counterTrue ++;
                     }
