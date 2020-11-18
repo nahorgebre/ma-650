@@ -33,6 +33,8 @@ public class ListingS3Objects {
 
         getDatasets("DI2", "Get-D-2.sh");
 
+        getDatasetsAfterDataPreparation("DI2", "Get-D-DP-2.sh");
+
         
     }
 
@@ -153,6 +155,49 @@ public class ListingS3Objects {
         Path dest = Paths.get(System.getProperty("user.dir") + "/DataPreparation/" + outputFileName);
 
         Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
+
+    }
+
+
+    public static void getDatasetsAfterDataPreparation(String solution, String outputFileName) throws Exception {
+
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
+        
+        List<String> mkdirList = new ArrayList<String>();
+
+        PrintWriter writer = new PrintWriter(outputFileName, "UTF-8");
+
+        ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis", "data-fusion/input/" + solution);
+        for(S3ObjectSummary os : objectListing.getObjectSummaries()) {
+
+            String key = os.getKey();
+
+            String[] parts = key.split("/");
+
+            if (parts.length == 4) {
+
+                String fileName = parts[3];
+    
+                String mkdir = "mkdir -p data/input/" + solution;
+
+                if (!mkdirList.contains(mkdir)) {
+
+                    mkdirList.add(mkdir);
+
+                    writer.println("");
+                    writer.println(mkdir);
+    
+                }
+
+                String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key + " -O data/input/" + solution + "/" + fileName;
+                
+                writer.println(wgetString);
+
+            }
+
+        }
+
+        writer.close();
 
     }
 
