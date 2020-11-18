@@ -62,32 +62,13 @@ namespace DataPreparation
                     reader.ReadToFollowing("recordId");
 
                     recordId = reader.ReadElementContentAsString().Trim();
-                    
+
                     
                     if (recordIdList.ContainsKey(recordId))
                     {
                         counterTrue ++;
-                    }
-                    
 
-                    counter ++;
-             
-                    /*
-                    using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
-                    {
-
-                        while (!sr.EndOfStream)
-                        {
-
-                            string line = sr.ReadLine().Trim();
-
-                            
-                            if (line.Equals(recordId))
-                            {
-
-                                Console.WriteLine("Line: " + line + " - Record: " + recordId);
-
-                                Gene gene = new Gene();
+                                                        Gene gene = new Gene();
 
 
                                 gene.recordId = recordId;
@@ -247,18 +228,11 @@ namespace DataPreparation
 
                                 geneList.Add(gene);
 
-
-                            }
-
-                        
-
-                        }
-     
                     }
-
-                    */
                     
 
+                    counter ++;
+             
                 }
 
             }
