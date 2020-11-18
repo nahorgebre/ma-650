@@ -63,10 +63,13 @@ namespace DataPreparation
 
                     recordId = reader.ReadElementContentAsString().Trim();
 
+
+                    /*
                     if (recordIdList.Contains(recordId))
                     {
                         counterTrue ++;
                     }
+                    */
 
                     counter ++;
              
