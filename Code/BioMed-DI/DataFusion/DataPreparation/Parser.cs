@@ -232,7 +232,7 @@ namespace DataPreparation
                     String recordId = reader.ReadElementContentAsString().Trim();
                     gene.recordId = recordId;
 
-
+                    /*
                     reader.ReadToFollowing("ensemblId");
                     if (reader.HasValue)
                     {
@@ -241,7 +241,8 @@ namespace DataPreparation
                         {
                             gene.ensemblId = ensemblId;
                         }
-                    }   
+                    }
+                    */ 
 
 
 
