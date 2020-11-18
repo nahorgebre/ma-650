@@ -40,6 +40,8 @@ namespace DataPreparation
                         while (!sr.EndOfStream)
                         {
 
+                            Console.WriteLine("Count - " + recordId);
+
                             string line = sr.ReadLine().Trim();
 
                             if (line.Equals(recordId))
