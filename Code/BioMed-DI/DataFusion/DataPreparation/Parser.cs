@@ -233,11 +233,11 @@ namespace DataPreparation
                 gene.recordId = recordId;
 
                     
-                reader.ReadToFollowing("ensemblId");
+                reader.ReadToFollowing("ncbiId");
                 if (reader.HasValue)
                 {
-                    String ensemblId = reader.ReadElementContentAsString().Trim();
-                    gene.ensemblId = ensemblId;
+                    String ncbiId = reader.ReadElementContentAsString().Trim();
+                    gene.ncbiId = ncbiId;
                 }
                     
                 geneList.Add(gene);
