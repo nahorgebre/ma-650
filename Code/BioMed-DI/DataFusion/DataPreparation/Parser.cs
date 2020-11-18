@@ -233,16 +233,16 @@ namespace DataPreparation
                     gene.recordId = recordId;
 
                     
-                    //reader.ReadToFollowing("ensemblId");
+                    reader.ReadToFollowing("ensemblId");
                     //if (reader.HasValue)
                     //{
                         //int x = 2;
                     //}
                     //{
-                        //String ensemblId = reader.ReadElementContentAsString().Trim();
+                        String ensemblId = reader.ReadElementContentAsString().Trim();
                         //if (!ensemblId.Equals(string.Empty))
                         //{
-                            //gene.ensemblId = ensemblId;
+                            gene.ensemblId = ensemblId;
                         //}
                     //}
                     
