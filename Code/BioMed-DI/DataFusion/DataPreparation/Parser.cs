@@ -33,7 +33,9 @@ namespace DataPreparation
 
                     recordId = reader.ReadElementContentAsString().Trim();
 
+                    Console.WriteLine(recordId);
 
+                    /*
                     using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
                     {
 
@@ -216,6 +218,7 @@ namespace DataPreparation
 
                     }
 
+                    */
                 }
 
             }
