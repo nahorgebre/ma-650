@@ -227,11 +227,15 @@ namespace DataPreparation
 
                 Gene gene = getGeneItem(reader);
 
+                geneList.Add(gene);
+
+                /*
                 if (recordIdList.ContainsKey(gene.recordId))
                 {
                     geneList.Add(gene);
                 }
-                    
+                */
+                
                 counter++;
 
             } while (reader.ReadToFollowing("gene"));
