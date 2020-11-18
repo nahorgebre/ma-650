@@ -234,17 +234,14 @@ namespace DataPreparation
 
                     
                     reader.ReadToFollowing("ensemblId");
-                    //if (reader.HasValue)
-                    //{
-                        //int x = 2;
-                    //}
-                    //{
+                    if (reader.HasValue)
+                    {
                         String ensemblId = reader.ReadElementContentAsString().Trim();
                         //if (!ensemblId.Equals(string.Empty))
                         //{
                             gene.ensemblId = ensemblId;
                         //}
-                    //}
+                    }
                     
 
                     geneList.Add(gene);
