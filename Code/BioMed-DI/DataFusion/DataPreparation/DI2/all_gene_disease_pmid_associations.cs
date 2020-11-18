@@ -26,12 +26,13 @@ namespace DataPreparation
 
                 List<Gene> geneList_kaessmann_2_all_gene_disease_pmid_associations = Parser.parseGene(all_gene_disease_pmid_associations_dt, kaessmann_2_all_gene_disease_pmid_associations_recordIdListFile);
 
-
+                /*
                 FileInfo kaessmann_2_all_gene_disease_pmid_associations_dp = new FileInfo(Environment.CurrentDirectory + "/data/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_" + i + "_dp.xml");
 
                 Methods.createXmlGene(geneList_kaessmann_2_all_gene_disease_pmid_associations, kaessmann_2_all_gene_disease_pmid_associations_dp);
 
                 AWSupload.uploadDataFusionInput(kaessmann_2_all_gene_disease_pmid_associations_dp, "DI2");
+                */
                 
             }
 
