@@ -18,7 +18,7 @@ public class DI2Datasets {
 
         FusibleDataSet<Gene, Attribute> ds = new FusibleHashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/input/DI2/Kaessmann_dp.xml"), "/genes/gene", ds);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI2/Kaessmann_dt.xml"), "/genes/gene", ds);
 
         return ds;
 
