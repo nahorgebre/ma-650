@@ -47,6 +47,8 @@ namespace DataPreparation
                             if (line.Equals(recordId))
                             {
                                 counterTrue ++;
+
+                                Console.WriteLine("Yep!");
                             }
 
                             /*
