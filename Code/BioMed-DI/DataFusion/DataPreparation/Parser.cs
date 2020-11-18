@@ -233,7 +233,7 @@ namespace DataPreparation
                     gene.recordId = recordId;
 
                     
-                    reader.ReadToFollowing("ensemblId");
+                    //reader.ReadToFollowing("ensemblId");
                     //if (reader.HasValue)
                     //{
                         //int x = 2;
