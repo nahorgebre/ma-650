@@ -226,17 +226,24 @@ namespace DataPreparation
                 while (reader.ReadToFollowing("gene"))
                 {
 
-                    //Gene gene = getGeneItem(reader);
-
-                    reader.ReadToFollowing("recordId");
-
-                    String recordId = reader.ReadElementContentAsString().Trim();
-
                     Gene gene = new Gene();
 
+                    reader.ReadToFollowing("recordId");
+                    String recordId = reader.ReadElementContentAsString().Trim();
                     gene.recordId = recordId;
 
-                    //geneList.Add(gene);
+
+                    reader.ReadToFollowing("ensemblId");
+                    if (reader.HasValue)
+                    {
+                        String ensemblId = reader.ReadElementContentAsString().Trim();
+                        if (!ensemblId.Equals(string.Empty))
+                        {
+                            gene.ensemblId = ensemblId;
+                        }
+                    }   
+
+
 
                     
                     if (recordIdList.ContainsKey(gene.recordId))
