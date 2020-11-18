@@ -18,7 +18,7 @@ namespace DataPreparation
 
                 FileInfo kaessmann_2_all_gene_disease_pmid_associations_Correspondences = new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI2/kaessmann_2_all_gene_disease_pmid_associations_" + i + "/correspondences.csv");
 
-                Methods.createRecordIdListFile(kaessmann_2_all_gene_disease_pmid_associations_Correspondences, kaessmann_2_all_gene_disease_pmid_associations_recordIdListFile, 2);
+                Methods.createRecordIdListFile(kaessmann_2_all_gene_disease_pmid_associations_Correspondences, kaessmann_2_all_gene_disease_pmid_associations_recordIdListFile, 1);
 
 
 
