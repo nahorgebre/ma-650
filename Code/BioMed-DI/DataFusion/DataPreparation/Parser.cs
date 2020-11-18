@@ -32,6 +32,19 @@ namespace DataPreparation
 
         }
 
+        public static string getGeneItem(XmlReader reader)
+        {
+            
+            String recordId = string.Empty;
+
+            reader.ReadToFollowing("recordId");
+
+            recordId = reader.ReadElementContentAsString().Trim();
+
+            return recordId;
+
+        }
+
 
         public static List<Gene> parseGene(FileInfo xmlFile, FileInfo recordIdListFile)
         {
@@ -56,12 +69,15 @@ namespace DataPreparation
                 while (reader.ReadToFollowing("gene"))
                 {
 
-
+                    /*
                     String recordId = string.Empty;
 
                     reader.ReadToFollowing("recordId");
 
                     recordId = reader.ReadElementContentAsString().Trim();
+                    */
+
+                    string recordId = getGeneItem(reader);
 
                     
                     if (recordIdList.ContainsKey(recordId))
