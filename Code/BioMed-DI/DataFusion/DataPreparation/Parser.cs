@@ -30,13 +30,8 @@ namespace DataPreparation
                     String recordId = string.Empty;
 
                     reader.ReadToFollowing("recordId");
-
-                    if (reader.HasAttributes)
-                    {
-
-                        recordId = reader.ReadElementContentAsString().Trim();
-
-                    }
+                    
+                    recordId = reader.ReadElementContentAsString().Trim();
 
 
                     if (Methods.checkRecordId(recordId, recordIdListFile))
