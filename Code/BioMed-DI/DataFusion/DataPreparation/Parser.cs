@@ -9,9 +9,34 @@ namespace DataPreparation
     public class Parser
     {
 
+        public static List<String> getRecordIdList(FileInfo recordIdListFile)
+        {
+
+            List<string> recordIdList = new List<string>();
+
+            using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
+            {
+
+                while (!sr.EndOfStream)
+                {
+
+                    string line = sr.ReadLine().Trim();
+
+                    recordIdList.Add(line);
+
+                }
+
+            }
+
+            return recordIdList;
+
+        }
+
 
         public static List<Gene> parseGene(FileInfo xmlFile, FileInfo recordIdListFile)
         {
+
+            List<string> recordIdList = getRecordIdList(recordIdListFile);
 
             List<Gene> geneList = new List<Gene>();
 
@@ -37,7 +62,15 @@ namespace DataPreparation
                     reader.ReadToFollowing("recordId");
 
                     recordId = reader.ReadElementContentAsString().Trim();
+
+                    if (recordIdList.Contains(recordId))
+                    {
+                        counterTrue ++;
+                    }
+
+                    counter ++;
              
+                    /*
                     using (StreamReader sr = new StreamReader(recordIdListFile.FullName))
                     {
 
@@ -46,18 +79,7 @@ namespace DataPreparation
 
                             string line = sr.ReadLine().Trim();
 
-                            /*
-                            if (line.Equals(recordId))
-                            {
-                                counterTrue ++;
-
-                            }
-                            */
-
-                            counter ++;
-
-                            /*
-
+                            
                             if (line.Equals(recordId))
                             {
 
@@ -226,11 +248,14 @@ namespace DataPreparation
 
                             }
 
-                            */
+                        
 
                         }
      
                     }
+
+                    */
+                    
 
                 }
 
