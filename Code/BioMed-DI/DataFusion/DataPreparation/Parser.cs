@@ -232,6 +232,8 @@ namespace DataPreparation
                 String recordId = reader.ReadElementContentAsString().Trim();
                 gene.recordId = recordId;
 
+                Console.WriteLine(reader.ReadContentAsString());
+
                     
                 reader.ReadToFollowing("ncbiId");
                 if (reader.HasValue)
