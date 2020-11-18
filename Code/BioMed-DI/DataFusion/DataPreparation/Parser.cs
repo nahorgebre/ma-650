@@ -33,8 +33,6 @@ namespace DataPreparation
 
                     recordId = reader.ReadElementContentAsString().Trim();
 
-                    Console.WriteLine("Record: " + recordId);
-
 
                     if (Methods.checkRecordId(recordId, recordIdListFile))
                     {
