@@ -247,9 +247,9 @@ namespace DataPreparation
                     //}
                     
 
+                    geneList.Add(gene);
 
-
-                    
+                    /*
                     if (recordIdList.ContainsKey(gene.recordId))
                     {
                         counterTrue++;
@@ -257,6 +257,7 @@ namespace DataPreparation
                         geneList.Add(gene);
 
                     }
+                    */
                     
 
                     counter++;
