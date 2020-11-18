@@ -220,48 +220,32 @@ namespace DataPreparation
 
             int counter = 0;
 
-            using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
+            using var reader = XmlReader.Create(xmlFile.FullName);
+
+
+            do
             {
 
-                while (reader.ReadToFollowing("gene"))
+                Gene gene = new Gene();
+
+                reader.ReadToFollowing("recordId");
+                String recordId = reader.ReadElementContentAsString().Trim();
+                gene.recordId = recordId;
+
+                    
+                reader.ReadToFollowing("ensemblId");
+                if (reader.HasValue)
                 {
-
-                    Gene gene = new Gene();
-
-                    reader.ReadToFollowing("recordId");
-                    String recordId = reader.ReadElementContentAsString().Trim();
-                    gene.recordId = recordId;
-
-                    
-                    reader.ReadToFollowing("ensemblId");
-                    if (reader.HasValue)
-                    {
-                        String ensemblId = reader.ReadElementContentAsString().Trim();
-                        //if (!ensemblId.Equals(string.Empty))
-                        //{
-                            gene.ensemblId = ensemblId;
-                        //}
-                    }
-                    
-
-                    geneList.Add(gene);
-
-                    /*
-                    if (recordIdList.ContainsKey(gene.recordId))
-                    {
-                        counterTrue++;
-
-                        geneList.Add(gene);
-
-                    }
-                    */
-                    
-
-                    counter++;
-
+                    String ensemblId = reader.ReadElementContentAsString().Trim();
+                    gene.ensemblId = ensemblId;
                 }
+                    
+                geneList.Add(gene);
 
-            }
+                counter++;
+
+            } while (reader.ReadToFollowing("gene"));
+
 
             Console.WriteLine("Counter: " + counter);
 
