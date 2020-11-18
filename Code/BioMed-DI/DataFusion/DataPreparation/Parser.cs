@@ -205,6 +205,8 @@ namespace DataPreparation
 
             }
 
+            Console.WriteLine("Gene List Size: " + geneList.Count);
+
             return geneList;
 
         }

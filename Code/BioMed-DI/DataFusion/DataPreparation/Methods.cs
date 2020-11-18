@@ -88,10 +88,8 @@ namespace DataPreparation
                     
                     string line = sr.ReadLine().Trim();
 
-                    if (line.Contains(inputRecordId.Trim()))
+                    if (line.Equals(inputRecordId.Trim()))
                     {
-
-                        Console.WriteLine("Line: " + line + " - Record: " + inputRecordId);
 
                         returnValue = true;
                         
