@@ -29,7 +29,7 @@ public class DI2Datasets {
 
         FusibleDataSet<Gene, Attribute> ds = new FusibleHashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/input/DI2/all_gene_disease_pmid_associations_" + i + "_dp.xml"), "/genes/gene", ds);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI2/all_gene_disease_pmid_associations_" + i + "_dt.xml"), "/genes/gene", ds);
 
         return ds;
 
