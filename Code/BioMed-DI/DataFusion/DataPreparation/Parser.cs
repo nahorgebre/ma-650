@@ -87,16 +87,23 @@ namespace DataPreparation
 
             reader.ReadToFollowing("geneNames");
 
-            String geneNames = reader.ReadElementContentAsString().Trim();
-
-            if (!geneNames.Equals(string.Empty))
+            if (!reader.IsEmptyElement)
             {
 
-                gene.geneNames = geneNames;
+                String geneNames = reader.ReadElementContentAsString().Trim();
 
+                if (!geneNames.Equals(string.Empty))
+                {
+
+                    gene.geneNames = geneNames;
+
+                }
+
+                Console.WriteLine("Gene Name: " + gene.geneNames);
+                
             }
 
-            Console.WriteLine("Gene Name: " + gene.geneNames);
+
 
             reader.ReadToFollowing("organs");
 
