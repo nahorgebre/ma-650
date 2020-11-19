@@ -87,6 +87,9 @@ namespace DataPreparation
 
             reader.ReadToFollowing("geneNames");
 
+            Console.WriteLine("Inner Xml: " + reader.ReadInnerXml());
+            Console.WriteLine("Outer Xml: " + reader.ReadOuterXml());
+
             if (!reader.IsEmptyElement)
             {
 
