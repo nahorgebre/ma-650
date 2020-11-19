@@ -126,9 +126,30 @@ namespace DataPreparation
             if (!diseaseAssociations.Equals(string.Empty))
             {
 
-                List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(diseaseAssociations);
+                List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation("<diseaseAssociations>" + diseaseAssociations + "</diseaseAssociations>");
 
                 gene.diseaseAssociations = geneDiseaseAssociationsList;
+                
+            }
+
+
+            if (reader.HasValue)
+            {
+
+                Console.WriteLine("TRUE");
+
+                XmlReader diseaseAssociationsInner = reader.ReadSubtree();
+
+                while (diseaseAssociationsInner.Read())
+                {
+
+                    String xml = "<diseaseAssociations>" + diseaseAssociationsInner.ReadInnerXml() + "</diseaseAssociations>";
+
+                    List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(xml);
+
+                    gene.diseaseAssociations = geneDiseaseAssociationsList;
+
+                }
 
             }
 
