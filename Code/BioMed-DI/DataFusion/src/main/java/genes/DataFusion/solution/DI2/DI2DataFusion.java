@@ -145,7 +145,7 @@ public class DI2DataFusion {
 
 
         // write the result
-        new File("data/output/DI1/").mkdirs();
+        new File("data/output/DI2/").mkdirs();
 
         new GeneXMLFormatter().writeXML(new File("data/output/DI2/kaessmannDiseaseAssociations-fused.xml"), fusedDataSet);
         

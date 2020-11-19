@@ -27,7 +27,7 @@ namespace GoldstandardCreation
             int gsSize = 50;
 
             List<Goldstandard> gsListTrue = new List<Goldstandard>();
-            List<Goldstandard> goldstandardListFalse = new List<Goldstandard>();
+            List<Goldstandard> gsListFalse = new List<Goldstandard>();
 
             var delimiter = "\t";
 
@@ -41,7 +41,7 @@ namespace GoldstandardCreation
 
                     var lineSr1 = sr1.ReadLine();
 
-                    if (goldstandardListTrue.Count() < gsSize)
+                    if (gsListTrue.Count() < gsSize)
                     {
 
                         String[] valuesSr1 = lineSr1.Split(delimiter);
@@ -121,13 +121,13 @@ namespace GoldstandardCreation
                                     else if (falseFile)
                                     {
                                     
-                                        if (goldstandardListFalse.Count() < gsSize)
+                                        if (gsListFalse.Count() < gsSize)
                                         {
                                         
-                                            if (!goldstandardListFalse.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListFalse.Exists(x => x.recordId1 == recordIdSr1))
+                                            if (!gsListFalse.Exists(x => x.recordId2 == recordIdSr2) & !gsListFalse.Exists(x => x.recordId1 == recordIdSr1))
                                             {
                                
-                                                Console.WriteLine("GS False #" + (goldstandardListFalse.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + geneNameSim);
+                                                Console.WriteLine("GS False #" + (gsListFalse.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + geneNameSim);
 
                                                 Goldstandard goldstandardItem = new Goldstandard();
                                                 goldstandardItem.recordId1 = recordIdSr1;
@@ -138,7 +138,7 @@ namespace GoldstandardCreation
                                                 goldstandardItem.sim = geneNameSim;
                                                 goldstandardItem.blockingKey = key1;
 
-                                                goldstandardListFalse.Add(goldstandardItem);
+                                                gsListFalse.Add(goldstandardItem);
 
                                             }
 
@@ -159,9 +159,9 @@ namespace GoldstandardCreation
             }
 
             Console.WriteLine("GS-True-List Count: " + goldstandardListTrue.Count);
-            Console.WriteLine("GS-False-List Count: " + goldstandardListFalse.Count);
+            Console.WriteLine("GS-False-List Count: " + gsListFalse.Count);
             
-            return (goldstandardListTrue, goldstandardListFalse);
+            return (goldstandardListTrue, gsListFalse);
 
         }
 
