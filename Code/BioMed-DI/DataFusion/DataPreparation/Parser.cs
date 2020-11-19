@@ -97,7 +97,7 @@ namespace DataPreparation
             }
 
 
-
+            /*
             reader.ReadToFollowing("organs");
 
             if (reader.HasValue)
@@ -117,6 +117,7 @@ namespace DataPreparation
                 }
 
             }
+            */
 
 
             reader.ReadToFollowing("diseaseAssociations");
@@ -133,7 +134,7 @@ namespace DataPreparation
             }
 
 
-
+            /*
             reader.ReadToFollowing("publicationMentions");
 
             if (reader.HasValue)
@@ -174,6 +175,7 @@ namespace DataPreparation
                 }
 
             }
+            */
 
 
             return gene;
