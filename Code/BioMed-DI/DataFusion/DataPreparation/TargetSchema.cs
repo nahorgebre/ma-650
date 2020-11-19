@@ -18,31 +18,31 @@ namespace DataPreparation
     public class Gene
     {
 
-        public string recordId;
+        public string recordId = string.Empty;
 
-        public string ensemblId;
+        public string ensemblId = string.Empty;
 
-        public string ncbiId;
+        public string ncbiId = string.Empty;
 
-        public string geneNames;
+        public string geneNames = string.Empty;
 
-        public string geneDescriptions;
+        public string geneDescriptions = string.Empty;
 
         
         [XmlArrayItem("organs")]
-        public List<Organ> organs;
+        public List<Organ> organs = new List<Organ>();
 
 
         [XmlArrayAttribute("diseaseAssociations")]
-        public List<DiseaseAssociation> diseaseAssociations;
+        public List<DiseaseAssociation> diseaseAssociations = new List<DiseaseAssociation>();
 
 
         [XmlArrayAttribute("publicationMentions")]
-        public List<GenePublicationMention> publicationMentions;
+        public List<GenePublicationMention> publicationMentions = new List<GenePublicationMention>();
 
 
         [XmlArrayAttribute("patentMentions")]
-        public List<GenePatentMention> patentMentions;
+        public List<GenePatentMention> patentMentions = new List<GenePatentMention>();
 
     }
 
