@@ -133,26 +133,6 @@ namespace DataPreparation
             }
 
 
-            if (reader.HasValue)
-            {
-
-                Console.WriteLine("TRUE");
-
-                XmlReader diseaseAssociationsInner = reader.ReadSubtree();
-
-                while (diseaseAssociationsInner.Read())
-                {
-
-                    String xml = "<diseaseAssociations>" + diseaseAssociationsInner.ReadInnerXml() + "</diseaseAssociations>";
-
-                    List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(xml);
-
-                    gene.diseaseAssociations = geneDiseaseAssociationsList;
-
-                }
-
-            }
-
 
             reader.ReadToFollowing("publicationMentions");
 
