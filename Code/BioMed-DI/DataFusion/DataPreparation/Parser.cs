@@ -90,21 +90,16 @@ namespace DataPreparation
             Console.WriteLine("Inner Xml: " + reader.ReadInnerXml());
             Console.WriteLine("Outer Xml: " + reader.ReadOuterXml());
 
-            if (!reader.IsEmptyElement)
+            string geneNames = reader.ReadInnerXml();
+
+            if (!geneNames.Equals(string.Empty))
             {
 
-                String geneNames = reader.ReadElementContentAsString().Trim();
-
-                if (!geneNames.Equals(string.Empty))
-                {
-
-                    gene.geneNames = geneNames;
-
-                }
-
-                Console.WriteLine("Gene Name: " + gene.geneNames);
+                gene.geneNames = geneNames;
                 
             }
+
+            Console.WriteLine("Gene Name: " + gene.geneNames);
 
 
 
