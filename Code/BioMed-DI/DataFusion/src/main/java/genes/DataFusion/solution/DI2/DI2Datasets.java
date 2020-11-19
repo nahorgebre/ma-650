@@ -1,4 +1,4 @@
-package genes.DataFusion.solution;
+package genes.DataFusion.solution.DI2;
 
 
 import java.io.File;

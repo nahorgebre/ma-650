@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions;
+package genes.IdentityResolution.solutions.DI2;
 
 import java.io.File;
 

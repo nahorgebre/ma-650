@@ -1,4 +1,4 @@
-package genes.DataFusion.solution;
+package genes.DataFusion.solution.DI2;
 
 import org.apache.logging.log4j.Logger;
 import java.io.File;
@@ -54,6 +54,8 @@ public class DI2DataFusion {
 
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_2 = DI2Datasets.all_gene_disease_pmid_associations(2);
 
+        /*
+
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_3 = DI2Datasets.all_gene_disease_pmid_associations(3);
 
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_4 = DI2Datasets.all_gene_disease_pmid_associations(4);
@@ -63,6 +65,8 @@ public class DI2DataFusion {
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_6 = DI2Datasets.all_gene_disease_pmid_associations(6);
 
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_7 = DI2Datasets.all_gene_disease_pmid_associations(7);
+
+        */
 
 
         // load correspondences
@@ -74,6 +78,8 @@ public class DI2DataFusion {
 
         correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_2), kaessmann, all_gene_disease_pmid_associations_2);
 
+        /*
+
         correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_3), kaessmann, all_gene_disease_pmid_associations_3);
 
         correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_4), kaessmann, all_gene_disease_pmid_associations_4);
@@ -84,6 +90,7 @@ public class DI2DataFusion {
 
         correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_7), kaessmann, all_gene_disease_pmid_associations_7);
 
+        */
 
         // write group size distribution
         correspondences.printGroupSizeDistribution();
@@ -140,7 +147,7 @@ public class DI2DataFusion {
         // write the result
         new File("data/output/DI1/").mkdirs();
 
-        new GeneXMLFormatter().writeXML(new File("data/output/DI2/kaessmann_diseaseAssociations-fused.xml"), fusedDataSet);
+        new GeneXMLFormatter().writeXML(new File("data/output/DI2/kaessmannDiseaseAssociations-fused.xml"), fusedDataSet);
         
 
         // evaluate

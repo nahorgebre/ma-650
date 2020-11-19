@@ -1,4 +1,4 @@
-package genes.DataFusion.solution;
+package genes.DataFusion.solution.DI1;
 
 import org.apache.logging.log4j.Logger;
 import java.io.File;

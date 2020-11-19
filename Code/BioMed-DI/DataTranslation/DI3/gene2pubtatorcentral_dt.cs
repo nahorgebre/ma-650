@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace DataTranslation
 {
 
-    public class gene2pubtatorcentral_dt
+    public class gene2pubtatorcentral
     {
 
         public static void runDataTranslation()
@@ -77,21 +77,6 @@ namespace DataTranslation
                                     HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
 
                                     List<String> geneNameList = new List<string>();
-
-                                    /*
-
-                                    foreach (string name in geneNameHashSet)
-                                    {
-
-                                        GeneName GeneName = new GeneName();
-
-                                        GeneName.name = name.Trim();
-
-                                        geneNameList.Add(name);
-
-                                    }
-
-                                    */
 
                                     publication.geneNames = string.Join("|", geneNameList);
 

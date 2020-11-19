@@ -7,9 +7,11 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            //Check if data translation is required for kaessmann or publication dataset
-            // make adjustment to kaessmann class
-            //Kaessmann.runDataTranslation();
+            gene2pubtatorcentral.runDataTranslation();
+
+            KaessmannDiseaseAssociations
+
+            KaessmannDiseaseAssociations_2_gene2pubtatorcentral
 
         }
 

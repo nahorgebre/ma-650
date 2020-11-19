@@ -20,7 +20,7 @@ import genes.IdentityResolution.model.Gene.Gene;
 
 // solutions
 import genes.IdentityResolution.solutions.Correspondences;
-import genes.IdentityResolution.solutions.DI2Datasets;
+import genes.IdentityResolution.solutions.DI2.DI2Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
