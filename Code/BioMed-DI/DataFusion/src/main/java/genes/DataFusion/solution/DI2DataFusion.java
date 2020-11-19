@@ -74,7 +74,7 @@ public class DI2DataFusion {
 
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
 
-        correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_1), kaessmann, all_gene_disease_pmid_associations_1);
+        correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_1), all_gene_disease_pmid_associations_1, kaessmann);
 
         /*
 
