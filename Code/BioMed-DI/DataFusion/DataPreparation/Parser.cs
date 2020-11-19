@@ -123,26 +123,12 @@ namespace DataPreparation
 
             string diseaseAssociations = reader.ReadInnerXml();
 
-            Console.WriteLine(diseaseAssociations);
-            
-
-            if (reader.HasValue)
+            if (!diseaseAssociations.Equals(string.Empty))
             {
 
-                Console.WriteLine("TRUE");
+                List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(diseaseAssociations);
 
-                XmlReader diseaseAssociationsInner = reader.ReadSubtree();
-
-                while (diseaseAssociationsInner.Read())
-                {
-
-                    String xml = "<diseaseAssociations>" + diseaseAssociationsInner.ReadInnerXml() + "</diseaseAssociations>";
-
-                    List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(xml);
-
-                    gene.diseaseAssociations = geneDiseaseAssociationsList;
-
-                }
+                gene.diseaseAssociations = geneDiseaseAssociationsList;
 
             }
 
