@@ -96,8 +96,6 @@ namespace DataPreparation
                 
             }
 
-            Console.WriteLine("Gene Name: " + gene.geneNames);
-
 
 
             reader.ReadToFollowing("organs");
@@ -122,6 +120,11 @@ namespace DataPreparation
 
 
             reader.ReadToFollowing("diseaseAssociations");
+
+            string diseaseAssociations = reader.ReadInnerXml();
+
+            Console.WriteLine(diseaseAssociations);
+            
 
             if (reader.HasValue)
             {
