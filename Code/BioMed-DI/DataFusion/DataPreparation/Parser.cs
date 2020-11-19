@@ -96,7 +96,7 @@ namespace DataPreparation
 
             }
 
-
+            Console.WriteLine("Gene Name: " + gene.geneNames);
 
             reader.ReadToFollowing("organs");
 
@@ -125,7 +125,7 @@ namespace DataPreparation
             {
 
                 Console.WriteLine("TRUE");
-                
+
                 XmlReader diseaseAssociationsInner = reader.ReadSubtree();
 
                 while (diseaseAssociationsInner.Read())
