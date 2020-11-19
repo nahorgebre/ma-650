@@ -48,70 +48,54 @@ namespace DataPreparation
 
             reader.ReadToFollowing("ensemblId");
 
-            if (reader.HasValue)
+            String ensemblId = reader.ReadElementContentAsString().Trim();
+
+            if (!ensemblId.Equals(string.Empty))
             {
 
-                String ensemblId = reader.ReadElementContentAsString().Trim();
-
-                if (!ensemblId.Equals(string.Empty))
-                {
-
-                    gene.ensemblId = ensemblId;
-
-                }
+                gene.ensemblId = ensemblId;
 
             }
+
 
 
             reader.ReadToFollowing("ncbiId");
 
-            if (reader.HasValue)
+            String ncbiId = reader.ReadElementContentAsString().Trim();
+
+            if (!ncbiId.Equals(string.Empty))
             {
 
-                String ncbiId = reader.ReadElementContentAsString().Trim();
-
-                if (!ncbiId.Equals(string.Empty))
-                {
-
-                    gene.ncbiId = ncbiId;
-
-                }
+                gene.ncbiId = ncbiId;
 
             }
+
 
 
             reader.ReadToFollowing("geneDescriptions");
 
-            if (reader.HasValue)
+            String geneDescriptions = reader.ReadElementContentAsString().Trim();
+
+            if (!geneDescriptions.Equals(string.Empty))
             {
 
-                String geneDescriptions = reader.ReadElementContentAsString().Trim();
-
-                if (!geneDescriptions.Equals(string.Empty))
-                {
-
-                    gene.geneDescriptions = geneDescriptions;
-
-                }
+                gene.geneDescriptions = geneDescriptions;
 
             }
+
 
 
             reader.ReadToFollowing("geneNames");
 
-            if (reader.HasValue)
+            String geneNames = reader.ReadElementContentAsString().Trim();
+
+            if (!geneNames.Equals(string.Empty))
             {
 
-                String geneNames = reader.ReadElementContentAsString().Trim();
-
-                if (!geneNames.Equals(string.Empty))
-                {
-
-                    gene.geneNames = geneNames;
-
-                }
+                gene.geneNames = geneNames;
 
             }
+
 
 
             reader.ReadToFollowing("organs");
@@ -140,6 +124,8 @@ namespace DataPreparation
             if (reader.HasValue)
             {
 
+                Console.WriteLine("TRUE");
+                
                 XmlReader diseaseAssociationsInner = reader.ReadSubtree();
 
                 while (diseaseAssociationsInner.Read())
