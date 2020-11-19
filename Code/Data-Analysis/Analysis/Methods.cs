@@ -1,25 +1,42 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using System.IO;
 
 namespace Analysis
 {
 
-    public class Analysis1
+    public class Methods
     {
 
-        public static void run()
+        public static void createXmlGene(List<Gene> gene_list)
         {
 
-            FileInfo inputFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.xml", Environment.CurrentDirectory));
+            FileInfo file = new FileInfo(string.Format("{0}/data/output/analysis1.xml", Environment.CurrentDirectory));
 
-            List<Gene> geneList = Parser.parseGene(inputFile);
+            Console.WriteLine("Create Xml: " + file.Name);
 
-            createTsvFile(geneList);
+            Console.WriteLine("Count: " + gene_list.Count);
+
+            file.Directory.Create();
+
+            XmlSerializer serializer = new XmlSerializer(typeof(Genes));
+
+            TextWriter writer = new StreamWriter(file.FullName);
+
+            Genes genes = new Genes();
+
+            genes.gene = gene_list;
+
+            serializer.Serialize(writer, genes);
+
+            writer.Close();
+
+            Console.WriteLine(file.FullName);
 
         }
 
-        
+                
         public static void createTsvFile(List<Gene> geneList)
         {
 
@@ -45,50 +62,45 @@ namespace Analysis
                 {
                     string UniqueGene = geneItem.ensemblId;
 
-                    string Brain = "N/A";
-                    string Cerebellum = "N/A";
-                    string Heart = "N/A";
-                    string Liver = "N/A";
-                    string Kidney = "N/A";
-                    string Testis = "N/A";
+                    string Brain = string.Empty;
+                    string Cerebellum = string.Empty;
+                    string Heart = string.Empty;
+                    string Liver = string.Empty;
+                    string Kidney = string.Empty;
+                    string Testis = string.Empty;
+                    string OverallExpression = string.Empty;
  
                     foreach (Organ organItem in geneItem.organs)
                     {
                         if (organItem.organName.Equals("brain"))
                         {
-                            Brain = getExpression(organItem.call);
+                            Brain = organItem.call;
                         }
                         else if (organItem.organName.Equals("cerebellum"))
                         {
-                            Cerebellum = getExpression(organItem.call);
+                            Cerebellum = organItem.call;
                         }
                         else if (organItem.organName.Equals("heart"))
                         {
-                            Heart = getExpression(organItem.call);
+                            Heart = organItem.call;
                         }
                         else if (organItem.organName.Equals("liver"))
                         {
-                            Liver = getExpression(organItem.call);
+                            Liver = organItem.call;
                         }
                         else if (organItem.organName.Equals("kidney"))
                         {
-                            Kidney = getExpression(organItem.call);
+                            Kidney = organItem.call;
                         }
                         else if (organItem.organName.Equals("testis"))
                         {
-                            Testis = getExpression(organItem.call);
+                            Testis = organItem.call;
+                        }
+                        else if (organItem.organName.Equals("overallExpression"))
+                        {
+                            OverallExpression = organItem.call;
                         }
                     }
-
-                    List<string> expressionList = new List<string>();
-                    expressionList.Add(Brain);
-                    expressionList.Add(Cerebellum);
-                    expressionList.Add(Heart);
-                    expressionList.Add(Liver);
-                    expressionList.Add(Kidney);
-                    expressionList.Add(Testis);
-
-                    string OverallExpression = getOverallExpression(expressionList);
 
                     List<string> lineContent = new List<string>()
                     {
@@ -103,12 +115,14 @@ namespace Analysis
                     };
                     var line = string.Join(delimiter, lineContent);
                     sw.WriteLine(line);
+
                 }
 
             }
 
         }
         
+
         public static string getOverallExpression(List<string> expressionList)
         {
             string returnValue = string.Empty;
@@ -172,6 +186,8 @@ namespace Analysis
             return returnValue;
 
         }
+
+
 
     }
 
