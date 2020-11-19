@@ -15,19 +15,18 @@ import org.xml.sax.SAXException;
 
 import javax.xml.xpath.XPathExpressionException;
 
-
-public class UploadDI1ToS3 {
+public class UploadDI2ToS3 {
 
     public static void main( String[] args ) throws Exception
     {
 
-        String outputDirectory = System.getProperty("user.dir") + "/data/output/DI1";
+        String outputDirectory = System.getProperty("user.dir") + "/data/output/DI2";
 
         for (String file : getFiles(outputDirectory)) {
 
             String fileName = outputDirectory + "/" + file;
 
-            String keyName = "data-fusion/output/DI1/" + file;
+            String keyName = "data-fusion/output/DI2/" + file;
             uploadFile("nahorgebre-ma-650-master-thesis", keyName, fileName);
 
         }
@@ -64,5 +63,5 @@ public class UploadDI1ToS3 {
         }
 
     }
-
+    
 }

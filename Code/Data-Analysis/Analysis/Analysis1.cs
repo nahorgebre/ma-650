@@ -11,6 +11,18 @@ namespace Analysis
         public static void run()
         {
 
+            FileInfo inputFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.xml", Environment.CurrentDirectory));
+
+            List<Gene> geneList = Parser.parseGene(inputFile);
+
+            createTsvFile(geneList);
+
+        }
+
+        
+        public static void createTsvFile(List<Gene> geneList)
+        {
+
             FileInfo outputFile = new FileInfo(string.Format("{0}/data/output/analysis1.tsv", Environment.CurrentDirectory));
             using (StreamWriter sw = new StreamWriter(outputFile.FullName))
             {
@@ -29,8 +41,7 @@ namespace Analysis
                 var firstLine = string.Join(delimiter, firstLineContent);
                 sw.WriteLine(firstLine);
 
-                FileInfo inputFile = new FileInfo(string.Format("{0}/data/input/kaessmann-fused.xml", Environment.CurrentDirectory));
-                foreach (Gene geneItem in Genes.getGenes(inputFile.FullName))
+                foreach (Gene geneItem in geneList)
                 {
                     string UniqueGene = geneItem.ensemblId;
 
@@ -97,7 +108,7 @@ namespace Analysis
             }
 
         }
-
+        
         public static string getOverallExpression(List<string> expressionList)
         {
             string returnValue = string.Empty;
