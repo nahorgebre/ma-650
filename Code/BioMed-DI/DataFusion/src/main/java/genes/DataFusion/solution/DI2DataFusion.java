@@ -52,6 +52,8 @@ public class DI2DataFusion {
 
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_1 = DI2Datasets.all_gene_disease_pmid_associations(1);
 
+        /*
+
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_2 = DI2Datasets.all_gene_disease_pmid_associations(2);
 
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_3 = DI2Datasets.all_gene_disease_pmid_associations(3);
@@ -64,6 +66,8 @@ public class DI2DataFusion {
 
         FusibleDataSet<Gene, Attribute> all_gene_disease_pmid_associations_7 = DI2Datasets.all_gene_disease_pmid_associations(7);
 
+        */
+
 
         // load correspondences
         System.out.println("*\n*\tLoading correspondences\n*");
@@ -71,6 +75,8 @@ public class DI2DataFusion {
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
 
         correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_1), kaessmann, all_gene_disease_pmid_associations_1);
+
+        /*
 
         correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_2), kaessmann, all_gene_disease_pmid_associations_2);
 
@@ -84,6 +90,7 @@ public class DI2DataFusion {
 
         correspondences.loadCorrespondences(new File(DI2Correspondences.kaessmann_2_all_gene_disease_pmid_associations_7), kaessmann, all_gene_disease_pmid_associations_7);
 
+        */
 
         // write group size distribution
         correspondences.printGroupSizeDistribution();
