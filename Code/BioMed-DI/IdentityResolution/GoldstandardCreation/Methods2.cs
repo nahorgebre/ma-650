@@ -71,7 +71,7 @@ namespace GoldstandardCreation
 
                                 bool falseFile = false;
 
-                                
+
                                 if (ensemblIdSim == 1) trueFile = true;
 
                                 if (ensemblIdSim < 1) falseFile = true;
@@ -132,7 +132,7 @@ namespace GoldstandardCreation
                         }
 
                     }
-                    
+
                 }
 
             }
@@ -251,23 +251,24 @@ namespace GoldstandardCreation
                                     bool falseCornerFile = false;
 
 
-                                    if (geneNameSim == 1)
+                                    if (ncbiIdSr1.Equals("NaN") & ncbiIdSr2.Equals("NaN"))
                                     {
 
-                                        trueFile = true;
+                                        if (geneNameSim == 1)
+                                        {
+
+                                            trueFile = true;
+
+                                        }
+
+                                        if (geneNameSim < 0.8)
+                                        {
+
+                                            falseFile = true;
+
+                                        }
 
                                     }
-
-
-
-                                    if (geneNameSim < 0.8)
-                                    {
-
-                                        falseFile = true;
-
-                                    }
-
-
 
                                     if (!ncbiIdSr1.Equals("NaN") & !ncbiIdSr2.Equals("NaN"))
                                     {

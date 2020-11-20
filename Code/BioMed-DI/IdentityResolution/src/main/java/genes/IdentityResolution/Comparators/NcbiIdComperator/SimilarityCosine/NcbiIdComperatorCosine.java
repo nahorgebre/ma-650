@@ -1,5 +1,6 @@
 package genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityCosine;
 
+// winter
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
@@ -18,29 +19,34 @@ public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
     private ComparatorLogger comparisonLog;
 
     @Override
-    public double compare(
-            Gene record1,
-            Gene record2,
-            Correspondence<Attribute, Matchable> schemaCorrespondences) {
+    public double compare(Gene record1, Gene record2, Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
         String s1 = record1.getNcbiId();
         String s2 = record2.getNcbiId();
 
-        // calculate similarity
-        double similarity = sim.similarity(s1, s2);
+        if (!s1.equals("") & !s2.equals("")) {
 
-        if(this.comparisonLog != null){
-            this.comparisonLog.setComparatorName(getClass().getName());
+            // calculate similarity
+            double similarity = sim.similarity(s1, s2);
 
-            this.comparisonLog.setRecord1Value(s1);
-            this.comparisonLog.setRecord2Value(s2);
+            if (this.comparisonLog != null) {
+                this.comparisonLog.setComparatorName(getClass().getName());
 
-            this.comparisonLog.setSimilarity(Double.toString(similarity));
-            this.comparisonLog.setPostprocessedSimilarity(Double.toString(similarity));
+                this.comparisonLog.setRecord1Value(s1);
+                this.comparisonLog.setRecord2Value(s2);
+
+                this.comparisonLog.setSimilarity(Double.toString(similarity));
+                this.comparisonLog.setPostprocessedSimilarity(Double.toString(similarity));
+            }
+
+            return similarity;
+
+        } else {
+
+            return 0;
+
         }
 
-        return similarity;
-   
     }
 
     @Override
@@ -52,5 +58,5 @@ public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
-    
+
 }

@@ -1,5 +1,6 @@
 package genes.IdentityResolution.AWS;
 
+// java
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -9,9 +10,11 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
+// javax
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
+// aws
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
@@ -19,13 +22,19 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
+// xml
 import org.xml.sax.SAXException;
+
+// debatty
+import info.debatty.java.stringsimilarity.Cosine;
 
 public class ListingS3Objects {
 
     public static void main(String[] args) throws Exception {
 
+        test();
         
+        /*
         getDI1Datasets();
 
         getDI1GoldstandardDatasets();
@@ -37,9 +46,18 @@ public class ListingS3Objects {
         getDI3Datasets();
 
         getDI3GoldstandardDatasets();
-        
+        */
 
         //getIdentityResolutionResults("DI2");
+
+    }
+
+    public static void test() throws Exception {
+
+        Cosine sim = new Cosine();
+        double similarity = sim.similarity("", "");
+
+        System.out.println(similarity);
 
     }
 
