@@ -40,6 +40,7 @@ namespace GoldstandardCreation
 
         }
 
+        // delete if not needed
         public static void runX(DirectoryInfo outputDirectory, String parameter = null)
         {
 

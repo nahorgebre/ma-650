@@ -25,7 +25,7 @@ public class ListingS3Objects {
 
     public static void main(String[] args) throws Exception {
 
-        /*
+        
         getDI1Datasets();
 
         getDI1GoldstandardDatasets();
@@ -37,9 +37,9 @@ public class ListingS3Objects {
         getDI3Datasets();
 
         getDI3GoldstandardDatasets();
-        */
+        
 
-        getIdentityResolutionResults("DI2");
+        //getIdentityResolutionResults("DI2");
 
     }
 

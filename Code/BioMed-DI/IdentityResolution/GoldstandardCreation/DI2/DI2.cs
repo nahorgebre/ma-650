@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Collections.Generic;
 
 namespace GoldstandardCreation
 {
@@ -16,21 +16,29 @@ namespace GoldstandardCreation
             {
                 string comparison = "kaessmann_2_all_gene_disease_pmid_associations_" + i;
                 string directoryName = string.Format("{0}/data/output/DI2/{1}", Environment.CurrentDirectory, comparison);
+
                 string trueFile = string.Format("{0}/true.csv", directoryName);
+                string trueCornerCaseFile = string.Format("{0}/trueCornerCase.csv", directoryName);
                 string falseFile = string.Format("{0}/false.csv", directoryName);
+                string falseCornerCaseFile = string.Format("{0}/falseCornerCase.csv", directoryName);
 
                 Directory.CreateDirectory(directoryName);
 
-                if (!File.Exists(trueFile) | !File.Exists(falseFile))
+                if (!File.Exists(trueFile) | 
+                    !File.Exists(trueCornerCaseFile) |
+                    !File.Exists(falseFile) |
+                    !File.Exists(falseCornerCaseFile))
                 {
 
                     Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod().Name);
-                    
-                    (List<Goldstandard> trueList, List<Goldstandard> falseList) = Methods.compareFiles_NcbiId_GeneName(DI2Datasets.kaessmann_path, DI2Datasets.all_gene_disease_pmid_associations_path(i));
-                    
-                    Methods.createOuput(trueFile, trueList);
 
-                    Methods.createOuput(falseFile, falseList);
+                    (List<Goldstandard> gsListTrue, List<Goldstandard> gsListTrueCornerCase, List<Goldstandard> gsListFalse, List<Goldstandard> gsListFalseCornerCase) = Methods2.compareFiles_NcbiId_GeneName(DI2Datasets.kaessmann_path, DI2Datasets.all_gene_disease_pmid_associations_path(i));
+                
+                    Methods.createOuput(trueFile, gsListTrue);
+                    Methods.createOuput(trueCornerCaseFile, gsListTrueCornerCase);
+
+                    Methods.createOuput(falseFile, gsListFalse);
+                    Methods.createOuput(falseCornerCaseFile, gsListFalseCornerCase);
 
                 }
 
