@@ -26,6 +26,7 @@ import genes.IdentityResolution.solutions.DI2.DI2Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
+import genes.IdentityResolution.solutions.PartitionNumbers;
 
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
@@ -53,7 +54,7 @@ public class ML_SortedNeighbourhoodBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= 7; fileNumber++) { 
+        for (int fileNumber = 1; fileNumber <= PartitionNumbers.kaessmann_2_all_gene_disease_pmid_associations; fileNumber++) { 
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  
