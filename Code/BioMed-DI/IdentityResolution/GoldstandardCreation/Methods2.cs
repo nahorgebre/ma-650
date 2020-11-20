@@ -27,7 +27,10 @@ namespace GoldstandardCreation
             int gsSize = 50;
 
             List<Goldstandard> gsListTrue = new List<Goldstandard>();
+            List<Goldstandard> gsListTrueCornerCase = new List<Goldstandard>();
+            
             List<Goldstandard> gsListFalse = new List<Goldstandard>();
+            List<Goldstandard> gsListFalseCornerCase = new List<Goldstandard>();
 
             var delimiter = "\t";
 
@@ -99,10 +102,10 @@ namespace GoldstandardCreation
                                     if (trueFile)
                                     {
 
-                                        if (!goldstandardListTrue.Exists(x => x.recordId2 == recordIdSr2) & !goldstandardListTrue.Exists(x => x.recordId1 == recordIdSr1))
+                                        if (!gsListTrue.Exists(x => x.recordId2 == recordIdSr2) & !gsListTrue.Exists(x => x.recordId1 == recordIdSr1))
                                         {
 
-                                            Console.WriteLine("GS True #" + (goldstandardListTrue.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + geneNameSim);
+                                            Console.WriteLine("GS True #" + (gsListTrue.Count() + 1).ToString() + " : " + geneNameSr1 + " - " + geneNameSr2 + " - " + geneNameSim);
 
                                             Goldstandard goldstandardItem = new Goldstandard();
                                             goldstandardItem.recordId1 = recordIdSr1;
@@ -113,7 +116,7 @@ namespace GoldstandardCreation
                                             goldstandardItem.sim = geneNameSim;
                                             goldstandardItem.blockingKey = key1;
 
-                                            goldstandardListTrue.Add(goldstandardItem);
+                                            gsListTrue.Add(goldstandardItem);
 
                                         }
 

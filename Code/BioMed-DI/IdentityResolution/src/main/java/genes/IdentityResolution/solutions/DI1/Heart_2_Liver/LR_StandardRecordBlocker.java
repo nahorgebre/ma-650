@@ -1,9 +1,9 @@
 package genes.IdentityResolution.solutions.DI1.Heart_2_Liver;
 
 // java
-import java.util.List;
+import java.io.File;
+import java.util.Date;
 
-// logger
 import org.slf4j.Logger;
 
 // winter
@@ -13,67 +13,103 @@ import de.uni_mannheim.informatik.dws.winter.matching.rules.LinearCombinationMat
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard;
-import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
+import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 
-// blockig
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
+// comparators
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorCosine;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorLowerCaseCosine;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevenshtein.EnsemblIdComperatorLevenshtein;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevenshtein.EnsemblIdComperatorLowerCaseLevenshtein;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorLowerCaseSorensenDice;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorSorensenDice;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorLowerCaseTokenizingJaccard;
+import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorTokenizingJaccard;
 
 // model
 import genes.IdentityResolution.model.Gene.Gene;
 
+// blockig
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
+
 // solutions
 import genes.IdentityResolution.solutions.Correspondences;
-import genes.IdentityResolution.solutions.Datasets;
+import genes.IdentityResolution.solutions.DI1.DI1Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
-import genes.IdentityResolution.solutions.GeneLinearCombinationMatchingRule_EnsemblId_GeneName;
 import genes.IdentityResolution.solutions.GoldStandard;
+import genes.IdentityResolution.solutions.Blocker;
 
-public class LR_StandardRecordBlocker {
-    private static final Logger logger = WinterLogManager.activateLogger("default");
+public class LR_StandardRecordBlocker 
+{
 
+	private static final Logger logger = WinterLogManager.activateLogger("default");
+	
     public static void main( String[] args ) throws Exception
     {
-        // loading datasets
+		// loading data
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = Datasets.Heart();
-        HashedDataSet<Gene, Attribute> ds2 = Datasets.Liver();
+        HashedDataSet<Gene, Attribute> ds1 = DI1Datasets.Heart();
+        HashedDataSet<Gene, Attribute> ds2 = DI1Datasets.Liver();
 
-        // goldstandard directory
+		// load the gold standard (test set)
         String comparisonDescription = "Heart_2_Liver";
         String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+        String className = "StandardRecordBlocker";
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
 
-        String blockerName = "_StandardRecordBlocker";
-        List<GeneLinearCombinationMatchingRule_EnsemblId_GeneName> matchingRuleList = GeneLinearCombinationMatchingRule_EnsemblId_GeneName.getMatchingRuleList(solution, comparisonDescription, blockerName, gsTest);
+        // create output directory
+        String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
+        new File(outputDirectory).mkdirs();
 
-        for (GeneLinearCombinationMatchingRule_EnsemblId_GeneName geneLinearCombinationMatchingRule_EnsemblId_GeneName : matchingRuleList) {
+        // start counting
+        Date startDate = new Date();
 
-            LinearCombinationMatchingRule<Gene, Attribute> matchingRule = geneLinearCombinationMatchingRule_EnsemblId_GeneName.matchingRule;
-            String outputDirectory = geneLinearCombinationMatchingRule_EnsemblId_GeneName.outputDirectory;
+		// create a matching rule
+		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
+				0.9);
+		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
+		
+        // add comparators
+        matchingRule.addComparator(new EnsemblIdComperatorCosine(), 0.125);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseCosine(), 0.125);
+        matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard(), 0.125);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard(), 0.125);
+        matchingRule.addComparator(new EnsemblIdComperatorLevenshtein(), 0.125);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseLevenshtein(), 0.125);
+        matchingRule.addComparator(new EnsemblIdComperatorSorensenDice(), 0.125);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice(), 0.125);
 
-            // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
-            blocker.setMeasureBlockSizes(true);
-            blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+		// create a blocker (blocking strategy)
+		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
+        blocker.setMeasureBlockSizes(true);
+        blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+        
+        // write blocker results to the output file
+        Blocker.writeStandardRecordBlockerResults(blocker, outputDirectory);
+		
+		// initialize Matching Engine
+		MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
-            // initialize matching engine
-            MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
+		// execute the matching
+		System.out.println("*\n*\tRunning identity resolution\n*");
+		Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
+				ds1, ds2, null, matchingRule,
+                blocker);
+                
+        // end counting
+        Date endDate = new Date();
+        int numSeconds = (int)((endDate.getTime() - startDate.getTime()) / 1000);
 
-            // execute the matching
-            System.out.println("*\n*\tRunning identity resolution\n*");
-            Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-                ds2, ds1, null, matchingRule, blocker);
+        // write the correspondences to the output file
+        Correspondences.output(outputDirectory, correspondences);
+                
+        // evaluate your result
+        Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
 
-            // write the correspondences to the output file
-            Correspondences.output(outputDirectory, correspondences);
-
-            // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, geneLinearCombinationMatchingRule_EnsemblId_GeneName.modelType);
-        }
     }
+
 }

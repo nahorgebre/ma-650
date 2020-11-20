@@ -1,7 +1,9 @@
 package genes.IdentityResolution.solutions;
 
+// java
 import java.io.File;
 
+// winter
 import de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard;
 
 public class GoldStandard {

@@ -40,6 +40,7 @@ public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
         }
 
         return similarity;
+   
     }
 
     @Override

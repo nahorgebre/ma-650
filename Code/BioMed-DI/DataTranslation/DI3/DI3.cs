@@ -9,9 +9,7 @@ namespace DataTranslation
 
             gene2pubtatorcentral.runDataTranslation();
 
-            KaessmannDiseaseAssociations
-
-            KaessmannDiseaseAssociations_2_gene2pubtatorcentral
+            KaessmannDiseaseAssociations.runDataTranslation();
 
         }
 

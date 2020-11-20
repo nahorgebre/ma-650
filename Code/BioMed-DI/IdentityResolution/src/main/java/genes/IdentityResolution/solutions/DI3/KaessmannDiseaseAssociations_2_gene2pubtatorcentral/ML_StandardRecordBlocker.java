@@ -1,6 +1,8 @@
 package genes.IdentityResolution.solutions.DI3.KaessmannDiseaseAssociations_2_gene2pubtatorcentral;
+
 // java
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 // winter
@@ -18,11 +20,12 @@ import de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule;
 import genes.IdentityResolution.model.Gene.Gene;
 
 // solutions
-import genes.IdentityResolution.solutions.Datasets;
+import genes.IdentityResolution.solutions.Blocker;
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
+import genes.IdentityResolution.solutions.DI3.DI3Datasets;
 
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
@@ -37,8 +40,6 @@ import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityTokenizin
 // GeneNameComperator
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorCosine;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorLowerCaseCosine;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorJaccardOnNGrams;
-import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityJaccardOnNGrams.GeneNameComperatorLowerCaseJaccardOnNGrams;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLevenshtein;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLowerCaseLevenshtein;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorLowerCaseSorensenDice;
@@ -46,25 +47,26 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorense
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
 
-import genes.IdentityResolution.solutions.Variables;
 
 public class ML_StandardRecordBlocker {
+
+    public static int partitionNumbers = 50;
 
     public static void main( String[] args ) throws Exception
     {
 
-        //for (int fileNumber = 1; fileNumber <= Variables.partitionNumbers; fileNumber++) {
+        //for (int fileNumber = 1; fileNumber <= partitionNumbers; fileNumber++) {
         for (int fileNumber = 1; fileNumber <= 1; fileNumber++) { 
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  
-            HashedDataSet<Gene, Attribute> ds1 = Datasets.kaessmann();
-            HashedDataSet<Gene, Attribute> ds2 = Datasets.gene2pubtatorcentral(fileNumber);
+            HashedDataSet<Gene, Attribute> ds1 = DI3Datasets.kaessmannDiseaseAssociations();
+            HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(fileNumber);
     
             // goldstandard directory
             String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_" + fileNumber;
             String solution = "DI2";
-            String goldstandardDirectory = "data/goldstandard/" + solution + "/" + Variables.partitionNumbers + "/" + comparisonDescription;
+            String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
             
             // load the gold standard (test set)
             MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
@@ -80,6 +82,9 @@ public class ML_StandardRecordBlocker {
                 // output directory
                 String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
                 new File(outputDirectory).mkdirs();
+
+                // start counting
+                Date startDate = new Date();
     
                 // create matching rule
                 String options[] = geneMatchingRule.options;
@@ -93,14 +98,11 @@ public class ML_StandardRecordBlocker {
                 matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
     
                 // add comparators
-                //matchingRule.addComparator(new NcbiIdComperatorCosine());
-                //matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams());
-                //matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
-                //matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
-                //matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
-    
-                //matchingRule.addComparator(new GeneNameComperatorJaccardOnNGrams());
-                //matchingRule.addComparator(new GeneNameComperatorLowerCaseJaccardOnNGrams());
+                matchingRule.addComparator(new NcbiIdComperatorCosine());
+                matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams());
+                matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
+                matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
+                matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
                 
                 matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
@@ -119,20 +121,26 @@ public class ML_StandardRecordBlocker {
                 StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
                 blocker.setMeasureBlockSizes(true);
                 blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+
+                // write blocker results to the output file
+                Blocker.writeStandardRecordBlockerResults(blocker, outputDirectory);
     
                 // initialize matching engine
                 MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
        
                 // execute the matching
-                System.out.println("--- Execute the mathcing! ---");
                 Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
                     ds1, ds2, null, matchingRule, blocker);
-                    
+
+                // End counting
+                Date endDate = new Date();
+                int numSeconds = (int)((endDate.getTime() - startDate.getTime()) / 1000);
+
                 // write the correspondences to the output file
                 Correspondences.output(outputDirectory, correspondences);
             
                 // evaluate your result
-                Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className);
+                Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
                
             }
 

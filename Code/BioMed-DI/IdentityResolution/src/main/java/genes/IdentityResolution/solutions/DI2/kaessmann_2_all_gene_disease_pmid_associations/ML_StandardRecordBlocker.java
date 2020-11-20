@@ -2,6 +2,7 @@ package genes.IdentityResolution.solutions.DI2.kaessmann_2_all_gene_disease_pmid
 
 // java
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 // winter
@@ -15,10 +16,11 @@ import de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleLearner;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlocker;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule;
 
-// models
+// model
 import genes.IdentityResolution.model.Gene.Gene;
+import genes.IdentityResolution.solutions.Blocker;
 
-// solutions
+// solution
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.DI2.DI2Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
@@ -77,6 +79,9 @@ public class ML_StandardRecordBlocker {
                 // output directory
                 String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
                 new File(outputDirectory).mkdirs();
+        
+                // start counting
+                Date startDate = new Date();
     
                 // create matching rule
                 String options[] = geneMatchingRule.options;
@@ -90,13 +95,11 @@ public class ML_StandardRecordBlocker {
                 matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
     
                 // add comparators
-                /*
                 matchingRule.addComparator(new NcbiIdComperatorCosine());
                 matchingRule.addComparator(new NcbiIdComperatorJaccardOnNGrams());
                 matchingRule.addComparator(new NcbiIdComperatorLevenshtein());
                 matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
                 matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
-                */
                 
                 matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
@@ -115,6 +118,9 @@ public class ML_StandardRecordBlocker {
                 StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
                 blocker.setMeasureBlockSizes(true);
                 blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+
+                // write blocker results to the output file
+                Blocker.writeStandardRecordBlockerResults(blocker, outputDirectory);
     
                 // initialize matching engine
                 MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
@@ -122,12 +128,16 @@ public class ML_StandardRecordBlocker {
                 // execute the matching
                 Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
                     ds1, ds2, null, matchingRule, blocker);
+
+                // end counting
+                Date endDate = new Date();
+                int numSeconds = (int)((endDate.getTime() - startDate.getTime()) / 1000);
                     
                 // write the correspondences to the output file
                 Correspondences.output(outputDirectory, correspondences);
             
                 // evaluate your result
-                Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className);
+                Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
                
             }
 
