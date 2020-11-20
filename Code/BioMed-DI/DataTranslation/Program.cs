@@ -31,14 +31,14 @@ namespace DataTranslation
                     
                     DI3.runDataTranslation();
 
-                    //AWSupload.run(parameter, Variables.gene2pubtatorcentral_partitionNumbers.ToString());
+                    AWSupload.run(parameter);
                     
-
                 }
                 else if (parameter.Equals("DI4"))
                 {
 
                     DI4.runDataTranslation();
+                    
                 }
 
             }
