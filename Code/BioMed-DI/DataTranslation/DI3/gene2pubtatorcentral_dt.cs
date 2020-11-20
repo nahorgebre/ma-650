@@ -11,7 +11,7 @@ namespace DataTranslation
         public static void runDataTranslation()
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI2.outputDirectory));
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI3.outputDirectory));
 
             Console.WriteLine("Start gene2pubtatorcentral_dt()");
 
@@ -21,7 +21,7 @@ namespace DataTranslation
 
                 List<Publication> publication_list = new List<Publication>();
 
-                using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI2.inputDirectory, "gene2pubtatorcentral.tsv")))
+                using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI3.inputDirectory, "gene2pubtatorcentral.tsv")))
                 {
 
                     reader.ReadLine();
@@ -98,9 +98,9 @@ namespace DataTranslation
 
                 Console.WriteLine("Gene list length: " + publication_list.Count);
                     
-                Methods.createXmlPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: DI2.outputDirectory + "/" + Variables.gene2pubtatorcentral_partitionNumbers.ToString());
+                Methods.createXmlPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: DI3.outputDirectory + "/" + Variables.gene2pubtatorcentral_partitionNumbers.ToString());
 
-                Methods.createTsvPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: DI2.outputDirectory + "/" + Variables.gene2pubtatorcentral_partitionNumbers.ToString());
+                Methods.createTsvPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: DI3.outputDirectory + "/" + Variables.gene2pubtatorcentral_partitionNumbers.ToString());
  
             }
 
