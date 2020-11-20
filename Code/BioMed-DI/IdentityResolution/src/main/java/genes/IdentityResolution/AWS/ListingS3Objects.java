@@ -25,8 +25,6 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 // xml
 import org.xml.sax.SAXException;
 
-// debatty
-import info.debatty.java.stringsimilarity.Cosine;
 
 public class ListingS3Objects {
 

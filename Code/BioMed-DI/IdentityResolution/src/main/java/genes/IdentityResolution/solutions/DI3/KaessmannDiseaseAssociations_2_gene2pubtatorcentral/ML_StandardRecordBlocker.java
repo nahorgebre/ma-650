@@ -51,7 +51,6 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokeniz
 
 public class ML_StandardRecordBlocker {
 
-    public static int partitionNumbers = 50;
 
     public static void main( String[] args ) throws Exception
     {
