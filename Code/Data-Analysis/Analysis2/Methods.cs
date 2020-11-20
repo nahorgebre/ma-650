@@ -27,8 +27,13 @@ namespace Analysis2
                             
                     String[] values = line.Split(delimiter);
 
-                    pubMedDateDictionary.Add(values[0], values[1]);
-                    
+                    if (!pubMedDateDictionary.ContainsKey(values[0]))
+                    {
+                        
+                        pubMedDateDictionary.Add(values[0], values[1]);
+
+                    }
+     
                 }
                 
             }

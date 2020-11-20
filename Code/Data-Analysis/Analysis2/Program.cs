@@ -11,6 +11,8 @@ namespace Analysis2
 
             Dictionary<string, string> pubMedDateDictionary = Methods.getPubMedDateDisctionary();
 
+            Console.WriteLine("Dictionary Size: " + pubMedDateDictionary.Count);
+
             string x = pubMedDateDictionary["19223445"];
 
             Console.WriteLine(x);
