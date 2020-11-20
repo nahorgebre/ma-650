@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI3.KaessmannDiseaseAssociations_2_gene2pubtatorcentral;
+package genes.IdentityResolution.solutions.DI3.kaessmannDiseaseAssociations_2_gene2pubtatorcentral;
 
 // java
 import java.io.File;
@@ -25,6 +25,7 @@ import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
+import genes.IdentityResolution.solutions.PartitionNumbers;
 import genes.IdentityResolution.solutions.DI3.DI3Datasets;
 
 // Blocker
@@ -55,8 +56,7 @@ public class ML_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        //for (int fileNumber = 1; fileNumber <= partitionNumbers; fileNumber++) {
-        for (int fileNumber = 1; fileNumber <= 1; fileNumber++) { 
+        for (int fileNumber = 1; fileNumber <= PartitionNumbers.kaessmannDiseaseAssociations_2_gene2pubtatorcentral; fileNumber++) { 
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  
@@ -64,8 +64,8 @@ public class ML_StandardRecordBlocker {
             HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(fileNumber);
     
             // goldstandard directory
-            String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_" + fileNumber;
-            String solution = "DI2";
+            String comparisonDescription = "kaessmannDiseaseAssociations_2_gene2pubtatorcentral_" + fileNumber;
+            String solution = "DI3";
             String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
             
             // load the gold standard (test set)

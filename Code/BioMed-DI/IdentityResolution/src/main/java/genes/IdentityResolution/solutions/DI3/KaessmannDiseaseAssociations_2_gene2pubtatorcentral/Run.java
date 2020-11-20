@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI3.KaessmannDiseaseAssociations_2_gene2pubtatorcentral;
+package genes.IdentityResolution.solutions.DI3.kaessmannDiseaseAssociations_2_gene2pubtatorcentral;
 
 public class Run {
 
