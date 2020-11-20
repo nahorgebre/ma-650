@@ -98,9 +98,9 @@ namespace DataTranslation
 
                 Console.WriteLine("Gene list length: " + publication_list.Count);
                     
-                Methods.createXmlPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: DI3.outputDirectory + "/" + Variables.gene2pubtatorcentral_partitionNumbers.ToString());
+                Methods.createXmlPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: DI3.outputDirectory);
 
-                Methods.createTsvPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: DI3.outputDirectory + "/" + Variables.gene2pubtatorcentral_partitionNumbers.ToString());
+                Methods.createTsvPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: DI3.outputDirectory);
  
             }
 

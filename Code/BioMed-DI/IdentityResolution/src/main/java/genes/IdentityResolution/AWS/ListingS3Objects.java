@@ -32,9 +32,6 @@ public class ListingS3Objects {
 
     public static void main(String[] args) throws Exception {
 
-        test();
-        
-        /*
         getDI1Datasets();
 
         getDI1GoldstandardDatasets();
@@ -46,18 +43,8 @@ public class ListingS3Objects {
         getDI3Datasets();
 
         getDI3GoldstandardDatasets();
-        */
 
         //getIdentityResolutionResults("DI2");
-
-    }
-
-    public static void test() throws Exception {
-
-        Cosine sim = new Cosine();
-        double similarity = sim.similarity("", "");
-
-        System.out.println(similarity);
 
     }
 
