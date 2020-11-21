@@ -117,9 +117,11 @@ namespace DataTranslation
 
             HashSet<string> geneNameHashSet = new HashSet<string>();
 
-            geneNameValues = geneNameValues.Replace("and", ",");
+            geneNameValues = geneNameValues.Replace("and", "|");
 
-            string[] geneNameSplitArray = geneNameValues.Split(new Char [] { '|' , ',' });
+            geneNameValues = geneNameValues.Replace(",", "|");
+
+            string[] geneNameSplitArray = geneNameValues.Split('|');
 
             foreach (string geneNameSplit in geneNameSplitArray)
             {
