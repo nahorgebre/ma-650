@@ -251,8 +251,8 @@ namespace GoldstandardCreation
                                     bool falseCornerFile = false;
 
 
-                                    if (ncbiIdSr1.Equals("NaN") & ncbiIdSr2.Equals("NaN"))
-                                    {
+                                    //if (ncbiIdSr1.Equals("NaN") & ncbiIdSr2.Equals("NaN"))
+                                    //{
 
                                         if (geneNameSim == 1)
                                         {
@@ -268,7 +268,7 @@ namespace GoldstandardCreation
 
                                         }
 
-                                    }
+                                    //}
 
                                     if (!ncbiIdSr1.Equals("NaN") & !ncbiIdSr2.Equals("NaN"))
                                     {

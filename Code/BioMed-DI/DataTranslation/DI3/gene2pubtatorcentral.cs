@@ -15,11 +15,10 @@ namespace DataTranslation
 
             Console.WriteLine("Start gene2pubtatorcentral_dt()");
 
-
             for (int i = 1; i <= Variables.gene2pubtatorcentral_partitionNumbers; i++)
             {
 
-                List<Publication> publication_list = new List<Publication>();
+                List<Gene> gene_list = new List<Gene>();
 
                 using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI3.inputDirectory, "gene2pubtatorcentral.tsv")))
                 {
@@ -52,7 +51,6 @@ namespace DataTranslation
 
                         }
 
-                        
                         if (condition)
                         {
 
@@ -64,30 +62,37 @@ namespace DataTranslation
                                 foreach (String ncbiId in ncbiIdArray)
                                 {
 
-                                    Publication publication = new Publication(); 
+                                    Gene gene = new Gene();
 
-                                    publication.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", i.ToString(), recordIdCounter);
+                                    gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", i.ToString(), recordIdCounter);
+
+                                    gene.ncbiId = ncbiId;
+
+                                    HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
+
+                                    gene.geneNames = string.Join("|", geneNameHashSet);
+
+
+                                    List<GenePublicationMention> publicationList = new List<GenePublicationMention>();
+
+                                    GenePublicationMention publication = new GenePublicationMention();
 
                                     publication.pmId = values[0].Trim();
 
                                     publication.ressource = values[4].Trim();
 
-                                    publication.ncbiId = ncbiId;
+                                    publicationList.Add(publication);
 
-                                    HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
 
-                                    List<String> geneNameList = new List<string>();
+                                    gene.publicationMentions = publicationList;
 
-                                    publication.geneNames = string.Join("|", geneNameList);
-
-                                    publication_list.Add(publication);
 
                                     recordIdCounter++;
 
                                 }
-                            
+
                             }
-                            
+
                         }
 
                         conditionCounter++;
@@ -96,16 +101,13 @@ namespace DataTranslation
 
                 }
 
-                Console.WriteLine("Gene list length: " + publication_list.Count);
-                    
-                Methods.createXmlPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: DI3.outputDirectory);
+                Methods.createXmlGene(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: DI3.outputDirectory);
 
-                Methods.createTsvPublication(publication_list: publication_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: DI3.outputDirectory);
- 
+                Methods.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: DI3.outputDirectory);
+            
             }
 
         }
-
 
         public static HashSet<string> getGeneNameHashSet(string geneNameValues)
         {

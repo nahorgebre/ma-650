@@ -76,6 +76,16 @@ Naumann2010AnIT
 With increasing volume of data, data quality problems abound \cite{Naumann2010AnIT}.
 
 \textbf{String Matching.}
+
+%Tokenizing Jaccard Similarity //
+%de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity
+%Sorensen Dice //
+%info.debatty.java.stringsimilarity.SorensenDice
+%Levenshtein //
+%de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity
+%Cosine //
+%info.debatty.java.stringsimilarity.Cosine
+
 Given two sets of strings \textit{X} and \textit{Y}, the aim is to determine all pairs of strings \textit{(x,y)} where \textit{x} $\in$ \textit{X} and \textit{y} $\in$ \textit{Y}, such that \textit{x} and \textit{y} refer to the same entity \cite{Doan2012PrinciplesOD}. \\
 \\
 \textbf{Accuracy Challenge.} Accurate string matching is challenging to realize since the strings referring to the same entity are often very different. The causes for differences between strings include typing error, different formatting conventions, custom abbreviation, shortening of strings, different names or shuffling parts of the strings. Similarity measures provide a solution to the accuracy challenge by taking a pair of strings \textit{(x,y)} as input and return a score in the range between \textit{[0,1]}: The higher the score, the more likely \textit{x} and \textit{y} are matches. Pairs of strings \textit{(x,y)} are matches if \textit{s(x,y) \geq t}, where \textit{t} is a certain prespecified threshold \cite{Doan2012PrinciplesOD}. \\
@@ -86,10 +96,21 @@ Similarity measures fall into x groups: ..., hybrid measures \cite{Doan2012Princ
 \\
 \textit{Levenshtein Similarity.}
 
-% Levenshtein1966BinaryCC
-% \begin{equation*}
-% Levenshtein_{sim}(x,y) = 1 - \frac{Levenshtein_{dist}(x,y)}{\mbox{max}(\mbox{length}(x), \mbox{length}(y))}
-% \end{equation*}
+\begin{figure}
+	\begin{center}
+	\includegraphics[width=13cm]{./figures/LevenshteinDistance.PNG}
+	\caption[Levenshtein Distance]{Levenshtein Distance \cite{VassilisChristophides2015EntityRI-P25-28}}
+	\label{fig:Levenshtein Distance}
+	\end{center}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+	\includegraphics[width=13cm]{./figures/LevenshteinSimilarity.PNG}
+	\caption[Levenshtein Similarity]{Levenshtein Similarity \cite{VassilisChristophides2015EntityRI-P25-28}}
+	\label{fig:Levenshtein Similarity}
+	\end{center}
+\end{figure}
 
 \textit{Jaro.}
 

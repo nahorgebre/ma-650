@@ -34,31 +34,6 @@ namespace DataTranslation
 
         }
 
-        public static void createXmlPublication(List<Publication> publication_list, string fileName, string directory)
-        {
-
-            Console.WriteLine("Create Xml: " + fileName);
-
-            Console.WriteLine("Count: " + publication_list.Count);
-
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, directory));
-
-            XmlSerializer serializer = new XmlSerializer(typeof(Publications));
-
-            TextWriter writer = new StreamWriter(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
-
-            Publications publications = new Publications();
-
-            publications.publication = publication_list;
-
-            serializer.Serialize(writer, publications);
-            
-            writer.Close();
-
-            Console.WriteLine(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
-
-        }
-
         public static void createTsv(List<Gene> gene_list, string fileName, string directory)
         {
 
@@ -135,89 +110,6 @@ namespace DataTranslation
             }
 
         }
-
-        public static void createTsvPublication(List<Publication> publication_list, string fileName, string directory)
-        {
-
-            Console.WriteLine("Create TSV: " + fileName);
-
-            string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
-
-            var delimiter = "\t";
-
-            using (StreamWriter sw = new StreamWriter(gsFileName)) 
-            {
-           
-                List<string> firstLineContent = new List<string>()
-                {
-                    "recordId",
-                    "ensemblId",
-                    "ncbiId",
-                    "geneName",
-                    "pmId"
-                };
-
-                var firstLine = string.Join(delimiter, firstLineContent);
-
-                sw.WriteLine(firstLine);
-
-                foreach (Publication item in publication_list)
-                {
-
-                    string recordId = "NaN";
-                    if (checkIfNull(item.recordId))
-                    {
-
-                        recordId = item.recordId.Trim();
-
-                    }
-
-                    string ensemblId = "NaN";
-
-                    string ncbiId = "NaN";
-                    if (checkIfNull(item.ncbiId))
-                    {
-
-                        ncbiId = item.ncbiId.Trim();
-
-                    }
-
-                    string geneName = "NaN";
-                    if (checkIfNull(item.geneNames))
-                    {
-
-                        geneName = item.geneNames;
-
-                    }
-
-                    string pmid = "NaN";
-                    if (checkIfNull(item.pmId))
-                    {
-
-                        pmid = item.pmId.Trim();
-
-                    }
-
-                    List<string> lineContent = new List<string>()
-                    {
-                        recordId,
-                        ensemblId,
-                        ncbiId,
-                        geneName,
-                        pmid
-                    };
-
-                    var line = string.Join(delimiter, lineContent);
-
-                    sw.WriteLine(line);
-
-                }
-
-            }
-
-        }
-
-    
     
         public static bool checkIfNull(string value)
         {

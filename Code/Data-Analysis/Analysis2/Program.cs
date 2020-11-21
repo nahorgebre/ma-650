@@ -13,9 +13,16 @@ namespace Analysis2
 
             Console.WriteLine("Dictionary Size: " + pubMedDateDictionary.Count);
 
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            
             string x = pubMedDateDictionary["19223445"];
 
-            Console.WriteLine(x);
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+
+            Console.WriteLine("Value: " + x);
+
+            Console.WriteLine("Seconds: " + elapsedMs);
 
         }
     }

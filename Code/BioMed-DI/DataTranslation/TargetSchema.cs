@@ -120,45 +120,4 @@ namespace DataTranslation
 
     }
 
-
-    [XmlRoot("publications")]
-    public class Publications
-    {
-
-        [XmlElement("publication")]
-        public List<Publication> publication;
-
-    }
-
-    public class Publication
-    {
-
-        public string recordId;
-        
-        public string pmId;
-        
-        public string geneNames;
-
-        public string ncbiId;
-
-        public string ressource;
-
-        public string year;       
-
-    }
-
-
-    // delete this later
-    /*
-    public class GeneDescription
-    {
-        public string description;
-    }
-    public class GeneName 
-    {
-        public string name;
-    }
-    */
-
-
 }
