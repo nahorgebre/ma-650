@@ -49,13 +49,6 @@ namespace DataTranslation
             gene.recordId = string.Format(recordIdPattern, counter);   
 
 
-            reader.ReadToFollowing("recordId");
-
-            String recordId = reader.ReadElementContentAsString().Trim();
-
-            gene.recordId = recordId;
-
-
             reader.ReadToFollowing("ensemblId");
 
             String ensemblId = reader.ReadElementContentAsString().Trim();
