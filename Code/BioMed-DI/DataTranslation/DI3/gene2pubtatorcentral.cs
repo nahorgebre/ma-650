@@ -87,6 +87,9 @@ namespace DataTranslation
                                     gene.publicationMentions = publicationList;
 
 
+                                    gene_list.Add(gene);
+
+
                                     recordIdCounter++;
 
                                 }
