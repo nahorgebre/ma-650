@@ -14,7 +14,7 @@ namespace DataTranslation
 
             FileInfo file = new FileInfo(string.Format("{0}/data/input/DI3/kaessmann-fused.xml", Environment.CurrentDirectory));
 
-            List<Gene> gene_list = Parser.parseGene(file, "Kaessmann_{0}_rid");
+            List<Gene> gene_list = Parser.parseDataFusionOutputGene(file, "Kaessmann_{0}_rid");
 
             Methods.createXmlGene(gene_list: gene_list, fileName: "Kaessmann_dt.xml", directory: "data/output/DI2");
 

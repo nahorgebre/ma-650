@@ -29,25 +29,24 @@ namespace DataTranslation
         public string geneDescriptions = string.Empty;
 
         
-        [XmlArrayItem("organs")]
+        [XmlArrayItem("organ")]
         public List<Organ> organs = new List<Organ>();
 
 
-        [XmlArrayAttribute("diseaseAssociations")]
+        [XmlArrayItem("diseaseAssociation")]
         public List<DiseaseAssociation> diseaseAssociations = new List<DiseaseAssociation>();
 
 
-        [XmlArrayAttribute("publicationMentions")]
+        [XmlArrayItem("publicationMention")]
         public List<GenePublicationMention> publicationMentions = new List<GenePublicationMention>();
 
 
-        [XmlArrayAttribute("patentMentions")]
+        [XmlArrayItem("patentMention")]
         public List<GenePatentMention> patentMentions = new List<GenePatentMention>();
 
     }
 
 
-    [XmlType("organ")]
     public class Organ
     {
 
@@ -62,7 +61,6 @@ namespace DataTranslation
     }
 
 
-    [XmlType("diseaseAssociation")]
     public class DiseaseAssociation
     {
 
@@ -95,7 +93,6 @@ namespace DataTranslation
     }
 
 
-    [XmlType("publicationMention")]
     public class GenePublicationMention
     {
 
@@ -108,7 +105,6 @@ namespace DataTranslation
     }
 
 
-    [XmlType("patentMention")]
     public class GenePatentMention
     {
 
@@ -119,5 +115,6 @@ namespace DataTranslation
         public string patentClaimsCount;
 
     }
+
 
 }

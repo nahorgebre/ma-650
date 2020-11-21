@@ -10,7 +10,7 @@ namespace DataTranslation
     {
 
         
-        public static List<Gene> parseGene(FileInfo file, String recordIdPattern)
+        public static List<Gene> parseDataFusionOutputGene(FileInfo file, String recordIdPattern)
         {
 
             List<Gene> geneList = new List<Gene>();

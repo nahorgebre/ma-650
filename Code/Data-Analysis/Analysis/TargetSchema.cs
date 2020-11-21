@@ -29,25 +29,24 @@ namespace Analysis
         public string geneDescriptions = string.Empty;
 
         
-        [XmlArrayItem("organs")]
+        [XmlArrayItem("organ")]
         public List<Organ> organs = new List<Organ>();
 
 
-        [XmlArrayAttribute("diseaseAssociations")]
+        [XmlArrayItem("diseaseAssociation")]
         public List<DiseaseAssociation> diseaseAssociations = new List<DiseaseAssociation>();
 
 
-        [XmlArrayAttribute("publicationMentions")]
+        [XmlArrayItem("publicationMention")]
         public List<GenePublicationMention> publicationMentions = new List<GenePublicationMention>();
 
 
-        [XmlArrayAttribute("patentMentions")]
+        [XmlArrayItem("patentMention")]
         public List<GenePatentMention> patentMentions = new List<GenePatentMention>();
 
     }
 
 
-    [XmlType("organ")]
     public class Organ
     {
 
@@ -62,7 +61,6 @@ namespace Analysis
     }
 
 
-    [XmlType("diseaseAssociation")]
     public class DiseaseAssociation
     {
 
@@ -95,7 +93,6 @@ namespace Analysis
     }
 
 
-    [XmlType("publicationMention")]
     public class GenePublicationMention
     {
 
@@ -108,7 +105,6 @@ namespace Analysis
     }
 
 
-    [XmlType("patentMention")]
     public class GenePatentMention
     {
 
@@ -119,46 +115,6 @@ namespace Analysis
         public string patentClaimsCount;
 
     }
-
-
-    [XmlRoot("publications")]
-    public class Publications
-    {
-
-        [XmlElement("publication")]
-        public List<Publication> publication;
-
-    }
-
-    public class Publication
-    {
-
-        public string recordId;
-        
-        public string pmId;
-        
-        public string geneNames;
-
-        public string ncbiId;
-
-        public string ressource;
-
-        public string year;       
-
-    }
-
-
-    // delete this later
-    /*
-    public class GeneDescription
-    {
-        public string description;
-    }
-    public class GeneName 
-    {
-        public string name;
-    }
-    */
 
 
 }
