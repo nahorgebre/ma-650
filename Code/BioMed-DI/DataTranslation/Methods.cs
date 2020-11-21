@@ -62,7 +62,7 @@ namespace DataTranslation
                 {
 
                     string recordId = "NaN";
-                    if (checkIfNull(item.recordId))
+                    if (!item.recordId.Equals(string.Empty))
                     {
 
                         recordId = item.recordId.Trim();
@@ -70,7 +70,7 @@ namespace DataTranslation
                     }
 
                     string ensemblId = "NaN";
-                    if (checkIfNull(item.ensemblId))
+                    if (!item.ensemblId.Equals(string.Empty))
                     {
 
                         ensemblId = item.ensemblId.Trim();
@@ -78,7 +78,7 @@ namespace DataTranslation
                     }
 
                     string ncbiId = "NaN";
-                    if (checkIfNull(item.ncbiId))
+                    if (!item.ncbiId.Equals(string.Empty))
                     {
 
                         ncbiId = item.ncbiId.Trim();
@@ -86,7 +86,7 @@ namespace DataTranslation
                     }
 
                     string geneName = "NaN";
-                    if (checkIfNull(item.geneNames))
+                    if (!item.geneNames.Equals(string.Empty))
                     {
 
                         geneName = item.geneNames;
@@ -108,22 +108,6 @@ namespace DataTranslation
                 }
 
             }
-
-        }
-    
-        public static bool checkIfNull(string value)
-        {
-
-            bool returnValue = false;
-
-            if (value != null)
-            {
-
-                returnValue = true;
-
-            }
-
-            return returnValue;
 
         }
 

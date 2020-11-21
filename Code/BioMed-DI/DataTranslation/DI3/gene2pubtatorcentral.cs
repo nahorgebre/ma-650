@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace DataTranslation
 {
@@ -117,20 +118,42 @@ namespace DataTranslation
 
             HashSet<string> geneNameHashSet = new HashSet<string>();
 
-            geneNameValues = geneNameValues.Replace("and", "|");
+            //geneNameValues = geneNameValues.Replace("and", "|");
 
-            geneNameValues = geneNameValues.Replace(",", "|");
+            //geneNameValues = geneNameValues.Replace("or", "|");
+
+            //geneNameValues = geneNameValues.Replace(",", "|");
 
             string[] geneNameSplitArray = geneNameValues.Split('|');
 
             foreach (string geneNameSplit in geneNameSplitArray)
             {
 
-                geneNameHashSet.Add(geneNameSplit.Trim());
-            
+                string geneNameItem = geneNameSplit.Trim();
+
+                if (!geneNameItem.Equals(string.Empty))
+                {
+
+                    geneNameItem = removeWhiteSpaces(geneNameItem);
+
+                    geneNameHashSet.Add(geneNameItem);
+                    
+                }
+       
             }
 
             return geneNameHashSet;
+
+        }
+
+        public static string removeWhiteSpaces(string text)
+        {
+
+            RegexOptions options = RegexOptions.None;
+
+            Regex regex = new Regex("[ ]{2,}", options);
+
+            return regex.Replace(text, " ");
 
         }
 
