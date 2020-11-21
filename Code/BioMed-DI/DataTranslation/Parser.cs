@@ -9,194 +9,158 @@ namespace DataTranslation
     public class Parser
     {
 
-        
-        public static List<Gene> parseDataFusionOutputGene(FileInfo file, String recordIdPattern)
+        public static List<Gene> getGeneList(FileInfo xmlFile, String recordIdPattern)
         {
 
             List<Gene> geneList = new List<Gene>();
-
-            int counter = 1;
 
             XmlReaderSettings settings = new XmlReaderSettings();
 
             settings.DtdProcessing = DtdProcessing.Parse;
 
-            using (XmlReader reader = XmlReader.Create(file.FullName, settings))
+            Console.WriteLine(xmlFile.Name);
+
+            using var reader = XmlReader.Create(xmlFile.FullName, settings);
+
+            int counter = 1;
+
+            do
             {
 
-                while (reader.ReadToFollowing("gene"))
-                {
+                Gene gene = getGeneItem(reader, recordIdPattern, counter);
 
+                counter++;
 
-                    Gene gene = new Gene();
+                geneList.Add(gene);
 
+            } while (reader.ReadToFollowing("gene"));
 
-                    // Kaessmann_{0}_rid
-                    gene.recordId = string.Format(recordIdPattern, counter);     
+            return geneList;
 
+        }
 
-                    reader.ReadToFollowing("ensemblId");
 
-                    if (reader.HasAttributes)
-                    {
+        public static Gene getGeneItem(XmlReader reader, String recordIdPattern, int counter)
+        {
 
-                        String ensemblId = reader.ReadElementContentAsString().Trim();
 
-                        if (!ensemblId.Equals(string.Empty))
-                        {
-                            
-                            gene.ensemblId = ensemblId;
+            Gene gene = new Gene();
 
-                        }                        
+            gene.recordId = string.Format(recordIdPattern, counter);   
 
-                    }
 
+            reader.ReadToFollowing("recordId");
 
-                    reader.ReadToFollowing("ncbiId");
+            String recordId = reader.ReadElementContentAsString().Trim();
 
-                    if (reader.HasAttributes)
-                    {
-                        
-                        String ncbiId = reader.ReadElementContentAsString().Trim();
+            gene.recordId = recordId;
 
-                        if (!ncbiId.Equals(string.Empty))
-                        {
 
-                            gene.ncbiId = ncbiId;
-                            
-                        }
+            reader.ReadToFollowing("ensemblId");
 
-                    }
+            String ensemblId = reader.ReadElementContentAsString().Trim();
 
+            if (!ensemblId.Equals(string.Empty))
+            {
 
-                    reader.ReadToFollowing("geneDescriptions");
-
-                    if (reader.HasAttributes)
-                    {
-                        
-                        String geneDescriptions = reader.ReadElementContentAsString().Trim();
-
-                        if (!geneDescriptions.Equals(string.Empty))
-                        {
-
-                            gene.geneDescriptions = geneDescriptions;
-                            
-                        }
-
-                    }
-
-
-                    reader.ReadToFollowing("geneNames");
-
-                    if (reader.HasAttributes)
-                    {
-                        
-                        String geneNames = reader.ReadElementContentAsString().Trim();
-
-                        if (!geneNames.Equals(string.Empty))
-                        {
-
-                            gene.geneNames = geneNames;
-                            
-                        }        
-
-                    }
-
-            
-                    reader.ReadToFollowing("organs");
-
-                    if (reader.HasAttributes)
-                    {
-
-                        XmlReader organsInner = reader.ReadSubtree();
-
-                        while (organsInner.Read())
-                        {
-
-                            String xml = "<organs>" + organsInner.ReadInnerXml() + "</organs>";
-
-                            List<Organ> organList = Parser.parseOrgan(xml);
-
-                            gene.organs = organList;
-                        
-                        }
-                        
-                    }
-
-
-                    reader.ReadToFollowing("diseaseAssociations");
-
-                    if (reader.HasAttributes)
-                    {
-
-                        XmlReader diseaseAssociationsInner = reader.ReadSubtree();
-
-                        while (diseaseAssociationsInner.Read())
-                        {
-
-                            String xml = "<diseaseAssociations>" + diseaseAssociationsInner.ReadInnerXml() + "</diseaseAssociations>";
-
-                            List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation(xml);
-
-                            gene.diseaseAssociations = geneDiseaseAssociationsList;
-
-                        }
-
-                    }
-
-
-                    reader.ReadToFollowing("publicationMentions");
-
-                    if (reader.HasAttributes)
-                    {
-
-                        XmlReader publicationMentionsInner = reader.ReadSubtree();
-
-                        while (publicationMentionsInner.Read())
-                        {
-
-                            String xml = "<publicationMentions>" + publicationMentionsInner.ReadInnerXml() + "</publicationMentions>";
-
-                            List<GenePublicationMention> genePublicationMentionList = Parser.parsePublicationMention(xml);
-
-                            gene.publicationMentions = genePublicationMentionList;
-
-                        }
-
-                    }
-
-   
-                    reader.ReadToFollowing("patentMentions");
-
-                    if (reader.HasAttributes)
-                    {
-                        
-                        XmlReader patentMentionsInner = reader.ReadSubtree();
-
-                        while (patentMentionsInner.Read())
-                        {
-
-                            String xml = "<patentMentions>" + patentMentionsInner.ReadInnerXml() + "</patentMentions>";
-
-                            List<GenePatentMention> genePatentMentionList = Parser.parsePatentMention(xml);
-
-                            gene.patentMentions = genePatentMentionList;
-
-                        }
-
-                    }
-
-
-                    geneList.Add(gene);
-
-                    counter++;
-
-
-                }
+                gene.ensemblId = ensemblId;
 
             }
 
-            return geneList;
+
+            reader.ReadToFollowing("ncbiId");
+
+            String ncbiId = reader.ReadElementContentAsString().Trim();
+
+            if (!ncbiId.Equals(string.Empty))
+            {
+
+                gene.ncbiId = ncbiId;
+
+            }
+
+
+            reader.ReadToFollowing("geneDescriptions");
+
+            String geneDescriptions = reader.ReadElementContentAsString().Trim();
+
+            if (!geneDescriptions.Equals(string.Empty))
+            {
+
+                gene.geneDescriptions = geneDescriptions;
+
+            }
+
+
+            reader.ReadToFollowing("geneNames");
+
+            string geneNames = reader.ReadInnerXml();
+
+            if (!geneNames.Equals(string.Empty))
+            {
+
+                gene.geneNames = geneNames;
+
+            }
+
+
+            reader.ReadToFollowing("organs");
+
+            string organs = reader.ReadInnerXml();
+
+            if (!organs.Equals(string.Empty))
+            {
+
+                List<Organ> geneOrgansList = Parser.parseOrgan("<organs>" + organs + "</organs>");
+
+                gene.organs = geneOrgansList;
+
+            }
+
+
+            reader.ReadToFollowing("diseaseAssociations");
+
+            string diseaseAssociations = reader.ReadInnerXml();
+
+            if (!diseaseAssociations.Equals(string.Empty))
+            {
+
+                List<DiseaseAssociation> geneDiseaseAssociationsList = Parser.parseDiseaseAssociation("<diseaseAssociations>" + diseaseAssociations + "</diseaseAssociations>");
+
+                gene.diseaseAssociations = geneDiseaseAssociationsList;
+
+            }
+
+
+            reader.ReadToFollowing("publicationMentions");
+
+            string publicationMentions = reader.ReadInnerXml();
+
+            if (!publicationMentions.Equals(string.Empty))
+            {
+
+                List<GenePublicationMention> genePublicationMentionsList = Parser.parsePublicationMention("<publicationMentions>" + publicationMentions + "</publicationMentions>");
+
+                gene.publicationMentions = genePublicationMentionsList;
+
+            }
+
+
+            reader.ReadToFollowing("patentMentions");
+
+            string patentMentions = reader.ReadInnerXml();
+
+            if (!patentMentions.Equals(string.Empty))
+            {
+
+                List<GenePatentMention> genePatentMentionsList = Parser.parsePatentMention("<patentMentions>" + patentMentions + "</patentMentions>");
+
+                gene.patentMentions = genePatentMentionsList;
+
+            }
+
+
+            return gene;
 
         }
 
@@ -217,28 +181,28 @@ namespace DataTranslation
 
                 Organ organItem = new Organ();
 
-                if(checkIfNodeExist(node, "organName"))
+                if (checkIfNodeExist(node, "organName"))
                 {
 
                     organItem.organName = (node?.SelectSingleNode("organName").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "disagreement"))
+                if (checkIfNodeExist(node, "disagreement"))
                 {
 
                     organItem.disagreement = (node?.SelectSingleNode("disagreement").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "probEqualOrthoAdj"))
+                if (checkIfNodeExist(node, "probEqualOrthoAdj"))
                 {
 
                     organItem.probEqualOrthoAdj = (node?.SelectSingleNode("probEqualOrthoAdj").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "call"))
+                if (checkIfNodeExist(node, "call"))
                 {
 
                     organItem.call = (node?.SelectSingleNode("call").InnerText ?? null);
@@ -248,7 +212,7 @@ namespace DataTranslation
                 organList.Add(organItem);
 
             }
-            
+
             return organList;
 
         }
@@ -270,91 +234,91 @@ namespace DataTranslation
 
                 DiseaseAssociation diseaseAssociation = new DiseaseAssociation();
 
-                if(checkIfNodeExist(node, "diseaseIdUMLS"))
+                if (checkIfNodeExist(node, "diseaseIdUMLS"))
                 {
 
                     diseaseAssociation.diseaseIdUMLS = (node?.SelectSingleNode("diseaseIdUMLS").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "diseaseName"))
+                if (checkIfNodeExist(node, "diseaseName"))
                 {
 
                     diseaseAssociation.diseaseName = (node?.SelectSingleNode("diseaseName").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "diseaseSpecificityIndex"))
+                if (checkIfNodeExist(node, "diseaseSpecificityIndex"))
                 {
 
                     diseaseAssociation.diseaseSpecificityIndex = (node?.SelectSingleNode("diseaseSpecificityIndex").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "diseasePleiotropyIndex"))
+                if (checkIfNodeExist(node, "diseasePleiotropyIndex"))
                 {
 
                     diseaseAssociation.diseasePleiotropyIndex = (node?.SelectSingleNode("diseasePleiotropyIndex").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "diseaseTypeDisGeNET"))
+                if (checkIfNodeExist(node, "diseaseTypeDisGeNET"))
                 {
 
                     diseaseAssociation.diseaseTypeDisGeNET = (node?.SelectSingleNode("diseaseTypeDisGeNET").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "diseaseClassMeSH"))
+                if (checkIfNodeExist(node, "diseaseClassMeSH"))
                 {
 
                     diseaseAssociation.diseaseClassMeSH = (node?.SelectSingleNode("diseaseClassMeSH").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "diseaseSemanticTypeUMLS"))
+                if (checkIfNodeExist(node, "diseaseSemanticTypeUMLS"))
                 {
 
                     diseaseAssociation.diseaseSemanticTypeUMLS = (node?.SelectSingleNode("diseaseSemanticTypeUMLS").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "associationScore"))
+                if (checkIfNodeExist(node, "associationScore"))
                 {
 
                     diseaseAssociation.associationScore = (node?.SelectSingleNode("associationScore").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "evidenceIndex"))
+                if (checkIfNodeExist(node, "evidenceIndex"))
                 {
 
                     diseaseAssociation.evidenceIndex = (node?.SelectSingleNode("evidenceIndex").InnerText ?? null);
 
                 }
-                
-                if(checkIfNodeExist(node, "yearInitialReport"))
+
+                if (checkIfNodeExist(node, "yearInitialReport"))
                 {
 
                     diseaseAssociation.yearInitialReport = (node?.SelectSingleNode("yearInitialReport").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "yearFinalReport"))
+                if (checkIfNodeExist(node, "yearFinalReport"))
                 {
 
                     diseaseAssociation.yearFinalReport = (node?.SelectSingleNode("yearFinalReport").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "pmId"))
+                if (checkIfNodeExist(node, "pmId"))
                 {
 
                     diseaseAssociation.pmId = (node?.SelectSingleNode("pmId").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "source"))
+                if (checkIfNodeExist(node, "source"))
                 {
 
                     diseaseAssociation.source = (node?.SelectSingleNode("source").InnerText ?? null);
@@ -362,7 +326,7 @@ namespace DataTranslation
                 }
 
                 diseaseAssociationList.Add(diseaseAssociation);
-          
+
             }
 
             return diseaseAssociationList;
@@ -386,21 +350,21 @@ namespace DataTranslation
 
                 GenePublicationMention genePublicationMention = new GenePublicationMention();
 
-                if(checkIfNodeExist(node, "pmId"))
+                if (checkIfNodeExist(node, "pmId"))
                 {
 
                     genePublicationMention.pmId = (node?.SelectSingleNode("pmId").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "year"))
+                if (checkIfNodeExist(node, "year"))
                 {
 
                     genePublicationMention.year = (node?.SelectSingleNode("year").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "ressource"))
+                if (checkIfNodeExist(node, "ressource"))
                 {
 
                     genePublicationMention.ressource = (node?.SelectSingleNode("ressource").InnerText ?? null);
@@ -432,21 +396,21 @@ namespace DataTranslation
 
                 GenePatentMention genePatentMention = new GenePatentMention();
 
-                if(checkIfNodeExist(node, "patentId"))
+                if (checkIfNodeExist(node, "patentId"))
                 {
 
                     genePatentMention.patentId = (node?.SelectSingleNode("patentId").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "patentDate"))
+                if (checkIfNodeExist(node, "patentDate"))
                 {
 
                     genePatentMention.patentDate = (node?.SelectSingleNode("patentDate").InnerText ?? null);
 
                 }
 
-                if(checkIfNodeExist(node, "patentClaimsCount"))
+                if (checkIfNodeExist(node, "patentClaimsCount"))
                 {
 
                     genePatentMention.patentClaimsCount = (node?.SelectSingleNode("patentClaimsCount").InnerText ?? null);
@@ -456,7 +420,7 @@ namespace DataTranslation
             }
 
             return genePatentMentionList;
-            
+
         }
 
 
@@ -467,7 +431,7 @@ namespace DataTranslation
 
             var langNode = node.SelectSingleNode(xpath);
 
-            if(langNode==null)
+            if (langNode == null)
             {
 
                 status = false;
