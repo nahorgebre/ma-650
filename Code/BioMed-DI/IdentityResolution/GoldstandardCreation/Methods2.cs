@@ -218,7 +218,7 @@ namespace GoldstandardCreation
                         while (!sr2.EndOfStream & iterationCheck)
                         {
 
-                            if (gsListTrue.Count() <= gsSize)
+                            if (gsListTrue.Count() >= gsSize)
                             {
                                 Console.WriteLine("Count X: " + iterationCheck);
                             }
