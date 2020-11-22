@@ -202,7 +202,7 @@ namespace GoldstandardCreation
 
                 sr1.ReadLine();
 
-                Console.WriteLine("Count X1!");
+                Console.WriteLine("Count X1!: " + iterationCheck2);
 
                 if (iterationCheck2)
                 {
@@ -222,7 +222,7 @@ namespace GoldstandardCreation
                 while (!sr1.EndOfStream)
                 {
 
-                    Console.WriteLine("Count X2!");
+                    Console.WriteLine("Count X2!: " + iterationCheck2);
 
                     var lineSr1 = sr1.ReadLine();
 
