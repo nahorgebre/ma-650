@@ -200,20 +200,21 @@ namespace GoldstandardCreation
                 while (!sr1.EndOfStream)
                 {
 
+                    var lineSr1 = sr1.ReadLine();
+
                     using (StreamReader sr2 = new StreamReader(fileName2))
                     {
 
-                        sr2.ReadLine();
+                        sr2.ReadLine();      
 
                         while (!sr2.EndOfStream)
                         {                            
 
+                            var lineSr2 = sr2.ReadLine();
 
                             if (iterationCheck)
                             {
 
-
-                                var lineSr1 = sr1.ReadLine();
 
                                 String[] valuesSr1 = lineSr1.Split(delimiter);
 
@@ -223,10 +224,6 @@ namespace GoldstandardCreation
 
                                 string recordIdSr1 = valuesSr1[0];
 
-
-
-
-                                var lineSr2 = sr2.ReadLine();
 
                                 String[] valuesSr2 = lineSr2.Split(delimiter);
 
