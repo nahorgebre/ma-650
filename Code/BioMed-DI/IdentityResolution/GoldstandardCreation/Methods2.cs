@@ -286,16 +286,18 @@ namespace GoldstandardCreation
 
                                         ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
 
-                                        
-                                        if (ncbiIdSim == 1)
+                                        if (ncbiIdKey1.Equals(ncbiIdKey2))
                                         {
 
-                                            trueCornerFile = true;
+                                            if (ncbiIdSim == 1)
+                                            {
+
+                                                trueCornerFile = true;
+
+                                            }
 
                                         }
-
-
-
+                                        
                                         if (geneNameSim >= gsThreshold & geneNameSim < 1 & ncbiIdSim < 1)
                                         {
 
