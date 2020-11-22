@@ -244,8 +244,6 @@ namespace GoldstandardCreation
                         while (!sr2.EndOfStream)
                         {
 
-                            Console.WriteLine("Count X3!");
-
                             var lineSr2 = sr2.ReadLine();
 
                             if (!iterationCheck)
