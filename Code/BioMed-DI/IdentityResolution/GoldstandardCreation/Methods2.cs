@@ -199,12 +199,42 @@ namespace GoldstandardCreation
 
                 Console.WriteLine("Count X1!");
 
+                if (!iterationCheck)
+                {
+
+                    Console.WriteLine("GS True Count: " + gsListTrue.Count);
+
+                    Console.WriteLine("GS Corner Case True Count: " + gsListTrue.Count);
+
+                    Console.WriteLine("GS False Count: " + gsListFalse.Count);
+
+                    Console.WriteLine("GS False Count: " + gsListFalse.Count);
+
+                    return (gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase);
+
+                }
+
                 while (!sr1.EndOfStream)
                 {
 
                     Console.WriteLine("Count X2!");
 
                     var lineSr1 = sr1.ReadLine();
+
+                    if (!iterationCheck)
+                    {
+
+                        Console.WriteLine("GS True Count: " + gsListTrue.Count);
+
+                        Console.WriteLine("GS Corner Case True Count: " + gsListTrue.Count);
+
+                        Console.WriteLine("GS False Count: " + gsListFalse.Count);
+
+                        Console.WriteLine("GS False Count: " + gsListFalse.Count);
+
+                        return (gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase);
+
+                    }
 
                     using (StreamReader sr2 = new StreamReader(fileName2))
                     {
@@ -214,7 +244,24 @@ namespace GoldstandardCreation
                         while (!sr2.EndOfStream)
                         {
 
+                            Console.WriteLine("Count X3!");
+
                             var lineSr2 = sr2.ReadLine();
+
+                            if (!iterationCheck)
+                            {
+
+                                Console.WriteLine("GS True Count: " + gsListTrue.Count);
+
+                                Console.WriteLine("GS Corner Case True Count: " + gsListTrue.Count);
+
+                                Console.WriteLine("GS False Count: " + gsListFalse.Count);
+
+                                Console.WriteLine("GS False Count: " + gsListFalse.Count);
+
+                                return (gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase);
+
+                            }
 
                             if (iterationCheck)
                             {
@@ -455,7 +502,7 @@ namespace GoldstandardCreation
 
                                     }
 
-                                    if (!iterationCheck) 
+                                    if (!iterationCheck)
                                     {
 
                                         Console.WriteLine("GS True Count: " + gsListTrue.Count);
@@ -469,6 +516,7 @@ namespace GoldstandardCreation
                                         return (gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase);
 
                                     }
+
                                 }
 
                             }
