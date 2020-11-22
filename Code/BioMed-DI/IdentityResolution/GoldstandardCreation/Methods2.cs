@@ -470,6 +470,8 @@ if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 11"); // --------
 
                                     }
 
+                                    if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 22 b"); // --------
+
                                 }
 
                             }
