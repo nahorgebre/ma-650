@@ -197,7 +197,7 @@ namespace GoldstandardCreation
 
                 sr1.ReadLine();
 
-                while (!sr1.EndOfStream)
+                while (iterationCheck)
                 {
 
                     var lineSr1 = sr1.ReadLine();
@@ -207,7 +207,7 @@ namespace GoldstandardCreation
 
                         sr2.ReadLine();      
 
-                        while (!sr2.EndOfStream)
+                        while (iterationCheck)
                         {                            
 
                             var lineSr2 = sr2.ReadLine();
