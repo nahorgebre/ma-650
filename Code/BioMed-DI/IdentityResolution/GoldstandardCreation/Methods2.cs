@@ -214,6 +214,8 @@ namespace GoldstandardCreation
 
                             var lineSr2 = sr2.ReadLine();
 
+                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count X"); // --------
+
                             if (gsListTrue.Count() < gsSize |
                                 gsListTrueCornerCase.Count() < gsCornerSize |
                                 gsListFalse.Count() < gsSize |
@@ -333,7 +335,7 @@ namespace GoldstandardCreation
 
                                     }
 
-if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 11"); // --------
+                                    if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 11"); // --------
 
                                     if (trueFile)
                                     {
