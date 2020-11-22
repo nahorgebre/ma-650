@@ -287,7 +287,7 @@ namespace GoldstandardCreation
 
                                         ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
 
-                                        if (geneNameSim < gsThreshold & ncbiIdSim == 1)
+                                        if (geneNameSim < 1 & ncbiIdSim == 1)
                                         {
 
                                             trueCornerFile = true;
