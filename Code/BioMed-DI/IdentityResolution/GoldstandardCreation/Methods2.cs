@@ -184,6 +184,13 @@ namespace GoldstandardCreation
             List<Goldstandard> gsListFalseCornerCase = new List<Goldstandard>(); // similiar records describe differents entities
 
 
+            while (gsListTrue.Count() < gsSize |
+                gsListTrueCornerCase.Count() < gsCornerSize |
+                gsListFalse.Count() < gsSize |
+                gsListFalseCornerCase.Count() < gsCornerSize)
+            {
+                
+            
             var delimiter = "\t";
 
             using (StreamReader sr1 = new StreamReader(fileName1))
@@ -483,6 +490,8 @@ namespace GoldstandardCreation
                     }
 
                 }
+
+            }
 
             }
 
