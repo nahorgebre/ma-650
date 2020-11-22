@@ -455,7 +455,7 @@ namespace GoldstandardCreation
 
                                     }
 
-                                    if (iterationCheck) 
+                                    if (!iterationCheck) 
                                     {
 
                                         Console.WriteLine("GS True Count: " + gsListTrue.Count);
