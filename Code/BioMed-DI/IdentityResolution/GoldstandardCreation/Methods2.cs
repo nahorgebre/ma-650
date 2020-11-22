@@ -162,6 +162,21 @@ namespace GoldstandardCreation
 
         }
 
+        public static bool getIterationCheck2(List<Goldstandard> gsListTrue, 
+            List<Goldstandard> gsListTrueCornerCase, 
+            List<Goldstandard> gsListFalse, 
+            List<Goldstandard> gsListFalseCornerCase,
+            int gsSize,
+            int gsCornerSize) 
+        {
+
+            return gsListTrue.Count() >= gsSize |
+                gsListTrueCornerCase.Count() >= gsCornerSize |
+                gsListFalse.Count() >= gsSize |
+                gsListFalseCornerCase.Count() >= gsCornerSize;
+
+        }
+
 
         public static (List<Goldstandard>, List<Goldstandard>, List<Goldstandard>, List<Goldstandard>) compareFiles_NcbiId_GeneName(string fileName1, string fileName2)
         {
@@ -202,9 +217,9 @@ namespace GoldstandardCreation
 
                 sr1.ReadLine();
 
-                Console.WriteLine("Count X1!: " + iterationCheck2);
+                Console.WriteLine("Count X1!: " + getIterationCheck2(gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase, gsSize, gsCornerSize));
 
-                if (iterationCheck2)
+                if (getIterationCheck2(gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase, gsSize, gsCornerSize))
                 {
 
                     Console.WriteLine("GS True Count: " + gsListTrue.Count);
@@ -222,11 +237,11 @@ namespace GoldstandardCreation
                 while (!sr1.EndOfStream)
                 {
 
-                    Console.WriteLine("Count X2!: " + iterationCheck2);
+                    Console.WriteLine("Count X2!: " + getIterationCheck2(gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase, gsSize, gsCornerSize));
 
                     var lineSr1 = sr1.ReadLine();
 
-                    if (iterationCheck2)
+                    if (getIterationCheck2(gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase, gsSize, gsCornerSize))
                     {
 
                         Console.WriteLine("GS True Count: " + gsListTrue.Count);
@@ -251,7 +266,7 @@ namespace GoldstandardCreation
 
                             var lineSr2 = sr2.ReadLine();
 
-                            if (iterationCheck2)
+                            if (getIterationCheck2(gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase, gsSize, gsCornerSize))
                             {
 
                                 Console.WriteLine("GS True Count: " + gsListTrue.Count);
@@ -505,7 +520,7 @@ namespace GoldstandardCreation
 
                                     }
 
-                                    if (iterationCheck2)
+                                    if (getIterationCheck2(gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase, gsSize, gsCornerSize))
                                     {
 
                                         Console.WriteLine("GS True Count: " + gsListTrue.Count);
