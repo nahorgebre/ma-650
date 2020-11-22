@@ -189,6 +189,11 @@ namespace GoldstandardCreation
                 gsListFalse.Count() < gsSize |
                 gsListFalseCornerCase.Count() < gsCornerSize;
 
+            bool iterationCheck2 = gsListTrue.Count() >= gsSize |
+                gsListTrueCornerCase.Count() >= gsCornerSize |
+                gsListFalse.Count() >= gsSize |
+                gsListFalseCornerCase.Count() >= gsCornerSize;
+
 
             var delimiter = "\t";
 
@@ -199,7 +204,7 @@ namespace GoldstandardCreation
 
                 Console.WriteLine("Count X1!");
 
-                if (!iterationCheck)
+                if (iterationCheck2)
                 {
 
                     Console.WriteLine("GS True Count: " + gsListTrue.Count);
@@ -221,7 +226,7 @@ namespace GoldstandardCreation
 
                     var lineSr1 = sr1.ReadLine();
 
-                    if (!iterationCheck)
+                    if (iterationCheck2)
                     {
 
                         Console.WriteLine("GS True Count: " + gsListTrue.Count);
@@ -246,7 +251,7 @@ namespace GoldstandardCreation
 
                             var lineSr2 = sr2.ReadLine();
 
-                            if (!iterationCheck)
+                            if (iterationCheck2)
                             {
 
                                 Console.WriteLine("GS True Count: " + gsListTrue.Count);
@@ -500,7 +505,7 @@ namespace GoldstandardCreation
 
                                     }
 
-                                    if (!iterationCheck)
+                                    if (iterationCheck2)
                                     {
 
                                         Console.WriteLine("GS True Count: " + gsListTrue.Count);
