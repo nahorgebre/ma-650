@@ -170,9 +170,9 @@ namespace GoldstandardCreation
             int gsCornerSize) 
         {
 
-            return gsListTrue.Count() >= gsSize |
-                gsListTrueCornerCase.Count() >= gsCornerSize |
-                gsListFalse.Count() >= gsSize |
+            return gsListTrue.Count() >= gsSize &
+                gsListTrueCornerCase.Count() >= gsCornerSize &
+                gsListFalse.Count() >= gsSize &
                 gsListFalseCornerCase.Count() >= gsCornerSize;
 
         }
