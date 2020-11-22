@@ -183,299 +183,265 @@ namespace GoldstandardCreation
 
             List<Goldstandard> gsListFalseCornerCase = new List<Goldstandard>(); // similiar records describe differents entities
 
-            do
+
+            var delimiter = "\t";
+
+            using (StreamReader sr1 = new StreamReader(fileName1))
             {
 
+                sr1.ReadLine();
 
-                var delimiter = "\t";
-
-                using (StreamReader sr1 = new StreamReader(fileName1))
+                while (!sr1.EndOfStream)
                 {
 
-                    sr1.ReadLine();
+                    var lineSr1 = sr1.ReadLine();
 
-                    while (!sr1.EndOfStream)
+                    String[] valuesSr1 = lineSr1.Split(delimiter);
+
+                    string geneNameSr1 = valuesSr1[3].Trim();
+
+                    string ncbiIdSr1 = valuesSr1[2].Trim();
+
+                    string recordIdSr1 = valuesSr1[0];
+
+                    using (StreamReader sr2 = new StreamReader(fileName2))
                     {
 
-                        var lineSr1 = sr1.ReadLine();
+                        sr2.ReadLine();
 
-                        String[] valuesSr1 = lineSr1.Split(delimiter);
-
-                        string geneNameSr1 = valuesSr1[3].Trim();
-
-                        string ncbiIdSr1 = valuesSr1[2].Trim();
-
-                        string recordIdSr1 = valuesSr1[0];
-
-                        using (StreamReader sr2 = new StreamReader(fileName2))
+                        while (!sr2.EndOfStream)
                         {
 
-                            sr2.ReadLine();
+                            var lineSr2 = sr2.ReadLine();
 
-                            while (!sr2.EndOfStream)
+
+                            if (gsListTrue.Count() < gsSize |
+                                gsListTrueCornerCase.Count() < gsCornerSize |
+                                gsListFalse.Count() < gsSize |
+                                gsListFalseCornerCase.Count() < gsCornerSize)
                             {
 
-                                var lineSr2 = sr2.ReadLine();
 
-                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count X"); // --------
+                                String[] valuesSr2 = lineSr2.Split(delimiter);
 
-                                if (gsListTrue.Count() < gsSize |
-                                    gsListTrueCornerCase.Count() < gsCornerSize |
-                                    gsListFalse.Count() < gsSize |
-                                    gsListFalseCornerCase.Count() < gsCornerSize)
+                                string geneNameSr2 = valuesSr2[3].Trim();
+
+                                string ncbiIdSr2 = valuesSr2[2].Trim();
+
+                                string recordIdSr2 = valuesSr2[0];
+
+                                string geneNameKey1 = getGeneNameBlockingKey(geneNameSr1);
+
+                                string geneNameKey2 = getGeneNameBlockingKey(geneNameSr2);
+
+
+                                string ncbiIdKey1 = getNcbiIdBlockingKey(ncbiIdSr1);
+
+                                string ncbiIdKey2 = getNcbiIdBlockingKey(ncbiIdSr2);
+
+
+                                if (geneNameKey1.Equals(geneNameKey2))
                                 {
 
-                                    if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 1"); // --------
+                                    double geneNameSim = getBestGeneNameSimilarity(geneNameSr1, geneNameSr2);
 
-                                    String[] valuesSr2 = lineSr2.Split(delimiter);
-
-                                    string geneNameSr2 = valuesSr2[3].Trim();
-
-                                    string ncbiIdSr2 = valuesSr2[2].Trim();
-
-                                    string recordIdSr2 = valuesSr2[0];
-
-                                    string geneNameKey1 = getGeneNameBlockingKey(geneNameSr1);
-
-                                    string geneNameKey2 = getGeneNameBlockingKey(geneNameSr2);
+                                    double ncbiIdSim = 0;
 
 
-                                    string ncbiIdKey1 = getNcbiIdBlockingKey(ncbiIdSr1);
+                                    bool trueFile = false;
 
-                                    string ncbiIdKey2 = getNcbiIdBlockingKey(ncbiIdSr2);
+                                    bool trueCornerFile = false;
+
+                                    bool falseFile = false;
+
+                                    bool falseCornerFile = false;
 
 
-                                    if (geneNameKey1.Equals(geneNameKey2))
+                                    double gsThreshold = 0.9;
+
+
+
+                                    if (ncbiIdSr1.Equals("NaN") | ncbiIdSr2.Equals("NaN"))
                                     {
 
-                                        double geneNameSim = getBestGeneNameSimilarity(geneNameSr1, geneNameSr2);
 
-                                        double ncbiIdSim = 0;
-
-
-                                        bool trueFile = false;
-
-                                        bool trueCornerFile = false;
-
-                                        bool falseFile = false;
-
-                                        bool falseCornerFile = false;
-
-
-                                        double gsThreshold = 0.9;
-
-                                        if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 2"); // --------
-
-
-                                        if (ncbiIdSr1.Equals("NaN") | ncbiIdSr2.Equals("NaN"))
+                                        if (geneNameSim == 1)
                                         {
 
-                                            if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 3"); // --------
+                                            trueFile = true;
 
-                                            if (geneNameSim == 1)
-                                            {
-
-                                                trueFile = true;
-
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 4"); // --------
-
-                                            }
-
-                                            if (geneNameSim < gsThreshold)
-                                            {
-
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 5"); // --------
-
-                                                falseFile = true;
-
-                                            }
 
                                         }
 
-
-
-                                        if (!ncbiIdSr1.Equals("NaN") & !ncbiIdSr2.Equals("NaN"))
+                                        if (geneNameSim < gsThreshold)
                                         {
 
-                                            if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 6"); // --------
 
-                                            var jw = new JaroWinkler();
+                                            falseFile = true;
 
-                                            ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
+                                        }
 
-                                            if (ncbiIdKey1.Equals(ncbiIdKey2))
+                                    }
+
+
+
+                                    if (!ncbiIdSr1.Equals("NaN") & !ncbiIdSr2.Equals("NaN"))
+                                    {
+
+
+                                        var jw = new JaroWinkler();
+
+                                        ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
+
+                                        if (ncbiIdKey1.Equals(ncbiIdKey2))
+                                        {
+
+
+                                            if (ncbiIdSim == 1)
                                             {
-
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 7"); // --------
-
-                                                if (ncbiIdSim == 1)
-                                                {
-
-                                                    if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 8"); // --------
-
-                                                    trueCornerFile = true;
-
-                                                }
-
-                                            }
-
-                                            if (ncbiIdSim >= 0.85)
-                                            {
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 9"); // --------
 
                                                 trueCornerFile = true;
 
                                             }
 
-                                            if (geneNameSim >= gsThreshold & geneNameSim < 1 & ncbiIdSim < 1)
-                                            {
-
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 10"); // --------
-
-                                                falseCornerFile = true;
-
-                                            }
-
                                         }
 
-                                        if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 11"); // --------
-
-                                        if (trueFile)
+                                        if (ncbiIdSim >= 0.85)
                                         {
 
-                                            if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 12"); // --------
 
-                                            if (gsListTrue.Count() < gsSize)
-                                            {
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 13"); // --------
-
-                                                if (!gsListTrue.Exists(x => x.recordId2 == recordIdSr2) & !gsListTrue.Exists(x => x.recordId1 == recordIdSr1))
-                                                {
-
-                                                    if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 14"); // --------
-
-                                                    Console.WriteLine("GS True #" + (gsListTrue.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
-
-                                                    Goldstandard goldstandardItem = new Goldstandard();
-                                                    goldstandardItem.recordId1 = recordIdSr1;
-                                                    goldstandardItem.value1 = geneNameSr1;
-                                                    goldstandardItem.recordId2 = recordIdSr2;
-                                                    goldstandardItem.value2 = geneNameSr2;
-                                                    goldstandardItem.boolValue = "TRUE";
-                                                    goldstandardItem.sim = geneNameSim;
-                                                    goldstandardItem.blockingKey = geneNameKey1;
-
-                                                    gsListTrue.Add(goldstandardItem);
-
-                                                    if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 14 b"); // --------
-
-
-                                                }
-
-                                            }
+                                            trueCornerFile = true;
 
                                         }
-                                        else if (trueCornerFile)
+
+                                        if (geneNameSim >= gsThreshold & geneNameSim < 1 & ncbiIdSim < 1)
                                         {
 
-                                            if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 15"); // --------
-
-                                            if (gsListTrueCornerCase.Count() < gsCornerSize)
-                                            {
-
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 16"); // --------
-
-                                                if (!gsListTrueCornerCase.Exists(x => x.recordId2 == recordIdSr2) & !gsListTrueCornerCase.Exists(x => x.recordId1 == recordIdSr1))
-                                                {
-
-                                                    if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 17"); // --------
-
-                                                    Console.WriteLine("GS Corner Case True #" + (gsListTrueCornerCase.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
-
-                                                    Goldstandard goldstandardItem = new Goldstandard();
-                                                    goldstandardItem.recordId1 = recordIdSr1;
-                                                    goldstandardItem.value1 = geneNameSr1;
-                                                    goldstandardItem.recordId2 = recordIdSr2;
-                                                    goldstandardItem.value2 = geneNameSr2;
-                                                    goldstandardItem.boolValue = "TRUE";
-                                                    goldstandardItem.sim = geneNameSim;
-                                                    goldstandardItem.blockingKey = geneNameKey1;
-
-                                                    gsListTrueCornerCase.Add(goldstandardItem);
-
-                                                }
-
-                                            }
+                                            falseCornerFile = true;
 
                                         }
-                                        else if (falseFile)
+
+                                    }
+
+                                    if (trueFile)
+                                    {
+
+                                        if (gsListTrue.Count() < gsSize)
                                         {
 
-                                            if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 18"); // --------
-
-                                            if (gsListFalse.Count() < gsSize)
+                                            if (!gsListTrue.Exists(x => x.recordId2 == recordIdSr2) & !gsListTrue.Exists(x => x.recordId1 == recordIdSr1))
                                             {
 
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 19"); // --------
+                                                Console.WriteLine("GS True #" + (gsListTrue.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
 
-                                                if (!gsListFalse.Exists(x => x.recordId2 == recordIdSr2) & !gsListFalse.Exists(x => x.recordId1 == recordIdSr1))
-                                                {
+                                                Goldstandard goldstandardItem = new Goldstandard();
+                                                goldstandardItem.recordId1 = recordIdSr1;
+                                                goldstandardItem.value1 = geneNameSr1;
+                                                goldstandardItem.recordId2 = recordIdSr2;
+                                                goldstandardItem.value2 = geneNameSr2;
+                                                goldstandardItem.boolValue = "TRUE";
+                                                goldstandardItem.sim = geneNameSim;
+                                                goldstandardItem.blockingKey = geneNameKey1;
 
-                                                    if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 20"); // --------
+                                                gsListTrue.Add(goldstandardItem);
 
-                                                    Console.WriteLine("GS False #" + (gsListFalse.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
-
-                                                    Goldstandard goldstandardItem = new Goldstandard();
-                                                    goldstandardItem.recordId1 = recordIdSr1;
-                                                    goldstandardItem.value1 = geneNameSr1;
-                                                    goldstandardItem.recordId2 = recordIdSr2;
-                                                    goldstandardItem.value2 = geneNameSr2;
-                                                    goldstandardItem.boolValue = "FALSE";
-                                                    goldstandardItem.sim = geneNameSim;
-                                                    goldstandardItem.blockingKey = geneNameKey1;
-
-                                                    gsListFalse.Add(goldstandardItem);
-
-                                                }
 
                                             }
 
                                         }
-                                        else if (falseCornerFile)
+
+                                    }
+                                    else if (trueCornerFile)
+                                    {
+
+
+                                        if (gsListTrueCornerCase.Count() < gsCornerSize)
                                         {
 
-                                            if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 20"); // --------
 
-                                            if (gsListFalseCornerCase.Count() < gsCornerSize)
+                                            if (!gsListTrueCornerCase.Exists(x => x.recordId2 == recordIdSr2) & !gsListTrueCornerCase.Exists(x => x.recordId1 == recordIdSr1))
                                             {
 
-                                                if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 21"); // --------
 
-                                                if (!gsListFalseCornerCase.Exists(x => x.recordId2 == recordIdSr2) & !gsListFalseCornerCase.Exists(x => x.recordId1 == recordIdSr1))
-                                                {
+                                                Console.WriteLine("GS Corner Case True #" + (gsListTrueCornerCase.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
 
-                                                    if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 22"); // --------
+                                                Goldstandard goldstandardItem = new Goldstandard();
+                                                goldstandardItem.recordId1 = recordIdSr1;
+                                                goldstandardItem.value1 = geneNameSr1;
+                                                goldstandardItem.recordId2 = recordIdSr2;
+                                                goldstandardItem.value2 = geneNameSr2;
+                                                goldstandardItem.boolValue = "TRUE";
+                                                goldstandardItem.sim = geneNameSim;
+                                                goldstandardItem.blockingKey = geneNameKey1;
 
-                                                    Console.WriteLine("GS Corner Case False #" + (gsListFalseCornerCase.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
-
-                                                    Goldstandard goldstandardItem = new Goldstandard();
-                                                    goldstandardItem.recordId1 = recordIdSr1;
-                                                    goldstandardItem.value1 = geneNameSr1;
-                                                    goldstandardItem.recordId2 = recordIdSr2;
-                                                    goldstandardItem.value2 = geneNameSr2;
-                                                    goldstandardItem.boolValue = "FALSE";
-                                                    goldstandardItem.sim = geneNameSim;
-                                                    goldstandardItem.blockingKey = geneNameKey1;
-
-                                                    gsListFalseCornerCase.Add(goldstandardItem);
-
-                                                }
+                                                gsListTrueCornerCase.Add(goldstandardItem);
 
                                             }
 
                                         }
 
-                                        if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 22 b"); // --------
+                                    }
+                                    else if (falseFile)
+                                    {
+
+
+
+                                        if (gsListFalse.Count() < gsSize)
+                                        {
+
+
+                                            if (!gsListFalse.Exists(x => x.recordId2 == recordIdSr2) & !gsListFalse.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
+
+
+                                                Console.WriteLine("GS False #" + (gsListFalse.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
+
+                                                Goldstandard goldstandardItem = new Goldstandard();
+                                                goldstandardItem.recordId1 = recordIdSr1;
+                                                goldstandardItem.value1 = geneNameSr1;
+                                                goldstandardItem.recordId2 = recordIdSr2;
+                                                goldstandardItem.value2 = geneNameSr2;
+                                                goldstandardItem.boolValue = "FALSE";
+                                                goldstandardItem.sim = geneNameSim;
+                                                goldstandardItem.blockingKey = geneNameKey1;
+
+                                                gsListFalse.Add(goldstandardItem);
+
+                                            }
+
+                                        }
+
+                                    }
+                                    else if (falseCornerFile)
+                                    {
+
+
+
+                                        if (gsListFalseCornerCase.Count() < gsCornerSize)
+                                        {
+
+
+
+                                            if (!gsListFalseCornerCase.Exists(x => x.recordId2 == recordIdSr2) & !gsListFalseCornerCase.Exists(x => x.recordId1 == recordIdSr1))
+                                            {
+
+
+                                                Console.WriteLine("GS Corner Case False #" + (gsListFalseCornerCase.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
+
+                                                Goldstandard goldstandardItem = new Goldstandard();
+                                                goldstandardItem.recordId1 = recordIdSr1;
+                                                goldstandardItem.value1 = geneNameSr1;
+                                                goldstandardItem.recordId2 = recordIdSr2;
+                                                goldstandardItem.value2 = geneNameSr2;
+                                                goldstandardItem.boolValue = "FALSE";
+                                                goldstandardItem.sim = geneNameSim;
+                                                goldstandardItem.blockingKey = geneNameKey1;
+
+                                                gsListFalseCornerCase.Add(goldstandardItem);
+
+                                            }
+
+                                        }
 
                                     }
 
@@ -489,12 +455,8 @@ namespace GoldstandardCreation
 
                 }
 
-            } while (gsListTrue.Count() < gsSize |
-                gsListTrueCornerCase.Count() < gsCornerSize |
-                gsListFalse.Count() < gsSize |
-                gsListFalseCornerCase.Count() < gsCornerSize);
+            }
 
-            if (gsListTrue.Count() >= gsSize) Console.WriteLine("Count 23"); // --------
 
             Console.WriteLine("GS True Count: " + gsListTrue.Count);
 
