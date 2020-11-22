@@ -251,6 +251,13 @@ namespace GoldstandardCreation
                                     if (ncbiIdSr1.Equals("NaN") & ncbiIdSr2.Equals("NaN"))
                                     {
 
+                                        Console.WriteLine("NaN");
+
+                                    }
+
+                                    if (ncbiIdSr1.Equals("NaN") | ncbiIdSr2.Equals("NaN"))
+                                    {
+
                                         if (geneNameSim == 1)
                                         {
 
