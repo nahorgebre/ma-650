@@ -170,9 +170,9 @@ namespace GoldstandardCreation
             // recordId - 0 // ncbiId - 2 // geneName - 3
 
 
-            int gsSize = 40;
+            int gsSize = 5;
 
-            int gsCornerSize = 10;
+            int gsCornerSize = 1;
 
 
             List<Goldstandard> gsListTrue = new List<Goldstandard>();
@@ -184,6 +184,12 @@ namespace GoldstandardCreation
             List<Goldstandard> gsListFalseCornerCase = new List<Goldstandard>(); // similiar records describe differents entities
 
 
+            bool iterationCheck = gsListTrue.Count() < gsSize | 
+                gsListTrueCornerCase.Count() < gsCornerSize | 
+                gsListFalse.Count() < gsSize |
+                gsListFalseCornerCase.Count() < gsCornerSize;
+
+
             var delimiter = "\t";
 
             using (StreamReader sr1 = new StreamReader(fileName1))
@@ -191,7 +197,7 @@ namespace GoldstandardCreation
 
                 sr1.ReadLine();
 
-                while (!sr1.EndOfStream)
+                while (!sr1.EndOfStream & iterationCheck)
                 {
 
                     var lineSr1 = sr1.ReadLine();
@@ -209,7 +215,7 @@ namespace GoldstandardCreation
 
                         sr2.ReadLine();
 
-                        while (!sr2.EndOfStream)
+                        while (!sr2.EndOfStream & iterationCheck)
                         {
 
                             var lineSr2 = sr2.ReadLine();
