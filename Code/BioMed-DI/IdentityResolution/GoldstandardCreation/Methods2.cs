@@ -281,7 +281,7 @@ namespace GoldstandardCreation
 
                                         }
 
-                                        if (geneNameSim > 0.9 & geneNameSim < 1 & ncbiIdSim < 1)
+                                        if (geneNameSim > 0.7 & geneNameSim < 1 & ncbiIdSim < 1)
                                         {
 
                                             falseCornerFile = true;
