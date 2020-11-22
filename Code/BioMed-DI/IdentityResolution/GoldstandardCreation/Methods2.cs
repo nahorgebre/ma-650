@@ -197,7 +197,7 @@ namespace GoldstandardCreation
 
                 sr1.ReadLine();
 
-                while (!sr1.EndOfStream & iterationCheck)
+                while (!sr1.EndOfStream & !iterationCheck)
                 {
 
                     var lineSr1 = sr1.ReadLine();
@@ -215,7 +215,7 @@ namespace GoldstandardCreation
 
                         sr2.ReadLine();
 
-                        while (!sr2.EndOfStream & iterationCheck)
+                        while (!sr2.EndOfStream & !iterationCheck)
                         {
 
                             if (gsListTrue.Count() >= gsSize)
