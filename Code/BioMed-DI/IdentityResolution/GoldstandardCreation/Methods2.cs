@@ -184,9 +184,9 @@ namespace GoldstandardCreation
             List<Goldstandard> gsListFalseCornerCase = new List<Goldstandard>(); // similiar records describe differents entities
 
 
-            bool iterationCheck = gsListTrue.Count() < gsSize & 
-                gsListTrueCornerCase.Count() < gsCornerSize & 
-                gsListFalse.Count() < gsSize &
+            bool iterationCheck = gsListTrue.Count() < gsSize | 
+                gsListTrueCornerCase.Count() < gsCornerSize |
+                gsListFalse.Count() < gsSize |
                 gsListFalseCornerCase.Count() < gsCornerSize;
 
 
@@ -197,43 +197,36 @@ namespace GoldstandardCreation
 
                 sr1.ReadLine();
 
-                while (!sr1.EndOfStream & iterationCheck)
+                while (!sr1.EndOfStream)
                 {
-
-                    var lineSr1 = sr1.ReadLine();
-
-                    String[] valuesSr1 = lineSr1.Split(delimiter);
-
-                    string geneNameSr1 = valuesSr1[3].Trim();
-
-                    string ncbiIdSr1 = valuesSr1[2].Trim();
-
-                    string recordIdSr1 = valuesSr1[0];
 
                     using (StreamReader sr2 = new StreamReader(fileName2))
                     {
 
                         sr2.ReadLine();
 
-                        while (!sr2.EndOfStream & iterationCheck)
-                        {
-
-                            if (gsListTrue.Count() >= gsSize)
-                            {
-                                Console.WriteLine("Count X: " + iterationCheck);
-                            }
-
-                            
-
-                            var lineSr2 = sr2.ReadLine();
+                        while (!sr2.EndOfStream)
+                        {                            
 
 
-                            if (gsListTrue.Count() < gsSize |
-                                gsListTrueCornerCase.Count() < gsCornerSize |
-                                gsListFalse.Count() < gsSize |
-                                gsListFalseCornerCase.Count() < gsCornerSize)
+                            if (iterationCheck)
                             {
 
+
+                                var lineSr1 = sr1.ReadLine();
+
+                                String[] valuesSr1 = lineSr1.Split(delimiter);
+
+                                string geneNameSr1 = valuesSr1[3].Trim();
+
+                                string ncbiIdSr1 = valuesSr1[2].Trim();
+
+                                string recordIdSr1 = valuesSr1[0];
+
+
+
+
+                                var lineSr2 = sr2.ReadLine();
 
                                 String[] valuesSr2 = lineSr2.Split(delimiter);
 
@@ -242,6 +235,9 @@ namespace GoldstandardCreation
                                 string ncbiIdSr2 = valuesSr2[2].Trim();
 
                                 string recordIdSr2 = valuesSr2[0];
+
+
+
 
                                 string geneNameKey1 = getGeneNameBlockingKey(geneNameSr1);
 
