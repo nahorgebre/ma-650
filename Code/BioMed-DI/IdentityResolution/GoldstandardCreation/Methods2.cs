@@ -297,6 +297,13 @@ namespace GoldstandardCreation
                                             }
 
                                         }
+
+                                        if (ncbiIdSim >= 0.85)
+                                        {
+
+                                            trueCornerFile = true;
+                                            
+                                        }
                                         
                                         if (geneNameSim >= gsThreshold & geneNameSim < 1 & ncbiIdSim < 1)
                                         {
