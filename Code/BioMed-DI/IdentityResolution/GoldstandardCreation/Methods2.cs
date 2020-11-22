@@ -258,7 +258,7 @@ namespace GoldstandardCreation
 
                                         }
 
-                                        if (geneNameSim < 0.8)
+                                        if (geneNameSim < 0.85)
                                         {
 
                                             falseFile = true;
@@ -267,6 +267,8 @@ namespace GoldstandardCreation
 
                                     }
 
+
+
                                     if (!ncbiIdSr1.Equals("NaN") & !ncbiIdSr2.Equals("NaN"))
                                     {
 
@@ -274,14 +276,14 @@ namespace GoldstandardCreation
 
                                         ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
 
-                                        if (geneNameSim < 0.9 & ncbiIdSim == 1)
+                                        if (geneNameSim < 0.85 & ncbiIdSim == 1)
                                         {
 
                                             trueCornerFile = true;
 
                                         }
 
-                                        if (geneNameSim > 0.7 & geneNameSim < 1 & ncbiIdSim < 1)
+                                        if (geneNameSim >= 0.85 & geneNameSim < 1 & ncbiIdSim < 1)
                                         {
 
                                             falseCornerFile = true;
