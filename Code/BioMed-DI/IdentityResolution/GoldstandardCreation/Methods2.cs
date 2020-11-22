@@ -170,9 +170,9 @@ namespace GoldstandardCreation
             // recordId - 0 // ncbiId - 2 // geneName - 3
 
 
-            int gsSize = 5;
+            int gsSize = 40;
 
-            int gsCornerSize = 1;
+            int gsCornerSize = 10;
 
 
             List<Goldstandard> gsListTrue = new List<Goldstandard>();
