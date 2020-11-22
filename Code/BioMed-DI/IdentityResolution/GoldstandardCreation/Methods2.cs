@@ -362,6 +362,9 @@ if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 11"); // --------
 
                                                 gsListTrue.Add(goldstandardItem);
 
+                                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 14 b"); // --------
+
+
                                             }
 
                                         }
