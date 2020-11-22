@@ -237,10 +237,7 @@ namespace GoldstandardCreation
 
                                     double geneNameSim = getBestGeneNameSimilarity(geneNameSr1, geneNameSr2);
 
-                                    var jw = new JaroWinkler();
-
-                                    double ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
-
+                                    double ncbiIdSim = 0;
 
                                     bool trueFile = false;
 
@@ -251,8 +248,8 @@ namespace GoldstandardCreation
                                     bool falseCornerFile = false;
 
 
-                                    //if (ncbiIdSr1.Equals("NaN") & ncbiIdSr2.Equals("NaN"))
-                                    //{
+                                    if (ncbiIdSr1.Equals("NaN") & ncbiIdSr2.Equals("NaN"))
+                                    {
 
                                         if (geneNameSim == 1)
                                         {
@@ -268,10 +265,14 @@ namespace GoldstandardCreation
 
                                         }
 
-                                    //}
+                                    }
 
                                     if (!ncbiIdSr1.Equals("NaN") & !ncbiIdSr2.Equals("NaN"))
                                     {
+
+                                        var jw = new JaroWinkler();
+
+                                        ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
 
                                         if (geneNameSim < 0.9 & ncbiIdSim == 1)
                                         {
@@ -375,7 +376,7 @@ namespace GoldstandardCreation
                                     else if (falseCornerFile)
                                     {
 
-                                        if (gsListFalseCornerCase.Count() < gsSize)
+                                        if (gsListFalseCornerCase.Count() < gsCornerSize)
                                         {
 
                                             if (!gsListFalseCornerCase.Exists(x => x.recordId2 == recordIdSr2) & !gsListFalseCornerCase.Exists(x => x.recordId1 == recordIdSr1))
