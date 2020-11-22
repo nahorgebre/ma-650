@@ -170,9 +170,9 @@ namespace GoldstandardCreation
             // recordId - 0 // ncbiId - 2 // geneName - 3
 
 
-            int gsSize = 40;
+            int gsSize = 5;
 
-            int gsCornerSize = 10;
+            int gsCornerSize = 1;
 
 
             List<Goldstandard> gsListTrue = new List<Goldstandard>();
@@ -219,6 +219,8 @@ namespace GoldstandardCreation
                                 gsListFalse.Count() < gsSize |
                                 gsListFalseCornerCase.Count() < gsCornerSize)
                             {
+
+                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count");
 
                                 String[] valuesSr2 = lineSr2.Split(delimiter);
 
