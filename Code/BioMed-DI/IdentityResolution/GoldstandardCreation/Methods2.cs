@@ -203,7 +203,7 @@ namespace GoldstandardCreation
                     if (iterationCheck)
                     {
 
-
+                        Console.WriteLine("Count X!");
 
                         var lineSr1 = sr1.ReadLine();
 
