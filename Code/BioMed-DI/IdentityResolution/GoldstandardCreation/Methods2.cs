@@ -218,6 +218,8 @@ namespace GoldstandardCreation
                         while (!sr2.EndOfStream & iterationCheck)
                         {
 
+                            Console.WriteLine("Count X: " + iterationCheck);
+
                             var lineSr2 = sr2.ReadLine();
 
 
