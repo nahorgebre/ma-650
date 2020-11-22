@@ -220,7 +220,7 @@ namespace GoldstandardCreation
                                 gsListFalseCornerCase.Count() < gsCornerSize)
                             {
 
-                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count");
+                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 1"); // --------
 
                                 String[] valuesSr2 = lineSr2.Split(delimiter);
 
@@ -259,19 +259,27 @@ namespace GoldstandardCreation
 
                                     double gsThreshold = 0.9;
 
+                                    if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 2"); // --------
+
 
                                     if (ncbiIdSr1.Equals("NaN") | ncbiIdSr2.Equals("NaN"))
                                     {
+
+                                        if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 3"); // --------
 
                                         if (geneNameSim == 1)
                                         {
 
                                             trueFile = true;
 
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 4"); // --------
+
                                         }
 
                                         if (geneNameSim < gsThreshold)
                                         {
+
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 5"); // --------
 
                                             falseFile = true;
 
@@ -284,6 +292,8 @@ namespace GoldstandardCreation
                                     if (!ncbiIdSr1.Equals("NaN") & !ncbiIdSr2.Equals("NaN"))
                                     {
 
+                                        if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 6"); // --------
+
                                         var jw = new JaroWinkler();
 
                                         ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
@@ -291,8 +301,12 @@ namespace GoldstandardCreation
                                         if (ncbiIdKey1.Equals(ncbiIdKey2))
                                         {
 
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 7"); // --------
+
                                             if (ncbiIdSim == 1)
                                             {
+
+                                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 8"); // --------
 
                                                 trueCornerFile = true;
 
@@ -302,6 +316,7 @@ namespace GoldstandardCreation
 
                                         if (ncbiIdSim >= 0.85)
                                         {
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 9"); // --------
 
                                             trueCornerFile = true;
                                             
@@ -310,22 +325,29 @@ namespace GoldstandardCreation
                                         if (geneNameSim >= gsThreshold & geneNameSim < 1 & ncbiIdSim < 1)
                                         {
 
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 10"); // --------
+
                                             falseCornerFile = true;
 
                                         }
 
                                     }
 
-
+if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 11"); // --------
 
                                     if (trueFile)
                                     {
 
+                                        if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 12"); // --------
+
                                         if (gsListTrue.Count() < gsSize)
                                         {
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 13"); // --------
 
                                             if (!gsListTrue.Exists(x => x.recordId2 == recordIdSr2) & !gsListTrue.Exists(x => x.recordId1 == recordIdSr1))
                                             {
+
+                                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 14"); // --------
 
                                                 Console.WriteLine("GS True #" + (gsListTrue.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
 
@@ -348,11 +370,17 @@ namespace GoldstandardCreation
                                     else if (trueCornerFile)
                                     {
 
+                                        if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 15"); // --------
+
                                         if (gsListTrueCornerCase.Count() < gsCornerSize)
                                         {
 
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 16"); // --------
+
                                             if (!gsListTrueCornerCase.Exists(x => x.recordId2 == recordIdSr2) & !gsListTrueCornerCase.Exists(x => x.recordId1 == recordIdSr1))
                                             {
+
+                                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 17"); // --------
 
                                                 Console.WriteLine("GS Corner Case True #" + (gsListTrueCornerCase.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
 
@@ -375,11 +403,17 @@ namespace GoldstandardCreation
                                     else if (falseFile)
                                     {
 
+                                        if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 18"); // --------
+
                                         if (gsListFalse.Count() < gsSize)
                                         {
 
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 19"); // --------
+
                                             if (!gsListFalse.Exists(x => x.recordId2 == recordIdSr2) & !gsListFalse.Exists(x => x.recordId1 == recordIdSr1))
                                             {
+
+                                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 20"); // --------
 
                                                 Console.WriteLine("GS False #" + (gsListFalse.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
 
@@ -402,11 +436,17 @@ namespace GoldstandardCreation
                                     else if (falseCornerFile)
                                     {
 
+                                        if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 20"); // --------
+
                                         if (gsListFalseCornerCase.Count() < gsCornerSize)
                                         {
 
+                                            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 21"); // --------
+
                                             if (!gsListFalseCornerCase.Exists(x => x.recordId2 == recordIdSr2) & !gsListFalseCornerCase.Exists(x => x.recordId1 == recordIdSr1))
                                             {
+
+                                                if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 22"); // --------
 
                                                 Console.WriteLine("GS Corner Case False #" + (gsListFalseCornerCase.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
 
@@ -438,6 +478,8 @@ namespace GoldstandardCreation
                 }
 
             }
+
+            if(gsListTrue.Count() >= gsSize) Console.WriteLine("Count 23"); // --------
 
             Console.WriteLine("GS True Count: " + gsListTrue.Count);
 
