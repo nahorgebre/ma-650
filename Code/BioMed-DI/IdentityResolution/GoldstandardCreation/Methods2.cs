@@ -228,11 +228,17 @@ namespace GoldstandardCreation
 
                                 string recordIdSr2 = valuesSr2[0];
 
-                                string key1 = getGeneNameBlockingKey(geneNameSr1);
+                                string geneNameKey1 = getGeneNameBlockingKey(geneNameSr1);
 
-                                string key2 = getGeneNameBlockingKey(geneNameSr2);
+                                string geneNameKey2 = getGeneNameBlockingKey(geneNameSr2);
 
-                                if (key1.Equals(key2))
+
+                                string ncbiIdKey1 = getNcbiIdBlockingKey(ncbiIdSr1);
+
+                                string ncbiIdKey2 = getNcbiIdBlockingKey(ncbiIdSr2);
+
+
+                                if (geneNameKey1.Equals(geneNameKey2))
                                 {
 
                                     double geneNameSim = getBestGeneNameSimilarity(geneNameSr1, geneNameSr2);
@@ -251,13 +257,6 @@ namespace GoldstandardCreation
 
                                     double gsThreshold = 0.9;
 
-
-                                    if (ncbiIdSr1.Equals("NaN") & ncbiIdSr2.Equals("NaN"))
-                                    {
-
-                                        Console.WriteLine("NaN");
-
-                                    }
 
                                     if (ncbiIdSr1.Equals("NaN") | ncbiIdSr2.Equals("NaN"))
                                     {
@@ -287,12 +286,19 @@ namespace GoldstandardCreation
 
                                         ncbiIdSim = jw.Similarity(ncbiIdSr1, ncbiIdSr2);
 
-                                        if (geneNameSim < 1 & ncbiIdSim == 1)
+                                        if (ncbiIdSr1.ToLower().Trim().Equals(ncbiIdSr2.ToLower().Trim()))
                                         {
 
-                                            trueCornerFile = true;
+                                            if (ncbiIdSim == 1)
+                                            {
 
+                                                trueCornerFile = true;
+
+                                            }
+                                            
                                         }
+
+
 
                                         if (geneNameSim >= gsThreshold & geneNameSim < 1 & ncbiIdSim < 1)
                                         {
@@ -323,7 +329,7 @@ namespace GoldstandardCreation
                                                 goldstandardItem.value2 = geneNameSr2;
                                                 goldstandardItem.boolValue = "TRUE";
                                                 goldstandardItem.sim = geneNameSim;
-                                                goldstandardItem.blockingKey = key1;
+                                                goldstandardItem.blockingKey = geneNameKey1;
 
                                                 gsListTrue.Add(goldstandardItem);
 
@@ -341,7 +347,7 @@ namespace GoldstandardCreation
                                             if (!gsListTrueCornerCase.Exists(x => x.recordId2 == recordIdSr2) & !gsListTrueCornerCase.Exists(x => x.recordId1 == recordIdSr1))
                                             {
 
-                                                Console.WriteLine("GS Corner Case True #" + (gsListTrue.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
+                                                Console.WriteLine("GS Corner Case True #" + (gsListTrueCornerCase.Count() + 1).ToString() + " : GeneNames(" + geneNameSr1 + " - " + geneNameSr2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + ncbiIdSr1 + " - " + ncbiIdSr2 + " Sim: " + ncbiIdSim + ")");
 
                                                 Goldstandard goldstandardItem = new Goldstandard();
                                                 goldstandardItem.recordId1 = recordIdSr1;
@@ -350,7 +356,7 @@ namespace GoldstandardCreation
                                                 goldstandardItem.value2 = geneNameSr2;
                                                 goldstandardItem.boolValue = "TRUE";
                                                 goldstandardItem.sim = geneNameSim;
-                                                goldstandardItem.blockingKey = key1;
+                                                goldstandardItem.blockingKey = geneNameKey1;
 
                                                 gsListTrueCornerCase.Add(goldstandardItem);
 
@@ -377,7 +383,7 @@ namespace GoldstandardCreation
                                                 goldstandardItem.value2 = geneNameSr2;
                                                 goldstandardItem.boolValue = "FALSE";
                                                 goldstandardItem.sim = geneNameSim;
-                                                goldstandardItem.blockingKey = key1;
+                                                goldstandardItem.blockingKey = geneNameKey1;
 
                                                 gsListFalse.Add(goldstandardItem);
 
@@ -404,7 +410,7 @@ namespace GoldstandardCreation
                                                 goldstandardItem.value2 = geneNameSr2;
                                                 goldstandardItem.boolValue = "FALSE";
                                                 goldstandardItem.sim = geneNameSim;
-                                                goldstandardItem.blockingKey = key1;
+                                                goldstandardItem.blockingKey = geneNameKey1;
 
                                                 gsListFalseCornerCase.Add(goldstandardItem);
 
@@ -505,6 +511,22 @@ namespace GoldstandardCreation
             }
 
             return geneNameList;
+
+        }
+
+
+        public static String getNcbiIdBlockingKey(String ncbiId)
+        {
+            string key = "default";
+
+            if (ncbiId.Length >= 2)
+            {
+                
+                key = ncbiId.Substring(0,1);
+
+            }
+
+            return key;
 
         }
 
