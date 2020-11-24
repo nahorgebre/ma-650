@@ -23,7 +23,7 @@ public class ListingS3Objects {
     public static void main( String[] args ) throws Exception
     {
 
-
+        /*
         getCorrespondences("DI1", "Get-C-1.sh");
 
         getDatasets("DI1", "Get-D-1.sh");
@@ -34,6 +34,12 @@ public class ListingS3Objects {
         getDatasets("DI2", "Get-D-2.sh");
 
         getDatasetsAfterDataPreparation("DI2", "Get-D-DP-2.sh");
+
+
+        getCorrespondences("DI3", "Get-C-3.sh");
+        */
+
+        getDatasets("DI3", "Get-D-3.sh");
 
         
     }

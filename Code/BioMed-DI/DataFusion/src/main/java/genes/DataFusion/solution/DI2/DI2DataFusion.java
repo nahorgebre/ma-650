@@ -1,8 +1,12 @@
 package genes.DataFusion.solution.DI2;
 
+// Apache
 import org.apache.logging.log4j.Logger;
+
+// Java
 import java.io.File;
 
+// Winter
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEvaluator;

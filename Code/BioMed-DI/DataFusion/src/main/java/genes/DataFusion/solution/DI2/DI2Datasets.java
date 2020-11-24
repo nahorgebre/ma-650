@@ -1,12 +1,14 @@
 package genes.DataFusion.solution.DI2;
 
-
+// java
 import java.io.File;
 
+// winter
 import de.uni_mannheim.informatik.dws.winter.model.FusibleDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.FusibleHashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
+// model
 import genes.DataFusion.model.Gene.Gene;
 import genes.DataFusion.model.Gene.GeneXMLReader;
 

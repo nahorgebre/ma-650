@@ -19,6 +19,10 @@ public class DI1Datasets {
 
         FusibleDataSet<Gene, Attribute> Brain = new FusibleHashedDataSet<>();
 
+        Gene geneX = new Gene("", "");
+
+        Brain.add(geneX);
+
         new GeneXMLReader().loadFromXML(new File("data/input/DI1/Brain_dt.xml"), "/genes/gene", Brain);
 
         Brain.printDataSetDensityReport();
