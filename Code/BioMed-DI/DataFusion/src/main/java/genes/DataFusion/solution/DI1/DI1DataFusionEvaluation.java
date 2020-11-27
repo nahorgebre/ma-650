@@ -36,44 +36,58 @@ import genes.DataFusion.fusers.Publications.*;
 
 // Model
 import genes.DataFusion.model.Gene.Gene;
-import genes.DataFusion.model.Gene.GeneXMLFormatter;
 import genes.DataFusion.model.Gene.GeneXMLReader;
 
 public class DI1DataFusionEvaluation {
 
     private static final Logger logger = WinterLogManager.activateLogger("trace");
 
-    public static void main( String[] args ) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-        /*
-
-        // kaessmann-fused
+        // load fused dataset
 
         FusibleDataSet<Gene, Attribute> fusedDataSet = new FusibleHashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/outpu/kaessmann-fused.xml"), "/genes/gene", fusedDataSet);
+        new GeneXMLReader().loadFromXML(new File("data/output/kaessmann-fused.xml"), "/genes/gene", fusedDataSet);
 
         fusedDataSet.printDataSetDensityReport();
-
 
         // load the gold standard
         DataSet<Gene, Attribute> gs = new FusibleHashedDataSet<>();
 
         new GeneXMLReader().loadFromXML(new File("data/goldstandard/kaessmann-gs.xml"), "/genes/gene", gs);
 
+        // define the fusion strategy
+        DataFusionStrategy<Gene, Attribute> strategy = new DataFusionStrategy<>(new GeneXMLReader());
+
+        strategy.addAttributeFuser(Gene.ENSEMBLID, new EnsemblIdFuserLongestString(), new EnsemblIdEvaluationRule());
+
+        strategy.addAttributeFuser(Gene.NCBIID, new NcbiIdFuserLongestString(), new NcbiIdEvaluationRule());
+
+        strategy.addAttributeFuser(Gene.GENENAMES, new GeneNamesFuserLongestString(), new GeneNamesEvaluationRule());
+
+        strategy.addAttributeFuser(Gene.GENEDESCRIPTIONS, new GeneDescriptionsFuserLongestString(),
+                new GeneDescriptionsEvaluationRule());
+
+        strategy.addAttributeFuser(Gene.ORGANS, new OrgansFuserUnion(), new OrgansEvaluationRule());
+
+        strategy.addAttributeFuser(Gene.PUBLICATIONMENTIONS, new PublicationsFuserUnion(),
+                new PublicationsEvaluationRule());
+
+        strategy.addAttributeFuser(Gene.PATENTMENTIONS, new PatentsFuserUnion(), new PatentsEvaluationRule());
+
+        strategy.addAttributeFuser(Gene.DISEASEASSOCIATIONS, new DiseasesFuserUnion(), new DisaesesEvaluationRule());
 
         // evaluate
         System.out.println("*\n*\tEvaluating results\n*");
 
-        DataFusionEvaluator<Gene, Attribute> evaluator = new DataFusionEvaluator<>(
-            strategy, new RecordGroupFactory<Gene, Attribute>());
-                    
+        DataFusionEvaluator<Gene, Attribute> evaluator = new DataFusionEvaluator<>(strategy,
+                new RecordGroupFactory<Gene, Attribute>());
+
         double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
-                
+
         logger.info(String.format("Accuracy: %.2f", accuracy));
 
-        */
-
     }
-    
+
 }
