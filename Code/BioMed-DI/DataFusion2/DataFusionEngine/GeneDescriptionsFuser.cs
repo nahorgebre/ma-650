@@ -7,18 +7,10 @@ namespace DataFusion2
     class GeneDescriptionsFuser
     {
 
-        public static string fuse(List<string> geneDescriptionsList)
+        public static XMLElement fuse(List<XMLElement> geneDescriptionsList)
         {
 
-            string geneDescriptions = string.Join('|', geneDescriptionsList);
-
-            string[] geneDescriptionsArray = geneDescriptions.Split('|').Distinct().ToArray();
-
-            geneDescriptions = string.Join('|', geneDescriptionsArray);
-
-            Console.WriteLine("Fuser - Gene Descriptions: " + geneDescriptions);
-
-            return geneDescriptions;
+            return DataFusionEngine.fuseRecordAttributes(geneDescriptionsList);
 
         }
 

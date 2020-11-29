@@ -20,21 +20,22 @@ namespace DataFusion2
 
         public string recordId = string.Empty;
 
-        public string ensemblId = string.Empty;
+        public ensemblId ensemblId = new ensemblId();
 
-        public string ncbiId = string.Empty;
+        public ncbiId ncbiId = new ncbiId();
 
-        public string geneNames = string.Empty;
+        public geneNames geneNames = new geneNames();
 
-        public string geneDescriptions = string.Empty;
+        public geneDescriptions geneDescriptions = new geneDescriptions();
 
         
         [XmlArrayItem("organ")]
+        [XmlAttribute("id")]
         public List<Organ> organs = new List<Organ>();
 
 
         [XmlArrayItem("diseaseAssociation")]
-        public List<DiseaseAssociation> diseaseAssociations = new List<DiseaseAssociation>();
+        public List<GeneDiseaseAssociation> diseaseAssociations = new List<GeneDiseaseAssociation>();
 
 
         [XmlArrayItem("publicationMention")]
@@ -47,9 +48,60 @@ namespace DataFusion2
     }
 
 
+    public class ensemblId
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+
+    public class ncbiId
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+
+    public class geneNames
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+
+    public class geneDescriptions
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+
     public class Organ
     {
 
+        [XmlAttribute]
+        public string provenance;
+        
         public string organName;
 
         public string disagreement;
@@ -61,7 +113,7 @@ namespace DataFusion2
     }
 
 
-    public class DiseaseAssociation
+    public class GeneDiseaseAssociation
     {
 
         public string diseaseIdUMLS;

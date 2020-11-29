@@ -8,18 +8,10 @@ namespace DataFusion2
     class NcbiIdFuser
     {
 
-        public static string fuse(List<string> ncbiIdList)
+        public static XMLElement fuse(List<XMLElement> ncbiIdList)
         {
 
-            string ncbiId = string.Join('|', ncbiIdList);
-
-            string[] ncbiIdArray = ncbiId.Split('|').Distinct().ToArray();
-
-            ncbiId = string.Join('|', ncbiIdArray);
-
-            Console.WriteLine("Fuser - NCBI ID: " + ncbiId);
-
-            return ncbiId;
+            return DataFusionEngine.fuseRecordAttributes(ncbiIdList);
 
         }
 
