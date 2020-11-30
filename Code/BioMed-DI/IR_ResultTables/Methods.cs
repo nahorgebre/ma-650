@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace CreateResultTable
+namespace IR_ResultTables
 {
 
     class Methods

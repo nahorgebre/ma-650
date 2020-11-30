@@ -15,7 +15,7 @@ public class GeneWekaMatchingRule {
 
         List<GeneWekaMatchingRule> matchingRuleList = new ArrayList<GeneWekaMatchingRule>();
 
-        
+        /*
 
         GeneWekaMatchingRule matchingRule1 = new GeneWekaMatchingRule();
 
@@ -56,6 +56,8 @@ public class GeneWekaMatchingRule {
         matchingRule3.backwardSelection = true;
 
         matchingRuleList.add(matchingRule3);
+
+        */
         
 
 

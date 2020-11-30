@@ -2,12 +2,16 @@
 using System.IO;
 using System.Collections.Generic;
 
-namespace CreateResultTable
+namespace IR_ResultTables
 {
     class Program
     {
         static void Main(string[] args)
         {
+
+            AWSlistingContents.test2();
+
+            /*
             List<Result1> result1List = new List<Result1>();
 
             List<Result2> result2List = new List<Result2>();
@@ -31,6 +35,8 @@ namespace CreateResultTable
 
             FileInfo result2File = new FileInfo("");
             Methods.createTsvFileResult2(result2List, result2File);
+
+            */
 
         }
     }

@@ -1,6 +1,6 @@
 using System;
 
-namespace CreateResultTable
+namespace IR_ResultTables
 {
     class Result1
     {
