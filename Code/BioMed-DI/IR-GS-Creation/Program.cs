@@ -10,8 +10,10 @@ namespace IR_GS_Creation
 
             foreach (String parameter in args)
             {
+                if (parameter.Equals("DI2"))
+                {
 
-                if (parameter.Equals("DI3"))
+                } else if (parameter.Equals("DI3"))
                 {
 
                     DI3.run();

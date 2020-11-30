@@ -151,11 +151,11 @@ namespace IR_GS_Creation
                                 if (gsListTrue.Count() < gsTrueSize)
                                 {
 
-                                    if (!gsListTrue.Exists(x => x.recordId2 == file2DictionaryItem.Key) & 
+                                    if (!gsListTrue.Exists(x => x.recordId2 == file2DictionaryItem.Key) &
                                         !gsListTrue.Exists(x => x.recordId1 == file1DictionaryItem.Key))
                                     {
 
-                                        
+
 
                                         Goldstandard goldstandardItem = new Goldstandard();
 
@@ -188,11 +188,11 @@ namespace IR_GS_Creation
                                 if (gsListFalse.Count() < gsFalseSize)
                                 {
 
-                                    if (!gsListFalse.Exists(x => x.recordId2 == file2DictionaryItem.Key) & 
+                                    if (!gsListFalse.Exists(x => x.recordId2 == file2DictionaryItem.Key) &
                                         !gsListFalse.Exists(x => x.recordId1 == file1DictionaryItem.Key))
                                     {
 
-                                        
+
 
                                         Goldstandard goldstandardItem = new Goldstandard();
 
@@ -225,7 +225,7 @@ namespace IR_GS_Creation
                                 if (gsListTrueCornerCase.Count() < gsTrueCornerSize)
                                 {
 
-                                    if (!gsListTrueCornerCase.Exists(x => x.recordId2 == file2DictionaryItem.Key) & 
+                                    if (!gsListTrueCornerCase.Exists(x => x.recordId2 == file2DictionaryItem.Key) &
                                         !gsListTrueCornerCase.Exists(x => x.recordId1 == file1DictionaryItem.Key))
                                     {
 
@@ -249,7 +249,7 @@ namespace IR_GS_Creation
 
                                         goldstandardItem.geneNamesSim = geneNameSim;
 
-                                        
+
                                         goldstandardItem.geneNamesBlockingKey = geneNameKey1;
 
                                         goldstandardItem.ncbiIdBlockingKey = ncbiIdKey1;
@@ -271,7 +271,7 @@ namespace IR_GS_Creation
                                 if (gsListFalseCornerCase.Count() < gsFalseCornerSize)
                                 {
 
-                                    if (!gsListFalseCornerCase.Exists(x => x.recordId2 == file2DictionaryItem.Key) & 
+                                    if (!gsListFalseCornerCase.Exists(x => x.recordId2 == file2DictionaryItem.Key) &
                                         !gsListFalseCornerCase.Exists(x => x.recordId1 == file1DictionaryItem.Key))
                                     {
 
@@ -312,6 +312,22 @@ namespace IR_GS_Creation
 
                                 }
 
+                            }
+
+                            if (check_gs_size(
+                                gsListTrue: gsListTrue,
+                                gsListTrueCornerCase: gsListTrueCornerCase,
+                                gsListFalse: gsListFalse,
+                                gsListFalseCornerCase: gsListFalseCornerCase,
+                                gsTrueSize: gsTrueSize,
+                                gsTrueCornerSize: gsTrueCornerSize,
+                                gsFalseSize: gsFalseSize,
+                                gsFalseCornerSize: gsFalseCornerSize
+                            ))
+                            {
+
+                                return (gsListTrue, gsListTrueCornerCase, gsListFalse, gsListFalseCornerCase);
+                                
                             }
 
                         }

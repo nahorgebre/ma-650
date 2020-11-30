@@ -51,7 +51,7 @@ namespace IR_GS_Creation
                     if (!values[3].Equals(string.Empty))
                     {
 
-                        inputDS.geneNames = values[2];
+                        inputDS.geneNames = values[3];
                         
                     }
 
