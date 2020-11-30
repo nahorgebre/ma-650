@@ -294,7 +294,7 @@ public class ListingS3Objects {
 
         List<String> mkdirList = new ArrayList<String>();
 
-        PrintWriter writer = new PrintWriter("Get-GD-1.sh", "UTF-8");
+        PrintWriter writer = new PrintWriter("Get-GD-3.sh", "UTF-8");
 
         ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis",
                 "identity-resolution/goldstandard/DI3");
