@@ -9,7 +9,7 @@ public class Run {
 
         ML_StandardRecordBlocker.main(args);
 
-        ML_SortedNeighbourhoodBlocker.main(args);
+        //ML_SortedNeighbourhoodBlocker.main(args);
         
     }
     
