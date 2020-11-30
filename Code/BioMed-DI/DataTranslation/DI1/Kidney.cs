@@ -73,9 +73,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "Kidney_dt.xml", directory: DI1.outputDirectory);
+            Output.createXml(gene_list: gene_list, fileName: "Kidney_dt.xml", directory: DI1.outputDirectory);
 
-            Methods.createTsv(gene_list: gene_list, fileName: "Kidney_dt.tsv", directory: DI1.outputDirectory);
+            Output.createTsv(gene_list: gene_list, fileName: "Kidney_dt.tsv", directory: DI1.outputDirectory);
 
         }
 
@@ -120,9 +120,9 @@ namespace DataTranslation
 
             }
 
-            Methods.createXmlGene(gene_list: gene_list, fileName: "mart_export_kidney_dt.xml", directory: DI1.outputDirectory);
+            Output.createXml(gene_list: gene_list, fileName: "mart_export_kidney_dt.xml", directory: DI1.outputDirectory);
             
-            Methods.createTsv(gene_list: gene_list, fileName: "mart_export_kidney_dt.tsv", directory: DI1.outputDirectory);
+            Output.createTsv(gene_list: gene_list, fileName: "mart_export_kidney_dt.tsv", directory: DI1.outputDirectory);
 
         }
 

@@ -115,22 +115,22 @@ namespace DataTranslation
 
                 }
 
-                Methods.createXmlGene(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_" + i + "_dt.xml", directory: DI2.outputDirectory);
+                Output.createXml(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_" + i + "_dt.xml", directory: DI2.outputDirectory);
 
-                Methods.createTsv(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_" + i + "_dt.tsv", directory: DI2.outputDirectory);
+                Output.createTsv(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_" + i + "_dt.tsv", directory: DI2.outputDirectory);
 
             }
 
         }
 
         
-        public static List<DiseaseAssociation> getDiseaseAssociations(String[] values)
+        public static List<GeneDiseaseAssociation> getDiseaseAssociations(String[] values)
         {
 
 
-            List<DiseaseAssociation> diseases_list = new List<DiseaseAssociation>();
+            List<GeneDiseaseAssociation> diseases_list = new List<GeneDiseaseAssociation>();
 
-            DiseaseAssociation disease = new DiseaseAssociation();
+            GeneDiseaseAssociation disease = new GeneDiseaseAssociation();
 
 
             string diseaseIdUMLS = values[4].Trim();

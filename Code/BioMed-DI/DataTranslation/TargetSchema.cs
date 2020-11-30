@@ -34,7 +34,7 @@ namespace DataTranslation
 
 
         [XmlArrayItem("diseaseAssociation")]
-        public List<DiseaseAssociation> diseaseAssociations = new List<DiseaseAssociation>();
+        public List<GeneDiseaseAssociation> diseaseAssociations = new List<GeneDiseaseAssociation>();
 
 
         [XmlArrayItem("publicationMention")]
@@ -61,7 +61,7 @@ namespace DataTranslation
     }
 
 
-    public class DiseaseAssociation
+    public class GeneDiseaseAssociation
     {
 
         public string diseaseIdUMLS;
