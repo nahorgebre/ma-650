@@ -8,7 +8,7 @@ namespace IR_GS_Creation
     class DI3
     {
 
-        public static int kaessmannDiseaseAssociations_2_gene2pubtatorcentral_partitionNumbers = 2; //50
+        public static int kaessmannDiseaseAssociations_2_gene2pubtatorcentral_partitionNumbers = 50;
 
         public static void run() 
         {

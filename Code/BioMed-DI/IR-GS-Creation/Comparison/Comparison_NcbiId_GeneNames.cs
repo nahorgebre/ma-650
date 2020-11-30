@@ -25,13 +25,13 @@ namespace IR_GS_Creation
 
 
 
-            int gsFalseSize = 5;
+            int gsFalseSize = 100;
 
-            int gsTrueSize = 5;
+            int gsTrueSize = 100;
 
-            int gsFalseCornerSize = 1;
+            int gsFalseCornerSize = 7;
 
-            int gsTrueCornerSize = 1;
+            int gsTrueCornerSize = 3;
 
 
 
@@ -175,7 +175,7 @@ namespace IR_GS_Creation
 
                                         gsListTrue.Add(goldstandardItem);
 
-                                        Console.WriteLine("GS True #" + (gsListTrue.Count() + 1).ToString() + " : GeneNames(" + goldstandardItem.geneNames1 + " - " + goldstandardItem.geneNames2 + " - Sim: " + geneNameSim + ")");
+                                        Console.WriteLine("GS True #" + (gsListTrue.Count()).ToString() + " : GeneNames(" + goldstandardItem.geneNames1 + " - " + goldstandardItem.geneNames2 + " - Sim: " + geneNameSim + ")");
 
                                     }
 
@@ -212,7 +212,7 @@ namespace IR_GS_Creation
 
                                         gsListFalse.Add(goldstandardItem);
 
-                                        Console.WriteLine("GS False #" + (gsListFalse.Count() + 1).ToString() + " : GeneNames(" + goldstandardItem.geneNames1 + " - " + goldstandardItem.geneNames2 + " - Sim: " + goldstandardItem.geneNamesSim + ")");
+                                        Console.WriteLine("GS False #" + (gsListFalse.Count()).ToString() + " : GeneNames(" + goldstandardItem.geneNames1 + " - " + goldstandardItem.geneNames2 + " - Sim: " + goldstandardItem.geneNamesSim + ")");
 
                                     }
 
@@ -258,7 +258,7 @@ namespace IR_GS_Creation
                                         gsListTrueCornerCase.Add(goldstandardItem);
 
 
-                                        Console.WriteLine("GS Corner Case True #" + (gsListTrueCornerCase.Count() + 1).ToString() + " : GeneNames(" + file1DictionaryItem.Value.geneNames + " - " + file1DictionaryItem.Value.geneNames + " - Sim: " + geneNameSim + ") - NCBIIDs(" + file1DictionaryItem.Value.ncbiId + " - " + file2DictionaryItem.Value.ncbiId + " Sim: " + goldstandardItem.ncbiIdSim + ")");
+                                        Console.WriteLine("GS Corner Case True #" + (gsListTrueCornerCase.Count()).ToString() + " : GeneNames(" + file1DictionaryItem.Value.geneNames + " - " + file1DictionaryItem.Value.geneNames + " - Sim: " + geneNameSim + ") - NCBIIDs(" + file1DictionaryItem.Value.ncbiId + " - " + file2DictionaryItem.Value.ncbiId + " Sim: " + goldstandardItem.ncbiIdSim + ")");
 
                                     }
 
@@ -306,7 +306,7 @@ namespace IR_GS_Creation
                                         gsListFalseCornerCase.Add(goldstandardItem);
 
 
-                                        Console.WriteLine("GS Corner Case False #" + (gsListFalseCornerCase.Count() + 1).ToString() + " : GeneNames(" + goldstandardItem.geneNames1 + " - " + goldstandardItem.geneNames2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + goldstandardItem.ncbiId1 + " - " + goldstandardItem.ncbiId2 + " Sim: " + goldstandardItem.ncbiIdSim + ")");
+                                        Console.WriteLine("GS Corner Case False #" + (gsListFalseCornerCase.Count()).ToString() + " : GeneNames(" + goldstandardItem.geneNames1 + " - " + goldstandardItem.geneNames2 + " - Sim: " + geneNameSim + ") - NCBIIDs(" + goldstandardItem.ncbiId1 + " - " + goldstandardItem.ncbiId2 + " Sim: " + goldstandardItem.ncbiIdSim + ")");
 
                                     }
 
