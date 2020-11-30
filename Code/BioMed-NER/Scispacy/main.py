@@ -28,7 +28,7 @@ def getGeneNames(document):
 with open('title-output.tsv','wt') as f1:
     writer = csv.writer(f1, delimiter='\t')
     writer.writerow(['patentNumber', 'patentDate', 'genes'])
-    for line in getPatentAbstract('data/input/title.tsv'):
+    for line in getPatentAbstract('title.tsv'):
         writer.writerow([line.patentNumber, line.patentDate, getGeneNames(line.patentAbstract)])
 
  
