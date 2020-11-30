@@ -21,4 +21,4 @@ def createTitleOutputFile(inputFileName, outputFileName):
             for row in reader:
                 writer.writerow([row[0], row[1], getGeneNames(row[2])])
             
-createTitleOutputFile('title.tsv', 'abstractGene_y1985.csv')
+createTitleOutputFile('title.tsv', 'titleGene.csv')
