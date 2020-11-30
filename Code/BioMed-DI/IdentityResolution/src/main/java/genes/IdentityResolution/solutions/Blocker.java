@@ -23,7 +23,7 @@ public class Blocker {
 
         writer.println("ReductionRatio:" + blocker.getReductionRatio());
 
-        writer.println("BlockedPairs:" + blocker.getBlockedPairs().size());
+        //writer.println("BlockedPairs:" + blocker.getBlockedPairs().size());
 
         writer.close();
 
@@ -38,7 +38,7 @@ public class Blocker {
 
         writer.println("ReductionRatio:" + blocker.getReductionRatio());
 
-        writer.println("BlockedPairs:" + blocker.getBlockedPairs().size());
+        //writer.println("BlockedPairs:" + blocker.getBlockedPairs().size());
 
         writer.close();
 
