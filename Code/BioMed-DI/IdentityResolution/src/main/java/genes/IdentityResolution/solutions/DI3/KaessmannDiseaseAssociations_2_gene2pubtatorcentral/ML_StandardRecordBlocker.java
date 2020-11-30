@@ -55,7 +55,11 @@ public class ML_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
+        System.out.println("Test2");
+
         for (int fileNumber = 3; fileNumber <= PartitionNumbers.kaessmannDiseaseAssociations_2_gene2pubtatorcentral; fileNumber++) { 
+
+            System.out.println("Test3");
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  
