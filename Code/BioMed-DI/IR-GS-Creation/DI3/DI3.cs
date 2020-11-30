@@ -21,6 +21,9 @@ namespace IR_GS_Creation
                 directory.Create();
 
 
+                Console.WriteLine(directory.Name);
+
+
                 FileInfo trueFile = new FileInfo(directory.FullName + "/true.csv");
 
                 FileInfo trueCornerCaseFile = new FileInfo(directory.FullName + "/trueCornerCase.csv");
