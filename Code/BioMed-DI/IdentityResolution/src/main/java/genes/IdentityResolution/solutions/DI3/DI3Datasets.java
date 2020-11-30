@@ -19,7 +19,7 @@ public class DI3Datasets {
         
         HashedDataSet<Gene, Attribute> gene2pubtatorcentral = new HashedDataSet<>();
         
-        new GeneXMLReader().loadFromXML(new File("data/input/DI2/gene2pubtatorcentral_" + fileNumber + "_dt.xml"), "/genes/gene", gene2pubtatorcentral);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI3/gene2pubtatorcentral_" + fileNumber + "_dt.xml"), "/genes/gene", gene2pubtatorcentral);
         
         return gene2pubtatorcentral;
 
@@ -30,7 +30,7 @@ public class DI3Datasets {
 
         HashedDataSet<Gene, Attribute> ds = new HashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/input/DI2/KaessmannDiseaseAssociations_dt.xml"), "/genes/gene", ds);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI3/KaessmannDiseaseAssociations_dt.xml"), "/genes/gene", ds);
 
         return ds;
 
