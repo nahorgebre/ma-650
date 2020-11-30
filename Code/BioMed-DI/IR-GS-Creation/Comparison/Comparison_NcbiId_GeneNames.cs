@@ -314,7 +314,7 @@ namespace IR_GS_Creation
 
                             }
 
-                            if (check_gs_size(
+                            if (check_gs_sizeReturn(
                                 gsListTrue: gsListTrue,
                                 gsListTrueCornerCase: gsListTrueCornerCase,
                                 gsListFalse: gsListFalse,
@@ -365,6 +365,25 @@ namespace IR_GS_Creation
                 gsListTrueCornerCase.Count() <= gsTrueCornerSize &
                 gsListFalse.Count() <= gsFalseSize &
                 gsListFalseCornerCase.Count() <= gsFalseCornerSize;
+
+        }
+
+        public static bool check_gs_sizeReturn(
+            List<Goldstandard> gsListTrue,
+            List<Goldstandard> gsListTrueCornerCase,
+            List<Goldstandard> gsListFalse,
+            List<Goldstandard> gsListFalseCornerCase,
+            int gsTrueSize,
+            int gsTrueCornerSize,
+            int gsFalseSize,
+            int gsFalseCornerSize
+        )
+        {
+
+            return gsListTrue.Count() >= gsTrueSize &
+                gsListTrueCornerCase.Count() >= gsTrueCornerSize &
+                gsListFalse.Count() >= gsFalseSize &
+                gsListFalseCornerCase.Count() >= gsFalseCornerSize;
 
         }
 
