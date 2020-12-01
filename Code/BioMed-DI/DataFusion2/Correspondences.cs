@@ -9,6 +9,27 @@ namespace DataFusion2
     public class Correspondences
     {
 
+        public static HashSet<string> getRecordIdHashSet(Dictionary<string, HashSet<string>> keyDictionary)
+        {
+
+            HashSet<string> recordIdDictionary = new HashSet<string>();
+
+            foreach (KeyValuePair<string, HashSet<string>> keyDictionaryItem in keyDictionary)
+            {
+
+                foreach (string hashSetItem in keyDictionaryItem.Value)
+                {
+
+                    recordIdDictionary.Add(hashSetItem);
+                    
+                }
+                
+            }
+
+            return recordIdDictionary;
+
+        }
+
         public static Dictionary<string, HashSet<string>> getKeyDictionary(FileInfo di1KeyDictionary, List<Tuple<string, string>> di1correspondences)
         {
 

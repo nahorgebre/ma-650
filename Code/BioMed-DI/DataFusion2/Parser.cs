@@ -10,7 +10,7 @@ namespace DataFusion2
     {
 
 
-        public static Dictionary<string, Gene> getGeneListforFileList(List<FileInfo> xmlFileList)
+        public static Dictionary<string, Gene> getGeneListforFileList(List<FileInfo> xmlFileList, HashSet<string> recordIdHashSet)
         {
 
             Dictionary<string, Gene> geneDictionary = new Dictionary<string, Gene>();
@@ -18,7 +18,7 @@ namespace DataFusion2
             foreach (FileInfo xmlFile in xmlFileList)
             {
 
-                List<Gene> geneList = getGeneList(xmlFile);
+                List<Gene> geneList = getGeneList(xmlFile, recordIdHashSet);
 
                 int count = 1;
 
@@ -27,8 +27,8 @@ namespace DataFusion2
 
                     geneDictionary.Add(geneItem.recordId, geneItem);
 
-                    count ++;
-                    
+                    count++;
+
                 }
 
             }
@@ -38,7 +38,7 @@ namespace DataFusion2
         }
 
 
-        public static List<Gene> getGeneList(FileInfo xmlFile)
+        public static List<Gene> getGeneList(FileInfo xmlFile, HashSet<string> recordIdHashSet)
         {
 
             List<Gene> geneList = new List<Gene>();
@@ -58,130 +58,135 @@ namespace DataFusion2
                 while (reader.ReadToFollowing("gene"))
                 {
 
-                    Gene gene = new Gene();
-
 
                     reader.ReadToFollowing("recordId");
 
                     string recordId = reader.ReadElementContentAsString().Trim();
 
-                    gene.recordId = recordId;
 
-
-                    reader.ReadToFollowing("ensemblId");
-
-                    String ensemblId = reader.ReadElementContentAsString().Trim();
-
-                    if (!ensemblId.Equals(string.Empty))
+                    if (recordIdHashSet.Contains(recordId))
                     {
 
-                        gene.ensemblId.value = ensemblId;
+                        Gene gene = new Gene();
+
+                        gene.recordId = recordId;
+
+
+                        reader.ReadToFollowing("ensemblId");
+
+                        String ensemblId = reader.ReadElementContentAsString().Trim();
+
+                        if (!ensemblId.Equals(string.Empty))
+                        {
+
+                            gene.ensemblId.value = ensemblId;
+
+                        }
+
+
+                        reader.ReadToFollowing("ncbiId");
+
+                        String ncbiId = reader.ReadElementContentAsString().Trim();
+
+                        if (!ncbiId.Equals(string.Empty))
+                        {
+
+                            gene.ncbiId.value = ncbiId;
+
+                        }
+
+
+                        reader.ReadToFollowing("geneNames");
+
+                        string geneNames = reader.ReadElementContentAsString().Trim();
+
+                        if (!geneNames.Equals(string.Empty))
+                        {
+
+                            gene.geneNames.value = geneNames;
+
+                        }
+
+
+                        reader.ReadToFollowing("geneDescriptions");
+
+                        String geneDescriptions = reader.ReadElementContentAsString().Trim();
+
+                        if (!geneDescriptions.Equals(string.Empty))
+                        {
+
+                            gene.geneDescriptions.value = geneDescriptions;
+
+                        }
+
+
+                        // Organs
+
+                        List<Organ> organList = new List<Organ>();
+
+                        if (reader.ReadToFollowing("organs"))
+                        {
+
+                            string xml = "<organs>" + reader.ReadInnerXml() + "</organs>";
+
+                            organList = parseOrgan(xml);
+
+                        }
+
+                        gene.organs = organList;
+
+
+                        // Disease Associations
+
+                        List<GeneDiseaseAssociation> diseaseAssociationList = new List<GeneDiseaseAssociation>();
+
+                        if (reader.ReadToFollowing("diseaseAssociations"))
+                        {
+
+                            string xml = "<diseaseAssociations>" + reader.ReadInnerXml() + "</diseaseAssociations>";
+
+                            diseaseAssociationList = parseDiseaseAssociation(xml);
+
+                        }
+
+                        gene.diseaseAssociations = diseaseAssociationList;
+
+
+                        // Publication Mentions
+
+                        List<GenePublicationMention> publicationMentionList = new List<GenePublicationMention>();
+
+                        if (reader.ReadToFollowing("publicationMentions"))
+                        {
+
+                            string xml = "<publicationMentions>" + reader.ReadInnerXml() + "</publicationMentions>";
+
+                            publicationMentionList = parsePublicationMention(xml);
+
+                        }
+
+                        gene.publicationMentions = publicationMentionList;
+
+
+                        // PatentMentions
+
+                        List<GenePatentMention> patentMentionList = new List<GenePatentMention>();
+
+                        if (reader.ReadToFollowing("patentMentions"))
+                        {
+
+                            string xml = "<patentMentions>" + reader.ReadInnerXml() + "</patentMentions>";
+
+                            patentMentionList = parsePatentMention(xml);
+
+                        }
+
+                        gene.patentMentions = patentMentionList;
+
+
+                        geneList.Add(gene);
 
                     }
-
-
-                    reader.ReadToFollowing("ncbiId");
-
-                    String ncbiId = reader.ReadElementContentAsString().Trim();
-
-                    if (!ncbiId.Equals(string.Empty))
-                    {
-
-                        gene.ncbiId.value = ncbiId;
-
-                    }
-
-
-                    reader.ReadToFollowing("geneNames");
-
-                    string geneNames = reader.ReadElementContentAsString().Trim();
-
-                    if (!geneNames.Equals(string.Empty))
-                    {
-
-                        gene.geneNames.value = geneNames;
-
-                    }
-
-
-                    reader.ReadToFollowing("geneDescriptions");
-
-                    String geneDescriptions = reader.ReadElementContentAsString().Trim();
-
-                    if (!geneDescriptions.Equals(string.Empty))
-                    {
-
-                        gene.geneDescriptions.value = geneDescriptions;
-
-                    }
-
-
-                    // Organs
-
-                    List<Organ> organList = new List<Organ>();
-
-                    if (reader.ReadToFollowing("organs"))
-                    {
-
-                        string xml = "<organs>" + reader.ReadInnerXml() + "</organs>";
-
-                        organList = parseOrgan(xml);
-
-                    }
-
-                    gene.organs = organList;
-
-
-                    // Disease Associations
-
-                    List<GeneDiseaseAssociation> diseaseAssociationList = new List<GeneDiseaseAssociation>();
-
-                    if (reader.ReadToFollowing("diseaseAssociations"))
-                    {
-
-                        string xml = "<diseaseAssociations>" + reader.ReadInnerXml() + "</diseaseAssociations>";
-
-                        diseaseAssociationList = parseDiseaseAssociation(xml);
-
-                    }
-
-                    gene.diseaseAssociations = diseaseAssociationList;
-
-
-                    // Publication Mentions
-
-                    List<GenePublicationMention> publicationMentionList = new List<GenePublicationMention>();
-
-                    if (reader.ReadToFollowing("publicationMentions"))
-                    {
-
-                        string xml = "<publicationMentions>" + reader.ReadInnerXml() + "</publicationMentions>";
-
-                        publicationMentionList = parsePublicationMention(xml);
-
-                    }
-
-                    gene.publicationMentions = publicationMentionList;
-
-
-                    // PatentMentions
-
-                    List<GenePatentMention> patentMentionList = new List<GenePatentMention>();
-
-                    if (reader.ReadToFollowing("patentMentions"))
-                    {
-
-                        string xml = "<patentMentions>" + reader.ReadInnerXml() + "</patentMentions>";
-
-                        patentMentionList = parsePatentMention(xml);
-
-                    }
-
-                    gene.patentMentions = patentMentionList;
-
-
-                    geneList.Add(gene);
-
 
                 }
 

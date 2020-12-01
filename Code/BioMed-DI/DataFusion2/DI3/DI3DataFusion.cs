@@ -13,12 +13,6 @@ namespace DataFusion2
         public static void run()
         {
 
-
-            Console.WriteLine("Load datasets!");
-
-            Dictionary<string, Gene> di3datasets = Parser.getGeneListforFileList(DI3Datasets.di3datasets());
-
-            
             Console.WriteLine("Load correspondences!");
 
             List<Tuple<string, string>> di3correspondences = Methods.getCorrespondenceList(DI3Correspondences.di3correspondences);
@@ -29,6 +23,16 @@ namespace DataFusion2
             FileInfo di3KeyDictionary = new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/keyDictionary.csv");
 
             Dictionary<string, HashSet<string>> keyDictionary = Correspondences.getKeyDictionary(di3KeyDictionary, di3correspondences);
+
+
+            Console.WriteLine("Create record ID HashSet!");
+
+            HashSet<string> recordIdHashSet = Correspondences.getRecordIdHashSet(keyDictionary);
+
+
+            Console.WriteLine("Load datasets!");
+
+            Dictionary<string, Gene> di3datasets = Parser.getGeneListforFileList(DI3Datasets.di3datasets(), recordIdHashSet);
 
 
             Console.WriteLine("Fuse datasets!");
