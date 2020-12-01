@@ -30,7 +30,6 @@ namespace DataFusion2
 
         
         [XmlArrayItem("organ")]
-        [XmlAttribute("id")]
         public List<Organ> organs = new List<Organ>();
 
 

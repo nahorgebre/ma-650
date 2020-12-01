@@ -49,6 +49,9 @@ namespace DataFusion2
             settings.DtdProcessing = DtdProcessing.Parse;
 
 
+            Console.WriteLine("Parsing: ..." + xmlFile.FullName);
+
+
             using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
             {
 
