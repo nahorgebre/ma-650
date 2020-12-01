@@ -1,0 +1,81 @@
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_1
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_1/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_1/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_10
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_10/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_10/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_11
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_11/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_11/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_12
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_12/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_12/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_13
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_13/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_13/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_14
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_14/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_14/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_15
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_15/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_15/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_16
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_16/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_16/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_17
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_17/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_17/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_18
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_18/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_18/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_19
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_19/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_19/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_20
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_20/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_20/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_21
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_21/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_21/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_22
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_22/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_22/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_23
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_23/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_23/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_24
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_24/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_24/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_25
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_25/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_25/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_26
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_26/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_26/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_27
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_27/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_27/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_28
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_28/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_28/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_3
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_3/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_3/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_4
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_4/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_4/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_5
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_5/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_5/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_6
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_6/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_6/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_7
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_7/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_7/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_8
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_8/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_8/correspondences.csv
+
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_9
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_9/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_9/correspondences.csv

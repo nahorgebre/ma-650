@@ -35,9 +35,9 @@ public class ListingS3Objects {
 
         getDatasetsAfterDataPreparation("DI2", "Get-D-DP-2.sh");
 
-
-        getCorrespondences("DI3", "Get-C-3.sh");
         */
+        getCorrespondences("DI3", "Get-C-3.sh");
+        
 
         getDatasets("DI3", "Get-D-3.sh");
 
