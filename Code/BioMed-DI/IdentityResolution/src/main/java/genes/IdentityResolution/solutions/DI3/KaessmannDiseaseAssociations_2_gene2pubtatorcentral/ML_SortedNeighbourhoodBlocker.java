@@ -55,7 +55,25 @@ public class ML_SortedNeighbourhoodBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 3; fileNumber <= PartitionNumbers.kaessmannDiseaseAssociations_2_gene2pubtatorcentral; fileNumber++) { 
+        int startNumber = 1;
+
+        if (args.length >= 1) {
+
+            String param = args[1];
+
+            try {
+
+                startNumber = Integer.parseInt(param);
+
+            } catch (Exception e) {
+
+                System.out.println(e);
+
+            }
+
+        }
+
+        for (int fileNumber = startNumber; fileNumber <= PartitionNumbers.kaessmannDiseaseAssociations_2_gene2pubtatorcentral; fileNumber++) { 
 
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  

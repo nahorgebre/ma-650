@@ -1,71 +1,119 @@
 using System;
-using Amazon;
 using Amazon.S3;
+using System.IO;
+using System.Text;
 using Amazon.S3.Model;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace IR_ResultTables
 {
-    
+
     public class AWSlistingContents
     {
 
-        public static void test2()
+        public static Dictionary<string, List<string>> getS3ObjectList(string solution)
         {
 
             AmazonS3Client s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
-            var lista = s3Client.ListObjectsAsync("nahorgebre-ma-650-master-thesis", $"identity-resolution/output/").Result;
 
-            var files = lista.S3Objects.ToArray();
+            List<S3Object> s3ObjectList = (s3Client.ListObjectsAsync("nahorgebre-ma-650-master-thesis", "identity-resolution/output/" + solution).Result).S3Objects;
 
-            foreach (var item in files)
+            Dictionary<string, List<string>> resultFileDictionary = getResultFileDictionary(s3ObjectList);
+
+            createShellScriptOutput(resultFileDictionary, solution);
+
+            return resultFileDictionary;
+
+        }
+
+        public static void createShellScriptOutput(Dictionary<string, List<string>> resultFileDictionary, string solution)
+        {
+
+            FileInfo file = new FileInfo(Environment.CurrentDirectory + "/data/shScript/" + solution + "/Get-D-" + solution + ".sh");
+
+            file.Directory.Create();
+
+            using (StreamWriter sw = new StreamWriter(file.FullName))
             {
-                Console.WriteLine(item.Key);
+
+                foreach (KeyValuePair<string, List<string>> resultFileItem in resultFileDictionary)
+                {
+
+                    sw.WriteLine(string.Empty);
+
+                    string mkdir = "mkdir -p data/input/" + solution + "/" + resultFileItem.Key;
+
+                    sw.WriteLine(mkdir);
+
+                    foreach (string key in resultFileItem.Value)
+                    {
+
+                        string[] keyArray = key.Split('/');
+
+                        string fileName = keyArray[5];
+
+                        string className = keyArray[4];
+
+                        string comparisonName = keyArray[3];
+
+                        string wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key
+                            + " -O data/input/" + solution + "/" + comparisonName + "-" + className + "/" + fileName;
+
+                        sw.WriteLine(wgetString);
+
+                    }
+
+                }
+
             }
 
         }
 
-        /*
-
-        public static void test()
+        public static Dictionary<string, List<string>> getResultFileDictionary(List<S3Object> s3ObjectList)
         {
 
-            string bucketName = "your bucket";
+            Dictionary<string, List<string>> resultFileDictionary = new Dictionary<string, List<string>>();
 
-            AmazonS3Client client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
-
-            S3DirectoryInfo dir = new S3DirectoryInfo(client, bucketName, "your AmazonS3 folder name");
-    foreach (IS3FileSystemInfo file in dir.GetFileSystemInfos())
-    {
-        Console.WriteLine(file.Name);
-        Console.WriteLine(file.Extension);
-        Console.WriteLine(file.LastWriteTime);
-    }
-        }
-
-        public static async Task show()
-        {
-
-            AmazonS3Client client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
-
-            ListObjectsRequest request = new ListObjectsRequest();
-
-            request.BucketName = "nahorgebre-ma-650-master-thesis";
-
-            Task<ListObjectsResponse> response = client.ListObjectsAsync(request.BucketName);
-
-            response.
-
-            foreach (S3Object o in response.S3Objects)
+            foreach (S3Object s3ObjectItem in s3ObjectList)
             {
 
-                Console.WriteLine("{0}\t{1}\t{2}", o.Key, o.Size, o.LastModified);
+                string[] keyArray = s3ObjectItem.Key.Split('/');
+
+
+                string className = keyArray[4];
+
+                string comparisonName = keyArray[3];
+
+
+                string dictionaryKey = comparisonName + "-" + className;
+
+                if (resultFileDictionary.ContainsKey(dictionaryKey))
+                {
+
+                    List<string> resultFileList = resultFileDictionary[dictionaryKey];
+
+                    if (!resultFileList.Contains(s3ObjectItem.Key))
+                    {
+
+                        resultFileList.Add(s3ObjectItem.Key);
+
+                    }
+
+                }
+                else
+                {
+
+                    List<string> resultFileList = new List<string>() { s3ObjectItem.Key };
+
+                    resultFileDictionary.Add(dictionaryKey, resultFileList);
+
+                }
 
             }
 
-        }
+            return resultFileDictionary;
 
-        */
+        }
 
     }
 

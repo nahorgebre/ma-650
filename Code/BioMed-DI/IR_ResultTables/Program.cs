@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Text;
+using Amazon.S3.Model;
 using System.Collections.Generic;
 
 namespace IR_ResultTables
@@ -9,9 +11,41 @@ namespace IR_ResultTables
         static void Main(string[] args)
         {
 
-            AWSlistingContents.test2();
+            foreach (String parameter in args)
+            {
+                
+                if (parameter.Equals("DI1"))
+                {
+
+                    Dictionary<string, List<string>> resultFileDictionary = AWSlistingContents.getS3ObjectList(parameter);
+
+            
+
+
+                }
+                else if (parameter.Equals("DI2"))
+                {
+
+                    Dictionary<string, List<string>> resultFileDictionary = AWSlistingContents.getS3ObjectList(parameter);
+
+                }
+                else if (parameter.Equals("DI3"))
+                {
+
+                    Dictionary<string, List<string>> resultFileDictionary = AWSlistingContents.getS3ObjectList(parameter);
+
+                }
+                else if (parameter.Equals("DI4"))
+                {
+
+                    Dictionary<string, List<string>> resultFileDictionary = AWSlistingContents.getS3ObjectList(parameter);
+
+                }
+
+            }
 
             /*
+
             List<Result1> result1List = new List<Result1>();
 
             List<Result2> result2List = new List<Result2>();
@@ -31,13 +65,15 @@ namespace IR_ResultTables
             result2List.Add(result2);
 
     	    FileInfo result1File = new FileInfo("");
-            Methods.createTsvFileResult1(result1List, result1File);
+            Output.createTsvFileResult1(result1List, result1File);
 
             FileInfo result2File = new FileInfo("");
-            Methods.createTsvFileResult2(result2List, result2File);
+            Output.createTsvFileResult2(result2List, result2File);
 
             */
 
         }
+
     }
+
 }
