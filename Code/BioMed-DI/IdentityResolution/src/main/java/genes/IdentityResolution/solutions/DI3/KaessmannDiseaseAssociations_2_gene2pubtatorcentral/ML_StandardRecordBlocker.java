@@ -56,7 +56,7 @@ public class ML_StandardRecordBlocker {
 
         if (args.length >= 1) {
 
-            String param = args[1];
+            String param = args[0];
 
             try {
 

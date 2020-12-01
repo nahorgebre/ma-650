@@ -59,7 +59,7 @@ public class ML_SortedNeighbourhoodBlocker {
 
         if (args.length >= 1) {
 
-            String param = args[1];
+            String param = args[0];
 
             try {
 
