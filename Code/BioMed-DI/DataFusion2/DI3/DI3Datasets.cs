@@ -31,7 +31,7 @@ namespace DataFusion2
 
         public static FileInfo gene2pubtatorcentral(int i) 
         {
-            return new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/gene2pubtatorcentral_" + i + "_dt.tsv");
+            return new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/gene2pubtatorcentral_" + i + "_dt.xml");
         }
 
     }
