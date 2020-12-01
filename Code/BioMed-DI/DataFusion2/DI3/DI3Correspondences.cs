@@ -11,7 +11,7 @@ namespace DataFusion2
         public static List<FileInfo> di3correspondences = new List<FileInfo> {
 
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_1/correspondences.csv"),
-            new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_2/correspondences.csv"),
+            //new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_2/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_3/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_4/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_5/correspondences.csv"),
@@ -38,6 +38,8 @@ namespace DataFusion2
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_26/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_27/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_28/correspondences.csv"),
+
+            /*
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_29/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_30/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_31/correspondences.csv"),
@@ -60,6 +62,7 @@ namespace DataFusion2
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_48/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_49/correspondences.csv"),
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_50/correspondences.csv")
+            */
 
         };
 
