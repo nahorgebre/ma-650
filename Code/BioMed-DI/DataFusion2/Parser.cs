@@ -10,7 +10,7 @@ namespace DataFusion2
     {
 
 
-        public static Dictionary<string, Gene> getGeneListforFileList(List<FileInfo> xmlFileList, HashSet<string> recordIdHashSet)
+        public static Dictionary<string, Gene> getGeneListforFileList(List<FileInfo> xmlFileList, Dictionary<string, SortedSet<string>> mergedCorrespondences)
         {
 
             Dictionary<string, Gene> geneDictionary = new Dictionary<string, Gene>();
@@ -18,7 +18,7 @@ namespace DataFusion2
             foreach (FileInfo xmlFile in xmlFileList)
             {
 
-                List<Gene> geneList = getGeneList(xmlFile, recordIdHashSet);
+                List<Gene> geneList = getGeneList(xmlFile, mergedCorrespondences);
 
                 int count = 1;
 
@@ -38,7 +38,7 @@ namespace DataFusion2
         }
 
 
-        public static List<Gene> getGeneList(FileInfo xmlFile, HashSet<string> recordIdHashSet)
+        public static List<Gene> getGeneList(FileInfo xmlFile, Dictionary<string, SortedSet<string>> mergedCorrespondences)
         {
 
             List<Gene> geneList = new List<Gene>();
@@ -64,7 +64,7 @@ namespace DataFusion2
                     string recordId = reader.ReadElementContentAsString().Trim();
 
 
-                    if (recordIdHashSet.Contains(recordId))
+                    if (mergedCorrespondences.ContainsKey(recordId))
                     {
 
                         Gene gene = new Gene();

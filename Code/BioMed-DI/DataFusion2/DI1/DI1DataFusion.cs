@@ -13,6 +13,8 @@ namespace DataFusion2
         public static void run()
         {
 
+            /*
+
             Console.WriteLine("Load correspondences!");
 
             List<Tuple<string, string>> di1correspondences = Methods.getCorrespondenceList(DI1Correspondences.di1correspondences);
@@ -40,6 +42,8 @@ namespace DataFusion2
             List<Gene> fusedRecords = DataFusionEngine.fuseRecords(keyDictionary, di1datasets);
 
             Output.createXmlGene(fusedRecords, new FileInfo(string.Format("{0}/data/output/DI1/DI1-fused.xml", Environment.CurrentDirectory)));
+
+            */
             
         }
 

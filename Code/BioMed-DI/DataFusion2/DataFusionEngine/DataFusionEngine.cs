@@ -6,31 +6,42 @@ namespace DataFusion2
     class DataFusionEngine
     {
 
-        public static List<Gene> fuseRecords(Dictionary<string, HashSet<string>> keyDictionary, Dictionary<string, Gene> di1datasets)
+        public static List<Gene> fuseRecords(Dictionary<string, SortedSet<string>> mergedCorrespondences, Dictionary<string, Gene> diDatasets)
         {
+
+            HashSet<string> fusedRecordIdHashSet = new HashSet<string>();
+
+            foreach (KeyValuePair<string, SortedSet<string>> dictionaryItem in mergedCorrespondences)
+            {
+
+                string fusedRedordId = string.Join('+', dictionaryItem.Value);
+
+                fusedRecordIdHashSet.Add(fusedRedordId);
+
+            }
 
             List<Gene> fusedRecords = new List<Gene>();
 
-            foreach (KeyValuePair<string, HashSet<string>> dictionaryItem in keyDictionary)
+            foreach (string fusedRedordId in fusedRecordIdHashSet)
             {
 
                 Gene gene = new Gene();
 
-                gene.recordId = dictionaryItem.Key;
+                gene.recordId = fusedRedordId;
 
-                List<Gene> unfusedGeneItems = new List<Gene>();
 
-                foreach (string dictionaryRecordId in dictionaryItem.Value)
+
+                List<Gene> unfusedGeneList = new List<Gene>();
+
+                foreach (string recordId in fusedRedordId.Split('+'))
                 {
 
-                    Gene di1datasetsGene = di1datasets[dictionaryRecordId];
-
-                    unfusedGeneItems.Add(di1datasetsGene);
-
+                    unfusedGeneList.Add(diDatasets[recordId]);
+                    
                 }
 
+                Gene fusedGeneItem = fuseGeneItems(unfusedGeneList);
 
-                Gene fusedGeneItem = fuseGeneItems(unfusedGeneItems);
 
 
                 gene.ensemblId = fusedGeneItem.ensemblId;
@@ -51,13 +62,12 @@ namespace DataFusion2
 
 
                 fusedRecords.Add(gene);
-
+     
             }
 
             return fusedRecords;
 
         }
-
 
         public static Gene fuseGeneItems(List<Gene> unfusedGeneItems)
         {
@@ -287,40 +297,6 @@ namespace DataFusion2
             }
 
             return returnValue;
-
-        }
-
-        public static string fuseStringRecordAttributes(List<string> recordItemList)
-        {
-
-            string recordItems = string.Join('|', recordItemList);
-
-            HashSet<string> recordItemHashSet = new HashSet<string>();
-
-            foreach (string recordItem in recordItems.Split('|'))
-            {
-
-                if (!recordItem.Trim().Equals(string.Empty))
-                {
-
-                    string adjustedRecordItem = recordItem;
-
-                    if (recordItem.Contains('|'))
-                    {
-
-                        adjustedRecordItem = adjustedRecordItem.Remove('|');
-
-                    }
-
-                    recordItemHashSet.Add(adjustedRecordItem);
-
-                }
-
-            }
-
-            recordItems = string.Join('|', recordItemHashSet);
-
-            return recordItems;
 
         }
 

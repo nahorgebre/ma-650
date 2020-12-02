@@ -29,7 +29,7 @@ namespace DataFusion2
 
                     AWSlistingContents.createCorrespondencesShellScriptOutput(parameter);
 
-                    DI3DataFusion.run();
+                    DI3DataFusion2.run();
 
                 }
 
