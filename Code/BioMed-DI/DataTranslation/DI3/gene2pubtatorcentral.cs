@@ -9,6 +9,86 @@ namespace DataTranslation
     public class gene2pubtatorcentral
     {
 
+        public static void runDataTranslationWtaxonomy()
+        {
+
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI3.outputDirectory));
+
+            List<Gene> gene_list = new List<Gene>();
+
+            HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
+
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI3.inputDirectory, "gene2pubtatorcentral.tsv")))
+            {
+
+                reader.ReadLine();
+
+                int recordIdCounter = 1;
+
+                while (!reader.EndOfStream)
+                {
+
+                    var line = reader.ReadLine();
+
+                    String[] values = line.Split('\t');
+
+                    if (values[1].Trim().Equals("Gene"))
+                    {
+
+                        string[] ncbiIdArray = values[2].Split(';');
+
+                        foreach (String ncbiId in ncbiIdArray)
+                        {
+
+                            if (ncbiIdHashSet.Contains(ncbiId))
+                            {
+
+                                Gene gene = new Gene();
+
+                                gene.recordId = string.Format("gene2pubtatorcentral_{0}_rid", recordIdCounter);
+
+                                gene.ncbiId = ncbiId;
+
+                                HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
+
+                                gene.geneNames = string.Join("|", geneNameHashSet);
+
+
+                                List<GenePublicationMention> publicationList = new List<GenePublicationMention>();
+
+                                GenePublicationMention publication = new GenePublicationMention();
+
+                                publication.pmId = values[0].Trim();
+
+                                publication.ressource = values[4].Trim();
+
+                                publicationList.Add(publication);
+
+
+                                gene.publicationMentions = publicationList;
+
+
+                                gene_list.Add(gene);
+
+
+                                recordIdCounter++;
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            Output.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_dt.xml", directory: DI3.outputDirectory);
+
+            Output.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_dt.tsv", directory: DI3.outputDirectory);
+
+        }
+
         public static void runDataTranslation()
         {
 
@@ -108,7 +188,7 @@ namespace DataTranslation
                 Output.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: DI3.outputDirectory);
 
                 Output.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: DI3.outputDirectory);
-            
+
             }
 
         }
@@ -137,9 +217,9 @@ namespace DataTranslation
                     geneNameItem = removeWhiteSpaces(geneNameItem);
 
                     geneNameHashSet.Add(geneNameItem);
-                    
+
                 }
-       
+
             }
 
             return geneNameHashSet;

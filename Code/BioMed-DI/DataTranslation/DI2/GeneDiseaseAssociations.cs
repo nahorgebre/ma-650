@@ -8,17 +8,77 @@ namespace DataTranslation
     public class all_gene_disease_pmid_associations_dt
     {
 
+        public static void runDataTranslationWtaxonomy()
+        {
+
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI2.outputDirectory));
+
+            List<Gene> gene_list = new List<Gene>();
+
+            HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
+
+            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI2.inputDirectory, "all_gene_disease_pmid_associations.tsv")))
+            {
+
+                reader.ReadLine();
+
+                int recordIdCounter = 1;
+
+                while (!reader.EndOfStream)
+                {
+
+                    var line = reader.ReadLine();
+
+                    String[] values = line.Split('\t');
+
+
+                    string ncbiId = values[0].Trim();
+
+                    if (ncbiIdHashSet.Contains(ncbiId))
+                    {
+
+                        Gene gene = new Gene();
+
+                        gene.recordId = string.Format("gene_disease_pmid_associations_{0}_rid", recordIdCounter);
+
+                        gene.ncbiId = ncbiId;
+
+
+                        string name = values[1].Trim();
+
+                        if (!name.Equals(string.Empty))
+                        {
+
+                            gene.geneNames = name;
+
+                        }
+
+                        gene.diseaseAssociations = getDiseaseAssociations(values);
+
+                        gene_list.Add(gene);
+
+                        recordIdCounter++;
+
+                    }
+
+                }
+
+            }
+
+
+        }
+
         // 7 output files - (1.548.061) / 7 = 221.151,6
 
         public static int all_gene_disease_pmid_associations_partitionSize = 221151;
-        
+
         public static int all_gene_disease_pmid_associations_partitionNumbers = 7;
 
         public static void runDataTranslation()
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI2.outputDirectory)); 
-            
+            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI2.outputDirectory));
+
             Console.WriteLine("Start all_gene_disease_pmid_associations_dt()");
 
             for (int i = 1; i <= all_gene_disease_pmid_associations_partitionNumbers; i++)
@@ -110,7 +170,7 @@ namespace DataTranslation
                         }
 
                         conditionCounter++;
-                            
+
                     }
 
                 }
@@ -123,7 +183,7 @@ namespace DataTranslation
 
         }
 
-        
+
         public static List<GeneDiseaseAssociation> getDiseaseAssociations(String[] values)
         {
 
@@ -141,17 +201,17 @@ namespace DataTranslation
                 disease.diseaseIdUMLS = diseaseIdUMLS;
 
             }
-                    
+
 
             string diseaseName = values[5].Trim();
 
-            if (!diseaseName.Equals(string.Empty));
+            if (!diseaseName.Equals(string.Empty))
             {
 
                 disease.diseaseName = diseaseName;
 
             }
-                    
+
 
             string diseaseSpecificityIndex = values[2].Trim();
 
@@ -159,9 +219,9 @@ namespace DataTranslation
             {
 
                 disease.diseaseSpecificityIndex = diseaseSpecificityIndex;
-                        
+
             }
-                    
+
 
             string diseasePleiotropyIndex = values[3].Trim();
 
@@ -171,7 +231,7 @@ namespace DataTranslation
                 disease.diseasePleiotropyIndex = diseasePleiotropyIndex;
 
             }
-                    
+
 
             string diseaseTypeDisGeNET = values[6].Trim();
 
@@ -191,7 +251,7 @@ namespace DataTranslation
                 disease.diseaseClassMeSH = diseaseClassMeSH;
 
             }
-                    
+
 
             string diseaseSemanticTypeUMLS = values[8].Trim();
 
@@ -201,7 +261,7 @@ namespace DataTranslation
                 disease.diseaseSemanticTypeUMLS = diseaseSemanticTypeUMLS;
 
             }
-                    
+
 
             string associationScore = values[9].Trim();
 
@@ -211,7 +271,7 @@ namespace DataTranslation
                 disease.associationScore = associationScore;
 
             }
-                    
+
 
             string evidenceIndex = values[10].Trim();
 
@@ -221,7 +281,7 @@ namespace DataTranslation
                 disease.evidenceIndex = evidenceIndex;
 
             }
-                    
+
 
             string yearInitialReport = values[11].Trim();
 
@@ -231,7 +291,7 @@ namespace DataTranslation
                 disease.yearInitialReport = yearInitialReport;
 
             }
-                    
+
 
             string yearFinalReport = values[12].Trim();
 
@@ -241,7 +301,7 @@ namespace DataTranslation
                 disease.yearFinalReport = yearFinalReport;
 
             }
-                    
+
 
             string pmId = values[13].Trim();
 
@@ -251,7 +311,7 @@ namespace DataTranslation
                 disease.pmId = pmId;
 
             }
-                    
+
 
             string source = values[14].Trim();
 
@@ -262,7 +322,7 @@ namespace DataTranslation
 
             }
 
-            
+
             diseases_list.Add(disease);
 
             return diseases_list;
