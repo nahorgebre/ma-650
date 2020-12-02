@@ -38,7 +38,7 @@ namespace DataFusion2
             if (!di1KeyDictionary.Exists)
             {
 
-                keyDictionary = createKeyDictionary(di1correspondences);
+                keyDictionary = Correspondences2.createKeyDictionary(di1correspondences);
 
                 using (StreamWriter sw = new StreamWriter(di1KeyDictionary.FullName))
                 {
