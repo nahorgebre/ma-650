@@ -25,13 +25,13 @@ namespace IR_GS_Creation
 
 
 
-            int gsFalseSize = 100;
+            int gsFalseSize = 40;
 
-            int gsTrueSize = 100;
+            int gsTrueSize = 40;
 
-            int gsFalseCornerSize = 7;
+            int gsFalseCornerSize = 10;
 
-            int gsTrueCornerSize = 3;
+            int gsTrueCornerSize = 10;
 
 
 
