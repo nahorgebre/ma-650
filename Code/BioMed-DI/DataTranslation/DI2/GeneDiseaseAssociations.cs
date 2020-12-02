@@ -77,6 +77,13 @@ namespace DataTranslation
         public static void runDataTranslation()
         {
 
+            Console.WriteLine("Load NCBI ID HashSet!");
+
+            HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
+
+
+            Console.WriteLine("Run Data Translation!");
+
             Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI2.outputDirectory));
 
             Console.WriteLine("Start all_gene_disease_pmid_associations_dt()");
@@ -136,36 +143,40 @@ namespace DataTranslation
                         if (condition)
                         {
 
-                            Gene gene = new Gene();
-
-                            gene.recordId = string.Format("gene_disease_pmid_associations_{0}_{1}_rid", i, recordIdCounter);
-
-
                             string ncbiId = values[0].Trim();
 
-                            if (!ncbiId.Equals(string.Empty))
+                            if (ncbiIdHashSet.Contains(ncbiId))
                             {
 
-                                gene.ncbiId = ncbiId;
+                                Gene gene = new Gene();
+
+                                gene.recordId = string.Format("gene_disease_pmid_associations_{0}_{1}_rid", i, recordIdCounter);
+
+
+                                if (!ncbiId.Equals(string.Empty))
+                                {
+
+                                    gene.ncbiId = ncbiId;
+
+                                }
+
+
+                                string name = values[1].Trim();
+
+                                if (!name.Equals(string.Empty))
+                                {
+
+                                    gene.geneNames = name;
+
+                                }
+
+                                gene.diseaseAssociations = getDiseaseAssociations(values);
+
+                                gene_list.Add(gene);
+
+                                recordIdCounter++;
 
                             }
-
-
-                            string name = values[1].Trim();
-
-                            if (!name.Equals(string.Empty))
-                            {
-
-                                gene.geneNames = name;
-
-                            }
-
-                            gene.diseaseAssociations = getDiseaseAssociations(values);
-
-                            gene_list.Add(gene);
-
-                            recordIdCounter++;
-
 
                         }
 

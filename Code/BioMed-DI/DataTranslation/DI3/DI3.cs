@@ -11,7 +11,7 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            gene2pubtatorcentral.runDataTranslationWtaxonomy();
+            gene2pubtatorcentral.runDataTranslation();
 
             KaessmannDiseaseAssociations.runDataTranslation();
 

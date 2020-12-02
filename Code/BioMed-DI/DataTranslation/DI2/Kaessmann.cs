@@ -12,7 +12,7 @@ namespace DataTranslation
         public static void runDataTranslation()
         {
 
-            FileInfo file = new FileInfo(string.Format("{0}/data/input/DI3/kaessmann-fused.xml", Environment.CurrentDirectory));
+            FileInfo file = new FileInfo(string.Format("{0}/data/input/DI2/kaessmann-fused.xml", Environment.CurrentDirectory));
 
             List<Gene> gene_list = Parser.getGeneList(file);
 
