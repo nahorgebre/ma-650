@@ -13,37 +13,27 @@ namespace DataFusion2
         public static void run()
         {
 
-            /*
-
             Console.WriteLine("Load correspondences!");
 
-            List<Tuple<string, string>> di1correspondences = Methods.getCorrespondenceList(DI1Correspondences.di1correspondences);
+            List<Tuple<string, string>> correspondences = Methods.getCorrespondenceList(DI1Correspondences.correspondences);
 
 
             Console.WriteLine("Load key dictionary!");
 
-            FileInfo di1KeyDictionary = new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI1/keyDictionary.csv");
-
-            Dictionary<string, HashSet<string>> keyDictionary = Correspondences.getKeyDictionary(di1KeyDictionary, di1correspondences);
-
-            
-            Console.WriteLine("Create record ID HashSet!");
- 
-            HashSet<string> recordIdHashSet = Correspondences.getRecordIdHashSet(keyDictionary);
+            Dictionary<string, SortedSet<string>> mergedCorrespondences = Correspondences.getKeyDictionary(correspondences);
 
 
             Console.WriteLine("Load datasets!");
 
-            Dictionary<string, Gene> di1datasets = Parser.getGeneListforFileList(DI1Datasets.di1datasets, recordIdHashSet);
+            Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DI1Datasets.datasets, mergedCorrespondences);
 
 
             Console.WriteLine("Fuse datasets!");
 
-            List<Gene> fusedRecords = DataFusionEngine.fuseRecords(keyDictionary, di1datasets);
+            List<Gene> fusedRecords = DataFusionEngine.fuseRecords(mergedCorrespondences, datasets);
 
             Output.createXmlGene(fusedRecords, new FileInfo(string.Format("{0}/data/output/DI1/DI1-fused.xml", Environment.CurrentDirectory)));
 
-            */
             
         }
 

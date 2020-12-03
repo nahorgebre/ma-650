@@ -7,7 +7,7 @@ namespace DataFusion2
     class DI1Datasets
     {
         
-        public static List<FileInfo> di1datasets = new List<FileInfo> {
+        public static List<FileInfo> datasets = new List<FileInfo> {
 
             new FileInfo(Environment.CurrentDirectory + "/data/input/DI1/Brain_dt.xml"),
 
