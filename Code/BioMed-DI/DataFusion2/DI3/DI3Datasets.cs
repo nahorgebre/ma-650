@@ -8,7 +8,7 @@ namespace DataFusion2
     {
 
 
-        public static List<FileInfo> di3datasets()
+        public static List<FileInfo> datasets()
         {
 
             List<FileInfo> di3datasets = new List<FileInfo>();

@@ -20,5 +20,39 @@ def createTitleOutputFile(inputFileName, outputFileName):
             reader = csv.reader(inputFile, delimiter='\t')
             for row in reader:
                 writer.writerow([row[0], row[1], getGeneNames(row[2])])
+
+def createAbstractOutputFile(inputFileName, outputFileName):
+    with open('data/output/' + outputFileName, 'w', newline='') as outputFile:
+        writer = csv.writer(outputFile, delimiter='\t')
+        writer.writerow(['patentNumber', 'patentDate', 'patentGeneNames'])
+        with open('data/input/' + inputFileName) as inputFile:
+            reader = csv.reader(inputFile, delimiter='\t')
+            for row in reader:
+                writer.writerow([row[0], row[1], getGeneNames(row[2])])
+
+def createDescriptionOutputFile(inputFileName, outputFileName):
+    with open('data/output/' + outputFileName, 'w', newline='') as outputFile:
+        writer = csv.writer(outputFile, delimiter='\t')
+        writer.writerow(['patentNumber', 'patentDate', 'patentGeneNames'])
+        with open('data/input/' + inputFileName) as inputFile:
+            reader = csv.reader(inputFile, delimiter='\t')
+            for row in reader:
+                writer.writerow([row[0], row[1], getGeneNames(row[2])])
+
+def createClaimsOutputFile(inputFileName, outputFileName):
+    with open('data/output/' + outputFileName, 'w', newline='') as outputFile:
+        writer = csv.writer(outputFile, delimiter='\t')
+        writer.writerow(['patentNumber', 'patentDate', 'patentGeneNames'])
+        with open('data/input/' + inputFileName) as inputFile:
+            reader = csv.reader(inputFile, delimiter='\t')
+            for row in reader:
+                writer.writerow([row[0], row[1], getGeneNames(row[2])])
             
-createTitleOutputFile('title.tsv', 'titleGene.csv')
+
+createAbstractOutputFile('abstract.tsv', 'scispaCyAbstractGene.csv')
+
+createDescriptionOutputFile('description.tsv', 'scispaCyDescriptionGene.csv')
+
+createClaimsOutputFile('claims.tsv', 'scispaCyClaimsGene.csv')
+
+createTitleOutputFile('title.tsv', 'scispaCyTitleGene.csv')

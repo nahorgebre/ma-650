@@ -7,7 +7,7 @@ namespace DataFusion2
     class DI1Correspondences
     {
 
-        public static List<FileInfo> di1correspondences = new List<FileInfo> {
+        public static List<FileInfo> correspondences = new List<FileInfo> {
             
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI1/Brain_2_Kidney/correspondences.csv"),
 

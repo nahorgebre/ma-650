@@ -8,7 +8,7 @@ namespace DataFusion2
     {
 
 
-        public static List<FileInfo> di3correspondences = new List<FileInfo> {
+        public static List<FileInfo> correspondences = new List<FileInfo> {
 
             new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_1/correspondences.csv"),
             //new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_2/correspondences.csv"),
