@@ -34,6 +34,8 @@ namespace DataFusion2
 
                     SortedSet<string> recordIdSortedSet = new SortedSet<string>();
 
+                    recordIdSortedSet.Add(recordId1);
+
                     recordIdSortedSet.Add(recordId2);
 
                     mergedCorrespondences.Add(recordId1, recordIdSortedSet);
