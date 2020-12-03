@@ -7,7 +7,7 @@ namespace DataFusion2
     public class Correspondences
     {
 
-        public static Dictionary<string, SortedSet<string>> getKeyDictionary(List<Tuple<string, string>> di3correspondences)
+        public static Dictionary<string, SortedSet<string>> getKeyDictionaryLeft(List<Tuple<string, string>> di3correspondences)
         {
 
             Dictionary<string, SortedSet<string>> mergedCorrespondences = new Dictionary<string, SortedSet<string>>();
@@ -19,7 +19,6 @@ namespace DataFusion2
 
                 string recordId2 = correspondenceItem.Item2;
 
-                
                 if (mergedCorrespondences.ContainsKey(recordId1))
                 {
 
@@ -28,7 +27,7 @@ namespace DataFusion2
                     recordIdSortedSet.Add(recordId2);
 
                     mergedCorrespondences[recordId1] = recordIdSortedSet;
-                    
+
                 }
                 else
                 {
@@ -41,7 +40,47 @@ namespace DataFusion2
 
                 }
 
-                
+            }
+
+            return mergedCorrespondences;
+            
+        }
+
+        public static Dictionary<string, SortedSet<string>> getKeyDictionary(List<Tuple<string, string>> di3correspondences)
+        {
+
+            Dictionary<string, SortedSet<string>> mergedCorrespondences = new Dictionary<string, SortedSet<string>>();
+
+            foreach (Tuple<string, string> correspondenceItem in di3correspondences)
+            {
+
+                string recordId1 = correspondenceItem.Item1;
+
+                string recordId2 = correspondenceItem.Item2;
+
+
+                if (mergedCorrespondences.ContainsKey(recordId1))
+                {
+
+                    SortedSet<string> recordIdSortedSet = mergedCorrespondences[recordId1];
+
+                    recordIdSortedSet.Add(recordId2);
+
+                    mergedCorrespondences[recordId1] = recordIdSortedSet;
+
+                }
+                else
+                {
+
+                    SortedSet<string> recordIdSortedSet = new SortedSet<string>();
+
+                    recordIdSortedSet.Add(recordId2);
+
+                    mergedCorrespondences.Add(recordId1, recordIdSortedSet);
+
+                }
+
+
                 if (mergedCorrespondences.ContainsKey(recordId2))
                 {
 
@@ -50,7 +89,7 @@ namespace DataFusion2
                     recordIdSortedSet.Add(recordId1);
 
                     mergedCorrespondences[recordId2] = recordIdSortedSet;
-                    
+
                 }
                 else
                 {
@@ -69,7 +108,7 @@ namespace DataFusion2
 
         }
 
-    
+
     }
 
 }

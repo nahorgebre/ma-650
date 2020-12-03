@@ -8,22 +8,21 @@ namespace DataFusion2
     {
 
 
-
         public static List<FileInfo> di3datasets()
         {
 
-            List<FileInfo> di1datasets = new List<FileInfo>();
+            List<FileInfo> di3datasets = new List<FileInfo>();
         
-            di1datasets.Add(KaessmannDiseaseAssociations);
+            di3datasets.Add(KaessmannDiseaseAssociations);
 
             for (int i = 1; i <= 50; i++)
             {
 
-                di1datasets.Add(gene2pubtatorcentral(i));
+                di3datasets.Add(gene2pubtatorcentral(i));
 
             }
 
-            return di1datasets;
+            return di3datasets;
 
         }
 

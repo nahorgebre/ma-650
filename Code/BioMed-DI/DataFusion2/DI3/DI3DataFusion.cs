@@ -13,6 +13,8 @@ namespace DataFusion2
         public static void run()
         {
 
+            // put KaessmannDiseaseAssociations into center
+
             Console.WriteLine("Load correspondences!");
 
             List<Tuple<string, string>> di3correspondences = Methods.getCorrespondenceList(DI3Correspondences.di3correspondences);
@@ -20,7 +22,7 @@ namespace DataFusion2
 
             Console.WriteLine("Load key dictionary!");
 
-            Dictionary<string, SortedSet<string>> mergedCorrespondences = Correspondences.getKeyDictionary(di3correspondences);
+            Dictionary<string, SortedSet<string>> mergedCorrespondences = Correspondences.getKeyDictionaryLeft(di3correspondences);
 
 
             Console.WriteLine("Load datasets!");
