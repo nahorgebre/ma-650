@@ -30,6 +30,24 @@ namespace DataFusion2
 
         }
 
+        public static void debugCorrespondences(HashSet<string> fusedRecordIdHashSet)
+        {
+            FileInfo debug = new FileInfo(Environment.CurrentDirectory + "/data/debug.tsv");
+
+            using (StreamWriter sw = new StreamWriter(debug.FullName))
+            {
+
+                foreach (string recordId in fusedRecordIdHashSet)
+                {
+
+                    sw.WriteLine(recordId);
+     
+                }
+     
+            }
+
+        }
+
     }
 
 }

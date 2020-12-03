@@ -20,6 +20,10 @@ namespace DataFusion2
 
             }
 
+            Output.debugCorrespondences(fusedRecordIdHashSet);
+
+
+
             List<Gene> fusedRecords = new List<Gene>();
 
             foreach (string fusedRedordId in fusedRecordIdHashSet)
