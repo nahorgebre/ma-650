@@ -23,7 +23,9 @@ namespace DataFusion2
 
             Console.WriteLine("Load datasets!");
 
-            Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DI2Datasets.datasets(), mergedCorrespondences);
+            HashSet<string> recordIdHashSet = Datasets.getRecordIdHashSet(mergedCorrespondences);
+
+            Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DI2Datasets.datasets(), recordIdHashSet);
 
 
             Console.WriteLine("Fuse datasets!");
