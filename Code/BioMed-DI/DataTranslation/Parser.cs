@@ -85,6 +85,90 @@ namespace DataTranslation
                     }
 
 
+                    reader.ReadToFollowing("overallCall");
+
+                    String overallCall = reader.ReadElementContentAsString().Trim();
+
+                    if (!overallCall.Equals(string.Empty))
+                    {
+
+                        gene.overallCall = overallCall;
+
+                    }
+
+
+                    reader.ReadToFollowing("firstPublicationYear");
+
+                    String firstPublicationYear = reader.ReadElementContentAsString().Trim();
+
+                    if (!firstPublicationYear.Equals(string.Empty))
+                    {
+
+                        gene.firstPublicationYear = firstPublicationYear;
+
+                    }
+
+
+                    reader.ReadToFollowing("frequencyPatent");
+
+                    String frequencyPatent = reader.ReadElementContentAsString().Trim();
+
+                    if (!frequencyPatent.Equals(string.Empty))
+                    {
+
+                        gene.frequencyPatent = frequencyPatent;
+
+                    }
+
+
+                    reader.ReadToFollowing("frequencyPatentTitle");
+
+                    String frequencyPatentTitle = reader.ReadElementContentAsString().Trim();
+
+                    if (!frequencyPatentTitle.Equals(string.Empty))
+                    {
+
+                        gene.frequencyPatentTitle = frequencyPatentTitle;
+
+                    }
+
+
+                    reader.ReadToFollowing("frequencyPatentAbstract");
+
+                    String frequencyPatentAbstract = reader.ReadElementContentAsString().Trim();
+
+                    if (!frequencyPatentAbstract.Equals(string.Empty))
+                    {
+
+                        gene.frequencyPatentAbstract = frequencyPatentAbstract;
+
+                    }
+
+
+                    reader.ReadToFollowing("frequencyPatentDescription");
+
+                    String frequencyPatentDescription = reader.ReadElementContentAsString().Trim();
+
+                    if (!frequencyPatentDescription.Equals(string.Empty))
+                    {
+
+                        gene.frequencyPatentDescription = frequencyPatentDescription;
+
+                    }
+
+
+                    reader.ReadToFollowing("frequencyPatentClaims");
+
+                    String frequencyPatentClaims = reader.ReadElementContentAsString().Trim();
+
+                    if (!frequencyPatentClaims.Equals(string.Empty))
+                    {
+
+                        gene.frequencyPatentClaims = frequencyPatentClaims;
+
+                    }
+
+
                     // Organs
 
                     List<Organ> organList = new List<Organ>();

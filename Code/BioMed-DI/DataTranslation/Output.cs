@@ -9,18 +9,36 @@ namespace DataTranslation
     public class Output
     {
 
-        public static void createXml(List<Gene> gene_list, string fileName, string directory)
+        public static List<Gene> adjustRecordId(List<Gene> geneList, string recordIdPattern)
         {
 
-            Console.WriteLine("Create Xml: " + fileName);
+            List<Gene> adjustedGeneList = new List<Gene>();
 
-            Console.WriteLine("Count: " + gene_list.Count);
+            int counter = 1;
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, directory));
+            foreach (Gene item in geneList)
+            {
+                
+                item.recordId = string.Format(recordIdPattern, counter);
+
+                adjustedGeneList.Add(item);
+
+                counter ++;
+
+            }
+
+            return adjustedGeneList;
+
+        }
+
+        public static void createXml(List<Gene> gene_list, FileInfo file)
+        {
+
+            file.Directory.Create();
 
             XmlSerializer serializer = new XmlSerializer(typeof(Genes));
 
-            TextWriter writer = new StreamWriter(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
+            TextWriter writer = new StreamWriter(file.FullName);
 
             Genes genes = new Genes();
 
@@ -30,28 +48,29 @@ namespace DataTranslation
 
             writer.Close();
 
-            Console.WriteLine(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName));
+            Console.WriteLine("Xml: ..." + file.FullName);
 
         }
 
-        public static void createTsv(List<Gene> gene_list, string fileName, string directory)
+        public static void createTsv(List<Gene> gene_list, FileInfo file)
         {
-
-            Console.WriteLine("Create TSV: " + fileName);
-
-            string gsFileName = string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, directory, fileName);
             
             var delimiter = "\t";
 
-            using (StreamWriter sw = new StreamWriter(gsFileName)) 
+            using (StreamWriter sw = new StreamWriter(file.FullName)) 
             {
            
                 List<string> firstLineContent = new List<string>()
                 {
+
                     "recordId",
+
                     "ensemblId",
+
                     "ncbiId",
+
                     "geneNames"
+
                 };
 
                 var firstLine = string.Join(delimiter, firstLineContent);
@@ -61,7 +80,9 @@ namespace DataTranslation
                 foreach (Gene item in gene_list)
                 {
 
+
                     string recordId = "NV";
+
                     if (!item.recordId.Equals(string.Empty))
                     {
 
@@ -69,7 +90,9 @@ namespace DataTranslation
 
                     }
 
+
                     string ensemblId = "NV";
+
                     if (!item.ensemblId.Equals(string.Empty))
                     {
 
@@ -77,7 +100,9 @@ namespace DataTranslation
 
                     }
 
+
                     string ncbiId = "NV";
+
                     if (!item.ncbiId.Equals(string.Empty))
                     {
 
@@ -85,7 +110,9 @@ namespace DataTranslation
 
                     }
 
+
                     string geneNames = "NV";
+
                     if (!item.geneNames.Equals(string.Empty))
                     {
 
@@ -93,13 +120,20 @@ namespace DataTranslation
 
                     }
 
+
                     List<string> lineContent = new List<string>()
                     {
+
                         recordId,
+
                         ensemblId,
+
                         ncbiId,
+
                         geneNames
+
                     };
+
 
                     var line = string.Join(delimiter, lineContent);
 
@@ -109,6 +143,8 @@ namespace DataTranslation
 
             }
 
+            Console.WriteLine("Tsv: ..." + file.FullName);
+        
         }
 
     }

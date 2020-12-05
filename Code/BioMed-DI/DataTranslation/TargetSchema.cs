@@ -28,6 +28,20 @@ namespace DataTranslation
 
         public string geneDescriptions = string.Empty;
 
+        public string overallCall = string.Empty;
+
+        public string firstPublicationYear = string.Empty;
+
+        public string frequencyPatent = string.Empty;
+
+        public string frequencyPatentTitle = string.Empty;
+
+        public string frequencyPatentAbstract = string.Empty;
+
+        public string frequencyPatentDescription = string.Empty;
+
+        public string frequencyPatentClaims = string.Empty;
+
         
         [XmlArrayItem("organ")]
         public List<Organ> organs = new List<Organ>();

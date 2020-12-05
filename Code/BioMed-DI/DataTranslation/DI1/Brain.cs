@@ -8,18 +8,14 @@ namespace DataTranslation
     public class Brain
     {
 
-
         public static void runDataTranslation() 
         {
-
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI1.outputDirectory));
 
             Brain.Brain_dt();
 
             Brain.mart_export_brain_dt();
 
         }
-
 
         // Brain.csv; 0-geneId; 1-disagreement; 2-prob_equal_ortho_adj; 3-call
         public static void Brain_dt()
@@ -28,8 +24,9 @@ namespace DataTranslation
             Genes genes = new Genes();
 
             List<Gene> gene_list = new List<Gene>();
-            
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "Brain.csv")))
+
+
+            using (var reader = new StreamReader(DI1.inputDirectory + "/Brain.csv"))
             {
 
                 reader.ReadLine();
@@ -73,9 +70,9 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, fileName: "Brain_dt.xml", directory: DI1.outputDirectory);
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/Brain_dt.xml"));
 
-            Output.createTsv(gene_list: gene_list, fileName: "Brain_dt.tsv", directory: DI1.outputDirectory);
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/Brain_dt.tsv"));
 
         }
 
@@ -88,7 +85,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
             
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "mart_export_brain.txt")))
+            using (var reader = new StreamReader(DI1.inputDirectory + "/mart_export_brain.txt"))
             {
 
                 reader.ReadLine();
@@ -120,9 +117,9 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, fileName: "mart_export_brain_dt.xml", directory: DI1.outputDirectory);
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/mart_export_brain_dt.xml"));
             
-            Output.createTsv(gene_list: gene_list, fileName: "mart_export_brain_dt.tsv", directory: DI1.outputDirectory);
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/mart_export_brain_dt.tsv"));
 
         }
 

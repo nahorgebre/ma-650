@@ -5,19 +5,23 @@ using System.Collections.Generic;
 namespace DataTranslation
 {
 
-    public class all_gene_disease_pmid_associations_dt
+    public class all_gene_disease_pmid_associations
     {
 
-        public static void runDataTranslationWtaxonomy()
+        public static void runDataTranslationSingleOutput()
         {
-
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI2.outputDirectory));
 
             List<Gene> gene_list = new List<Gene>();
 
+
+            Console.WriteLine("Load NCBI ID HashSet!");
+
             HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI2.inputDirectory, "all_gene_disease_pmid_associations.tsv")))
+
+            Console.WriteLine("Run Data Translation!");
+
+            using (var reader = new StreamReader(DI2.inputDirectory + "/all_gene_disease_pmid_associations.tsv"))
             {
 
                 reader.ReadLine();
@@ -65,16 +69,10 @@ namespace DataTranslation
 
             }
 
-
         }
 
-        // 7 output files - (1.548.061) / 7 = 221.151,6
 
-        public static int all_gene_disease_pmid_associations_partitionSize = 221151;
-
-        public static int all_gene_disease_pmid_associations_partitionNumbers = 7;
-
-        public static void runDataTranslation()
+        public static void runDataTranslationMultipleOutputs()
         {
 
             Console.WriteLine("Load NCBI ID HashSet!");
@@ -84,16 +82,12 @@ namespace DataTranslation
 
             Console.WriteLine("Run Data Translation!");
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI2.outputDirectory));
-
-            Console.WriteLine("Start all_gene_disease_pmid_associations_dt()");
-
-            for (int i = 1; i <= all_gene_disease_pmid_associations_partitionNumbers; i++)
+            for (int i = 1; i <= all_gene_disease_pmid_associationsPartitioningVariables.partitionNumbers; i++)
             {
 
                 List<Gene> gene_list = new List<Gene>();
 
-                using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI2.inputDirectory, "all_gene_disease_pmid_associations.tsv")))
+                using (var reader = new StreamReader(DI2.inputDirectory + "/all_gene_disease_pmid_associations.tsv"))
                 {
 
                     reader.ReadLine();
@@ -127,16 +121,16 @@ namespace DataTranslation
 
                         bool condition;
 
-                        if (i == all_gene_disease_pmid_associations_partitionNumbers)
+                        if (i == all_gene_disease_pmid_associationsPartitioningVariables.partitionNumbers)
                         {
 
-                            condition = conditionCounter > all_gene_disease_pmid_associations_partitionSize * (i - 1);
+                            condition = conditionCounter > all_gene_disease_pmid_associationsPartitioningVariables.partitionSize * (i - 1);
 
                         }
                         else
                         {
 
-                            condition = (conditionCounter > all_gene_disease_pmid_associations_partitionSize * (i - 1)) & (conditionCounter <= all_gene_disease_pmid_associations_partitionSize * i);
+                            condition = (conditionCounter > all_gene_disease_pmid_associationsPartitioningVariables.partitionSize * (i - 1)) & (conditionCounter <= all_gene_disease_pmid_associationsPartitioningVariables.partitionSize * i);
 
                         }
 
@@ -144,6 +138,8 @@ namespace DataTranslation
                         {
 
                             string ncbiId = values[0].Trim();
+
+                            // Taxonomy
 
                             if (ncbiIdHashSet.Contains(ncbiId))
                             {
@@ -186,9 +182,9 @@ namespace DataTranslation
 
                 }
 
-                Output.createXml(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_" + i + "_dt.xml", directory: DI2.outputDirectory);
+                Output.createXml(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/all_gene_disease_pmid_associations_" + i + "_dt.xml"));
 
-                Output.createTsv(gene_list: gene_list, fileName: "all_gene_disease_pmid_associations_" + i + "_dt.tsv", directory: DI2.outputDirectory);
+                Output.createTsv(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/all_gene_disease_pmid_associations_" + i + "_dt.tsv"));
 
             }
 

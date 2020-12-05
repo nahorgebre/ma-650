@@ -11,8 +11,6 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI1.outputDirectory));
-
             Liver.Liver_dt();
 
             Liver.mart_export_liver_dt();
@@ -28,7 +26,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "Liver.csv")))
+            using (var reader = new StreamReader(DI1.inputDirectory + "/Liver.csv"))
             {
 
                 reader.ReadLine();
@@ -72,9 +70,9 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, fileName: "Liver_dt.xml", directory: DI1.outputDirectory);
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/Liver_dt.xml"));
 
-            Output.createTsv(gene_list: gene_list, fileName: "Liver_dt.tsv", directory: DI1.outputDirectory);
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/Liver_dt.tsv"));
 
         }
 
@@ -87,7 +85,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "mart_export_liver.txt")))
+            using (var reader = new StreamReader(DI1.inputDirectory + "/mart_export_liver.txt"))
             {
                 reader.ReadLine();
 
@@ -118,9 +116,9 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, fileName: "mart_export_liver_dt.xml", directory: DI1.outputDirectory);
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/mart_export_liver_dt.xml"));
             
-            Output.createTsv(gene_list: gene_list, fileName: "mart_export_liver_dt.tsv", directory: DI1.outputDirectory);
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/mart_export_liver_dt.tsv"));
 
         }
 

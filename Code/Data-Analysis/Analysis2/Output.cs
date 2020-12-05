@@ -2962,6 +2962,8 @@ namespace Analysis2
                     if (Int32.Parse(publicationItem.year) < First_Year)
                     {
 
+                        Console.WriteLine(Int32.Parse(publicationItem.year));
+
                         First_Year = Int32.Parse(publicationItem.year);
 
                     }
@@ -2973,13 +2975,12 @@ namespace Analysis2
             if (First_Year.Equals(3000))
             {
 
-                return First_Year.ToString();
+                return "-";
 
             }
-            else
-            {
+            else{
 
-                return string.Empty;
+                return First_Year.ToString();
 
             }
 

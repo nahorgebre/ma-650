@@ -1,7 +1,7 @@
 namespace DataTranslation
 {
 
-    public class Variables
+    public class gene2pubtatorcentralPartitioningVariables
     {
 
         // 15 output files - (54.367.006 - 1) / 15 = 54.367.005 / 15 = 3.624.467
@@ -14,9 +14,20 @@ namespace DataTranslation
         // 400 output files - (54.367.006 - 1) / 400 = 54.367.005 / 400 = 135.917,5125
         // 800 output files - (54.367.006 - 1) / 800 = 54.367.005 / 800 = 67.958,8
 
-        public static int gene2pubtatorcentral_partitionSize = 1087340;
+        public static int partitionSize = 1087340;
         
-        public static int gene2pubtatorcentral_partitionNumbers = 50;
+        public static int partitionNumbers = 50;
+
+    }
+
+    public class all_gene_disease_pmid_associationsPartitioningVariables
+    {
+        
+        // 7 output files - (1.548.061) / 7 = 221.151,6
+
+        public static int partitionSize = 221151;
+
+        public static int partitionNumbers = 7;
 
     }
 

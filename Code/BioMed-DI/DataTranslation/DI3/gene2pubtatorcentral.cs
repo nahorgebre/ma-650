@@ -9,10 +9,8 @@ namespace DataTranslation
     public class gene2pubtatorcentral
     {
 
-        public static void runDataTranslationWtaxonomy()
+        public static void runDataTranslationSingleOutput()
         {
-
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI3.outputDirectory));
 
             List<Gene> gene_list = new List<Gene>();
 
@@ -22,9 +20,9 @@ namespace DataTranslation
             HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
 
 
-            Console.WriteLine("Load input dataset!");
+            Console.WriteLine("Run Data Translation!");
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI3.inputDirectory, "gene2pubtatorcentral.tsv")))
+            using (var reader = new StreamReader(DI3.inputDirectory + "/gene2pubtatorcentral.tsv"))
             {
 
                 reader.ReadLine();
@@ -45,6 +43,8 @@ namespace DataTranslation
 
                         foreach (String ncbiId in ncbiIdArray)
                         {
+
+                            // Taxonomy
 
                             if (ncbiIdHashSet.Contains(ncbiId))
                             {
@@ -89,13 +89,13 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_dt.xml", directory: DI3.outputDirectory);
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI3.outputDirectory + "/gene2pubtatorcentral_dt.xml"));
 
-            Output.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_dt.tsv", directory: DI3.outputDirectory);
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI3.outputDirectory + "/gene2pubtatorcentral_dt.tsv"));
 
         }
 
-        public static void runDataTranslation()
+        public static void runDataTranslationMultipleOutputs()
         {
 
             Console.WriteLine("Load NCBI ID HashSet!");
@@ -105,16 +105,12 @@ namespace DataTranslation
 
             Console.WriteLine("Run Data Translation!");
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI3.outputDirectory));
-
-            Console.WriteLine("Start gene2pubtatorcentral_dt()");
-
-            for (int i = 1; i <= Variables.gene2pubtatorcentral_partitionNumbers; i++)
+            for (int i = 1; i <= gene2pubtatorcentralPartitioningVariables.partitionNumbers; i++)
             {
 
                 List<Gene> gene_list = new List<Gene>();
 
-                using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI3.inputDirectory, "gene2pubtatorcentral.tsv")))
+                using (var reader = new StreamReader(DI3.inputDirectory + "/gene2pubtatorcentral.tsv"))
                 {
 
                     reader.ReadLine();
@@ -132,16 +128,16 @@ namespace DataTranslation
 
                         bool condition;
 
-                        if (i == Variables.gene2pubtatorcentral_partitionNumbers)
+                        if (i == gene2pubtatorcentralPartitioningVariables.partitionNumbers)
                         {
 
-                            condition = conditionCounter > Variables.gene2pubtatorcentral_partitionSize * (i - 1);
+                            condition = conditionCounter > gene2pubtatorcentralPartitioningVariables.partitionSize * (i - 1);
 
                         }
                         else
                         {
 
-                            condition = (conditionCounter > Variables.gene2pubtatorcentral_partitionSize * (i - 1)) & (conditionCounter <= Variables.gene2pubtatorcentral_partitionSize * i);
+                            condition = (conditionCounter > gene2pubtatorcentralPartitioningVariables.partitionSize * (i - 1)) & (conditionCounter <= gene2pubtatorcentralPartitioningVariables.partitionSize * i);
 
                         }
 
@@ -203,9 +199,9 @@ namespace DataTranslation
 
                 }
 
-                Output.createXml(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.xml", directory: DI3.outputDirectory);
+                Output.createXml(gene_list: gene_list, file: new FileInfo(DI3.outputDirectory + "/gene2pubtatorcentral_" + i + "_dt.xml"));
 
-                Output.createTsv(gene_list: gene_list, fileName: "gene2pubtatorcentral_" + i + "_dt.tsv", directory: DI3.outputDirectory);
+                Output.createTsv(gene_list: gene_list, file: new FileInfo(DI3.outputDirectory + "/gene2pubtatorcentral_" + i + "_dt.tsv"));
 
             }
 

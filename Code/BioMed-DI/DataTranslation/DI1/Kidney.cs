@@ -12,8 +12,6 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            Directory.CreateDirectory(string.Format("{0}/{1}", Environment.CurrentDirectory, DI1.outputDirectory));
-
             Kidney.Kidney_dt();
 
             Kidney.mart_export_kidney_dt();
@@ -29,7 +27,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "Kidney.csv")))
+            using (var reader = new StreamReader(DI1.inputDirectory + "/Kidney.csv"))
             {
 
                 reader.ReadLine();
@@ -73,9 +71,9 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, fileName: "Kidney_dt.xml", directory: DI1.outputDirectory);
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/Kidney_dt.xml"));
 
-            Output.createTsv(gene_list: gene_list, fileName: "Kidney_dt.tsv", directory: DI1.outputDirectory);
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/Kidney_dt.tsv"));
 
         }
 
@@ -88,7 +86,7 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-            using (var reader = new StreamReader(string.Format("{0}/{1}/{2}", Environment.CurrentDirectory, DI1.inputDirectory, "mart_export_kidney.txt")))
+            using (var reader = new StreamReader(DI1.inputDirectory + "/mart_export_kidney.txt"))
             {
 
                 reader.ReadLine();
@@ -120,9 +118,9 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, fileName: "mart_export_kidney_dt.xml", directory: DI1.outputDirectory);
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/mart_export_kidney_dt.xml"));
             
-            Output.createTsv(gene_list: gene_list, fileName: "mart_export_kidney_dt.tsv", directory: DI1.outputDirectory);
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/mart_export_kidney_dt.tsv"));
 
         }
 
