@@ -5,36 +5,40 @@ namespace IR_ResultTables
     class Result1
     {
 
-        public String BlockingAlgorithm;
+        public String Datasets = "-"; // E
 
-        public String BlockedPairs;
+        public String MatchingRule = "-"; // E
 
-        public String ReductionRatio;
+        public String BlockingAlgorithm = "-"; // E
 
-        public String RunTime;
+        public String BlockedPairs = "-"; // B
 
-        public String Correspondences;
+        public String ReductionRatio = "-"; // B
+
+        public String RunTime = "-";
+
+        public String Correspondences = "-"; // C
     
     }
 
     class Result2
     {
 
-        public String Datasets;
+        public String Datasets = "-"; // E
 
-        public String MatchingRule;
+        public String MatchingRule = "-"; // E
 
-        public String Blocker;
+        public String Blocker = "-"; // E
 
-        public String Precision;
+        public String Precision = "-"; // E
 
-        public String Recall;
+        public String Recall = "-"; // E
 
-        public String F1;
+        public String F1 = "-"; // E
 
-        public String Correspondences;
+        public String Correspondences = "-"; // C
 
-        public String Time;
+        public String Time = "-";
 
     }
 

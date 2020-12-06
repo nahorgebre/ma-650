@@ -56,7 +56,7 @@ public class LR_StandardRecordBlocker
         String comparisonDescription = "Cerebellum_2_mart_export_cerebellum";
         String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
-        String className = "StandardRecordBlocker";
+        String className = "LinearCombination_StandardRecordBlocker";
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);

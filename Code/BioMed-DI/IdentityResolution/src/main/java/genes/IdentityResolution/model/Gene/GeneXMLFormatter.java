@@ -44,6 +44,20 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
         gene.appendChild(createTextElement("geneNames", record.getGeneNames(), doc));
 
         gene.appendChild(createTextElement("geneDescriptions", record.getGeneDescriptions(), doc));
+
+        gene.appendChild(createTextElement("overallCall", record.getOverallCall(), doc));
+
+        gene.appendChild(createTextElement("firstPublicationYear", record.getFirstPublicationYear(), doc));
+
+        gene.appendChild(createTextElement("frequencyPatent", record.getFrequencyPatent(), doc));
+
+        gene.appendChild(createTextElement("frequencyPatentTitle", record.getFrequencyPatentTitle(), doc));
+
+        gene.appendChild(createTextElement("frequencyPatentAbstract", record.getFrequencyPatentAbstract(), doc));
+
+        gene.appendChild(createTextElement("frequencyPatentDescription", record.getFrequencyPatentDescription(), doc));
+
+        gene.appendChild(createTextElement("frequencyPatentClaims", record.getFrequencyPatentClaims(), doc));
         
         gene.appendChild(createOrganElement(record, doc));
 

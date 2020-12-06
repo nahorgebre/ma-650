@@ -39,6 +39,21 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> {
         gene.setGeneNames(getValueFromChildElement(node, "geneNames"));
 
         gene.setGeneDescriptions(getValueFromChildElement(node, "geneDescriptions"));
+
+        gene.setOverallCall(getValueFromChildElement(node, "overallCall"));
+
+        gene.setFirstPublicationYear(getValueFromChildElement(node, "firstPublicationYear"));
+
+        gene.setFrequencyPatent(getValueFromChildElement(node, "frequencyPatent"));
+
+        gene.setFrequencyPatentTitle(getValueFromChildElement(node, "frequencyPatentTitle"));
+
+        gene.setFrequencyPatentAbstract(getValueFromChildElement(node, "frequencyPatentAbstract"));
+
+        gene.setFrequencyPatentDescription(getValueFromChildElement(node, "frequencyPatentDescription"));
+
+        gene.setFrequencyPatentClaims(getValueFromChildElement(node, "frequencyPatentClaims"));
+
         
         List<Organ> organs = getObjectListFromChildElement(node, "organs", "organ", new OrganXMLReader(), provenanceInfo);
 

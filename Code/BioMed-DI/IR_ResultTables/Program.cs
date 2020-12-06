@@ -11,66 +11,76 @@ namespace IR_ResultTables
         static void Main(string[] args)
         {
 
+            AWSlistingContents.getS3ObjectList("DI1");
+
+            AWSlistingContents.getS3ObjectList("DI2");
+
+            AWSlistingContents.getS3ObjectList("DI3");
+
+            AWSlistingContents.getS3ObjectList("DI4");
+
+
             foreach (String parameter in args)
             {
                 
                 if (parameter.Equals("DI1"))
                 {
 
-                    Dictionary<string, List<string>> resultFileDictionary = AWSlistingContents.getS3ObjectList(parameter);
+                    (List<Result1> list1, List<Result2> list2) = InformationRetrievalFromLog.retrieveFromResultLogs(parameter);
 
-            
+                    Output.createTsvFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tsv"));
 
+                    Output.createTeXFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
+
+                    Output.createTsvFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tsv"));  
+
+                    Output.createTeXFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));   
 
                 }
                 else if (parameter.Equals("DI2"))
                 {
 
-                    Dictionary<string, List<string>> resultFileDictionary = AWSlistingContents.getS3ObjectList(parameter);
+                    (List<Result1> list1, List<Result2> list2) = InformationRetrievalFromLog.retrieveFromResultLogs(parameter); 
+
+                    Output.createTsvFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tsv"));
+
+                    Output.createTeXFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
+
+                    Output.createTsvFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tsv"));  
+
+                    Output.createTeXFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));   
 
                 }
                 else if (parameter.Equals("DI3"))
                 {
 
-                    Dictionary<string, List<string>> resultFileDictionary = AWSlistingContents.getS3ObjectList(parameter);
+                    (List<Result1> list1, List<Result2> list2) = InformationRetrievalFromLog.retrieveFromResultLogs(parameter);
+
+                    Output.createTsvFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tsv"));
+
+                    Output.createTeXFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
+
+                    Output.createTsvFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tsv"));   
+
+                    Output.createTeXFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));  
 
                 }
                 else if (parameter.Equals("DI4"))
                 {
 
-                    Dictionary<string, List<string>> resultFileDictionary = AWSlistingContents.getS3ObjectList(parameter);
+                    (List<Result1> list1, List<Result2> list2) = InformationRetrievalFromLog.retrieveFromResultLogs(parameter); 
+
+                    Output.createTsvFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tsv"));
+
+                    Output.createTeXFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
+
+                    Output.createTsvFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tsv"));
+
+                    Output.createTeXFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));
 
                 }
 
             }
-
-            /*
-
-            List<Result1> result1List = new List<Result1>();
-
-            List<Result2> result2List = new List<Result2>();
-
-            Result1 result1 = new Result1();
-
-            Result2 result2 = new Result2();
-
-            FileInfo Blocker = new FileInfo("");
-
-            FileInfo Correspondences = new FileInfo("");
-
-            FileInfo Evaluation = new FileInfo("");
-
-            result1List.Add(result1);
-
-            result2List.Add(result2);
-
-    	    FileInfo result1File = new FileInfo("");
-            Output.createTsvFileResult1(result1List, result1File);
-
-            FileInfo result2File = new FileInfo("");
-            Output.createTsvFileResult2(result2List, result2File);
-
-            */
 
         }
 

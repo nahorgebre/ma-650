@@ -44,8 +44,8 @@ namespace IR_GS_Creation
                     List<Goldstandard> gsListTrueCornerCase, 
                     List<Goldstandard> gsListFalse, 
                     List<Goldstandard> gsListFalseCornerCase
-                    ) = Comparison_NcbiId_GeneNames.compare(DI3Datasets.kaessmannDiseaseAssociations_path, 
-                        DI3Datasets.getGene2pubtatorcentral_path(i));
+                    ) = Comparison_NcbiId_GeneNames.compare(DI3Datasets.kaessmannDiseaseAssociations_dt, 
+                        DI3Datasets.getGene2pubtatorcentral_dt(i));
 
 
                     Output.createIntermediateOuput(trueFile, gsListTrue);

@@ -20,6 +20,14 @@ public class Gene implements Matchable {
     private String geneNames;
     private String geneDescriptions;
 
+    private String overallCall;
+    private String firstPublicationYear;
+    private String frequencyPatent;
+    private String frequencyPatentTitle;
+    private String frequencyPatentAbstract;
+    private String frequencyPatentDescription;
+    private String frequencyPatentClaims;
+
     private List<Organ> organs;
     private List<Disease> diseases;
     private List<Publication> publications;
@@ -51,6 +59,14 @@ public class Gene implements Matchable {
     public String getGeneNames() { return geneNames; }
     public String getGeneDescriptions() { return geneDescriptions; }
 
+    public String getOverallCall() { return overallCall; }
+    public String getFirstPublicationYear() { return firstPublicationYear; }
+    public String getFrequencyPatent() { return frequencyPatent; }
+    public String getFrequencyPatentTitle() { return frequencyPatentTitle; }
+    public String getFrequencyPatentAbstract() { return frequencyPatentAbstract; }
+    public String getFrequencyPatentDescription() { return frequencyPatentDescription; }
+    public String getFrequencyPatentClaims() { return frequencyPatentClaims; }
+
     public List<Organ> getOrgans() { return organs; }
     public List<Disease> getDiseases() { return diseases; }
     public List<Publication> getPublications() { return publications; }
@@ -61,7 +77,15 @@ public class Gene implements Matchable {
     public void setNcbiId(String ncbiId) { this.ncbiId = ncbiId; }
     public void setGeneNames(String geneNames) { this.geneNames = geneNames; }
     public void setGeneDescriptions(String geneDescriptions) { this.geneDescriptions = geneDescriptions; }
-   
+
+    public void setOverallCall(String overallCall) { this.overallCall = overallCall; }
+    public void setFirstPublicationYear(String firstPublicationYear) { this.firstPublicationYear = firstPublicationYear; }
+    public void setFrequencyPatent(String frequencyPatent) { this.frequencyPatent = frequencyPatent; }
+    public void setFrequencyPatentTitle(String frequencyPatentTitle) { this.frequencyPatentTitle = frequencyPatentTitle; }
+    public void setFrequencyPatentAbstract(String frequencyPatentAbstract) { this.frequencyPatentAbstract = frequencyPatentAbstract; }
+    public void setFrequencyPatentDescription(String frequencyPatentDescription) { this.frequencyPatentDescription = frequencyPatentDescription; }
+    public void setFrequencyPatentClaims(String frequencyPatentClaims) { this.frequencyPatentClaims = frequencyPatentClaims; }
+
     public void setOrgans(List<Organ> organs) { this.organs = organs; }
     public void setDiseases(List<Disease> diseases) { this.diseases = diseases; }
     public void setPublications(List<Publication> publications) { this.publications = publications; }

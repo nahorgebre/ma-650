@@ -56,7 +56,7 @@ public class LR_SortedNeighbourhoodBlocker
         String comparisonDescription = "Testis_2_Liver";
         String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
-        String className = "SortedNeighbourhoodBlocker";
+        String className = "LinearCombination_SortedNeighbourhoodBlocker";
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);

@@ -1,0 +1,21 @@
+
+mkdir -p data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_1-ML_AdaBoost_StandardRecordBlocker
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_1/ML_AdaBoost_StandardRecordBlocker/evaluation.txt -O data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_1-ML_AdaBoost_StandardRecordBlocker/evaluation.txt
+
+mkdir -p data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_2-ML_AdaBoost_StandardRecordBlocker
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_2/ML_AdaBoost_StandardRecordBlocker/evaluation.txt -O data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_2-ML_AdaBoost_StandardRecordBlocker/evaluation.txt
+
+mkdir -p data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_3-ML_AdaBoost_StandardRecordBlocker
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_3/ML_AdaBoost_StandardRecordBlocker/evaluation.txt -O data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_3-ML_AdaBoost_StandardRecordBlocker/evaluation.txt
+
+mkdir -p data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_4-ML_AdaBoost_StandardRecordBlocker
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_4/ML_AdaBoost_StandardRecordBlocker/evaluation.txt -O data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_4-ML_AdaBoost_StandardRecordBlocker/evaluation.txt
+
+mkdir -p data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_5-ML_AdaBoost_StandardRecordBlocker
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_5/ML_AdaBoost_StandardRecordBlocker/evaluation.txt -O data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_5-ML_AdaBoost_StandardRecordBlocker/evaluation.txt
+
+mkdir -p data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_6-ML_AdaBoost_StandardRecordBlocker
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_6/ML_AdaBoost_StandardRecordBlocker/evaluation.txt -O data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_6-ML_AdaBoost_StandardRecordBlocker/evaluation.txt
+
+mkdir -p data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_7-ML_AdaBoost_StandardRecordBlocker
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_7/ML_AdaBoost_StandardRecordBlocker/evaluation.txt -O data/input/DI2/kaessmann_2_all_gene_disease_pmid_associations_7-ML_AdaBoost_StandardRecordBlocker/evaluation.txt

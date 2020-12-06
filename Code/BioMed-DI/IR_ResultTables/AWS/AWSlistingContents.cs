@@ -11,7 +11,7 @@ namespace IR_ResultTables
     public class AWSlistingContents
     {
 
-        public static Dictionary<string, List<string>> getS3ObjectList(string solution)
+        public static void getS3ObjectList(string solution)
         {
 
             AmazonS3Client s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
@@ -22,14 +22,12 @@ namespace IR_ResultTables
 
             createShellScriptOutput(resultFileDictionary, solution);
 
-            return resultFileDictionary;
-
         }
 
         public static void createShellScriptOutput(Dictionary<string, List<string>> resultFileDictionary, string solution)
         {
 
-            FileInfo file = new FileInfo(Environment.CurrentDirectory + "/data/shScript/" + solution + "/Get-D-" + solution + ".sh");
+            FileInfo file = new FileInfo(Environment.CurrentDirectory + "/Get-" + solution + ".sh");
 
             file.Directory.Create();
 
@@ -95,7 +93,12 @@ namespace IR_ResultTables
                     if (!resultFileList.Contains(s3ObjectItem.Key))
                     {
 
-                        resultFileList.Add(s3ObjectItem.Key);
+                        if (!s3ObjectItem.Key.Contains("correspondences.csv"))
+                        {
+
+                            resultFileList.Add(s3ObjectItem.Key);
+                            
+                        }
 
                     }
 
@@ -103,7 +106,14 @@ namespace IR_ResultTables
                 else
                 {
 
-                    List<string> resultFileList = new List<string>() { s3ObjectItem.Key };
+                    List<string> resultFileList = new List<string>();
+
+                    if (!s3ObjectItem.Key.Contains("correspondences.csv"))
+                    {
+
+                        resultFileList.Add(s3ObjectItem.Key);
+
+                    }
 
                     resultFileDictionary.Add(dictionaryKey, resultFileList);
 

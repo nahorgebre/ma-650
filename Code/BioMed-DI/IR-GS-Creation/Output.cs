@@ -12,6 +12,8 @@ namespace IR_GS_Creation
         public static void createIntermediateOuput(FileInfo file, List<Goldstandard> goldstandardList)
         {
 
+            file.Directory.Create();
+
             using (StreamWriter sw = new StreamWriter(file.FullName))
             {
                 

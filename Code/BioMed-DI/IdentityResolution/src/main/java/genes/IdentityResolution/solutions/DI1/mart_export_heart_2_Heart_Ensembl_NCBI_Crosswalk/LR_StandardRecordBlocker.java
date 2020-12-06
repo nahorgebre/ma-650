@@ -56,7 +56,7 @@ public class LR_StandardRecordBlocker
         String comparisonDescription = "mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk";
         String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
-        String className = "StandardRecordBlocker";
+        String className = "LinearCombination_StandardRecordBlocker";
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
