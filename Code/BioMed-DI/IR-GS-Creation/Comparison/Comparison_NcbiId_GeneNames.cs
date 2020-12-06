@@ -24,15 +24,15 @@ namespace IR_GS_Creation
             List<Goldstandard> gsListFalseCornerCase = new List<Goldstandard>(); // similiar records describe differents entities
 
 
+            Random random = new Random();
 
-            int gsFalseSize = 40;
+            int gsFalseCornerSize = random.Next(3, 10);
 
-            int gsTrueSize = 40;
+            int gsTrueCornerSize = random.Next(3, 10);
 
-            int gsFalseCornerSize = 10;
+            int gsFalseSize = 50 - gsFalseCornerSize;
 
-            int gsTrueCornerSize = 10;
-
+            int gsTrueSize = 50 - gsTrueCornerSize;
 
 
             Dictionary<string, InputDataset> file1Dictionary = InputDataset.getDatasetDictionary(fileName1);

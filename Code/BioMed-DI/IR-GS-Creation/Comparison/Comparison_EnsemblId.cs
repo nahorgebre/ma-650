@@ -70,15 +70,17 @@ namespace IR_GS_Creation
         public static (List<Goldstandard>, List<Goldstandard>, List<Goldstandard>, List<Goldstandard>) compare(FileInfo file1, FileInfo file2)
         {
 
-            int gsSizeTrueClose = 48;
+            Random random = new Random();
 
-            int gsSizeTrueFar = 2;
+            int gsSizeTrueFar = random.Next(2,5);
 
-            int gsSizeFalseClose = 48;
+            int gsSizeFalseFar = random.Next(2,5);
 
-            int gsSizeFalseFar = 2;
+            int gsSizeTrueClose = 50 - gsSizeTrueFar;
 
+            int gsSizeFalseClose = 50 - gsSizeFalseFar;
 
+            
             List<Goldstandard> goldstandardListTrueClose = new List<Goldstandard>();
 
             List<Goldstandard> goldstandardListTrueFar = new List<Goldstandard>();
