@@ -9,6 +9,10 @@ namespace DataFusion2
         static void Main(string[] args)
         {
 
+            AWSlistingContents.createCorrespondencesShellScriptOutput("DI2");
+
+            AWSlistingContents.createCorrespondencesShellScriptOutput("DI3");
+
             foreach (String parameter in args)
             {
                 
@@ -21,13 +25,11 @@ namespace DataFusion2
                 else if (parameter.Equals("DI2"))
                 {
 
-                    AWSlistingContents.createCorrespondencesShellScriptOutput(parameter);
+                    DI2DataFusion.run();
 
                 }
                 else if (parameter.Equals("DI3"))
-                {  
-
-                    AWSlistingContents.createCorrespondencesShellScriptOutput(parameter);
+                {
 
                     DI3DataFusion.run();
 

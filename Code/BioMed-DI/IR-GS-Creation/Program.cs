@@ -10,6 +10,13 @@ namespace IR_GS_Creation
         static void Main(string[] args)
         {
 
+            AWSlistingContents.getS3ObjectList("DI1");
+
+            AWSlistingContents.getS3ObjectList("DI2");
+
+            AWSlistingContents.getS3ObjectList("DI3");
+
+
             foreach (String parameter in args)
             {
 

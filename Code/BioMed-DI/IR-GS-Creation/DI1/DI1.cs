@@ -11,7 +11,7 @@ namespace IR_GS_Creation
         public static void run(string comparison, FileInfo file1, FileInfo file2)
         {
 
-            DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/DI2/" + comparison);
+            DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/DI1/" + comparison);
 
             directory.Create();
 

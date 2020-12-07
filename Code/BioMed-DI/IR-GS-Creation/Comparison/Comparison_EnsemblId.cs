@@ -72,15 +72,15 @@ namespace IR_GS_Creation
 
             Random random = new Random();
 
-            int gsSizeTrueFar = random.Next(2,5);
+            int gsSizeTrueFar = random.Next(2, 5);
 
-            int gsSizeFalseFar = random.Next(2,5);
+            int gsSizeFalseFar = random.Next(2, 5);
 
             int gsSizeTrueClose = 50 - gsSizeTrueFar;
 
             int gsSizeFalseClose = 50 - gsSizeFalseFar;
 
-            
+
             List<Goldstandard> goldstandardListTrueClose = new List<Goldstandard>();
 
             List<Goldstandard> goldstandardListTrueFar = new List<Goldstandard>();
@@ -119,185 +119,191 @@ namespace IR_GS_Creation
                         string key2 = getEnsemblIdBlockingKey(file2DictionaryItem.Value.ensemblId);
 
 
-                        if (key1.Equals(key2))
+                        if (!file1DictionaryItem.Value.ensemblId.Equals("NV") &
+                            !file2DictionaryItem.Value.ensemblId.Equals("NV"))
                         {
 
-                            var jw = new JaroWinkler();
-
-                            double sim = jw.Similarity(file1DictionaryItem.Value.ensemblId, file2DictionaryItem.Value.ensemblId);
-
-
-                            bool trueFileClose = false;
-
-                            bool trueFileFar = false;
-
-                            bool falseFileClose = false;
-
-                            bool falseFileFar = false;
-
-
-                            if (sim == 1) trueFileClose = true;
-
-                            if (sim >= 0.99 & sim < 1) trueFileFar = true;
-
-                            if (sim < 0.99) falseFileClose = true;
-
-                            if (sim == 0) falseFileFar = true;
-
-
-                            if (trueFileClose)
+                            if (key1.Equals(key2))
                             {
 
-                                if (goldstandardListTrueClose.Count() < gsSizeTrueClose)
+                                var jw = new JaroWinkler();
+
+                                double sim = jw.Similarity(file1DictionaryItem.Value.ensemblId, file2DictionaryItem.Value.ensemblId);
+
+
+                                bool trueFileClose = false;
+
+                                bool trueFileFar = false;
+
+                                bool falseFileClose = false;
+
+                                bool falseFileFar = false;
+
+
+                                if (sim == 1) trueFileClose = true;
+
+                                if (sim >= 0.99 & sim < 1) trueFileFar = true;
+
+                                if (sim < 0.99) falseFileClose = true;
+
+                                if (sim == 0) falseFileFar = true;
+
+
+                                if (trueFileClose)
                                 {
 
-                                    if (!goldstandardListTrueClose.Exists(x => x.recordId2 == file2DictionaryItem.Key) & !goldstandardListTrueClose.Exists(x => x.recordId1 == file1DictionaryItem.Key))
+                                    if (goldstandardListTrueClose.Count() < gsSizeTrueClose)
                                     {
 
-                                        Goldstandard goldstandardItem = new Goldstandard();
+                                        if (!goldstandardListTrueClose.Exists(x => x.recordId2 == file2DictionaryItem.Key) & !goldstandardListTrueClose.Exists(x => x.recordId1 == file1DictionaryItem.Key))
+                                        {
 
-                                        goldstandardItem.recordId1 = file1DictionaryItem.Key;
+                                            Goldstandard goldstandardItem = new Goldstandard();
 
-                                        goldstandardItem.ensemblId1 = file1DictionaryItem.Value.ensemblId;
+                                            goldstandardItem.recordId1 = file1DictionaryItem.Key;
 
-                                        goldstandardItem.recordId2 = file2DictionaryItem.Key;
+                                            goldstandardItem.ensemblId1 = file1DictionaryItem.Value.ensemblId;
 
-                                        goldstandardItem.ensemblId2 = file2DictionaryItem.Value.ensemblId;
+                                            goldstandardItem.recordId2 = file2DictionaryItem.Key;
 
-                                        goldstandardItem.boolValue = "TRUE";
+                                            goldstandardItem.ensemblId2 = file2DictionaryItem.Value.ensemblId;
 
-                                        goldstandardItem.ensemblIdSim = sim;
+                                            goldstandardItem.boolValue = "TRUE";
 
-                                        goldstandardItem.ensemblIdBlockingKey = key1;
+                                            goldstandardItem.ensemblIdSim = sim;
 
-                                        goldstandardListTrueClose.Add(goldstandardItem);
+                                            goldstandardItem.ensemblIdBlockingKey = key1;
 
-                                        Console.WriteLine("Goldstandard True Close #" + goldstandardListTrueClose.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.ensemblId2 + " - " + sim);
+                                            goldstandardListTrueClose.Add(goldstandardItem);
+
+                                            Console.WriteLine("Goldstandard True Close #" + goldstandardListTrueClose.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.ensemblId2 + " - " + sim);
+
+                                        }
+
+                                    }
+
+                                }
+                                else if (trueFileFar)
+                                {
+
+                                    if (goldstandardListTrueFar.Count() < gsSizeTrueFar)
+                                    {
+
+                                        if (!goldstandardListTrueFar.Exists(x => x.recordId2 == file2DictionaryItem.Key) & !goldstandardListTrueFar.Exists(x => x.recordId1 == file1DictionaryItem.Key))
+                                        {
+
+                                            Goldstandard goldstandardItem = new Goldstandard();
+
+                                            goldstandardItem.recordId1 = file1DictionaryItem.Key;
+
+                                            goldstandardItem.ensemblId1 = file1DictionaryItem.Value.ensemblId;
+
+                                            goldstandardItem.recordId2 = file2DictionaryItem.Key;
+
+                                            goldstandardItem.ensemblId2 = file2DictionaryItem.Value.ensemblId;
+
+                                            goldstandardItem.boolValue = "TRUE";
+
+                                            goldstandardItem.ensemblIdSim = sim;
+
+                                            goldstandardItem.ensemblIdBlockingKey = key1;
+
+                                            goldstandardListTrueFar.Add(goldstandardItem);
+
+                                            Console.WriteLine("Goldstandard True Far #" + goldstandardListTrueFar.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.ensemblId2 + " - " + sim);
+
+                                        }
+
+                                    }
+
+                                }
+                                else if (falseFileClose)
+                                {
+
+                                    if (goldstandardListFalseClose.Count() < gsSizeFalseClose)
+                                    {
+
+                                        if (!goldstandardListFalseClose.Exists(x => x.recordId2 == file2DictionaryItem.Key) & !goldstandardListFalseClose.Exists(x => x.recordId1 == file1DictionaryItem.Key))
+                                        {
+
+
+                                            Goldstandard goldstandardItem = new Goldstandard();
+
+                                            goldstandardItem.recordId1 = file1DictionaryItem.Key;
+
+                                            goldstandardItem.ensemblId1 = file1DictionaryItem.Value.ensemblId;
+
+                                            goldstandardItem.recordId2 = file2DictionaryItem.Key;
+
+                                            goldstandardItem.ensemblId2 = file2DictionaryItem.Value.ensemblId;
+
+                                            goldstandardItem.boolValue = "FALSE";
+
+                                            goldstandardItem.ensemblIdSim = sim;
+
+                                            goldstandardItem.ensemblIdBlockingKey = key1;
+
+                                            goldstandardListFalseClose.Add(goldstandardItem);
+
+                                            Console.WriteLine("Goldstandard False Close #" + goldstandardListFalseClose.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.recordId2 + " - " + sim);
+
+                                        }
+
+                                    }
+
+                                }
+                                else if (falseFileFar)
+                                {
+
+                                    if (goldstandardListFalseFar.Count() < gsSizeFalseFar)
+                                    {
+
+                                        if (!goldstandardListFalseFar.Exists(x => x.recordId2 == file2DictionaryItem.Key) & !goldstandardListFalseFar.Exists(x => x.recordId1 == file1DictionaryItem.Key))
+                                        {
+
+                                            Goldstandard goldstandardItem = new Goldstandard();
+
+                                            goldstandardItem.recordId1 = file1DictionaryItem.Key;
+
+                                            goldstandardItem.ensemblId1 = file1DictionaryItem.Value.ensemblId;
+
+                                            goldstandardItem.recordId2 = file2DictionaryItem.Key;
+
+                                            goldstandardItem.ensemblId2 = file2DictionaryItem.Value.ensemblId;
+
+                                            goldstandardItem.boolValue = "FALSE";
+
+                                            goldstandardItem.ensemblIdSim = sim;
+
+                                            goldstandardItem.ensemblIdBlockingKey = key1;
+
+                                            goldstandardListFalseFar.Add(goldstandardItem);
+
+                                            Console.WriteLine("Goldstandard False Far #" + goldstandardListFalseFar.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.ensemblId2 + " - " + sim);
+
+                                        }
 
                                     }
 
                                 }
 
-                            }
-                            else if (trueFileFar)
-                            {
 
-                                if (goldstandardListTrueFar.Count() < gsSizeTrueFar)
+                                if (check_gs_sizeReturn(
+                                    goldstandardListTrueClose: goldstandardListTrueClose,
+                                    goldstandardListTrueFar: goldstandardListTrueFar,
+                                    goldstandardListFalseClose: goldstandardListFalseClose,
+                                    goldstandardListFalseFar,
+                                    gsSizeTrueClose: gsSizeTrueClose,
+                                    gsSizeTrueFar: gsSizeTrueFar,
+                                    gsSizeFalseClose: gsSizeFalseClose,
+                                    gsSizeFalseFar: gsSizeFalseFar
+                                ))
                                 {
 
-                                    if (!goldstandardListTrueFar.Exists(x => x.recordId2 == file2DictionaryItem.Key) & !goldstandardListTrueFar.Exists(x => x.recordId1 == file1DictionaryItem.Key))
-                                    {
-
-                                        Goldstandard goldstandardItem = new Goldstandard();
-
-                                        goldstandardItem.recordId1 = file1DictionaryItem.Key;
-
-                                        goldstandardItem.ensemblId1 = file1DictionaryItem.Value.ensemblId;
-
-                                        goldstandardItem.recordId2 = file2DictionaryItem.Key;
-
-                                        goldstandardItem.ensemblId2 = file2DictionaryItem.Value.ensemblId;
-
-                                        goldstandardItem.boolValue = "TRUE";
-
-                                        goldstandardItem.ensemblIdSim = sim;
-
-                                        goldstandardItem.ensemblIdBlockingKey = key1;
-
-                                        goldstandardListTrueFar.Add(goldstandardItem);
-
-                                        Console.WriteLine("Goldstandard True Far #" + goldstandardListTrueFar.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.ensemblId2 + " - " + sim);
-
-                                    }
+                                    return (goldstandardListTrueClose, goldstandardListTrueFar, goldstandardListFalseClose, goldstandardListFalseFar);
 
                                 }
 
-                            }
-                            else if (falseFileClose)
-                            {
-
-                                if (goldstandardListFalseClose.Count() < gsSizeFalseClose)
-                                {
-
-                                    if (!goldstandardListFalseClose.Exists(x => x.recordId2 == file2DictionaryItem.Key) & !goldstandardListFalseClose.Exists(x => x.recordId1 == file1DictionaryItem.Key))
-                                    {
-
-
-                                        Goldstandard goldstandardItem = new Goldstandard();
-
-                                        goldstandardItem.recordId1 = file1DictionaryItem.Key;
-
-                                        goldstandardItem.ensemblId1 = file1DictionaryItem.Value.ensemblId;
-
-                                        goldstandardItem.recordId2 = file2DictionaryItem.Key;
-
-                                        goldstandardItem.ensemblId2 = file2DictionaryItem.Value.ensemblId;
-
-                                        goldstandardItem.boolValue = "FALSE";
-
-                                        goldstandardItem.ensemblIdSim = sim;
-
-                                        goldstandardItem.ensemblIdBlockingKey = key1;
-
-                                        goldstandardListFalseClose.Add(goldstandardItem);
-
-                                        Console.WriteLine("Goldstandard False Close #" + goldstandardListFalseClose.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.recordId2 + " - " + sim);
-
-                                    }
-
-                                }
-
-                            }
-                            else if (falseFileFar)
-                            {
-
-                                if (goldstandardListFalseFar.Count() < gsSizeFalseFar)
-                                {
-
-                                    if (!goldstandardListFalseFar.Exists(x => x.recordId2 == file2DictionaryItem.Key) & !goldstandardListFalseFar.Exists(x => x.recordId1 == file1DictionaryItem.Key))
-                                    {
-
-                                        Goldstandard goldstandardItem = new Goldstandard();
-
-                                        goldstandardItem.recordId1 = file1DictionaryItem.Key;
-
-                                        goldstandardItem.ensemblId1 = file1DictionaryItem.Value.ensemblId;
-
-                                        goldstandardItem.recordId2 = file2DictionaryItem.Key;
-
-                                        goldstandardItem.ensemblId2 = file2DictionaryItem.Value.ensemblId;
-
-                                        goldstandardItem.boolValue = "FALSE";
-
-                                        goldstandardItem.ensemblIdSim = sim;
-
-                                        goldstandardItem.ensemblIdBlockingKey = key1;
-
-                                        goldstandardListFalseFar.Add(goldstandardItem);
-
-                                        Console.WriteLine("Goldstandard False Far #" + goldstandardListFalseFar.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.ensemblId2 + " - " + sim);
-
-                                    }
-
-                                }
-
-                            }
-
-
-                            if (check_gs_sizeReturn(
-                                goldstandardListTrueClose: goldstandardListTrueClose,
-                                goldstandardListTrueFar: goldstandardListTrueFar,
-                                goldstandardListFalseClose: goldstandardListFalseClose,
-                                goldstandardListFalseFar,
-                                gsSizeTrueClose: gsSizeTrueClose,
-                                gsSizeTrueFar: gsSizeTrueFar,
-                                gsSizeFalseClose: gsSizeFalseClose,
-                                gsSizeFalseFar: gsSizeFalseFar
-                            ))
-                            {
-
-                                return (goldstandardListTrueClose, goldstandardListTrueFar, goldstandardListFalseClose, goldstandardListFalseFar);
-                                
                             }
 
                         }

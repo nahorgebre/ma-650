@@ -4,25 +4,25 @@ namespace IR_GS_Creation
     class Goldstandard
     {
 
-        public string recordId1;
+        public string recordId1 = "NV";
 
-        public string geneNames1;
+        public string geneNames1 = "NV";
 
-        public string ncbiId1;
+        public string ncbiId1 = "NV";
 
-        public string ensemblId1;
+        public string ensemblId1 = "NV";
         
 
-        public string recordId2;
+        public string recordId2 = "NV";
 
-        public string geneNames2;
+        public string geneNames2 = "NV";
 
-        public string ncbiId2;
+        public string ncbiId2 = "NV";
 
-        public string ensemblId2;
+        public string ensemblId2 = "NV";
 
 
-        public string boolValue;
+        public string boolValue = "NV";
 
 
         // Similarity measures
@@ -36,11 +36,11 @@ namespace IR_GS_Creation
 
         // Blocking key
 
-        public string geneNamesBlockingKey;
+        public string geneNamesBlockingKey = "NV";
 
-        public string ncbiIdBlockingKey;
+        public string ncbiIdBlockingKey = "NV";
 
-        public string ensemblIdBlockingKey;
+        public string ensemblIdBlockingKey = "NV";
 
     }
 

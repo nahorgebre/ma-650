@@ -18,7 +18,13 @@ namespace DataTranslation
 
             HashSet<string> ncbiIdHashSet = new HashSet<string>();
 
-            List<FileInfo> fileList = new List<FileInfo>() { mus_musculus, homo_sapiens };
+            List<FileInfo> fileList = new List<FileInfo>() {
+                
+                mus_musculus,
+
+                homo_sapiens,
+
+            };
 
             foreach (FileInfo fileItem in fileList)
             {

@@ -34,21 +34,21 @@ namespace IR_GS_Creation
 
                     InputDataset inputDS = new InputDataset();
 
-                    if (!values[1].Equals(string.Empty))
+                    if (!values[1].Equals("NV"))
                     {
 
                         inputDS.ensemblId = values[1];
                         
                     }
 
-                    if (!values[2].Equals(string.Empty))
+                    if (!values[2].Equals("NV"))
                     {
 
                         inputDS.ncbiId = values[2];
                         
                     }
 
-                    if (!values[3].Equals(string.Empty))
+                    if (!values[3].Equals("NV"))
                     {
 
                         inputDS.geneNames = values[3];

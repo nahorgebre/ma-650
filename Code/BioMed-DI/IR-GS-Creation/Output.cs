@@ -59,16 +59,18 @@ namespace IR_GS_Creation
 
         public static void createOutputWithCornerCases(DirectoryInfo directory) {
 
+            directory.Create();
+
             foreach (DirectoryInfo subDirectory in directory.GetDirectories())
             {
 
-                string trueFile = subDirectory.FullName + "/true.csv";
+                FileInfo trueFile = new FileInfo(subDirectory.FullName + "/true.csv");
 
-                string trueCornerCaseFile = subDirectory.FullName + "/trueCornerCase.csv";
+                FileInfo trueCornerCaseFile = new FileInfo(subDirectory.FullName + "/trueCornerCase.csv");
 
-                string falseFile = subDirectory.FullName + "/false.csv";
+                FileInfo falseFile = new FileInfo(subDirectory.FullName + "/false.csv");
 
-                string falseCornerCaseFile = subDirectory.FullName + "/falseCornerCase.csv";
+                FileInfo falseCornerCaseFile = new FileInfo(subDirectory.FullName + "/falseCornerCase.csv");
 
                 (List<Goldstandard> train_TRUE_WOCC, List<Goldstandard> test_TRUE_WOC) = divideIntoTrainTest(trueFile);
                 
@@ -86,17 +88,17 @@ namespace IR_GS_Creation
 
                 List<Goldstandard> test_TRUE = test_TRUE_WOC.Concat(test_TRUE_WCC).ToList();
 
-                createOuputFiles(train_TRUE, train_FALSE, subDirectory.FullName + "/train.csv");
+                createOuputFiles(train_TRUE, train_FALSE, new FileInfo(subDirectory.FullName + "/train.csv"));
 
-                createOuputFiles(test_TRUE, test_FALSE, subDirectory.FullName + "/test.csv");
+                createOuputFiles(test_TRUE, test_FALSE, new FileInfo(subDirectory.FullName + "/test.csv"));
             
             }
 
         }
 
-        public static (List<Goldstandard>, List<Goldstandard>) divideIntoTrainTest(string fileName) {
+        public static (List<Goldstandard>, List<Goldstandard>) divideIntoTrainTest(FileInfo file) {
 
-            int lines = File.ReadAllLines(fileName).Length - 1;
+            int lines = File.ReadAllLines(file.FullName).Length - 1;
 
             int threshold = lines / 2;
 
@@ -106,7 +108,7 @@ namespace IR_GS_Creation
 
             var delimiter = "\t";
 
-            using (StreamReader sr = new StreamReader(fileName))
+            using (StreamReader sr = new StreamReader(file.FullName))
             {
                 sr.ReadLine();
 
@@ -149,12 +151,12 @@ namespace IR_GS_Creation
 
         }
 
-        public static void createOuputFiles(List<Goldstandard> trueList, List<Goldstandard> falseList, string fileName)
+        public static void createOuputFiles(List<Goldstandard> trueList, List<Goldstandard> falseList, FileInfo file)
         {
 
             var delimiter = ",";
 
-            using (StreamWriter sw = new StreamWriter(fileName))
+            using (StreamWriter sw = new StreamWriter(file.FullName))
             {
 
                 foreach (Goldstandard trueItem in trueList)

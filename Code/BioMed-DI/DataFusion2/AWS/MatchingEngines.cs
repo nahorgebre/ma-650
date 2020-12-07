@@ -4,6 +4,14 @@ namespace DataFusion2
     public class MatchingEngines
     {
 
+        // Rule-based identity resolution
+
+        public static string LC_StandardRecordBlocker = "LinearCombination_StandardRecordBlocker";
+
+        public static string LC_SortedNeighbourhoodBlocker = "LinearCombination_SortedNeighbourhoodBlocker";
+
+
+        // Learning Matching Rules
 
         public static string ML_SimpleLogistic_StandardRecordBlocker = "ML_SimpleLogistic_StandardRecordBlocker";
 
