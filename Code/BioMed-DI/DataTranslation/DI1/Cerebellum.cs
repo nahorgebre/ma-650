@@ -118,9 +118,9 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "mart_export_cerebellum_dt.xml"));
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/mart_export_cerebellum_dt.xml"));
 
-            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "mart_export_cerebellum_dt.tsv"));
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/mart_export_cerebellum_dt.tsv"));
 
         }
 

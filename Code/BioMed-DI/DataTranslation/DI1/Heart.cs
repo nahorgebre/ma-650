@@ -165,9 +165,9 @@ namespace DataTranslation
 
             }
 
-            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "Heart_Ensembl_NCBI_Crosswalk_dt.xml"));
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/Heart_Ensembl_NCBI_Crosswalk_dt.xml"));
             
-            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "Heart_Ensembl_NCBI_Crosswalk_dt.tsv"));
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI1.outputDirectory + "/Heart_Ensembl_NCBI_Crosswalk_dt.tsv"));
 
         }
 

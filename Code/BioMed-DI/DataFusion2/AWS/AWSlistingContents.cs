@@ -1,7 +1,7 @@
 using System;
 using Amazon.S3;
 using System.IO;
-using System.Text;
+using System.Linq;
 using Amazon.S3.Model;
 using System.Collections.Generic;
 
@@ -10,6 +10,34 @@ namespace DataFusion2
 
     public class AWSlistingContents
     {
+
+        public static void createDatasetsShellScriptOutput(string solution)
+        {
+
+            AmazonS3Client s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
+
+            List<S3Object> s3ObjectList = (s3Client.ListObjectsAsync("nahorgebre-ma-650-master-thesis", "identity-resolution/input/" + solution).Result).S3Objects;
+
+            FileInfo file = new FileInfo(Environment.CurrentDirectory + "/Get-D-" + solution + ".sh");
+
+            using (StreamWriter sw = new StreamWriter(file.FullName))
+            {
+
+                sw.WriteLine(string.Empty);
+
+                sw.WriteLine("mkdir -p data/input/" + solution);
+
+                foreach (S3Object s3ObjectItem in s3ObjectList)
+                {
+
+                    sw.WriteLine("wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + s3ObjectItem.Key.ToString()
+                    + " -O data/input/" + solution + "/" + s3ObjectItem.Key.Last());
+                    
+                }
+                
+            }
+
+        }
 
         public static void createCorrespondencesShellScriptOutput(string solution)
         {
@@ -38,9 +66,34 @@ namespace DataFusion2
                 string wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + s3ObjectItem.Key.ToString()
                     + " -O data/correspondences/" + solution + "/" + comparisonName + "/" + fileName;
 
+                
+                string checkMatchingEngine = string.Empty;
+
+                if (solution.Equals("DI1"))
+                {
+
+                    checkMatchingEngine = DI1MatchingEngine.checkMatchingEngine(comparisonName);
+                    
+                }
+                else if (solution.Equals("DI2"))
+                {
+
+                    checkMatchingEngine = DI2MatchingEngine.checkMatchingEngine(comparisonName);
+
+                }
+                else if (solution.Equals("DI3"))
+                {
+
+                    checkMatchingEngine = DI3MatchingEngine.checkMatchingEngine(comparisonName);
+
+                }
+                else if (solution.Equals("DI4"))
+                {
+
+                }
 
 
-                if (matchingEngine.Equals(DI3MatchingEngine.checkMatchingEngine(comparisonName)))
+                if (matchingEngine.Equals(checkMatchingEngine))
                 {
 
                     if (correspondencesShellScript.ContainsKey(mkdir))
@@ -76,7 +129,9 @@ namespace DataFusion2
 
                 foreach (KeyValuePair<string, List<string>> resultFileDictionaryItem in correspondencesShellScript)
                 {
+
                     sw.WriteLine(string.Empty);
+
                     sw.WriteLine(resultFileDictionaryItem.Key);
 
                     foreach (string wgetString in resultFileDictionaryItem.Value)

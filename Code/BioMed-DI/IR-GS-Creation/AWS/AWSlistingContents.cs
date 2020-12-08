@@ -18,7 +18,7 @@ namespace IR_GS_Creation
 
             List<S3Object> s3ObjectList = (s3Client.ListObjectsAsync("nahorgebre-ma-650-master-thesis", "identity-resolution/input/" + solution).Result).S3Objects;
 
-            FileInfo file = new FileInfo(Environment.CurrentDirectory + "/Get-" + solution + ".sh");
+            FileInfo file = new FileInfo(Environment.CurrentDirectory + "/Get-D-" + solution + ".sh");
 
             file.Directory.Create();
 

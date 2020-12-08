@@ -9,9 +9,21 @@ namespace DataFusion2
         static void Main(string[] args)
         {
 
+            AWSlistingContents.createCorrespondencesShellScriptOutput("DI1");
+
+            AWSlistingContents.createDatasetsShellScriptOutput("DI1");
+
             AWSlistingContents.createCorrespondencesShellScriptOutput("DI2");
 
+            AWSlistingContents.createDatasetsShellScriptOutput("DI2");
+
             AWSlistingContents.createCorrespondencesShellScriptOutput("DI3");
+
+            AWSlistingContents.createDatasetsShellScriptOutput("DI3");
+
+            AWSlistingContents.createCorrespondencesShellScriptOutput("DI4");
+
+            AWSlistingContents.createDatasetsShellScriptOutput("DI4");
 
             foreach (String parameter in args)
             {

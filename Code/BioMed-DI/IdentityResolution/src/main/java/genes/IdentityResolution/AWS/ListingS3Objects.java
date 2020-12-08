@@ -25,28 +25,45 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 // xml
 import org.xml.sax.SAXException;
 
-
 public class ListingS3Objects {
 
     public static void main(String[] args) throws Exception {
 
-        getDI1Datasets();
+        getDatasets("DI1");
 
-        getDI1GoldstandardDatasets();
+        getGoldstandardDatasets("DI1");
 
-        getDI2Datasets();
 
-        getDI2GoldstandardDatasets();
+        getDatasets("DI2");
 
-        getDI3Datasets();
+        getGoldstandardDatasets("DI2");
 
-        getDI3GoldstandardDatasets();
 
-        //getIdentityResolutionResults("DI2");
+        getDatasets("DI3");
+
+        getGoldstandardDatasets("DI3");
+
+        /*
+         * 
+         * getDI1Datasets();
+         * 
+         * getDI1GoldstandardDatasets();
+         * 
+         * getDI2Datasets();
+         * 
+         * getDI2GoldstandardDatasets();
+         * 
+         * getDI3Datasets();
+         * 
+         * getDI3GoldstandardDatasets();
+         * 
+         */
+
+        // getIdentityResolutionResults("DI2");
 
     }
 
-    public static void getDI1Datasets() throws Exception {
+    public static void getDatasets(String solution) throws Exception {
 
         AmazonS3 s3client = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials()))
@@ -54,33 +71,89 @@ public class ListingS3Objects {
 
         List<String> mkdirList = new ArrayList<String>();
 
-        PrintWriter writer = new PrintWriter("Get-D-1.sh", "UTF-8");
+        PrintWriter writer = new PrintWriter("Get-D-" + solution + ".sh", "UTF-8");
 
         ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis",
-                "identity-resolution/input/DI1");
+                "identity-resolution/input/" + solution);
+
+        for (S3ObjectSummary os : objectListing.getObjectSummaries()) {
+
+            String key = os.getKey();
+
+            if (key.contains(".xml")) {
+
+                String[] parts = key.split("/");
+
+                if (parts.length == 4) {
+
+                    String fileName = parts[3];
+
+                    String mkdir = "mkdir -p data/input/" + solution;
+
+                    if (!mkdirList.contains(mkdir)) {
+
+                        mkdirList.add(mkdir);
+
+                        writer.println("");
+
+                        writer.println(mkdir);
+
+                    }
+
+                    String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key
+                            + " -O data/input/" + solution + "/" + fileName;
+
+                    writer.println(wgetString);
+
+                }
+
+            }
+
+        }
+
+        writer.close();
+
+    }
+
+    public static void getGoldstandardDatasets(String solution) throws Exception {
+
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials()))
+                .withRegion(Regions.US_EAST_2).build();
+
+        List<String> mkdirList = new ArrayList<String>();
+
+        PrintWriter writer = new PrintWriter("Get-GD-" + solution + ".sh", "UTF-8");
+
+        ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis",
+                "identity-resolution/goldstandard/" + solution);
+
         for (S3ObjectSummary os : objectListing.getObjectSummaries()) {
 
             String key = os.getKey();
 
             String[] parts = key.split("/");
 
-            if (parts.length == 4) {
+            if (parts.length == 5) {
 
-                String fileName = parts[3];
+                String comparison = parts[3];
 
-                String mkdir = "mkdir -p data/input/DI1";
+                String fileName = parts[4];
+
+                String mkdir = "mkdir -p data/goldstandard/" + solution + "/" + comparison;
 
                 if (!mkdirList.contains(mkdir)) {
 
                     mkdirList.add(mkdir);
 
                     writer.println("");
+
                     writer.println(mkdir);
 
                 }
 
                 String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key
-                        + " -O data/input/DI1/" + fileName;
+                        + " -O data/goldstandard/" + solution + "/" + comparison + "/" + fileName;
 
                 writer.println(wgetString);
 
@@ -89,11 +162,6 @@ public class ListingS3Objects {
         }
 
         writer.close();
-
-        Path source = Paths.get(System.getProperty("user.dir") + "/Get-D-1.sh");
-        Path dest = Paths.get(System.getProperty("user.dir") + "/GoldstandardCreation/Get-D-1.sh");
-
-        Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
 
     }
 
@@ -144,49 +212,6 @@ public class ListingS3Objects {
 
     }
 
-    public static void getDI2Datasets() throws Exception {
-
-        AmazonS3 s3client = AmazonS3ClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials()))
-                .withRegion(Regions.US_EAST_2).build();
-
-        PrintWriter writer = new PrintWriter("Get-D-2.sh", "UTF-8");
-
-        String mkdir = "mkdir -p data/input/DI2";
-
-        writer.println(mkdir);
-
-        writer.println("");
-
-        ObjectListing objectListing1 = s3client.listObjects("nahorgebre-ma-650-master-thesis",
-                "identity-resolution/input/DI2");
-        for (S3ObjectSummary os : objectListing1.getObjectSummaries()) {
-
-            String key = os.getKey();
-
-            String[] parts = key.split("/");
-
-            if (parts.length == 4) {
-
-                String fileName = parts[3];
-
-                String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key
-                        + " -O data/input/DI2/" + fileName;
-
-                writer.println(wgetString);
-
-            }
-
-        }
-
-        writer.close();
-
-        Path source = Paths.get(System.getProperty("user.dir") + "/Get-D-2.sh");
-        Path dest = Paths.get(System.getProperty("user.dir") + "/GoldstandardCreation/Get-D-2.sh");
-
-        Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
-
-    }
 
     public static void getDI2GoldstandardDatasets() throws Exception {
 
@@ -235,56 +260,6 @@ public class ListingS3Objects {
 
     }
 
-    public static void getDI3Datasets() throws Exception {
-
-        AmazonS3 s3client = AmazonS3ClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials()))
-                .withRegion(Regions.US_EAST_2).build();
-
-        List<String> mkdirList = new ArrayList<String>();
-
-        PrintWriter writer = new PrintWriter("Get-D-3.sh", "UTF-8");
-
-        ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis",
-                "identity-resolution/input/DI3");
-        for (S3ObjectSummary os : objectListing.getObjectSummaries()) {
-
-            String key = os.getKey();
-
-            String[] parts = key.split("/");
-
-            if (parts.length == 4) {
-
-                String fileName = parts[3];
-
-                String mkdir = "mkdir -p data/input/DI3";
-
-                if (!mkdirList.contains(mkdir)) {
-
-                    mkdirList.add(mkdir);
-
-                    writer.println("");
-                    writer.println(mkdir);
-
-                }
-
-                String wgetString = "wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + key
-                        + " -O data/input/DI3/" + fileName;
-
-                writer.println(wgetString);
-
-            }
-
-        }
-
-        writer.close();
-
-        Path source = Paths.get(System.getProperty("user.dir") + "/Get-D-3.sh");
-        Path dest = Paths.get(System.getProperty("user.dir") + "/GoldstandardCreation/Get-D-3.sh");
-
-        Files.copy(source, dest, StandardCopyOption.REPLACE_EXISTING);
-
-    }
 
     public static void getDI3GoldstandardDatasets() throws Exception {
 
@@ -335,15 +310,17 @@ public class ListingS3Objects {
 
     public static void getIdentityResolutionResults(String solution) throws Exception {
 
-        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials()))
+                .withRegion(Regions.US_EAST_2).build();
 
-        ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis", "identity-resolution/output/" + solution);
-        for(S3ObjectSummary os : objectListing.getObjectSummaries()) {
+        ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis",
+                "identity-resolution/output/" + solution);
+        for (S3ObjectSummary os : objectListing.getObjectSummaries()) {
 
             String key = os.getKey();
 
             String[] parts = key.split("/");
-
 
             System.out.println(key);
 

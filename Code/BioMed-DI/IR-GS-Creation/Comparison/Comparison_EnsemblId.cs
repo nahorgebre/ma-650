@@ -245,7 +245,7 @@ namespace IR_GS_Creation
 
                                             goldstandardListFalseClose.Add(goldstandardItem);
 
-                                            Console.WriteLine("Goldstandard False Close #" + goldstandardListFalseClose.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.recordId2 + " - " + sim);
+                                            Console.WriteLine("Goldstandard False Close #" + goldstandardListFalseClose.Count() + " : " + goldstandardItem.ensemblId1 + " - " + goldstandardItem.ensemblId2 + " - " + sim);
 
                                         }
 
