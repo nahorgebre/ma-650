@@ -42,6 +42,7 @@ import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.DI1.DI1Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GoldStandard;
+import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Blocker;
 
 public class LR_SortedNeighbourhoodBlocker {
@@ -75,6 +76,9 @@ public class LR_SortedNeighbourhoodBlocker {
             String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
             new File(outputDirectory).mkdirs();
 
+            // start counting
+            Date startDate = new Date();
+
             // create a matching rule
             LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(0.9);
             matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
@@ -95,13 +99,8 @@ public class LR_SortedNeighbourhoodBlocker {
             blocker.setMeasureBlockSizes(true);
             blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-            
-
             // initialize Matching Engine
             MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
-
-            // start counting
-            Date startDate = new Date();
 
             // execute the matching
             System.out.println("*\n*\tRunning identity resolution\n*");
@@ -117,12 +116,14 @@ public class LR_SortedNeighbourhoodBlocker {
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
 
-
             // write blocker results to the output file
             Blocker.writeSortedNeighbourhoodBlockerResults(blocker, outputDirectory);
 
             // evaluate your result
             Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
+
+            // copy winter log
+            WinterLogFile.copyLogFile(outputDirectory);
 
         }
 
