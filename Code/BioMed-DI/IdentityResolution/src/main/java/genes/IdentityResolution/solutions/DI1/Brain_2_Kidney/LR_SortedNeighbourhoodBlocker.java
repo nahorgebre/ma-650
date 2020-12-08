@@ -54,7 +54,7 @@ public class LR_SortedNeighbourhoodBlocker {
 
         for (Integer windowSize : windowSizeList) {
 
-            PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
+            PrintStream out = new PrintStream(new FileOutputStream("output.txt", true), true);
             System.setOut(out);
 
             // loading data
