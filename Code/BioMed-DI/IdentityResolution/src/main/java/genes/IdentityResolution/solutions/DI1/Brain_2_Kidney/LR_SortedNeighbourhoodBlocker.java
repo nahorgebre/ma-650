@@ -55,9 +55,6 @@ public class LR_SortedNeighbourhoodBlocker {
 
         for (Integer windowSize : windowSizeList) {
 
-            PrintStream out = new PrintStream(new FileOutputStream("output.txt", true), true);
-            System.setOut(out);
-
             // loading data
             System.out.println("*\n*\tLoading datasets\n*");
             HashedDataSet<Gene, Attribute> ds1 = DI1Datasets.Brain();
