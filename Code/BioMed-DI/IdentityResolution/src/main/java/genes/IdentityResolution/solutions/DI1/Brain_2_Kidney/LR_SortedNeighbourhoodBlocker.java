@@ -46,7 +46,7 @@ import genes.IdentityResolution.solutions.Blocker;
 
 public class LR_SortedNeighbourhoodBlocker {
 
-    private static final Logger logger = WinterLogManager.activateLogger("default");
+    private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 
     public static void main(String[] args) throws Exception {
 
@@ -117,7 +117,7 @@ public class LR_SortedNeighbourhoodBlocker {
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
 
-            System.out.println("------ logger: " + logger.toString());
+            //System.out.println("------ logger: " + logger.;
             
 
             // write blocker results to the output file
