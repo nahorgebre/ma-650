@@ -2,6 +2,8 @@ package genes.IdentityResolution.solutions.DI1.Brain_2_Kidney;
 
 // java
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -52,6 +54,9 @@ public class LR_SortedNeighbourhoodBlocker {
 
         for (Integer windowSize : windowSizeList) {
 
+            PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
+            System.setOut(out);
+
             // loading data
             System.out.println("*\n*\tLoading datasets\n*");
             HashedDataSet<Gene, Attribute> ds1 = DI1Datasets.Brain();
@@ -69,9 +74,6 @@ public class LR_SortedNeighbourhoodBlocker {
             // create output directory
             String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
             new File(outputDirectory).mkdirs();
-
-            // start counting
-            Date startDate = new Date();
 
             // create a matching rule
             LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(0.9);
@@ -96,12 +98,13 @@ public class LR_SortedNeighbourhoodBlocker {
             // initialize Matching Engine
             MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
+            // start counting
+            Date startDate = new Date();
+
             // execute the matching
             System.out.println("*\n*\tRunning identity resolution\n*");
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(ds1, ds2, null,
                     matchingRule, blocker);
-
-            System.out.println("------ Pairs: " + correspondences.size());
 
             // end counting
             Date endDate = new Date();
