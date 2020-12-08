@@ -84,7 +84,7 @@ public class LR_SortedNeighbourhoodBlocker
         matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice(), 0.125);
 
         // create a blocker (blocking strategy)
-        SortedNeighbourhoodBlocker<Gene, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GeneBlockingKeyByEnsemblId(), 1);
+        SortedNeighbourhoodBlocker<Gene, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GeneBlockingKeyByEnsemblId(), 20);
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
         
