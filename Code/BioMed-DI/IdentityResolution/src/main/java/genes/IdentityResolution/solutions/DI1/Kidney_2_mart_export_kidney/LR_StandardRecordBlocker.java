@@ -38,21 +38,20 @@ import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.DI1.DI1Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GoldStandard;
+import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Blocker;
 
-public class LR_StandardRecordBlocker 
-{
+public class LR_StandardRecordBlocker {
 
-	private static final Logger logger = WinterLogManager.activateLogger("default");
-	
-    public static void main( String[] args ) throws Exception
-    {
-		// loading data
+    private static final Logger logger = WinterLogManager.activateLogger("traceFile");
+
+    public static void main(String[] args) throws Exception {
+        // loading data
         System.out.println("*\n*\tLoading datasets\n*");
         HashedDataSet<Gene, Attribute> ds1 = DI1Datasets.Kidney();
         HashedDataSet<Gene, Attribute> ds2 = DI1Datasets.mart_export_kidney();
 
-		// load the gold standard (test set)
+        // load the gold standard (test set)
         String comparisonDescription = "Kidney_2_mart_export_kidney";
         String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
@@ -68,11 +67,10 @@ public class LR_StandardRecordBlocker
         // start counting
         Date startDate = new Date();
 
-		// create a matching rule
-		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
-				0.9);
-		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
-		
+        // create a matching rule
+        LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(0.9);
+        matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
+
         // add comparators
         matchingRule.addComparator(new EnsemblIdComperatorCosine(), 0.125);
         matchingRule.addComparator(new EnsemblIdComperatorLowerCaseCosine(), 0.125);
@@ -83,32 +81,35 @@ public class LR_StandardRecordBlocker
         matchingRule.addComparator(new EnsemblIdComperatorSorensenDice(), 0.125);
         matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice(), 0.125);
 
-		// create a blocker (blocking strategy)
-		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
+        // create a blocker (blocking strategy)
+        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(
+                new GeneBlockingKeyByEnsemblId());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
-        
+
         // write blocker results to the output file
         Blocker.writeStandardRecordBlockerResults(blocker, outputDirectory);
-		
-		// initialize Matching Engine
-		MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
-		// execute the matching
-		System.out.println("*\n*\tRunning identity resolution\n*");
-		Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(
-				ds1, ds2, null, matchingRule,
-                blocker);
-                
+        // initialize Matching Engine
+        MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
+
+        // execute the matching
+        System.out.println("*\n*\tRunning identity resolution\n*");
+        Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(ds1, ds2, null,
+                matchingRule, blocker);
+
         // end counting
         Date endDate = new Date();
-        int numSeconds = (int)((endDate.getTime() - startDate.getTime()) / 1000);
+        int numSeconds = (int) ((endDate.getTime() - startDate.getTime()) / 1000);
 
         // write the correspondences to the output file
         Correspondences.output(outputDirectory, correspondences);
-                
+
         // evaluate your result
         Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
+
+        // copy winter log
+        WinterLogFile.copyLogFile(outputDirectory);
 
     }
 

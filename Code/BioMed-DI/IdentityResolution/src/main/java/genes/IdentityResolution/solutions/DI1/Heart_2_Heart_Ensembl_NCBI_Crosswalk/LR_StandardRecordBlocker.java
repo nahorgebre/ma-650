@@ -38,12 +38,13 @@ import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.DI1.DI1Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GoldStandard;
+import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Blocker;
 
 public class LR_StandardRecordBlocker 
 {
 
-	private static final Logger logger = WinterLogManager.activateLogger("default");
+	private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 	
     public static void main( String[] args ) throws Exception
     {
@@ -109,6 +110,9 @@ public class LR_StandardRecordBlocker
                 
         // evaluate your result
         Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
+
+        // copy winter log
+        WinterLogFile.copyLogFile(outputDirectory);
 
     }
 

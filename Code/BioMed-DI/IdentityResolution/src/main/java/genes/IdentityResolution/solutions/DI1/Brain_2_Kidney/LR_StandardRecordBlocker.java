@@ -44,7 +44,7 @@ import genes.IdentityResolution.solutions.Blocker;
 public class LR_StandardRecordBlocker 
 {
 
-	private static final Logger logger = WinterLogManager.activateLogger("default");
+	private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 	
     public static void main( String[] args ) throws Exception
     {
