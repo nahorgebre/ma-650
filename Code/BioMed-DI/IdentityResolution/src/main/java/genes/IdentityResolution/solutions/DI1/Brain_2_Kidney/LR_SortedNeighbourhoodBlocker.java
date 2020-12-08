@@ -93,9 +93,6 @@ public class LR_SortedNeighbourhoodBlocker {
             blocker.setMeasureBlockSizes(true);
             blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
-            // write blocker results to the output file
-            Blocker.writeSortedNeighbourhoodBlockerResults(blocker, outputDirectory);
-
             // initialize Matching Engine
             MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
@@ -110,6 +107,9 @@ public class LR_SortedNeighbourhoodBlocker {
 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
+
+            // write blocker results to the output file
+            Blocker.writeSortedNeighbourhoodBlockerResults(blocker, outputDirectory);
 
             // evaluate your result
             Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
