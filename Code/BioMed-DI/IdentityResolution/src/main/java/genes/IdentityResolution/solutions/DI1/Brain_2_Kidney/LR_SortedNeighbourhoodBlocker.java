@@ -117,8 +117,6 @@ public class LR_SortedNeighbourhoodBlocker {
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
 
-            //System.out.println("------ logger: " + logger.;
-            
 
             // write blocker results to the output file
             Blocker.writeSortedNeighbourhoodBlockerResults(blocker, outputDirectory);
