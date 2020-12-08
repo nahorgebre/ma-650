@@ -2,7 +2,9 @@ package genes.IdentityResolution.solutions.DI1.Kidney_2_Liver;
 
 // java
 import java.io.File;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 
@@ -47,6 +49,11 @@ public class LR_SortedNeighbourhoodBlocker
 	
     public static void main( String[] args ) throws Exception
     {
+
+        List<Integer> windowSizeList = Arrays.asList(10, 20, 40);
+
+        for (Integer windowSize : windowSizeList) {
+
 		// loading data
         System.out.println("*\n*\tLoading datasets\n*");
         HashedDataSet<Gene, Attribute> ds1 = DI1Datasets.Kidney();
@@ -84,7 +91,7 @@ public class LR_SortedNeighbourhoodBlocker
         matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice(), 0.125);
 
         // create a blocker (blocking strategy)
-        SortedNeighbourhoodBlocker<Gene, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GeneBlockingKeyByEnsemblId(), 1);
+        SortedNeighbourhoodBlocker<Gene, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GeneBlockingKeyByEnsemblId(), windowSize);
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
         
@@ -109,6 +116,8 @@ public class LR_SortedNeighbourhoodBlocker
                 
         // evaluate your result
         Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
+
+        }
 
     }
 
