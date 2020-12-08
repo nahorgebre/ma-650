@@ -48,7 +48,7 @@ public class LR_SortedNeighbourhoodBlocker {
 
     public static void main(String[] args) throws Exception {
 
-        List<Integer> windowSizeList = Arrays.asList(10, 20, 40, 80, 160, 320, 640);
+        List<Integer> windowSizeList = Arrays.asList(500, 600, 640);
 
         for (Integer windowSize : windowSizeList) {
 
@@ -61,7 +61,7 @@ public class LR_SortedNeighbourhoodBlocker {
             String comparisonDescription = "Brain_2_Kidney";
             String solution = "DI1";
             String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
-            String className = "LinearCombination_SortedNeighbourhoodBlocker";
+            String className = "LinearCombination_SortedNeighbourhoodBlocker_" + windowSize;
 
             // load the gold standard (test set)
             MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
