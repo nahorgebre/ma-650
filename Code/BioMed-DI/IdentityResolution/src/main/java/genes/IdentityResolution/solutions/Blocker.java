@@ -13,23 +13,6 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import genes.IdentityResolution.model.Gene.Gene;
 
-// ----
-
-import java.time.Duration;
-import java.time.LocalDateTime;
-
-import org.apache.commons.lang3.time.DurationFormatUtils;
-import org.slf4j.Logger;
-
-import de.uni_mannheim.informatik.dws.winter.matching.blockers.Blocker;
-import de.uni_mannheim.informatik.dws.winter.matching.rules.MatchingRule;
-import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
-import de.uni_mannheim.informatik.dws.winter.model.DataSet;
-import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
-import de.uni_mannheim.informatik.dws.winter.model.Matchable;
-import de.uni_mannheim.informatik.dws.winter.processing.Processable;
-import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
-
 public class Blocker {
 
     public static void writeStandardRecordBlockerResults(StandardRecordBlocker<Gene, Attribute> blocker, String outputDirectory)
@@ -47,7 +30,7 @@ public class Blocker {
 
     }
 
-    public static void writeSortedNeighbourhoodBlockerResults(SortedNeighbourhoodBlocker<Gene, Attribute, Attribute> blocker, String outputDirectory,
+    public static void writeSortedNeighbourhoodBlockerResults(SortedNeighbourhoodBlocker<Gene, Attribute, Attribute> blocker, String outputDirectory
         //Processable<Correspondence<Gene, Attribute>> correspondences
         )
             throws FileNotFoundException {
