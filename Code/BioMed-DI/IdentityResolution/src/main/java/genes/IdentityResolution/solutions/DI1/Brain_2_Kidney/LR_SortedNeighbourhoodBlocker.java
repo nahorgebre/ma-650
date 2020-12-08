@@ -48,7 +48,7 @@ public class LR_SortedNeighbourhoodBlocker {
 
     public static void main(String[] args) throws Exception {
 
-        List<Integer> windowSizeList = Arrays.asList(10, 20, 40, 80, 160);
+        List<Integer> windowSizeList = Arrays.asList(10, 20, 40, 80, 160, 320, 640);
 
         for (Integer windowSize : windowSizeList) {
 
