@@ -16,13 +16,12 @@ import org.xml.sax.SAXException;
 
 public class UploadToS3 {
 
-    public static void main( String[] args ) throws Exception
-    {
+    public static void main(String[] args) throws Exception {
 
         String outputDirectory = System.getProperty("user.dir") + "/data/output";
 
         for (String solution : getSubDirectoryList(outputDirectory)) {
-            
+
             String solutionDirectory = outputDirectory + "/" + solution;
 
             for (String comparisonDescription : getSubDirectoryList(solutionDirectory)) {
@@ -37,17 +36,14 @@ public class UploadToS3 {
 
                         String fileName = classNameDirectory + "/" + file;
 
-                        if (file.contains("evaluation") | file.contains("correspondences")) {
-                            
-                            String keyName = "identity-resolution/output/" + solution + "/" + comparisonDescription + "/" + className + "/" + file;
-                            uploadFile("nahorgebre-ma-650-master-thesis", keyName, fileName);
-
-                        }
+                        String keyName = "identity-resolution/output/" + solution + "/" + comparisonDescription + "/"
+                                + className + "/" + file;
+                        uploadFile("nahorgebre-ma-650-master-thesis", keyName, fileName);
 
                     }
-          
+
                 }
-                
+
             }
 
         }
@@ -77,17 +73,16 @@ public class UploadToS3 {
 
         return fileList;
     }
-    
-    public static void uploadFile(String bucketName, String keyName, String filePath) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException{
 
-        AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials())).withRegion(Regions.US_EAST_2).build();
+    public static void uploadFile(String bucketName, String keyName, String filePath)
+            throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+
+        AmazonS3 s3client = AmazonS3ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(Credentials.getCredentials()))
+                .withRegion(Regions.US_EAST_2).build();
 
         try {
-            s3client.putObject(
-                bucketName, 
-                keyName, 
-                new File(filePath)
-            );
+            s3client.putObject(bucketName, keyName, new File(filePath));
         } catch (Exception e) {
             System.out.println("Upload failed!");
             System.out.println("Upload - Key Name: " + bucketName + "/" + keyName);
