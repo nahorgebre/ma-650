@@ -101,9 +101,13 @@ public class LR_SortedNeighbourhoodBlocker {
             Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(ds1, ds2, null,
                     matchingRule, blocker);
 
+            System.out.println("------ Pairs: " + correspondences.size());
+
             // end counting
             Date endDate = new Date();
             int numSeconds = (int) ((endDate.getTime() - startDate.getTime()) / 1000);
+
+            System.out.println("------ Time: " + numSeconds);
 
             // write the correspondences to the output file
             Correspondences.output(outputDirectory, correspondences);
