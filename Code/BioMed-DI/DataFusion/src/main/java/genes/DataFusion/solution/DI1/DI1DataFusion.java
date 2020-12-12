@@ -80,6 +80,50 @@ public class DI1DataFusion {
 
         CorrespondenceSet<Gene, Attribute> correspondences = new CorrespondenceSet<>();
 
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Brain), Heart, Brain);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Cerebellum), Heart, Cerebellum);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Kidney), Heart, Kidney);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Liver), Heart, Liver);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Testis), Heart, Testis);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Heart_Ensembl_NCBI_Crosswalk), Heart, Heart_Ensembl_NCBI_Crosswalk);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk), mart_export_heart, Heart_Ensembl_NCBI_Crosswalk);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_Brain), Cerebellum, Brain);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_Kidney), Cerebellum, Kidney);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_Liver), Cerebellum, Liver);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_Testis), Cerebellum, Testis);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Cerebellum_2_mart_export_cerebellum), Cerebellum, mart_export_cerebellum);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Brain_2_Kidney), Brain, Kidney);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Brain_2_Liver), Brain, Liver);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Brain_2_Testis), Brain, Testis);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Brain_2_mart_export_brain),Brain, mart_export_brain);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Kidney_2_Liver), Kidney, Liver);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Kidney_2_Testis), Kidney, Testis);
+
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Kidney_2_mart_export_kidney), Kidney, mart_export_kidney);
+        
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Liver_2_mart_export_liver), Liver, mart_export_liver);
+        
+        correspondences.loadCorrespondences(new File(DI1Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
+
+        /*
+
         correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Brain), Brain, Heart);
 
         correspondences.loadCorrespondences(new File(DI1Correspondences.Heart_2_Cerebellum), Cerebellum, Heart);
@@ -122,7 +166,7 @@ public class DI1DataFusion {
         
         correspondences.loadCorrespondences(new File(DI1Correspondences.Testis_2_mart_export_testis), Testis, mart_export_testis);
         
-
+        */
         // write group size distribution
         correspondences.printGroupSizeDistribution();
 
