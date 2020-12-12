@@ -32,9 +32,9 @@ namespace IR_GS_Creation
 
             int gsTrueCornerSize = 0;
 
-            int gsFalseSize = 30 - gsFalseCornerSize;
+            int gsFalseSize = 70 - gsFalseCornerSize;
 
-            int gsTrueSize = 30 - gsTrueCornerSize;
+            int gsTrueSize = 70 - gsTrueCornerSize;
 
 
             Dictionary<string, InputDataset> file1Dictionary = InputDataset.getDatasetDictionary(fileName1);
