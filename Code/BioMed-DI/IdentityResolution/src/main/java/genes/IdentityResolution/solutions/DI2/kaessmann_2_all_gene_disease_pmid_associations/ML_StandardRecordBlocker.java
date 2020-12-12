@@ -30,7 +30,7 @@ import genes.IdentityResolution.solutions.PartitionNumbers;
 import genes.IdentityResolution.solutions.WinterLogFile;
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
-
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName2;
 // NcbiIdComperator
 import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityCosine.NcbiIdComperatorCosine;
 import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityJaccardOnNGrams.NcbiIdComperatorJaccardOnNGrams;
@@ -121,7 +121,7 @@ public class ML_StandardRecordBlocker {
                 learner.learnMatchingRule( ds1, ds2, null, matchingRule, gsTrain);
     
                 // create a blocker (blocking strategy)
-                StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
+                StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName2());
                 blocker.setMeasureBlockSizes(true);
                 blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
