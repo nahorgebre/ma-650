@@ -1,7 +1,7 @@
 using System;
 using Amazon.S3;
 using System.IO;
-using System.Text;
+using System.Linq;
 using Amazon.S3.Model;
 using System.Collections.Generic;
 
@@ -70,6 +70,19 @@ namespace IR_ResultTables
         public static Dictionary<string, List<string>> getResultFileDictionary(List<S3Object> s3ObjectList)
         {
 
+            List<string> targetFileNameList = new List<string>()
+            {
+
+                "blockerResultTable.txt",
+
+                "correspondencesResultTable.txt",
+
+                "evaluationResultTable.txt",
+
+                "winter.log"
+
+            };
+
             Dictionary<string, List<string>> resultFileDictionary = new Dictionary<string, List<string>>();
 
             foreach (S3Object s3ObjectItem in s3ObjectList)
@@ -93,7 +106,7 @@ namespace IR_ResultTables
                     if (!resultFileList.Contains(s3ObjectItem.Key))
                     {
 
-                        if (!s3ObjectItem.Key.Contains("correspondences.csv"))
+                        if (targetFileNameList.Contains(s3ObjectItem.Key.Split('/').Last()))
                         {
 
                             resultFileList.Add(s3ObjectItem.Key);
@@ -108,7 +121,7 @@ namespace IR_ResultTables
 
                     List<string> resultFileList = new List<string>();
 
-                    if (!s3ObjectItem.Key.Contains("correspondences.csv"))
+                    if (targetFileNameList.Contains(s3ObjectItem.Key.Split('/').Last()))
                     {
 
                         resultFileList.Add(s3ObjectItem.Key);

@@ -97,6 +97,18 @@ namespace DataTranslation
                     }
 
 
+                    reader.ReadToFollowing("overallDiseaseAssociation");
+
+                    String overallDiseaseAssociation = reader.ReadElementContentAsString().Trim();
+
+                    if (!overallDiseaseAssociation.Equals(string.Empty))
+                    {
+
+                        gene.overallDiseaseAssociation = overallDiseaseAssociation;
+
+                    }
+
+
                     reader.ReadToFollowing("firstPublicationYear");
 
                     String firstPublicationYear = reader.ReadElementContentAsString().Trim();

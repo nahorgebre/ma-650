@@ -43,7 +43,7 @@ namespace IR_ResultTables
                             {
 
                                 string[] values = line.Split(":");
-
+     
                                 result1.Correspondences = values[1].Trim();
 
                                 result2.Correspondences = values[1].Trim();
@@ -75,9 +75,39 @@ namespace IR_ResultTables
 
                                 string[] values = line.Split(":");
 
-                                result1.Datasets = values[1].Trim();
+                                string comparison = string.Empty;
 
-                                result2.Datasets = values[1].Trim();
+                                if (values[1].Length >= 20)
+                                {
+
+                                    string[] comparisonValues = values[1].Split("_2_");
+
+                                    comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_" 
+                                        + @"}\hbox{\strut " + comparisonValues[1].Replace("_", "\\_") + "}}";
+ 
+                                }
+                                else if (values[1].Trim().Equals(@"mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                {
+
+                                    comparison = @"\vtop{\hbox{\strut mart_export_heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+
+                                }
+                                else if (values[1].Trim().Equals(@"Heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                {
+
+                                    comparison =  @"\vtop{\hbox{\strut Heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+
+                                }
+                                else
+                                {
+
+                                    comparison = values[1].Replace("_", "\\_").Trim();
+
+                                }
+
+                                result1.Datasets = comparison;
+
+                                result2.Datasets = comparison;
                                 
                             }
                             else if (line.Contains("Model type"))
@@ -125,6 +155,82 @@ namespace IR_ResultTables
                     
                 }
 
+
+                FileInfo blockerResultTable = new FileInfo(directoryItem.FullName + "/blockerResultTable.txt");
+
+                if (File.Exists(blockerResultTable.FullName))
+                {
+
+                    using (StreamReader sr = new StreamReader(blockerResultTable.FullName))
+                    {
+
+                        var line = sr.ReadLine();
+
+                        string[] values = line.Split(":");
+
+                        double ratio = Convert.ToDouble(values[1].Trim().Replace('.', ','));
+
+                        double adjsutedRatio = Math.Floor(ratio * 100) / 100;
+
+                        result1.ReductionRatio = adjsutedRatio.ToString();                    
+
+                    }
+                    
+                }
+
+
+                FileInfo winterLog = new FileInfo(directoryItem.FullName + "/winter.log");
+
+                if (File.Exists(winterLog.FullName))
+                {
+
+                    using (StreamReader sr = new StreamReader(winterLog.FullName))
+                    {
+
+                        while (!sr.EndOfStream)
+                        {
+
+                            var line = sr.ReadLine();
+
+                            if (line.Contains("blocked pairs"))
+                            {
+
+                                string startPattern = "elements;";
+
+                                int startIndex = line.IndexOf(startPattern) + startPattern.Length;
+
+                                string endPattern = "blocked pairs";
+
+                                int length = line.IndexOf(endPattern) - startIndex;
+
+                                result1.BlockedPairs = line.Substring(startIndex, length).Trim();
+
+                            }
+                            else if (line.Contains("Identity Resolution finished after"))
+                            {
+
+                                string startPattern = "Identity Resolution finished after";
+
+                                int startIndex = line.IndexOf(startPattern) + startPattern.Length;
+
+                                string endPattern = "; found";
+
+                                int length = line.IndexOf(endPattern) - startIndex;
+                                
+                                string time = line.Substring(startIndex, length).Trim();
+
+                                result1.RunTime =  time.Split('.')[0];
+
+                                result2.Time =  time.Split('.')[0];
+
+                            }
+
+                        }
+                        
+                    }
+                    
+                }
+                
                 result1List.Add(result1);
 
                 result2List.Add(result2);
@@ -143,7 +249,7 @@ namespace IR_ResultTables
             if (modelType.Contains("LinearCombination"))
             {
 
-                matchingRule = "Linear Combination";
+                matchingRule = @"\vtop{\hbox{\strut Linear}\hbox{\strut Combination}}";
                 
             }
             else if (modelType.Contains("ML_SimpleLogistic"))
@@ -183,13 +289,13 @@ namespace IR_ResultTables
             if (modelType.Contains("StandardRecordBlocker"))
             {
 
-                blockingAlgorithm = "Standard Record Blocker";
+                blockingAlgorithm = @"\vtop{\hbox{\strut Standard Record}\hbox{\strut Blocker}}";
 
             }
             else if (modelType.Contains("SortedNeighbourhoodBlocker"))
             {
 
-                blockingAlgorithm = "Sorted Neighbourhood Blocker";
+                blockingAlgorithm = @"\vtop{\hbox{\strut Sorted Neighbour-}\hbox{\strut hood Blocker}}";
 
             }
 

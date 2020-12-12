@@ -30,11 +30,11 @@ namespace IR_ResultTables
 
                     Output.createTsvFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tsv"));
 
-                    Output.createTeXFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
+                    Output.createTeXFileResult1_2(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
 
                     Output.createTsvFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tsv"));  
 
-                    Output.createTeXFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));   
+                    Output.createTeXFileResult2_1(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));   
 
                 }
                 else if (parameter.Equals("DI2"))
@@ -44,11 +44,11 @@ namespace IR_ResultTables
 
                     Output.createTsvFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tsv"));
 
-                    Output.createTeXFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
+                    Output.createTeXFileResult1_2(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
 
                     Output.createTsvFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tsv"));  
 
-                    Output.createTeXFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));   
+                    Output.createTeXFileResult2_1(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));   
 
                 }
                 else if (parameter.Equals("DI3"))
@@ -58,11 +58,11 @@ namespace IR_ResultTables
 
                     Output.createTsvFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tsv"));
 
-                    Output.createTeXFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
+                    Output.createTeXFileResult1_2(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
 
                     Output.createTsvFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tsv"));   
 
-                    Output.createTeXFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));  
+                    Output.createTeXFileResult2_1(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));  
 
                 }
                 else if (parameter.Equals("DI4"))
@@ -72,11 +72,11 @@ namespace IR_ResultTables
 
                     Output.createTsvFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tsv"));
 
-                    Output.createTeXFileResult1(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
+                    Output.createTeXFileResult1_2(list1, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result1.tex"));
 
                     Output.createTsvFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tsv"));
 
-                    Output.createTeXFileResult2(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));
+                    Output.createTeXFileResult2_1(list2, new FileInfo(Environment.CurrentDirectory + "/data/output/" + parameter + "/result2.tex"));
 
                 }
 

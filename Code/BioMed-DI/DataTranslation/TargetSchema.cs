@@ -30,6 +30,8 @@ namespace DataTranslation
 
         public string overallCall = string.Empty;
 
+        public string overallDiseaseAssociation = string.Empty;
+
         public string firstPublicationYear = string.Empty;
 
         public string frequencyPatent = string.Empty;
