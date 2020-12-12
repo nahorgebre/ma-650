@@ -26,13 +26,13 @@ namespace IR_GS_Creation
 
             Random random = new Random();
 
-            int gsFalseCornerSize = random.Next(3, 10);
+            int gsFalseCornerSize = random.Next(2, 5);
 
-            int gsTrueCornerSize = random.Next(3, 10);
+            int gsTrueCornerSize = random.Next(2, 5);
 
-            int gsFalseSize = 50 - gsFalseCornerSize;
+            int gsFalseSize = 40 - gsFalseCornerSize;
 
-            int gsTrueSize = 50 - gsTrueCornerSize;
+            int gsTrueSize = 40 - gsTrueCornerSize;
 
 
             Dictionary<string, InputDataset> file1Dictionary = InputDataset.getDatasetDictionary(fileName1);
