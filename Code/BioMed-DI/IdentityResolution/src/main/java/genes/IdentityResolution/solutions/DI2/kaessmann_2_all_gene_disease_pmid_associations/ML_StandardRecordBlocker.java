@@ -27,7 +27,7 @@ import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.PartitionNumbers;
-
+import genes.IdentityResolution.solutions.WinterLogFile;
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 
@@ -54,8 +54,11 @@ public class ML_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        for (int fileNumber = 1; fileNumber <= PartitionNumbers.kaessmann_2_all_gene_disease_pmid_associations; fileNumber++) { 
+        int fileNumber = Integer.parseInt(args[0]);
 
+        /*
+        for (int fileNumber = 1; fileNumber <= PartitionNumbers.kaessmann_2_all_gene_disease_pmid_associations; fileNumber++) { 
+*/
             // loading datasets
             System.out.println("*\n*\tLoading datasets\n*");  
             HashedDataSet<Gene, Attribute> ds1 = DI2Datasets.kaessmann();
@@ -139,10 +142,13 @@ public class ML_StandardRecordBlocker {
             
                 // evaluate your result
                 Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
+
+                // copy winter log
+                WinterLogFile.copyLogFile(outputDirectory);
                
             }
-
-        }
+/*
+        } */
 
     }
 

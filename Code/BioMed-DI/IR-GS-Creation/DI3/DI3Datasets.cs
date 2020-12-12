@@ -6,7 +6,7 @@ namespace IR_GS_Creation
     class DI3Datasets
     {
 
-        public static FileInfo kaessmannDiseaseAssociations_dt = new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/KaessmannDiseaseAssociations_dt.tsv");        
+        public static FileInfo DI2_dt = new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/DI2_dt.tsv");        
         
         public static FileInfo getGene2pubtatorcentral_dt(int fileNumber) {
             

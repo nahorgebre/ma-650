@@ -23,6 +23,7 @@ import genes.IdentityResolution.model.Gene.Gene;
 import genes.IdentityResolution.solutions.Blocker;
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.PartitionNumbers;
+import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
@@ -158,6 +159,9 @@ public class ML_SortedNeighbourhoodBlocker {
             
                 // evaluate your result
                 Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
+
+                // copy winter log
+                WinterLogFile.copyLogFile(outputDirectory);
                
             }
 

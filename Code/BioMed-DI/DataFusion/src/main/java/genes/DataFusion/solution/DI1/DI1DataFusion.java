@@ -173,7 +173,7 @@ public class DI1DataFusion {
         // write the result
         new File("data/output/DI1/").mkdirs();
 
-        new GeneXMLFormatter().writeXML(new File("data/output/DI1/kaessmann-fused.xml"), fusedDataSet);
+        new GeneXMLFormatter().writeXML(new File("data/output/DI1/DI1-fused.xml"), fusedDataSet);
         
 
         // evaluate

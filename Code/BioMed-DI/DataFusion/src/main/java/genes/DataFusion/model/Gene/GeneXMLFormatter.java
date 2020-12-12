@@ -50,7 +50,38 @@ public class GeneXMLFormatter extends XMLFormatter<Gene> {
                 record.getGeneNames(),
                 record.getMergedAttributeProvenance(Gene.GENENAMES), doc));
 
-                
+        gene.appendChild(createTextElementWithProvenance("overallCall",
+                record.getOverallCall(),
+                record.getMergedAttributeProvenance(Gene.OVERALLCALL), doc));
+
+        gene.appendChild(createTextElementWithProvenance("overallDiseaseAssociation",
+                record.getOverallDiseaseAssociation(),
+                record.getMergedAttributeProvenance(Gene.OVERALLDISEASEASSOCIATION), doc));
+
+        gene.appendChild(createTextElementWithProvenance("firstPublicationYear",
+                record.getFirstPublicationYear(),
+                record.getMergedAttributeProvenance(Gene.FIRSTPUBLICATIONYEAR), doc));
+
+        gene.appendChild(createTextElementWithProvenance("frequencyPatent",
+                record.getFrequencyPatent(),
+                record.getMergedAttributeProvenance(Gene.FREQUENCYPATENT), doc));
+
+        gene.appendChild(createTextElementWithProvenance("frequencyPatentTitle",
+                record.getFrequencyPatentTitle(),
+                record.getMergedAttributeProvenance(Gene.FREQUENCYPATENTTITLE), doc));
+
+        gene.appendChild(createTextElementWithProvenance("frequencyPatentAbstract",
+                record.getFrequencyPatentAbstract(),
+                record.getMergedAttributeProvenance(Gene.FREQUENCYPATENTABSTRACT), doc));
+
+        gene.appendChild(createTextElementWithProvenance("frequencyPatentDescription",
+                record.getFrequencyPatentDescription(),
+                record.getMergedAttributeProvenance(Gene.FREQUENCYPATENTDESCRIPTION), doc));
+
+        gene.appendChild(createTextElementWithProvenance("frequencyPatentClaims",
+                record.getFrequencyPatentClaims(),
+                record.getMergedAttributeProvenance(Gene.FREQUENCYPATENTCLAIMS), doc));
+        
         gene.appendChild(createOrganElement(record, doc));
         gene.appendChild(createPublicationMentionElement(record, doc));
         gene.appendChild(createPatentMentionElement(record, doc));

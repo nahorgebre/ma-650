@@ -12,15 +12,15 @@ namespace DataTranslation
         public static void runDataTranslation()
         {
 
-            FileInfo file = new FileInfo(DI2.inputDirectory + "/kaessmann-fused.xml");
+            FileInfo file = new FileInfo(DI2.inputDirectory + "/DI1-fused.xml");
 
             List<Gene> gene_list = Parser.getGeneList(file);
 
-            gene_list = Output.adjustRecordId(gene_list, "Kaessmann_{0}_rid");
+            gene_list = Output.adjustRecordId(gene_list, "DI1_{0}_rid");
 
-            Output.createXml(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/Kaessmann_dt.xml"));
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/DI1_dt.xml"));
 
-            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/Kaessmann_dt.tsv"));
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/DI1_dt.tsv"));
 
         }
 

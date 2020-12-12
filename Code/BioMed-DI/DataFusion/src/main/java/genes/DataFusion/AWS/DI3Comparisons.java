@@ -4,7 +4,7 @@ package genes.DataFusion.AWS;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DI2Comparisons {
+public class DI3Comparisons {
 
 
     public String Comparison;

@@ -33,6 +33,15 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
         dataset.addAttribute(Gene.GENENAMES);
         dataset.addAttribute(Gene.GENEDESCRIPTIONS);
 
+        dataset.addAttribute(Gene.OVERALLCALL);
+        dataset.addAttribute(Gene.OVERALLDISEASEASSOCIATION);
+        dataset.addAttribute(Gene.FIRSTPUBLICATIONYEAR);
+        dataset.addAttribute(Gene.FREQUENCYPATENT);
+        dataset.addAttribute(Gene.FREQUENCYPATENTTITLE);
+        dataset.addAttribute(Gene.FREQUENCYPATENTABSTRACT);
+        dataset.addAttribute(Gene.FREQUENCYPATENTDESCRIPTION);
+        dataset.addAttribute(Gene.FREQUENCYPATENTCLAIMS);
+
         dataset.addAttribute(Gene.ORGANS);
         dataset.addAttribute(Gene.PUBLICATIONMENTIONS);
         dataset.addAttribute(Gene.PATENTMENTIONS);
@@ -52,6 +61,23 @@ public class GeneXMLReader extends XMLMatchableReader<Gene, Attribute> implement
         gene.setGeneNames(getValueFromChildElement(node, "geneNames"));
 
         gene.setGeneDescriptions(getValueFromChildElement(node, "geneDescriptions"));
+
+
+        gene.setOverallCall(getValueFromChildElement(node, "overallCall"));
+
+        gene.setOverallDiseaseAssociation(getValueFromChildElement(node, "overallDiseaseAssociation"));
+
+        gene.setFirstPublicationYear(getValueFromChildElement(node, "firstPublicationYear"));
+
+        gene.setFrequencyPatent(getValueFromChildElement(node, "frequencyPatent"));
+
+        gene.setFrequencyPatentTitle(getValueFromChildElement(node, "frequencyPatentTitle"));
+
+        gene.setFrequencyPatentAbstract(getValueFromChildElement(node, "frequencyPatentAbstract"));
+
+        gene.setFrequencyPatentDescription(getValueFromChildElement(node, "frequencyPatentDescription"));
+
+        gene.setFrequencyPatentClaims(getValueFromChildElement(node, "frequencyPatentClaims"));
         
         List<Organ> organs = getObjectListFromChildElement(node, "organs", "organ", new OrganXMLReader(), provenanceInfo);
         gene.setOrgans(organs);
