@@ -18,7 +18,7 @@ public class DI2Datasets {
 
         HashedDataSet<Gene, Attribute> ds = new HashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/input/DI2/Kaessmann_dt.xml"), "/genes/gene", ds);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI2/DI1_dt.xml"), "/genes/gene", ds);
 
         return ds;
 
