@@ -28,7 +28,9 @@ namespace IR_GS_Creation
 
             int gsFalseCornerSize = random.Next(3, 5);
 
-            int gsTrueCornerSize = random.Next(1, 2);
+            //int gsTrueCornerSize = random.Next(1, 2);
+
+            int gsTrueCornerSize = 0;
 
             int gsFalseSize = 30 - gsFalseCornerSize;
 
