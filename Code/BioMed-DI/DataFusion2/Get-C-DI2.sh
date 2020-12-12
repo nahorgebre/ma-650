@@ -1,0 +1,2 @@
+
+mkdir -p data/correspondences/DI2/kaessmann_2_all_gene_disease_pmid_associations_1
