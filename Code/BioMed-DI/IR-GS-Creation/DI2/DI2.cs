@@ -21,7 +21,7 @@ namespace IR_GS_Creation
                 directory.Create();
 
 
-                Console.WriteLine(directory.Name);
+                Console.WriteLine(directory.Name + "-------------------------------------------------------------------------------------");
 
 
                 FileInfo trueFile = new FileInfo(directory.FullName + "/true.csv");
