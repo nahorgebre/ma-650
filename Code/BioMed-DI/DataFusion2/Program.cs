@@ -9,6 +9,23 @@ namespace DataFusion2
         static void Main(string[] args)
         {
 
+                        Console.WriteLine("Load correspondences!");
+
+            List<Tuple<string, string>> correspondences = Methods.getCorrespondenceList(DI3Correspondences.correspondences);
+
+
+            Console.WriteLine("Load key dictionary!");
+
+            Dictionary<string, SortedSet<string>> mergedCorrespondences = Correspondences.getKeyDictionaryLeft(correspondences);
+            
+            Console.WriteLine("Load datasets!");
+
+            HashSet<string> recordIdHashSet = Datasets.getRecordIdHashSet(mergedCorrespondences);
+
+            Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DI3Datasets.datasets(), recordIdHashSet);
+
+
+
             AWSlistingContents.createCorrespondencesShellScriptOutput("DI1");
 
             AWSlistingContents.createDatasetsShellScriptOutput("DI1");
