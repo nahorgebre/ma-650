@@ -22,7 +22,7 @@ namespace IR_ResultTables
 
                 sw.WriteLine(@"\hline");
 
-                sw.WriteLine("\\textbf{Datasets} & \\textbf{\\vtop{\\hbox{\\strut Matching}\\hbox{\\strut Rule}}} & \\textbf{\\vtop{\\hbox{\\strut Blocking}\\hbox{\\strut Algorithm}}} & \\textbf{\\vtop{\\hbox{\\strut Blocked}\\hbox{\\strut Pairs}}} & \\textbf{\\vtop{\\hbox{\\strut Reduction}\\hbox{\\strut Ratio}}} & \\textbf{Time} & \\textbf{Correspondences} \\\\");
+                sw.WriteLine("\\textbf{Datasets} & \\textbf{\\vtop{\\hbox{\\strut Matching}\\hbox{\\strut Rule}}} & \\textbf{Blocker} & \\textbf{\\vtop{\\hbox{\\strut Blocked}\\hbox{\\strut Pairs}}} & \\textbf{\\vtop{\\hbox{\\strut Reduction}\\hbox{\\strut Ratio}}} & \\textbf{Time} & \\textbf{Correspondences} \\\\");
 
                 sw.WriteLine(@"\hline");
 
@@ -165,7 +165,7 @@ namespace IR_ResultTables
 
                 sw.WriteLine("\\begin{footnotesize}");
 
-                sw.WriteLine(@"\begin{longtable}{l|l|l|l|l|l|l}");
+                sw.WriteLine(@"\begin{longtable}{l|l|l|l|l|l|l|l}");
 
                 sw.WriteLine(@"\caption{Matching Rule Evaluation - " + outputFile.Directory.Name + @"\label{tab:matching" + outputFile.Directory.Name + @"}}\\");
 

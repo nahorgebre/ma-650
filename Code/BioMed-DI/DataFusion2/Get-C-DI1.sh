@@ -59,5 +59,8 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity
 mkdir -p data/correspondences/DI1/Testis_2_Liver
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI1/Testis_2_Liver/LinearCombination_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI1/Testis_2_Liver/correspondences.csv
 
+mkdir -p data/correspondences/DI1/Testis_2_mart_export_testis
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI1/Testis_2_mart_export_testis/LinearCombination_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI1/Testis_2_mart_export_testis/correspondences.csv
+
 mkdir -p data/correspondences/DI1/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI1/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk/LinearCombination_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI1/mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk/correspondences.csv

@@ -25,7 +25,7 @@ namespace DataFusion2
 
         }
 
-        public static FileInfo Kaessmann = new FileInfo(Environment.CurrentDirectory + "/data/input/DI2/Kaessmann_dt.xml");
+        public static FileInfo Kaessmann = new FileInfo(Environment.CurrentDirectory + "/data/input/DI2/DI1_dt.xml");
 
         public static FileInfo all_gene_disease_pmid_associations(int i) 
         {

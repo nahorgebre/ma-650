@@ -31,7 +31,7 @@ namespace DataFusion2
                 {
 
                     sw.WriteLine("wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + s3ObjectItem.Key.ToString()
-                    + " -O data/input/" + solution + "/" + s3ObjectItem.Key.Last());
+                    + " -O data/input/" + solution + "/" + s3ObjectItem.Key.Split("/").Last());
                     
                 }
                 
