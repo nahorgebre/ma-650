@@ -136,7 +136,7 @@ namespace DataFusion2
                             gene.geneDescriptions.value = geneDescriptions;
 
                         }
-                        /*
+                        
                         //overallCall
                         reader.ReadToFollowing("overallCall");
 
@@ -208,7 +208,29 @@ namespace DataFusion2
                             gene.frequencyPatentAbstract.value = frequencyPatentAbstract;
 
                         }
-                        */
+
+                        reader.ReadToFollowing("frequencyPatentDescription");
+
+                        String frequencyPatentDescription = reader.ReadElementContentAsString().Trim();
+
+                        if (!frequencyPatentDescription.Equals(string.Empty))
+                        {
+
+                            gene.frequencyPatentDescription.value = frequencyPatentDescription;
+
+                        }
+
+                        reader.ReadToFollowing("frequencyPatentClaims");
+
+                        String frequencyPatentClaims = reader.ReadElementContentAsString().Trim();
+
+                        if (!frequencyPatentClaims.Equals(string.Empty))
+                        {
+
+                            gene.frequencyPatentClaims.value = frequencyPatentClaims;
+
+                        }
+                        
 
                         // Organs
 

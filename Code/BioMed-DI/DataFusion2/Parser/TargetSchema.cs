@@ -28,7 +28,7 @@ namespace DataFusion2
 
         public geneDescriptions geneDescriptions = new geneDescriptions();
 
-        /*
+        
         public overallCall overallCall = new overallCall();
 
         public overallDiseaseAssociation overallDiseaseAssociation = new overallDiseaseAssociation();
@@ -45,7 +45,7 @@ namespace DataFusion2
 
         public frequencyPatentClaims frequencyPatentClaims = new frequencyPatentClaims();
 
-        */
+        
 
         [XmlArrayItem("organ")]
         public List<Organ> organs = new List<Organ>();
