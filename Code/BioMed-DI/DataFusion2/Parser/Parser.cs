@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Xml;
+using System.Text;
 using System.Collections.Generic;
 
 namespace DataFusion2
@@ -51,11 +52,18 @@ namespace DataFusion2
 
             Console.WriteLine("Parsing: ..." + xmlFile.FullName);
 
-            
+
 
             XmlDocument xmltest = new XmlDocument();
 
             string x = File.ReadAllLines(xmlFile.FullName).ToString();
+
+            string _byteOrderMarkUtf8 = Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble());
+
+            if (x.StartsWith(_byteOrderMarkUtf8))
+            {
+                x = x.Remove(0, _byteOrderMarkUtf8.Length);
+            }
 
             xmltest.LoadXml(x);
 
