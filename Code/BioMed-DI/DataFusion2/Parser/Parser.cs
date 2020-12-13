@@ -57,9 +57,9 @@ namespace DataFusion2
 
             string x = File.ReadAllLines(xmlFile.FullName).ToString();
 
-            xmltest.Load(x);
+            xmltest.LoadXml(x);
 
-            Console.WriteLine("LOad succesfull!");
+            Console.WriteLine("LOad succesfull! ----------------------------------------------------------");
 
 
             using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
