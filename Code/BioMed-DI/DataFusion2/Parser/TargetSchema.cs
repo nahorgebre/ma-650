@@ -28,6 +28,22 @@ namespace DataFusion2
 
         public geneDescriptions geneDescriptions = new geneDescriptions();
 
+        public overallCall overallCall = new overallCall();
+
+        public overallDiseaseAssociation overallDiseaseAssociation = new overallDiseaseAssociation();
+  
+        public firstPublicationYear firstPublicationYear = new firstPublicationYear();
+
+        public frequencyPatent frequencyPatent = new frequencyPatent();
+
+        public frequencyPatentTitle frequencyPatentTitle = new frequencyPatentTitle();
+
+        public frequencyPatentAbstract frequencyPatentAbstract = new frequencyPatentAbstract();
+
+        public frequencyPatentDescription frequencyPatentDescription = new frequencyPatentDescription();
+
+        public frequencyPatentClaims frequencyPatentClaims = new frequencyPatentClaims();
+
         
         [XmlArrayItem("organ")]
         public List<Organ> organs = new List<Organ>();
@@ -94,6 +110,93 @@ namespace DataFusion2
 
     }
 
+    public class overallCall
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+    public class overallDiseaseAssociation
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+    public class firstPublicationYear
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+    public class frequencyPatent
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+    public class frequencyPatentTitle
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+    public class frequencyPatentAbstract
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+    public class frequencyPatentDescription
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
+
+    public class frequencyPatentClaims
+    {
+
+        [XmlAttribute]
+        public string provenance;
+
+        [XmlText]
+        public string value;
+
+    }
 
     public class Organ
     {
