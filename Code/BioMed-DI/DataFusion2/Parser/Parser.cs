@@ -51,6 +51,16 @@ namespace DataFusion2
 
             Console.WriteLine("Parsing: ..." + xmlFile.FullName);
 
+            
+
+            XmlDocument xmltest = new XmlDocument();
+
+            string x = File.ReadAllLines(xmlFile.FullName).ToString();
+
+            xmltest.Load(x);
+
+            Console.WriteLine("LOad succesfull!");
+
 
             using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
             {
