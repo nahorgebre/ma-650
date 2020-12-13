@@ -15,7 +15,7 @@ public class GeneWekaMatchingRule {
 
         List<GeneWekaMatchingRule> matchingRuleList = new ArrayList<GeneWekaMatchingRule>();
 
-        /*
+        
 
         GeneWekaMatchingRule matchingRule1 = new GeneWekaMatchingRule();
 
@@ -30,7 +30,7 @@ public class GeneWekaMatchingRule {
         matchingRuleList.add(matchingRule1);
 
 
-
+/*
         GeneWekaMatchingRule matchingRule2 = new GeneWekaMatchingRule();
 
         matchingRule2.className = "ML_DecisionTree";
@@ -57,7 +57,7 @@ public class GeneWekaMatchingRule {
 
         matchingRuleList.add(matchingRule3);
 
-        */
+        
         
 
 
@@ -73,7 +73,7 @@ public class GeneWekaMatchingRule {
 
         matchingRuleList.add(matchingRule5);
         
-
+*/
 
         return matchingRuleList;
     }
