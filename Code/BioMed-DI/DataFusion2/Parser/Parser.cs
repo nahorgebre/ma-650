@@ -52,7 +52,7 @@ namespace DataFusion2
 
             Console.WriteLine("Parsing: ..." + xmlFile.FullName);
 
-
+            /*
 
             XmlDocument xmltest = new XmlDocument();
 
@@ -68,7 +68,7 @@ namespace DataFusion2
             xmltest.LoadXml(x);
 
             Console.WriteLine("LOad succesfull! ----------------------------------------------------------");
-
+            */
 
             using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
             {
@@ -136,7 +136,7 @@ namespace DataFusion2
                             gene.geneDescriptions.value = geneDescriptions;
 
                         }
-
+                        /*
                         //overallCall
                         reader.ReadToFollowing("overallCall");
 
@@ -208,7 +208,7 @@ namespace DataFusion2
                             gene.frequencyPatentAbstract.value = frequencyPatentAbstract;
 
                         }
-
+                        */
 
                         // Organs
 

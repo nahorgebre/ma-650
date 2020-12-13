@@ -9,7 +9,7 @@ namespace DataFusion2
         static void Main(string[] args)
         {
 
-                        Console.WriteLine("Load correspondences!");
+            Console.WriteLine("Load correspondences!");
 
             List<Tuple<string, string>> correspondences = Methods.getCorrespondenceList(DI3Correspondences.correspondences);
 
