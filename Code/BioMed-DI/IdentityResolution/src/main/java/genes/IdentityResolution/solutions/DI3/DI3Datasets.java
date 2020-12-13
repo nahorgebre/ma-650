@@ -30,7 +30,7 @@ public class DI3Datasets {
 
         HashedDataSet<Gene, Attribute> ds = new HashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/input/DI3/KaessmannDiseaseAssociations_dt.xml"), "/genes/gene", ds);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI3/DI2_dt.xml"), "/genes/gene", ds);
 
         return ds;
 
