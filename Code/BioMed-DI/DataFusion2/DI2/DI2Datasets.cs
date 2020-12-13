@@ -29,7 +29,7 @@ namespace DataFusion2
 
         public static FileInfo all_gene_disease_pmid_associations(int i) 
         {
-            return new FileInfo(Environment.CurrentDirectory + "/data/input/DI2/all_gene_disease_pmid_associations_" + i + "_dt.tsv");
+            return new FileInfo(Environment.CurrentDirectory + "/data/input/DI2/all_gene_disease_pmid_associations_" + i + "_dt.xml");
         }
 
     }

@@ -9,6 +9,8 @@ namespace DataFusion2
         static void Main(string[] args)
         {
 
+            /*
+
             Console.WriteLine("Load correspondences!");
 
             List<Tuple<string, string>> correspondences = Methods.getCorrespondenceList(DI3Correspondences.correspondences);
@@ -23,7 +25,7 @@ namespace DataFusion2
             HashSet<string> recordIdHashSet = Datasets.getRecordIdHashSet(mergedCorrespondences);
 
             Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DI3Datasets.datasets(), recordIdHashSet);
-
+            */
 
 
             AWSlistingContents.createCorrespondencesShellScriptOutput("DI1");
