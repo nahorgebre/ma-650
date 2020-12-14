@@ -54,7 +54,7 @@ public class ML_StandardRecordBlocker {
     public static void main( String[] args ) throws Exception
     {
 
-        WinterLogFile.deleteLog();
+        //WinterLogFile.deleteLog();
 
         int fileNumber = Integer.parseInt(args[0]);
 

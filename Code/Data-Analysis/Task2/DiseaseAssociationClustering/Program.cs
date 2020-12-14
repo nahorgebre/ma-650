@@ -15,7 +15,7 @@ namespace DiseaseAssociationClustering
         {
 
             // create training set
-            Input.createTrainingInput();
+            (float ratioDuration2, float ratioAge2) =Input.createTrainingInput();
 
             // start clustering
             Console.WriteLine("Start Clustering!");
@@ -99,7 +99,7 @@ namespace DiseaseAssociationClustering
                         float age = new float();
                         if (!string.IsNullOrEmpty(item.yearInitialReport))
                         {
-                            duration = (2020 - Convert.ToInt16(item.yearInitialReport));
+                            age = (2020 - Convert.ToInt16(item.yearInitialReport));
                         }
 
                         if (age > maxAge) maxAge = age;
@@ -119,16 +119,16 @@ namespace DiseaseAssociationClustering
 
             }
 
-            float ratioDuration = (float)100.0 / maxDuration;
+            float ratioDuration = (float)1.0 / maxDuration;
 
-            float ratioAge = (float)100.0 / maxAge;
+            float ratioAge = (float)1.0 / maxAge;
 
             foreach (Output item in outputList)
             {
 
-                if (!string.IsNullOrEmpty(item.duration)) item.duration = (float.Parse(item.duration) * ratioDuration).ToString();
+                if (!string.IsNullOrEmpty(item.duration)) item.duration = (float.Parse(item.duration) * ratioDuration2).ToString();
 
-                if (!string.IsNullOrEmpty(item.age)) item.age = (float.Parse(item.age) * ratioAge).ToString();
+                if (!string.IsNullOrEmpty(item.age)) item.age = (float.Parse(item.age) * ratioAge2).ToString();
 
             }
 

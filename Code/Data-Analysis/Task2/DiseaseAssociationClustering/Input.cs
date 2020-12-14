@@ -14,7 +14,7 @@ namespace DiseaseAssociationClustering
 
         public string age;
 
-        public static void createTrainingInput()
+        public static (float, float) createTrainingInput()
         {
 
             // read values into list
@@ -93,7 +93,7 @@ namespace DiseaseAssociationClustering
                     if (!string.IsNullOrEmpty(YearInitial))
                     {
 
-                        duration = (2020 - Convert.ToInt16(YearInitial)).ToString();
+                        age = (2020 - Convert.ToInt16(YearInitial)).ToString();
 
                     }
 
@@ -132,11 +132,12 @@ namespace DiseaseAssociationClustering
                     if (age > maxAge) maxAge = age;
 
                 }
+
             }
 
-            float ratioDuration = (float)100.0 / maxDuration;
+            float ratioDuration = (float)1.0 / maxDuration;
 
-            float ratioAge = (float)100.0 / maxAge;
+            float ratioAge = (float)1.0 / maxAge;
 
 
             foreach (Input inputItem in inputList)
@@ -167,6 +168,8 @@ namespace DiseaseAssociationClustering
                 }
 
             }
+
+            return (ratioDuration, ratioAge);
 
         }
 
