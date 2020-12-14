@@ -44,18 +44,16 @@ namespace DiseaseAssociationClustering
 
 
             Console.WriteLine("Predicting disease association!");
-
-            //float x = float.Parse("");
-
+            /*
             for (int i = 0; i < 3; i++)
             {
                 var prediction = model.CreatePredictionEngine<InputData, ClusterPrediction>(mlContext).Predict(
-    new InputData()
-    {
-        score = float.Parse("3.3"),
-        EI = float.Parse("1.6"),
-        duration = new float()
-    });
+                    new InputData()
+                    {
+                    score = float.Parse("3.3"),
+                    EI = float.Parse("1.6"),
+                    duration = new float()
+                    });
 
                 string clusterIdentifier = prediction.PredictedClusterId.ToString();
                 string distance = string.Join(" ", prediction.Distances);
@@ -66,12 +64,8 @@ namespace DiseaseAssociationClustering
                 //Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
                 //Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
             }
+            */
 
-
-
-
-            
-            /*
             List<Gene> geneList = Parser.getGeneList(new FileInfo(Environment.CurrentDirectory + "/data/input/DI2-fused.xml"));
 
             FileInfo outputFile = new FileInfo(Environment.CurrentDirectory + "/data/output/clustering-result.tsv");
@@ -119,35 +113,35 @@ namespace DiseaseAssociationClustering
                         foreach (GeneDiseaseAssociation item in gene.diseaseAssociations)
                         {
 
-                            string score = string.Empty;
+                            float score = new float();
                             if (!string.IsNullOrEmpty(item.associationScore))
                             {
-                                score = item.associationScore;
+                                score = float.Parse(item.associationScore);
                             }
 
-                            string EI = string.Empty;
+                            float EI = new float();
                             if (!string.IsNullOrEmpty(item.evidenceIndex))
                             {
-                                EI = item.evidenceIndex;
+                                EI = float.Parse(item.evidenceIndex);
                             }
 
 
-                            string duration = string.Empty;
+                            float duration = new float();
                             if (!string.IsNullOrEmpty(item.yearInitialReport) &
                                 !string.IsNullOrEmpty(item.yearFinalReport))
                             {
-                                duration = (Convert.ToInt16(item.yearFinalReport) - Convert.ToInt16(item.yearInitialReport)).ToString();
+                                duration = (Convert.ToInt16(item.yearFinalReport) - Convert.ToInt16(item.yearInitialReport));
                             }
 
                             Console.WriteLine(score + "-" + EI + "-" + duration);
 
 
-                            var prediction = model.CreatePredictionEngine<TrainingData, ClusterPrediction>(mlContext).Predict(
-                                new TrainingData()
+                            var prediction = model.CreatePredictionEngine<InputData, ClusterPrediction>(mlContext).Predict(
+                                new InputData()
                                 {
-                                    score = float.Parse(score),
-                                    EI = float.Parse(EI),
-                                    duration = float.Parse(duration)
+                                    score = score,
+                                    EI = EI,
+                                    duration = duration
                                 });
 
                             
@@ -188,7 +182,7 @@ namespace DiseaseAssociationClustering
                 }
 
             }
-            */
+        
 
         }
 

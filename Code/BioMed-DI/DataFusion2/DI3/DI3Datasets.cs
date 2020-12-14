@@ -26,7 +26,7 @@ namespace DataFusion2
 
         }
 
-        public static FileInfo KaessmannDiseaseAssociations = new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/KaessmannDiseaseAssociations_dt.xml");
+        public static FileInfo KaessmannDiseaseAssociations = new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/DI2_dt.xml");
 
         public static FileInfo gene2pubtatorcentral(int i) 
         {
