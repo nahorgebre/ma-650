@@ -17,6 +17,7 @@ namespace DiseaseAssociationClustering
             // create training set
             Input.createTrainingInput();
 
+            // start clustering
             Console.WriteLine("Start Clustering!");
 
             var mlContext = new MLContext();
@@ -31,7 +32,7 @@ namespace DiseaseAssociationClustering
             var pipeline = mlContext.Transforms.Concatenate(
                 "Features",
                 "EI",
-                "duration", 
+                "duration",
                 "age")
             .Append(mlContext.Clustering.Trainers.KMeans(
                 "Features",
@@ -43,31 +44,125 @@ namespace DiseaseAssociationClustering
             Console.WriteLine("Model training complete!");
 
 
+            // start prediction
             Console.WriteLine("Predicting disease association!");
-            /*
-            for (int i = 0; i < 3; i++)
-            {
-                var prediction = model.CreatePredictionEngine<InputData, ClusterPrediction>(mlContext).Predict(
-                    new InputData()
-                    {
-                    score = float.Parse("3.3"),
-                    EI = float.Parse("1.6"),
-                    duration = new float()
-                    });
 
-                string clusterIdentifier = prediction.PredictedClusterId.ToString();
-                string distance = string.Join(" ", prediction.Distances);
-
-                Console.WriteLine("Cluster: " + clusterIdentifier);
-                Console.WriteLine("Distance: " + distance);
-
-                //Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
-                //Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
-            }
-            */
-
+            // read input data
             List<Gene> geneList = Parser.getGeneList(new FileInfo(Environment.CurrentDirectory + "/data/input/DI2-fused.xml"));
 
+            // normalize input data
+            List<Output> outputList = new List<Output>();
+
+            float maxDuration = new float();
+
+            float maxAge = new float();
+
+            foreach (Gene geneItem in geneList)
+            {
+
+                if (geneItem.diseaseAssociations != null)
+                {
+
+                    foreach (GeneDiseaseAssociation item in geneItem.diseaseAssociations)
+                    {
+
+                        Output output = new Output();
+
+                        output.gene = geneItem.ensemblId;
+
+                        output.disease = item.diseaseIdUMLS;
+
+                        output.score = item.associationScore;
+
+
+                        float EI = new float();
+                        if (!string.IsNullOrEmpty(item.evidenceIndex))
+                        {
+                            EI = float.Parse(item.evidenceIndex);
+                        }
+
+                        output.ei = EI.ToString();
+
+
+                        float duration = new float();
+                        if (!string.IsNullOrEmpty(item.yearInitialReport) &
+                            !string.IsNullOrEmpty(item.yearFinalReport))
+                        {
+                            duration = (Convert.ToInt16(item.yearFinalReport) - Convert.ToInt16(item.yearInitialReport));
+                        }
+
+                        if (duration > maxDuration) maxDuration = duration;
+
+                        output.duration = duration.ToString();
+
+
+                        float age = new float();
+                        if (!string.IsNullOrEmpty(item.yearInitialReport))
+                        {
+                            duration = (2020 - Convert.ToInt16(item.yearInitialReport));
+                        }
+
+                        if (age > maxAge) maxAge = age;
+
+
+                        output.age = age.ToString();
+
+                        output.yearInitialReport = item.yearInitialReport;
+
+                        output.yearFinalReport = item.yearFinalReport;
+
+                        outputList.Add(output);
+
+                    }
+
+                }
+
+            }
+
+            float ratioDuration = (float)100.0 / maxDuration;
+
+            float ratioAge = (float)100.0 / maxAge;
+
+            foreach (Output item in outputList)
+            {
+
+                if (!string.IsNullOrEmpty(item.duration)) item.duration = (float.Parse(item.duration) * ratioDuration).ToString();
+
+                if (!string.IsNullOrEmpty(item.age)) item.age = (float.Parse(item.age) * ratioAge).ToString();
+
+            }
+
+            // make prediction
+            foreach (Output item in outputList)
+            {
+
+                float EI = new float();
+                float duration = new float();
+                float age = new float();
+
+                if (!string.IsNullOrEmpty(item.ei)) EI = float.Parse(item.ei);
+
+                if (!string.IsNullOrEmpty(item.duration)) duration = float.Parse(item.duration);
+
+                if (!string.IsNullOrEmpty(item.age)) age = float.Parse(item.age);
+
+                var prediction = model.CreatePredictionEngine<InputData, ClusterPrediction>(mlContext).Predict(
+                new InputData()
+                {
+                    EI = EI,
+                    duration = duration,
+                    age = age
+                });
+
+
+                item.clusterId = prediction.PredictedClusterId.ToString();
+
+                item.distance = string.Join(" ", prediction.Distances);
+
+            }
+
+
+            // save results
             FileInfo outputFile = new FileInfo(Environment.CurrentDirectory + "/data/output/clustering-result.tsv");
 
             outputFile.Directory.Create();
@@ -91,6 +186,10 @@ namespace DiseaseAssociationClustering
 
                     "ei",
 
+                    "duration",
+
+                    "age",
+
                     "yearInitialReport",
 
                     "yearFinalReport"
@@ -101,73 +200,27 @@ namespace DiseaseAssociationClustering
 
                 sw.WriteLine(firstLine);
 
-
-                foreach (Gene gene in geneList)
+                foreach (Output item in outputList)
                 {
 
-                    if ((gene.diseaseAssociations != null) 
-                    //& (!gene.diseaseAssociations.Any())
-                    )
-                    {
-
-                        foreach (GeneDiseaseAssociation item in gene.diseaseAssociations)
-                        {
-
-                            float score = new float();
-                            if (!string.IsNullOrEmpty(item.associationScore))
-                            {
-                                score = float.Parse(item.associationScore);
-                            }
-
-                            float EI = new float();
-                            if (!string.IsNullOrEmpty(item.evidenceIndex))
-                            {
-                                EI = float.Parse(item.evidenceIndex);
-                            }
-
-
-                            float duration = new float();
-                            if (!string.IsNullOrEmpty(item.yearInitialReport) &
-                                !string.IsNullOrEmpty(item.yearFinalReport))
-                            {
-                                duration = (Convert.ToInt16(item.yearFinalReport) - Convert.ToInt16(item.yearInitialReport));
-                            }
-
-                            float age = new float();
-                            if (!string.IsNullOrEmpty(item.yearInitialReport))
-                            {
-                                duration = (2020 - Convert.ToInt16(item.yearInitialReport));
-                            }
-
-
-                            var prediction = model.CreatePredictionEngine<InputData, ClusterPrediction>(mlContext).Predict(
-                                new InputData()
-                                {
-                                    EI = EI,
-                                    duration = duration,
-                                    age = age
-                                });
-
-                            
-                            string clusterId = prediction.PredictedClusterId.ToString();
-
-                            string distance = string.Join(" ", prediction.Distances);
-
-
-                            List<string> lineContent = new List<string>()
+                    List<string> lineContent = new List<string>()
                             {
 
-                                gene.ensemblId,
+                                item.gene,
 
-                                item.diseaseIdUMLS,
+                                item.disease,
 
-                                clusterId,
+                                item.clusterId,
 
-                                distance,
+                                item.distance,
 
-                                item.associationScore,
+                                item.score,
 
-                                item.evidenceIndex,
+                                item.ei,
+
+                                item.duration,
+
+                                item.age,
 
                                 item.yearInitialReport,
 
@@ -175,18 +228,13 @@ namespace DiseaseAssociationClustering
 
                             };
 
-                            var line = string.Join("\t", lineContent);
+                    var line = string.Join("\t", lineContent);
 
-                            sw.WriteLine(line);
-
-                        }
-
-                    }
+                    sw.WriteLine(line);
 
                 }
 
             }
-        
 
         }
 

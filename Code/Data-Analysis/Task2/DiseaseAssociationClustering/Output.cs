@@ -19,9 +19,13 @@ namespace DiseaseAssociationClustering
 
         public string ei = string.Empty;
 
+        public string duration = string.Empty;
+
+        public string age = string.Empty;
+
         public string yearInitialReport = string.Empty;
 
-        public string yearFinalRepor = string.Empty;
+        public string yearFinalReport = string.Empty;
 
     }
 

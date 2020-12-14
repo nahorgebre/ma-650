@@ -73,6 +73,8 @@ public class ML_StandardRecordBlocker {
         }
         */
 
+        WinterLogFile.deleteLog();
+
         int fileNumber = Integer.parseInt(args[0]);
 
         /*
