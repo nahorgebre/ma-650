@@ -4,6 +4,8 @@ import en_ner_bionlp13cg_md
 
 import csv
 
+csv.field_size_limit(sys.maxsize)
+
 def getGeneNames(document):
     entityList = []
     nlp = spacy.load('en_ner_bionlp13cg_md')
