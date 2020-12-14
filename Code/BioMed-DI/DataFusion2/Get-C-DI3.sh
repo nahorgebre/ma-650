@@ -32,6 +32,9 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity
 mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_19
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_19/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_19/correspondences.csv
 
+mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_2
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_2/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_2/correspondences.csv
+
 mkdir -p data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_20
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_20/ML_SimpleLogistic_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_20/correspondences.csv
 
