@@ -32,4 +32,4 @@ def createTitleOutputFile(inputFileName, outputFileName):
                 if "2015" in row[1]: 
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
 
-createTitleOutputFile('title.tsv', 'scispaCyTitleGene.csv')
+createTitleOutputFile('title.tsv', 'scispaCyTitleGene2.csv')
