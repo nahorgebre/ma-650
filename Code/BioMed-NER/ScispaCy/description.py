@@ -1,8 +1,11 @@
 import spacy
 import scispacy
 import en_ner_bionlp13cg_md
+import sys
 
 import csv
+
+csv.field_size_limit(sys.maxsize)
 
 def getGeneNames(document):
     entityList = []
