@@ -21,15 +21,15 @@ def createClaimsOutputFile(inputFileName, outputFileName):
             for row in reader:
                 if "2003" in row[1]: 
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
-                if "2005" in row[1]: 
+                elif "2005" in row[1]: 
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
-                if "2008" in row[1]: 
+                elif "2008" in row[1]: 
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
-                if "2010" in row[1]: 
+                elif "2010" in row[1]: 
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
-                if "2013" in row[1]: 
+                elif "2013" in row[1]: 
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
-                if "2015" in row[1]: 
+                elif "2015" in row[1]: 
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
 
 createClaimsOutputFile('claims.tsv', 'scispaCyClaimsGene2.csv')
