@@ -252,7 +252,7 @@ namespace EnrichFusedDataset
 
             }
 
-            return geneList;
+            return Parser.adjustRecordId(geneList, "AN_{0}_rid");
 
         }
 
@@ -535,7 +535,28 @@ namespace EnrichFusedDataset
         }
 
 
-    }
+        public static List<Gene> adjustRecordId(List<Gene> geneList, string recordIdPattern)
+        {
 
+            List<Gene> adjustedGeneList = new List<Gene>();
+
+            int counter = 1;
+
+            foreach (Gene item in geneList)
+            {
+                
+                item.recordId = string.Format(recordIdPattern, counter);
+
+                adjustedGeneList.Add(item);
+
+                counter ++;
+
+            }
+
+            return adjustedGeneList;
+
+        }
+
+    }
 
 }

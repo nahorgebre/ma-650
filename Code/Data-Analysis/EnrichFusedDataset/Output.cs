@@ -9,27 +9,7 @@ namespace EnrichFusedDataset
     public class Output
     {
 
-        public static List<Gene> adjustRecordId(List<Gene> geneList, string recordIdPattern)
-        {
 
-            List<Gene> adjustedGeneList = new List<Gene>();
-
-            int counter = 1;
-
-            foreach (Gene item in geneList)
-            {
-                
-                item.recordId = string.Format(recordIdPattern, counter);
-
-                adjustedGeneList.Add(item);
-
-                counter ++;
-
-            }
-
-            return adjustedGeneList;
-
-        }
 
         public static void createXml(List<Gene> gene_list, FileInfo file)
         {
