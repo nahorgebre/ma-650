@@ -24,28 +24,28 @@ public class NcbiIdComperatorCosine implements Comparator<Gene, Attribute> {
         String s1 = record1.getNcbiId();
         String s2 = record2.getNcbiId();
 
-        if (!s1.equals("") & !s2.equals("")) {
+        double similarity = 0;
 
-            // calculate similarity
-            double similarity = sim.similarity(s1, s2);
+        if (s1 != null && !s1.isEmpty()) {
+            if (s2 != null && !s2.isEmpty()) {
 
-            if (this.comparisonLog != null) {
-                this.comparisonLog.setComparatorName(getClass().getName());
+                // calculate similarity
+                similarity = sim.similarity(s1, s2);
 
-                this.comparisonLog.setRecord1Value(s1);
-                this.comparisonLog.setRecord2Value(s2);
+                if (this.comparisonLog != null) {
+                    this.comparisonLog.setComparatorName(getClass().getName());
 
-                this.comparisonLog.setSimilarity(Double.toString(similarity));
-                this.comparisonLog.setPostprocessedSimilarity(Double.toString(similarity));
+                    this.comparisonLog.setRecord1Value(s1);
+                    this.comparisonLog.setRecord2Value(s2);
+
+                    this.comparisonLog.setSimilarity(Double.toString(similarity));
+                    this.comparisonLog.setPostprocessedSimilarity(Double.toString(similarity));
+                }
+
             }
-
-            return similarity;
-
-        } else {
-
-            return 0;
-
         }
+
+        return similarity;
 
     }
 

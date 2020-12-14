@@ -26,10 +26,15 @@ public class NcbiIdComperatorSorensenDice implements Comparator<Gene, Attribute>
         String s1 = record1.getNcbiId();
         String s2 = record2.getNcbiId();
 
-        if (!s1.equals("") & !s2.equals("")) {
+        double similarity = 0;
 
-            // calculate similarity
-            double similarity = sim.similarity(s1, s2);
+        if(s1 != null && !s1.isEmpty())
+        {
+            if(s2 != null && !s2.isEmpty())
+            {
+
+                            // calculate similarity
+            similarity = sim.similarity(s1, s2);
 
             if (this.comparisonLog != null) {
                 this.comparisonLog.setComparatorName(getClass().getName());
@@ -41,13 +46,11 @@ public class NcbiIdComperatorSorensenDice implements Comparator<Gene, Attribute>
                 this.comparisonLog.setPostprocessedSimilarity(Double.toString(similarity));
             }
 
-            return similarity;
-
-        } else {
-
-            return 0;
-
+            }
+        
         }
+
+        return similarity;
 
     }
 
