@@ -35,8 +35,6 @@ namespace DiseaseAssociationClustering
                             // 11 - YearInitial 
                             // 12 - YearFinal
 
-                            string score = values[9];
-
                             string EI = values[10];
 
 
@@ -80,8 +78,18 @@ namespace DiseaseAssociationClustering
                                 
                             }
 
+
+                            string age = string.Empty;
+
+                            if (!string.IsNullOrEmpty(YearInitial))
+                            {
+
+                                duration = (2020 - Convert.ToInt16(YearInitial)).ToString();
+                                
+                            }
+
         
-                            sw.WriteLine(score + "," + EI + "," + duration);
+                            sw.WriteLine(EI + "," + duration + "," + age);
 
                         }
 

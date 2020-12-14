@@ -30,9 +30,9 @@ namespace DiseaseAssociationClustering
             // training pipeline
             var pipeline = mlContext.Transforms.Concatenate(
                 "Features",
-                "score",
                 "EI",
-                "duration")
+                "duration", 
+                "age")
             .Append(mlContext.Clustering.Trainers.KMeans(
                 "Features",
                 clustersCount: 2));
@@ -133,15 +133,19 @@ namespace DiseaseAssociationClustering
                                 duration = (Convert.ToInt16(item.yearFinalReport) - Convert.ToInt16(item.yearInitialReport));
                             }
 
-                            Console.WriteLine(score + "-" + EI + "-" + duration);
+                            float age = new float();
+                            if (!string.IsNullOrEmpty(item.yearInitialReport))
+                            {
+                                duration = (2020 - Convert.ToInt16(item.yearInitialReport));
+                            }
 
 
                             var prediction = model.CreatePredictionEngine<InputData, ClusterPrediction>(mlContext).Predict(
                                 new InputData()
                                 {
-                                    score = score,
                                     EI = EI,
-                                    duration = duration
+                                    duration = duration,
+                                    age = age
                                 });
 
                             
@@ -191,9 +195,9 @@ namespace DiseaseAssociationClustering
     public class InputData
     {
 
-        [LoadColumn(0)] public float score;
-        [LoadColumn(1)] public float EI;
-        [LoadColumn(2)] public float duration;
+        [LoadColumn(0)] public float EI;
+        [LoadColumn(1)] public float duration;
+        [LoadColumn(2)] public float age;
 
     }
 
