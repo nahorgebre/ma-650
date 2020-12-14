@@ -33,4 +33,4 @@ def createDescriptionOutputFile(inputFileName, outputFileName):
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
 
 
-createDescriptionOutputFile('description2.tsv', 'scispaCyDescriptionGene.csv')
+createDescriptionOutputFile('description2.tsv', 'scispaCyDescriptionGene2.csv')

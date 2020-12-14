@@ -32,4 +32,4 @@ def createClaimsOutputFile(inputFileName, outputFileName):
                 if "2015" in row[1]: 
                     writer.writerow([row[0], row[1], getGeneNames(row[2])])
 
-createClaimsOutputFile('claims2.tsv', 'scispaCyClaimsGene.csv')
+createClaimsOutputFile('claims.tsv', 'scispaCyClaimsGene2.csv')

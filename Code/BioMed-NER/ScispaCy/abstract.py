@@ -19,6 +19,17 @@ def createAbstractOutputFile(inputFileName, outputFileName):
         with open('data/input/' + inputFileName) as inputFile:
             reader = csv.reader(inputFile, delimiter='\t')
             for row in reader:
-                writer.writerow([row[0], row[1], getGeneNames(row[2])])
+                if "2003" in row[1]: 
+                    writer.writerow([row[0], row[1], getGeneNames(row[2])])
+                if "2005" in row[1]: 
+                    writer.writerow([row[0], row[1], getGeneNames(row[2])])
+                if "2008" in row[1]: 
+                    writer.writerow([row[0], row[1], getGeneNames(row[2])])
+                if "2010" in row[1]: 
+                    writer.writerow([row[0], row[1], getGeneNames(row[2])])
+                if "2013" in row[1]: 
+                    writer.writerow([row[0], row[1], getGeneNames(row[2])])
+                if "2015" in row[1]: 
+                    writer.writerow([row[0], row[1], getGeneNames(row[2])])
             
 createAbstractOutputFile('abstract.tsv', 'scispaCyAbstractGene.csv')

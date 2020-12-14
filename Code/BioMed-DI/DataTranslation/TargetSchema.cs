@@ -128,6 +128,8 @@ namespace DataTranslation
 
         public string patentDate;
 
+        public string patentChapter;
+
         public string patentClaimsCount;
 
     }

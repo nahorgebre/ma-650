@@ -143,9 +143,9 @@ namespace DiseaseAssociationClustering
             foreach (Input inputItem in inputList)
             {
 
-                if (!inputItem.duration.Equals(string.Empty)) inputItem.duration = (float.Parse(inputItem.duration) * ratioDuration).ToString();
+                //if (!inputItem.duration.Equals(string.Empty)) inputItem.duration = (float.Parse(inputItem.duration) * ratioDuration).ToString();
 
-                if (!inputItem.age.Equals(string.Empty)) inputItem.age = (float.Parse(inputItem.age) * ratioAge).ToString();
+                //if (!inputItem.age.Equals(string.Empty)) inputItem.age = (float.Parse(inputItem.age) * ratioAge).ToString();
 
             }
 
