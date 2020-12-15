@@ -71,7 +71,7 @@ public class Levenshtein_StandardRecordBlocker
 
 		// create a matching rule
 		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
-				0.9);
+				0.7);
 		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 		
         // add comparators
