@@ -48,6 +48,9 @@ public class LR_StandardRecordBlocker
 	
     public static void main( String[] args ) throws Exception
     {
+
+        double t = Double.parseDouble(args[0]);
+
 		// loading data
         System.out.println("*\n*\tLoading datasets\n*");
         HashedDataSet<Gene, Attribute> ds1 = DI1Datasets.Heart();
@@ -71,7 +74,7 @@ public class LR_StandardRecordBlocker
 
 		// create a matching rule
 		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
-				0.9);
+			t);
 		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 		
         // add comparators
