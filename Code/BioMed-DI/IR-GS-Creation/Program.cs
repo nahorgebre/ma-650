@@ -85,7 +85,8 @@ namespace IR_GS_Creation
 
                     AWSupload.run(outputDirectory, parameter);
 
-                } else if (parameter.Equals("DI3"))
+                } 
+                else if (parameter.Equals("DI3"))
                 {
 
                     DI3.run();
