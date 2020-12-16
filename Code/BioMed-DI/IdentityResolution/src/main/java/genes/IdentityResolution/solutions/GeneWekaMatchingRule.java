@@ -17,7 +17,6 @@ public class GeneWekaMatchingRule {
 
         
 
-        /*
         GeneWekaMatchingRule matchingRule1 = new GeneWekaMatchingRule();
 
         matchingRule1.className = "ML_AdaBoost";
@@ -29,7 +28,7 @@ public class GeneWekaMatchingRule {
         matchingRule1.backwardSelection = true;
 
         matchingRuleList.add(matchingRule1);
-        */
+
 
 
         GeneWekaMatchingRule matchingRule2 = new GeneWekaMatchingRule();
