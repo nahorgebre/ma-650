@@ -31,6 +31,7 @@ import genes.IdentityResolution.solutions.WinterLogFile;
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName2;
+import genes.IdentityResolution.Comparators.NcbiIdComperator.NcbiIdComperator;
 // NcbiIdComperator
 import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityCosine.NcbiIdComperatorCosine;
 import genes.IdentityResolution.Comparators.NcbiIdComperator.SimilarityJaccardOnNGrams.NcbiIdComperatorJaccardOnNGrams;
@@ -108,6 +109,8 @@ public class ML_StandardRecordBlocker {
                 matchingRule.addComparator(new NcbiIdComperatorSorensenDice());
                 matchingRule.addComparator(new NcbiIdComperatorTokenizingJaccard());
                 */
+
+                matchingRule.addComparator(new NcbiIdComperator());
                 
                 matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
                 matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
