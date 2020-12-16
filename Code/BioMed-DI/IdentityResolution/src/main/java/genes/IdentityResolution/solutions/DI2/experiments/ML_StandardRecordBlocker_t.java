@@ -58,6 +58,8 @@ public class ML_StandardRecordBlocker_t {
 
         int fileNumber = Integer.parseInt(args[0]);
 
+        double d = Double.parseDouble(args[1]);
+
         /*
         for (int fileNumber = 1; fileNumber <= PartitionNumbers.kaessmann_2_all_gene_disease_pmid_associations; fileNumber++) { 
 */
