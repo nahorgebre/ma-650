@@ -72,9 +72,9 @@ namespace IR_GS_Creation
 
             Random random = new Random();
 
-            int gsSizeTrueFar = random.Next(2, 5);
+            int gsSizeTrueFar = random.Next(5, 10);
 
-            int gsSizeFalseFar = random.Next(2, 5);
+            int gsSizeFalseFar = random.Next(5, 10);
 
             int gsSizeTrueClose = 50 - gsSizeTrueFar;
 
