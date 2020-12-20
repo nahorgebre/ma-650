@@ -30,7 +30,11 @@ def createOutputFile(inputFileName, outputFileName):
                             itemList = item.split('|')
                             writer.writerow([ row[0], itemList[0], itemList[1], itemList[2] ])
                 else:
-                    writer.writerow([ row[0], "", "", "" ])
+                    if '|' in geneNames:
+                        itemList = item.split('|')
+                        writer.writerow([ row[0], itemList[0], itemList[1], itemList[2] ])
+                    else:
+                        writer.writerow([ row[0], "", "", "" ])
 
 
 titleInputFile = 'data/input/test/test_title.txt'
