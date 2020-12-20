@@ -25,8 +25,8 @@ def createOutputFile(inputFileName, outputFileName):
             for row1 in reader:
                 for row2 in getGeneNames(row1[1]).split('#'):
                     print(row2)
-                    print(len(row2))
-                    writer.writerow([ row1[0], row2.split('|')[0], row2.split('|')[1], row2.split('|')[2] ])
+                    #print(len(row2))
+                    #writer.writerow([ row1[0], row2.split('|')[0], row2.split('|')[1], row2.split('|')[2] ])
 
 
 titleInputFile = 'data/input/test/test_title.txt'
