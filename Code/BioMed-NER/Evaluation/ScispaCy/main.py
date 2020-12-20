@@ -19,7 +19,7 @@ def getGeneNames(document):
 def createOutputFile(inputFileName, outputFileName):
     with open(outputFileName, 'w', newline='') as outputFile:
         writer = csv.writer(outputFile, delimiter='\t')
-        writer.writerow(['patentNumber', 'NamedEntity', 'indexStart', 'indexEnd'])
+        writer.writerow(['patentNumber', 'namedEntity', 'indexStart', 'indexEnd'])
         with open(inputFileName) as inputFile:
             reader = csv.reader(inputFile, delimiter='\t')
             for row in reader:
