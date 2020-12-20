@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace PrepareGoldStandard
@@ -13,9 +14,13 @@ namespace PrepareGoldStandard
             HashSet<string> patNumHashSet = PatNum.getPatNumHashSet();
 
 
-            StringBuilder textTest = new StringBuilder();
+            StringBuilder textTestTitle = new StringBuilder();
 
-            StringBuilder textTrain = new StringBuilder();
+            StringBuilder textTrainTitle = new StringBuilder();
+
+            StringBuilder textTestAbstract = new StringBuilder();
+
+            StringBuilder textTrainAbstract = new StringBuilder();
 
             foreach (FileInfo file in Datasets.gs_text)
             {
@@ -33,14 +38,35 @@ namespace PrepareGoldStandard
                         if (patNumHashSet.Contains( (values[0].Trim()).Replace("US", string.Empty) ))
                         {
 
+                            List<string> titleList = new List<string>() { values[0], values[1] };
 
-                            textTest.AppendLine(line);
+                            string titleString = string.Join('\t', titleList);
+
+                            textTestTitle.AppendLine(titleString);
+
+
+                            List<string> abstractList = new List<string>() { values[0], values[2] };
+
+                            string abstractString = string.Join('\t', abstractList);
+
+                            textTestAbstract.AppendLine(abstractString);
 
                         }
                         else
                         {
 
-                            textTrain.AppendLine(line);
+                            List<string> titleList = new List<string>() { values[0], values[1] };
+
+                            string titleString = string.Join('\t', titleList);
+
+                            textTrainTitle.AppendLine(titleString);
+
+
+                            List<string> abstractList = new List<string>() { values[0], values[2] };
+
+                            string abstractString = string.Join('\t', abstractList);
+
+                            textTrainAbstract.AppendLine(abstractString);
 
                         }
 
@@ -50,17 +76,30 @@ namespace PrepareGoldStandard
 
             }
 
-            FileInfo textTestFile = new FileInfo(Environment.CurrentDirectory + "/data/output/test_text.txt");
+            FileInfo titleTestFile = new FileInfo(Environment.CurrentDirectory + "/data/output/test_title.txt");
 
-            textTestFile.Directory.Create();
+            titleTestFile.Directory.Create();
 
-            File.WriteAllText(textTestFile.FullName, textTest.ToString());
+            File.WriteAllText(titleTestFile.FullName, textTestTitle.ToString());
 
-            FileInfo textTrainFile = new FileInfo(Environment.CurrentDirectory + "/data/output/train_text.txt");
+            FileInfo titleTrainFile = new FileInfo(Environment.CurrentDirectory + "/data/output/train_title.txt");
 
-            textTestFile.Directory.Create();
+            titleTrainFile.Directory.Create();
 
-            File.WriteAllText(textTrainFile.FullName, textTrain.ToString());
+            File.WriteAllText(titleTrainFile.FullName, textTrainTitle.ToString());
+
+
+            FileInfo abstractTestFile = new FileInfo(Environment.CurrentDirectory + "/data/output/test_abstract.txt");
+
+            abstractTestFile.Directory.Create();
+
+            File.WriteAllText(abstractTestFile.FullName, textTestAbstract.ToString());
+
+            FileInfo abstarctTrainFile = new FileInfo(Environment.CurrentDirectory + "/data/output/train_abstract.txt");
+
+            abstarctTrainFile.Directory.Create();
+
+            File.WriteAllText(abstarctTrainFile.FullName, textTrainAbstract.ToString());
 
 
 
@@ -153,6 +192,9 @@ namespace PrepareGoldStandard
             entityTrainAbstractFile.Directory.Create();
 
             File.WriteAllText(entityTrainAbstractFile.FullName, entityTrainAbstarct.ToString());
+
+
+            AWSupload.run();
 
         }
         
