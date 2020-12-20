@@ -20,7 +20,7 @@ def createOutputFile(inputFileName, outputFileName):
     with open(outputFileName, 'w', newline='') as outputFile:
         writer = csv.writer(outputFile, delimiter='\t')
         writer.writerow(['patentNumber', 'NamedEntity', 'indexStart', 'indexEnd'])
-        with open('data/input/' + inputFileName) as inputFile:
+        with open(inputFileName) as inputFile:
             reader = csv.reader(inputFile, delimiter='\t')
             for row1 in reader:
                 for row2 in getGeneNames(row1[1]).split('#'):
