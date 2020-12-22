@@ -49,7 +49,9 @@ namespace DataTranslation
 
             Console.WriteLine("# of records without NcbiId: " + numbRecordsWoNcbiId);
 
-            Console.WriteLine("Frequency of records without NcbiId: " + (numbRecordsWoNcbiId / numbRecords) );
+            double freq = numbRecordsWoNcbiId / numbRecords;
+
+            Console.WriteLine("Frequency of records without NcbiId: " + freq );
 
         }
 
