@@ -11,12 +11,13 @@ public class GeneWekaMatchingRule {
     public String modelType;
     public Boolean backwardSelection; 
 
-    public static List<GeneWekaMatchingRule> createGeneMatchingRuleList() {
+    public static List<GeneWekaMatchingRule> createGeneMatchingRuleList() 
+    {
 
         List<GeneWekaMatchingRule> matchingRuleList = new ArrayList<GeneWekaMatchingRule>();
 
         
-
+        /*
         GeneWekaMatchingRule matchingRule1 = new GeneWekaMatchingRule();
 
         matchingRule1.className = "ML_AdaBoost";
@@ -56,10 +57,8 @@ public class GeneWekaMatchingRule {
         matchingRule3.backwardSelection = true;
 
         matchingRuleList.add(matchingRule3);
-
+        */
         
-        
-
 
         GeneWekaMatchingRule matchingRule5 = new GeneWekaMatchingRule();
 
@@ -74,8 +73,8 @@ public class GeneWekaMatchingRule {
         matchingRuleList.add(matchingRule5);
         
 
-
         return matchingRuleList;
+
     }
     
 }

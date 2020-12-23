@@ -107,7 +107,7 @@ public class ML_SortedNeighbourhoodBlocker {
                 // create matching rule
                 String options[] = geneMatchingRule.options;
                 String modelType = geneMatchingRule.modelType;
-                WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+                WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.9, modelType, options);
                 if (geneMatchingRule.backwardSelection) {
                     matchingRule.setBackwardSelection(true);
                 }
@@ -138,7 +138,7 @@ public class ML_SortedNeighbourhoodBlocker {
                 learner.learnMatchingRule( ds1, ds2, null, matchingRule, gsTrain);
     
                 // create a blocker (blocking strategy)
-                SortedNeighbourhoodBlocker<Gene, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GeneBlockingKeyByGeneName(), 1);
+                SortedNeighbourhoodBlocker<Gene, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GeneBlockingKeyByGeneName(), 500);
                 blocker.setMeasureBlockSizes(true);
                 blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
