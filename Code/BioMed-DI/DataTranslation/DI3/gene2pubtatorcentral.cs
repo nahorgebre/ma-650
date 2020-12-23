@@ -17,7 +17,7 @@ namespace DataTranslation
 
             Console.WriteLine("Load NCBI ID HashSet!");
 
-            HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
+            //HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
 
 
             Console.WriteLine("Run Data Translation!");
@@ -46,8 +46,8 @@ namespace DataTranslation
 
                             // Taxonomy
 
-                            if (ncbiIdHashSet.Contains(ncbiId))
-                            {
+                            //if (ncbiIdHashSet.Contains(ncbiId))
+                            //{
 
                                 Gene gene = new Gene();
 
@@ -81,7 +81,7 @@ namespace DataTranslation
 
                                 recordIdCounter++;
 
-                            }
+                            //}
 
                         }
 
@@ -102,7 +102,7 @@ namespace DataTranslation
 
             Console.WriteLine("Load NCBI ID HashSet!");
 
-            HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
+            //HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
 
 
             Console.WriteLine("Run Data Translation!");
@@ -154,8 +154,8 @@ namespace DataTranslation
                                 foreach (String ncbiId in ncbiIdArray)
                                 {
 
-                                    if (ncbiIdHashSet.Contains(ncbiId))
-                                    {
+                                    //if (ncbiIdHashSet.Contains(ncbiId))
+                                    //{
 
                                         Gene gene = new Gene();
 
@@ -189,7 +189,7 @@ namespace DataTranslation
 
                                         recordIdCounter++;
 
-                                    }
+                                    //}
 
                                 }
 
