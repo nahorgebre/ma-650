@@ -122,6 +122,8 @@ namespace DataTranslation
 
         public string associatedNcbiId;
 
+        public string associatedOrgan;
+
     }
 
 
