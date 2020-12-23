@@ -15,7 +15,7 @@ namespace DataTranslation
 
             gene2pubtatorcentral.runDataTranslationMultipleOutputs();
 
-            KaessmannDiseaseAssociations.runDataTranslation();
+            Kaessmann.runDataTranslation();
 
         }
 

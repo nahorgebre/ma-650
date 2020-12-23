@@ -20,9 +20,19 @@ namespace DataTranslation
 
             gene_list = Output.adjustRecordId(gene_list, "DI1_{0}_rid");
 
+
             Output.createXml(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/DI1_dt.xml"));
 
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI3.outputDirectory + "/DI1_dt.xml"));
+
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/DI1_dt.xml"));
+
+
             Output.createTsv(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/DI1_dt.tsv"));
+
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI3.outputDirectory + "/DI1_dt.tsv"));
+
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/DI1_dt.tsv"));
 
         }
 
