@@ -246,6 +246,8 @@ namespace DataFusion2
 
         public string source;
 
+        public string associatedNcbiId;
+
     }
 
 
@@ -257,6 +259,10 @@ namespace DataFusion2
         public string ressource;
 
         public string year;
+
+        public string associatedNcbiId;
+
+        public string associatedOrgan;
 
     }
 

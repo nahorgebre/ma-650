@@ -469,6 +469,13 @@ namespace DataFusion2
 
                 }
 
+                if (checkIfNodeExist(node, "associatedNcbiId"))
+                {
+
+                    diseaseAssociation.associatedNcbiId = (node?.SelectSingleNode("associatedNcbiId").InnerText ?? null);
+
+                }
+
                 diseaseAssociationList.Add(diseaseAssociation);
 
             }
@@ -512,6 +519,20 @@ namespace DataFusion2
                 {
 
                     genePublicationMention.ressource = (node?.SelectSingleNode("ressource").InnerText ?? null);
+
+                }
+
+                if (checkIfNodeExist(node, "associatedNcbiId"))
+                {
+
+                    genePublicationMention.associatedNcbiId = (node?.SelectSingleNode("associatedNcbiId").InnerText ?? null);
+
+                }
+
+                if (checkIfNodeExist(node, "associatedOrgan"))
+                {
+
+                    genePublicationMention.associatedOrgan = (node?.SelectSingleNode("associatedOrgan").InnerText ?? null);
 
                 }
 

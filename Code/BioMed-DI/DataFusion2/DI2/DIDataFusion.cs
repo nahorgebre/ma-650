@@ -27,6 +27,13 @@ namespace DataFusion2
 
             Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DIDatasets.getDatasets(), recordIdHashSet);
 
+
+            Console.WriteLine("Fuse datasets!");
+
+            List<Gene> fusedRecords = DataFusionEngine.fuseRecords(mergedCorrespondences, datasets);
+
+            Output.createXmlGene(fusedRecords, new FileInfo(string.Format("{0}/data/output/DI2/DI2-fused.xml", Environment.CurrentDirectory)));
+
         }
 
     }

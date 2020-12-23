@@ -6,7 +6,7 @@ namespace IR_GS_Creation
     class DI3Datasets
     {
 
-        public static FileInfo DI1_dt = new FileInfo(Environment.CurrentDirectory + "/data/input/DI2/DI1_dt.tsv");        
+        public static FileInfo DI1_dt = new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/DI1_dt.tsv");        
         
         public static FileInfo getGene2pubtatorcentral_dt(int fileNumber) {
             
