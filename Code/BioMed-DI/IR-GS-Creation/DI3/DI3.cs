@@ -8,15 +8,15 @@ namespace IR_GS_Creation
     class DI3
     {
 
-        public static int kaessmannDiseaseAssociations_2_gene2pubtatorcentral_partitionNumbers = 50;
+        public static int kaessmann_2_gene2pubtatorcentral_partitionNumbers = 50;
 
         public static void run() 
         {
 
-            for (int i = 1; i <= kaessmannDiseaseAssociations_2_gene2pubtatorcentral_partitionNumbers; i++)
+            for (int i = 1; i <= kaessmann_2_gene2pubtatorcentral_partitionNumbers; i++)
             {
 
-                DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/DI3/kaessmannDiseaseAssociations_2_gene2pubtatorcentral_" + i);
+                DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory + "/data/output/DI3/kaessmann_2_gene2pubtatorcentral_" + i);
 
                 directory.Create();
 
@@ -44,7 +44,7 @@ namespace IR_GS_Creation
                     List<Goldstandard> gsListTrueCornerCase, 
                     List<Goldstandard> gsListFalse, 
                     List<Goldstandard> gsListFalseCornerCase
-                    ) = Comparison_NcbiId_GeneNames.compare(DI3Datasets.DI2_dt, 
+                    ) = Comparison_NcbiId_GeneNames.compare(DI3Datasets.DI1_dt, 
                         DI3Datasets.getGene2pubtatorcentral_dt(i));
 
 

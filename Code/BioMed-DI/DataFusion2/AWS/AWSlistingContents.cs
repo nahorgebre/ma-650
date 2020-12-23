@@ -69,13 +69,8 @@ namespace DataFusion2
                 
                 string checkMatchingEngine = string.Empty;
 
-                if (solution.Equals("DI1"))
-                {
 
-                    checkMatchingEngine = DI1MatchingEngine.checkMatchingEngine(comparisonName);
-                    
-                }
-                else if (solution.Equals("DI2"))
+                if (solution.Equals("DI2"))
                 {
 
                     checkMatchingEngine = DI2MatchingEngine.checkMatchingEngine(comparisonName);

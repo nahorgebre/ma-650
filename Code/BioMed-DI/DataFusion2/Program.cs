@@ -44,29 +44,7 @@ namespace DataFusion2
 
             AWSlistingContents.createDatasetsShellScriptOutput("DI4");
 
-            foreach (String parameter in args)
-            {
-                
-                if (parameter.Equals("DI1"))
-                {
-
-                    DI1DataFusion.run();
-
-                }
-                else if (parameter.Equals("DI2"))
-                {
-
-                    DI2DataFusion.run();
-
-                }
-                else if (parameter.Equals("DI3"))
-                {
-
-                    DI3DataFusion.run();
-
-                }
-
-            }
+            
 
         }
 
