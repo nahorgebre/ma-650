@@ -106,6 +106,8 @@ namespace DataTranslation
 
         public string source;
 
+        public string associatedNcbiId;
+
     }
 
 
@@ -117,6 +119,8 @@ namespace DataTranslation
         public string ressource;
 
         public string year;
+
+        public string associatedNcbiId;
 
     }
 

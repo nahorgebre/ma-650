@@ -1,19 +1,178 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
-
+using System.Collections.Generic;
 
 namespace EnrichFusedDataset
 {
+
     class AIM1output
     {
+
+        public string year;
+
+        // pubAll
+        public int pubAll = 0;
+        public int pubAllMusMusculus = 0;
+        public int pubAllHomoSapiens = 0;
+        public int pubAllMusMusculusHomoSapiens = 0;
+
+        // pubSame
+        public int pubSame = 0;
+        public int pubSameMusMusculus = 0;
+        public int pubSameHomoSapiens = 0;
+        public int pubSameMusMusculusHomoSapiens = 0;
+
+        // pubDiff
+        public int pubDiff = 0;
+        public int pubDiffMusMusculus = 0;
+        public int pubDiffHomoSapiens = 0;
+        public int pubDiffMusMusculusHomoSapiens = 0;
+
+
+        public static void run()
+        {
+
+            List<AIM1output> aim1List = getAim1List();
+
+            // aim1
+            // year, pubAll, pubSame, pubDiff
+            FileInfo aim1 = new FileInfo(Environment.CurrentDirectory + "/AIM1/aim1.tsv");
+            using (StreamWriter sw = new StreamWriter(aim1.FullName))
+            {
+
+                List<string> firstLine = new List<string>() { "year", "pubAll", "pubSame", "pubDiff" };
+                
+                sw.WriteLine(string.Join('\t', firstLine));
+
+            }
+
+            // aim1MusMusculus
+            // year, pubAllMusMusculus, pubSameMusMusculus, pubDiffMusMusculus
+            FileInfo aim1MusMusculus = new FileInfo(Environment.CurrentDirectory + "/AIM1/aim1MusMusculus.tsv");
+            using (StreamWriter sw = new StreamWriter(aim1MusMusculus.FullName))
+            {
+
+                List<string> firstLine = new List<string>() { "year", "pubAllMusMusculus", "pubSameMusMusculus", "pubDiffMusMusculus" };
+                
+                sw.WriteLine(string.Join('\t', firstLine));
+                
+            }
+
+            // aim1HomoSapiens
+            // year, pubAllHomoSapiens, pubSameHomoSapiens, pubDiffHomoSapiens
+            FileInfo aim1HomoSapiens = new FileInfo(Environment.CurrentDirectory + "/AIM1/aim1HomoSapiens.tsv");
+            using (StreamWriter sw = new StreamWriter(aim1HomoSapiens.FullName))
+            {
+
+                List<string> firstLine = new List<string>() { "year", "pubAllHomoSapiens", "pubSameHomoSapiens", "pubDiffHomoSapiens" };
+                
+                sw.WriteLine(string.Join('\t', firstLine));
+                
+            }
+
+            // aim1MusMusculusHomoSapiens
+            // year, pubAllMusMusculusHomoSapiens, pubSameMusMusculusHomoSapiens, pubDiffMusMusculusHomoSapiens
+            FileInfo aim1MusMusculusHomoSapiens = new FileInfo(Environment.CurrentDirectory + "/AIM1/aim1MusMusculusHomoSapiens.tsv");
+            using (StreamWriter sw = new StreamWriter(aim1MusMusculusHomoSapiens.FullName))
+            {
+
+                List<string> firstLine = new List<string>() { "year", "pubAllMusMusculusHomoSapiens", "pubSameMusMusculusHomoSapiens", "pubDiffMusMusculusHomoSapiens" };
+                
+                sw.WriteLine(string.Join('\t', firstLine));
+                
+            }
+
+        }
+
+        public static List<AIM1output> getAim1List()
+        {
+
+            List<AIM1output> aim1List = new List<AIM1output>();
+
+
+            List<Gene> geneList = Parser.getGeneList(EnrichDataset.analysis2Output);
+
+
+            HashSet<string> homoSapiensHashSet = TaxonomyDatasets.getHomoSapiens();
+
+            HashSet<string> musMusculusHashSet = TaxonomyDatasets.getMusMusculus();
+
+            HashSet<string> musMusculusHomoSapiensHashSet =TaxonomyDatasets.getMusMusculusHomoSapiens();
+
+
+            Dictionary<int, AIM1output> aim1Dictionary = new Dictionary<int, AIM1output>();
+
+            foreach (Gene geneItem in geneList)
+            {
+
+                foreach (GenePublicationMention publicationItem in geneItem.publicationMentions)
+                {
+
+                    int year = Int32.Parse(publicationItem.year);
+
+                    if (!aim1Dictionary.ContainsKey(year))
+                    {
+                        
+                        aim1Dictionary.Add(year, new AIM1output{year = publicationItem.year, pubAll = 0, pubAllMusMusculus = 0, pubAllHomoSapiens = 0, 
+                            pubAllMusMusculusHomoSapiens = 0, pubSame = 0, pubSameMusMusculus = 0, pubSameHomoSapiens = 0, pubSameMusMusculusHomoSapiens = 0, 
+                            pubDiff = 0, pubDiffMusMusculus = 0, pubDiffHomoSapiens = 0, pubDiffMusMusculusHomoSapiens = 0} );
+
+                    }
+
+
+                    AIM1output item = aim1Dictionary[year];
+
+                    // all
+
+                    
+
+                    aim1Dictionary[year] = item;
+
+
+
+                    // all
+
+                    AIM1output item_all = aim1Dictionary[year];
+
+                    aim1Dictionary[year] = item_all;
+
+
+                    // mus musculus
+
+                    AIM1output item_mus_musculus = aim1Dictionary[year];
+
+                    aim1Dictionary[year] = item_mus_musculus;
+
+
+                    // homo sapiens
+
+                    AIM1output item_homo_sapiens = aim1Dictionary[year];
+
+                    aim1Dictionary[year] = item_homo_sapiens;
+
+
+                    // mus musculus & homo sapiens
+
+                    AIM1output item_mus_musculus_homo_sapiens = aim1Dictionary[year];
+
+                    aim1Dictionary[year] = item_mus_musculus_homo_sapiens;
+                    
+                }
+                
+            }
+
+            return aim1List;
+
+        }
+
+
 
         // publication year
         // average # of genes with same behaviour in humans vs mice
 
         //Overall number of genes with Same-Classification in each publication year
-        public static void run()
+        public static void runx()
         {
 
             List<Gene> geneList = Parser.getGeneList(new FileInfo(Environment.CurrentDirectory + "/data/output/analysis2.xml"));

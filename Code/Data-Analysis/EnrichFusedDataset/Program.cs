@@ -10,7 +10,7 @@ namespace EnrichFusedDataset
         static void Main(string[] args)
         {
 
-            //EnrichDataset.run();
+            EnrichDataset.run();
 
             AIM1output.run2();
 
