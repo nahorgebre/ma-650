@@ -26,11 +26,11 @@ public class DI3Datasets {
     }
 
 
-    public static HashedDataSet<Gene, Attribute> kaessmannDiseaseAssociations() throws Exception {
+    public static HashedDataSet<Gene, Attribute> kaessmann() throws Exception {
 
         HashedDataSet<Gene, Attribute> ds = new HashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/input/DI3/DI2_dt.xml"), "/genes/gene", ds);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI3/DI1_dt.xml"), "/genes/gene", ds);
 
         return ds;
 

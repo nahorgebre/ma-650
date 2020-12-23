@@ -52,11 +52,11 @@ public class ML_SortedNeighbourhoodBlocker {
 
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = DI3Datasets.kaessmannDiseaseAssociations();
+        HashedDataSet<Gene, Attribute> ds1 = DI3Datasets.kaessmann();
         HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(fileNumber);
 
         // goldstandard directory
-        String comparisonDescription = "kaessmannDiseaseAssociations_2_gene2pubtatorcentral_" + fileNumber;
+        String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_" + fileNumber;
         String solution = "DI3";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 

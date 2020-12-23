@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI1.experiments;
+package genes.IdentityResolution.solutions.DI3.experiments;
 
 // java
 import java.io.File;
@@ -41,7 +41,7 @@ import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Blocker;
 
-public class SorensenDice_StandardRecordBlocker 
+public class Levenshtein_StandardRecordBlocker 
 {
 
 	private static final Logger logger = WinterLogManager.activateLogger("traceFile");
@@ -49,7 +49,7 @@ public class SorensenDice_StandardRecordBlocker
     public static void main( String[] args ) throws Exception
     {
 
-        double t = Double.parseDouble(args[0]);
+        double t = Double.parseDouble(args[0]);;
 
 		// loading data
         System.out.println("*\n*\tLoading datasets\n*");
@@ -60,7 +60,7 @@ public class SorensenDice_StandardRecordBlocker
         String comparisonDescription = "Heart_2_Heart_Ensembl_NCBI_Crosswalk";
         String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
-        String className = "SorensenDice_StandardRecordBlocker";
+        String className = "Levenshtein_StandardRecordBlocker";
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
@@ -78,8 +78,9 @@ public class SorensenDice_StandardRecordBlocker
 		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 		
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComperatorSorensenDice(), 0.5);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice(), 0.5);
+        matchingRule.addComparator(new EnsemblIdComperatorLevenshtein(), 0.5);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseLevenshtein(), 0.5);
+
 
 		// create a blocker (blocking strategy)
 		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());

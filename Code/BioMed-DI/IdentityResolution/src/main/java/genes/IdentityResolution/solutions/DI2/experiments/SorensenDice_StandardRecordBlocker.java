@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI1.experiments;
+package genes.IdentityResolution.solutions.DI2.experiments;
 
 // java
 import java.io.File;
@@ -18,14 +18,8 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 
 // comparators
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorCosine;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorLowerCaseCosine;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevenshtein.EnsemblIdComperatorLevenshtein;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevenshtein.EnsemblIdComperatorLowerCaseLevenshtein;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorLowerCaseSorensenDice;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilaritySorensenDice.EnsemblIdComperatorSorensenDice;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorLowerCaseTokenizingJaccard;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorTokenizingJaccard;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorLowerCaseSorensenDice;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorensenDice.GeneNameComperatorSorensenDice;
 
 // model
 import genes.IdentityResolution.model.Gene.Gene;
@@ -35,13 +29,13 @@ import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
 
 // solutions
 import genes.IdentityResolution.solutions.Correspondences;
-import genes.IdentityResolution.solutions.DI1.DI1Datasets;
+import genes.IdentityResolution.solutions.DI2.DI2Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Blocker;
 
-public class Levenshtein_StandardRecordBlocker 
+public class SorensenDice_StandardRecordBlocker 
 {
 
 	private static final Logger logger = WinterLogManager.activateLogger("traceFile");
@@ -49,18 +43,18 @@ public class Levenshtein_StandardRecordBlocker
     public static void main( String[] args ) throws Exception
     {
 
-        double t = Double.parseDouble(args[0]);;
+        double t = Double.parseDouble(args[0]);
 
 		// loading data
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = DI1Datasets.Heart();
-        HashedDataSet<Gene, Attribute> ds2 = DI1Datasets.Heart_Ensembl_NCBI_Crosswalk();
+        HashedDataSet<Gene, Attribute> ds1 = DI2Datasets.kaessmann();
+        HashedDataSet<Gene, Attribute> ds2 = DI2Datasets.all_gene_disease_pmid_associations(1);
 
 		// load the gold standard (test set)
-        String comparisonDescription = "Heart_2_Heart_Ensembl_NCBI_Crosswalk";
-        String solution = "DI1";
+        String comparisonDescription = "kaessmann_2_all_gene_disease_pmid_associations_1";
+        String solution = "DI2";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
-        String className = "Levenshtein_StandardRecordBlocker";
+        String className = "SorensenDice_StandardRecordBlocker";
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
@@ -73,14 +67,12 @@ public class Levenshtein_StandardRecordBlocker
         Date startDate = new Date();
 
 		// create a matching rule
-		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
-				t);
+		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(t);
 		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 		
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComperatorLevenshtein(), 0.5);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseLevenshtein(), 0.5);
-
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorSorensenDice(), 0.5);
 
 		// create a blocker (blocking strategy)
 		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());

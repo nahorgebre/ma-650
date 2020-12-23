@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI1.experiments;
+package genes.IdentityResolution.solutions.DI3.experiments;
 
 // java
 import java.io.File;
@@ -41,7 +41,7 @@ import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Blocker;
 
-public class Jaccard_StandardRecordBlocker 
+public class SorensenDice_StandardRecordBlocker 
 {
 
 	private static final Logger logger = WinterLogManager.activateLogger("traceFile");
@@ -60,7 +60,7 @@ public class Jaccard_StandardRecordBlocker
         String comparisonDescription = "Heart_2_Heart_Ensembl_NCBI_Crosswalk";
         String solution = "DI1";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
-        String className = "Jaccard_StandardRecordBlocker";
+        String className = "SorensenDice_StandardRecordBlocker";
 
         // load the gold standard (test set)
         MatchingGoldStandard gsTest = GoldStandard.getTestDataset(goldstandardDirectory);
@@ -78,8 +78,8 @@ public class Jaccard_StandardRecordBlocker
 		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 		
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard(), 0.5);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard(), 0.5);
+        matchingRule.addComparator(new EnsemblIdComperatorSorensenDice(), 0.5);
+        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseSorensenDice(), 0.5);
 
 		// create a blocker (blocking strategy)
 		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
