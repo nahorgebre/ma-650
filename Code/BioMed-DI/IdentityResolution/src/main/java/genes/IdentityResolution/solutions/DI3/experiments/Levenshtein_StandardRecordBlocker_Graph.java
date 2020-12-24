@@ -35,7 +35,7 @@ import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Blocker;
 
-public class Levenshtein_StandardRecordBlocker 
+public class Levenshtein_StandardRecordBlocker_Graph
 {
 
 	private static final Logger logger = WinterLogManager.activateLogger("traceFile");
@@ -53,9 +53,9 @@ public class Levenshtein_StandardRecordBlocker
         HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(1);
 
 		// load the gold standard (test set)
-        String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_1";
+        String comparisonDescription = "Levenshtein_StandardRecordBlocker_Graph_" + t;
         String solution = "DI3";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+        String goldstandardDirectory = "data/goldstandard/" + solution + "/kaessmann_2_gene2pubtatorcentral_1";
         String className = "Levenshtein_StandardRecordBlocker";
 
         // load the gold standard (test set)

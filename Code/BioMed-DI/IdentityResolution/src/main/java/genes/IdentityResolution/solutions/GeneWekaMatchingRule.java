@@ -16,10 +16,10 @@ public class GeneWekaMatchingRule {
 
         List<GeneWekaMatchingRule> matchingRuleList = new ArrayList<GeneWekaMatchingRule>();
 
-        // 0 - Ada Boost
-        // 1 - Decision Tree
-        // 2 - K-NN
-        // 3 - Simple Logistic
+        // 0 - Ada Boost - ML_AdaBoost
+        // 1 - Decision Tree - ML_DecisionTree
+        // 2 - K-NN - ML_KNN
+        // 3 - Simple Logistic - ML_SimpleLogistic
 
         
         GeneWekaMatchingRule matchingRule1 = new GeneWekaMatchingRule();

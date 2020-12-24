@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI3.experiments;
+package genes.IdentityResolution.solutions.DI2.experiments;
 
 // java
 import java.io.File;
@@ -29,13 +29,13 @@ import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
 
 // solutions
 import genes.IdentityResolution.solutions.Correspondences;
-import genes.IdentityResolution.solutions.DI3.DI3Datasets;
+import genes.IdentityResolution.solutions.DI2.DI2Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Blocker;
 
-public class Levenshtein_StandardRecordBlocker 
+public class Levenshtein_StandardRecordBlocker_Graph
 {
 
 	private static final Logger logger = WinterLogManager.activateLogger("traceFile");
@@ -43,19 +43,19 @@ public class Levenshtein_StandardRecordBlocker
     public static void main( String[] args ) throws Exception
     {
 
-        //WinterLogFile.deleteLog();
+        WinterLogFile.deleteLog();
 
         double t = Double.parseDouble(args[0]);;
 
 		// loading data
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = DI3Datasets.kaessmann();
-        HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(1);
+        HashedDataSet<Gene, Attribute> ds1 = DI2Datasets.kaessmann();
+        HashedDataSet<Gene, Attribute> ds2 = DI2Datasets.all_gene_disease_pmid_associations(1);
 
 		// load the gold standard (test set)
-        String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_1";
-        String solution = "DI3";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
+        String comparisonDescription = "Levenshtein_StandardRecordBlocker_Graph_" + t;
+        String solution = "DI2";
+        String goldstandardDirectory = "data/goldstandard/" + solution + "/kaessmann_2_all_gene_disease_pmid_associations_1";
         String className = "Levenshtein_StandardRecordBlocker";
 
         // load the gold standard (test set)
