@@ -56,7 +56,7 @@ public class GeneBlockingKeyByGeneName extends
             }
             */
 
-            if (nameLength >= 4) {
+            if (nameLength >= 3) {
 
                 int keyIndex = geneName.length() / 2;
                 key = geneName.substring(0, keyIndex);
@@ -69,11 +69,14 @@ public class GeneBlockingKeyByGeneName extends
 
                 key = geneName;
 
-            } else if (nameLength == 3) {
+            } 
+            /*
+            else if (nameLength == 3) {
             
                 key = geneName;
 
             }
+            */
         
         }
 
