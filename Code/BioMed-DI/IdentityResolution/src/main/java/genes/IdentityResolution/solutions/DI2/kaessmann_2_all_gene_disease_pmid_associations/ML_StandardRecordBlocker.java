@@ -134,7 +134,7 @@ public class ML_StandardRecordBlocker {
         Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
 
         // copy winter log
-        WinterLogFile.copyLogFile(outputDirectory);
+        //WinterLogFile.copyLogFile(outputDirectory);
 
     }
 
