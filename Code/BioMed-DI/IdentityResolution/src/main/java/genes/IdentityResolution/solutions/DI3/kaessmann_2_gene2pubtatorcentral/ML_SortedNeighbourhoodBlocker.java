@@ -5,12 +5,15 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+
 // winter
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
+import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleLearner;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.SortedNeighbourhoodBlocker;
@@ -43,6 +46,8 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokeniz
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
 
 public class ML_SortedNeighbourhoodBlocker {
+
+    private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 
     public static void main(String[] args) throws Exception {
 
