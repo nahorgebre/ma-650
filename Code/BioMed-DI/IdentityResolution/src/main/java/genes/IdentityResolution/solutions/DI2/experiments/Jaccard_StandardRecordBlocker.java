@@ -18,8 +18,8 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 
 // comparators
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorLowerCaseTokenizingJaccard;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityTokenizingJaccard.EnsemblIdComperatorTokenizingJaccard;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 
 // model
 import genes.IdentityResolution.model.Gene.Gene;
@@ -42,6 +42,8 @@ public class Jaccard_StandardRecordBlocker
 	
     public static void main( String[] args ) throws Exception
     {
+
+        WinterLogFile.deleteLog();
 
         double t = Double.parseDouble(args[0]);
 
@@ -67,13 +69,12 @@ public class Jaccard_StandardRecordBlocker
         Date startDate = new Date();
 
 		// create a matching rule
-		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
-				t);
+		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(t);
 		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 		
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComperatorTokenizingJaccard(), 0.5);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseTokenizingJaccard(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard(), 0.5);
 
 		// create a blocker (blocking strategy)
 		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());

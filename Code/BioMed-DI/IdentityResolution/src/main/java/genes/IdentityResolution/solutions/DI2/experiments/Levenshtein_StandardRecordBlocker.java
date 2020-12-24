@@ -18,8 +18,8 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 
 // comparators
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevenshtein.EnsemblIdComperatorLevenshtein;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityLevenshtein.EnsemblIdComperatorLowerCaseLevenshtein;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLevenshtein;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLowerCaseLevenshtein;
 
 // model
 import genes.IdentityResolution.model.Gene.Gene;
@@ -42,6 +42,8 @@ public class Levenshtein_StandardRecordBlocker
 	
     public static void main( String[] args ) throws Exception
     {
+
+        WinterLogFile.deleteLog();
 
         double t = Double.parseDouble(args[0]);;
 
@@ -67,13 +69,12 @@ public class Levenshtein_StandardRecordBlocker
         Date startDate = new Date();
 
 		// create a matching rule
-		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
-				t);
+		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(t);
 		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 		
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComperatorLevenshtein(), 0.5);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseLevenshtein(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorLevenshtein(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein(), 0.5);
 
 
 		// create a blocker (blocking strategy)

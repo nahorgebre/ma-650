@@ -18,8 +18,8 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 
 // comparators
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorCosine;
-import genes.IdentityResolution.Comparators.EnsemblIdComperator.SimilarityCosine.EnsemblIdComperatorLowerCaseCosine;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorCosine;
+import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorLowerCaseCosine;
 
 // model
 import genes.IdentityResolution.model.Gene.Gene;
@@ -42,6 +42,8 @@ public class Cosine_StandardRecordBlocker
 	
     public static void main( String[] args ) throws Exception
     {
+
+        WinterLogFile.deleteLog();
 
         double t = Double.parseDouble(args[0]);
 
@@ -67,13 +69,12 @@ public class Cosine_StandardRecordBlocker
         Date startDate = new Date();
 
 		// create a matching rule
-		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
-				t);
+		LinearCombinationMatchingRule<Gene, Attribute> matchingRule = new LinearCombinationMatchingRule<>(t);
 		matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000, gsTest);
 		
         // add comparators
-        matchingRule.addComparator(new EnsemblIdComperatorCosine(), 0.5);
-        matchingRule.addComparator(new EnsemblIdComperatorLowerCaseCosine(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorCosine(), 0.5);
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine(), 0.5);
 
 		// create a blocker (blocking strategy)
 		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());

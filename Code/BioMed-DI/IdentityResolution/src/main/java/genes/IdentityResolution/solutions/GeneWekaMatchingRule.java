@@ -16,7 +16,11 @@ public class GeneWekaMatchingRule {
 
         List<GeneWekaMatchingRule> matchingRuleList = new ArrayList<GeneWekaMatchingRule>();
 
-        
+        // 0 - Ada Boost
+        // 1 - Decision Tree
+        // 2 - K-NN
+        // 3 - Simple Logistic
+
         
         GeneWekaMatchingRule matchingRule1 = new GeneWekaMatchingRule();
 
@@ -59,7 +63,7 @@ public class GeneWekaMatchingRule {
         matchingRuleList.add(matchingRule3);
         
         
-        /*
+        
         GeneWekaMatchingRule matchingRule5 = new GeneWekaMatchingRule();
 
         matchingRule5.className = "ML_SimpleLogistic";
@@ -71,7 +75,7 @@ public class GeneWekaMatchingRule {
         matchingRule5.backwardSelection = false;
 
         matchingRuleList.add(matchingRule5);
-        */
+        
 
         return matchingRuleList;
 

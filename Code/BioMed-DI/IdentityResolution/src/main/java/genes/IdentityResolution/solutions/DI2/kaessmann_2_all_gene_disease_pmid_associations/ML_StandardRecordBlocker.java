@@ -31,10 +31,8 @@ import genes.IdentityResolution.solutions.WinterLogFile;
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 
-// NcbiIdComperator
+// Comperator
 import genes.IdentityResolution.Comparators.NcbiIdComperator.NcbiIdComperator;
-
-// GeneNameComperator
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorCosine;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityCosine.GeneNameComperatorLowerCaseCosine;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevenshtein.GeneNameComperatorLevenshtein;
@@ -48,7 +46,11 @@ public class ML_StandardRecordBlocker {
 
     public static void main(String[] args) throws Exception {
 
+        WinterLogFile.deleteLog();
+
         int fileNumber = Integer.parseInt(args[0]);
+
+        int matchingRuleIndex = Integer.parseInt(args[1]);
 
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
@@ -66,74 +68,73 @@ public class ML_StandardRecordBlocker {
 
         // iterate gene matching rules
         List<GeneWekaMatchingRule> matchingRuleList = GeneWekaMatchingRule.createGeneMatchingRuleList();
-        for (GeneWekaMatchingRule geneMatchingRule : matchingRuleList) {
 
-            String blockerName = "_StandardRecordBlocker";
-            String className = geneMatchingRule.className + blockerName;
+        GeneWekaMatchingRule geneMatchingRule = matchingRuleList.get(matchingRuleIndex);
 
-            // output directory
-            String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
-            new File(outputDirectory).mkdirs();
+        String blockerName = "_StandardRecordBlocker";
+        String className = geneMatchingRule.className + blockerName;
 
-            // start counting
-            Date startDate = new Date();
+        // output directory
+        String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
+        new File(outputDirectory).mkdirs();
 
-            // create matching rule
-            String options[] = geneMatchingRule.options;
-            String modelType = geneMatchingRule.modelType;
-            WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
-            if (geneMatchingRule.backwardSelection) {
-                matchingRule.setBackwardSelection(true);
-            }
+        // start counting
+        Date startDate = new Date();
 
-            // create debug log
-            matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
-
-            // add comparators
-            // matchingRule.addComparator(new NcbiIdComperator());
-            matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
-            matchingRule.addComparator(new GeneNameComperatorCosine());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
-            matchingRule.addComparator(new GeneNameComperatorLevenshtein());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
-            matchingRule.addComparator(new GeneNameComperatorSorensenDice());
-            matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
-
-            // learn the matching rule
-            RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
-            learner.learnMatchingRule(ds1, ds2, null, matchingRule, gsTrain);
-
-            // create a blocker (blocking strategy)
-            StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(
-                    new GeneBlockingKeyByGeneName());
-            blocker.setMeasureBlockSizes(true);
-            blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
-
-            // write blocker results to the output file
-            Blocker.writeStandardRecordBlockerResults(blocker, outputDirectory);
-
-            // initialize matching engine
-            MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
-
-            // execute the matching
-            Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(ds1, ds2, null,
-                    matchingRule, blocker);
-
-            // end counting
-            Date endDate = new Date();
-            int numSeconds = (int) ((endDate.getTime() - startDate.getTime()) / 1000);
-
-            // write the correspondences to the output file
-            Correspondences.output(outputDirectory, correspondences);
-
-            // evaluate your result
-            Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
-
-            // copy winter log
-            WinterLogFile.copyLogFile(outputDirectory);
-
+        // create matching rule
+        String options[] = geneMatchingRule.options;
+        String modelType = geneMatchingRule.modelType;
+        WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+        if (geneMatchingRule.backwardSelection) {
+            matchingRule.setBackwardSelection(true);
         }
+
+        // create debug log
+        matchingRule.activateDebugReport(outputDirectory + "/debugResultsMatchingRule.csv", 1000);
+
+        // add comparators
+        // matchingRule.addComparator(new NcbiIdComperator());
+        matchingRule.addComparator(new GeneNameComperatorTokenizingJaccard());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseTokenizingJaccard());
+        matchingRule.addComparator(new GeneNameComperatorCosine());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine());
+        matchingRule.addComparator(new GeneNameComperatorLevenshtein());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseLevenshtein());
+        matchingRule.addComparator(new GeneNameComperatorSorensenDice());
+        matchingRule.addComparator(new GeneNameComperatorLowerCaseSorensenDice());
+
+        // learn the matching rule
+        RuleLearner<Gene, Attribute> learner = new RuleLearner<>();
+        learner.learnMatchingRule(ds1, ds2, null, matchingRule, gsTrain);
+
+        // create a blocker (blocking strategy)
+        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(
+                new GeneBlockingKeyByGeneName());
+        blocker.setMeasureBlockSizes(true);
+        blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
+
+        // write blocker results to the output file
+        Blocker.writeStandardRecordBlockerResults(blocker, outputDirectory);
+
+        // initialize matching engine
+        MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
+
+        // execute the matching
+        Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(ds1, ds2, null,
+                matchingRule, blocker);
+
+        // end counting
+        Date endDate = new Date();
+        int numSeconds = (int) ((endDate.getTime() - startDate.getTime()) / 1000);
+
+        // write the correspondences to the output file
+        Correspondences.output(outputDirectory, correspondences);
+
+        // evaluate your result
+        Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
+
+        // copy winter log
+        WinterLogFile.copyLogFile(outputDirectory);
 
     }
 

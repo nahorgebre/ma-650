@@ -43,6 +43,8 @@ public class SorensenDice_StandardRecordBlocker
     public static void main( String[] args ) throws Exception
     {
 
+        WinterLogFile.deleteLog();
+
         double t = Double.parseDouble(args[0]);
 
 		// loading data
