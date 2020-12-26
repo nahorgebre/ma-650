@@ -17,7 +17,7 @@ namespace DataFusion2
 
             AWSlistingContents.createDatasetsShellScriptOutput("DI2");
 
-            AWSlistingContents.createCorrespondencesShellScriptOutput("DI3");
+            AWSlistingContents.createCorrespondencesShellScriptOutput2("DI3");
 
             AWSlistingContents.createDatasetsShellScriptOutput("DI3");
 
