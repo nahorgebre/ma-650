@@ -32,7 +32,9 @@ namespace DataFusion2
                 if (parameter.Equals("DF"))
                 {
 
-                    DIDataFusion.run();
+                    //DIDataFusion.run();
+
+                    AWSupload.run();
 
                 }
 
