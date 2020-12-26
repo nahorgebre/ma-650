@@ -30,8 +30,15 @@ namespace DataFusion2
                 foreach (S3Object s3ObjectItem in s3ObjectList)
                 {
 
-                    sw.WriteLine("wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + s3ObjectItem.Key.ToString()
-                    + " -O data/input/" + solution + "/" + s3ObjectItem.Key.Split("/").Last());
+                    if (s3ObjectItem.Key.ToString().Contains(".xml"))
+                    {
+                        
+                        sw.WriteLine("wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/" + s3ObjectItem.Key.ToString()
+                            + " -O data/input/" + solution + "/" + s3ObjectItem.Key.Split("/").Last());
+                        
+                    }
+
+
                     
                 }
                 
@@ -125,7 +132,7 @@ namespace DataFusion2
                 foreach (KeyValuePair<string, List<string>> resultFileDictionaryItem in correspondencesShellScript)
                 {
 
-                    sw.WriteLine(string.Empty);
+                    //sw.WriteLine(string.Empty);
 
                     sw.WriteLine(resultFileDictionaryItem.Key);
 

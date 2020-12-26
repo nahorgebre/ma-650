@@ -1,9 +1,7 @@
 
 mkdir -p data/input/DI3
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/DI2_dt.tsv -O data/input/DI3/DI2_dt.tsv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/DI2_dt.xml -O data/input/DI3/DI2_dt.xml
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/KaessmannDiseaseAssociations_dt.tsv -O data/input/DI3/KaessmannDiseaseAssociations_dt.tsv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/KaessmannDiseaseAssociations_dt.xml -O data/input/DI3/KaessmannDiseaseAssociations_dt.xml
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/DI1_dt.tsv -O data/input/DI3/DI1_dt.tsv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/DI1_dt.xml -O data/input/DI3/DI1_dt.xml
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_10_dt.tsv -O data/input/DI3/gene2pubtatorcentral_10_dt.tsv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_10_dt.xml -O data/input/DI3/gene2pubtatorcentral_10_dt.xml
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_11_dt.tsv -O data/input/DI3/gene2pubtatorcentral_11_dt.tsv
@@ -104,5 +102,3 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_8_dt.xml -O data/input/DI3/gene2pubtatorcentral_8_dt.xml
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_9_dt.tsv -O data/input/DI3/gene2pubtatorcentral_9_dt.tsv
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_9_dt.xml -O data/input/DI3/gene2pubtatorcentral_9_dt.xml
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_dt.tsv -O data/input/DI3/gene2pubtatorcentral_dt.tsv
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_dt.xml -O data/input/DI3/gene2pubtatorcentral_dt.xml

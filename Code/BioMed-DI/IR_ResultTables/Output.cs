@@ -20,15 +20,15 @@ namespace IR_ResultTables
 
                 sw.WriteLine(@"\caption{Blocking Evaluation - " + outputFile.Directory.Name + @"\label{tab:blocking" + outputFile.Directory.Name + @"}}\\");
 
-                sw.WriteLine(@"\hline");
+                //sw.WriteLine(@"\hline");
 
-                sw.WriteLine("\\textbf{Datasets} & \\textbf{\\vtop{\\hbox{\\strut Matching}\\hbox{\\strut Rule}}} & \\textbf{Blocker} & \\textbf{\\vtop{\\hbox{\\strut Blocked}\\hbox{\\strut Pairs}}} & \\textbf{\\vtop{\\hbox{\\strut Reduction}\\hbox{\\strut Ratio}}} & \\textbf{Time} & \\textbf{Correspondences} \\\\");
+                sw.WriteLine("\\textbf{Datasets} & \\textbf{\\vtop{\\hbox{\\strut Matching}\\hbox{\\strut Rule}}} & \\textbf{Blocker} & \\textbf{\\vtop{\\hbox{\\strut Blocked}\\hbox{\\strut Pairs}}} & \\textbf{\\vtop{\\hbox{\\strut Reduction}\\hbox{\\strut Ratio}}} & \\textbf{Time} & \\textbf{\\vtop{\\hbox{\\strut Correspon-}\\hbox{\\strut dences}}} \\\\");
 
                 sw.WriteLine(@"\hline");
 
                 sw.WriteLine(@"\endhead");
 
-                sw.WriteLine(@"\hline");
+                //sw.WriteLine(@"\hline");
 
                 sw.WriteLine(@"\endfoot");
 
@@ -65,7 +65,7 @@ namespace IR_ResultTables
 
                 sw.WriteLine("\\hline");
 
-                sw.WriteLine("\\textbf{Datasets} & \\textbf{\\vtop{\\hbox{\\strut Matching}\\hbox{\\strut Rule}}} & \\textbf{Blocking Algorithm} & \\textbf{\\vtop{\\hbox{\\strut Blocked}\\hbox{\\strut Pairs}}} & \\textbf{\\vtop{\\hbox{\\strut Reduction}\\hbox{\\strut Ratio}}} & \\textbf{Run Time} & \\textbf{Correspondences} \\\\");
+                sw.WriteLine("\\textbf{Datasets} & \\textbf{\\vtop{\\hbox{\\strut Matching}\\hbox{\\strut Rule}}} & \\textbf{Blocking Algorithm} & \\textbf{\\vtop{\\hbox{\\strut Blocked}\\hbox{\\strut Pairs}}} & \\textbf{\\vtop{\\hbox{\\strut Reduction}\\hbox{\\strut Ratio}}} & \\textbf{Run Time} & \\textbf{\\vtop{\\hbox{\\strut Correspon-}\\hbox{\\strut dences}}} \\\\");
 
             
 
@@ -169,22 +169,22 @@ namespace IR_ResultTables
 
                 sw.WriteLine(@"\caption{Matching Rule Evaluation - " + outputFile.Directory.Name + @"\label{tab:matching" + outputFile.Directory.Name + @"}}\\");
 
-                sw.WriteLine(@"\hline");
+                //sw.WriteLine(@"\hline");
 
-                sw.WriteLine("\\textbf{Datasets} & \\textbf{Matching Rule} & \\textbf{Blocker} & \\textbf{Precision} & \\textbf{Recall} & \\textbf{F1} & \\textbf{Correspondences} & \\textbf{Time} & \\\\");
+                sw.WriteLine("\\textbf{Datasets} & \\textbf{\\vtop{\\hbox{\\strut Matching}\\hbox{\\strut Rule}}} & \\textbf{Blocker} & \\textbf{Precision} & \\textbf{Recall} & \\textbf{F1} & \\textbf{Time} & \\textbf{\\vtop{\\hbox{\\strut Correspon-}\\hbox{\\strut dences}}} \\\\");
 
                 sw.WriteLine(@"\hline");
 
                 sw.WriteLine(@"\endhead");
 
-                sw.WriteLine(@"\hline");
+                //sw.WriteLine(@"\hline");
 
                 sw.WriteLine(@"\endfoot");
 
                 foreach (Result2 result2Item in result2List)
                 {
 
-                    sw.WriteLine(result2Item.Datasets + " & " + result2Item.MatchingRule + " & " + result2Item.Blocker + " & " + result2Item.Precision + " & " +  result2Item.Recall + " & " + result2Item.F1 + " & " + result2Item.Correspondences + " & " + result2Item.Time + " \\\\" + " \\hline");
+                    sw.WriteLine(result2Item.Datasets + " & " + result2Item.MatchingRule + " & " + result2Item.Blocker + " & " + result2Item.Precision + " & " +  result2Item.Recall + " & " + result2Item.F1 + " & " + result2Item.Time + " & " + result2Item.Correspondences + " \\\\" + " \\hline");
                              
                 }
 
@@ -264,9 +264,9 @@ namespace IR_ResultTables
 
                     "F1",
 
-                    "Correspondences",
+                    "Time",
 
-                    "Time"
+                    "Correspondences"
 
                 };
 
@@ -292,9 +292,9 @@ namespace IR_ResultTables
 
                         result2Item.F1,
 
-                        result2Item.Correspondences,
+                        result2Item.Time,
 
-                        result2Item.Time
+                        result2Item.Correspondences
 
                     };
 
