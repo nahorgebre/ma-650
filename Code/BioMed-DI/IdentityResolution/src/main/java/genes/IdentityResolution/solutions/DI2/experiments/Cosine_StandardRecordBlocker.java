@@ -26,7 +26,7 @@ import genes.IdentityResolution.model.Gene.Gene;
 
 // blockig
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
-
+import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 // solutions
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.DI2.DI2Datasets;
@@ -77,7 +77,7 @@ public class Cosine_StandardRecordBlocker
         matchingRule.addComparator(new GeneNameComperatorLowerCaseCosine(), 0.5);
 
 		// create a blocker (blocking strategy)
-		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByEnsemblId());
+		StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(new GeneBlockingKeyByGeneName());
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
         
