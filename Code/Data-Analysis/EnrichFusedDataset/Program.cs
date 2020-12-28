@@ -9,9 +9,7 @@
 
             EnrichDataset.run();
 
-            AIM1output.run();
-
-            AIM2output.run();
+            AIMoutput.run();
 
         }
 
