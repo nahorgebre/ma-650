@@ -106,6 +106,8 @@ namespace EnrichFusedDataset
 
         public string source;
 
+        public string associatedNcbiId; //--
+
     }
 
 
@@ -117,6 +119,10 @@ namespace EnrichFusedDataset
         public string ressource;
 
         public string year;
+
+        public string associatedNcbiId; //---
+
+        public string associatedOrgan; //--
 
     }
 

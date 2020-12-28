@@ -416,6 +416,13 @@ namespace EnrichFusedDataset
 
                 }
 
+                if (checkIfNodeExist(node, "associatedNcbiId"))
+                {
+
+                    diseaseAssociation.associatedNcbiId = (node?.SelectSingleNode("associatedNcbiId").InnerText ?? null);
+
+                }
+
                 diseaseAssociationList.Add(diseaseAssociation);
 
             }
@@ -459,6 +466,20 @@ namespace EnrichFusedDataset
                 {
 
                     genePublicationMention.ressource = (node?.SelectSingleNode("ressource").InnerText ?? null);
+
+                }
+
+                if (checkIfNodeExist(node, "associatedNcbiId"))
+                {
+
+                    genePublicationMention.associatedNcbiId = (node?.SelectSingleNode("associatedNcbiId").InnerText ?? null);
+
+                }
+
+                if (checkIfNodeExist(node, "associatedOrgan"))
+                {
+
+                    genePublicationMention.associatedOrgan = (node?.SelectSingleNode("associatedOrgan").InnerText ?? null);
 
                 }
 
