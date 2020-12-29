@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Text;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -9,68 +11,65 @@ namespace PrepareGoldStandard
     class FlairDataPreparation
     {
 
+        // Abstract test
         public static FileInfo inputAbstractTestText = new FileInfo(Environment.CurrentDirectory + "/data/output/test_abstract.txt");
+        public static FileInfo inputAbstractTestEntity = new FileInfo(Environment.CurrentDirectory + "/data/output/test_entity_abstract.tsv");
 
-        public static FileInfo inputAbstractTestEntity = new FileInfo(Environment.CurrentDirectory + "/data/output/test_entity_abstract.txt");
-
+        // Abstract train
         public static FileInfo inputAbstractTrainText = new FileInfo(Environment.CurrentDirectory + "/data/output/train_abstract.txt");
+        public static FileInfo inputAbstractTrainEntity = new FileInfo(Environment.CurrentDirectory + "/data/output/train_entity_abstract.tsv");
 
-        public static FileInfo inputAbstractTrainEntity = new FileInfo(Environment.CurrentDirectory + "/data/output/train_entity_abstract.txt");
-
-
+        // Title test
         public static FileInfo inputTitleTestText = new FileInfo(Environment.CurrentDirectory + "/data/output/test_title.txt");
+        public static FileInfo inputTitleTestEntity = new FileInfo(Environment.CurrentDirectory + "/data/output/test_entity_title.tsv");
 
-        public static FileInfo inputTitleTestEntity = new FileInfo(Environment.CurrentDirectory + "/data/output/");
-
+        // Title train
         public static FileInfo inputTitleTrainText = new FileInfo(Environment.CurrentDirectory + "/data/output/train_title.txt");
+        public static FileInfo inputTitleTrainEntity = new FileInfo(Environment.CurrentDirectory + "/data/output/train_entity_title.tsv");
 
-        public static FileInfo inputTitleTrainEntity = new FileInfo(Environment.CurrentDirectory + "/data/output/train_entity_title.txt");
+        // Output
+        public static FileInfo outputTitleTrainFlair = new FileInfo(Environment.CurrentDirectory + "/data/outputFlair/trainFlairTitle.tsv");
+        public static FileInfo outputAbstractTrainFlair = new FileInfo(Environment.CurrentDirectory + "/data/outputFlair/trainFlairTitle.tsv");
 
-
-        public static FileInfo outputTitleTrainFlair = new FileInfo(Environment.CurrentDirectory + "/data/output/trainFlairTitle.txt");
-
-        public static FileInfo outputAbstractTrainFlair = new FileInfo(Environment.CurrentDirectory + "/data/output/trainFlairTitle.txt");
 
         public static void run()
         {
 
-            Dictionary<string, TextAnnotation> trainTitle = getDictionaryAnnotation(text: inputTitleTrainText, entity: inputTitleTrainEntity);
-
-            Dictionary<string, TextAnnotation> trainAbstarct = getDictionaryAnnotation(text: inputAbstractTrainText, entity: inputAbstractTrainEntity);
-
-            cerateOutput(outputTitleTrainFlair, trainTitle);
-
-            cerateOutput(outputAbstractTrainFlair, trainAbstarct);
+            // Abstract
+            List<string> annotatedTextList = getAnnotatedTextList(inputAbstractTrainText, inputAbstractTrainEntity);
+            outputAnnotations(outputAbstractTrainFlair, annotatedTextList);
 
         }
 
-        public static void cerateOutput(FileInfo file, Dictionary<string, TextAnnotation> dictionary)
+        public static void outputAnnotations(FileInfo outputFile, List<string> annotatedTextList)
         {
 
-            foreach (KeyValuePair<string, TextAnnotation> dictionaryItem in dictionary)
+            outputFile.Directory.Create();
+
+            using (StreamWriter sw = new StreamWriter(outputFile.FullName))
             {
                 
+                foreach (string annotatedText in annotatedTextList)
+                {
+
+                    sw.WriteLine(annotatedText);
+
+                    sw.WriteLine(string.Empty);
+                    
+                }
+
             }
 
         }
 
-        public static string removeWhiteSpaces(string text)
+        public static List<string> getAnnotatedTextList(FileInfo textFile, FileInfo entityFile)
         {
 
-            RegexOptions options = RegexOptions.None;
+            List<string> annotatedTextList = new List<string>();
 
-            Regex regex = new Regex("[ ]{2,}", options);  
+            Dictionary<string, List<GeneMention>> geneMentionDictionary = getGeneMentionDictionary(entityFile);
 
-            return regex.Replace(text, " ");
-
-        }
-
-        public static Dictionary<string, TextAnnotation> getDictionaryAnnotation(FileInfo text, FileInfo entity)
-        {
-
-            Dictionary<string, TextAnnotation> dictionaryAnnotation = new Dictionary<string, TextAnnotation>();
-
-            using (StreamReader sr = new StreamReader(text.FullName))
+            using (StreamReader sr = new StreamReader(textFile.FullName))
             {
 
                 while (!sr.EndOfStream)
@@ -80,13 +79,29 @@ namespace PrepareGoldStandard
 
                     string[] values = line.Split('\t');
 
-                    dictionaryAnnotation.Add(values[0], new TextAnnotation(){ text = values[1] });
+                    if (geneMentionDictionary.ContainsKey(values[0].Trim()))
+                    {
 
+                        string annotatedText = addBIOannotations(values[1], geneMentionDictionary[values[0].Trim()]);
+
+                        annotatedTextList.Add(annotatedText);
+                        
+                    }
+                    
                 }
                 
             }
 
-            using (StreamReader sr = new StreamReader(entity.FullName))
+            return annotatedTextList;
+
+        }
+
+        public static Dictionary<string, List<GeneMention>> getGeneMentionDictionary(FileInfo entityFile)
+        {
+
+            Dictionary<string, List<GeneMention>> geneMentionDictionary = new Dictionary<string, List<GeneMention>>();
+
+            using (StreamReader sr = new StreamReader(entityFile.FullName))
             {
                 
                 while (!sr.EndOfStream)
@@ -96,23 +111,20 @@ namespace PrepareGoldStandard
 
                     string[] values = line.Split('\t');
 
-                    if (dictionaryAnnotation.ContainsKey(values[0]))
+                    if (geneMentionDictionary.ContainsKey(values[0]))
                     {
 
-                        // get text annotation
-                        TextAnnotation textAnnotation = dictionaryAnnotation[values[0]];
+                        List<GeneMention> geneMentionList = geneMentionDictionary[values[0]];
 
-                        // get gene mention
-                        List<GeneMention> geneMentionList = textAnnotation.geneMentionList;
+                        geneMentionList.Add( new GeneMention() { geneName = values[4], startIndex = values[2], endIndex = values[3] } );
 
-                        // adjsut gene mention
-                        geneMentionList.Add(new GeneMention(){ geneName = values[4], startIndex = values[2], endIndex = values[3] });
+                        geneMentionDictionary[values[0]] = geneMentionList;
+                        
+                    }
+                    else if (!geneMentionDictionary.ContainsKey(values[0]))
+                    {
 
-                        // return gene mention
-                        textAnnotation.geneMentionList = geneMentionList;
-
-                        // return text annotation
-                        dictionaryAnnotation[values[0]] = textAnnotation;
+                        geneMentionDictionary.Add(values[0], new List<GeneMention>(){ new GeneMention() { geneName = values[4], startIndex = values[2], endIndex = values[3] } } );
 
                     }
                     
@@ -120,17 +132,177 @@ namespace PrepareGoldStandard
 
             }
 
-            return dictionaryAnnotation;
+            return geneMentionDictionary;
 
         }
 
-    }
+        public static string addBIOannotations(string text, List<GeneMention> geneMentionList)
+        {
 
-    class TextAnnotation
-    {
-        public string text;
+            string outsideTag = "O";
 
-        public List<GeneMention> geneMentionList = new List<GeneMention>();
+            string beginTag = "B-GENE";
+
+            string insideTag = "I-GENE";
+
+            Dictionary<string, int> geneHashSet = new Dictionary<string, int>();
+
+            foreach (var item in geneMentionList)
+            {
+
+                if (item.geneName.Split(null).Count() == 1)
+                {
+
+                    if (!geneHashSet.ContainsKey(item.geneName)) geneHashSet.Add(item.geneName, 0);
+
+                }
+                else if (item.geneName.Split(null).Count() > 1)
+                {
+
+                    string[] geneNameArray = item.geneName.Split(null);
+
+                    for (int i = 0; i < geneNameArray.Count(); i++)
+                    {
+
+                        if (!geneHashSet.ContainsKey(geneNameArray[i]))
+                        {
+
+                            if (i == 0)
+                            {
+
+                                geneHashSet.Add(geneNameArray[i], 1);
+
+                            }
+                            else
+                            {
+
+                                geneHashSet.Add(geneNameArray[i], 2);
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            StringBuilder annotatedText = new StringBuilder();
+
+            List<string> textList = tokenizeText(text, geneHashSet);
+
+            for (int i = 0; i < textList.Count; i++)
+            {
+
+                if (geneHashSet.ContainsKey(textList[i]))
+                {
+
+                    if (geneHashSet[textList[i]] == 0)
+                    {
+
+                        annotatedText.AppendLine(textList[i] + '\t'.ToString() + beginTag);
+
+                    }
+                    else if (geneHashSet[textList[i]] == 1)
+                    {
+
+                        if (geneHashSet.ContainsKey(textList[i + 1]))
+                        {
+
+                            annotatedText.AppendLine(textList[i] + '\t'.ToString() + beginTag);
+
+                        }
+                        else
+                        {
+
+                            annotatedText.AppendLine(textList[i] + '\t'.ToString() + outsideTag);
+
+                        }
+
+                    }
+                    else if (geneHashSet[textList[i]] == 2)
+                    {
+
+                        if (geneHashSet.ContainsKey(textList[i - 1]))
+                        {
+
+                            annotatedText.AppendLine(textList[i] + '\t'.ToString() + insideTag);
+
+                        }
+                        else
+                        {
+
+                            annotatedText.AppendLine(textList[i] + '\t'.ToString() + outsideTag);
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+
+                    annotatedText.AppendLine(textList[i] + '\t'.ToString() + outsideTag);
+
+                }
+
+            }
+
+            return annotatedText.ToString();
+
+        }
+
+        public static List<string> tokenizeText(string text, Dictionary<string, int> geneHashSet)
+        {
+
+            Char[] charArray = new Char[] { '!', '#', '$', '%', '&', '(', ')', '/', '*', '.', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '_', '`', '{', '}', '~', '\'' };
+
+            List<string> tokenList = new List<string>();
+
+            foreach (string textItem in text.Split(null))
+            {
+
+                if (charArray.Any(s => textItem.IndexOf(s, StringComparison.OrdinalIgnoreCase) >= 0))
+                {
+
+                    if (!geneHashSet.ContainsKey(textItem))
+                    {
+
+                        string pattern = "([!#$%&()/*.:;<=>?@[\\]_`{}~'])";
+
+                        string[] tokenArray = Regex.Split(textItem, pattern);
+
+                        tokenArray = tokenArray.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+                        foreach (var token in tokenArray)
+                        {
+
+                            tokenList.Add(token);
+
+                        }
+
+                    }
+                    else if (geneHashSet.ContainsKey(textItem))
+                    {
+
+                        tokenList.Add(textItem);
+
+                    }
+
+                }
+                else
+                {
+
+                    tokenList.Add(textItem);
+
+                }
+
+            }
+
+            return tokenList;
+
+        }
 
     }
 

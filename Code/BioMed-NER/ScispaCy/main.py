@@ -1,8 +1,11 @@
 import spacy
 import scispacy
 import en_ner_bionlp13cg_md
+import sys
 
 import csv
+
+csv.field_size_limit(sys.maxsize)
 
 def getGeneNames(document):
     entityList = []
@@ -30,29 +33,6 @@ def createAbstractOutputFile(inputFileName, outputFileName):
             for row in reader:
                 writer.writerow([row[0], row[1], getGeneNames(row[2])])
 
-def createDescriptionOutputFile(inputFileName, outputFileName):
-    with open('data/output/' + outputFileName, 'w', newline='') as outputFile:
-        writer = csv.writer(outputFile, delimiter='\t')
-        writer.writerow(['patentNumber', 'patentDate', 'patentGeneNames'])
-        with open('data/input/' + inputFileName) as inputFile:
-            reader = csv.reader(inputFile, delimiter='\t')
-            for row in reader:
-                writer.writerow([row[0], row[1], getGeneNames(row[2])])
-
-def createClaimsOutputFile(inputFileName, outputFileName):
-    with open('data/output/' + outputFileName, 'w', newline='') as outputFile:
-        writer = csv.writer(outputFile, delimiter='\t')
-        writer.writerow(['patentNumber', 'patentDate', 'patentGeneNames'])
-        with open('data/input/' + inputFileName) as inputFile:
-            reader = csv.reader(inputFile, delimiter='\t')
-            for row in reader:
-                writer.writerow([row[0], row[1], getGeneNames(row[2])])
-            
-
 createAbstractOutputFile('abstract.tsv', 'scispaCyAbstractGene.csv')
-
-createDescriptionOutputFile('description.tsv', 'scispaCyDescriptionGene.csv')
-
-createClaimsOutputFile('claims.tsv', 'scispaCyClaimsGene.csv')
 
 createTitleOutputFile('title.tsv', 'scispaCyTitleGene.csv')
