@@ -98,11 +98,15 @@ namespace IR_GS_Creation
             int gsTrueSize = 70;
 
 
-            Dictionary<string, InputDataset> DI1_dictionary = InputDataset.getDatasetDictionary(DI4Datasets.DI1_dt);
+            Dictionary<string, InputDataset> file1Dictionary = InputDataset.getDatasetDictionary(DI4Datasets.DI1_dt);
+
+            Console.WriteLine("Dictionary size 1: " + file1Dictionary.Count());
 
             Dictionary<string, InputDataset> file2Dictionary = InputDataset.getDatasetDictionary(DI4Datasets.patent_abstract_dt);
 
-            foreach (KeyValuePair<string, InputDataset> file1DictionaryItem in DI1_dictionary)
+            Console.WriteLine("Dictionary size 2:", file2Dictionary.Count());
+
+            foreach (KeyValuePair<string, InputDataset> file1DictionaryItem in file1Dictionary)
             {
 
                 foreach (KeyValuePair<string, InputDataset> file2DictionaryItem in file2Dictionary)
