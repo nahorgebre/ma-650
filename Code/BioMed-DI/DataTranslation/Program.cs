@@ -38,6 +38,8 @@ namespace DataTranslation
                 {
 
                     DI4.runDataTranslation();
+
+                    AWSupload.run(parameter);
                     
                 }
 
