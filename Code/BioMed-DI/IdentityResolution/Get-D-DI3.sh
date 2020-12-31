@@ -51,4 +51,3 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_7_dt.xml -O data/input/DI3/gene2pubtatorcentral_7_dt.xml
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_8_dt.xml -O data/input/DI3/gene2pubtatorcentral_8_dt.xml
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_9_dt.xml -O data/input/DI3/gene2pubtatorcentral_9_dt.xml
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/input/DI3/gene2pubtatorcentral_dt.xml -O data/input/DI3/gene2pubtatorcentral_dt.xml

@@ -32,6 +32,11 @@ public class ListingS3Objects {
 
         getGoldstandardDatasets("DI3");
 
+
+        getDatasets("DI4");
+
+        getGoldstandardDatasets("DI4");
+
     }
 
     public static void getDatasets(String solution) throws Exception {

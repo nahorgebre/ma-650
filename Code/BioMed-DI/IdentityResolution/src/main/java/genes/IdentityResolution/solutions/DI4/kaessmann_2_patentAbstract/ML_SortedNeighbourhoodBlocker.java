@@ -53,7 +53,7 @@ public class ML_SortedNeighbourhoodBlocker {
 
         //WinterLogFile.deleteLog();
 
-        int matchingRuleIndex = Integer.parseInt(args[1]);
+        int matchingRuleIndex = Integer.parseInt(args[0]);
 
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
