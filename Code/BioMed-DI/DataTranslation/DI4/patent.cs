@@ -49,7 +49,7 @@ namespace DataTranslation
 
                                 Gene gene = new Gene();
 
-                                gene.recordId = string.Format("gene2pubtatorcentral_{0}_rid", recordIdCounter);
+                                gene.recordId = string.Format("patent_abstract_{0}_rid", recordIdCounter);
 
                                 gene.geneNames = geneName;
 
