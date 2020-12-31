@@ -29,6 +29,8 @@ namespace DataTranslation
                 
                 sr.ReadLine();
 
+                int recordIdCounter = 1;
+
                 while (!sr.EndOfStream)
                 {
 
@@ -46,6 +48,8 @@ namespace DataTranslation
                             {
 
                                 Gene gene = new Gene();
+
+                                gene.recordId = string.Format("gene2pubtatorcentral_{0}_rid", recordIdCounter);
 
                                 gene.geneNames = geneName;
 
@@ -65,6 +69,8 @@ namespace DataTranslation
 
 
                                 gene_list.Add(gene);
+
+                                recordIdCounter ++;
                                 
                             }
                             
