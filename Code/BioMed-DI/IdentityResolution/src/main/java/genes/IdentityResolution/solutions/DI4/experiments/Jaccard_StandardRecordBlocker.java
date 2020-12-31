@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI3.experiments;
+package genes.IdentityResolution.solutions.DI4.experiments;
 
 // java
 import java.io.File;
@@ -25,8 +25,8 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokeniz
 import genes.IdentityResolution.model.Gene.Gene;
 
 // blockig
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
+
 // solutions
 import genes.IdentityResolution.solutions.Correspondences;
 import genes.IdentityResolution.solutions.DI3.DI3Datasets;
@@ -53,8 +53,8 @@ public class Jaccard_StandardRecordBlocker
         HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(1);
 
 		// load the gold standard (test set)
-        String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_1";
-        String solution = "DI3";
+        String comparisonDescription = "kaessmann_2_patentAbstract";
+        String solution = "DI4";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
         String className = "Jaccard_StandardRecordBlocker";
 

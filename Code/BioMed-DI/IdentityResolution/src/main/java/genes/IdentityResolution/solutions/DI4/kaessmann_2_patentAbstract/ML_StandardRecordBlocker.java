@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI3.kaessmann_2_gene2pubtatorcentral;
+package genes.IdentityResolution.solutions.DI4.kaessmann_2_patentAbstract;
 
 // java
 import java.io.File;
@@ -29,8 +29,7 @@ import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.WinterLogFile;
-import genes.IdentityResolution.solutions.DI3.DI3Datasets;
-
+import genes.IdentityResolution.solutions.DI4.DI4Datasets;
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
 
@@ -53,18 +52,16 @@ public class ML_StandardRecordBlocker {
 
         //WinterLogFile.deleteLog();
 
-        int fileNumber = Integer.parseInt(args[0]);
-
         int matchingRuleIndex = Integer.parseInt(args[1]);
 
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = DI3Datasets.kaessmann();
-        HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(fileNumber);
+        HashedDataSet<Gene, Attribute> ds1 = DI4Datasets.kaessmann();
+        HashedDataSet<Gene, Attribute> ds2 = DI4Datasets.patentAbstract();
 
         // goldstandard directory
-        String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_" + fileNumber;
-        String solution = "DI3";
+        String comparisonDescription = "kaessmann_2_patentAbstract";
+        String solution = "DI4";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
         // load the gold standard (test set)

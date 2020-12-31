@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI3.experiments;
+package genes.IdentityResolution.solutions.DI4.experiments;
 
 // java
 import java.io.File;
@@ -25,11 +25,11 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityLevensh
 import genes.IdentityResolution.model.Gene.Gene;
 
 // blockig
-import genes.IdentityResolution.Blocking.GeneBlockingKeyByEnsemblId;
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
+
 // solutions
 import genes.IdentityResolution.solutions.Correspondences;
-import genes.IdentityResolution.solutions.DI3.DI3Datasets;
+import genes.IdentityResolution.solutions.DI4.DI4Datasets;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GoldStandard;
 import genes.IdentityResolution.solutions.WinterLogFile;
@@ -49,13 +49,13 @@ public class Levenshtein_StandardRecordBlocker_Graph
 
 		// loading data
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = DI3Datasets.kaessmann();
-        HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(1);
+        HashedDataSet<Gene, Attribute> ds1 = DI4Datasets.kaessmann();
+        HashedDataSet<Gene, Attribute> ds2 = DI4Datasets.patentAbstract();
 
 		// load the gold standard (test set)
         String comparisonDescription = "Levenshtein_StandardRecordBlocker_Graph_" + t;
-        String solution = "DI3";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/kaessmann_2_gene2pubtatorcentral_1";
+        String solution = "DI4";
+        String goldstandardDirectory = "data/goldstandard/" + solution + "/kaessmann_2_patentAbstract";
         String className = "Levenshtein_StandardRecordBlocker";
 
         // load the gold standard (test set)

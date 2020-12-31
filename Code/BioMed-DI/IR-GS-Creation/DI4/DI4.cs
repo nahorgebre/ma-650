@@ -25,9 +25,9 @@ namespace IR_GS_Creation
 
             List<Goldstandard> test = trueList_test.Concat(falseList_test).ToList();
 
-            createOutput(train, new FileInfo(Environment.CurrentDirectory + "/data/output/DI4/abstract/train.csv"));
+            createOutput(train, new FileInfo(Environment.CurrentDirectory + "/data/output/DI4/kaessmann_2_patentAbstract/train.csv"));
 
-            createOutput(test, new FileInfo(Environment.CurrentDirectory + "/data/output/DI4/abstract/test.csv"));
+            createOutput(test, new FileInfo(Environment.CurrentDirectory + "/data/output/DI4/kaessmann_2_patentAbstract/test.csv"));
 
         }
 
