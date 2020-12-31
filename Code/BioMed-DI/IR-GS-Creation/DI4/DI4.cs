@@ -108,6 +108,8 @@ namespace IR_GS_Creation
                 foreach (KeyValuePair<string, InputDataset> file2DictionaryItem in file2Dictionary)
                 {
 
+                    Console.WriteLine("1");
+
                     if (check_gs_size(
                         gsListTrue: gsListTrue,
                         gsListFalse: gsListFalse,
