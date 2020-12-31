@@ -124,6 +124,8 @@ namespace IR_GS_Creation
                         if (geneNameKey1.Equals(geneNameKey2))
                         {
 
+                            Console.WriteLine("Blocking key: " + geneNameKey1);
+
                             double geneNameSim = GeneNameSimilarity.getSimilarity(file1DictionaryItem.Value.geneNames, file2DictionaryItem.Value.geneNames);
 
                             bool trueFile = false;
