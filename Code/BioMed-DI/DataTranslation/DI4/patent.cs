@@ -62,6 +62,9 @@ namespace DataTranslation
 
 
                                 gene.patentMentions = patentMentionList;
+
+
+                                gene_list.Add(gene);
                                 
                             }
                             
