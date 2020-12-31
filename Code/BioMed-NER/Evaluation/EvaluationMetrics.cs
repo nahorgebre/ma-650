@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Collections.Generic;
 
@@ -8,8 +7,119 @@ namespace EvaluationMetrics
     class EvaluationMetrics
     {
 
+        public static bool conditionSet1(CorporaAnnotation annotation1, CorporaAnnotation annotation2)
+        {
+
+            return annotation1.geneName.Contains(annotation2.geneName) 
+                | annotation2.geneName.Contains(annotation1.geneName);
+
+        }
+
+        public static bool conditionSet2(CorporaAnnotation annotation1, CorporaAnnotation annotation2)
+        {
+
+            return annotation1.geneName.Equals(annotation2.geneName)
+                & annotation1.startIndex.ToString().Equals(annotation2.startIndex.ToString())
+                & annotation1.endIndex.ToString().Equals(annotation2.endIndex.ToString());
+
+        }
+
+        public static (int, int, int) getEvaluationMetrics(FileInfo predictionFile, FileInfo goldStandardFile)
+        {
+
+            int truePositive = 0; //TP - True Positive - System provides an annotation that exists in the curated corpus
+
+            int falsePositive = 0; //FP - False Positive - System provides an annotation that does not exist in the curated corpus
+
+            int falseNegative = 0; //FN - False Negative - System does not provide an annotation that is present in the curated corpus
+
+
+            Dictionary<string, List<CorporaAnnotation>> predictions = CorporaAnnotation.getAnnotationPrediction(predictionFile);
+
+            Dictionary<string, List<CorporaAnnotation>> goldStandard = CorporaAnnotation.getAnnotationGoldStandard(goldStandardFile);
+
+
+            foreach (KeyValuePair<string, List<CorporaAnnotation>> item in predictions)
+            {
+
+                List<CorporaAnnotation> predictionList = item.Value;
+
+                if (goldStandard.ContainsKey(item.Key))
+                {
+
+                    List<CorporaAnnotation> goldstandardList = goldStandard[item.Key];
+
+
+                    foreach (var predictionItem in predictionList)
+                    {
+
+                        bool gsDoesNotContainPrediction = true;
+
+                        foreach (var goldstandardItem in goldstandardList)
+                        {
+
+                            if (
+                                conditionSet2(predictionItem, goldstandardItem)
+                                )
+                            {
+
+                                truePositive++;
+
+                                gsDoesNotContainPrediction = false;
+
+                            }
+
+                        }
+
+                        if (gsDoesNotContainPrediction == true)
+                        {
+
+                            falsePositive++;
+
+                        }
+
+                    }
+
+                    foreach (var goldstandardItem in goldstandardList)
+                    {
+
+                        bool gsItemIsNotContainedInPrediction = true;
+
+                        foreach (var predictionItem in predictionList)
+                        {
+
+                            if (
+                                conditionSet2(predictionItem, goldstandardItem)
+                                )
+                            {
+
+                                gsItemIsNotContainedInPrediction = false;
+
+                            }
+
+                        }
+
+                        if (gsItemIsNotContainedInPrediction == true)
+                        {
+
+                            falseNegative++;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            return (truePositive, falsePositive, falseNegative);
+
+        }
+
+
         //TP - True Positive - System provides an annotation that exists in the curated corpus
-        public static int getTruePositive(FileInfo predictionFile, FileInfo goldStandardFile) {
+        public static int getTruePositive(FileInfo predictionFile, FileInfo goldStandardFile)
+        {
 
             int truePositive = 0;
 
@@ -17,6 +127,18 @@ namespace EvaluationMetrics
 
             Dictionary<string, List<CorporaAnnotation>> goldStandard = CorporaAnnotation.getAnnotationGoldStandard(goldStandardFile);
 
+            foreach (KeyValuePair<string, List<CorporaAnnotation>> item in predictions)
+            {
+
+                List<CorporaAnnotation> predictionList = item.Value;
+
+                List<CorporaAnnotation> goldstandardList = goldStandard[item.Key];
+
+            }
+
+
+
+            // -----
 
             foreach (KeyValuePair<string, List<CorporaAnnotation>> item in predictions)
             {
@@ -35,21 +157,21 @@ namespace EvaluationMetrics
                         foreach (CorporaAnnotation goldStandardItem in goldStandardList)
                         {
 
-                            if (predictionItem.patentNumber.Equals(goldStandardItem.patentNumber)
+                            if (predictionItem.geneName.Equals(goldStandardItem.geneName)
                                 & predictionItem.startIndex.ToString().Equals(goldStandardItem.startIndex.ToString())
                                 & predictionItem.endIndex.ToString().Equals(goldStandardItem.endIndex.ToString()))
                             {
-                                
-                                truePositive ++;
+
+                                truePositive++;
 
                             }
-                            
+
                         }
-                        
+
                     }
 
                 }
-                
+
             }
 
             return truePositive;
@@ -57,7 +179,8 @@ namespace EvaluationMetrics
         }
 
         //FP - False Positive - System provides an annotation that does not exist in the curated corpus
-        public static int getFalsePositive(FileInfo predictionFile, FileInfo goldStandardFile) {
+        public static int getFalsePositive(FileInfo predictionFile, FileInfo goldStandardFile)
+        {
 
             int falsePositive = 0;
 
@@ -83,11 +206,11 @@ namespace EvaluationMetrics
                         foreach (CorporaAnnotation goldStandardItem in goldStandardList)
                         {
 
-                            if (predictionItem.patentNumber.Equals(goldStandardItem.patentNumber)
+                            if (predictionItem.geneName.Equals(goldStandardItem.geneName)
                                 & predictionItem.startIndex.ToString().Equals(goldStandardItem.startIndex.ToString())
                                 & predictionItem.endIndex.ToString().Equals(goldStandardItem.endIndex.ToString()))
                             {
-                                
+
                                 doesNotContainItem = true;
 
                             }
@@ -97,28 +220,29 @@ namespace EvaluationMetrics
                         if (doesNotContainItem == false)
                         {
 
-                            falsePositive ++;
-                            
+                            falsePositive++;
+
                         }
 
                     }
                     else
                     {
 
-                        falsePositive ++;
+                        falsePositive++;
 
                     }
-                    
+
                 }
-  
+
             }
 
             return falsePositive;
 
-        } 
+        }
 
         //FN - False Negative - System does not provide an annotation that is present in the curated corpus
-        public static int getFalseNegative(FileInfo predictionFile, FileInfo goldStandardFile) {
+        public static int getFalseNegative(FileInfo predictionFile, FileInfo goldStandardFile)
+        {
 
             int falseNegative = 0;
 
@@ -144,32 +268,32 @@ namespace EvaluationMetrics
                         foreach (CorporaAnnotation predictionItem in predictionList)
                         {
 
-                            if (predictionItem.patentNumber.Equals(goldStandardItem.patentNumber)
+                            if (predictionItem.geneName.Equals(goldStandardItem.geneName)
                                 & predictionItem.startIndex.ToString().Equals(goldStandardItem.startIndex.ToString())
                                 & predictionItem.endIndex.ToString().Equals(goldStandardItem.endIndex.ToString()))
                             {
-                                
+
                                 doesNotContainItem = true;
 
                             }
-                            
+
                         }
 
                         if (doesNotContainItem == false)
                         {
 
-                            falseNegative ++;
-                            
+                            falseNegative++;
+
                         }
 
                     }
                     else
                     {
 
-                        falseNegative ++;
+                        falseNegative++;
 
                     }
-                    
+
                 }
 
             }
@@ -205,7 +329,7 @@ namespace EvaluationMetrics
 
             double f1 = new double();
 
-            f1 = (precision * recall) / (precision * recall);
+            f1 = 2 * ( (precision * recall) / (precision + recall) );
 
             return f1;
 

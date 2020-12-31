@@ -15,6 +15,8 @@ namespace DataTranslation
 
             Kaessmann.runDataTranslation();
 
+            patent.runDataTranslationSingleOutput();
+
         }
 
     }

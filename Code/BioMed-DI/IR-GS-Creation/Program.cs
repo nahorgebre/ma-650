@@ -98,6 +98,16 @@ namespace IR_GS_Creation
                     AWSupload.run(outputDirectory, parameter);
 
                 }
+                else if (parameter.Equals("DI4"))
+                {
+
+                    DI4.run();
+
+                    DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, parameter));
+
+                    AWSupload.run(outputDirectory, parameter);
+
+                }
 
             }
 
