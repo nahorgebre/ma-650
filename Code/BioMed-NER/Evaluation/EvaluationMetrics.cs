@@ -59,7 +59,7 @@ namespace EvaluationMetrics
                         {
 
                             if (
-                                conditionSet2(predictionItem, goldstandardItem)
+                                conditionSet1(predictionItem, goldstandardItem)
                                 )
                             {
 
@@ -89,7 +89,7 @@ namespace EvaluationMetrics
                         {
 
                             if (
-                                conditionSet2(predictionItem, goldstandardItem)
+                                conditionSet1(predictionItem, goldstandardItem)
                                 )
                             {
 

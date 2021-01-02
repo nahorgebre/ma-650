@@ -39,6 +39,7 @@ namespace EvaluationMetrics
                     string endIndexValue = values[3];
 
 
+
                     if (predictions.ContainsKey(patentNumberValue))
                     {
 
@@ -88,23 +89,30 @@ namespace EvaluationMetrics
 
                     string endIndexValue = values[3];
 
+                    string type = values[6];
 
-                    if (goldStandard.ContainsKey(patentNumberValue))
-                    {
+                    //if (!type.Equals("GPRO_TYPE_2"))
+                    //{
 
-                        List<CorporaAnnotation> caList = goldStandard[patentNumberValue];
 
-                        caList.Add(new CorporaAnnotation { geneName = geneNameValue, startIndex = startIndexValue, endIndex = endIndexValue });
+                        if (goldStandard.ContainsKey(patentNumberValue))
+                        {
 
-                        goldStandard[patentNumberValue] = caList;
+                            List<CorporaAnnotation> caList = goldStandard[patentNumberValue];
 
-                    }
-                    else
-                    {
+                            caList.Add(new CorporaAnnotation { geneName = geneNameValue, startIndex = startIndexValue, endIndex = endIndexValue });
 
-                        goldStandard.Add(patentNumberValue, new List<CorporaAnnotation>() { new CorporaAnnotation { geneName = geneNameValue, startIndex = startIndexValue, endIndex = endIndexValue } });
+                            goldStandard[patentNumberValue] = caList;
 
-                    }
+                        }
+                        else
+                        {
+
+                            goldStandard.Add(patentNumberValue, new List<CorporaAnnotation>() { new CorporaAnnotation { geneName = geneNameValue, startIndex = startIndexValue, endIndex = endIndexValue } });
+
+                        }
+
+                    //}
 
                 }
 
