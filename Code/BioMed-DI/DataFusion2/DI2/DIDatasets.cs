@@ -28,6 +28,8 @@ namespace DataFusion2
                 
             }
 
+            datasets.Add(patent_abstract);
+
             return datasets;
 
         }
@@ -47,6 +49,8 @@ namespace DataFusion2
             return new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/gene2pubtatorcentral_" + i + "_dt.xml");
 
         }
+
+        public static FileInfo patent_abstract = new FileInfo(Environment.CurrentDirectory + "/data/input/DI4/patent_abstract_dt.xml");
 
     }
 

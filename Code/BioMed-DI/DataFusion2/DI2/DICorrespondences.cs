@@ -26,6 +26,8 @@ namespace DataFusion2
 
             }
 
+            correspondencesFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI4/kaessmann_2_patentAbstract/correspondences.csv"));
+
             return correspondencesFileInfoList;
 
         }

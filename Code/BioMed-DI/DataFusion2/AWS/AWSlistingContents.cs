@@ -212,6 +212,8 @@ namespace DataFusion2
                 else if (solution.Equals("DI4"))
                 {
 
+                    checkMatchingEngine = DI4MatchingEngine.checkMatchingEngine(comparisonName);
+
                 }
 
 

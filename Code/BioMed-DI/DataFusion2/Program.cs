@@ -21,9 +21,9 @@ namespace DataFusion2
 
             AWSlistingContents.createDatasetsShellScriptOutput("DI3");
 
-            //AWSlistingContents.createCorrespondencesShellScriptOutput("DI4");
+            AWSlistingContents.createCorrespondencesShellScriptOutput("DI4");
 
-            //AWSlistingContents.createDatasetsShellScriptOutput("DI4");
+            AWSlistingContents.createDatasetsShellScriptOutput("DI4");
 
             
             foreach (String parameter in args)
@@ -32,7 +32,7 @@ namespace DataFusion2
                 if (parameter.Equals("DF"))
                 {
 
-                    //DIDataFusion.run();
+                    DIDataFusion.run();
 
                     AWSupload.run();
 

@@ -1,5 +1,5 @@
 mkdir -p data/correspondences/DI3/kaessmann_2_gene2pubtatorcentral_1
-wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmann_2_gene2pubtatorcentral_1/ML_AdaBoost_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmann_2_gene2pubtatorcentral_1/correspondences.csv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmann_2_gene2pubtatorcentral_1/ML_DecisionTree_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmann_2_gene2pubtatorcentral_1/correspondences.csv
 mkdir -p data/correspondences/DI3/kaessmann_2_gene2pubtatorcentral_10
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/identity-resolution/output/DI3/kaessmann_2_gene2pubtatorcentral_10/ML_AdaBoost_StandardRecordBlocker/correspondences.csv -O data/correspondences/DI3/kaessmann_2_gene2pubtatorcentral_10/correspondences.csv
 mkdir -p data/correspondences/DI3/kaessmann_2_gene2pubtatorcentral_11

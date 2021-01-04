@@ -91,8 +91,8 @@ namespace EvaluationMetrics
 
                     string type = values[6];
 
-                    //if (!type.Equals("GPRO_TYPE_2"))
-                    //{
+                    if (!type.Equals("GPRO_TYPE_2"))
+                    {
 
 
                         if (goldStandard.ContainsKey(patentNumberValue))
@@ -112,7 +112,7 @@ namespace EvaluationMetrics
 
                         }
 
-                    //}
+                    }
 
                 }
 

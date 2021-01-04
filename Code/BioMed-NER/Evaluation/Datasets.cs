@@ -10,7 +10,8 @@ namespace EvaluationMetrics
 
         public static FileInfo title_gs = new FileInfo(Environment.CurrentDirectory + "/data/input/goldstandard/test_entity_title.tsv");
         public static FileInfo abstract_gs = new FileInfo(Environment.CurrentDirectory + "/data/input/goldstandard/test_entity_abstract.tsv");
-        public static FileInfo title_prediction = new FileInfo(Environment.CurrentDirectory + "/data/input/prediction/scispaCyEvaluationTitle.csv");
+        public static FileInfo scispacy_title_prediction = new FileInfo(Environment.CurrentDirectory + "/data/input/prediction/scispaCyEvaluationTitle.csv");
+        public static FileInfo hunflair_title_prediction = new FileInfo(Environment.CurrentDirectory + "/data/input/prediction/hunFalirEvaluationTitle.csv");
         public static FileInfo abstract_prediction = new FileInfo(Environment.CurrentDirectory + "/data/input/prediction/scispaCyEvaluationAbstract.csv");
 
     }
