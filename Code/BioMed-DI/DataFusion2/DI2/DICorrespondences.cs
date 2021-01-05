@@ -19,14 +19,14 @@ namespace DataFusion2
                 
             }
 
+            correspondencesFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI4/kaessmann_2_patentAbstract/correspondences.csv"));
+
             for (int i = 1; i <= 50; i++)
             {
 
                 correspondencesFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI3/kaessmann_2_gene2pubtatorcentral_" + i + "/correspondences.csv"));
 
             }
-
-            correspondencesFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/correspondences/DI4/kaessmann_2_patentAbstract/correspondences.csv"));
 
             return correspondencesFileInfoList;
 

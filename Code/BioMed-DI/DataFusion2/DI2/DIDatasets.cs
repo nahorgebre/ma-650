@@ -21,14 +21,14 @@ namespace DataFusion2
                 
             }
 
+            datasets.Add(patent_abstract);
+
             for (int i = 1; i <= 50; i++)
             {
 
                 datasets.Add(gene2pubtatorcentral(i));
                 
-            }
-
-            datasets.Add(patent_abstract);
+            }        
 
             return datasets;
 
