@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace DataFusion2
@@ -42,6 +43,24 @@ namespace DataFusion2
 
                 }
 
+            }
+
+            //Intermediate correspondences output
+
+            FileInfo intermediateCorrespondences = new FileInfo(Environment.CurrentDirectory + "/data/correspondences/correspodences.csv");
+
+            intermediateCorrespondences.Directory.Create();
+
+            using (StreamWriter sw = new StreamWriter(intermediateCorrespondences.FullName))
+            {
+
+                foreach (KeyValuePair<string, SortedSet<string>> item in mergedCorrespondences)
+                {
+
+                    sw.WriteLine(item.Key + "," + String.Join("|", item.Value));
+                
+                }
+                
             }
 
             return mergedCorrespondences;
