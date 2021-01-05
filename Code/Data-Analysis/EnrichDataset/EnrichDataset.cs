@@ -16,7 +16,7 @@ namespace EnrichFusedDataset
         public static void run()
         {
 
-            Console.WriteLine("Run!");
+            Console.WriteLine("Enrich fused dataset!");
 
             if (!enrichedFusedDS.Exists)
             {

@@ -1,1 +1,0 @@
-https://www.ncbi.nlm.nih.gov/research/pubtator-api/publications/export/biocxml?pmids=28108177&concepts=gene

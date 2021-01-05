@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace EnrichFusedDataset
 {
 
-    class AIMoutput
+    class AIM_TimeDependentOutput
     {
 
         public int pubAll = 0;
@@ -42,6 +42,7 @@ namespace EnrichFusedDataset
         public static void run()
         {
 
+            Console.WriteLine("AIM 1 & 2!");
 
 
             FileInfo aimFile = new FileInfo(Environment.CurrentDirectory + "/AIM/aim.tsv");
@@ -49,7 +50,7 @@ namespace EnrichFusedDataset
             if (!aimFile.Exists)
             {
 
-                SortedDictionary<int, AIMoutput> aimDictionary = getAimSortedDictionary();
+                SortedDictionary<int, AIM_TimeDependentOutput> aimDictionary = getAimSortedDictionary();
 
                 using (StreamWriter sw = new StreamWriter(aimFile.FullName))
                 {
@@ -101,7 +102,7 @@ namespace EnrichFusedDataset
 
         }
 
-        public static SortedDictionary<int, AIMoutput> getNumberOfAllPublicationsByYear(SortedDictionary<int, AIMoutput> aimDictionary)
+        public static SortedDictionary<int, AIM_TimeDependentOutput> getNumberOfAllPublicationsByYear(SortedDictionary<int, AIM_TimeDependentOutput> aimDictionary)
         {
 
             using (StreamReader sr = new StreamReader(Environment.CurrentDirectory + "/data/input/PubMedDate.csv"))
@@ -124,7 +125,7 @@ namespace EnrichFusedDataset
                         if (aimDictionary.ContainsKey(year))
                         {
 
-                            AIMoutput output = aimDictionary[year];
+                            AIM_TimeDependentOutput output = aimDictionary[year];
 
                             output.pubAll += 1;
 
@@ -132,7 +133,7 @@ namespace EnrichFusedDataset
                         else if (!aimDictionary.ContainsKey(year))
                         {
 
-                            aimDictionary.Add(year, new AIMoutput { pubAll = 1 });
+                            aimDictionary.Add(year, new AIM_TimeDependentOutput { pubAll = 1 });
 
                         }
 
@@ -146,7 +147,7 @@ namespace EnrichFusedDataset
 
         }
 
-        public static SortedDictionary<int, AIMoutput> getAimSortedDictionary()
+        public static SortedDictionary<int, AIM_TimeDependentOutput> getAimSortedDictionary()
         {
 
             // Read enriched and fused dataset
@@ -162,7 +163,7 @@ namespace EnrichFusedDataset
 
 
             // Dictionary < publicationYear, AIM1output >
-            SortedDictionary<int, AIMoutput> aimDictionary = new SortedDictionary<int, AIMoutput>();
+            SortedDictionary<int, AIM_TimeDependentOutput> aimDictionary = new SortedDictionary<int, AIM_TimeDependentOutput>();
 
 
             // retrieve # of publications for each species and each case
@@ -182,12 +183,12 @@ namespace EnrichFusedDataset
                         if (!aimDictionary.ContainsKey(year))
                         {
 
-                            aimDictionary.Add(year, new AIMoutput());
+                            aimDictionary.Add(year, new AIM_TimeDependentOutput());
 
                         }
 
 
-                        AIMoutput item = aimDictionary[year];
+                        AIM_TimeDependentOutput item = aimDictionary[year];
 
                         // homo sapiens
                         if (homoSapiensHashSet.Contains(publicationItem.associatedNcbiId))
