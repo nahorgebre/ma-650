@@ -17,7 +17,7 @@ public class DI4Datasets {
 
         HashedDataSet<Gene, Attribute> ds = new HashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/input/DI4/patent_abstract_dt.xml"), "/genes/gene", ds);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI4/DI1_dt.xml"), "/genes/gene", ds);
 
         return ds;
 
@@ -27,7 +27,7 @@ public class DI4Datasets {
 
         HashedDataSet<Gene, Attribute> ds = new HashedDataSet<>();
 
-        new GeneXMLReader().loadFromXML(new File("data/input/DI3/DI1_dt.xml"), "/genes/gene", ds);
+        new GeneXMLReader().loadFromXML(new File("data/input/DI4/patent_abstract_dt.xml"), "/genes/gene", ds);
 
         return ds;
 
