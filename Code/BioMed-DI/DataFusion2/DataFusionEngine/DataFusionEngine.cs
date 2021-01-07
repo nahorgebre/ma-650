@@ -44,14 +44,6 @@ namespace DataFusion2
 
                 Gene fusedGeneItem = fuseGeneItems(unfusedGeneList);
 
-                if (fusedGeneItem.patentMentions.Count > 0)
-                {
-
-                    Console.WriteLine("2: " + fusedGeneItem.patentMentions.Count);
-
-                }
-
-
 
                 gene.ensemblId = fusedGeneItem.ensemblId;
 
@@ -101,36 +93,8 @@ namespace DataFusion2
 
         }
 
-        public static void checkIfUnfusedGeneItemListContainsPatentMentions(List<Gene> geneList)
-        {
-
-            int counter = 0;
-
-            foreach (Gene item in geneList)
-            {
-
-                if (item.patentMentions.Count > 0)
-                {
-
-                    counter++;
-
-                }
-
-            }
-
-            if (counter > 0)
-            {
-
-                Console.WriteLine("# of patents in unfused gene item list: " + counter);
-                
-            }
-
-        }
-
         public static Gene fuseGeneItems(List<Gene> unfusedGeneItems)
         {
-
-            checkIfUnfusedGeneItemListContainsPatentMentions(unfusedGeneItems);
 
             Gene fusedGeneItem = new Gene();
 
@@ -238,13 +202,6 @@ namespace DataFusion2
             fusedGeneItem.publicationMentions = unfusedPublicationMentionList;
 
             fusedGeneItem.patentMentions = unfusedPatentMentionList;
-
-            if (fusedGeneItem.patentMentions.Count > 0)
-            {
-
-                Console.WriteLine("1: " + fusedGeneItem.patentMentions.Count);
-
-            }
 
 
             return fusedGeneItem;
