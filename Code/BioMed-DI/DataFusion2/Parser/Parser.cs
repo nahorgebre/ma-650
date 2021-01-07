@@ -73,6 +73,8 @@ namespace DataFusion2
             using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
             {
 
+                int patentCount = 0;
+
                 while (reader.ReadToFollowing("gene"))
                 {
 
@@ -301,6 +303,8 @@ namespace DataFusion2
                     }
 
                 }
+
+                Console.WriteLine("# number of patents retrieved by parser: " + patentCount);
 
             }
 
@@ -581,6 +585,8 @@ namespace DataFusion2
                     genePatentMention.patentClaimsCount = (node?.SelectSingleNode("patentClaimsCount").InnerText ?? null);
 
                 }
+
+                genePatentMentionList.Add(genePatentMention);
 
             }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace DataFusion2
 {
+    
     class DataFusionEngine
     {
 
@@ -41,10 +42,17 @@ namespace DataFusion2
                 {
 
                     unfusedGeneList.Add(diDatasets[recordId]);
-                    
+
                 }
 
                 Gene fusedGeneItem = fuseGeneItems(unfusedGeneList);
+
+                if (fusedGeneItem.patentMentions.Count > 0)
+                {
+
+                    Console.WriteLine("2: " + fusedGeneItem.patentMentions.Count);
+
+                }
 
 
 
@@ -66,15 +74,66 @@ namespace DataFusion2
 
 
                 fusedRecords.Add(gene);
-     
+
             }
+
+            checkIfFusedRecordsContainPatents(fusedRecords);
 
             return fusedRecords;
 
         }
 
+        public static void checkIfFusedRecordsContainPatents(List<Gene> fusedRecords)
+        {
+
+            int count = 0;
+
+            foreach (Gene item in fusedRecords)
+            {
+
+                if (item.patentMentions.Count > 0)
+                {
+
+                    count++;
+
+                }
+
+            }
+
+            Console.WriteLine("# of patents in fused records: " + count);
+
+        }
+
+        public static void checkIfUnfusedGeneItemListContainsPatentMentions(List<Gene> geneList)
+        {
+
+            int counter = 0;
+
+            foreach (Gene item in geneList)
+            {
+
+                if (item.patentMentions.Count > 0)
+                {
+
+                    counter++;
+
+                }
+
+            }
+
+            if (counter > 0)
+            {
+
+                Console.WriteLine("# of patents in unfused gene item list: " + counter);
+                
+            }
+
+        }
+
         public static Gene fuseGeneItems(List<Gene> unfusedGeneItems)
         {
+
+            checkIfUnfusedGeneItemListContainsPatentMentions(unfusedGeneItems);
 
             Gene fusedGeneItem = new Gene();
 
@@ -183,11 +242,17 @@ namespace DataFusion2
 
             fusedGeneItem.patentMentions = unfusedPatentMentionList;
 
+            if (fusedGeneItem.patentMentions.Count > 0)
+            {
+
+                Console.WriteLine("1: " + fusedGeneItem.patentMentions.Count);
+
+            }
+
 
             return fusedGeneItem;
 
         }
-
 
         public static XMLElement fuseRecordAttributes(List<XMLElement> recordItemList)
         {

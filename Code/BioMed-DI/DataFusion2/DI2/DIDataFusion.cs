@@ -13,7 +13,7 @@ namespace DataFusion2
 
             Console.WriteLine("Load correspondences!");
 
-            List<Tuple<string, string>> correspondences = Methods.getCorrespondenceList(DICorrespondences.getCorrespondencesFileInfoList());
+            List<Tuple<string, string>> correspondences = DICorrespondences.getCorrespondenceList(DICorrespondences.getCorrespondencesFileInfoList());
 
 
             Console.WriteLine("Load key dictionary!");
@@ -23,9 +23,9 @@ namespace DataFusion2
             
             Console.WriteLine("Load datasets!");
 
-            HashSet<string> recordIdHashSet = Datasets.getRecordIdHashSet(mergedCorrespondences);
+            HashSet<string> recordIdHashSet = DIDatasets.getRecordIdHashSet(mergedCorrespondences);
 
-            Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DIDatasets.getDatasets(), recordIdHashSet);
+            Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DIDatasets.getDatasetFileInfoList(), recordIdHashSet);
 
 
             Console.WriteLine("Fuse datasets!");

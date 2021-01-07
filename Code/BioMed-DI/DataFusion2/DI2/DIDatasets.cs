@@ -7,50 +7,59 @@ namespace DataFusion2
     class DIDatasets
     {
 
-        public static List<FileInfo> getDatasets()
+        public static List<FileInfo> getDatasetFileInfoList()
         {
 
-            List<FileInfo> datasets = new List<FileInfo>();
+            List<FileInfo> datasetFileInfoList = new List<FileInfo>();
 
-            datasets.Add(Kaessmann);
+            datasetFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/input/DI4/DI1_dt.xml"));
+
 
             for (int i = 1; i <= 7; i++)
             {
 
-                datasets.Add(all_gene_disease_pmid_associations(i));
-                
+                datasetFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/input/DI2/all_gene_disease_pmid_associations_" + i + "_dt.xml"));
+
             }
 
-            datasets.Add(patent_abstract);
+
+            datasetFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/input/DI4/patent_abstract_dt.xml"));
+
 
             for (int i = 1; i <= 50; i++)
             {
 
-                datasets.Add(gene2pubtatorcentral(i));
-                
-            }        
+                datasetFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/gene2pubtatorcentral_" + i + "_dt.xml"));
 
-            return datasets;
+            }
+
+
+            return datasetFileInfoList;
 
         }
 
-        public static FileInfo Kaessmann = new FileInfo(Environment.CurrentDirectory + "/data/input/DI2/DI1_dt.xml");
-
-        public static FileInfo all_gene_disease_pmid_associations(int i) 
+        public static HashSet<string> getRecordIdHashSet(Dictionary<string, SortedSet<string>> mergedCorrespondences)
         {
 
-            return new FileInfo(Environment.CurrentDirectory + "/data/input/DI2/all_gene_disease_pmid_associations_" + i + "_dt.xml");
+            HashSet<string> recordIdHashSet = new HashSet<string>();
+
+            foreach (KeyValuePair<string, SortedSet<string>> correspondenceItem in mergedCorrespondences)
+            {
+
+                recordIdHashSet.Add(correspondenceItem.Key);
+
+                foreach (string sortedSetItem in correspondenceItem.Value)
+                {
+
+                    recordIdHashSet.Add(sortedSetItem);
+
+                }
+
+            }
+
+            return recordIdHashSet;
 
         }
-
-        public static FileInfo gene2pubtatorcentral(int i) 
-        {
-
-            return new FileInfo(Environment.CurrentDirectory + "/data/input/DI3/gene2pubtatorcentral_" + i + "_dt.xml");
-
-        }
-
-        public static FileInfo patent_abstract = new FileInfo(Environment.CurrentDirectory + "/data/input/DI4/patent_abstract_dt.xml");
 
     }
 

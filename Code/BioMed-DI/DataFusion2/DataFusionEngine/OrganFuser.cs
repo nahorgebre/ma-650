@@ -16,7 +16,7 @@ namespace DataFusion2
             foreach (Organ organ in organList)
             {
 
-                organ.provenance = "test";
+                //organ.provenance = "test";
 
                 newOrganList.Add(organ);
                 
