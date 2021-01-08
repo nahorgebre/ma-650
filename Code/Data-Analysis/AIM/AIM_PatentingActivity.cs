@@ -38,20 +38,27 @@ namespace EnrichFusedDataset
 
                     int patentCount = geneItem.patentMentions.Count;
 
-                    Console.WriteLine("Patent Count: " + patentCount);
+                    if (patentCount > 0)
+                    {
+                        
+                        Console.WriteLine("Patent Count: " + patentCount);
 
-                    Console.WriteLine("1 Disease association: " + diseaseAssociation);
+                    }
+
+                    
+
+                    //Console.WriteLine("1 Disease association: " + diseaseAssociation);
 
 
                     if (geneItem.overallCall.Equals("1"))
                     {
 
-                        Console.WriteLine("2 Disease association: " + diseaseAssociation);
+                        //Console.WriteLine("2 Disease association: " + diseaseAssociation);
 
                         if (diseaseAssociation >= double.Parse("0,1"))
                         {
 
-                            Console.WriteLine("3 Disease association: " + diseaseAssociation);
+                            //Console.WriteLine("3 Disease association: " + diseaseAssociation);
 
                             DiseaseAssociation_Strong_Call_Same = DiseaseAssociation_Strong_Call_Same + patentCount;
 
@@ -59,7 +66,7 @@ namespace EnrichFusedDataset
                         else if (diseaseAssociation < double.Parse("0,1"))
                         {
 
-                            Console.WriteLine("3 Disease association: " + diseaseAssociation);
+                            //Console.WriteLine("3 Disease association: " + diseaseAssociation);
 
                             DiseaseAssociation_Weak_Call_Same = DiseaseAssociation_Weak_Call_Same + patentCount;
 
@@ -69,12 +76,12 @@ namespace EnrichFusedDataset
                     else if (geneItem.overallCall.Equals("0"))
                     {
 
-                        Console.WriteLine("2 Disease association: " + diseaseAssociation);
+                        //Console.WriteLine("2 Disease association: " + diseaseAssociation);
 
                         if (diseaseAssociation >= double.Parse("0,1"))
                         {
 
-                            Console.WriteLine("3 Disease association: " + diseaseAssociation);
+                            //Console.WriteLine("3 Disease association: " + diseaseAssociation);
 
                             DiseaseAssociation_Strong_Call_Different = DiseaseAssociation_Strong_Call_Different + patentCount;
 
@@ -82,7 +89,7 @@ namespace EnrichFusedDataset
                         else if (diseaseAssociation < double.Parse("0,1"))
                         {
 
-                            Console.WriteLine("3 Disease association: " + diseaseAssociation);
+                            //Console.WriteLine("3 Disease association: " + diseaseAssociation);
 
                             DiseaseAssociation_Weak_Call_Different = DiseaseAssociation_Weak_Call_Different + patentCount;
 

@@ -36,6 +36,23 @@ namespace DataTranslation
 
         }
 
+        public static void runDataTranslationForDI3()
+        {
+
+            FileInfo file = new FileInfo(DI4.inputDirectory + "/DI2-fused.xml");
+
+            List<Gene> gene_list = Parser.getGeneList(file);
+
+            getNcbiIdFrequency(gene_list);
+
+            gene_list = Output.adjustRecordId(gene_list, "DI3_{0}_rid");
+
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/DI1_dt.xml"));
+
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/DI1_dt.tsv"));
+
+        }
+
         public static void getNcbiIdFrequency(List<Gene> gene_list)
         {
 

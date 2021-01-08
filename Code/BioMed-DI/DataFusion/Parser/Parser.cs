@@ -1,14 +1,44 @@
 using System;
 using System.IO;
 using System.Xml;
+using System.Text;
 using System.Collections.Generic;
 
-namespace EnrichFusedDataset
+namespace DataFusion
 {
 
     public class Parser
     {
 
+
+        public static Dictionary<string, Gene> getGeneListforFileList(List<FileInfo> xmlFileList, HashSet<string> recordIdHashSet)
+        {
+
+            Dictionary<string, Gene> geneDictionary = new Dictionary<string, Gene>();
+
+            foreach (FileInfo xmlFile in xmlFileList)
+            {
+
+                List<Gene> geneList = getFilteredGeneList(xmlFile, recordIdHashSet);
+
+                int count = 1;
+
+                foreach (Gene geneItem in geneList)
+                {
+
+                    geneDictionary.Add(geneItem.recordId, geneItem);
+
+                    count++;
+
+                }
+
+            }
+
+            return geneDictionary;
+
+        }
+
+        
         public static List<Gene> getGeneList(FileInfo xmlFile)
         {
 
@@ -43,7 +73,7 @@ namespace EnrichFusedDataset
                     if (!ensemblId.Equals(string.Empty))
                     {
 
-                        gene.ensemblId = ensemblId;
+                        gene.ensemblId.value = ensemblId;
 
                     }
 
@@ -55,7 +85,7 @@ namespace EnrichFusedDataset
                     if (!ncbiId.Equals(string.Empty))
                     {
 
-                        gene.ncbiId = ncbiId;
+                        gene.ncbiId.value = ncbiId;
 
                     }
 
@@ -67,7 +97,7 @@ namespace EnrichFusedDataset
                     if (!geneNames.Equals(string.Empty))
                     {
 
-                        gene.geneNames = geneNames;
+                        gene.geneNames.value = geneNames;
 
                     }
 
@@ -79,7 +109,7 @@ namespace EnrichFusedDataset
                     if (!geneDescriptions.Equals(string.Empty))
                     {
 
-                        gene.geneDescriptions = geneDescriptions;
+                        gene.geneDescriptions.value = geneDescriptions;
 
                     }
 
@@ -91,7 +121,7 @@ namespace EnrichFusedDataset
                     if (!overallCall.Equals(string.Empty))
                     {
 
-                        gene.overallCall = overallCall;
+                        gene.overallCall.value = overallCall;
 
                     }
 
@@ -103,7 +133,7 @@ namespace EnrichFusedDataset
                     if (!overallDiseaseAssociation.Equals(string.Empty))
                     {
 
-                        gene.overallDiseaseAssociation = overallDiseaseAssociation;
+                        gene.overallDiseaseAssociation.value = overallDiseaseAssociation;
 
                     }
 
@@ -115,7 +145,7 @@ namespace EnrichFusedDataset
                     if (!firstPublicationYear.Equals(string.Empty))
                     {
 
-                        gene.firstPublicationYear = firstPublicationYear;
+                        gene.firstPublicationYear.value = firstPublicationYear;
 
                     }
 
@@ -127,7 +157,7 @@ namespace EnrichFusedDataset
                     if (!frequencyPatent.Equals(string.Empty))
                     {
 
-                        gene.frequencyPatent = frequencyPatent;
+                        gene.frequencyPatent.value = frequencyPatent;
 
                     }
 
@@ -139,7 +169,7 @@ namespace EnrichFusedDataset
                     if (!frequencyPatentTitle.Equals(string.Empty))
                     {
 
-                        gene.frequencyPatentTitle = frequencyPatentTitle;
+                        gene.frequencyPatentTitle.value = frequencyPatentTitle;
 
                     }
 
@@ -151,7 +181,7 @@ namespace EnrichFusedDataset
                     if (!frequencyPatentAbstract.Equals(string.Empty))
                     {
 
-                        gene.frequencyPatentAbstract = frequencyPatentAbstract;
+                        gene.frequencyPatentAbstract.value = frequencyPatentAbstract;
 
                     }
 
@@ -163,7 +193,7 @@ namespace EnrichFusedDataset
                     if (!frequencyPatentDescription.Equals(string.Empty))
                     {
 
-                        gene.frequencyPatentDescription = frequencyPatentDescription;
+                        gene.frequencyPatentDescription.value = frequencyPatentDescription;
 
                     }
 
@@ -175,7 +205,7 @@ namespace EnrichFusedDataset
                     if (!frequencyPatentClaims.Equals(string.Empty))
                     {
 
-                        gene.frequencyPatentClaims = frequencyPatentClaims;
+                        gene.frequencyPatentClaims.value = frequencyPatentClaims;
 
                     }
 
@@ -241,13 +271,6 @@ namespace EnrichFusedDataset
 
                         int count = patentMentionList.Count;
 
-                        if (count > 0)
-                        {
-                            
-                            Console.WriteLine("Patent Count: " + count);
-                            
-                        }
-
                     }
 
                     gene.patentMentions = patentMentionList;
@@ -260,7 +283,277 @@ namespace EnrichFusedDataset
 
             }
 
-            return Parser.adjustRecordId(geneList, "AN_{0}_rid");
+            return geneList;
+
+        }
+
+
+        public static List<Gene> getFilteredGeneList(FileInfo xmlFile, HashSet<string> recordIdHashSet)
+        {
+
+            List<Gene> geneList = new List<Gene>();
+
+
+            XmlReaderSettings settings = new XmlReaderSettings();
+
+            settings.DtdProcessing = DtdProcessing.Parse;
+
+
+            Console.WriteLine("Parsing: ..." + xmlFile.FullName);
+
+            /*
+
+            XmlDocument xmltest = new XmlDocument();
+
+            string x = File.ReadAllLines(xmlFile.FullName).ToString();
+
+            string _byteOrderMarkUtf8 = Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble());
+
+            if (x.StartsWith(_byteOrderMarkUtf8))
+            {
+                x = x.Remove(0, _byteOrderMarkUtf8.Length);
+            }
+
+            xmltest.LoadXml(x);
+
+            Console.WriteLine("LOad succesfull! ----------------------------------------------------------");
+            */
+
+            using (XmlReader reader = XmlReader.Create(xmlFile.FullName, settings))
+            {
+
+                while (reader.ReadToFollowing("gene"))
+                {
+
+
+                    reader.ReadToFollowing("recordId");
+
+                    string recordId = reader.ReadElementContentAsString().Trim();
+
+
+                    if (recordIdHashSet.Contains(recordId))
+                    {
+
+                        Gene gene = new Gene();
+
+                        gene.recordId = recordId;
+
+
+                        reader.ReadToFollowing("ensemblId");
+
+                        String ensemblId = reader.ReadElementContentAsString().Trim();
+
+                        if (!ensemblId.Equals(string.Empty))
+                        {
+
+                            gene.ensemblId.value = ensemblId;
+
+                        }
+
+
+                        reader.ReadToFollowing("ncbiId");
+
+                        String ncbiId = reader.ReadElementContentAsString().Trim();
+
+                        if (!ncbiId.Equals(string.Empty))
+                        {
+
+                            gene.ncbiId.value = ncbiId;
+
+                        }
+
+
+                        reader.ReadToFollowing("geneNames");
+
+                        string geneNames = reader.ReadElementContentAsString().Trim();
+
+                        if (!geneNames.Equals(string.Empty))
+                        {
+
+                            gene.geneNames.value = geneNames;
+
+                        }
+
+
+                        reader.ReadToFollowing("geneDescriptions");
+
+                        String geneDescriptions = reader.ReadElementContentAsString().Trim();
+
+                        if (!geneDescriptions.Equals(string.Empty))
+                        {
+
+                            gene.geneDescriptions.value = geneDescriptions;
+
+                        }
+                        
+                        //overallCall
+                        reader.ReadToFollowing("overallCall");
+
+                        String overallCall = reader.ReadElementContentAsString().Trim();
+
+                        if (!overallCall.Equals(string.Empty))
+                        {
+
+                            gene.overallCall.value = overallCall;
+
+                        }
+
+                        //overallDiseaseAssociation
+                        reader.ReadToFollowing("overallDiseaseAssociation");
+
+                        String overallDiseaseAssociation = reader.ReadElementContentAsString().Trim();
+
+                        if (!overallDiseaseAssociation.Equals(string.Empty))
+                        {
+
+                            gene.overallDiseaseAssociation.value = overallDiseaseAssociation;
+
+                        }
+
+                        //firstPublicationYear
+                        reader.ReadToFollowing("firstPublicationYear");
+
+                        String firstPublicationYear = reader.ReadElementContentAsString().Trim();
+
+                        if (!firstPublicationYear.Equals(string.Empty))
+                        {
+
+                            gene.firstPublicationYear.value = firstPublicationYear;
+
+                        }
+
+                        //frequencyPatent
+                        reader.ReadToFollowing("frequencyPatent");
+
+                        String frequencyPatent = reader.ReadElementContentAsString().Trim();
+
+                        if (!frequencyPatent.Equals(string.Empty))
+                        {
+
+                            gene.frequencyPatent.value = frequencyPatent;
+
+                        }
+
+                        //frequencyPatentTitle
+                        reader.ReadToFollowing("frequencyPatentTitle");
+
+                        String frequencyPatentTitle = reader.ReadElementContentAsString().Trim();
+
+                        if (!frequencyPatentTitle.Equals(string.Empty))
+                        {
+
+                            gene.frequencyPatentTitle.value = frequencyPatentTitle;
+
+                        }
+
+                        //frequencyPatentAbstract
+                        reader.ReadToFollowing("frequencyPatentAbstract");
+
+                        String frequencyPatentAbstract = reader.ReadElementContentAsString().Trim();
+
+                        if (!frequencyPatentAbstract.Equals(string.Empty))
+                        {
+
+                            gene.frequencyPatentAbstract.value = frequencyPatentAbstract;
+
+                        }
+
+                        reader.ReadToFollowing("frequencyPatentDescription");
+
+                        String frequencyPatentDescription = reader.ReadElementContentAsString().Trim();
+
+                        if (!frequencyPatentDescription.Equals(string.Empty))
+                        {
+
+                            gene.frequencyPatentDescription.value = frequencyPatentDescription;
+
+                        }
+
+                        reader.ReadToFollowing("frequencyPatentClaims");
+
+                        String frequencyPatentClaims = reader.ReadElementContentAsString().Trim();
+
+                        if (!frequencyPatentClaims.Equals(string.Empty))
+                        {
+
+                            gene.frequencyPatentClaims.value = frequencyPatentClaims;
+
+                        }
+                        
+
+                        // Organs
+
+                        List<Organ> organList = new List<Organ>();
+
+                        if (reader.ReadToFollowing("organs"))
+                        {
+
+                            string xml = "<organs>" + reader.ReadInnerXml() + "</organs>";
+
+                            organList = parseOrgan(xml);
+
+                        }
+
+                        gene.organs = organList;
+
+
+                        // Disease Associations
+
+                        List<GeneDiseaseAssociation> diseaseAssociationList = new List<GeneDiseaseAssociation>();
+
+                        if (reader.ReadToFollowing("diseaseAssociations"))
+                        {
+
+                            string xml = "<diseaseAssociations>" + reader.ReadInnerXml() + "</diseaseAssociations>";
+
+                            diseaseAssociationList = parseDiseaseAssociation(xml);
+
+                        }
+
+                        gene.diseaseAssociations = diseaseAssociationList;
+
+
+                        // Publication Mentions
+
+                        List<GenePublicationMention> publicationMentionList = new List<GenePublicationMention>();
+
+                        if (reader.ReadToFollowing("publicationMentions"))
+                        {
+
+                            string xml = "<publicationMentions>" + reader.ReadInnerXml() + "</publicationMentions>";
+
+                            publicationMentionList = parsePublicationMention(xml);
+
+                        }
+
+                        gene.publicationMentions = publicationMentionList;
+
+
+                        // PatentMentions
+
+                        List<GenePatentMention> patentMentionList = new List<GenePatentMention>();
+
+                        if (reader.ReadToFollowing("patentMentions"))
+                        {
+
+                            string xml = "<patentMentions>" + reader.ReadInnerXml() + "</patentMentions>";
+
+                            patentMentionList = parsePatentMention(xml);
+
+                        }
+
+                        gene.patentMentions = patentMentionList;
+
+
+                        geneList.Add(gene);
+
+                    }
+
+                }
+
+            }
+
+            return geneList;
 
         }
 
@@ -538,6 +831,8 @@ namespace EnrichFusedDataset
 
                 }
 
+                genePatentMentionList.Add(genePatentMention);
+
             }
 
             return genePatentMentionList;
@@ -564,28 +859,7 @@ namespace EnrichFusedDataset
         }
 
 
-        public static List<Gene> adjustRecordId(List<Gene> geneList, string recordIdPattern)
-        {
-
-            List<Gene> adjustedGeneList = new List<Gene>();
-
-            int counter = 1;
-
-            foreach (Gene item in geneList)
-            {
-                
-                item.recordId = string.Format(recordIdPattern, counter);
-
-                adjustedGeneList.Add(item);
-
-                counter ++;
-
-            }
-
-            return adjustedGeneList;
-
-        }
-
     }
+
 
 }

@@ -42,6 +42,12 @@ namespace DataTranslation
                     AWSupload.run(parameter);
                     
                 }
+                else if (parameter.Equals("test"))
+                {
+
+                    Test.runDataTranslation();
+
+                }
 
             }
             

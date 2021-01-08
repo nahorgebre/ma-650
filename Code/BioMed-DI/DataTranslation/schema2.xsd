@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="genes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="gene"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gene">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="recordId"/>
+        <xs:element ref="ensemblId"/>
+        <xs:element ref="ncbiId"/>
+        <xs:element ref="geneNames"/>
+        <xs:element ref="geneDescriptions"/>
+        <xs:element ref="overallCall"/>
+        <xs:element ref="overallDiseaseAssociation"/>
+        <xs:element ref="firstPublicationYear"/>
+        <xs:element ref="frequencyPatent"/>
+        <xs:element ref="frequencyPatentTitle"/>
+        <xs:element ref="frequencyPatentAbstract"/>
+        <xs:element ref="frequencyPatentDescription"/>
+        <xs:element ref="frequencyPatentClaims"/>
+        <xs:element ref="organs"/>
+        <xs:element ref="diseaseAssociations"/>
+        <xs:element ref="publicationMentions"/>
+        <xs:element ref="patentMentions"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recordId" type="xs:NCName"/>
+  <xs:element name="ensemblId" type="xs:NCName"/>
+  <xs:element name="ncbiId" type="xs:NCName"/>
+  <xs:element name="geneNames" type="xs:NCName"/>
+  <xs:element name="geneDescriptions" type="xs:NCName"/>
+  <xs:element name="overallCall" type="xs:NCName"/>
+  <xs:element name="overallDiseaseAssociation" type="xs:NCName"/>
+  <xs:element name="firstPublicationYear" type="xs:NCName"/>
+  <xs:element name="frequencyPatent" type="xs:NCName"/>
+  <xs:element name="frequencyPatentTitle" type="xs:NCName"/>
+  <xs:element name="frequencyPatentAbstract" type="xs:NCName"/>
+  <xs:element name="frequencyPatentDescription" type="xs:NCName"/>
+  <xs:element name="frequencyPatentClaims" type="xs:NCName"/>
+  <xs:element name="organs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="organ"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="organ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="organName"/>
+        <xs:element ref="disagreement"/>
+        <xs:element ref="probEqualOrthoAdj"/>
+        <xs:element ref="call"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="organName" type="xs:NCName"/>
+  <xs:element name="disagreement" type="xs:NCName"/>
+  <xs:element name="probEqualOrthoAdj" type="xs:NCName"/>
+  <xs:element name="call" type="xs:NCName"/>
+  <xs:element name="diseaseAssociations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="diseaseAssociation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="diseaseAssociation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="diseaseIdUMLS"/>
+        <xs:element ref="diseaseName"/>
+        <xs:element ref="diseaseSpecificityIndex"/>
+        <xs:element ref="diseasePleiotropyIndex"/>
+        <xs:element ref="diseaseTypeDisGeNET"/>
+        <xs:element ref="diseaseClassMeSH"/>
+        <xs:element ref="diseaseSemanticTypeUMLS"/>
+        <xs:element ref="associationScore"/>
+        <xs:element ref="evidenceIndex"/>
+        <xs:element ref="yearInitialReport"/>
+        <xs:element ref="yearFinalReport"/>
+        <xs:element ref="pmId"/>
+        <xs:element ref="source"/>
+        <xs:element ref="associatedNcbiId"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="diseaseIdUMLS" type="xs:NCName"/>
+  <xs:element name="diseaseName" type="xs:NCName"/>
+  <xs:element name="diseaseSpecificityIndex" type="xs:NCName"/>
+  <xs:element name="diseasePleiotropyIndex" type="xs:NCName"/>
+  <xs:element name="diseaseTypeDisGeNET" type="xs:NCName"/>
+  <xs:element name="diseaseClassMeSH" type="xs:NCName"/>
+  <xs:element name="diseaseSemanticTypeUMLS" type="xs:NCName"/>
+  <xs:element name="associationScore" type="xs:NCName"/>
+  <xs:element name="evidenceIndex" type="xs:NCName"/>
+  <xs:element name="yearInitialReport" type="xs:NCName"/>
+  <xs:element name="yearFinalReport" type="xs:NCName"/>
+  <xs:element name="source" type="xs:NCName"/>
+  <xs:element name="publicationMentions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="publicationMention"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="publicationMention">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="pmId"/>
+        <xs:element ref="ressource"/>
+        <xs:element ref="year"/>
+        <xs:element ref="associatedNcbiId"/>
+        <xs:element ref="associatedOrgan"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ressource" type="xs:NCName"/>
+  <xs:element name="year" type="xs:NCName"/>
+  <xs:element name="associatedOrgan" type="xs:NCName"/>
+  <xs:element name="patentMentions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="patentMention"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="patentMention">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="patentId"/>
+        <xs:element ref="patentDate"/>
+        <xs:element ref="patentChapter"/>
+        <xs:element ref="patentClaimsCount"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="patentId" type="xs:NCName"/>
+  <xs:element name="patentDate" type="xs:NCName"/>
+  <xs:element name="patentChapter" type="xs:NCName"/>
+  <xs:element name="patentClaimsCount" type="xs:NCName"/>
+  <xs:element name="pmId" type="xs:NCName"/>
+  <xs:element name="associatedNcbiId" type="xs:NCName"/>
+</xs:schema>

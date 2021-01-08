@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="genes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="gene"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gene">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="recordId"/>
+        <xs:element ref="ensemblId"/>
+        <xs:element ref="ncbiId"/>
+        <xs:element ref="geneNames"/>
+        <xs:element ref="geneDescriptions"/>
+        <xs:element ref="organs"/>
+        <xs:element ref="diseaseAssociations"/>
+        <xs:element ref="publicationMentions"/>
+        <xs:element ref="patentMentions"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recordId" type="xs:NCName"/>
+  <xs:element name="ensemblId" type="xs:NCName"/>
+  <xs:element name="ncbiId" type="xs:NCName"/>
+  <xs:element name="geneNames" type="xs:NCName"/>
+  <xs:element name="geneDescriptions" type="xs:NCName"/>
+  <xs:element name="overallCall" type="xs:NCName"/>
+  <xs:element name="overallDiseaseAssociation" type="xs:NCName"/>
+  <xs:element name="firstPublicationYear" type="xs:NCName"/>
+  <xs:element name="frequencyPatent" type="xs:NCName"/>
+  <xs:element name="frequencyPatentTitle" type="xs:NCName"/>
+  <xs:element name="frequencyPatentAbstract" type="xs:NCName"/>
+  <xs:element name="organs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="diseaseAssociations">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="publicationMentions">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="patentMentions">
+    <xs:complexType/>
+  </xs:element>
+</xs:schema>
