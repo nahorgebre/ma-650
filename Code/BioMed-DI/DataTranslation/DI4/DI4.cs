@@ -13,8 +13,6 @@ namespace DataTranslation
         public static void runDataTranslation() 
         {
 
-            Kaessmann.runDataTranslation();
-
             Kaessmann.runDataTranslationForDI3();
 
             patent.runDataTranslationSingleOutput();

@@ -12,10 +12,10 @@ namespace IR_GS_Creation
 
         //patent_abstract_dt.tsv
 
-        public static void run()
+        public static void runAbstract()
         {
 
-            (List<Goldstandard> trueList, List<Goldstandard> falseList) = getGoldStandardList(DI4Datasets.DI1_dt, DI4Datasets.patent_abstract_dt);
+            (List<Goldstandard> trueList, List<Goldstandard> falseList) = getGoldStandardList(DI4Datasets.DI3_dt, DI4Datasets.patent_abstract_dt);
 
             (List<Goldstandard> trueList_train, List<Goldstandard> trueList_test) = divideIntoTrainTest(trueList);
 
@@ -28,6 +28,25 @@ namespace IR_GS_Creation
             createOutput(train, new FileInfo(Environment.CurrentDirectory + "/data/output/DI4/kaessmann_2_patentAbstract/train.csv"));
 
             createOutput(test, new FileInfo(Environment.CurrentDirectory + "/data/output/DI4/kaessmann_2_patentAbstract/test.csv"));
+
+        }
+
+        public static void runTitle()
+        {
+
+            (List<Goldstandard> trueList, List<Goldstandard> falseList) = getGoldStandardList(DI4Datasets.DI3_dt, DI4Datasets.patent_title_dt);
+
+            (List<Goldstandard> trueList_train, List<Goldstandard> trueList_test) = divideIntoTrainTest(trueList);
+
+            (List<Goldstandard> falseList_train, List<Goldstandard> falseList_test) = divideIntoTrainTest(falseList);
+
+            List<Goldstandard> train = trueList_train.Concat(falseList_train).ToList();
+
+            List<Goldstandard> test = trueList_test.Concat(falseList_test).ToList();
+
+            createOutput(train, new FileInfo(Environment.CurrentDirectory + "/data/output/DI4/kaessmann_2_patentTitle/train.csv"));
+
+            createOutput(test, new FileInfo(Environment.CurrentDirectory + "/data/output/DI4/kaessmann_2_patentTitle/test.csv"));
 
         }
 
@@ -98,11 +117,11 @@ namespace IR_GS_Creation
             int gsTrueSize = 70;
 
 
-            Dictionary<string, InputDataset> file1Dictionary = InputDataset.getDatasetDictionary(DI4Datasets.DI1_dt);
+            Dictionary<string, InputDataset> file1Dictionary = InputDataset.getDatasetDictionary(file1);
 
             Console.WriteLine("Dictionary size 1: " + file1Dictionary.Count());
 
-            Dictionary<string, InputDataset> file2Dictionary = InputDataset.getDatasetDictionary(DI4Datasets.patent_abstract_dt);
+            Dictionary<string, InputDataset> file2Dictionary = InputDataset.getDatasetDictionary(file2);
 
             Console.WriteLine("Dictionary size 2:", file2Dictionary.Count());
 
