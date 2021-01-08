@@ -12,12 +12,25 @@ namespace DataFusion
 
         private static IAmazonS3 s3Client;
 
-        public static void run()
+        public static void runDI2()
         {
 
             FileInfo file = new FileInfo(string.Format("{0}/data/output/DI2/DI2-fused.xml", Environment.CurrentDirectory));
 
-            string keyName = string.Format("data-fusion/output/{0}", file.Name);
+            string keyName = string.Format("data-fusion/output/DI2/{0}", file.Name);
+
+            string bucketName = "nahorgebre-ma-650-master-thesis";
+
+            UploadFileAsync(bucketName, file.FullName, keyName).Wait();
+
+        }
+
+        public static void runDI3()
+        {
+
+            FileInfo file = new FileInfo(string.Format("{0}/data/output/DI3/DI3-fused.xml", Environment.CurrentDirectory));
+
+            string keyName = string.Format("data-fusion/output/DI3/{0}", file.Name);
 
             string bucketName = "nahorgebre-ma-650-master-thesis";
 

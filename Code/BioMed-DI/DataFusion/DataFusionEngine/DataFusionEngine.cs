@@ -75,7 +75,9 @@ namespace DataFusion
         public static void checkIfFusedRecordsContainPatents(List<Gene> fusedRecords)
         {
 
-            int count = 0;
+            int countGene = 0;
+
+            int countPatent = 0;
 
             foreach (Gene item in fusedRecords)
             {
@@ -83,13 +85,17 @@ namespace DataFusion
                 if (item.patentMentions.Count > 0)
                 {
 
-                    count++;
+                    countGene ++;
+
+                    countPatent = countPatent + item.patentMentions.Count;
 
                 }
 
             }
 
-            Console.WriteLine("# of patents in fused records: " + count);
+            Console.WriteLine("# of genes with patents in fused records: " + countGene);
+
+            Console.WriteLine("# of patents in fused records: " + countPatent);
 
         }
 

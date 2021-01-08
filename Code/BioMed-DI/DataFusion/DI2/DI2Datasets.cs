@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DataFusion
 {
-    class DIDatasets
+    class DI2Datasets
     {
 
         public static List<FileInfo> getDatasetFileInfoList()
@@ -34,28 +34,7 @@ namespace DataFusion
 
         }
 
-        public static HashSet<string> getRecordIdHashSet(Dictionary<string, SortedSet<string>> mergedCorrespondences)
-        {
 
-            HashSet<string> recordIdHashSet = new HashSet<string>();
-
-            foreach (KeyValuePair<string, SortedSet<string>> correspondenceItem in mergedCorrespondences)
-            {
-
-                recordIdHashSet.Add(correspondenceItem.Key);
-
-                foreach (string sortedSetItem in correspondenceItem.Value)
-                {
-
-                    recordIdHashSet.Add(sortedSetItem);
-
-                }
-
-            }
-
-            return recordIdHashSet;
-
-        }
 
     }
 

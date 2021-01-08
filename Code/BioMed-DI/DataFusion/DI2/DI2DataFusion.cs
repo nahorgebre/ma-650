@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace DataFusion
 {
 
-    class DI3DataFusion
+    class DI2DataFusion
     {
 
         public static void run()
@@ -13,7 +13,7 @@ namespace DataFusion
 
             Console.WriteLine("Load correspondences!");
 
-            List<Tuple<string, string>> correspondences = Correspondences.getCorrespondenceList(DI3Correspondences.getCorrespondencesFileInfoList());
+            List<Tuple<string, string>> correspondences = Correspondences.getCorrespondenceList(DI2Correspondences.getCorrespondencesFileInfoList());
 
 
             Console.WriteLine("Load key dictionary!");
@@ -25,14 +25,14 @@ namespace DataFusion
 
             HashSet<string> recordIdHashSet = Datasets.getRecordIdHashSet(mergedCorrespondences);
 
-            Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DI3Datasets.getDatasetFileInfoList(), recordIdHashSet);
+            Dictionary<string, Gene> datasets = Parser.getGeneListforFileList(DI2Datasets.getDatasetFileInfoList(), recordIdHashSet);
 
 
             Console.WriteLine("Fuse datasets!");
 
             List<Gene> fusedRecords = DataFusionEngine.fuseRecords(mergedCorrespondences, datasets);
 
-            FileInfo fusedDataset = new FileInfo(string.Format("{0}/data/output/DI3/DI3-fused.xml", Environment.CurrentDirectory));
+            FileInfo fusedDataset = new FileInfo(string.Format("{0}/data/output/DI2/DI2-fused.xml", Environment.CurrentDirectory));
 
             Output.createXmlGene(fusedRecords, fusedDataset);
 

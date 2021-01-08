@@ -31,12 +31,18 @@ namespace DataFusion
             foreach (String parameter in args)
             {
 
-                if (parameter.Equals("DF"))
+                if (parameter.Equals("DI2"))
                 {
 
-                    DIDataFusion.run();
+                    DI2DataFusion.run();
 
-                    AWSupload.run();
+                    AWSupload.runDI2();
+
+                }
+                else if (parameter.Equals("DI3"))
+                {
+
+                    AWSupload.runDI3();
 
                 }
 
