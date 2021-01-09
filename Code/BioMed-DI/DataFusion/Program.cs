@@ -42,6 +42,8 @@ namespace DataFusion
                 else if (parameter.Equals("DI3"))
                 {
 
+                    DI3DataFusion.run();
+
                     AWSupload.runDI3();
 
                 }
