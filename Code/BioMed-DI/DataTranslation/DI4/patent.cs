@@ -8,14 +8,25 @@ namespace DataTranslation
     public class patent
     {
 
-        public static void runDataTranslationSingleOutput()
+        public static void runDataTranslationTitle()
         {
 
-            List<Gene> abstract_gene_list = getPatentGeneList(new FileInfo(DI4.inputDirectory + "/scispaCyAbstractGene.csv"), "abstract");
+            List<Gene> gene_list = getPatentGeneList(new FileInfo(DI4.inputDirectory + "/scispaCyTitleGene.csv"), "title");
 
-            Output.createXml(gene_list: abstract_gene_list, file: new FileInfo(DI4.outputDirectory + "/patent_abstract_dt.xml"));
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/patent_title_dt.xml"));
 
-            Output.createTsv(gene_list: abstract_gene_list, file: new FileInfo(DI4.outputDirectory + "/patent_abstract_dt.tsv"));
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/patent_title_dt.tsv"));
+
+        }
+
+        public static void runDataTranslationAbstract()
+        {
+
+            List<Gene> gene_list = getPatentGeneList(new FileInfo(DI4.inputDirectory + "/scispaCyAbstractGene.csv"), "abstract");
+
+            Output.createXml(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/patent_abstract_dt.xml"));
+
+            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/patent_abstract_dt.tsv"));
 
         }
 

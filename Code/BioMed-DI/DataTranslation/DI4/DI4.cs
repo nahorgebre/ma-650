@@ -15,7 +15,9 @@ namespace DataTranslation
 
             Kaessmann.runDataTranslationForDI3();
 
-            patent.runDataTranslationSingleOutput();
+            patent.runDataTranslationTitle();
+
+            patent.runDataTranslationAbstract();
 
         }
 
