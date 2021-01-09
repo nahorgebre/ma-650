@@ -12,7 +12,7 @@ namespace DataFusion
 
             List<FileInfo> datasetFileInfoList = new List<FileInfo>();
 
-            datasetFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/input/DI4/DI2_dt.xml"));
+            datasetFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/input/DI4/DI3_dt.xml"));
 
             datasetFileInfoList.Add(new FileInfo(Environment.CurrentDirectory + "/data/input/DI4/patent_abstract_dt.xml"));
 

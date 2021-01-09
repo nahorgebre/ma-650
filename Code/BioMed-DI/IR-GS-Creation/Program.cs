@@ -101,7 +101,9 @@ namespace IR_GS_Creation
                 else if (parameter.Equals("DI4"))
                 {
 
-                    DI4.runAbstract();
+                    //DI4.runAbstract();
+
+                    DI4.runTitle();
 
                     DirectoryInfo outputDirectory = new DirectoryInfo(string.Format("{0}/data/output/{1}", Environment.CurrentDirectory, parameter));
 
