@@ -66,36 +66,7 @@ namespace DataFusion
 
             }
 
-            checkIfFusedRecordsContainPatents(fusedRecords);
-
             return fusedRecords;
-
-        }
-
-        public static void checkIfFusedRecordsContainPatents(List<Gene> fusedRecords)
-        {
-
-            int countGene = 0;
-
-            int countPatent = 0;
-
-            foreach (Gene item in fusedRecords)
-            {
-
-                if (item.patentMentions.Count > 0)
-                {
-
-                    countGene ++;
-
-                    countPatent = countPatent + item.patentMentions.Count;
-
-                }
-
-            }
-
-            Console.WriteLine("# of genes with patents in fused records: " + countGene);
-
-            Console.WriteLine("# of patents in fused records: " + countPatent);
 
         }
 

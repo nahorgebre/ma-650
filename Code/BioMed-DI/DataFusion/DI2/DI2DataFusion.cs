@@ -36,8 +36,6 @@ namespace DataFusion
 
             Output.createXmlGene(fusedRecords, fusedDataset);
 
-            Datasets.checkIfPatentsAreContainedInFusedDataset(fusedDataset);
-
         }
 
     }
