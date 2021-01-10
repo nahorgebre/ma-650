@@ -538,6 +538,8 @@ namespace EnrichFusedDataset
 
                 }
 
+                genePatentMentionList.Add(genePatentMention);
+
             }
 
             return genePatentMentionList;

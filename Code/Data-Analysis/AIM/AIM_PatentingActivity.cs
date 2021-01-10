@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EnrichFusedDataset
@@ -28,6 +29,9 @@ namespace EnrichFusedDataset
             int DiseaseAssociation_Weak_Call_Different = 0;
 
 
+            Dictionary<string, int> geneFrequency = new Dictionary<string, int>();
+
+
             foreach (Gene geneItem in geneList)
             {
 
@@ -38,32 +42,35 @@ namespace EnrichFusedDataset
 
                     int patentCount = geneItem.patentMentions.Count;
 
-                    if (patentCount > 0)
-                    {
-                        
-                        Console.WriteLine("Patent Count: " + patentCount);
-
-                    }
-
                     
-
-                    //Console.WriteLine("1 Disease association: " + diseaseAssociation);
-
 
                     if (geneItem.overallCall.Equals("1"))
                     {
 
-                        //Console.WriteLine("2 Disease association: " + diseaseAssociation);
-
-                        if (diseaseAssociation >= double.Parse("0,1"))
+                        if (diseaseAssociation >= 0.5)
                         {
-
-                            //Console.WriteLine("3 Disease association: " + diseaseAssociation);
 
                             DiseaseAssociation_Strong_Call_Same = DiseaseAssociation_Strong_Call_Same + patentCount;
 
+                            if (geneFrequency.ContainsKey(geneItem.ensemblId))
+                            {
+
+                                int i = geneFrequency[geneItem.ensemblId];
+
+                                i = i++;
+
+                                geneFrequency[geneItem.ensemblId] = i;
+                                
+                            }
+                            else
+                            {
+
+                                geneFrequency.Add(geneItem.ensemblId, 1);
+
+                            }
+
                         }
-                        else if (diseaseAssociation < double.Parse("0,1"))
+                        else if (diseaseAssociation < 0.5)
                         {
 
                             //Console.WriteLine("3 Disease association: " + diseaseAssociation);
@@ -78,7 +85,7 @@ namespace EnrichFusedDataset
 
                         //Console.WriteLine("2 Disease association: " + diseaseAssociation);
 
-                        if (diseaseAssociation >= double.Parse("0,1"))
+                        if (diseaseAssociation >= 0.5)
                         {
 
                             //Console.WriteLine("3 Disease association: " + diseaseAssociation);
@@ -86,7 +93,7 @@ namespace EnrichFusedDataset
                             DiseaseAssociation_Strong_Call_Different = DiseaseAssociation_Strong_Call_Different + patentCount;
 
                         }
-                        else if (diseaseAssociation < double.Parse("0,1"))
+                        else if (diseaseAssociation < 0.5)
                         {
 
                             //Console.WriteLine("3 Disease association: " + diseaseAssociation);
@@ -113,6 +120,18 @@ namespace EnrichFusedDataset
 
                 sw.WriteLine("DiseaseAssociation_Weak_Call_Different: " + DiseaseAssociation_Weak_Call_Different);
 
+            }
+
+
+            var sortedGeneFreqDict = from entry in geneFrequency orderby entry.Value ascending select entry;
+
+            List<KeyValuePair<string, int>> sortedList = sortedGeneFreqDict.ToList();
+
+            for (int i = 1; i <= 10; i++)
+            {
+
+                Console.WriteLine("Top 10 genes from strong-same cell: " + sortedList[i].Key + " - " + sortedList[i].Value);
+                
             }
 
         }

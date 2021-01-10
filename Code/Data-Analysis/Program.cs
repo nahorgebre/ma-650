@@ -11,43 +11,13 @@ namespace EnrichFusedDataset
         static void Main(string[] args)
         {
 
-            /*
-            double x = double.Parse("0.10".Replace('.', ','));
+            EnrichDataset.run();
 
-            Console.WriteLine(x.ToString());
-            */
+            AIM_TimeDependentOutput.run();
 
-            if (checkIfPatentsAreContainedInFusedDataset())
-            {
+            AIM_PatentingActivity.run();
 
-                Console.WriteLine("Fused Dataset does contain Patents!");
-
-                EnrichDataset.run();
-
-            }
-            else
-            {
-
-                Console.WriteLine("Fused Dataset does not contain Patents!");
-
-            }
-
-            if (checkIfPatentsAreContainedInEnrichedDataset())
-            {
-
-                Console.WriteLine("Enriched Dataset does contain Patents!");
-
-                AIM_TimeDependentOutput.run();
-
-                AIM_PatentingActivity.run();
-
-            }
-            else
-            {
-
-                Console.WriteLine("Enriched Dataset does not contain Patents!");
-
-            }
+            //PatentTextMiningStatistics.run();
 
         }
 
@@ -55,7 +25,7 @@ namespace EnrichFusedDataset
         {
             bool returnValue = false;
 
-            FileInfo inputDataset = new FileInfo(Environment.CurrentDirectory + "/data/input/DI2-fused.xml");
+            FileInfo inputDataset = new FileInfo(Environment.CurrentDirectory + "/data/input/DI3-fused.xml");
 
             if (inputDataset.Exists)
             {
