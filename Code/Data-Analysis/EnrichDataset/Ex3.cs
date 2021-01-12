@@ -14,31 +14,76 @@ namespace EnrichFusedDataset
             foreach (Gene geneItem in geneList)
             {
 
-                double da = 0;
+                geneItem.overallDiseaseAssociation = getMaxValue(geneItem.diseaseAssociations).ToString();
 
-                int daCount = 0;
+                //geneItem.overallDiseaseAssociation = getAverage(geneItem.diseaseAssociations).ToString();
 
-                if (geneItem.diseaseAssociations.Count > 0)
+            }
+
+            return geneList;
+
+        }
+
+        public static double getAverage(List<GeneDiseaseAssociation> daList)
+        {
+
+            double da = 0;
+
+            int daCount = 0;
+
+            double average = new double();
+
+            if (daList.Count > 0)
+            {
+
+                foreach (GeneDiseaseAssociation diseaseAssociationItem in daList)
                 {
 
-                    foreach (GeneDiseaseAssociation diseaseAssociationItem in geneItem.diseaseAssociations)
+                    da += double.Parse(diseaseAssociationItem.associationScore.Replace('.', ','));
+
+                    daCount += 1;
+
+                }
+
+                average = da / daCount;
+
+            }
+
+            return average;
+
+        }
+
+        public static double getMaxValue(List<GeneDiseaseAssociation> daList)
+        {
+
+            double max = new double();
+
+            if (daList.Count > 0)
+            {
+
+                foreach (GeneDiseaseAssociation diseaseAssociationItem in daList)
+                {
+
+                    double score = double.Parse(diseaseAssociationItem.associationScore.Replace('.', ','));
+
+                    if (max == new double())
                     {
 
-                        da += double.Parse(diseaseAssociationItem.associationScore.Replace('.', ','));
-
-                        daCount += 1;
+                        max = score;
 
                     }
+                    else if (max < score)
+                    {
 
-                    double averageDa = da / daCount;
+                        max = score;
 
-                    geneItem.overallDiseaseAssociation = averageDa.ToString();
+                    }
 
                 }
 
             }
 
-            return geneList;
+            return max;
 
         }
 

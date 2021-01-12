@@ -127,8 +127,10 @@ namespace EnrichFusedDataset
 
             List<KeyValuePair<string, int>> sortedList = sortedGeneFreqDict.ToList();
 
-            for (int i = 1; i <= 10; i++)
+            for (int i = sortedList.Count - 1; i > sortedList.Count - 10; i--)
             {
+
+                Console.WriteLine(sortedList.Count);
 
                 Console.WriteLine("Top 10 genes from strong-same cell: " + sortedList[i].Key + " - " + sortedList[i].Value);
                 

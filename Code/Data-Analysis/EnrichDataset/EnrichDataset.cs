@@ -34,9 +34,12 @@ namespace EnrichFusedDataset
 
                 Output.createXml(geneList, enrichedFusedDS);
 
+                Output.createDaTsv2(geneList, new FileInfo(Environment.CurrentDirectory + "/data/output/enrichedFusedDS.tsv"));
+
             }
 
         }
+        
 
     }
 

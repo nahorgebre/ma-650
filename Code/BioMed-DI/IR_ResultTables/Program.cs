@@ -74,7 +74,7 @@ namespace IR_ResultTables
 
                 foreach (var item in wgetList)
                 {
-                    Console.WriteLine("----" + sw);
+                    //Console.WriteLine("----" + sw);
 
                     sw.WriteLine(item);
 

@@ -20,37 +20,44 @@ namespace IR_ResultTables
 
             List<Result2> result2List = new List<Result2>();
 
-            foreach (string directoryStringItem in Directory.GetDirectories(directory.FullName, "*-*", SearchOption.AllDirectories))
+            foreach (string directoryStringItem in Directory.GetDirectories(directory.FullName, "*-ML*", SearchOption.AllDirectories))
             {
 
-                DirectoryInfo directoryItem = new DirectoryInfo(directoryStringItem);
-
-                Result1 result1 = new Result1();
-
-                Result2 result2 = new Result2();
-
-
-                FileInfo correspondencesResultTable = new FileInfo(directoryItem.FullName + "/correspondencesResultTable.txt");
-
-                if (File.Exists(correspondencesResultTable.FullName))
+                if (!directoryStringItem.Contains("Graph"))
                 {
 
-                    using (StreamReader sr = new StreamReader(correspondencesResultTable.FullName))
+                    Console.WriteLine(directoryStringItem);
+
+                    DirectoryInfo directoryItem = new DirectoryInfo(directoryStringItem);
+
+                    Result1 result1 = new Result1();
+
+                    Result2 result2 = new Result2();
+
+
+                    FileInfo correspondencesResultTable = new FileInfo(directoryItem.FullName + "/correspondencesResultTable.txt");
+
+                    if (File.Exists(correspondencesResultTable.FullName))
                     {
 
-                        while (!sr.EndOfStream)
+                        using (StreamReader sr = new StreamReader(correspondencesResultTable.FullName))
                         {
 
-                            var line = sr.ReadLine();
-
-                            if (line.Contains("CorrespondencesSize"))
+                            while (!sr.EndOfStream)
                             {
 
-                                string[] values = line.Split(":");
+                                var line = sr.ReadLine();
 
-                                result1.Correspondences = values[1].Trim();
+                                if (line.Contains("CorrespondencesSize"))
+                                {
 
-                                result2.Correspondences = values[1].Trim();
+                                    string[] values = line.Split(":");
+
+                                    result1.Correspondences = values[1].Trim();
+
+                                    result2.Correspondences = values[1].Trim();
+
+                                }
 
                             }
 
@@ -58,115 +65,115 @@ namespace IR_ResultTables
 
                     }
 
-                }
 
+                    FileInfo evaluationResultTable = new FileInfo(directoryItem.FullName + "/evaluationResultTable.txt");
 
-                FileInfo evaluationResultTable = new FileInfo(directoryItem.FullName + "/evaluationResultTable.txt");
-
-                if (File.Exists(evaluationResultTable.FullName))
-                {
-
-                    using (StreamReader sr = new StreamReader(evaluationResultTable.FullName))
+                    if (File.Exists(evaluationResultTable.FullName))
                     {
 
-                        while (!sr.EndOfStream)
+                        using (StreamReader sr = new StreamReader(evaluationResultTable.FullName))
                         {
 
-                            var line = sr.ReadLine();
-
-                            if (line.Contains("Comparison"))
+                            while (!sr.EndOfStream)
                             {
 
-                                List<string> values = line.Split(":").ToList();
+                                var line = sr.ReadLine();
 
-                                string comparison = string.Empty;
-
-                                if (values[1].Contains("_NCBI_Crosswalk")) values[1] = values[1].Replace("_NCBI_Crosswalk", "");
-
-                                if (values[1].Contains("_export")) values[1] = values[1].Replace("_export", "");
-
-                                if (values[1].Contains("all_gene_disease_pmid_associations")) values[1] = values[1].Replace("all_gene_disease_pmid_associations", "DisGeNet");
-
-                                if (values[1].Contains("gene2pubtatorcentral")) values[1] = values[1].Replace("gene2pubtatorcentral", "PubTator");
-
-                                string[] comparisonValues = values[1].Split("_2_");
-
-                                comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_"
-                                    + @"}\hbox{\strut " + comparisonValues[1].Replace("_", "\\_") + "}}";
-
-                                /*
-                                if (values[1].Length >= 20)
+                                if (line.Contains("Comparison"))
                                 {
+
+                                    List<string> values = line.Split(":").ToList();
+
+                                    string comparison = string.Empty;
+
+                                    if (values[1].Contains("_NCBI_Crosswalk")) values[1] = values[1].Replace("_NCBI_Crosswalk", "");
+
+                                    if (values[1].Contains("_export")) values[1] = values[1].Replace("_export", "");
+
+                                    if (values[1].Contains("all_gene_disease_pmid_associations")) values[1] = values[1].Replace("all_gene_disease_pmid_associations", "DisGeNet");
+
+                                    if (values[1].Contains("gene2pubtatorcentral")) values[1] = values[1].Replace("gene2pubtatorcentral", "PubTator");
 
                                     string[] comparisonValues = values[1].Split("_2_");
 
-                                    comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_" 
+                                    comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_"
                                         + @"}\hbox{\strut " + comparisonValues[1].Replace("_", "\\_") + "}}";
- 
+
+                                    /*
+                                    if (values[1].Length >= 20)
+                                    {
+
+                                        string[] comparisonValues = values[1].Split("_2_");
+
+                                        comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_" 
+                                            + @"}\hbox{\strut " + comparisonValues[1].Replace("_", "\\_") + "}}";
+
+                                    }
+                                    /*
+                                    else if (values[1].Trim().Equals(@"mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                    {
+
+                                        comparison = @"\vtop{\hbox{\strut mart_export_heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+
+                                    }
+                                    else if (values[1].Trim().Equals(@"Heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                    {
+
+                                        comparison =  @"\vtop{\hbox{\strut Heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+
+                                    }
+                                    else
+                                    {
+
+                                        comparison = values[1].Replace("_", "\\_").Trim();
+
+                                    }
+                                    */
+
+
+                                    result1.Datasets = comparison;
+
+                                    result2.Datasets = comparison;
+
                                 }
-                                /*
-                                else if (values[1].Trim().Equals(@"mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                else if (line.Contains("Model type"))
                                 {
 
-                                    comparison = @"\vtop{\hbox{\strut mart_export_heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+                                    string[] values = line.Split(":");
+
+                                    result1.MatchingRule = getMatchingRule(line);
+
+                                    result2.MatchingRule = getMatchingRule(line);
+
+                                    result2.Blocker = getBlockingAlgorithm(line);
+
+                                    result1.BlockingAlgorithm = getBlockingAlgorithm(line);
 
                                 }
-                                else if (values[1].Trim().Equals(@"Heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                else if (line.Contains("Precision"))
                                 {
 
-                                    comparison =  @"\vtop{\hbox{\strut Heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+                                    string[] values = line.Split(":");
+
+                                    result2.Precision = values[1].Trim();
 
                                 }
-                                else
+                                else if (line.Contains("Recall"))
                                 {
 
-                                    comparison = values[1].Replace("_", "\\_").Trim();
+                                    string[] values = line.Split(":");
+
+                                    result2.Recall = values[1].Trim();
 
                                 }
-                                */
+                                else if (line.Contains("F1"))
+                                {
 
+                                    string[] values = line.Split(":");
 
-                                result1.Datasets = comparison;
+                                    result2.F1 = values[1].Trim();
 
-                                result2.Datasets = comparison;
-
-                            }
-                            else if (line.Contains("Model type"))
-                            {
-
-                                string[] values = line.Split(":");
-
-                                result1.MatchingRule = getMatchingRule(line);
-
-                                result2.MatchingRule = getMatchingRule(line);
-
-                                result2.Blocker = getBlockingAlgorithm(line);
-
-                                result1.BlockingAlgorithm = getBlockingAlgorithm(line);
-
-                            }
-                            else if (line.Contains("Precision"))
-                            {
-
-                                string[] values = line.Split(":");
-
-                                result2.Precision = values[1].Trim();
-
-                            }
-                            else if (line.Contains("Recall"))
-                            {
-
-                                string[] values = line.Split(":");
-
-                                result2.Recall = values[1].Trim();
-
-                            }
-                            else if (line.Contains("F1"))
-                            {
-
-                                string[] values = line.Split(":");
-
-                                result2.F1 = values[1].Trim();
+                                }
 
                             }
 
@@ -174,75 +181,75 @@ namespace IR_ResultTables
 
                     }
 
-                }
 
+                    FileInfo blockerResultTable = new FileInfo(directoryItem.FullName + "/blockerResultTable.txt");
 
-                FileInfo blockerResultTable = new FileInfo(directoryItem.FullName + "/blockerResultTable.txt");
-
-                if (File.Exists(blockerResultTable.FullName))
-                {
-
-                    using (StreamReader sr = new StreamReader(blockerResultTable.FullName))
+                    if (File.Exists(blockerResultTable.FullName))
                     {
 
-                        var line = sr.ReadLine();
-
-                        string[] values = line.Split(":");
-
-                        double ratio = Convert.ToDouble(values[1].Trim().Replace('.', ','));
-
-                        double adjsutedRatio = Math.Floor(ratio * 100) / 100;
-
-                        result1.ReductionRatio = adjsutedRatio.ToString();
-
-                    }
-
-                }
-
-
-                FileInfo winterLog = new FileInfo(directoryItem.FullName + "/winter.log");
-
-                if (File.Exists(winterLog.FullName))
-                {
-
-                    using (StreamReader sr = new StreamReader(winterLog.FullName))
-                    {
-
-                        while (!sr.EndOfStream)
+                        using (StreamReader sr = new StreamReader(blockerResultTable.FullName))
                         {
 
                             var line = sr.ReadLine();
 
-                            if (line.Contains("blocked pairs"))
+                            string[] values = line.Split(":");
+
+                            double ratio = Convert.ToDouble(values[1].Trim().Replace('.', ','));
+
+                            double adjsutedRatio = Math.Floor(ratio * 100) / 100;
+
+                            result1.ReductionRatio = adjsutedRatio.ToString();
+
+                        }
+
+                    }
+
+
+                    FileInfo winterLog = new FileInfo(directoryItem.FullName + "/winter.log");
+
+                    if (File.Exists(winterLog.FullName))
+                    {
+
+                        using (StreamReader sr = new StreamReader(winterLog.FullName))
+                        {
+
+                            while (!sr.EndOfStream)
                             {
 
-                                string startPattern = "elements;";
+                                var line = sr.ReadLine();
 
-                                int startIndex = line.IndexOf(startPattern) + startPattern.Length;
+                                if (line.Contains("blocked pairs"))
+                                {
 
-                                string endPattern = "blocked pairs";
+                                    string startPattern = "elements;";
 
-                                int length = line.IndexOf(endPattern) - startIndex;
+                                    int startIndex = line.IndexOf(startPattern) + startPattern.Length;
 
-                                result1.BlockedPairs = line.Substring(startIndex, length).Trim();
+                                    string endPattern = "blocked pairs";
 
-                            }
-                            else if (line.Contains("Identity Resolution finished after"))
-                            {
+                                    int length = line.IndexOf(endPattern) - startIndex;
 
-                                string startPattern = "Identity Resolution finished after";
+                                    result1.BlockedPairs = line.Substring(startIndex, length).Trim();
 
-                                int startIndex = line.IndexOf(startPattern) + startPattern.Length;
+                                }
+                                else if (line.Contains("Identity Resolution finished after"))
+                                {
 
-                                string endPattern = "; found";
+                                    string startPattern = "Identity Resolution finished after";
 
-                                int length = line.IndexOf(endPattern) - startIndex;
+                                    int startIndex = line.IndexOf(startPattern) + startPattern.Length;
 
-                                string time = line.Substring(startIndex, length).Trim();
+                                    string endPattern = "; found";
 
-                                result1.RunTime = time.Split('.')[0];
+                                    int length = line.IndexOf(endPattern) - startIndex;
 
-                                result2.Time = time.Split('.')[0];
+                                    string time = line.Substring(startIndex, length).Trim();
+
+                                    result1.RunTime = time.Split('.')[0];
+
+                                    result2.Time = time.Split('.')[0];
+
+                                }
 
                             }
 
@@ -250,11 +257,11 @@ namespace IR_ResultTables
 
                     }
 
+                    result1List.Add(result1);
+
+                    result2List.Add(result2);
+
                 }
-
-                result1List.Add(result1);
-
-                result2List.Add(result2);
 
             }
 
@@ -275,32 +282,39 @@ namespace IR_ResultTables
             foreach (DirectoryInfo directoryItem in directory.GetDirectories())
             {
 
-                Result1 result1 = new Result1();
-
-                Result2 result2 = new Result2();
-
-
-                FileInfo correspondencesResultTable = new FileInfo(directoryItem.FullName + "/correspondencesResultTable.txt");
-
-                if (File.Exists(correspondencesResultTable.FullName))
+                if (!directoryItem.Name.Contains("Graph"))
                 {
 
-                    using (StreamReader sr = new StreamReader(correspondencesResultTable.FullName))
+
+
+                    Result1 result1 = new Result1();
+
+                    Result2 result2 = new Result2();
+
+
+                    FileInfo correspondencesResultTable = new FileInfo(directoryItem.FullName + "/correspondencesResultTable.txt");
+
+                    if (File.Exists(correspondencesResultTable.FullName))
                     {
 
-                        while (!sr.EndOfStream)
+                        using (StreamReader sr = new StreamReader(correspondencesResultTable.FullName))
                         {
 
-                            var line = sr.ReadLine();
-
-                            if (line.Contains("CorrespondencesSize"))
+                            while (!sr.EndOfStream)
                             {
 
-                                string[] values = line.Split(":");
+                                var line = sr.ReadLine();
 
-                                result1.Correspondences = values[1].Trim();
+                                if (line.Contains("CorrespondencesSize"))
+                                {
 
-                                result2.Correspondences = values[1].Trim();
+                                    string[] values = line.Split(":");
+
+                                    result1.Correspondences = values[1].Trim();
+
+                                    result2.Correspondences = values[1].Trim();
+
+                                }
 
                             }
 
@@ -308,115 +322,117 @@ namespace IR_ResultTables
 
                     }
 
-                }
 
+                    FileInfo evaluationResultTable = new FileInfo(directoryItem.FullName + "/evaluationResultTable.txt");
 
-                FileInfo evaluationResultTable = new FileInfo(directoryItem.FullName + "/evaluationResultTable.txt");
-
-                if (File.Exists(evaluationResultTable.FullName))
-                {
-
-                    using (StreamReader sr = new StreamReader(evaluationResultTable.FullName))
+                    if (File.Exists(evaluationResultTable.FullName))
                     {
 
-                        while (!sr.EndOfStream)
+                        using (StreamReader sr = new StreamReader(evaluationResultTable.FullName))
                         {
 
-                            var line = sr.ReadLine();
-
-                            if (line.Contains("Comparison"))
+                            while (!sr.EndOfStream)
                             {
 
-                                List<string> values = line.Split(":").ToList();
+                                var line = sr.ReadLine();
 
-                                string comparison = string.Empty;
-
-                                if (values[1].Contains("_NCBI_Crosswalk")) values[1] = values[1].Replace("_NCBI_Crosswalk", "");
-
-                                if (values[1].Contains("_export")) values[1] = values[1].Replace("_export", "");
-
-                                if (values[1].Contains("all_gene_disease_pmid_associations")) values[1] = values[1].Replace("all_gene_disease_pmid_associations", "DisGeNet");
-
-                                if (values[1].Contains("gene2pubtatorcentral")) values[1] = values[1].Replace("gene2pubtatorcentral", "PubTator");
-
-                                string[] comparisonValues = values[1].Split("_2_");
-
-                                comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_"
-                                    + @"}\hbox{\strut " + comparisonValues[1].Replace("_", "\\_") + "}}";
-
-                                /*
-                                if (values[1].Length >= 20)
+                                if (line.Contains("Comparison"))
                                 {
+
+                                    List<string> values = line.Split(":").ToList();
+
+                                    string comparison = string.Empty;
+
+                                    if (values[1].Contains("_NCBI_Crosswalk")) values[1] = values[1].Replace("_NCBI_Crosswalk", "");
+
+                                    if (values[1].Contains("_export")) values[1] = values[1].Replace("_export", "");
+
+                                    if (values[1].Contains("all_gene_disease_pmid_associations")) values[1] = values[1].Replace("all_gene_disease_pmid_associations", "DisGeNet");
+
+                                    if (values[1].Contains("gene2pubtatorcentral")) values[1] = values[1].Replace("gene2pubtatorcentral", "PubTator");
+
+                                    //Console.WriteLine(values[1]);
 
                                     string[] comparisonValues = values[1].Split("_2_");
 
-                                    comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_" 
+                                    comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_"
                                         + @"}\hbox{\strut " + comparisonValues[1].Replace("_", "\\_") + "}}";
- 
+
+                                    /*
+                                    if (values[1].Length >= 20)
+                                    {
+
+                                        string[] comparisonValues = values[1].Split("_2_");
+
+                                        comparison = @"\vtop{\hbox{\strut " + comparisonValues[0].Replace("_", "\\_") + "\\_2\\_" 
+                                            + @"}\hbox{\strut " + comparisonValues[1].Replace("_", "\\_") + "}}";
+
+                                    }
+                                    /*
+                                    else if (values[1].Trim().Equals(@"mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                    {
+
+                                        comparison = @"\vtop{\hbox{\strut mart_export_heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+
+                                    }
+                                    else if (values[1].Trim().Equals(@"Heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                    {
+
+                                        comparison =  @"\vtop{\hbox{\strut Heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+
+                                    }
+                                    else
+                                    {
+
+                                        comparison = values[1].Replace("_", "\\_").Trim();
+
+                                    }
+                                    */
+
+
+                                    result1.Datasets = comparison;
+
+                                    result2.Datasets = comparison;
+
                                 }
-                                /*
-                                else if (values[1].Trim().Equals(@"mart_export_heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                else if (line.Contains("Model type"))
                                 {
 
-                                    comparison = @"\vtop{\hbox{\strut mart_export_heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+                                    string[] values = line.Split(":");
+
+                                    result1.MatchingRule = getMatchingRule(line);
+
+                                    result2.MatchingRule = getMatchingRule(line);
+
+                                    result2.Blocker = getBlockingAlgorithm(line);
+
+                                    result1.BlockingAlgorithm = getBlockingAlgorithm(line);
 
                                 }
-                                else if (values[1].Trim().Equals(@"Heart_2_Heart_Ensembl_NCBI_Crosswalk"))
+                                else if (line.Contains("Precision"))
                                 {
 
-                                    comparison =  @"\vtop{\hbox{\strut Heart_2_}\hbox{\strut H_E_NCBI_Crosswalk}}".Replace("_", "\\_");
+                                    string[] values = line.Split(":");
+
+                                    result2.Precision = values[1].Trim();
 
                                 }
-                                else
+                                else if (line.Contains("Recall"))
                                 {
 
-                                    comparison = values[1].Replace("_", "\\_").Trim();
+                                    string[] values = line.Split(":");
+
+                                    result2.Recall = values[1].Trim();
 
                                 }
-                                */
+                                else if (line.Contains("F1"))
+                                {
 
+                                    string[] values = line.Split(":");
 
-                                result1.Datasets = comparison;
+                                    result2.F1 = values[1].Trim();
 
-                                result2.Datasets = comparison;
-
-                            }
-                            else if (line.Contains("Model type"))
-                            {
-
-                                string[] values = line.Split(":");
-
-                                result1.MatchingRule = getMatchingRule(line);
-
-                                result2.MatchingRule = getMatchingRule(line);
-
-                                result2.Blocker = getBlockingAlgorithm(line);
-
-                                result1.BlockingAlgorithm = getBlockingAlgorithm(line);
-
-                            }
-                            else if (line.Contains("Precision"))
-                            {
-
-                                string[] values = line.Split(":");
-
-                                result2.Precision = values[1].Trim();
-
-                            }
-                            else if (line.Contains("Recall"))
-                            {
-
-                                string[] values = line.Split(":");
-
-                                result2.Recall = values[1].Trim();
-
-                            }
-                            else if (line.Contains("F1"))
-                            {
-
-                                string[] values = line.Split(":");
-
-                                result2.F1 = values[1].Trim();
+                                }
 
                             }
 
@@ -424,75 +440,75 @@ namespace IR_ResultTables
 
                     }
 
-                }
 
+                    FileInfo blockerResultTable = new FileInfo(directoryItem.FullName + "/blockerResultTable.txt");
 
-                FileInfo blockerResultTable = new FileInfo(directoryItem.FullName + "/blockerResultTable.txt");
-
-                if (File.Exists(blockerResultTable.FullName))
-                {
-
-                    using (StreamReader sr = new StreamReader(blockerResultTable.FullName))
+                    if (File.Exists(blockerResultTable.FullName))
                     {
 
-                        var line = sr.ReadLine();
-
-                        string[] values = line.Split(":");
-
-                        double ratio = Convert.ToDouble(values[1].Trim().Replace('.', ','));
-
-                        double adjsutedRatio = Math.Floor(ratio * 100) / 100;
-
-                        result1.ReductionRatio = adjsutedRatio.ToString();
-
-                    }
-
-                }
-
-
-                FileInfo winterLog = new FileInfo(directoryItem.FullName + "/winter.log");
-
-                if (File.Exists(winterLog.FullName))
-                {
-
-                    using (StreamReader sr = new StreamReader(winterLog.FullName))
-                    {
-
-                        while (!sr.EndOfStream)
+                        using (StreamReader sr = new StreamReader(blockerResultTable.FullName))
                         {
 
                             var line = sr.ReadLine();
 
-                            if (line.Contains("blocked pairs"))
+                            string[] values = line.Split(":");
+
+                            double ratio = Convert.ToDouble(values[1].Trim().Replace('.', ','));
+
+                            double adjsutedRatio = Math.Floor(ratio * 100) / 100;
+
+                            result1.ReductionRatio = adjsutedRatio.ToString();
+
+                        }
+
+                    }
+
+
+                    FileInfo winterLog = new FileInfo(directoryItem.FullName + "/winter.log");
+
+                    if (File.Exists(winterLog.FullName))
+                    {
+
+                        using (StreamReader sr = new StreamReader(winterLog.FullName))
+                        {
+
+                            while (!sr.EndOfStream)
                             {
 
-                                string startPattern = "elements;";
+                                var line = sr.ReadLine();
 
-                                int startIndex = line.IndexOf(startPattern) + startPattern.Length;
+                                if (line.Contains("blocked pairs"))
+                                {
 
-                                string endPattern = "blocked pairs";
+                                    string startPattern = "elements;";
 
-                                int length = line.IndexOf(endPattern) - startIndex;
+                                    int startIndex = line.IndexOf(startPattern) + startPattern.Length;
 
-                                result1.BlockedPairs = line.Substring(startIndex, length).Trim();
+                                    string endPattern = "blocked pairs";
 
-                            }
-                            else if (line.Contains("Identity Resolution finished after"))
-                            {
+                                    int length = line.IndexOf(endPattern) - startIndex;
 
-                                string startPattern = "Identity Resolution finished after";
+                                    result1.BlockedPairs = line.Substring(startIndex, length).Trim();
 
-                                int startIndex = line.IndexOf(startPattern) + startPattern.Length;
+                                }
+                                else if (line.Contains("Identity Resolution finished after"))
+                                {
 
-                                string endPattern = "; found";
+                                    string startPattern = "Identity Resolution finished after";
 
-                                int length = line.IndexOf(endPattern) - startIndex;
+                                    int startIndex = line.IndexOf(startPattern) + startPattern.Length;
 
-                                string time = line.Substring(startIndex, length).Trim();
+                                    string endPattern = "; found";
 
-                                result1.RunTime = time.Split('.')[0];
+                                    int length = line.IndexOf(endPattern) - startIndex;
 
-                                result2.Time = time.Split('.')[0];
+                                    string time = line.Substring(startIndex, length).Trim();
+
+                                    result1.RunTime = time.Split('.')[0];
+
+                                    result2.Time = time.Split('.')[0];
+
+                                }
 
                             }
 
@@ -500,11 +516,11 @@ namespace IR_ResultTables
 
                     }
 
+                    result1List.Add(result1);
+
+                    result2List.Add(result2);
+
                 }
-
-                result1List.Add(result1);
-
-                result2List.Add(result2);
 
             }
 
@@ -546,6 +562,30 @@ namespace IR_ResultTables
 
                 matchingRule = "Ada Boost";
 
+            }
+            else if(modelType.Contains("Cosine"))
+            {
+
+                matchingRule = "Cosine";
+
+            }
+            else if(modelType.Contains("Jaccard"))
+            {
+
+                matchingRule = "Jaccard";
+                
+            }
+            else if(modelType.Contains("Levenshtein"))
+            {
+
+                matchingRule = "Levenshtein";
+                
+            }
+            else if(modelType.Contains("SorensenDice"))
+            {
+
+                matchingRule = "Sorensen Dice";
+                
             }
 
             return matchingRule;

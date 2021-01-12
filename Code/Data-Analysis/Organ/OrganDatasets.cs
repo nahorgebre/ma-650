@@ -74,7 +74,7 @@ namespace EnrichFusedDataset
 
                         organSate.testis = true;
 
-                        organDictionary.Add(pmid, organSate);
+                        organDictionary[pmid] = organSate;
 
                         overlappingPmIdHashSet.Add(pmid);
 
@@ -113,7 +113,7 @@ namespace EnrichFusedDataset
 
                         organSate.liver = true;
 
-                        organDictionary.Add(pmid, organSate);
+                        organDictionary[pmid] = organSate;
 
                         overlappingPmIdHashSet.Add(pmid);
 
@@ -152,7 +152,7 @@ namespace EnrichFusedDataset
 
                         organSate.kidney = true;
 
-                        organDictionary.Add(pmid, organSate);
+                        organDictionary[pmid] = organSate;
 
                         overlappingPmIdHashSet.Add(pmid);
 
@@ -190,7 +190,7 @@ namespace EnrichFusedDataset
 
                         organSate.heart = true;
 
-                        organDictionary.Add(pmid, organSate);
+                        organDictionary[pmid] = organSate;
 
                         overlappingPmIdHashSet.Add(pmid);
 
@@ -228,7 +228,7 @@ namespace EnrichFusedDataset
 
                         organSate.cerebellum = true;
 
-                        organDictionary.Add(pmid, organSate);
+                        organDictionary[pmid] = organSate;
 
                         overlappingPmIdHashSet.Add(pmid);
 
@@ -271,7 +271,7 @@ namespace EnrichFusedDataset
 
                             organSate.brain = true;
 
-                            organDictionary.Add(pmid, organSate);
+                            organDictionary[pmid] = organSate;
 
                             overlappingPmIdHashSet.Add(pmid);
 
@@ -290,7 +290,7 @@ namespace EnrichFusedDataset
             }
 
 
-            Console.WriteLine("# of organ-overlapping PmIds: " + overlappingPmIdHashSet);
+            Console.WriteLine("# of organ-overlapping PmIds: " + overlappingPmIdHashSet.Count);
 
             return organDictionary;
 

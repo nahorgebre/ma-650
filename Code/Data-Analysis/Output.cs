@@ -32,24 +32,42 @@ namespace EnrichFusedDataset
 
         }
 
-        public static void createTsv(List<Gene> gene_list, FileInfo file)
+        public static void createDaTsv(List<Gene> gene_list, FileInfo file)
         {
-            
+
             var delimiter = "\t";
 
-            using (StreamWriter sw = new StreamWriter(file.FullName)) 
+            using (StreamWriter sw = new StreamWriter(file.FullName))
             {
-           
+
                 List<string> firstLineContent = new List<string>()
                 {
 
-                    "recordId",
-
                     "ensemblId",
 
-                    "ncbiId",
+                    "diseaseIdUMLS",
 
-                    "geneNames"
+                    "diseaseName",
+
+                    "diseaseSpecificityIndex",
+
+                    "diseasePleiotropyIndex",
+
+                    "diseaseTypeDisGeNET",
+
+                    "diseaseClassMeSH",
+
+                    "diseaseSemanticTypeUMLS",
+
+                    "associationScore",
+
+                    "evidenceIndex",
+
+                    "yearInitialReport",
+
+                    "yearFinalReport",
+
+                    "pmId"
 
                 };
 
@@ -60,71 +78,117 @@ namespace EnrichFusedDataset
                 foreach (Gene item in gene_list)
                 {
 
-
-                    string recordId = "NV";
-
-                    if (!item.recordId.Equals(string.Empty))
+                    foreach (var daItem in item.diseaseAssociations)
                     {
 
-                        recordId = item.recordId.Trim();
+                        List<string> lineContent = new List<string>()
+                        {
+
+                        item.ensemblId,
+
+                        daItem.diseaseIdUMLS,
+
+                        daItem.diseaseName,
+
+                        daItem.diseaseSpecificityIndex,
+
+                        daItem.diseasePleiotropyIndex,
+
+                        daItem.diseaseTypeDisGeNET,
+
+                        daItem.diseaseClassMeSH,
+
+                        daItem.diseaseSemanticTypeUMLS,
+
+                        daItem.associationScore,
+
+                        daItem.evidenceIndex,
+
+                        daItem.yearInitialReport,
+
+                        daItem.yearFinalReport,
+
+                        daItem.pmId
+
+                        };
+
+
+                        var line = string.Join(delimiter, lineContent);
+
+                        sw.WriteLine(line);
 
                     }
-
-
-                    string ensemblId = "NV";
-
-                    if (!item.ensemblId.Equals(string.Empty))
-                    {
-
-                        ensemblId = item.ensemblId.Trim();
-
-                    }
-
-
-                    string ncbiId = "NV";
-
-                    if (!item.ncbiId.Equals(string.Empty))
-                    {
-
-                        ncbiId = item.ncbiId.Trim();
-
-                    }
-
-
-                    string geneNames = "NV";
-
-                    if (!item.geneNames.Equals(string.Empty))
-                    {
-
-                        geneNames = item.geneNames;
-
-                    }
-
-
-                    List<string> lineContent = new List<string>()
-                    {
-
-                        recordId,
-
-                        ensemblId,
-
-                        ncbiId,
-
-                        geneNames
-
-                    };
-
-
-                    var line = string.Join(delimiter, lineContent);
-
-                    sw.WriteLine(line);
 
                 }
 
             }
 
             Console.WriteLine("Tsv: ..." + file.FullName);
-        
+
+        }
+
+
+        public static void createDaTsv2(List<Gene> gene_list, FileInfo file)
+        {
+
+            var delimiter = "\t";
+
+            using (StreamWriter sw = new StreamWriter(file.FullName))
+            {
+
+                List<string> firstLineContent = new List<string>()
+                {
+
+                    "ensemblId",
+
+                    "diseaseIdUMLS",
+
+                    "associationScore",
+
+                    "evidenceIndex",
+
+                    "pmId"
+
+                };
+
+                var firstLine = string.Join(delimiter, firstLineContent);
+
+                sw.WriteLine(firstLine);
+
+                foreach (Gene item in gene_list)
+                {
+
+                    foreach (var daItem in item.diseaseAssociations)
+                    {
+
+                        List<string> lineContent = new List<string>()
+                        {
+
+                        item.ensemblId,
+
+                        daItem.diseaseIdUMLS,
+
+                        daItem.associationScore,
+
+                        daItem.evidenceIndex,
+
+                        daItem.pmId
+
+                        };
+
+
+                        var line = string.Join(delimiter, lineContent);
+
+                        sw.WriteLine(line);
+
+                    }
+
+                }
+
+            }
+
+            Console.WriteLine("Tsv: ..." + file.FullName);
+
         }
 
     }

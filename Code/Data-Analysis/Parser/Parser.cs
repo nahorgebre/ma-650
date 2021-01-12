@@ -239,15 +239,6 @@ namespace EnrichFusedDataset
 
                         patentMentionList = parsePatentMention(xml);
 
-                        int count = patentMentionList.Count;
-
-                        if (count > 0)
-                        {
-                            
-                            Console.WriteLine("Patent Count: " + count);
-                            
-                        }
-
                     }
 
                     gene.patentMentions = patentMentionList;
