@@ -15,7 +15,7 @@ namespace EnrichFusedDataset
             Console.WriteLine("AIM 3!");
 
             // Read enriched and fused dataset
-            List<Gene> geneList = Parser.getGeneList(EnrichDataset.enrichedFusedDS);
+            List<Gene> geneList = Parser.getGeneList(EnrichDataset.enrichedFusedDS3);
 
             FileInfo patentActivity = new FileInfo(Environment.CurrentDirectory + "/AIM/patentingActivity.tsv");
 

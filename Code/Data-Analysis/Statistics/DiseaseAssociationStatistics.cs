@@ -12,7 +12,7 @@ namespace EnrichFusedDataset
         {
 
             // Read enriched and fused dataset
-            List<Gene> geneList = Parser.getGeneList(EnrichDataset.enrichedFusedDS);
+            List<Gene> geneList = Parser.getGeneList(EnrichDataset.enrichedFusedDS3);
 
             int range09 = 0;
 

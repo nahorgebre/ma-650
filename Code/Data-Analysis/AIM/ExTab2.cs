@@ -18,7 +18,9 @@ namespace EnrichFusedDataset
             int windowSize = 30;
 
 
-            List<Gene> geneList = Parser.getGeneList(EnrichDataset.enrichedFusedDS);
+            List<Gene> geneList = Parser.getGeneList(EnrichDataset.enrichedFusedDS2);
+
+            Console.WriteLine("Size: " + geneList.Count);
 
             foreach (var item in geneList)
             {

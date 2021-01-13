@@ -10,7 +10,7 @@ namespace EvaluationMetrics
         static void Main(string[] args)
         {
 
-            //evaluateTitleScispaCy();
+            evaluateTitleScispaCy();
 
             evaluateTitleHunFlair();
 
@@ -18,17 +18,10 @@ namespace EvaluationMetrics
 
         public static void evaluateTitleScispaCy()
         {
-            /*
-            int TP = EvaluationMetrics.getTruePositive(predictionFile: Datasets.title_prediction, goldStandardFile: Datasets.title_gs);
 
-            int FP = EvaluationMetrics.getFalsePositive(predictionFile: Datasets.title_prediction, goldStandardFile: Datasets.title_gs);
-
-            int FN = EvaluationMetrics.getFalseNegative(predictionFile: Datasets.title_prediction, goldStandardFile: Datasets.title_gs);
-            */
+            Console.WriteLine("ScispaCy - Title");
 
             (int TP, int FP, int FN) = EvaluationMetrics.getEvaluationMetrics(predictionFile: Datasets.scispacy_title_prediction, goldStandardFile: Datasets.title_gs);
-
-
 
             Console.WriteLine("TP: " + TP);
 
