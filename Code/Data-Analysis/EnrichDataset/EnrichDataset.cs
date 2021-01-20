@@ -8,9 +8,13 @@ namespace EnrichFusedDataset
     class EnrichDataset
     {
 
+        public static FileInfo inputDataset1 = new FileInfo(Environment.CurrentDirectory + "/data/input/DI1-fused.xml");
+
         public static FileInfo inputDataset2 = new FileInfo(Environment.CurrentDirectory + "/data/input/DI2-fused.xml");
 
         public static FileInfo inputDataset3 = new FileInfo(Environment.CurrentDirectory + "/data/input/DI3-fused.xml");
+
+        public static FileInfo enrichedFusedDS1 = new FileInfo(Environment.CurrentDirectory + "/data/output/enrichedFusedDS1.xml");
 
         public static FileInfo enrichedFusedDS2 = new FileInfo(Environment.CurrentDirectory + "/data/output/enrichedFusedDS2.xml");
 
@@ -19,6 +23,8 @@ namespace EnrichFusedDataset
 
         public static void run()
         {
+
+            createEnrichedDS(inputDataset1, enrichedFusedDS1);
 
             createEnrichedDS(inputDataset2, enrichedFusedDS2);
 

@@ -83,7 +83,7 @@ namespace DataTranslation
 
                     string recordId = "NV";
 
-                    if (!item.recordId.Equals(string.Empty))
+                    if (!string.IsNullOrEmpty(item.recordId))
                     {
 
                         recordId = item.recordId.Trim();
@@ -93,7 +93,7 @@ namespace DataTranslation
 
                     string ensemblId = "NV";
 
-                    if (!item.ensemblId.Equals(string.Empty))
+                    if (!string.IsNullOrEmpty(item.ensemblId))
                     {
 
                         ensemblId = item.ensemblId.Trim();
@@ -103,7 +103,7 @@ namespace DataTranslation
 
                     string ncbiId = "NV";
 
-                    if (!item.ncbiId.Equals(string.Empty))
+                    if (!string.IsNullOrEmpty(item.ncbiId))
                     {
 
                         ncbiId = item.ncbiId.Trim();
@@ -113,7 +113,7 @@ namespace DataTranslation
 
                     string geneNames = "NV";
 
-                    if (!item.geneNames.Equals(string.Empty))
+                    if (!string.IsNullOrEmpty(item.geneNames))
                     {
 
                         geneNames = item.geneNames;

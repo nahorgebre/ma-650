@@ -13,8 +13,20 @@ namespace EnrichFusedDataset
 
             foreach (Gene geneItem in geneList)
             {
+                
+                if (geneItem.diseaseAssociations.Count > 258)
+                {
 
-                geneItem.overallDiseaseAssociation = getMaxValue(geneItem.diseaseAssociations).ToString();
+                    geneItem.overallDiseaseAssociation = "1";
+                    
+                }
+                else
+                {
+
+                    geneItem.overallDiseaseAssociation = "0";
+
+                }
+                //geneItem.overallDiseaseAssociation = getMaxValue(geneItem.diseaseAssociations).ToString();
 
                 //geneItem.overallDiseaseAssociation = getAverage(geneItem.diseaseAssociations).ToString();
 

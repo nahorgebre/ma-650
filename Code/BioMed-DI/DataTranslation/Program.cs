@@ -15,7 +15,7 @@ namespace DataTranslation
 
                     DI1.runDataTranslation();
                     
-                    AWSupload.run(parameter);
+                    //AWSupload.run(parameter);
                     
                 }
                 else if (parameter.Equals("DI2"))
