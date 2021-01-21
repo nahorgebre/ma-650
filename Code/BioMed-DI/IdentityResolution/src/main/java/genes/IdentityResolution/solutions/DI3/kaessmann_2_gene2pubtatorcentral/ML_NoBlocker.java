@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI2.kaessmann_2_all_gene_disease_pmid_associations;
+package genes.IdentityResolution.solutions.DI3.kaessmann_2_gene2pubtatorcentral;
 
 // java
 import java.io.File;
@@ -16,20 +16,20 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleLearner;
-import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlocker;
+import de.uni_mannheim.informatik.dws.winter.matching.blockers.NoBlocker;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule;
 
-// model
+// models
 import genes.IdentityResolution.model.Gene.Gene;
-import genes.IdentityResolution.solutions.Blocker;
 
-// solution
+// solutions
+import genes.IdentityResolution.solutions.Blocker;
 import genes.IdentityResolution.solutions.Correspondences;
-import genes.IdentityResolution.solutions.DI2.DI2Datasets;
+import genes.IdentityResolution.solutions.WinterLogFile;
 import genes.IdentityResolution.solutions.Evaluation;
 import genes.IdentityResolution.solutions.GeneWekaMatchingRule;
 import genes.IdentityResolution.solutions.GoldStandard;
-import genes.IdentityResolution.solutions.WinterLogFile;
+import genes.IdentityResolution.solutions.DI3.DI3Datasets;
 
 // Blocker
 import genes.IdentityResolution.Blocking.GeneBlockingKeyByGeneName;
@@ -45,7 +45,7 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorense
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
 
-public class ML_StandardRecordBlocker {
+public class ML_NoBlocker {
 
     private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 
@@ -63,12 +63,12 @@ public class ML_StandardRecordBlocker {
 
         // loading datasets
         System.out.println("*\n*\tLoading datasets\n*");
-        HashedDataSet<Gene, Attribute> ds1 = DI2Datasets.kaessmann();
-        HashedDataSet<Gene, Attribute> ds2 = DI2Datasets.all_gene_disease_pmid_associations(fileNumber);
+        HashedDataSet<Gene, Attribute> ds1 = DI3Datasets.kaessmann();
+        HashedDataSet<Gene, Attribute> ds2 = DI3Datasets.gene2pubtatorcentral(fileNumber);
 
         // goldstandard directory
-        String comparisonDescription = "kaessmann_2_all_gene_disease_pmid_associations_" + fileNumber;
-        String solution = "DI2";
+        String comparisonDescription = "kaessmann_2_gene2pubtatorcentral_" + fileNumber;
+        String solution = "DI3";
         String goldstandardDirectory = "data/goldstandard/" + solution + "/" + comparisonDescription;
 
         // load the gold standard (test set)
@@ -80,7 +80,7 @@ public class ML_StandardRecordBlocker {
 
         GeneWekaMatchingRule geneMatchingRule = matchingRuleList.get(matchingRuleIndex);
 
-        String blockerName = "_StandardRecordBlocker";
+        String blockerName = "_NoBlocker";
         String className = geneMatchingRule.className + blockerName;
 
         // output directory
@@ -90,7 +90,7 @@ public class ML_StandardRecordBlocker {
         // create matching rule
         String options[] = geneMatchingRule.options;
         String modelType = geneMatchingRule.modelType;
-        WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+        WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.99, modelType, options);
         if (geneMatchingRule.backwardSelection) {
             matchingRule.setBackwardSelection(true);
         }
@@ -114,8 +114,7 @@ public class ML_StandardRecordBlocker {
         learner.learnMatchingRule(ds1, ds2, null, matchingRule, gsTrain);
 
         // create a blocker (blocking strategy)
-        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(
-                new GeneBlockingKeyByGeneName());
+        NoBlocker<Gene, Attribute> blocker = new NoBlocker<>();
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
@@ -124,9 +123,6 @@ public class ML_StandardRecordBlocker {
         int numSeconds2 = (int) ((endDate2.getTime() - startDate2.getTime()) / 1000);
         System.out.println("Run Time Blocker: " + numSeconds2);
 
-        // write blocker results to the output file
-        Blocker.writeStandardRecordBlockerResults(blocker, outputDirectory);
-
         // initialize matching engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();
 
@@ -134,7 +130,7 @@ public class ML_StandardRecordBlocker {
         Processable<Correspondence<Gene, Attribute>> correspondences = engine.runIdentityResolution(ds1, ds2, null,
                 matchingRule, blocker);
 
-        // end counting
+        // End counting
         Date endDate = new Date();
         int numSeconds = (int) ((endDate.getTime() - startDate.getTime()) / 1000);
 

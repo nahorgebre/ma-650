@@ -11,6 +11,10 @@ namespace EnrichFusedDataset
         static void Main(string[] args)
         {
 
+            PublicationExDS.run();
+
+            /*
+
             foreach (String parameter in args)
             {
 
@@ -28,6 +32,8 @@ namespace EnrichFusedDataset
             EnrichDataset.run();
 
             DiseaseAssociationsAnalysis.run();
+
+            */
 
             //PatentAnalysis.run();
 

@@ -16,6 +16,22 @@ mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI3.kaessmann
 cp logs/winter.log data/output/DI3/kaessmann_2_gene2pubtatorcentral_1/ML_SimpleLogistic_StandardRecordBlocker
 rm logs/winter.log
 
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI3.kaessmann_2_gene2pubtatorcentral.ML_NoBlocker" -Dexec.args="1 0"
+cp logs/winter.log data/output/DI3/kaessmann_2_gene2pubtatorcentral_1/ML_AdaBoost_NoBlocker
+rm logs/winter.log
+
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI3.kaessmann_2_gene2pubtatorcentral.ML_NoBlocker" -Dexec.args="1 1"
+cp logs/winter.log data/output/DI3/kaessmann_2_gene2pubtatorcentral_1/ML_DecisionTree_NoBlocker
+rm logs/winter.log
+
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI3.kaessmann_2_gene2pubtatorcentral.ML_NoBlocker" -Dexec.args="1 2"
+cp logs/winter.log data/output/DI3/kaessmann_2_gene2pubtatorcentral_1/ML_KNN_NoBlocker
+rm logs/winter.log
+
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI3.kaessmann_2_gene2pubtatorcentral.ML_NoBlocker" -Dexec.args="1 3"
+cp logs/winter.log data/output/DI3/kaessmann_2_gene2pubtatorcentral_1/ML_SimpleLogistic_NoBlocker
+rm logs/winter.log
+
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI3.kaessmann_2_gene2pubtatorcentral.ML_SortedNeighbourhoodBlocker" -Dexec.args="1 0"
 cp logs/winter.log data/output/DI3/kaessmann_2_gene2pubtatorcentral_1/ML_AdaBoost_SortedNeighbourhoodBlocker
 rm logs/winter.log

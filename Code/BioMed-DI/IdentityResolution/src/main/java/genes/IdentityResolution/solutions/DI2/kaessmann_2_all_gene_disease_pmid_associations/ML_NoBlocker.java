@@ -16,7 +16,7 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
 import de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleLearner;
-import de.uni_mannheim.informatik.dws.winter.matching.blockers.StandardRecordBlocker;
+import de.uni_mannheim.informatik.dws.winter.matching.blockers.NoBlocker;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule;
 
 // model
@@ -45,7 +45,7 @@ import genes.IdentityResolution.Comparators.GeneNameComperator.SimilaritySorense
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorLowerCaseTokenizingJaccard;
 import genes.IdentityResolution.Comparators.GeneNameComperator.SimilarityTokenizingJaccard.GeneNameComperatorTokenizingJaccard;
 
-public class ML_StandardRecordBlocker {
+public class ML_NoBlocker {
 
     private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 
@@ -80,7 +80,7 @@ public class ML_StandardRecordBlocker {
 
         GeneWekaMatchingRule geneMatchingRule = matchingRuleList.get(matchingRuleIndex);
 
-        String blockerName = "_StandardRecordBlocker";
+        String blockerName = "_NoBlocker";
         String className = geneMatchingRule.className + blockerName;
 
         // output directory
@@ -90,7 +90,7 @@ public class ML_StandardRecordBlocker {
         // create matching rule
         String options[] = geneMatchingRule.options;
         String modelType = geneMatchingRule.modelType;
-        WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+        WekaMatchingRule<Gene, Attribute> matchingRule = new WekaMatchingRule<>(0.9, modelType, options);
         if (geneMatchingRule.backwardSelection) {
             matchingRule.setBackwardSelection(true);
         }
@@ -114,8 +114,7 @@ public class ML_StandardRecordBlocker {
         learner.learnMatchingRule(ds1, ds2, null, matchingRule, gsTrain);
 
         // create a blocker (blocking strategy)
-        StandardRecordBlocker<Gene, Attribute> blocker = new StandardRecordBlocker<Gene, Attribute>(
-                new GeneBlockingKeyByGeneName());
+        NoBlocker<Gene, Attribute> blocker = new NoBlocker<>();
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
@@ -123,9 +122,6 @@ public class ML_StandardRecordBlocker {
         Date endDate2 = new Date();
         int numSeconds2 = (int) ((endDate2.getTime() - startDate2.getTime()) / 1000);
         System.out.println("Run Time Blocker: " + numSeconds2);
-
-        // write blocker results to the output file
-        Blocker.writeStandardRecordBlockerResults(blocker, outputDirectory);
 
         // initialize matching engine
         MatchingEngine<Gene, Attribute> engine = new MatchingEngine<>();

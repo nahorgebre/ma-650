@@ -5,6 +5,7 @@ wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-fus
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-fusion/output/DI3/DI3-fused.xml -O data/input/DI3-fused.xml
 
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene-Disease-Associations/all_gene_disease_pmid_associations.tsv -O data/input/all_gene_disease_pmid_associations.tsv
+wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/data-translation/input/Gene2Pubtatorcentral/gene2pubtatorcentral.tsv -O data/input/gene2pubtatorcentral.tsv
 
 mkdir -p data/input/patent
 wget https://nahorgebre-ma-650-master-thesis.s3.us-east-2.amazonaws.com/parser/output/abstract.tsv -O data/input/patent/abstract.tsv

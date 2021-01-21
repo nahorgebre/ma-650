@@ -51,7 +51,11 @@ public class ML_SortedNeighbourhoodBlocker {
 
     public static void main(String[] args) throws Exception {
 
-        //WinterLogFile.deleteLog();
+        // start counting
+        Date startDate = new Date();
+        Date startDate2 = new Date();
+
+        // WinterLogFile.deleteLog();
 
         int fileNumber = Integer.parseInt(args[0]);
 
@@ -82,9 +86,6 @@ public class ML_SortedNeighbourhoodBlocker {
         // output directory
         String outputDirectory = "data/output/" + solution + "/" + comparisonDescription + "/" + className;
         new File(outputDirectory).mkdirs();
-
-        // start counting
-        Date startDate = new Date();
 
         // create matching rule
         String options[] = geneMatchingRule.options;
@@ -118,6 +119,11 @@ public class ML_SortedNeighbourhoodBlocker {
         blocker.setMeasureBlockSizes(true);
         blocker.collectBlockSizeData(outputDirectory + "/debugResultsBlocking.csv", 100);
 
+        // end counting
+        Date endDate2 = new Date();
+        int numSeconds2 = (int) ((endDate2.getTime() - startDate2.getTime()) / 1000);
+        System.out.println("Run Time Blocker: " + numSeconds2);
+
         // write blocker results to the output file
         Blocker.writeSortedNeighbourhoodBlockerResults(blocker, outputDirectory);
 
@@ -139,7 +145,7 @@ public class ML_SortedNeighbourhoodBlocker {
         Evaluation.run(correspondences, gsTest, outputDirectory, comparisonDescription, className, numSeconds);
 
         // copy winter log
-        //WinterLogFile.copyLogFile(outputDirectory);
+        // WinterLogFile.copyLogFile(outputDirectory);
 
     }
 

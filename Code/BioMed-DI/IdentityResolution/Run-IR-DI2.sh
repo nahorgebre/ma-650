@@ -16,6 +16,22 @@ mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI2.kaessmann
 cp logs/winter.log data/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_1/ML_SimpleLogistic_StandardRecordBlocker
 rm logs/winter.log
 
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI2.kaessmann_2_all_gene_disease_pmid_associations.ML_NoBlocker" -Dexec.args="1 0"
+cp logs/winter.log data/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_1/ML_AdaBoost_NoBlocker
+rm logs/winter.log
+
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI2.kaessmann_2_all_gene_disease_pmid_associations.ML_NoBlocker" -Dexec.args="1 1"
+cp logs/winter.log data/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_1/ML_DecisionTree_NoBlocker
+rm logs/winter.log
+
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI2.kaessmann_2_all_gene_disease_pmid_associations.ML_NoBlocker" -Dexec.args="1 2"
+cp logs/winter.log data/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_1/ML_KNN_NoBlocker
+rm logs/winter.log
+
+mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI2.kaessmann_2_all_gene_disease_pmid_associations.ML_NoBlocker" -Dexec.args="1 3"
+cp logs/winter.log data/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_1/ML_SimpleLogistic_NoBlocker
+rm logs/winter.log
+
 mvn exec:java -Dexec.mainClass="genes.IdentityResolution.solutions.DI2.kaessmann_2_all_gene_disease_pmid_associations.ML_SortedNeighbourhoodBlocker" -Dexec.args="1 0"
 cp logs/winter.log data/output/DI2/kaessmann_2_all_gene_disease_pmid_associations_1/ML_AdaBoost_SortedNeighbourhoodBlocker
 rm logs/winter.log
