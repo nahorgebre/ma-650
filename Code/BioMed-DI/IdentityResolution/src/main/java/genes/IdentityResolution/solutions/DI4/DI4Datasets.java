@@ -32,5 +32,15 @@ public class DI4Datasets {
         return ds;
 
     }
+
+    public static HashedDataSet<Gene, Attribute> patentTitle() throws Exception {
+
+        HashedDataSet<Gene, Attribute> ds = new HashedDataSet<>();
+
+        new GeneXMLReader().loadFromXML(new File("data/input/DI4/patent_title_dt.xml"), "/genes/gene", ds);
+
+        return ds;
+
+    }
     
 }

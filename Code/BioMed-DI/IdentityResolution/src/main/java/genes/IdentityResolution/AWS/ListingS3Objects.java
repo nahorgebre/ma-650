@@ -50,7 +50,7 @@ public class ListingS3Objects {
         PrintWriter writer = new PrintWriter("Get-D-" + solution + ".sh", "UTF-8");
 
         ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis",
-                "identity-resolution/input/" + solution);
+                "identity-resolution/input2/" + solution);
 
         for (S3ObjectSummary os : objectListing.getObjectSummaries()) {
 
@@ -102,7 +102,7 @@ public class ListingS3Objects {
         PrintWriter writer = new PrintWriter("Get-GD-" + solution + ".sh", "UTF-8");
 
         ObjectListing objectListing = s3client.listObjects("nahorgebre-ma-650-master-thesis",
-                "identity-resolution/goldstandard/" + solution);
+                "identity-resolution/goldstandard2/" + solution);
 
         for (S3ObjectSummary os : objectListing.getObjectSummaries()) {
 

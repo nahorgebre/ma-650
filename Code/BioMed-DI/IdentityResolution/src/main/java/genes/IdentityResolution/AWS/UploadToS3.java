@@ -36,7 +36,7 @@ public class UploadToS3 {
 
                         String fileName = classNameDirectory + "/" + file;
 
-                        String keyName = "identity-resolution/output/" + solution + "/" + comparisonDescription + "/"
+                        String keyName = "identity-resolution/output2/" + solution + "/" + comparisonDescription + "/"
                                 + className + "/" + file;
                         uploadFile("nahorgebre-ma-650-master-thesis", keyName, fileName);
 

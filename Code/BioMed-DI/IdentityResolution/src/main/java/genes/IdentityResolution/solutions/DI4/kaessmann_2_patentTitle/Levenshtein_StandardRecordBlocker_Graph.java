@@ -1,4 +1,4 @@
-package genes.IdentityResolution.solutions.DI4.experiments;
+package genes.IdentityResolution.solutions.DI4.kaessmann_2_patentTitle;
 
 // java
 import java.io.File;
@@ -50,12 +50,12 @@ public class Levenshtein_StandardRecordBlocker_Graph
 		// loading data
         System.out.println("*\n*\tLoading datasets\n*");
         HashedDataSet<Gene, Attribute> ds1 = DI4Datasets.kaessmann();
-        HashedDataSet<Gene, Attribute> ds2 = DI4Datasets.patentAbstract();
+        HashedDataSet<Gene, Attribute> ds2 = DI4Datasets.patentTitle();
 
 		// load the gold standard (test set)
         String comparisonDescription = "Levenshtein_StandardRecordBlocker_Graph_" + t;
         String solution = "DI4";
-        String goldstandardDirectory = "data/goldstandard/" + solution + "/kaessmann_2_patentAbstract";
+        String goldstandardDirectory = "data/goldstandard/" + solution + "/kaessmann_2_patentTitle";
         String className = "Levenshtein_StandardRecordBlocker";
 
         // load the gold standard (test set)
