@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EnrichFusedDataset
@@ -11,7 +12,7 @@ namespace EnrichFusedDataset
         static void Main(string[] args)
         {
 
-            PublicationExDS.run();
+            Exercise2.run();
 
             /*
 

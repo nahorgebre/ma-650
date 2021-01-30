@@ -5,54 +5,43 @@ using System.Collections.Generic;
 namespace EnrichFusedDataset
 {
 
-    public class OrganState
+    class OrganCollection
     {
 
-        public bool testis = false;
+        public HashSet<string> heart = OrganDatasets.getHeart();
 
-        public bool liver = false;
+        public HashSet<string> liver = OrganDatasets.getLiver();
 
-        public bool kidney = false;
+        public HashSet<string> testis = OrganDatasets.getTestis();
 
-        public bool heart = false;
+        public HashSet<string> barin = OrganDatasets.getBrain();
 
-        public bool cerebellum = false;
-
-        public bool cardio = false;
-
-        public bool brain = false;
+        public HashSet<string> kidney = OrganDatasets.getKidney();
 
     }
+
 
     public class OrganDatasets
     {
 
-        public static FileInfo testisFile = new FileInfo(Environment.CurrentDirectory + "/data/input/organ/4 article_abstract_testis.csv");
+        public static FileInfo testisFile = new FileInfo(Environment.CurrentDirectory + "/data/organ/4 article_abstract_testis.csv");
 
-        public static FileInfo liverFile = new FileInfo(Environment.CurrentDirectory + "/data/input/organ/4 article_abstract_liver.csv");
+        public static FileInfo liverFile = new FileInfo(Environment.CurrentDirectory + "/data/organ/4 article_abstract_liver.csv");
 
-        public static FileInfo kidneyFile = new FileInfo(Environment.CurrentDirectory + "/data/input/organ/4 article_abstract_kidney.csv");
+        public static FileInfo kidneyFile = new FileInfo(Environment.CurrentDirectory + "/data/organ/4 article_abstract_kidney.csv");
 
-        //public static FileInfo heartFile = new FileInfo( Environment.CurrentDirectory + "/data/input/organ/" );
+        public static FileInfo cerebellumFile = new FileInfo(Environment.CurrentDirectory + "/data/organ/4 article_abstract_cerebellum.csv");
 
-        public static FileInfo cerebellumFile = new FileInfo(Environment.CurrentDirectory + "/data/input/organ/4 article_abstract_cerebellum.csv");
+        public static FileInfo heartFile = new FileInfo(Environment.CurrentDirectory + "/data/organ/4 article_abstract_cardio.csv");
 
-        public static FileInfo cardioFile = new FileInfo(Environment.CurrentDirectory + "/data/input/organ/4 article_abstract_cardio.csv");
-
-        public static List<FileInfo> brainFileList = new List<FileInfo>(){
-            new FileInfo( Environment.CurrentDirectory + "/data/input/organ/4 article_abstract_brain_unique.csv" ), 
-            //new FileInfo( Environment.CurrentDirectory + "/data/input/organ/" ) 
-        };
+        public static FileInfo brainFile = new FileInfo(Environment.CurrentDirectory + "/data/organ/4 article_abstract_brain_unique.csv");
 
 
-        public static Dictionary<string, OrganState> getOrganDictionary()
+        public static HashSet<string> getTestis()
         {
 
-            Dictionary<string, OrganState> organDictionary = new Dictionary<string, OrganState>();
+            HashSet<string> organ = new HashSet<string>();
 
-            HashSet<string> overlappingPmIdHashSet = new HashSet<string>();
-
-            // testis
             using (StreamReader sr = new StreamReader(testisFile.FullName))
             {
 
@@ -67,31 +56,21 @@ namespace EnrichFusedDataset
 
                     string pmid = values[7].Trim();
 
-                    if (organDictionary.ContainsKey(pmid))
-                    {
-
-                        OrganState organSate = organDictionary[pmid];
-
-                        organSate.testis = true;
-
-                        organDictionary[pmid] = organSate;
-
-                        overlappingPmIdHashSet.Add(pmid);
-
-                    }
-                    else
-                    {
-
-                        organDictionary.Add(pmid, new OrganState() { testis = true });
-
-                    }
+                    organ.Add(pmid);
 
                 }
 
             }
 
+            return organ;
 
-            // liver
+        }
+
+        public static HashSet<string> getLiver()
+        {
+
+            HashSet<string> organ = new HashSet<string>();
+
             using (StreamReader sr = new StreamReader(liverFile.FullName))
             {
 
@@ -106,31 +85,21 @@ namespace EnrichFusedDataset
 
                     string pmid = values[7].Trim();
 
-                    if (organDictionary.ContainsKey(pmid))
-                    {
-
-                        OrganState organSate = organDictionary[pmid];
-
-                        organSate.liver = true;
-
-                        organDictionary[pmid] = organSate;
-
-                        overlappingPmIdHashSet.Add(pmid);
-
-                    }
-                    else
-                    {
-
-                        organDictionary.Add(pmid, new OrganState() { liver = true });
-
-                    }
+                    organ.Add(pmid);
 
                 }
 
             }
 
+            return organ;
 
-            // kidney
+        }
+
+        public static HashSet<string> getKidney()
+        {
+
+            HashSet<string> organ = new HashSet<string>();
+
             using (StreamReader sr = new StreamReader(kidneyFile.FullName))
             {
 
@@ -145,31 +114,22 @@ namespace EnrichFusedDataset
 
                     string pmid = values[7].Trim();
 
-                    if (organDictionary.ContainsKey(pmid))
-                    {
-
-                        OrganState organSate = organDictionary[pmid];
-
-                        organSate.kidney = true;
-
-                        organDictionary[pmid] = organSate;
-
-                        overlappingPmIdHashSet.Add(pmid);
-
-                    }
-                    else
-                    {
-
-                        organDictionary.Add(pmid, new OrganState() { kidney = true });
-
-                    }
+                    organ.Add(pmid);
 
                 }
 
             }
 
-            // heart
-            using (StreamReader sr = new StreamReader(cardioFile.FullName))
+            return organ;
+
+        }
+
+        public static HashSet<string> getHeart()
+        {
+
+            HashSet<string> organ = new HashSet<string>();
+
+            using (StreamReader sr = new StreamReader(heartFile.FullName))
             {
 
                 sr.ReadLine();
@@ -183,31 +143,22 @@ namespace EnrichFusedDataset
 
                     string pmid = values[7].Trim();
 
-                    if (organDictionary.ContainsKey(pmid))
-                    {
-
-                        OrganState organSate = organDictionary[pmid];
-
-                        organSate.heart = true;
-
-                        organDictionary[pmid] = organSate;
-
-                        overlappingPmIdHashSet.Add(pmid);
-
-                    }
-                    else
-                    {
-
-                        organDictionary.Add(pmid, new OrganState() { heart = true });
-
-                    }
+                    organ.Add(pmid);
 
                 }
 
             }
 
-            // cerebellum
-            using (StreamReader sr = new StreamReader(cerebellumFile.FullName))
+            return organ;
+
+        }
+
+        public static HashSet<string> getBrain()
+        {
+
+            HashSet<string> organ = new HashSet<string>();
+
+            using (StreamReader sr = new StreamReader(brainFile.FullName))
             {
 
                 sr.ReadLine();
@@ -221,78 +172,13 @@ namespace EnrichFusedDataset
 
                     string pmid = values[7].Trim();
 
-                    if (organDictionary.ContainsKey(pmid))
-                    {
-
-                        OrganState organSate = organDictionary[pmid];
-
-                        organSate.cerebellum = true;
-
-                        organDictionary[pmid] = organSate;
-
-                        overlappingPmIdHashSet.Add(pmid);
-
-                    }
-                    else
-                    {
-
-                        organDictionary.Add(pmid, new OrganState() { cerebellum = true });
-
-                    }
+                    organ.Add(pmid);
 
                 }
 
             }
 
-            // cardio
-
-            // brain
-            foreach (FileInfo brainFile in brainFileList)
-            {
-
-                using (StreamReader sr = new StreamReader(brainFile.FullName))
-                {
-
-                    sr.ReadLine();
-
-                    while (!sr.EndOfStream)
-                    {
-
-                        var line = sr.ReadLine();
-
-                        string[] values = line.Split(',');
-
-                        string pmid = values[7].Trim();
-
-                        if (organDictionary.ContainsKey(pmid))
-                        {
-
-                            OrganState organSate = organDictionary[pmid];
-
-                            organSate.brain = true;
-
-                            organDictionary[pmid] = organSate;
-
-                            overlappingPmIdHashSet.Add(pmid);
-
-                        }
-                        else
-                        {
-
-                            organDictionary.Add(pmid, new OrganState() { brain = true });
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-
-            Console.WriteLine("# of organ-overlapping PmIds: " + overlappingPmIdHashSet.Count);
-
-            return organDictionary;
+            return organ;
 
         }
 

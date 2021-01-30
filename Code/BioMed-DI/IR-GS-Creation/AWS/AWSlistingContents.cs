@@ -16,7 +16,7 @@ namespace IR_GS_Creation
 
             AmazonS3Client s3Client = new AmazonS3Client(AWScredentials.getAccessKey(), AWScredentials.getSecretKey(), AWScredentials.bucketRegion);
 
-            List<S3Object> s3ObjectList = (s3Client.ListObjectsAsync("nahorgebre-ma-650-master-thesis", "identity-resolution/input/" + solution).Result).S3Objects;
+            List<S3Object> s3ObjectList = (s3Client.ListObjectsAsync("nahorgebre-ma-650-master-thesis", "identity-resolution/input2/" + solution).Result).S3Objects;
 
             FileInfo file = new FileInfo(Environment.CurrentDirectory + "/Get-D-" + solution + ".sh");
 

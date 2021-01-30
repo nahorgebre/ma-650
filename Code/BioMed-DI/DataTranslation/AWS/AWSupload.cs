@@ -69,7 +69,7 @@ namespace DataTranslation
                 foreach (FileInfo file in subDirectory.GetFiles())
                 {
 
-                    string keyName = string.Format("identity-resolution/input/{0}/{1}", subDirectory.Name, file.Name);
+                    string keyName = string.Format("identity-resolution/input2/{0}/{1}", subDirectory.Name, file.Name);
 
                     string bucketName = "nahorgebre-ma-650-master-thesis";
 

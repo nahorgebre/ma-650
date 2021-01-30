@@ -24,7 +24,7 @@ namespace IR_GS_Creation
                     if (file.Name.Contains("train") | file.Name.Contains("test"))
                     {
 
-                        string keyName = string.Format("identity-resolution/goldstandard/{0}/{1}/{2}", parameter, subDirectory.Name, file.Name);
+                        string keyName = string.Format("identity-resolution/goldstandard2/{0}/{1}/{2}", parameter, subDirectory.Name, file.Name);
 
                         string bucketName = "nahorgebre-ma-650-master-thesis";
 
