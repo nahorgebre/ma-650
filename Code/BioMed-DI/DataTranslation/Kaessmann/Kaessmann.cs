@@ -12,34 +12,39 @@ namespace DataTranslation
         public static void runDataTranslation()
         {
 
-            FileInfo file = new FileInfo(DI2.inputDirectory + "/DI1-fused.xml");
+            FileInfo xmlInput = new FileInfo(DI1.outputDirectory + "/DI1_dt.xml");
 
-            List<Gene> gene_list = Parser.getGeneList(file);
+            FileInfo tsvInput = new FileInfo(DI1.outputDirectory + "/DI1_dt.tsv");
+
+
+            List<Gene> gene_list = Parser.getGeneList(xmlInput);
 
             getNcbiIdFrequency(gene_list);
 
-            gene_list = Output.adjustRecordId(gene_list, "DI1_{0}_rid");
+
+            DirectoryInfo DI2Directory = new DirectoryInfo(DI2.outputDirectory);
+
+            DI2Directory.Create();
+
+            File.Copy(xmlInput.FullName, DI2Directory.FullName);
+
+            File.Copy(tsvInput.FullName, DI2Directory.FullName);
 
 
-            Output.createXml(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/DI1_dt.xml"));
+            DirectoryInfo DI3Directory = new DirectoryInfo(DI3.outputDirectory);
 
-            Output.createXml(gene_list: gene_list, file: new FileInfo(DI3.outputDirectory + "/DI1_dt.xml"));
+            DI3Directory.Create();
 
-            Output.createXml(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/DI1_dt.xml"));
+            File.Copy(xmlInput.FullName, DI3Directory.FullName);
 
-
-            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI2.outputDirectory + "/DI1_dt.tsv"));
-
-            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI3.outputDirectory + "/DI1_dt.tsv"));
-
-            Output.createTsv(gene_list: gene_list, file: new FileInfo(DI4.outputDirectory + "/DI1_dt.tsv"));
+            File.Copy(tsvInput.FullName, DI3Directory.FullName);
 
         }
 
-        public static void runDataTranslationForDI3()
+        public static void runDataTranslationForDI3Output()
         {
 
-            FileInfo file = new FileInfo(DI4.inputDirectory + "/DI2-fused.xml");
+            FileInfo file = new FileInfo(DI4.inputDirectory + "/DI3-fused.xml");
 
             List<Gene> gene_list = Parser.getGeneList(file);
 
