@@ -44,7 +44,7 @@ namespace IR_GS_Creation
                     List<Goldstandard> gsListTrueCornerCase, 
                     List<Goldstandard> gsListFalse, 
                     List<Goldstandard> gsListFalseCornerCase
-                    ) = Comparison_NcbiId_GeneNames.compare(DI2Datasets.DI1_dt, 
+                    ) = Comparison_NcbiId_GeneNames2.compare(DI2Datasets.DI1_dt, 
                         DI2Datasets.all_gene_disease_pmid_associations_dt(i));
 
 
