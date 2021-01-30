@@ -4,13 +4,13 @@ namespace DataTranslation
     class KaessmannContent
     {
 
-        public string ensemblId;
+        public string ensemblId = string.Empty;
 
-        public string ncbiId;
+        public string ncbiId = string.Empty;
 
-        public string geneNames;
+        public string geneNames = string.Empty;
 
-        public string geneDescriptions;
+        public string geneDescriptions = string.Empty;
 
         public string brain_disagreement;
 
