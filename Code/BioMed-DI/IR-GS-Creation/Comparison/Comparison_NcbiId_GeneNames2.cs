@@ -47,6 +47,8 @@ namespace IR_GS_Creation
                 if (check_gs_True_size(gsListTrue: gsListTrue, gsListTrueCornerCase: gsListTrueCornerCase, gsTrueSize: gsTrueSize, gsTrueCornerSize: gsTrueCornerSize))
                 {
 
+                    Console.WriteLine("test");
+
                     if (file2Dictionary.ContainsKey(file1DictionaryItem.Key))
                     {
 
