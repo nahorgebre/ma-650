@@ -37,37 +37,42 @@ namespace IR_GS_Creation
                     if (!values[2].Equals("NV"))
                     {
 
-                        InputDataset inputDS = new InputDataset();
-
-                        if (!values[0].Equals("NV"))
+                        if (!datasetDictionary.ContainsKey(values[2]))
                         {
 
-                            inputDS.recordId = values[0];
+                            InputDataset inputDS = new InputDataset();
+
+                            if (!values[0].Equals("NV"))
+                            {
+
+                                inputDS.recordId = values[0];
+
+                            }
+
+                            if (!values[1].Equals("NV"))
+                            {
+
+                                inputDS.ensemblId = values[1];
+
+                            }
+
+                            if (!values[2].Equals("NV"))
+                            {
+
+                                inputDS.ncbiId = values[2];
+
+                            }
+
+                            if (!values[3].Equals("NV"))
+                            {
+
+                                inputDS.geneNames = values[3];
+
+                            }
+
+                            datasetDictionary.Add(values[2], inputDS);
 
                         }
-
-                        if (!values[1].Equals("NV"))
-                        {
-
-                            inputDS.ensemblId = values[1];
-
-                        }
-
-                        if (!values[2].Equals("NV"))
-                        {
-
-                            inputDS.ncbiId = values[2];
-
-                        }
-
-                        if (!values[3].Equals("NV"))
-                        {
-
-                            inputDS.geneNames = values[3];
-
-                        }
-
-                        datasetDictionary.Add(values[2], inputDS);
 
                     }
 
