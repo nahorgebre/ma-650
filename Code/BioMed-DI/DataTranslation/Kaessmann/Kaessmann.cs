@@ -26,18 +26,18 @@ namespace DataTranslation
 
             DI2Directory.Create();
 
-            File.Copy(xmlInput.FullName, DI2Directory.FullName);
+            File.Copy(xmlInput.FullName, DI2Directory.FullName + "/" + xmlInput.Name);
 
-            File.Copy(tsvInput.FullName, DI2Directory.FullName);
+            File.Copy(tsvInput.FullName, DI2Directory.FullName + "/" + tsvInput.Name);
 
 
             DirectoryInfo DI3Directory = new DirectoryInfo(DI3.outputDirectory);
 
             DI3Directory.Create();
 
-            File.Copy(xmlInput.FullName, DI3Directory.FullName);
+            File.Copy(xmlInput.FullName, DI3Directory.FullName + "/" + xmlInput.Name);
 
-            File.Copy(tsvInput.FullName, DI3Directory.FullName);
+            File.Copy(tsvInput.FullName, DI3Directory.FullName + "/" + tsvInput.Name);
 
         }
 
