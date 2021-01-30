@@ -40,9 +40,9 @@ namespace IR_GS_Creation
             //-int gsTrueSize = 70 - gsFalseCornerSize;
 
 
-            Dictionary<string, InputDataset> file1Dictionary = InputDataset.getDatasetDictionary(fileName1);
+            Dictionary<string, InputDataset> file1Dictionary = InputDataset.getDatasetDictionaryWoNcbiId(fileName1);
 
-            Dictionary<string, InputDataset> file2Dictionary = InputDataset.getDatasetDictionary(fileName2);
+            Dictionary<string, InputDataset> file2Dictionary = InputDataset.getDatasetDictionaryWoNcbiId(fileName2);
 
 
 
