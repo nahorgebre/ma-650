@@ -40,13 +40,13 @@ namespace DataTranslation
                 if (partitionNumbers != null)
                 {
 
-                    keyName = string.Format("identity-resolution/input/{0}/{1}/{2}", parameter, partitionNumbers, file.Name);
+                    keyName = string.Format("identity-resolution/input2/{0}/{1}/{2}", parameter, partitionNumbers, file.Name);
 
                 }
                 else
                 {
 
-                    keyName = string.Format("identity-resolution/input/{0}/{1}", directory.Name, file.Name);
+                    keyName = string.Format("identity-resolution/input2/{0}/{1}", directory.Name, file.Name);
 
                 }
 
