@@ -10,17 +10,20 @@ namespace IR_GS_Creation
         static void Main(string[] args)
         {
 
-            AWSlistingContents.getS3ObjectList("DI2");
-
-            AWSlistingContents.getS3ObjectList("DI3");
-
-            AWSlistingContents.getS3ObjectList("DI4");
-
-
             foreach (String parameter in args)
             {
 
-                if (parameter.Equals("DI2"))
+                if (parameter.Equals("listing"))
+                {
+
+                    AWSlistingContents.getS3ObjectList("DI2");
+
+                    AWSlistingContents.getS3ObjectList("DI3");
+
+                    AWSlistingContents.getS3ObjectList("DI4");
+
+                }
+                else if (parameter.Equals("DI2"))
                 {
 
                     DI2.run();
@@ -31,7 +34,7 @@ namespace IR_GS_Creation
 
                     AWSupload.run(outputDirectory, parameter);
 
-                } 
+                }
                 else if (parameter.Equals("DI3"))
                 {
 
