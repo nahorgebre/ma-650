@@ -40,14 +40,9 @@ namespace IR_GS_Creation
             Dictionary<string, InputDataset> file2Dictionary = InputDataset.getDatasetDictionary(fileName2);
 
 
-            Console.WriteLine("test0");
-
-
             // True Cases
             foreach (KeyValuePair<string, InputDataset> file1DictionaryItem in file1Dictionary)
             {
-
-                Console.WriteLine("test1");
 
                 if (check_gs_True_size(gsListTrue: gsListTrue, gsListTrueCornerCase: gsListTrueCornerCase, gsTrueSize: gsTrueSize, gsTrueCornerSize: gsTrueCornerSize))
                 {
@@ -56,6 +51,8 @@ namespace IR_GS_Creation
 
                     if (file2Dictionary.ContainsKey(file1DictionaryItem.Key))
                     {
+
+                        Console.WriteLine("test3");
 
                         InputDataset file2RecordItem = file2Dictionary[file1DictionaryItem.Key];
 
