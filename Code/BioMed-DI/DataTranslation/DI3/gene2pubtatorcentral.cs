@@ -14,12 +14,6 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-
-            Console.WriteLine("Load NCBI ID HashSet!");
-
-            //HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
-
-
             Console.WriteLine("Run Data Translation!");
 
             using (var reader = new StreamReader(DI3.inputDirectory + "/gene2pubtatorcentral.tsv"))
@@ -44,44 +38,37 @@ namespace DataTranslation
                         foreach (String ncbiId in ncbiIdArray)
                         {
 
-                            // Taxonomy
+                            Gene gene = new Gene();
 
-                            //if (ncbiIdHashSet.Contains(ncbiId))
-                            //{
+                            gene.recordId = string.Format("gene2pubtatorcentral_{0}_rid", recordIdCounter);
 
-                                Gene gene = new Gene();
+                            gene.ncbiId = ncbiId;
 
-                                gene.recordId = string.Format("gene2pubtatorcentral_{0}_rid", recordIdCounter);
+                            HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
 
-                                gene.ncbiId = ncbiId;
-
-                                HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
-
-                                gene.geneNames = string.Join("|", geneNameHashSet);
+                            gene.geneNames = string.Join("|", geneNameHashSet);
 
 
-                                List<GenePublicationMention> publicationList = new List<GenePublicationMention>();
+                            List<GenePublicationMention> publicationList = new List<GenePublicationMention>();
 
-                                GenePublicationMention publication = new GenePublicationMention();
+                            GenePublicationMention publication = new GenePublicationMention();
 
-                                publication.pmId = values[0].Trim();
+                            publication.pmId = values[0].Trim();
 
-                                publication.ressource = values[4].Trim();
+                            publication.ressource = values[4].Trim();
 
-                                publication.associatedNcbiId = ncbiId;
+                            publication.associatedNcbiId = ncbiId;
 
-                                publicationList.Add(publication);
-
-
-                                gene.publicationMentions = publicationList;
+                            publicationList.Add(publication);
 
 
-                                gene_list.Add(gene);
+                            gene.publicationMentions = publicationList;
 
 
-                                recordIdCounter++;
+                            gene_list.Add(gene);
 
-                            //}
+
+                            recordIdCounter++;
 
                         }
 
@@ -99,11 +86,6 @@ namespace DataTranslation
 
         public static void runDataTranslationMultipleOutputs()
         {
-
-            Console.WriteLine("Load NCBI ID HashSet!");
-
-            //HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
-
 
             Console.WriteLine("Run Data Translation!");
 
@@ -154,42 +136,37 @@ namespace DataTranslation
                                 foreach (String ncbiId in ncbiIdArray)
                                 {
 
-                                    //if (ncbiIdHashSet.Contains(ncbiId))
-                                    //{
+                                    Gene gene = new Gene();
 
-                                        Gene gene = new Gene();
+                                    gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", i.ToString(), recordIdCounter);
 
-                                        gene.recordId = string.Format("gene2pubtatorcentral_{0}_{1}_rid", i.ToString(), recordIdCounter);
+                                    gene.ncbiId = ncbiId;
 
-                                        gene.ncbiId = ncbiId;
+                                    HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
 
-                                        HashSet<string> geneNameHashSet = getGeneNameHashSet(values[3]);
-
-                                        gene.geneNames = string.Join("|", geneNameHashSet);
+                                    gene.geneNames = string.Join("|", geneNameHashSet);
 
 
-                                        List<GenePublicationMention> publicationList = new List<GenePublicationMention>();
+                                    List<GenePublicationMention> publicationList = new List<GenePublicationMention>();
 
-                                        GenePublicationMention publication = new GenePublicationMention();
+                                    GenePublicationMention publication = new GenePublicationMention();
 
-                                        publication.pmId = values[0].Trim();
+                                    publication.pmId = values[0].Trim();
 
-                                        publication.ressource = values[4].Trim();
+                                    publication.ressource = values[4].Trim();
 
-                                        publication.associatedNcbiId = ncbiId;
+                                    publication.associatedNcbiId = ncbiId;
 
-                                        publicationList.Add(publication);
-
-
-                                        gene.publicationMentions = publicationList;
+                                    publicationList.Add(publication);
 
 
-                                        gene_list.Add(gene);
+                                    gene.publicationMentions = publicationList;
 
 
-                                        recordIdCounter++;
+                                    gene_list.Add(gene);
 
-                                    //}
+
+                                    recordIdCounter++;
 
                                 }
 

@@ -13,12 +13,6 @@ namespace DataTranslation
 
             List<Gene> gene_list = new List<Gene>();
 
-
-            Console.WriteLine("Load NCBI ID HashSet!");
-
-            //HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
-
-
             Console.WriteLine("Run Data Translation!");
 
             using (var reader = new StreamReader(DI2.inputDirectory + "/all_gene_disease_pmid_associations.tsv"))
@@ -38,32 +32,27 @@ namespace DataTranslation
 
                     string ncbiId = values[0].Trim();
 
-                    //if (ncbiIdHashSet.Contains(ncbiId))
-                    //{
+                    Gene gene = new Gene();
 
-                        Gene gene = new Gene();
+                    gene.recordId = string.Format("gene_disease_pmid_associations_{0}_rid", recordIdCounter);
 
-                        gene.recordId = string.Format("gene_disease_pmid_associations_{0}_rid", recordIdCounter);
-
-                        gene.ncbiId = ncbiId;
+                    gene.ncbiId = ncbiId;
 
 
-                        string name = values[1].Trim();
+                    string name = values[1].Trim();
 
-                        if (!name.Equals(string.Empty))
-                        {
+                    if (!name.Equals(string.Empty))
+                    {
 
-                            gene.geneNames = name;
+                        gene.geneNames = name;
 
-                        }
+                    }
 
-                        gene.diseaseAssociations = getDiseaseAssociations(values);
+                    gene.diseaseAssociations = getDiseaseAssociations(values);
 
-                        gene_list.Add(gene);
+                    gene_list.Add(gene);
 
-                        recordIdCounter++;
-
-                    //}
+                    recordIdCounter++;
 
                 }
 
@@ -74,11 +63,6 @@ namespace DataTranslation
 
         public static void runDataTranslationMultipleOutputs()
         {
-
-            Console.WriteLine("Load NCBI ID HashSet!");
-
-            //HashSet<string> ncbiIdHashSet = TaxonomyDatasets.getNcbiIdHashSet();
-
 
             Console.WriteLine("Run Data Translation!");
 
@@ -139,40 +123,33 @@ namespace DataTranslation
 
                             string ncbiId = values[0].Trim();
 
-                            // Taxonomy
+                            Gene gene = new Gene();
 
-                            //if (ncbiIdHashSet.Contains(ncbiId))
-                            //{
-
-                                Gene gene = new Gene();
-
-                                gene.recordId = string.Format("gene_disease_pmid_associations_{0}_{1}_rid", i, recordIdCounter);
+                            gene.recordId = string.Format("gene_disease_pmid_associations_{0}_{1}_rid", i, recordIdCounter);
 
 
-                                if (!ncbiId.Equals(string.Empty))
-                                {
+                            if (!ncbiId.Equals(string.Empty))
+                            {
 
-                                    gene.ncbiId = ncbiId;
+                                gene.ncbiId = ncbiId;
 
-                                }
+                            }
 
 
-                                string name = values[1].Trim();
+                            string name = values[1].Trim();
 
-                                if (!name.Equals(string.Empty))
-                                {
+                            if (!name.Equals(string.Empty))
+                            {
 
-                                    gene.geneNames = name;
+                                gene.geneNames = name;
 
-                                }
+                            }
 
-                                gene.diseaseAssociations = getDiseaseAssociations(values);
+                            gene.diseaseAssociations = getDiseaseAssociations(values);
 
-                                gene_list.Add(gene);
+                            gene_list.Add(gene);
 
-                                recordIdCounter++;
-
-                            //}
+                            recordIdCounter++;
 
                         }
 
@@ -199,7 +176,7 @@ namespace DataTranslation
 
             GeneDiseaseAssociation disease = new GeneDiseaseAssociation();
 
-            
+
             disease.associatedNcbiId = values[0].Trim();
 
 
