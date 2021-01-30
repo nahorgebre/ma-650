@@ -44,10 +44,12 @@ namespace IR_GS_Creation
             foreach (KeyValuePair<string, InputDataset> file1DictionaryItem in file1Dictionary)
             {
 
+                Console.WriteLine("test1");
+
                 if (check_gs_True_size(gsListTrue: gsListTrue, gsListTrueCornerCase: gsListTrueCornerCase, gsTrueSize: gsTrueSize, gsTrueCornerSize: gsTrueCornerSize))
                 {
 
-                    Console.WriteLine("test");
+                    Console.WriteLine("test2");
 
                     if (file2Dictionary.ContainsKey(file1DictionaryItem.Key))
                     {
