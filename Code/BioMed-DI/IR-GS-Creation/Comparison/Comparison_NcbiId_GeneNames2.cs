@@ -40,6 +40,9 @@ namespace IR_GS_Creation
             Dictionary<string, InputDataset> file2Dictionary = InputDataset.getDatasetDictionary(fileName2);
 
 
+            Console.WriteLine("test0");
+
+
             // True Cases
             foreach (KeyValuePair<string, InputDataset> file1DictionaryItem in file1Dictionary)
             {
