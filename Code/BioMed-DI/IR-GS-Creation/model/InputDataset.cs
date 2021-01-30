@@ -34,43 +34,41 @@ namespace IR_GS_Creation
                     string[] values = line.Split("\t");
 
 
+
+
+                    InputDataset inputDS = new InputDataset();
+
+                    if (!values[0].Equals("NV"))
+                    {
+
+                        inputDS.recordId = values[0];
+
+                    }
+
+                    if (!values[1].Equals("NV"))
+                    {
+
+                        inputDS.ensemblId = values[1];
+
+                    }
+
                     if (!values[2].Equals("NV"))
                     {
 
-                        InputDataset inputDS = new InputDataset();
-
-                        if (!values[0].Equals("NV"))
-                        {
-
-                            inputDS.recordId = values[0];
-
-                        }
-
-                        if (!values[1].Equals("NV"))
-                        {
-
-                            inputDS.ensemblId = values[1];
-
-                        }
-
-                        if (!values[2].Equals("NV"))
-                        {
-
-                            inputDS.ncbiId = values[2];
-
-                        }
-
-                        if (!values[3].Equals("NV"))
-                        {
-
-                            inputDS.geneNames = values[3];
-
-                        }
-
-                        datasetDictionary.Add(values[2], inputDS);
-
+                        inputDS.ncbiId = values[2];
 
                     }
+
+                    if (!values[3].Equals("NV"))
+                    {
+
+                        inputDS.geneNames = values[3];
+
+                    }
+
+                    datasetDictionary.Add(values[0], inputDS);
+
+
 
                 }
 
